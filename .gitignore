@@ -1,0 +1,8 @@
+.DS_Store
+.ipynb_checkpoints
+.virtual_documents
+*.mp4
+*.txt
+*.log
+_build
+*.key

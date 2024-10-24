@@ -1,0 +1,21 @@
+jupyter contrib nbextension install --user
+jupyter nbextension enable --py widgetsnbextension
+jupyter nbextension enable python-markdown/main
+jupyter nbextension enable rise/main
+jupyter nbextension enable toc2/main
+jupyter nbextension enable ExecuteTime/main
+jupyter nbextension enable execute_time/ExecuteTime
+jupyter nbextension enable toggle_all_line_numbers/main
+jupyter nbextension enable varInspector/main
+jupyter nbextension enable codefolding/main
+jupyter nbextension enable exercise2/main
+jupyter nbextension enable code_prettify/code_prettify
+jupyter nbextension enable collapsible_headings/main
+jupyter nbextension enable equation-numbering/main
+
+jupyter nbextension install --sys-prefix --py nbgrader --overwrite
+jupyter nbextension enable --sys-prefix --py nbgrader
+jupyter serverextension enable --sys-prefix --py nbgrader
+
+# Notebooks w/ extensions that auto-run code must be "trusted" to work the first time
+#jupyter trust 04-Optimization/04-Introduction-Optimization.ipynb
