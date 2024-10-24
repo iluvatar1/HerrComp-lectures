@@ -1,0 +1,1676 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ordinary Differential Equations : Initial value problems &#8212; Herramientas Computacionales</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles.css?v=03b9d5b1" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05-ODE-IVP/ODESystems-PhasePlane';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BVP: Boundary value problems" href="../06-ODE-BVP/BVP.html" />
+    <link rel="prev" title="Simple neural network: A perceptron" href="../04-LinearAlgebra/Perceptron.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Herramientas Computacionales
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to or review of Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-Intro-InstalacionPython/01-B-PythonSetup.html">Python Setup</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/01-IntroProgrammingPython.html">Python Programming (very fast) Introduction</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/02-IntroProgrammingPython-DataStructs.html">Basic data structures</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/matplotlib-Intro.html">Matplotlib</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/numpy-Intro-Reduced.html">Python arrays : Numpy</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/Scipy.html">SciPy - Library of scientific algorithms for Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Calculus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsI.html">Numerical errors (very short intro)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsII.html">Numerical errors II : types of errors and general remarks</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/NumericalDifferentiation.html">Numerical differentiation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/AutomaticDifferentiation.html">Automatic differentiation</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.html">Numerical Calculus: Integrals and an introduction to scipy</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra and Numerical Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/LinearAlgebra.html">Linear Systems : Matrices, Vectors, eigen systems</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/Perceptron.html">Simple neural network: A perceptron</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ordinary Differential Equations : Initial value problems</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP-linear-matrices.html">Boundary value problems: linear case and matrices</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../07-vpython/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/iluvatar1/HerrComp-lectures/master?urlpath=lab/tree/05-ODE-IVP/ODESystems-PhasePlane.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/github/iluvatar1/HerrComp-lectures/blob/master/05-ODE-IVP/ODESystems-PhasePlane.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures/issues/new?title=Issue%20on%20page%20%2F05-ODE-IVP/ODESystems-PhasePlane.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/05-ODE-IVP/ODESystems-PhasePlane.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ordinary Differential Equations : Initial value problems</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ordinary Differential Equations : Initial value problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-method">Euler method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-comparing-the-euler-method-with-the-scipy-function">Example  comparing the Euler method with the scipy function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-ordinary-differential-equations">Systems of Ordinary Differential Equations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-from-chapra-projectile-adding-a-stopping-condition">Exercise (From Chapra): Projectile, adding a stopping condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-plane">Phase plane</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-system">Solving the system</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predator-prey-model">Predator prey model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-lorenz-model">Example : Lorenz model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-view">Geometric view</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiusalaas-circuits">kiusalaas: Circuits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-portrait">Phase portrait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiusalaas-real-projectiles">kiusalaas: Real Projectiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiusalaas-bouyancy">kiusalaas : Bouyancy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapra-modified-lokta-volterra">Chapra: Modified Lokta-Volterra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapra-chemical-reaction">Chapra: Chemical reaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapra-linear-system">Chapra : Linear system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-harmonic-oscillator">The Harmonic oscillator</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-analysis">Linear stability analysis</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ordinary-differential-equations-initial-value-problems">
+<h1>Ordinary Differential Equations : Initial value problems<a class="headerlink" href="#ordinary-differential-equations-initial-value-problems" title="Link to this heading">#</a></h1>
+<p>https://github.com/hannorein/rebound</p>
+<p>This notebook shows simplified approaches to solve ordinary differential equations with given initial conditions.This is called an <em>Initial Value Problem</em>.</p>
+<p>In general, what we want to solve is the ordinary differential equation  of first-order of the form
+$<span class="math notranslate nohighlight">\(\frac{dy}{dt} = f(t, y),\)</span><span class="math notranslate nohighlight">\(
+where \)</span>y<span class="math notranslate nohighlight">\( represents, for instance, the system state, and \)</span>f(y, t)$ is the function that describes the change in time and, in general, depends both on the current system state and the time.</p>
+<p>When you have a higher order ODE, you can introduce auxiliary derivatives to recover the one order formulation. If you an n-order differential equation, you will get a system like
+$<span class="math notranslate nohighlight">\(\frac{d\vec y}{dt} = \vec f(t, \vec y),\)</span>$</p>
+<p>As an example, let’s start with the second Newton equation for a body in free falling under a linear damping viscous force,
+$<span class="math notranslate nohighlight">\(m a = m \frac{dv}{dt} = m \frac{d^2 z}{dt^2} = -mg - mbv\)</span><span class="math notranslate nohighlight">\(.
+In this case, we can use the first position time derivative (the velocity) as an auxiliary function, and then we get \)</span>\vec y = [z, v]<span class="math notranslate nohighlight">\( and \)</span>d\vec y /dt = \vec f(t, \vec y) = [v, -g - bv]$ (actually this can also be written as a matrix equation and its eigen-values will have important meaning.</p>
+<p><strong>Exercise:</strong> Transform the following third order equation into a system of three linear equations
+$<span class="math notranslate nohighlight">\(\frac{d^3x}{dt^3} = -2\sin x + x \frac{dx}{dt} + 4t\)</span>$</p>
+<p>YOUR ANSWER HERE</p>
+<section id="euler-method">
+<h2>Euler method<a class="headerlink" href="#euler-method" title="Link to this heading">#</a></h2>
+<p>Let’s take the general equation and check that the derivative can be approximated as
+$<span class="math notranslate nohighlight">\(\frac{dy}{dt} = f(t, y) \simeq \frac{y(t+\delta t) - y(t)}{\delta t} +O(\delta t),\)</span><span class="math notranslate nohighlight">\(
+for a sufficiently small time step \)</span>\delta t<span class="math notranslate nohighlight">\( . If you discretize the time in steps of size \)</span>\delta t<span class="math notranslate nohighlight">\(, you can identify the time \)</span>t + \delta t<span class="math notranslate nohighlight">\( as the next time after time \)</span>t<span class="math notranslate nohighlight">\(, so you can write the next value for \)</span>y<span class="math notranslate nohighlight">\( in terms of the current one as
+\)</span><span class="math notranslate nohighlight">\(y(t+\delta t) = y(t) + \delta t f(y, t) +O(\delta t^2) .\)</span><span class="math notranslate nohighlight">\(
+This is the so-called **Euler Method**, and you can interpret it as constructing a straight line between the two points. See the next figure, from Chapra. The local error is of order \)</span>\delta t^2<span class="math notranslate nohighlight">\( because we are ignoring first that term in the series expansion of \)</span>y(t+\delta t)$.</p>
+<p>Basically you need to know the initial position and then you can iterate to obtain later values:</p>
+<ul class="simple">
+<li><p>iter = 0, time = <span class="math notranslate nohighlight">\(0\)</span>, <span class="math notranslate nohighlight">\(y(0)\)</span></p></li>
+<li><p>iter = 1, time = <span class="math notranslate nohighlight">\(\delta t\)</span>, <span class="math notranslate nohighlight">\(y(\delta t) = y(0) + \delta t f(y(0), 0)\)</span></p></li>
+<li><p>iter = 2, time = <span class="math notranslate nohighlight">\(2\delta t\)</span>, <span class="math notranslate nohighlight">\(y(2\delta t) = y(\delta t) + \delta t f(y(\delta t), \delta t)\)</span></p></li>
+<li><p>iter = 3, time = <span class="math notranslate nohighlight">\(3\delta t\)</span>, <span class="math notranslate nohighlight">\(y(3\delta t) = y(2\delta t) + \delta t f(y(2\delta t), 2\delta t)\)</span></p></li>
+<li><p>…</p></li>
+</ul>
+<a class="reference internal image-reference" href="../_images/euler-01.png"><img alt="../_images/euler-01.png" src="../_images/euler-01.png" style="width: 500px;" /></a>
+<p><strong>Although the Euler method is simple to implement, its error is large and sometimes it might be unstable</strong>.</p>
+</section>
+<section id="example-comparing-the-euler-method-with-the-scipy-function">
+<h2>Example  comparing the Euler method with the scipy function<a class="headerlink" href="#example-comparing-the-euler-method-with-the-scipy-function" title="Link to this heading">#</a></h2>
+<p>Following Chapra, let’s solve the following ordinary differential equation by means of the Euler method,
+$<span class="math notranslate nohighlight">\(\frac{dy}{dt} = 4e^{0.8t} - 0.5y,\)</span><span class="math notranslate nohighlight">\(
+whose solution is 
+\)</span><span class="math notranslate nohighlight">\(y = \frac{4}{1.3}(e^{0.8t} - e^{-0.5t}) + 2e^{-0.5t}.\)</span><span class="math notranslate nohighlight">\(
+Let's solve it from \)</span>t =0<span class="math notranslate nohighlight">\( to \)</span>t=4<span class="math notranslate nohighlight">\( in steps \)</span>\delta t = 1<span class="math notranslate nohighlight">\(. The initial condition is \)</span>y=2<span class="math notranslate nohighlight">\( when \)</span>t=0$. Your task is to  solve the differential equation and to compare with the theoretical solution.</p>
+<p>To do so, please first use the <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> function from scipy. You will also need to define a function, called <code class="docutils literal notranslate"><span class="pre">fderiv</span></code>, that returns the derivate of the function and receives the time and the current value of <span class="math notranslate nohighlight">\(y\)</span>. Once those functions are defined defined, use them to plot the numerical and the theoretical solution.</p>
+<p>The official docs for the modern method to use from scipy to solve a system of ordinary differential equations is found at https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_ivp.html#scipy.integrate.solve_ivp  and https://docs.scipy.org/doc/scipy/reference/integrate.html. Please go read it and then come back to try it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simple example for scipy.integrate.solve_ivp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">ytheo</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mf">0.8</span><span class="o">*</span><span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">))</span><span class="o">/</span><span class="mf">1.3</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">DT</span><span class="p">):</span>
+    <span class="c1"># solve using scipy</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">],</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Y0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="c1"># solve using euler</span>
+    <span class="n">t_euler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+    <span class="n">y_euler</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t_euler</span><span class="p">)</span>
+    <span class="n">y_euler</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Y0</span>
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_euler</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">y_euler</span><span class="p">[</span><span class="n">ii</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_euler</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">+</span> <span class="n">DT</span><span class="o">*</span><span class="n">fderiv</span><span class="p">(</span><span class="n">t_euler</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">y_euler</span><span class="p">[</span><span class="n">ii</span><span class="p">])</span>
+
+    <span class="c1"># Plot </span>
+    <span class="o">%</span><span class="k">matplotlib</span> inline
+    <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+    <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Scipy ivp&quot;</span><span class="p">)</span>
+    <span class="c1">#ax.plot(sol.t, sol.y[0], &#39;-*&#39;, label=&quot;Scipy ivp, DT=1.0&quot;)</span>
+    <span class="c1"># theoretical</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">ytheo</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Theoretical&quot;</span><span class="p">)</span>
+    <span class="c1"># euler</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_euler</span><span class="p">,</span> <span class="n">y_euler</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Euler&#39;</span><span class="p">)</span>
+
+    <span class="c1"># activate legend</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="c1"># Print differences</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Diff Scipy: </span><span class="si">{</span><span class="n">ytheo</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Diff Euler: </span><span class="si">{</span><span class="n">ytheo</span><span class="p">(</span><span class="n">t_euler</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">y_euler</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  message: The solver successfully reached the end of the integration interval.
+  success: True
+   status: 0
+        t: [ 0.000e+00  5.000e-01  1.000e+00  1.500e+00  2.000e+00
+             2.500e+00  3.000e+00  3.500e+00  4.000e+00]
+        y: [[ 2.000e+00  3.751e+00  6.195e+00  9.706e+00  1.484e+01
+              2.243e+01  3.368e+01  5.040e+01  7.535e+01]]
+      sol: None
+ t_events: None
+ y_events: None
+     nfev: 26
+     njev: 0
+      nlu: 0
+[0.  0.5 1.  1.5 2.  2.5 3.  3.5 4. ]
+[[ 2.          3.75147098  6.19466434  9.70596322 14.83799037 22.42925878
+  33.67829876 50.40237392 75.34536894]]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Diff Scipy: [[ 0.00000000e+00  5.03220399e-05 -3.29598833e-05  1.07871557e-03
+   5.93153372e-03 -2.24517548e-03 -1.12699452e-03  9.39805657e-03
+  -6.40633115e-03]]
+Diff Euler: [0.         0.2515213  0.58598198 1.04947303 1.71051138 2.67089086
+ 4.08196751 6.16901602 9.2676021 ]
+</pre></div>
+</div>
+<img alt="../_images/f0665c4844f8d26e63a20c8d60e614f193202e25aafcd582d28171009b0d93b2.png" src="../_images/f0665c4844f8d26e63a20c8d60e614f193202e25aafcd582d28171009b0d93b2.png" />
+</div>
+</div>
+</section>
+<section id="exercise">
+<h2>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../_images/problem-1.png"><img alt="../_images/problem-1.png" src="../_images/problem-1.png" style="width: 700px;" /></a>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y</span><span class="o">*</span><span class="n">t</span><span class="o">**</span><span class="mi">3</span>  <span class="o">-</span> <span class="mf">1.5</span><span class="o">*</span><span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">DT</span><span class="p">):</span>
+    <span class="c1"># solve using scipy</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">],</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">Y0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">))</span>
+
+    <span class="c1"># Plot </span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;-*&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Scipy ivp, </span><span class="si">{</span><span class="n">DT</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="c1"># activate legend</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.02</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1877f172b749e6189b97680b2ff5801fc0eb5e1469af6e23b9c500e16f262dc4.png" src="../_images/1877f172b749e6189b97680b2ff5801fc0eb5e1469af6e23b9c500e16f262dc4.png" />
+</div>
+</div>
+</section>
+<section id="id1">
+<h2>Exercise<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>The logistic equation allows to simulate , in a simple manner, the dynamics of a given population that grows proportionally to its current amount <span class="math notranslate nohighlight">\(N\)</span> but decreases also due to competition. Is written as
+$<span class="math notranslate nohighlight">\(\frac{dN}{dt} = \dot{N} = rN\left(1 - \frac{N}{K}\right),\)</span><span class="math notranslate nohighlight">\(
+first suggested by Verhulst in 1838. Here the parameter \)</span>r<span class="math notranslate nohighlight">\( is related to the reproduction rate and \)</span>K<span class="math notranslate nohighlight">\( to the competition or saturation. Solve the system for several \)</span>r<span class="math notranslate nohighlight">\( and \)</span>K$ values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">DT</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">2000.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">2000.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">17</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">DT</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="c1"># YOUR CODE HERE</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">17</span> <span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">2000.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mf">200.0</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="nn">Cell In[3], line 15,</span> in <span class="ni">solve_system</span><span class="nt">(T0, TF, Y0, DT, r, k)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">DT</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="c1"># YOUR CODE HERE</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="ne">NotImplementedError</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="systems-of-ordinary-differential-equations">
+<h1>Systems of Ordinary Differential Equations<a class="headerlink" href="#systems-of-ordinary-differential-equations" title="Link to this heading">#</a></h1>
+<p>Previously we studied systems where there was only one interesting variable so the differential equation describe only changes on that variable. There are systems where the state is described by two or more variables. In this case, we have several differential equations, like the following (see the SIR model)
+$<span class="math notranslate nohighlight">\(\frac{dx}{dt} = f_1(x, y, t)\\
+\frac{dy}{dt} = f_2(x, y, t),\)</span><span class="math notranslate nohighlight">\(
+where \)</span>x<span class="math notranslate nohighlight">\( and \)</span>y<span class="math notranslate nohighlight">\( are variables that describe the system state  and \)</span>f_1<span class="math notranslate nohighlight">\( and \)</span>f_2<span class="math notranslate nohighlight">\( are the functions describing their derivatives. To solve this system and improve the notation we can think of \)</span>x<span class="math notranslate nohighlight">\( and \)</span>y<span class="math notranslate nohighlight">\( as the components of a state vector called, for example, \)</span>\vec s = [x, y]<span class="math notranslate nohighlight">\(. Also, the function \)</span>f_1<span class="math notranslate nohighlight">\( and \)</span>f_2<span class="math notranslate nohighlight">\( can be seen as the components of a vector, let's call it \)</span>\vec f = [f_1, f_2]<span class="math notranslate nohighlight">\(. By using this , we can rewrite the system as
+\)</span><span class="math notranslate nohighlight">\(\frac{d\vec s}{dt} = \vec f(t, \vec s).\)</span><span class="math notranslate nohighlight">\(
+Solving this system is similar to what we did with the Euler, only that now everything is vectorial, but the same basic equation applies:
+\)</span><span class="math notranslate nohighlight">\(\vec s_{i+1} = \vec s_i + \vec f \delta t.\)</span><span class="math notranslate nohighlight">\(
+Therefore, you need to define a function to model \)</span>\vec f<span class="math notranslate nohighlight">\( that receives the state vector \)</span>\vec s$, the current time, and returns the derivatives.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example for fderiv, adapt to your own problem. It now returns a vector.</span>
+
+<span class="c1"># You can visualize this code in pythontutor, with python 3.6 with anaconda</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">fderiv</span><span class="p">(</span><span class="mf">0.3</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="exercise-from-chapra-projectile-adding-a-stopping-condition">
+<h2>Exercise (From Chapra): Projectile, adding a stopping condition<a class="headerlink" href="#exercise-from-chapra-projectile-adding-a-stopping-condition" title="Link to this heading">#</a></h2>
+<p>(22.6) Suppose that a projectile is launched upward from the earth’s surface. Assume that the only force acting on the object is the downward force of gravity. Under these conditions, a force balance can be used to derive
+$<span class="math notranslate nohighlight">\(
+\frac{dv}{dt} = -g(0)\frac{R^2}{(R+x)^2},
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>v =<span class="math notranslate nohighlight">\( upward velocity (m/s), \)</span>t =<span class="math notranslate nohighlight">\( time (s), \)</span>x =<span class="math notranslate nohighlight">\( altitude (m) measured upward from the earth’s surface, \)</span>g(0) =<span class="math notranslate nohighlight">\( the gravitational acceleration at the earth’s surface (\)</span>\simeq 9.81<span class="math notranslate nohighlight">\( m/s\)</span>^2<span class="math notranslate nohighlight">\(), and \)</span>R =<span class="math notranslate nohighlight">\( the earth's radius (\)</span>\simeq 6.37\times 10^6<span class="math notranslate nohighlight">\( m). Recognizing that \)</span>dx/dt = v<span class="math notranslate nohighlight">\(, use `scipy` method to determine the maximum height that would be obtained if \)</span>v(t = 0) = 1500$ m/s.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">v</span><span class="p">,</span> <span class="o">-</span><span class="n">G</span><span class="o">*</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+    <span class="c1">#return np.array([y[1], -G*R**2/(R+y[0])**2])</span>
+
+<span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">DT</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">Y0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">R</span><span class="p">))</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$y(t)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$v_y(t)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$ [s]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y(t)$ [m]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>    
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">1500</span><span class="p">],</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="mf">9.81</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mf">6.37e6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s add an event to stop the time evolution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;paper&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">R</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">v</span><span class="p">,</span> <span class="o">-</span><span class="n">G</span><span class="o">*</span><span class="n">R</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">R</span><span class="o">+</span><span class="n">x</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">])</span>
+    <span class="c1">#return np.array([y[1], -G*R**2/(R+y[0])**2])</span>
+
+<span class="c1"># With event</span>
+<span class="c1">#def hitground(t, y) : </span>
+<span class="k">def</span> <span class="nf">hitground</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span> <span class="p">:</span> 
+    <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">hitground</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># stops if hitground == 0</span>
+<span class="n">hitground</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="c1"># only when going down</span>
+
+<span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">DT</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">Y0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">R</span><span class="p">),</span> <span class="n">events</span><span class="o">=</span><span class="n">hitground</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$y(t)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$v_y(t)$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$ [s]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y(t)$ [m]&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>    
+    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">solve_system</span><span class="p">(</span><span class="n">T0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">TF</span><span class="o">=</span><span class="mi">350</span><span class="p">,</span> <span class="n">Y0</span><span class="o">=</span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">1500</span><span class="p">],</span> <span class="n">DT</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">G</span><span class="o">=</span><span class="mf">9.81</span><span class="p">,</span> <span class="n">R</span><span class="o">=</span><span class="mf">6.37e6</span><span class="p">,</span> <span class="n">event</span><span class="o">=</span><span class="n">hitground</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2>Exercise<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>Compute the total flying time and the maximum height (normalized by <span class="math notranslate nohighlight">\(R\)</span>) as a function of <span class="math notranslate nohighlight">\(G \in [0.1g, 0.2g, \ldots, 10g ]\)</span>, with <span class="math notranslate nohighlight">\(g = 9.81\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id3">
+<h2>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>A parachutist is under free-fall and under linear viscous damping modeled as $<span class="math notranslate nohighlight">\(f_v = -m b v,\)</span><span class="math notranslate nohighlight">\( where \)</span>m<span class="math notranslate nohighlight">\( is the mass, \)</span>b<span class="math notranslate nohighlight">\( is the damping constant, and \)</span>v<span class="math notranslate nohighlight">\( is the vertical velocity. How does \)</span>b<span class="math notranslate nohighlight">\( affects the final equilibrium velocity? The final equilibrium velocity happens when there is no acceleration, that is, when \)</span>ma = 0 = -mg -mbv_f<span class="math notranslate nohighlight">\(, so \)</span><span class="math notranslate nohighlight">\(v_f = -g/b.\)</span><span class="math notranslate nohighlight">\( Show that numerically as way to calibrate the method. Create a function that receives the value of \)</span>b<span class="math notranslate nohighlight">\( and returns the finla velocity. Notice that you will need to simulate the system for a very long time (or, much better, use an event as we will show later). Plot \)</span>v_f<span class="math notranslate nohighlight">\( versus \)</span>b<span class="math notranslate nohighlight">\(. Use \)</span>M = 60.7<span class="math notranslate nohighlight">\( kg and \)</span>G = 9.81<span class="math notranslate nohighlight">\( m/s\)</span>^2$.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">final_vel</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">g</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="n">final_vel</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">final_vel</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">solve_plot</span><span class="p">():</span>
+<span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    
+
+<span class="n">solve_plot</span><span class="p">()</span>
+<span class="c1"># TODO: Decouple plot and simulation</span>
+<span class="c1"># TODO: Normalize the system and the plot</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="phase-plane">
+<h1>Phase plane<a class="headerlink" href="#phase-plane" title="Link to this heading">#</a></h1>
+<p>The phase plane allows to study the solution of a differential equation from a geometric point of view. It basically is the plot of the derivative of a function and the function itself, that is, plotting <span class="math notranslate nohighlight">\(\dot x \)</span> versus <span class="math notranslate nohighlight">\(x\)</span>. You have two options:</p>
+<ol class="arabic simple">
+<li><p>Solve the systems and plot the data.</p></li>
+<li><p>Use a geometric point of view where you focus on the derivatives and no solution is computed.</p></li>
+</ol>
+<section id="solving-the-system">
+<h2>Solving the system<a class="headerlink" href="#solving-the-system" title="Link to this heading">#</a></h2>
+<section id="predator-prey-model">
+<h3>Predator prey model<a class="headerlink" href="#predator-prey-model" title="Link to this heading">#</a></h3>
+<p>The Lokta-Volterra equation is a non-linear model for the interaction between a population of preys and predators. The simplest version is as follows:
+$<span class="math notranslate nohighlight">\(
+\frac{dx}{dt} = ax - bxy,
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\frac{dy}{dt} = -cy + dxy,
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>x<span class="math notranslate nohighlight">\( and \)</span>y<span class="math notranslate nohighlight">\( are the number of prey and predators, respectively, \)</span>a<span class="math notranslate nohighlight">\( the prey growth rate, \)</span>c<span class="math notranslate nohighlight">\( the predator death rate and \)</span>b<span class="math notranslate nohighlight">\( and \)</span>d$ characterizes the effect of the interaction.</p>
+<p>Solve the system for the following parameters and plot the solution and also plot <span class="math notranslate nohighlight">\(y\)</span> as a function of <span class="math notranslate nohighlight">\(x\)</span> (this is called the phase plane, more on this later): <span class="math notranslate nohighlight">\(a = 1.2, b  = 0.6, c = 0.8, d = 0.3\)</span>. Take the initial conditions as <span class="math notranslate nohighlight">\(x(0) = 2\)</span> and <span class="math notranslate nohighlight">\(y(0) = 1\)</span>, integrate from <span class="math notranslate nohighlight">\(t= 0\)</span> to <span class="math notranslate nohighlight">\(50\)</span>, with <span class="math notranslate nohighlight">\(\delta t = 0.0625\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+
+<span class="c1"># Global constants could be removed using a multiarg function</span>
+<span class="n">A</span><span class="o">=</span><span class="mf">1.2</span>
+<span class="n">B</span><span class="o">=</span><span class="mf">0.6</span>
+<span class="n">C</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">D</span><span class="o">=</span><span class="mf">0.3</span>
+
+<span class="n">X0</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">Y0</span><span class="o">=</span><span class="mi">1</span>
+<span class="n">T0</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">TF</span><span class="o">=</span><span class="mi">50</span>
+<span class="n">DT</span><span class="o">=</span><span class="mf">0.0625</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">A</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">B</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">C</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">D</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">),</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">])</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Prey&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Predator&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$[s]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x(t), y(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+
+<span class="c1"># Can you compoute the critical points?</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="example-lorenz-model">
+<h3>Example : Lorenz model<a class="headerlink" href="#example-lorenz-model" title="Link to this heading">#</a></h3>
+<p>A famous model showing chaotic behavior is the climate model proposed by Lorenz,
+$<span class="math notranslate nohighlight">\(
+\frac{dx}{dt} = -a x + a y,
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\frac{dy}{dt} = rx -y -xz,
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\frac{dz}{dt} = -bz + xy.
+\)</span><span class="math notranslate nohighlight">\(
+Solve the model for two very close initial conditions. And compare. Do you note something special? Also, for one of those initial conditions, plot the phase portrait in 2D and 3D. Use \)</span>a=10, b=8/3, r=28, x(0) = y(0) = z(0) = 5<span class="math notranslate nohighlight">\(, integrate from \)</span>t = 0<span class="math notranslate nohighlight">\( to 20, and use \)</span>\delta t = 0.03125$.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Lorenz model</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">A</span><span class="o">=</span><span class="mf">10.0</span>
+<span class="n">B</span><span class="o">=</span><span class="mf">8.0</span><span class="o">/</span><span class="mf">3.0</span>
+<span class="n">R</span><span class="o">=</span><span class="mf">28.0</span>
+
+<span class="n">X0</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">Y0</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">Z0</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">T0</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">TF</span><span class="o">=</span><span class="mi">20</span>
+<span class="n">DT</span><span class="o">=</span><span class="mf">0.03125</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="n">A</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> 
+                     <span class="n">R</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> 
+                     <span class="o">-</span><span class="n">B</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">sol1</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">],</span> 
+                <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">),</span> 
+                <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">Z0</span><span class="p">])</span>
+<span class="n">sol2</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="p">],</span> 
+                <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">),</span> 
+                <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">X0</span><span class="o">+</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">Z0</span><span class="p">])</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol2</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol2</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$[s]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$z$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$z$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+
+<span class="c1"># See : https://www.youtube.com/watch?v=aAJkLh76QnM&amp;t=2s</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run this to install ipyvolume</span>
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>ipyvolume
+<span class="c1"># For collab</span>
+<span class="c1">#!pip install ipyvolume</span>
+<span class="c1">#from google.colab import output</span>
+<span class="c1">#output.enable_custom_widget_manager()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check https://github.com/matplotlib/ipympl/issues/460 (jupyter lab build) for errors</span>
+<span class="c1">#%matplotlib inline</span>
+<span class="kn">import</span> <span class="nn">ipyvolume</span> <span class="k">as</span> <span class="nn">ipv</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">sol1</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">ipv</span><span class="o">.</span><span class="n">quickscatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;sphere&quot;</span><span class="p">)</span>
+<span class="c1">#ipv.plot(x, y, z, size=0.05, marker=&quot;sphere&quot;)</span>
+<span class="c1">#ipv.show()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="geometric-view">
+<h2>Geometric view<a class="headerlink" href="#geometric-view" title="Link to this heading">#</a></h2>
+<p>In the geometric approach you are <strong>actually NOT solving the system</strong>. You are basically choosing many possible initial conditions and checking the slope (derivatives) at each point. This is very useful to understand the global dynamics of the system. Let’s check the following example for the predator prey model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># global imports</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">__version__</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;poster&#39;</span><span class="p">)</span>
+
+<span class="n">A</span><span class="o">=</span><span class="mf">1.2</span>
+<span class="n">B</span><span class="o">=</span><span class="mf">0.6</span> <span class="c1"># 0.6</span>
+<span class="n">C</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="n">D</span><span class="o">=</span><span class="mf">0.3</span> <span class="c1"># 0.3</span>
+
+<span class="c1"># function to return the derivatives</span>
+<span class="k">def</span> <span class="nf">derivatives</span><span class="p">(</span><span class="n">y</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">A</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">B</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">C</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">D</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1"># Number of initial conditions</span>
+<span class="n">XMIN</span> <span class="o">=</span> <span class="o">-</span><span class="mf">100.0</span><span class="p">;</span> <span class="n">XMAX</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># position</span>
+<span class="n">YMIN</span> <span class="o">=</span> <span class="o">-</span><span class="mf">100.0</span><span class="p">;</span> <span class="n">YMAX</span> <span class="o">=</span> <span class="mf">100.0</span> <span class="c1"># velocity</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">XMIN</span><span class="p">,</span> <span class="n">XMAX</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">YMIN</span><span class="p">,</span> <span class="n">YMAX</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+<span class="n">DX</span><span class="p">,</span> <span class="n">DY</span> <span class="o">=</span> <span class="n">derivatives</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">])</span>
+
+<span class="n">M</span> <span class="o">=</span> <span class="mf">200.0</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">M</span><span class="o">*</span><span class="mf">9.81</span><span class="o">*</span><span class="n">X</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">M</span><span class="o">*</span><span class="n">Y</span><span class="o">*</span><span class="n">Y</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="c1"># use this for matplotlib &lt; 3.6.0</span>
+<span class="c1">#plt.streamplot(X, Y, DX, DY, color=E, density=[1.5, 1.5], linewidth=2, cmap=&#39;plasma&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">DX</span><span class="p">,</span> <span class="n">DY</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">E</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;plasma&#39;</span><span class="p">,</span> <span class="n">broken_streamlines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># global imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="c1"># function to return the derivatives</span>
+<span class="k">def</span> <span class="nf">derivatives</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> 
+    <span class="n">xd</span> <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">yd</span> <span class="o">=</span> <span class="mi">4</span><span class="o">*</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">xd</span><span class="p">,</span> <span class="n">yd</span><span class="p">]</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">MIN</span> <span class="o">=</span> <span class="o">-</span><span class="mf">3.1</span>
+<span class="n">MAX</span> <span class="o">=</span> <span class="mf">3.1</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="n">X</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="n">Y</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">],</span> <span class="p">[</span><span class="mf">4.</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.</span><span class="p">]])</span>
+<span class="n">DX</span><span class="p">,</span> <span class="n">DY</span> <span class="o">=</span> <span class="n">derivatives</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">],</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">DX</span><span class="p">,</span> <span class="n">DY</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">E</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.8</span><span class="p">,</span> <span class="n">broken_streamlines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9701425</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mf">0.24253563</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9701425</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mf">0.24253563</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
+<section id="id4">
+<h2>Exercise<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>For the proyectile example, add damping of the form <span class="math notranslate nohighlight">\(-b\vec v\)</span>, where <span class="math notranslate nohighlight">\(b\)</span> denotes the damping strength. Compute the maximum height as a function of <span class="math notranslate nohighlight">\(b\)</span> for   <span class="math notranslate nohighlight">\(b = [0.01, 0.05, 0.1, 0.5, 1.0, 5.0, 10.0, 50.0]\)</span>, with fixed <span class="math notranslate nohighlight">\(v_0 = 1237\)</span>. Plot the results. What can you conclude?</p>
+</section>
+<section id="kiusalaas-circuits">
+<h2>kiusalaas: Circuits<a class="headerlink" href="#kiusalaas-circuits" title="Link to this heading">#</a></h2>
+<p>Solve this and also simulate the circuit at www.falstad.com to compare.
+<img alt="../_images/kiusalaas-04.png" src="../_images/kiusalaas-04.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># global imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;poster&#39;</span><span class="p">)</span>
+
+<span class="c1"># global parameters</span>
+<span class="n">MIU</span> <span class="o">=</span> <span class="mf">1.01</span> <span class="c1"># angular frequency</span>
+
+<span class="c1"># function to return the derivatives</span>
+<span class="k">def</span> <span class="nf">derivatives</span><span class="p">(</span><span class="n">state</span><span class="p">):</span> 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function returns the derivatives of the state vector</span>
+<span class="sd">    state : a vector with the current values of the state variables</span>
+<span class="sd">    t : time, needed for the odeint solver</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">MIN</span> <span class="o">=</span> <span class="o">-</span><span class="mf">4.0</span>
+<span class="n">MAX</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+<span class="n">DX</span><span class="p">,</span> <span class="n">DY</span> <span class="o">=</span> <span class="n">derivatives</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">])</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">X</span><span class="o">*</span><span class="n">X</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">Y</span><span class="o">*</span><span class="n">Y</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">DX</span><span class="p">,</span> <span class="n">DY</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">E</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">broken_streamlines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">xdata</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="phase-portrait">
+<h2>Phase portrait<a class="headerlink" href="#phase-portrait" title="Link to this heading">#</a></h2>
+<img alt="../_images/phase-portrait-02.png" src="../_images/phase-portrait-02.png" />
+</section>
+<section id="kiusalaas-real-projectiles">
+<h2>kiusalaas: Real Projectiles<a class="headerlink" href="#kiusalaas-real-projectiles" title="Link to this heading">#</a></h2>
+<img alt="../_images/kiusalaas-03.png" src="../_images/kiusalaas-03.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">CD</span> <span class="o">=</span> <span class="mf">0.03</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">THETA</span> <span class="o">=</span> <span class="mi">30</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="mi">180</span>
+<span class="n">G</span> <span class="o">=</span> <span class="mf">9.80665</span>
+<span class="c1"># Time</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">TF</span> <span class="o">=</span> <span class="mf">20.2</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="n">TF</span><span class="o">/</span><span class="mi">400</span>
+<span class="n">T</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+<span class="c1"># Initial conditions</span>
+<span class="n">X0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">VX0</span> <span class="o">=</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">THETA</span><span class="p">)</span>
+<span class="n">Y0</span><span class="o">=</span><span class="mf">0.0</span><span class="p">;</span> <span class="n">VY0</span> <span class="o">=</span> <span class="n">V0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">THETA</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">hitground</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> <span class="k">return</span> <span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">hitground</span><span class="o">.</span><span class="n">terminal</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">hitground</span><span class="o">.</span><span class="n">direction</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="c1"># y has four components: x, vx, y, vy</span>
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">X0</span><span class="p">,</span> <span class="n">VX0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">,</span> <span class="n">VY0</span><span class="p">],</span>
+               <span class="n">events</span><span class="o">=</span><span class="n">hitground</span><span class="p">)</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;y&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$[s]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x(t), y(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;CD = </span><span class="si">{</span><span class="n">CD</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;range = </span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;time of flight = </span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;max height = </span><span class="si">{</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="kiusalaas-bouyancy">
+<h2>kiusalaas : Bouyancy<a class="headerlink" href="#kiusalaas-bouyancy" title="Link to this heading">#</a></h2>
+<img alt="../_images/kiusalaas-02-A.png" src="../_images/kiusalaas-02-A.png" />
+<img alt="../_images/kiusalaas-02-B.png" src="../_images/kiusalaas-02-B.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chapra-modified-lokta-volterra">
+<h2>Chapra: Modified Lokta-Volterra<a class="headerlink" href="#chapra-modified-lokta-volterra" title="Link to this heading">#</a></h2>
+<img alt="../_images/chapra-04-A.png" src="../_images/chapra-04-A.png" />
+<img alt="../_images/chapra-04-B.png" src="../_images/chapra-04-B.png" />
+</section>
+<section id="chapra-chemical-reaction">
+<h2>Chapra: Chemical reaction<a class="headerlink" href="#chapra-chemical-reaction" title="Link to this heading">#</a></h2>
+<img alt="../_images/chapra-03.png" src="../_images/chapra-03.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">999</span>
+<span class="n">B</span> <span class="o">=</span> <span class="mi">1999</span>
+<span class="n">C</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1000</span>
+<span class="n">D</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2000</span>
+<span class="c1"># Time</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">TF</span> <span class="o">=</span> <span class="mf">14.2</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">T</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+<span class="c1"># Initial conditions</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">Y0</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">W</span><span class="o">*</span><span class="n">W</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">])</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Pos&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Vel&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$[s]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x(t), y(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chapra-linear-system">
+<h2>Chapra : Linear system<a class="headerlink" href="#chapra-linear-system" title="Link to this heading">#</a></h2>
+<img alt="../_images/chapra-01.png" src="../_images/chapra-01.png" />
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mf">1.234</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mf">2.345</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="o">/</span><span class="n">M</span><span class="p">)</span>
+<span class="c1"># Time</span>
+<span class="n">T0</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">TF</span> <span class="o">=</span> <span class="mf">2.2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">W</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">/</span><span class="n">W</span>
+<span class="n">T</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">TF</span><span class="o">+</span><span class="n">DT</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+<span class="c1"># Initial conditions</span>
+<span class="n">X0</span><span class="o">=</span><span class="mf">0.45</span>
+<span class="n">Y0</span><span class="o">=</span><span class="mf">0.0</span>
+
+<span class="k">def</span> <span class="nf">fderiv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span> 
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">W</span><span class="o">*</span><span class="n">W</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+
+<span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">fderiv</span><span class="p">,</span> <span class="n">t_span</span><span class="o">=</span><span class="p">[</span><span class="n">T</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">()],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">T</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="p">[</span><span class="n">X0</span><span class="p">,</span> <span class="n">Y0</span><span class="p">])</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Pos&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Vel&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t$[s]&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x(t), y(t)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$x$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-harmonic-oscillator">
+<h2>The Harmonic oscillator<a class="headerlink" href="#the-harmonic-oscillator" title="Link to this heading">#</a></h2>
+<p>The harmonic oscillator is a paradigmatic example used in many applications, not only physics but also biology.
+It is described by the following equation,
+$<span class="math notranslate nohighlight">\(\frac{d^2x}{dt^2} = -\frac{k}{m} x,\)</span><span class="math notranslate nohighlight">\(
+where \)</span>x<span class="math notranslate nohighlight">\( is the elongation, \)</span>k<span class="math notranslate nohighlight">\( the elastic constant, and \)</span>m<span class="math notranslate nohighlight">\( the mass attached the spring. The theoretical solution is 
+\)</span><span class="math notranslate nohighlight">\(x(t) = A\cos(\omega t + \phi),\)</span><span class="math notranslate nohighlight">\(
+where \)</span>A<span class="math notranslate nohighlight">\( is the amplitude and \)</span>\phi<span class="math notranslate nohighlight">\( the phase (both of which depend on the initial condition). And \)</span>\omega = \sqrt{k/m}$ is the frequency.</p>
+<p>In order to solve the previous differential equation, we need to transform it into a system of first order equations. We do this by introducing a new variable, the velocity, which is the derivative of the position, so now we have <span class="math notranslate nohighlight">\(\vec s = [x, v]\)</span> and
+$<span class="math notranslate nohighlight">\(
+\frac{dx}{dt} = v,\\
+\frac{dv}{dt} = -\frac{k}{m} x,
+\)</span><span class="math notranslate nohighlight">\(
+so \)</span>\vec f = [v, -\frac{k}{m} x]$ .</p>
+<p>The exercise is to solve the previous equation for both the position and the velocity and to compare with the theoretical solution, using the Euler method. Choose the following : <span class="math notranslate nohighlight">\(k = 1.234\)</span>, <span class="math notranslate nohighlight">\(m=2.345\)</span>, <span class="math notranslate nohighlight">\(t \in [0, 2.2\pi/\omega]\)</span>, <span class="math notranslate nohighlight">\(x(0) = 0.45\)</span>, <span class="math notranslate nohighlight">\(v(0) = 0\)</span>, <span class="math notranslate nohighlight">\(\delta t = 0.2\pi/\omega\)</span>.</p>
+<p>For <span class="math notranslate nohighlight">\(a&lt;-1\)</span>, we have a <strong>stable node</strong>, and you can see that <span class="math notranslate nohighlight">\(x\)</span> decays faster to zero than <span class="math notranslate nohighlight">\(y\)</span>. When <span class="math notranslate nohighlight">\(a = -1\)</span>, we have a very symmetrical case where both decaying rates are the same: the equilibrium point is called a <strong>star</strong>. When <span class="math notranslate nohighlight">\(-1 &lt; a &lt; 0\)</span> we again have a stable node at the origin, but now the solutions decays faster along the <span class="math notranslate nohighlight">\(y\)</span> direction. When <span class="math notranslate nohighlight">\(a=0\)</span>, <span class="math notranslate nohighlight">\(x\)</span> does not change at all ,<span class="math notranslate nohighlight">\(x(t) = x_0\)</span>, and we have a family of stable nodes along the <span class="math notranslate nohighlight">\(x\)</span>-axis, or a <strong>line of fixed points</strong>. Finally, when <span class="math notranslate nohighlight">\(a &gt; 0\)</span>, most trajectories are unstable and diverge to infinity, except for those where <span class="math notranslate nohighlight">\(x = 0\)</span>, the <span class="math notranslate nohighlight">\(y\)</span> axis, they go to the origin. Here, the origin is called a <strong>saddle-point</strong>.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="linear-stability-analysis">
+<h1>Linear stability analysis<a class="headerlink" href="#linear-stability-analysis" title="Link to this heading">#</a></h1>
+<p>A two dimensional linear system can be written as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-717adc34-23ec-4676-89b6-9e25b6d10600">
+<span class="eqno">(12)<a class="headerlink" href="#equation-717adc34-23ec-4676-89b6-9e25b6d10600" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \dot x &amp;= ax + by,\\
+    \dot y &amp;= cx + dy,
+\end{align}\]</div>
+<p>or, equivalently,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-83a2d737-5e74-42d3-ab59-17915e1cf218">
+<span class="eqno">(13)<a class="headerlink" href="#equation-83a2d737-5e74-42d3-ab59-17915e1cf218" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    \dot{\vec{x}} = \mathbf{A} \vec x =     
+    \left[ 
+     \begin{array}{c}
+            \dot x \\ \dot y
+     \end{array} 
+     \right] = 
+    \begin{bmatrix}
+        a &amp; b \\
+        c &amp; d
+    \end{bmatrix}
+        \left[ 
+     \begin{array}{c}
+            x \\ y
+     \end{array} 
+     \right].
+\end{equation}\]</div>
+<p>As you could suspect, all the solutions properties are encoded inside the matrix <span class="math notranslate nohighlight">\(A\)</span>. Fixed points occur whenever <span class="math notranslate nohighlight">\(\dot{\vec x} = \vec 0\)</span>. From the definition, <span class="math notranslate nohighlight">\((0, 0)\)</span> is always a fixed point. In the case of the harmonic oscillator, the origin is called a focus (since all orbits are around it but never touch it). For the damped harmonic oscillator, the origin is called an stable equilibrium point, since it attracts all the trajectories in the phase plane. Soon we will learn more classifications.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="n">w</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>A two dimensional linear system can be written as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c3defdbb-eca8-4ecb-b77b-4b21d0cb45f1">
+<span class="eqno">(14)<a class="headerlink" href="#equation-c3defdbb-eca8-4ecb-b77b-4b21d0cb45f1" title="Permalink to this equation">#</a></span>\[\begin{align}
+    \dot x &amp;= ax + by,\\
+    \dot y &amp;= cx + dy,
+\end{align}\]</div>
+<p>or, equivalently,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a24a46b6-346d-43f1-b6fc-2246d11f5a83">
+<span class="eqno">(15)<a class="headerlink" href="#equation-a24a46b6-346d-43f1-b6fc-2246d11f5a83" title="Permalink to this equation">#</a></span>\[\begin{equation}
+    \dot{\vec{x}} = \mathbf{A} \vec x =     
+    \left[ 
+     \begin{array}{c}
+            \dot x \\ \dot y
+     \end{array} 
+     \right] = 
+    \begin{bmatrix}
+        a &amp; b \\
+        c &amp; d
+    \end{bmatrix}
+        \left[ 
+     \begin{array}{c}
+            x \\ y
+     \end{array} 
+     \right].
+\end{equation}\]</div>
+<p>As you could suspect, all the solutions properties are encoded inside the matrix <span class="math notranslate nohighlight">\(A\)</span>. Fixed points occur wehenever <span class="math notranslate nohighlight">\(\dot{\vec x} = \vec 0\)</span>. From the definition, <span class="math notranslate nohighlight">\((0, 0)\)</span> is always a fixed point. In the case of the harmonic oscillator, the origin is called a focus (since all orbits are around it but never touch it). For the damped harmonic oscillator, the origin is called an stable equilibrium point, snce it attracts all the trajectories in the phase plane. Soon we will learn more classifications.</p>
+<p>Let’s take a system where <span class="math notranslate nohighlight">\(a\)</span> is arbitrary, <span class="math notranslate nohighlight">\(b = c = 0\)</span>, and <span class="math notranslate nohighlight">\(d = -1\)</span>. The solution for this systems is, clearly,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-602c24b4-0de4-4e87-9ef2-9be53e6ce036">
+<span class="eqno">(16)<a class="headerlink" href="#equation-602c24b4-0de4-4e87-9ef2-9be53e6ce036" title="Permalink to this equation">#</a></span>\[\begin{align}
+    x(t) &amp;= x_0e^{at},\\ 
+    y(t) &amp;= y_0 e^{-t}.
+\end{align}\]</div>
+<p>Let’s plot the phase portrait for several key values for <span class="math notranslate nohighlight">\(a\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="c1"># global imports</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;poster&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="c1"># function to return the derivatives</span>
+<span class="k">def</span> <span class="nf">derivatives</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span> 
+    <span class="n">xd</span>  <span class="o">=</span> <span class="n">A</span><span class="o">*</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">yd</span> <span class="o">=</span> <span class="o">-</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">xd</span><span class="p">,</span> <span class="n">yd</span><span class="p">]</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">MIN</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+<span class="n">MAX</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">MIN</span><span class="p">,</span> <span class="n">MAX</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">X</span><span class="o">*</span><span class="n">X</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="n">Y</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">]</span> 
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="sa">r</span><span class="s2">&quot;$a &lt; -1$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$a = -1$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$-1 &lt; a &lt; 0$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$a = 0$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$0 &lt; a &lt; 1$&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;$1 &lt; a$&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">iA</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">A</span><span class="p">))</span> <span class="p">:</span>
+    <span class="n">DX</span><span class="p">,</span> <span class="n">DY</span> <span class="o">=</span> <span class="n">derivatives</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">],</span> <span class="n">A</span><span class="p">[</span><span class="n">iA</span><span class="p">])</span>
+    <span class="n">axes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">iA</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">iA</span><span class="o">%</span><span class="k">3</span>].streamplot(X, Y, DX, DY, color=E, cmap=&#39;viridis&#39;, broken_streamlines=False)
+    <span class="n">axes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">iA</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">iA</span><span class="o">%</span><span class="k">3</span>].set_xlim(MIN, MAX)
+    <span class="n">axes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">iA</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">iA</span><span class="o">%</span><span class="k">3</span>].set_ylim(MIN, MAX)
+    <span class="n">axes</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">iA</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span> <span class="n">iA</span><span class="o">%</span><span class="k">3</span>].set_title(L[iA], fontsize=20)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./05-ODE-IVP"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../04-LinearAlgebra/Perceptron.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Simple neural network: A perceptron</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../06-ODE-BVP/BVP.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">BVP: Boundary value problems</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Ordinary Differential Equations : Initial value problems</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-method">Euler method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-comparing-the-euler-method-with-the-scipy-function">Example  comparing the Euler method with the scipy function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#systems-of-ordinary-differential-equations">Systems of Ordinary Differential Equations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-from-chapra-projectile-adding-a-stopping-condition">Exercise (From Chapra): Projectile, adding a stopping condition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Exercise</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-plane">Phase plane</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-system">Solving the system</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predator-prey-model">Predator prey model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-lorenz-model">Example : Lorenz model</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-view">Geometric view</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Exercise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiusalaas-circuits">kiusalaas: Circuits</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-portrait">Phase portrait</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiusalaas-real-projectiles">kiusalaas: Real Projectiles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiusalaas-bouyancy">kiusalaas : Bouyancy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapra-modified-lokta-volterra">Chapra: Modified Lokta-Volterra</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapra-chemical-reaction">Chapra: Chemical reaction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chapra-linear-system">Chapra : Linear system</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-harmonic-oscillator">The Harmonic oscillator</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-stability-analysis">Linear stability analysis</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William Oquendo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

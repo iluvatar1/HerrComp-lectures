@@ -1,0 +1,1300 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Molecular Dynamics &#8212; Herramientas Computacionales</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles.css?v=03b9d5b1" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '08-MolecularDynamics/MolecularDynamics-MacroBodies';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Partial Differential equations: Finite differences" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html" />
+    <link rel="prev" title="Integration and Visualization of a Dynamic System" href="../07-vpython/vpython-leapfrog.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Herramientas Computacionales
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to or review of Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-Intro-InstalacionPython/01-B-PythonSetup.html">Python Setup</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/01-IntroProgrammingPython.html">Python Programming (very fast) Introduction</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/02-IntroProgrammingPython-DataStructs.html">Basic data structures</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/matplotlib-Intro.html">Matplotlib</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/numpy-Intro-Reduced.html">Python arrays : Numpy</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/Scipy.html">SciPy - Library of scientific algorithms for Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Calculus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsI.html">Numerical errors (very short intro)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsII.html">Numerical errors II : types of errors and general remarks</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/NumericalDifferentiation.html">Numerical differentiation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/AutomaticDifferentiation.html">Automatic differentiation</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.html">Numerical Calculus: Integrals and an introduction to scipy</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra and Numerical Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/LinearAlgebra.html">Linear Systems : Matrices, Vectors, eigen systems</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/Perceptron.html">Simple neural network: A perceptron</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">Ordinary Differential Equations : Initial value problems</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP-linear-matrices.html">Boundary value problems: linear case and matrices</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../07-vpython/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Molecular Dynamics</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/iluvatar1/HerrComp-lectures/master?urlpath=lab/tree/08-MolecularDynamics/MolecularDynamics-MacroBodies.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/github/iluvatar1/HerrComp-lectures/blob/master/08-MolecularDynamics/MolecularDynamics-MacroBodies.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures/issues/new?title=Issue%20on%20page%20%2F08-MolecularDynamics/MolecularDynamics-MacroBodies.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/08-MolecularDynamics/MolecularDynamics-MacroBodies.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Molecular Dynamics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Molecular Dynamics</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-body">Defining the body</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forces">Forces</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-algorithm">Integration algorithm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-frog-algorithm">Leap-frog algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-falling-under-constant-gravity">Particle falling under constant gravity</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-damping-and-bouncing">Exercise: damping and bouncing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-bouncing-with-left-and-right-walls">Exercise: Bouncing with left and right walls</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-adding-more-particles">Exercise: Adding more particles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-two-planets">Exercise: Two planets</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="molecular-dynamics">
+<h1>Molecular Dynamics<a class="headerlink" href="#molecular-dynamics" title="Link to this heading">#</a></h1>
+<p>https://github.com/hannorein/rebound</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Molecular_dynamics">Molecular dynamics</a> (MD)is a simulation technique that is applied from actual molecules to systems as large as planetary rings (for granular systems and beyond it is known as <a class="reference external" href="https://en.wikipedia.org/wiki/Discrete_element_method">Discrete Element Method</a>). The key is to have discrete bodies that interact under some given potential fields or forces and from that to integrate the equations of motion. To apply a MD simulation you will need to</p>
+<ul class="simple">
+<li><p><strong>define a body</strong>: Usually done using a class/struct. Examples are atoms, molecules, grains of sand, rocks, blocks of ice, etc.</p></li>
+<li><p><strong>define forces among bodies</strong>: Those can be only external (gravity, potential fields), or by contact (repulsion, friction, damping),  etc. Usually modeled using a Collider class/struct or similar.</p></li>
+<li><p><strong>define an integration technique</strong>: this will allow to solve the dynamic equations. Examples are Verlet, Velocity Verlet, Leap-Frog, Symplectic algorithms, RESPA, etc. Can be modeled as simple functions or as class/struct for more complex situations.</p></li>
+</ul>
+<p>Of course many details are left out in this short introduction (pre-processing or sample preparation, optimization with <a class="reference external" href="https://en.wikipedia.org/wiki/Verlet_list">Verlet lists</a> and/or <a class="reference external" href="https://en.wikipedia.org/wiki/Cell_lists">cell lists</a>, rotations, compund bodies, post-processing and analysis, etc).</p>
+<p>Some examples of HPC systems for Molecular Dynamics at the level of molecules are <a class="reference external" href="https://www.lammps.org/#gsc.tab=0">lammps</a>, <a class="reference external" href="https://www.gromacs.org/">grommacs</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/Comparison_of_software_for_molecular_mechanics_modeling">many more</a>. For the Discrete Element Method, we have <a class="reference external" href="https://www.lammps.org/#gsc.tab=0">lammps</a> (with the granular package), <a class="reference external" href="https://www.cfdem.com/liggghtsr-open-source-discrete-element-method-particle-simulation-code">liggghts</a>, <a class="reference external" href="https://mechsys.nongnu.org/">mechsys</a>, <a class="reference external" href="https://www.mercurydpm.org/">mercury dpm</a>, <a class="reference external" href="https://yade-dem.org/wiki/Yade">Yade</a>, <a class="reference external" href="https://www.altair.com/edem">Altair</a>, <a class="reference external" href="https://rocky.esss.co/">Rocky</a>, etc</p>
+<p>In the following we will focus MD applied to macroscopic bodies (in the final projects you will be able to use some of the previously mentioned packages and to apply it to different systems).</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="defining-the-body">
+<h1>Defining the body<a class="headerlink" href="#defining-the-body" title="Link to this heading">#</a></h1>
+<p>We will start by simulating a particle under the gravity force. The basic attributes to for a particle of this kind would be</p>
+<ul class="simple">
+<li><p>mass (scalar)</p></li>
+<li><p>Position, velocity and force (vectors)
+Other possible like the radius are not as relevant now since we are focusing only on Center of Mass dynamics. Let’s define the body class</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">class</span> <span class="nc">Body</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to model a simple point body</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">m0</span><span class="p">):</span> <span class="c1"># constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">m0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">R0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">V0</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To use it, let’s just instantiate the class</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">V0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.98</span><span class="p">,</span> <span class="mf">1.23</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+<span class="n">mass</span> <span class="o">=</span> <span class="mf">0.4343</span>
+<span class="n">body</span> <span class="o">=</span> <span class="n">Body</span><span class="p">(</span><span class="n">R0</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">mass</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="forces">
+<h1>Forces<a class="headerlink" href="#forces" title="Link to this heading">#</a></h1>
+<p>For now, we will just add gravity, so our <code class="docutils literal notranslate"><span class="pre">Collider</span></code> class will be very simple, with only some parameters</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Collider</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to compute forces on each body</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Parameters</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.81</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    
+    <span class="c1"># Functions</span>
+    <span class="k">def</span> <span class="nf">computeForce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span> <span class="c1"># For now operate on a single body</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Reset the force</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">+=</span> <span class="n">body</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="c1"># Add gravity</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="integration-algorithm">
+<h1>Integration algorithm<a class="headerlink" href="#integration-algorithm" title="Link to this heading">#</a></h1>
+<p>Here we will need to define the algorithm that will advance the system forward in time. There are several possibilities, like using the Euler algorithm (unstable), Runge-Kutta (not advisable since it evaluates the force 4 times per integration step), or better something like <a class="reference external" href="https://en.wikipedia.org/wiki/Verlet_integration">Verlet</a>, Optimized Verlet, <a class="reference external" href="https://en.wikipedia.org/wiki/Leapfrog_integration">Leap-Frog</a>, etc. Here, we will use the leap-frog algorithm.</p>
+<section id="leap-frog-algorithm">
+<h2>Leap-frog algorithm<a class="headerlink" href="#leap-frog-algorithm" title="Link to this heading">#</a></h2>
+<p>First, let’s expand the position around <span class="math notranslate nohighlight">\(t + \delta t\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\vec R(t + \delta t) = \vec R(t) + \delta t \vec V(t) + \delta t^2 \vec A(t)/2 + O(\delta t^3), \]</div>
+<p>but, from the previous, one can expand around <span class="math notranslate nohighlight">\(t + \delta t/2\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\vec R(t + \delta t) = \vec R(t + \delta t/2 + \delta t/2) = \vec R(t + \delta t/2) + \delta t \vec V(t + \delta t/2)/2 + (\delta t/2)^2 \vec A(t + \delta t/2)/2 + O(\delta t^3). \]</div>
+<p>Also,</p>
+<div class="math notranslate nohighlight">
+\[\vec R(t) = \vec R(t + \delta t/2 - \delta t/2) = \vec R(t + \delta t/2) - \delta t \vec V(t + \delta t/2)/2 + (\delta t/2)^2 \vec A(t + \delta t/2)/2 + O(\delta t^3). \]</div>
+<p>Finally, by substrating the last two equation and re-grouping,</p>
+<div class="math notranslate nohighlight">
+\[\vec R(t + \delta t) = \vec R(t) + \delta t \vec V(t + \delta t/2) + O(\delta t^3), \]</div>
+<div class="math notranslate nohighlight">
+\[\vec V(t + \delta t/2) = \vec V(t - \delta t/2) + \delta t \vec A(t) + O(\delta t^3). \]</div>
+<p>This are the expression for the Leap-Frog method. As you can see, you need first to compute <span class="math notranslate nohighlight">\(V(t + \delta t/2)\)</span> to later computer <span class="math notranslate nohighlight">\(R(t + \delta t)\)</span>. This algorithm, given the positions, velocities and Forces (accelerations) at time <span class="math notranslate nohighlight">\(t\)</span>, allows you to compute the next position and velocities at time-step <span class="math notranslate nohighlight">\(t+\delta t\)</span> and <span class="math notranslate nohighlight">\(t + \delta t/2\)</span>, respectively.</p>
+<hr class="docutils" />
+<p><strong>NOTE</strong>: What happens when moving from <span class="math notranslate nohighlight">\(t = 0\)</span> to <span class="math notranslate nohighlight">\(t = 0 + \delta t\)</span> (first time step)?. At the beginning of the simulation, you have <span class="math notranslate nohighlight">\(\vec R(0)\)</span>, <span class="math notranslate nohighlight">\(\vec V(0)\)</span> and <span class="math notranslate nohighlight">\(\vec A(0)\)</span>. But, for the first time step, the Leap-Frog equations give</p>
+<div class="math notranslate nohighlight">
+\[\vec V(0 + \delta t/2) = \vec V(0 - \delta t/2) + \delta t \vec A(0),\]</div>
+<div class="math notranslate nohighlight">
+\[\vec R(0 + \delta t) = \vec R(0) + \delta t \vec V(0 + \delta t/2).\]</div>
+<p>So you need the velocity at time <span class="math notranslate nohighlight">\(t = -\delta t/2\)</span>, not at time <span class="math notranslate nohighlight">\(t = 0\)</span>. This implies that the method is not “self-started”, and you need first to change the velocity from its initial value to</p>
+<div class="math notranslate nohighlight">
+\[\vec V(-\delta t/2) = \vec V(0) - \delta t\vec A(0)/2.\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TimeIntegrator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class that uses Leapfrog to advance in time</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># should be changed according to the simulation needs</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span> <span class="c1"># constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span>
+        
+    <span class="k">def</span> <span class="nf">startIntegration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">V</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="o">*</span><span class="n">body</span><span class="o">.</span><span class="n">F</span><span class="o">/</span><span class="n">body</span><span class="o">.</span><span class="n">mass</span>
+        
+    <span class="k">def</span> <span class="nf">timestep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">V</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="o">*</span><span class="n">body</span><span class="o">.</span><span class="n">F</span><span class="o">/</span><span class="n">body</span><span class="o">.</span><span class="n">mass</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">R</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="o">*</span><span class="n">body</span><span class="o">.</span><span class="n">V</span>
+        
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="particle-falling-under-constant-gravity">
+<h2>Particle falling under constant gravity<a class="headerlink" href="#particle-falling-under-constant-gravity" title="Link to this heading">#</a></h2>
+<p>Now we are ready to perform our first simple simulation of a particle under the action of constant gravity.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%matplotlib inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Pre-processing: Setup. For more particless: mass distribution, random positions, etc</span>
+<span class="n">particle</span> <span class="o">=</span> <span class="n">Body</span><span class="p">([</span><span class="mf">1.23</span><span class="p">,</span> <span class="mf">2.34</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="mf">0.654</span><span class="p">)</span>
+
+<span class="c1"># Collider</span>
+<span class="n">collider</span> <span class="o">=</span> <span class="n">Collider</span><span class="p">()</span>
+<span class="n">collider</span><span class="o">.</span><span class="n">computeForce</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span> <span class="c1"># Initial force</span>
+
+<span class="c1"># Time evolution stuff</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+<span class="n">NSTEPS</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">size</span>
+<span class="n">leapfrog</span> <span class="o">=</span> <span class="n">TimeIntegrator</span><span class="p">(</span><span class="n">DT</span><span class="p">)</span>
+<span class="n">leapfrog</span><span class="o">.</span><span class="n">startIntegration</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+
+<span class="c1"># Save data</span>
+<span class="n">Ry</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Vy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">)</span>
+
+<span class="c1"># main evolution loop</span>
+<span class="n">it</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">it</span> <span class="o">&lt;</span> <span class="n">NSTEPS</span><span class="p">:</span>
+    <span class="n">Ry</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particle</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">Vy</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particle</span><span class="o">.</span><span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">collider</span><span class="o">.</span><span class="n">computeForce</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+    <span class="n">leapfrog</span><span class="o">.</span><span class="n">timestep</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot final trayectories </span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Ry</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R-lf&quot;</span><span class="p">)</span>
+<span class="c1">#ax[0].plot(T, R0[1] + V0[1]*T + 0.5*T*T*G[1], &#39;-&#39;, label=&quot;Exact&quot;, lw=3)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Vy</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vy-lf&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/704d7844956fcbe1ef962522952a13cf523093b7438fe5e9c11436fd96a28424.png" src="../_images/704d7844956fcbe1ef962522952a13cf523093b7438fe5e9c11436fd96a28424.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Animation</span>
+<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="n">Ry</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Ry</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">([],</span> <span class="p">[])</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Ry</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">init_func</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="n">NSTEPS</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;ParticleGravity.mp4&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MovieWriter ffmpeg unavailable; using Pillow instead.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">RuntimeError</span><span class="g g-Whitespace">                              </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:223,</span> in <span class="ni">AbstractMovieWriter.saving</span><span class="nt">(self, fig, outfile, dpi, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">222</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">223</span>     <span class="k">yield</span> <span class="bp">self</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span> <span class="k">finally</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:1085,</span> in <span class="ni">Animation.save</span><span class="nt">(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1083</span> <span class="k">for</span> <span class="n">anim</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">all_anim</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1084</span>     <span class="c1"># TODO: See if turning off blit is really necessary</span>
+<span class="ne">-&gt; </span><span class="mi">1085</span>     <span class="n">anim</span><span class="o">.</span><span class="n">_draw_next_frame</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1086</span>     <span class="k">if</span> <span class="n">progress_callback</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:1120,</span> in <span class="ni">Animation._draw_next_frame</span><span class="nt">(self, framedata, blit)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pre_draw</span><span class="p">(</span><span class="n">framedata</span><span class="p">,</span> <span class="n">blit</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1120</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draw_frame</span><span class="p">(</span><span class="n">framedata</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1121</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_draw</span><span class="p">(</span><span class="n">framedata</span><span class="p">,</span> <span class="n">blit</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:1746,</span> in <span class="ni">FuncAnimation._draw_frame</span><span class="nt">(self, framedata)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1744</span> <span class="c1"># Call the func with framedata and args. If blitting is desired,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1745</span> <span class="c1"># func needs to return a sequence of any artists that were modified.</span>
+<span class="ne">-&gt; </span><span class="mi">1746</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_artists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="n">framedata</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1748</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blit</span><span class="p">:</span>
+
+<span class="nn">Cell In[7], line 13,</span> in <span class="ni">animate</span><span class="nt">(i)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Ry</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="k">return</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/lines.py:665,</span> in <span class="ni">Line2D.set_data</span><span class="nt">(self, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">663</span>     <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">args</span>
+<span class="ne">--&gt; </span><span class="mi">665</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_xdata</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span> <span class="bp">self</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/lines.py:1289,</span> in <span class="ni">Line2D.set_xdata</span><span class="nt">(self, x)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1288</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">iterable</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">1289</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s1">&#39;x must be a sequence&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1290</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xorig</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="ne">RuntimeError</span>: x must be a sequence
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">18</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="k">return</span> <span class="n">line</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">init_func</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>                                <span class="n">frames</span><span class="o">=</span><span class="n">NSTEPS</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;ParticleGravity.mp4&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:1069,</span> in <span class="ni">Animation.save</span><span class="nt">(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1065</span> <span class="n">savefig_kwargs</span><span class="p">[</span><span class="s1">&#39;transparent&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>   <span class="c1"># just to be safe!</span>
+<span class="g g-Whitespace">   </span><span class="mi">1066</span> <span class="c1"># canvas._is_saving = True makes the draw_event animation-starting</span>
+<span class="g g-Whitespace">   </span><span class="mi">1067</span> <span class="c1"># callback a no-op; canvas.manager = None prevents resizing the GUI</span>
+<span class="g g-Whitespace">   </span><span class="mi">1068</span> <span class="c1"># widget (both are likewise done in savefig()).</span>
+<span class="ne">-&gt; </span><span class="mi">1069</span> <span class="k">with</span> <span class="n">writer</span><span class="o">.</span><span class="n">saving</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fig</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">dpi</span><span class="p">),</span> \
+<span class="g g-Whitespace">   </span><span class="mi">1070</span>      <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fig</span><span class="o">.</span><span class="n">canvas</span><span class="p">,</span> <span class="n">_is_saving</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1071</span>     <span class="k">for</span> <span class="n">anim</span> <span class="ow">in</span> <span class="n">all_anim</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1072</span>         <span class="n">anim</span><span class="o">.</span><span class="n">_init_draw</span><span class="p">()</span>  <span class="c1"># Clear the initial frame</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/contextlib.py:158,</span> in <span class="ni">_GeneratorContextManager.__exit__</span><span class="nt">(self, typ, value, traceback)</span>
+<span class="g g-Whitespace">    </span><span class="mi">156</span>     <span class="n">value</span> <span class="o">=</span> <span class="n">typ</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">157</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">158</span>     <span class="bp">self</span><span class="o">.</span><span class="n">gen</span><span class="o">.</span><span class="n">throw</span><span class="p">(</span><span class="n">typ</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">traceback</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">159</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">160</span>     <span class="c1"># Suppress StopIteration *unless* it&#39;s the same exception that</span>
+<span class="g g-Whitespace">    </span><span class="mi">161</span>     <span class="c1"># was passed to throw().  This prevents a StopIteration</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span>     <span class="c1"># raised inside the &quot;with&quot; statement from being suppressed.</span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span>     <span class="k">return</span> <span class="n">exc</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">value</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:225,</span> in <span class="ni">AbstractMovieWriter.saving</span><span class="nt">(self, fig, outfile, dpi, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">223</span>     <span class="k">yield</span> <span class="bp">self</span>
+<span class="g g-Whitespace">    </span><span class="mi">224</span> <span class="k">finally</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">225</span>     <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:495,</span> in <span class="ni">PillowWriter.finish</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">def</span> <span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="bp">self</span><span class="o">.</span><span class="n">outfile</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">duration</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">fps</span><span class="p">),</span> <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="ne">IndexError</span>: list index out of range
+</pre></div>
+</div>
+<img alt="../_images/78fa8599682fdc2c8bd2da8f6f765d2b40aa5387c8cbed0d6c4ac44ff8afaaaa.png" src="../_images/78fa8599682fdc2c8bd2da8f6f765d2b40aa5387c8cbed0d6c4ac44ff8afaaaa.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-damping-and-bouncing">
+<h1>Exercise: damping and bouncing<a class="headerlink" href="#exercise-damping-and-bouncing" title="Link to this heading">#</a></h1>
+<p>Modify the collider to add some damping with the air (a force with the form <span class="math notranslate nohighlight">\(-bm\vec v\)</span>, with <span class="math notranslate nohighlight">\(v\)</span> the speed). Also, add a force with the ground, of the form <span class="math notranslate nohighlight">\(k\delta \hat n\)</span>, with <span class="math notranslate nohighlight">\(\delta\)</span> the interpenetration and <span class="math notranslate nohighlight">\(\hat n\)</span> is the normal to the plane. Assume the body is now a sphere (it has a radius <code class="docutils literal notranslate"><span class="pre">radius</span></code>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">class</span> <span class="nc">Body</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to model a simple point body</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">R0</span><span class="p">,</span> <span class="n">V0</span><span class="p">,</span> <span class="n">m0</span><span class="p">):</span> <span class="c1"># constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mass</span> <span class="o">=</span> <span class="n">m0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">R0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">V0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="k">class</span> <span class="nc">Collider</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to compute forces on each body</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Parameters</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.81</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="mf">2.245</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mf">234.65</span>
+    
+    <span class="c1"># Functions</span>
+    <span class="k">def</span> <span class="nf">computeForce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span> <span class="c1"># For now operate on a single body</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Reset the force</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">+=</span> <span class="n">body</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="c1"># Add gravity</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        
+<span class="c1">#%matplotlib inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Pre-processing: Setup. For more particless: mass distribution, random positions, etc</span>
+<span class="n">particle</span> <span class="o">=</span> <span class="n">Body</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.23</span><span class="p">,</span> <span class="mf">2.34</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="mf">0.654</span><span class="p">)</span>
+<span class="n">particle</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">0.987</span>
+
+<span class="c1"># Collider</span>
+<span class="n">collider</span> <span class="o">=</span> <span class="n">Collider</span><span class="p">()</span>
+<span class="n">collider</span><span class="o">.</span><span class="n">computeForce</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span> <span class="c1"># Initial force</span>
+
+<span class="c1"># Time evolution stuff</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+<span class="n">NSTEPS</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">size</span>
+<span class="n">leapfrog</span> <span class="o">=</span> <span class="n">TimeIntegrator</span><span class="p">(</span><span class="n">DT</span><span class="p">)</span>
+<span class="n">leapfrog</span><span class="o">.</span><span class="n">startIntegration</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+
+<span class="c1"># Save data</span>
+<span class="n">Ry</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Vy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">)</span>
+
+<span class="c1"># main evolution loop</span>
+<span class="n">it</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">it</span> <span class="o">&lt;</span> <span class="n">NSTEPS</span><span class="p">:</span>
+    <span class="n">Ry</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particle</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">Vy</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particle</span><span class="o">.</span><span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">collider</span><span class="o">.</span><span class="n">computeForce</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+    <span class="n">leapfrog</span><span class="o">.</span><span class="n">timestep</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">+</span> <span class="mi">1</span>
+    
+<span class="c1"># plot final path</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Ry</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R-lf&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Vy</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vy-lf&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Animation</span>
+<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.9</span><span class="o">*</span><span class="n">Ry</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">Ry</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">([],</span> <span class="p">[])</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Ry</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">init_func</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="n">NSTEPS</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;ParticleBouncing.mp4&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-bouncing-with-left-and-right-walls">
+<h1>Exercise: Bouncing with left and right walls<a class="headerlink" href="#exercise-bouncing-with-left-and-right-walls" title="Link to this heading">#</a></h1>
+<p>Now implement both left and right walls. Decrease a bit the damping so you can see the actual bouncing. Plot now <span class="math notranslate nohighlight">\(R_y\)</span> versus <span class="math notranslate nohighlight">\(R_x\)</span>. The right wall position is at <span class="math notranslate nohighlight">\(L_x/2\)</span>, the left wall at <span class="math notranslate nohighlight">\(-L_x/2\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Collider</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to compute forces on each body</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Parameters</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.81</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="mf">0.085</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mf">234.65</span>
+    <span class="n">LX</span> <span class="o">=</span> <span class="mf">4.5</span> <span class="c1"># Right wall position</span>
+    
+    <span class="c1"># Functions</span>
+    <span class="k">def</span> <span class="nf">computeForce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">body</span><span class="p">):</span> <span class="c1"># For now operate on a single body</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Reset the force</span>
+        <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">+=</span> <span class="n">body</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="c1"># Add gravity</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        
+<span class="c1">#%matplotlib inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Pre-processing: Setup. For more particless: mass distribution, random positions, etc</span>
+<span class="n">particle</span> <span class="o">=</span> <span class="n">Body</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.23</span><span class="p">,</span> <span class="mf">2.34</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="mf">0.654</span><span class="p">)</span>
+<span class="n">particle</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">0.087</span>
+
+<span class="c1"># Collider</span>
+<span class="n">collider</span> <span class="o">=</span> <span class="n">Collider</span><span class="p">()</span>
+<span class="n">collider</span><span class="o">.</span><span class="n">computeForce</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span> <span class="c1"># Initial force</span>
+
+<span class="c1"># Time evolution stuff</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+<span class="n">NSTEPS</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">size</span>
+<span class="n">leapfrog</span> <span class="o">=</span> <span class="n">TimeIntegrator</span><span class="p">(</span><span class="n">DT</span><span class="p">)</span>
+<span class="n">leapfrog</span><span class="o">.</span><span class="n">startIntegration</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+
+<span class="c1"># Save data</span>
+<span class="n">Rx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Ry</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Vy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">)</span>
+
+<span class="c1"># main evolution loop</span>
+<span class="n">it</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">it</span> <span class="o">&lt;</span> <span class="n">NSTEPS</span><span class="p">:</span>
+    <span class="n">Rx</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particle</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">Ry</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particle</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">Vy</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particle</span><span class="o">.</span><span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">collider</span><span class="o">.</span><span class="n">computeForce</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+    <span class="n">leapfrog</span><span class="o">.</span><span class="n">timestep</span><span class="p">(</span><span class="n">particle</span><span class="p">)</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">+</span> <span class="mi">1</span>
+    
+<span class="c1"># plot final path</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Rx</span><span class="p">,</span> <span class="n">Ry</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;R-lf&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_x [m]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y [m]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Animation</span>
+<span class="kn">import</span> <span class="nn">matplotlib.animation</span> <span class="k">as</span> <span class="nn">animation</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mf">1.1</span><span class="o">*</span><span class="n">Rx</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">Rx</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.9</span><span class="o">*</span><span class="n">Ry</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="mf">1.1</span><span class="o">*</span><span class="n">Ry</span><span class="o">.</span><span class="n">max</span><span class="p">()])</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">([],</span> <span class="p">[])</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">Rx</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">Ry</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">init_func</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
+                               <span class="n">frames</span><span class="o">=</span><span class="n">NSTEPS</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;ParticleBouncing-LRBwalls.mp4&#39;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-adding-more-particles">
+<h1>Exercise: Adding more particles<a class="headerlink" href="#exercise-adding-more-particles" title="Link to this heading">#</a></h1>
+<p>Now let’s add more particles. They will not see each other unless we implement a force among them. Also, we will need to generalize our methods to process arrays of bodies. First, the force that particle <span class="math notranslate nohighlight">\(i\)</span> does on particle <span class="math notranslate nohighlight">\(j\)</span> is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e23b00ce-f569-4b30-8f9d-520ab703c87f">
+<span class="eqno">(30)<a class="headerlink" href="#equation-e23b00ce-f569-4b30-8f9d-520ab703c87f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\vec F_{ij} = k \delta \hat n_{ij},
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat n_{ij} = \vec R_{ij} / R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(\vec R_{ij} = \vec R_i - \vec R_j\)</span>, and <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(r\)</span> the radius of each particle.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="k">class</span> <span class="nc">TimeIntegrator</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class that uses Leapfrog to advance in time</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.01</span> <span class="c1"># should be changed according to the simulation needs</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span> <span class="c1"># constructor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dt</span> <span class="o">=</span> <span class="n">dt</span>
+        
+    <span class="k">def</span> <span class="nf">startIntegration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bodies</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">body</span> <span class="ow">in</span> <span class="n">bodies</span><span class="p">:</span>
+            <span class="n">body</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">V</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="o">*</span><span class="n">body</span><span class="o">.</span><span class="n">F</span><span class="o">/</span><span class="n">body</span><span class="o">.</span><span class="n">mass</span>
+        
+    <span class="k">def</span> <span class="nf">timestep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bodies</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">body</span> <span class="ow">in</span> <span class="n">bodies</span><span class="p">:</span>
+            <span class="n">body</span><span class="o">.</span><span class="n">V</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">V</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="o">*</span><span class="n">body</span><span class="o">.</span><span class="n">F</span><span class="o">/</span><span class="n">body</span><span class="o">.</span><span class="n">mass</span>
+            <span class="n">body</span><span class="o">.</span><span class="n">R</span> <span class="o">=</span> <span class="n">body</span><span class="o">.</span><span class="n">R</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">dt</span><span class="o">*</span><span class="n">body</span><span class="o">.</span><span class="n">V</span>
+
+
+<span class="k">class</span> <span class="nc">Collider</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Class to compute forces on each body</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Parameters</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">9.81</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">])</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="mf">0.085</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mf">234.65</span>
+    <span class="n">LX</span> <span class="o">=</span> <span class="mf">4.5</span> <span class="c1"># Right wall position</span>
+    
+    <span class="c1"># Functions</span>
+    <span class="k">def</span> <span class="nf">computeForce</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bodies</span><span class="p">):</span> <span class="c1"># </span>
+        <span class="k">for</span> <span class="n">body</span> <span class="ow">in</span> <span class="n">bodies</span><span class="p">:</span> <span class="c1"># Individual forces</span>
+            <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Reset the force</span>
+            <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">+=</span> <span class="n">body</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="c1"># Add gravity</span>
+            <span class="c1"># YOUR CODE HERE</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="c1"># Add body-body interactions. Use third Newton law</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        
+<span class="c1">#%matplotlib inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Pre-processing: Setup. For more particless: mass distribution, random positions, etc</span>
+<span class="n">particle1</span> <span class="o">=</span> <span class="n">Body</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.23</span><span class="p">,</span> <span class="mf">2.34</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="mf">0.654</span><span class="p">)</span>
+<span class="n">particle1</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">0.087</span>
+<span class="n">particle2</span> <span class="o">=</span> <span class="n">Body</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.23</span><span class="p">,</span> <span class="mf">2.34</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> <span class="mf">0.654</span><span class="p">)</span>
+<span class="n">particle2</span><span class="o">.</span><span class="n">radius</span> <span class="o">=</span> <span class="mf">0.087</span>
+<span class="n">particles</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">particle1</span><span class="p">,</span> <span class="n">particle2</span><span class="p">])</span>
+
+<span class="c1"># Collider</span>
+<span class="n">collider</span> <span class="o">=</span> <span class="n">Collider</span><span class="p">()</span>
+<span class="n">collider</span><span class="o">.</span><span class="n">computeForce</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span> <span class="c1"># Initial force</span>
+
+<span class="c1"># Time evolution stuff</span>
+<span class="n">DT</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">9.5</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
+<span class="n">NSTEPS</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">size</span>
+<span class="n">leapfrog</span> <span class="o">=</span> <span class="n">TimeIntegrator</span><span class="p">(</span><span class="n">DT</span><span class="p">)</span>
+<span class="n">leapfrog</span><span class="o">.</span><span class="n">startIntegration</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span>
+
+<span class="c1"># Save data</span>
+<span class="n">Rx0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Ry0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Rx1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Ry1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Vx0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Vy0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Vx1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+<span class="n">Vy1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NSTEPS</span><span class="p">);</span> 
+
+<span class="c1"># main evolution loop</span>
+<span class="n">it</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">it</span> <span class="o">&lt;</span> <span class="n">NSTEPS</span><span class="p">:</span>
+    <span class="n">Rx0</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">Ry0</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> 
+    <span class="n">Rx1</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">Ry1</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> 
+    <span class="n">Vx0</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">Vy0</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> 
+    <span class="n">Vx1</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span> <span class="n">Vy1</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">particles</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> 
+    <span class="n">collider</span><span class="o">.</span><span class="n">computeForce</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span>
+    <span class="n">leapfrog</span><span class="o">.</span><span class="n">timestep</span><span class="p">(</span><span class="n">particles</span><span class="p">)</span>
+    <span class="n">it</span> <span class="o">=</span> <span class="n">it</span> <span class="o">+</span> <span class="mi">1</span>
+    
+<span class="c1"># plot final path</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Rx0</span><span class="p">,</span> <span class="n">Ry0</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Particle 0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">Rx1</span><span class="p">,</span> <span class="n">Ry1</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Particle 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_x [m]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y [m]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Vx0</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Particle 0&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Vx1</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Particle 1&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_x [m]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y [m]$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For printing vtk data: Run this here or remove the ! and run it in the console</span>
+<span class="o">!</span>conda<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pyevtk
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Printing data for paraview visualization. DISPLAY Folder must exist</span>
+<span class="kn">from</span> <span class="nn">pyevtk.hl</span> <span class="kn">import</span> <span class="n">pointsToVTK</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">)):</span>
+    <span class="n">pointsToVTK</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;./DISPLAY/system_</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Rx0</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">Rx1</span><span class="p">[</span><span class="n">ii</span><span class="p">]]),</span> 
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">Ry0</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">Ry1</span><span class="p">[</span><span class="n">ii</span><span class="p">]]),</span> 
+                <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]),</span> 
+                <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;radius&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.087</span><span class="p">,</span> <span class="mf">0.087</span><span class="p">]),</span> 
+                      <span class="s2">&quot;speed&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">([</span><span class="n">Vx0</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">Vy0</span><span class="p">[</span><span class="n">ii</span><span class="p">]]),</span> 
+                                         <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">([</span><span class="n">Vx1</span><span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">Vy1</span><span class="p">[</span><span class="n">ii</span><span class="p">]])])})</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercise-two-planets">
+<h1>Exercise: Two planets<a class="headerlink" href="#exercise-two-planets" title="Link to this heading">#</a></h1>
+<p>Implement the gravitational attraction between two bodies, like the earth and the moon, and simulate their orbits.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./08-MolecularDynamics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../07-vpython/vpython-leapfrog.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Integration and Visualization of a Dynamic System</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Partial Differential equations: Finite differences</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Molecular Dynamics</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-body">Defining the body</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#forces">Forces</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-algorithm">Integration algorithm</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-frog-algorithm">Leap-frog algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-falling-under-constant-gravity">Particle falling under constant gravity</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-damping-and-bouncing">Exercise: damping and bouncing</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-bouncing-with-left-and-right-walls">Exercise: Bouncing with left and right walls</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-adding-more-particles">Exercise: Adding more particles</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-two-planets">Exercise: Two planets</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William Oquendo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

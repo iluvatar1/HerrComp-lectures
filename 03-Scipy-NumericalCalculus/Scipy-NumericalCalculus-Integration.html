@@ -1,0 +1,1130 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Numerical Calculus: Integrals and an introduction to scipy &#8212; Herramientas Computacionales</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles.css?v=03b9d5b1" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Linear Systems : Matrices, Vectors, eigen systems" href="../04-LinearAlgebra/LinearAlgebra.html" />
+    <link rel="prev" title="Automatic differentiation" href="AutomaticDifferentiation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Herramientas Computacionales
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to or review of Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-Intro-InstalacionPython/01-B-PythonSetup.html">Python Setup</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/01-IntroProgrammingPython.html">Python Programming (very fast) Introduction</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/02-IntroProgrammingPython-DataStructs.html">Basic data structures</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/matplotlib-Intro.html">Matplotlib</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/numpy-Intro-Reduced.html">Python arrays : Numpy</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/Scipy.html">SciPy - Library of scientific algorithms for Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Calculus</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsI.html">Numerical errors (very short intro)</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsII.html">Numerical errors II : types of errors and general remarks</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="NumericalDifferentiation.html">Numerical differentiation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="AutomaticDifferentiation.html">Automatic differentiation</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerical Calculus: Integrals and an introduction to scipy</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra and Numerical Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/LinearAlgebra.html">Linear Systems : Matrices, Vectors, eigen systems</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/Perceptron.html">Simple neural network: A perceptron</a></li>
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">Ordinary Differential Equations : Initial value problems</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP-linear-matrices.html">Boundary value problems: linear case and matrices</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../07-vpython/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+
+
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
+
+
+
+
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/iluvatar1/HerrComp-lectures/master?urlpath=lab/tree/03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/github/iluvatar1/HerrComp-lectures/blob/master/03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures/issues/new?title=Issue%20on%20page%20%2F03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Numerical Calculus: Integrals and an introduction to scipy</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Calculus: Integrals and an introduction to scipy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-scipy">Introduction to scipy</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#common-numerical-integration-algorithms">Common Numerical Integration Algorithms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">Trapezoidal rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-intro-to-lambda-functions">Small intro to lambda functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise"><strong>Exercise</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpsons-rule">Simpsons rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-techniques">Other techniques</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-functions-for-numerical-quadrature">Scipy functions for numerical quadrature</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quad-examples">Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliptic-integral-fo-the-first-kind">Eliptic integral fo the first kind</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-tabular-data">Integrating tabular data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#difraction-limit-of-a-telescope-newman-5-4">Difraction limit of a telescope (Newman, 5.4)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-capacity-of-a-solid-newman-5-9">Heat capacity of a solid (Newman, 5.9)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-center-of-mass">Computing the center of mass</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-covered-by-parachutist-chapra">Distance covered by parachutist (Chapra)</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="numerical-calculus-integrals-and-an-introduction-to-scipy">
+<h1>Numerical Calculus: Integrals and an introduction to scipy<a class="headerlink" href="#numerical-calculus-integrals-and-an-introduction-to-scipy" title="Link to this heading">#</a></h1>
+<p>Based on :</p>
+<ul class="simple">
+<li><p>J.R. Johansson (robert&#64;riken.jp) http://dml.riken.jp/~rob/</p></li>
+<li><p>Computational physics; Mark newuman</p></li>
+<li><p>Computational Physics; Landau, Paez, Bordeianu</p></li>
+<li><p>Heath, scientific computing</p></li>
+</ul>
+<section id="introduction-to-scipy">
+<h2>Introduction to scipy<a class="headerlink" href="#introduction-to-scipy" title="Link to this heading">#</a></h2>
+<p>The SciPy framework builds on top of the low-level NumPy framework for multidimensional arrays, and provides a large number of higher-level scientific algorithms. Some of the topics that SciPy covers are:</p>
+<ul class="simple">
+<li><p>Special functions (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/special.html">scipy.special</a>)</p></li>
+<li><p>Integration (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/integrate.html">scipy.integrate</a>)</p></li>
+<li><p>Optimization (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/optimize.html">scipy.optimize</a>)</p></li>
+<li><p>Interpolation (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/interpolate.html">scipy.interpolate</a>)</p></li>
+<li><p>Fourier Transforms (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/fftpack.html">scipy.fftpack</a>)</p></li>
+<li><p>Signal Processing (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/signal.html">scipy.signal</a>)</p></li>
+<li><p>Linear Algebra (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/linalg.html">scipy.linalg</a>)</p></li>
+<li><p>Sparse Eigenvalue Problems (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/sparse.html">scipy.sparse</a>)</p></li>
+<li><p>Statistics (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/stats.html">scipy.stats</a>)</p></li>
+<li><p>Multi-dimensional image processing (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/ndimage.html">scipy.ndimage</a>)</p></li>
+<li><p>File IO (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/io.html">scipy.io</a>)</p></li>
+</ul>
+<p>Each of these submodules provides a number of functions and classes that can be used to solve problems in their respective topics.</p>
+<p>In this lecture we will look at how to use some of these subpackages.</p>
+<p>To access the SciPy package in a Python program, we start by importing everything from the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> module.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+</pre></div>
+</div>
+<p>Please run the next setup cell to import the needed libs</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="c1">#from IPython.display import Image</span>
+<span class="c1">#from IPython.core.display import HTML </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="common-numerical-integration-algorithms">
+<h1>Common Numerical Integration Algorithms<a class="headerlink" href="#common-numerical-integration-algorithms" title="Link to this heading">#</a></h1>
+<p>Computing a numerical integral (or quadrature) is a typical problem that appears everywhere in numerical computing. The simple task of computing the error function, <span class="math notranslate nohighlight">\(f(x) = \int_{0}^x e^{-t^2}\)</span>, requires the application of numerical techniques to calculate this (improper integral) over an arbitrary range.</p>
+<p>In any numerical computing course you will start by exploring the trapezoidal and the simpsons rule. Here we are jus going to give the general formulation and then go directly to the functions given by scipy</p>
+<section id="trapezoidal-rule">
+<h2>Trapezoidal rule<a class="headerlink" href="#trapezoidal-rule" title="Link to this heading">#</a></h2>
+<p>Here the function between two points is approximated by a straight line and the te area covered by the trapezoid is added up. See: https://en.wikipedia.org/wiki/Trapezoidal_rule</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Integration_num_trapezes_notation.svg/330px-Integration_num_trapezes_notation.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Integration_num_trapezes_notation.svg/330px-Integration_num_trapezes_notation.svg.png" /></p></th>
+<th class="head"><p><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Trapezium2.gif/330px-Trapezium2.gif" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Trapezium2.gif/330px-Trapezium2.gif" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1-order interpolation</p></td>
+<td><p>Better results for more intervals</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The integral between two poins, <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, after dividing its lenght in <span class="math notranslate nohighlight">\(N\)</span> intervals (N+1 points, regular partition) of size <span class="math notranslate nohighlight">\(\Delta x = \frac{b-a}{N}\)</span>, is given by
+$<span class="math notranslate nohighlight">\(\int_a^b f(x) dx \simeq \Delta x \left( \frac{f(x_0)}{2} + \sum_{k=1}^{N-1} f(x_k) +\frac{f(x_N)}{2}\right) + O(N^{-1}),\)</span><span class="math notranslate nohighlight">\(
+where \)</span>x_k = x_0 + k \Delta x<span class="math notranslate nohighlight">\(, \)</span>x_0 = a<span class="math notranslate nohighlight">\(, and \)</span>x_N=b$.</p>
+<p>Now we will check a simple implementation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to compute an integral using the trapezoid rule</span>
+<span class="sd">    f: function to integrate</span>
+<span class="sd">    a, b: integral limits, b&gt;a</span>
+<span class="sd">    n: Number of intervals to use</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">npoints</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">xk</span><span class="p">,</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">npoints</span><span class="p">,</span> <span class="n">retstep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">dx</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">trapezoid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">)</span> <span class="c1"># magic to allow to receive vectorized limits</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000000</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Check , two limits for two integrals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3350000000000001
+0.33333349999999995
+0.33333333333333487
+[0.335 0.   ]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="small-intro-to-lambda-functions">
+<h2>Small intro to lambda functions<a class="headerlink" href="#small-intro-to-lambda-functions" title="Link to this heading">#</a></h2>
+<p>From : https://realpython.com/python-lambda/
+Python lambdas are little, anonymous functions, subject to a more restrictive but more concise syntax than regular Python functions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="mf">9.8</span>
+<span class="k">def</span> <span class="nf">myfunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">a</span>
+
+<span class="n">y</span> <span class="o">=</span> <span class="n">myfunction</span><span class="p">(</span><span class="mf">3.6</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+
+<span class="n">z</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">myfunction</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">z</span><span class="p">(</span><span class="mf">3.6</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22.76
+22.76
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercise">
+<h2><strong>Exercise</strong><a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-68eb3a8f-a9db-452e-b7ce-c8c0827b9d31">
+<span class="eqno">(3)<a class="headerlink" href="#equation-68eb3a8f-a9db-452e-b7ce-c8c0827b9d31" title="Permalink to this equation">#</a></span>\[\begin{equation}
+f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
+\end{equation}\]</div>
+<p><span class="math notranslate nohighlight">\(x \in [0, 10]\)</span>, <span class="math notranslate nohighlight">\(\Delta x = 0.1\)</span></p>
+<p><span class="math notranslate nohighlight">\(f(x=0), f(x=0+0.1), f(x=0+2*0.1), f(x=0+3*0.1), \ldots\)</span></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the integral of f(x) = (2/\sqrt{\pi}) \int_0^x e^{-t^2} as a function of x, </span>
+<span class="c1"># for x \in [0, 10] in steps of 0.1</span>
+<span class="c1"># Compute the relative difference between your results and the exact value </span>
+<span class="c1"># from scipy.special.erf, for n=10, 100, 1000</span>
+<span class="c1"># Plot your results</span>
+<span class="k">def</span> <span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">compute_integral_plot</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">nbins_integral</span><span class="p">,</span> <span class="n">algname</span><span class="p">):</span>
+    <span class="o">%</span><span class="k">matplotlib</span> inline
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(trapezoid(lambda x: 2*np.exp(-x*x)/np.sqrt(np.pi), 0, 5, 100))</span>
+<span class="c1">#print(trapezoid(fun, 0, 5, 100))</span>
+<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Trapezoid&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#print(trapezoid(lambda x: 2*np.exp(-x*x)/np.sqrt(np.pi), 0, 5, 100))</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#print(trapezoid(fun, 0, 5, 100))</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Trapezoid&quot;</span><span class="p">)</span>
+
+<span class="nn">Cell In[5], line 12,</span> in <span class="ni">compute_integral_plot</span><span class="nt">(alg, xmin, xmax, deltax, nbins_integral, algname)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="c1"># YOUR CODE HERE</span>
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="ne">NotImplementedError</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simpsons-rule">
+<h2>Simpsons rule<a class="headerlink" href="#simpsons-rule" title="Link to this heading">#</a></h2>
+<p>In this case, the method uses three discrete points and approximate the function as a parabola (second order polynomial), to improve the numerical integral computation. See: https://en.wikipedia.org/wiki/Simpson%27s_rule</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/440px-Simpsons_method_illustration.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/440px-Simpsons_method_illustration.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/440px-Simpsons_method_illustration.svg.png" style="width: 300px;" /></a></p></th>
+<th class="head"><p><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Simpsonsrule2.gif/440px-Simpsonsrule2.gif" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Simpsonsrule2.gif/440px-Simpsonsrule2.gif" /></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2-order interpolation</p></td>
+<td><p>Better results for more intervals</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now you compute the integral as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-403765e8-cfc0-4a86-9db9-df107e4da80d">
+<span class="eqno">(4)<a class="headerlink" href="#equation-403765e8-cfc0-4a86-9db9-df107e4da80d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\int_a^b f(x) dx \simeq \frac{\Delta x}{3}\left( f(x_0) + 4 \sum_{k=1}^{N/2} f(x_{2k-1}) + 2\sum_{k=1}^{N/2-1} f(x_{2k}) + f(x_N)\right) + O(N^{-3}).
+\end{equation}\]</div>
+<p>Notice that <span class="math notranslate nohighlight">\(N\)</span> must be even.</p>
+<p>Now let’s implement it:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="k">def</span> <span class="nf">simpson</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Function to compute an integral using the simpsons rule</span>
+<span class="sd">    f: function to integrate</span>
+<span class="sd">    a, b: integral limits, b&gt;a</span>
+<span class="sd">    n: Number of intervals to use</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">npoints</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
+    <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">2</span> != 0: 
+        <span class="n">npoints</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">result</span>
+
+<span class="n">simpson</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">simpson</span><span class="p">)</span> <span class="c1"># magic to allow to receive vectorized limits</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Check , two limits for two integrals</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s plot the same as for the trapezoidal rule</span>
+<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">simpson</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Simpson&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="other-techniques">
+<h2>Other techniques<a class="headerlink" href="#other-techniques" title="Link to this heading">#</a></h2>
+<p>There are ways to improve the previous algorithms to decrease the error: using the <a class="reference external" href="https://en.wikipedia.org/wiki/Romberg%27s_method">Romberg Method</a>, applying higher order decompositions, using <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_Simpson%27s_method">Adaptative techniques</a>, using <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_quadrature">Gaussian quadrature</a>, mixing some of these techniques, etc. But implementing those methods by hand would be a daunting task. Happily, <code class="docutils literal notranslate"><span class="pre">scipy</span></code> include several routines that already take care of these an many other issues, and are easy to use.</p>
+<p>NOTE: When you have tabular data, you will be almost forced to use either the trapezoid or the simpsons method. You could also first interpolate the data and then integrate.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="scipy-functions-for-numerical-quadrature">
+<h1>Scipy functions for numerical quadrature<a class="headerlink" href="#scipy-functions-for-numerical-quadrature" title="Link to this heading">#</a></h1>
+<p>The numerical evaluation of an operation of the type</p>
+<p><span class="math notranslate nohighlight">\(\displaystyle \int_a^b f(x) dx\)</span></p>
+<p>is called <em>numerical quadrature</em>, or simply <em>quadature</em>. SciPy provides a series of functions for different kind of quadrature, for example the <code class="docutils literal notranslate"><span class="pre">quad</span></code>, <code class="docutils literal notranslate"><span class="pre">dblquad</span></code> and <code class="docutils literal notranslate"><span class="pre">tplquad</span></code> for single, double and triple integrals, respectively. Let’s use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html">quad</a> to compute the same problems as before:</p>
+<section id="simple-quad-examples">
+<h2>Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples<a class="headerlink" href="#simple-quad-examples" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span><span class="p">,</span> <span class="n">dblquad</span><span class="p">,</span> <span class="n">tplquad</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">quad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">integral_val</span><span class="p">,</span> <span class="n">error</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">vquad</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">quad</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">vquad</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Indefinite integral</span>
+<span class="n">val</span><span class="p">,</span> <span class="n">abserr</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">Inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">Inf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;numerical  = </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">abserr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;analytical = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Double integrals: https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.dblquad.html#scipy.integrate.dblquad</span>
+<span class="k">def</span> <span class="nf">integrand</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">x_lower</span> <span class="o">=</span> <span class="mi">0</span>  
+<span class="n">x_upper</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">y_lower</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y_upper</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">val</span><span class="p">,</span> <span class="n">abserr</span> <span class="o">=</span> <span class="n">dblquad</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">x_lower</span><span class="p">,</span> <span class="n">x_upper</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">y_lower</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">y_upper</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">abserr</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="exercises">
+<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
+<section id="eliptic-integral-fo-the-first-kind">
+<h2>Eliptic integral fo the first kind<a class="headerlink" href="#eliptic-integral-fo-the-first-kind" title="Link to this heading">#</a></h2>
+<p>The period of a simple pendulum can be computed as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-902793a7-5b02-48f6-a318-79801d4404b8">
+<span class="eqno">(5)<a class="headerlink" href="#equation-902793a7-5b02-48f6-a318-79801d4404b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
+\end{equation}\]</div>
+<p>Plot the period as a function of <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span>. Use, at least, 100 values for <span class="math notranslate nohighlight">\(x\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="integrating-tabular-data">
+<h2>Integrating tabular data<a class="headerlink" href="#integrating-tabular-data" title="Link to this heading">#</a></h2>
+<p>The following table shows the acceleration (in the <span class="math notranslate nohighlight">\(x\)</span> axis), as a function of time, for a particle. This kind of data can be obtained using <a class="reference external" href="https://physlets.org/tracker/">Tracker</a>, a software that can track bodies in a video and compute different mechanical quantities from it. Integrate the data to get the velocity, and then the position, as functions of time. Plot all of them</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">a1</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">t1</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t1</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.8</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="n">a1</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t2</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.02</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t2</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="n">t3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">a2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">t3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t3</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">a3</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">t3</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">t3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.02</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t3</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t3</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;accel.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">t1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">a1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">t2</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">a2</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">t3</span><span class="p">,</span> <span class="n">a3</span><span class="p">)))</span>
+    
+
+<span class="c1">#y = mx + b</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Integrate and plot</span>
+<span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="difraction-limit-of-a-telescope-newman-5-4">
+<h2>Difraction limit of a telescope (Newman, 5.4)<a class="headerlink" href="#difraction-limit-of-a-telescope-newman-5-4" title="Link to this heading">#</a></h2>
+<p>When light from a distant star passes through the circular aperture of a telescope, you get a difraction pattern which can be described as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f86ce7f0-549d-4a58-91cf-eb75bdf81bcb">
+<span class="eqno">(6)<a class="headerlink" href="#equation-f86ce7f0-549d-4a58-91cf-eb75bdf81bcb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+I(r) = \left(\frac{J_1(kr)}{kr} \right)^2,
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> is the distance from the center, <span class="math notranslate nohighlight">\(k=2\pi/\lambda\)</span>, with <span class="math notranslate nohighlight">\(\lambda\)</span> is the wavelenght, and <span class="math notranslate nohighlight">\(J_1(x)\)</span> is a Bessel function. The Bessel functions can be computed as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-baeac8fa-f735-46b3-a078-1e8d9ada62b3">
+<span class="eqno">(7)<a class="headerlink" href="#equation-baeac8fa-f735-46b3-a078-1e8d9ada62b3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(m\)</span> is a positive integer and <span class="math notranslate nohighlight">\(x \ge 0\)</span>. Of course you can use <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code> to compute the Bessel function, but here you will use the quad routine to create a plot of <span class="math notranslate nohighlight">\(J_0, J_1, J_2\)</span> for <span class="math notranslate nohighlight">\(x \in [0, 20]\)</span>.</p>
+<p>Create a second function that makes a density plot of the intensity <span class="math notranslate nohighlight">\(I(r)\)</span> for a point light source with <span class="math notranslate nohighlight">\(\lambda= 500 \)</span> nm. Make the plot in a square region, and <span class="math notranslate nohighlight">\(r\)</span> must go to values around 1 <span class="math notranslate nohighlight">\(\mu\)</span>m. Use <code class="docutils literal notranslate"><span class="pre">imshow</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="heat-capacity-of-a-solid-newman-5-9">
+<h2>Heat capacity of a solid (Newman, 5.9)<a class="headerlink" href="#heat-capacity-of-a-solid-newman-5-9" title="Link to this heading">#</a></h2>
+<p>Debye’s theory of solids gives the heat capacity, at temperature <span class="math notranslate nohighlight">\(T\)</span>, as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-986e0a98-a2c0-466e-b853-c608ac8d7ad0">
+<span class="eqno">(8)<a class="headerlink" href="#equation-986e0a98-a2c0-466e-b853-c608ac8d7ad0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \frac{x^4 e^x}{(e^x-1)^2}dx, 
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(V\)</span> is the solid volume, <span class="math notranslate nohighlight">\(\rho\)</span> the atom nuber density, <span class="math notranslate nohighlight">\(k_B\)</span> the Boltzmann’s constant, and <span class="math notranslate nohighlight">\(\theta_D\)</span> is the Debye temperature.</p>
+<p>Create a plot of <span class="math notranslate nohighlight">\(C_V(T)\)</span>, from <span class="math notranslate nohighlight">\(T = 5\)</span> K up to <span class="math notranslate nohighlight">\(T=500\)</span> K. Use a sample of 1000 cm<span class="math notranslate nohighlight">\(^2\)</span> of solid aluminum, which has <span class="math notranslate nohighlight">\(\rho = 6.022\times 10^{28}\)</span> m<span class="math notranslate nohighlight">\(^{-3}\)</span>, and a Debye temperature of <span class="math notranslate nohighlight">\(\theta_D = 428\)</span> K.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="computing-the-center-of-mass">
+<h2>Computing the center of mass<a class="headerlink" href="#computing-the-center-of-mass" title="Link to this heading">#</a></h2>
+<p>Compute the <a class="reference external" href="https://en.wikipedia.org/wiki/Center_of_mass">center of mass</a> for a triangle which corresponds to half the unit square. Use the <code class="docutils literal notranslate"><span class="pre">dblquad</span></code> routine, and you will need to define either the lower or the upper <span class="math notranslate nohighlight">\(y\)</span> function. Assume  a constant density, and then a density of the form <span class="math notranslate nohighlight">\(\rho(x, y) = yx^2\)</span>. Always set a unit total mass.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="distance-covered-by-parachutist-chapra">
+<h2>Distance covered by parachutist (Chapra)<a class="headerlink" href="#distance-covered-by-parachutist-chapra" title="Link to this heading">#</a></h2>
+<p>The vertical velocity of a parachutist in free fall and under linear drag can be computed as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-115c2559-d50d-4bec-83f1-4c5c32b70077">
+<span class="eqno">(9)<a class="headerlink" href="#equation-115c2559-d50d-4bec-83f1-4c5c32b70077" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(t\)</span> is the time, <span class="math notranslate nohighlight">\(g = 9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span> (on earth), <span class="math notranslate nohighlight">\(m\)</span> is the mass in kg, and <span class="math notranslate nohighlight">\(c\)</span> is the linear drag coeffcient, in kg/s . Compute the distance travelled by the parachutist in the first 8 seconds, given <span class="math notranslate nohighlight">\(m=80\)</span> kg and <span class="math notranslate nohighlight">\(c = 10\)</span> kg/s. Plot the distance for several mass values <span class="math notranslate nohighlight">\(m\in [50, 120]\)</span> kg.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./03-Scipy-NumericalCalculus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="AutomaticDifferentiation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Automatic differentiation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../04-LinearAlgebra/LinearAlgebra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Linear Systems : Matrices, Vectors, eigen systems</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Calculus: Integrals and an introduction to scipy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-scipy">Introduction to scipy</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#common-numerical-integration-algorithms">Common Numerical Integration Algorithms</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">Trapezoidal rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-intro-to-lambda-functions">Small intro to lambda functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise"><strong>Exercise</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpsons-rule">Simpsons rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-techniques">Other techniques</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-functions-for-numerical-quadrature">Scipy functions for numerical quadrature</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quad-examples">Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliptic-integral-fo-the-first-kind">Eliptic integral fo the first kind</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-tabular-data">Integrating tabular data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#difraction-limit-of-a-telescope-newman-5-4">Difraction limit of a telescope (Newman, 5.4)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-capacity-of-a-solid-newman-5-9">Heat capacity of a solid (Newman, 5.9)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-center-of-mass">Computing the center of mass</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-covered-by-parachutist-chapra">Distance covered by parachutist (Chapra)</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William Oquendo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

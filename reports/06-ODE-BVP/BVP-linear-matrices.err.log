@@ -1,0 +1,58 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/nbclient/client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
+from scipy.integrate import solve_bvp
+sns.set()
+sns.set_context("talk")
+
+def deriv(t, y, params):
+    # YOUR CODE HERE
+    raise NotImplementedError()
+
+def bc(ya, yb, params):
+    # YOUR CODE HERE
+    raise NotImplementedError()
+
+def solve_bvp_plot(x0, xf, params):
+    # YOUR CODE HERE
+    raise NotImplementedError()
+
+PARAMS = (0.01, 20.0)
+solve_bvp_plot(0.0, 10.0, PARAMS)
+------------------
+
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNotImplementedError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 21[0m
+[1;32m     18[0m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
+[1;32m     20[0m PARAMS [38;5;241m=[39m ([38;5;241m0.01[39m, [38;5;241m20.0[39m)
+[0;32m---> 21[0m [43msolve_bvp_plot[49m[43m([49m[38;5;241;43m0.0[39;49m[43m,[49m[43m [49m[38;5;241;43m10.0[39;49m[43m,[49m[43m [49m[43mPARAMS[49m[43m)[49m
+
+Cell [0;32mIn[1], line 18[0m, in [0;36msolve_bvp_plot[0;34m(x0, xf, params)[0m
+[1;32m     16[0m [38;5;28;01mdef[39;00m [38;5;21msolve_bvp_plot[39m(x0, xf, params):
+[1;32m     17[0m     [38;5;66;03m# YOUR CODE HERE[39;00m
+[0;32m---> 18[0m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
+
+[0;31mNotImplementedError[0m: 
+
