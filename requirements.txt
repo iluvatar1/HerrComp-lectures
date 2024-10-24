@@ -1,0 +1,37 @@
+jupyter-book
+notebook
+jupyterlab
+matplotlib
+numpy
+scipy
+seaborn
+ghp-import
+#jupyterlab-lsp
+jupyterlab-git
+pandas
+vpython
+ipython
+seaborn
+jupyter_contrib_nbextensions
+pulp
+bokeh
+ipyvolume
+plotly
+vpython
+jupyterlab-vpython
+RISE
+pylint
+autopep8
+#jupyter-collaboration
+#jupyterlab-link-share
+jupyterlab_vpython
+#python-lsp-server
+pyright
+nb-js-diagrammers
+nbgrader
+ipywidgets
+
+# fenics stuff
+# superlu_dist==6.2.0
+# fenics
+# mshr
