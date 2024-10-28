@@ -150,8 +150,8 @@
       
     
     
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Rayleigh-Taylor_instability.jpg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Rayleigh-Taylor_instability.jpg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
   
   
 </a></div>
@@ -175,102 +175,37 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to or review of Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01-Intro-InstalacionPython/01-B-PythonSetup.html">Python Setup</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/01-IntroProgrammingPython.html">Python Programming (very fast) Introduction</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/02-IntroProgrammingPython-DataStructs.html">Basic data structures</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/matplotlib-Intro.html">Matplotlib</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/numpy-Intro-Reduced.html">Python arrays : Numpy</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/Scipy.html">SciPy - Library of scientific algorithms for Python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Calculus</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsI.html">Numerical errors (very short intro)</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsII.html">Numerical errors II : types of errors and general remarks</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="NumericalDifferentiation.html">Numerical differentiation</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="AutomaticDifferentiation.html">Automatic differentiation</a></li>
-
-
-
-
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerical Calculus: Integrals and an introduction to scipy</a></li>
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra and Numerical Libraries</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/LinearAlgebra.html">Linear Systems : Matrices, Vectors, eigen systems</a></li>
-
-
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/Perceptron.html">Simple neural network: A perceptron</a></li>
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">Ordinary Differential Equations : Initial value problems</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP-linear-matrices.html">Boundary value problems: linear case and matrices</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../07-vpython/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
-
-
-
-
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
-
-
-
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
-
-
-
-
 </ul>
 
     </div>
@@ -507,33 +442,29 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Calculus: Integrals and an introduction to scipy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-scipy">Introduction to scipy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-numerical-integration-algorithms">Common Numerical Integration Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">Trapezoidal rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-intro-to-lambda-functions">Small intro to lambda functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise"><strong>Exercise</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpsons-rule">Simpsons rule</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#common-numerical-integration-algorithms">Common Numerical Integration Algorithms</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">Trapezoidal rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-intro-to-lambda-functions">Small intro to lambda functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise"><strong>Exercise</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpsons-rule">Simpsons rule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-techniques">Other techniques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-functions-for-numerical-quadrature">Scipy functions for numerical quadrature</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quad-examples">Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-functions-for-numerical-quadrature">Scipy functions for numerical quadrature</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quad-examples">Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliptic-integral-fo-the-first-kind">Eliptic integral fo the first kind</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-tabular-data">Integrating tabular data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#difraction-limit-of-a-telescope-newman-5-4">Difraction limit of a telescope (Newman, 5.4)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-capacity-of-a-solid-newman-5-9">Heat capacity of a solid (Newman, 5.9)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-center-of-mass">Computing the center of mass</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-covered-by-parachutist-chapra">Distance covered by parachutist (Chapra)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliptic-integral-fo-the-first-kind">Eliptic integral fo the first kind</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-tabular-data">Integrating tabular data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difraction-limit-of-a-telescope-newman-5-4">Difraction limit of a telescope (Newman, 5.4)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-capacity-of-a-solid-newman-5-9">Heat capacity of a solid (Newman, 5.9)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-center-of-mass">Computing the center of mass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-covered-by-parachutist-chapra">Distance covered by parachutist (Chapra)</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -570,7 +501,7 @@
 <li><p>File IO (<a class="reference external" href="http://docs.scipy.org/doc/scipy/reference/io.html">scipy.io</a>)</p></li>
 </ul>
 <p>Each of these submodules provides a number of functions and classes that can be used to solve problems in their respective topics.</p>
-<p>In this lecture we will look at how to use some of these subpackages.</p>
+<p>In this lecture we will look at how to use some of these subpackages. For fitting, also check https://lmfit.github.io/lmfit-py/</p>
 <p>To access the SciPy package in a Python program, we start by importing everything from the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> module.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 </pre></div>
@@ -589,13 +520,12 @@
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="common-numerical-integration-algorithms">
-<h1>Common Numerical Integration Algorithms<a class="headerlink" href="#common-numerical-integration-algorithms" title="Link to this heading">#</a></h1>
+<section id="common-numerical-integration-algorithms">
+<h2>Common Numerical Integration Algorithms<a class="headerlink" href="#common-numerical-integration-algorithms" title="Link to this heading">#</a></h2>
 <p>Computing a numerical integral (or quadrature) is a typical problem that appears everywhere in numerical computing. The simple task of computing the error function, <span class="math notranslate nohighlight">\(f(x) = \int_{0}^x e^{-t^2}\)</span>, requires the application of numerical techniques to calculate this (improper integral) over an arbitrary range.</p>
 <p>In any numerical computing course you will start by exploring the trapezoidal and the simpsons rule. Here we are jus going to give the general formulation and then go directly to the functions given by scipy</p>
 <section id="trapezoidal-rule">
-<h2>Trapezoidal rule<a class="headerlink" href="#trapezoidal-rule" title="Link to this heading">#</a></h2>
+<h3>Trapezoidal rule<a class="headerlink" href="#trapezoidal-rule" title="Link to this heading">#</a></h3>
 <p>Here the function between two points is approximated by a straight line and the te area covered by the trapezoid is added up. See: https://en.wikipedia.org/wiki/Trapezoidal_rule</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -654,7 +584,7 @@ where \)</span>x_k = x_0 + k \Delta x<span class="math notranslate nohighlight">
 </div>
 </section>
 <section id="small-intro-to-lambda-functions">
-<h2>Small intro to lambda functions<a class="headerlink" href="#small-intro-to-lambda-functions" title="Link to this heading">#</a></h2>
+<h3>Small intro to lambda functions<a class="headerlink" href="#small-intro-to-lambda-functions" title="Link to this heading">#</a></h3>
 <p>From : https://realpython.com/python-lambda/
 Python lambdas are little, anonymous functions, subject to a more restrictive but more concise syntax than regular Python functions.</p>
 <div class="cell docutils container">
@@ -683,9 +613,9 @@ Python lambdas are little, anonymous functions, subject to a more restrictive bu
 </div>
 </section>
 <section id="exercise">
-<h2><strong>Exercise</strong><a class="headerlink" href="#exercise" title="Link to this heading">#</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-68eb3a8f-a9db-452e-b7ce-c8c0827b9d31">
-<span class="eqno">(3)<a class="headerlink" href="#equation-68eb3a8f-a9db-452e-b7ce-c8c0827b9d31" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<h3><strong>Exercise</strong><a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
+<div class="amsmath math notranslate nohighlight" id="equation-c13a0912-1f1c-4bd2-8efb-3b0ddc767950">
+<span class="eqno">(3)<a class="headerlink" href="#equation-c13a0912-1f1c-4bd2-8efb-3b0ddc767950" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(x \in [0, 10]\)</span>, <span class="math notranslate nohighlight">\(\Delta x = 0.1\)</span></p>
@@ -737,7 +667,7 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </div>
 </section>
 <section id="simpsons-rule">
-<h2>Simpsons rule<a class="headerlink" href="#simpsons-rule" title="Link to this heading">#</a></h2>
+<h3>Simpsons rule<a class="headerlink" href="#simpsons-rule" title="Link to this heading">#</a></h3>
 <p>In this case, the method uses three discrete points and approximate the function as a parabola (second order polynomial), to improve the numerical integral computation. See: https://en.wikipedia.org/wiki/Simpson%27s_rule</p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
@@ -753,8 +683,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </table>
 </div>
 <p>Now you compute the integral as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-403765e8-cfc0-4a86-9db9-df107e4da80d">
-<span class="eqno">(4)<a class="headerlink" href="#equation-403765e8-cfc0-4a86-9db9-df107e4da80d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4c926ca5-39a7-4763-9bde-ac9d2ea547bc">
+<span class="eqno">(4)<a class="headerlink" href="#equation-4c926ca5-39a7-4763-9bde-ac9d2ea547bc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_a^b f(x) dx \simeq \frac{\Delta x}{3}\left( f(x_0) + 4 \sum_{k=1}^{N/2} f(x_{2k-1}) + 2\sum_{k=1}^{N/2-1} f(x_{2k}) + f(x_N)\right) + O(N^{-3}).
 \end{equation}\]</div>
 <p>Notice that <span class="math notranslate nohighlight">\(N\)</span> must be even.</p>
@@ -798,19 +728,19 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </div>
 </div>
 </section>
+</section>
 <section id="other-techniques">
 <h2>Other techniques<a class="headerlink" href="#other-techniques" title="Link to this heading">#</a></h2>
 <p>There are ways to improve the previous algorithms to decrease the error: using the <a class="reference external" href="https://en.wikipedia.org/wiki/Romberg%27s_method">Romberg Method</a>, applying higher order decompositions, using <a class="reference external" href="https://en.wikipedia.org/wiki/Adaptive_Simpson%27s_method">Adaptative techniques</a>, using <a class="reference external" href="https://en.wikipedia.org/wiki/Gaussian_quadrature">Gaussian quadrature</a>, mixing some of these techniques, etc. But implementing those methods by hand would be a daunting task. Happily, <code class="docutils literal notranslate"><span class="pre">scipy</span></code> include several routines that already take care of these an many other issues, and are easy to use.</p>
 <p>NOTE: When you have tabular data, you will be almost forced to use either the trapezoid or the simpsons method. You could also first interpolate the data and then integrate.</p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="scipy-functions-for-numerical-quadrature">
-<h1>Scipy functions for numerical quadrature<a class="headerlink" href="#scipy-functions-for-numerical-quadrature" title="Link to this heading">#</a></h1>
+<section id="scipy-functions-for-numerical-quadrature">
+<h2>Scipy functions for numerical quadrature<a class="headerlink" href="#scipy-functions-for-numerical-quadrature" title="Link to this heading">#</a></h2>
 <p>The numerical evaluation of an operation of the type</p>
 <p><span class="math notranslate nohighlight">\(\displaystyle \int_a^b f(x) dx\)</span></p>
 <p>is called <em>numerical quadrature</em>, or simply <em>quadature</em>. SciPy provides a series of functions for different kind of quadrature, for example the <code class="docutils literal notranslate"><span class="pre">quad</span></code>, <code class="docutils literal notranslate"><span class="pre">dblquad</span></code> and <code class="docutils literal notranslate"><span class="pre">tplquad</span></code> for single, double and triple integrals, respectively. Let’s use <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.quad.html">quad</a> to compute the same problems as before:</p>
 <section id="simple-quad-examples">
-<h2>Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples<a class="headerlink" href="#simple-quad-examples" title="Link to this heading">#</a></h2>
+<h3>Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples<a class="headerlink" href="#simple-quad-examples" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span><span class="p">,</span> <span class="n">dblquad</span><span class="p">,</span> <span class="n">tplquad</span>
@@ -852,13 +782,14 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="exercises">
-<h1>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h1>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+</section>
 <section id="eliptic-integral-fo-the-first-kind">
 <h2>Eliptic integral fo the first kind<a class="headerlink" href="#eliptic-integral-fo-the-first-kind" title="Link to this heading">#</a></h2>
 <p>The period of a simple pendulum can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-902793a7-5b02-48f6-a318-79801d4404b8">
-<span class="eqno">(5)<a class="headerlink" href="#equation-902793a7-5b02-48f6-a318-79801d4404b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-03ef1f29-1f27-452a-89a4-b22d62f912eb">
+<span class="eqno">(5)<a class="headerlink" href="#equation-03ef1f29-1f27-452a-89a4-b22d62f912eb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 \end{equation}\]</div>
 <p>Plot the period as a function of <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span>. Use, at least, 100 values for <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -870,9 +801,8 @@ K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 </div>
 </div>
 </div>
-</section>
 <section id="integrating-tabular-data">
-<h2>Integrating tabular data<a class="headerlink" href="#integrating-tabular-data" title="Link to this heading">#</a></h2>
+<h3>Integrating tabular data<a class="headerlink" href="#integrating-tabular-data" title="Link to this heading">#</a></h3>
 <p>The following table shows the acceleration (in the <span class="math notranslate nohighlight">\(x\)</span> axis), as a function of time, for a particle. This kind of data can be obtained using <a class="reference external" href="https://physlets.org/tracker/">Tracker</a>, a software that can track bodies in a video and compute different mechanical quantities from it. Integrate the data to get the velocity, and then the position, as functions of time. Plot all of them</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -911,15 +841,15 @@ K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 </div>
 </section>
 <section id="difraction-limit-of-a-telescope-newman-5-4">
-<h2>Difraction limit of a telescope (Newman, 5.4)<a class="headerlink" href="#difraction-limit-of-a-telescope-newman-5-4" title="Link to this heading">#</a></h2>
+<h3>Difraction limit of a telescope (Newman, 5.4)<a class="headerlink" href="#difraction-limit-of-a-telescope-newman-5-4" title="Link to this heading">#</a></h3>
 <p>When light from a distant star passes through the circular aperture of a telescope, you get a difraction pattern which can be described as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f86ce7f0-549d-4a58-91cf-eb75bdf81bcb">
-<span class="eqno">(6)<a class="headerlink" href="#equation-f86ce7f0-549d-4a58-91cf-eb75bdf81bcb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-635f7c09-0a2f-4603-aca3-ad7272eb9eb4">
+<span class="eqno">(6)<a class="headerlink" href="#equation-635f7c09-0a2f-4603-aca3-ad7272eb9eb4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I(r) = \left(\frac{J_1(kr)}{kr} \right)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> is the distance from the center, <span class="math notranslate nohighlight">\(k=2\pi/\lambda\)</span>, with <span class="math notranslate nohighlight">\(\lambda\)</span> is the wavelenght, and <span class="math notranslate nohighlight">\(J_1(x)\)</span> is a Bessel function. The Bessel functions can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-baeac8fa-f735-46b3-a078-1e8d9ada62b3">
-<span class="eqno">(7)<a class="headerlink" href="#equation-baeac8fa-f735-46b3-a078-1e8d9ada62b3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8f889919-ff89-4659-8e66-1d231638304e">
+<span class="eqno">(7)<a class="headerlink" href="#equation-8f889919-ff89-4659-8e66-1d231638304e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(m\)</span> is a positive integer and <span class="math notranslate nohighlight">\(x \ge 0\)</span>. Of course you can use <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code> to compute the Bessel function, but here you will use the quad routine to create a plot of <span class="math notranslate nohighlight">\(J_0, J_1, J_2\)</span> for <span class="math notranslate nohighlight">\(x \in [0, 20]\)</span>.</p>
@@ -934,10 +864,10 @@ J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 </div>
 </section>
 <section id="heat-capacity-of-a-solid-newman-5-9">
-<h2>Heat capacity of a solid (Newman, 5.9)<a class="headerlink" href="#heat-capacity-of-a-solid-newman-5-9" title="Link to this heading">#</a></h2>
+<h3>Heat capacity of a solid (Newman, 5.9)<a class="headerlink" href="#heat-capacity-of-a-solid-newman-5-9" title="Link to this heading">#</a></h3>
 <p>Debye’s theory of solids gives the heat capacity, at temperature <span class="math notranslate nohighlight">\(T\)</span>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-986e0a98-a2c0-466e-b853-c608ac8d7ad0">
-<span class="eqno">(8)<a class="headerlink" href="#equation-986e0a98-a2c0-466e-b853-c608ac8d7ad0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-47d54f26-8d14-453b-bee0-c365b5816391">
+<span class="eqno">(8)<a class="headerlink" href="#equation-47d54f26-8d14-453b-bee0-c365b5816391" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \frac{x^4 e^x}{(e^x-1)^2}dx, 
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(V\)</span> is the solid volume, <span class="math notranslate nohighlight">\(\rho\)</span> the atom nuber density, <span class="math notranslate nohighlight">\(k_B\)</span> the Boltzmann’s constant, and <span class="math notranslate nohighlight">\(\theta_D\)</span> is the Debye temperature.</p>
@@ -952,7 +882,7 @@ C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \fra
 </div>
 </section>
 <section id="computing-the-center-of-mass">
-<h2>Computing the center of mass<a class="headerlink" href="#computing-the-center-of-mass" title="Link to this heading">#</a></h2>
+<h3>Computing the center of mass<a class="headerlink" href="#computing-the-center-of-mass" title="Link to this heading">#</a></h3>
 <p>Compute the <a class="reference external" href="https://en.wikipedia.org/wiki/Center_of_mass">center of mass</a> for a triangle which corresponds to half the unit square. Use the <code class="docutils literal notranslate"><span class="pre">dblquad</span></code> routine, and you will need to define either the lower or the upper <span class="math notranslate nohighlight">\(y\)</span> function. Assume  a constant density, and then a density of the form <span class="math notranslate nohighlight">\(\rho(x, y) = yx^2\)</span>. Always set a unit total mass.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -964,10 +894,10 @@ C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \fra
 </div>
 </section>
 <section id="distance-covered-by-parachutist-chapra">
-<h2>Distance covered by parachutist (Chapra)<a class="headerlink" href="#distance-covered-by-parachutist-chapra" title="Link to this heading">#</a></h2>
+<h3>Distance covered by parachutist (Chapra)<a class="headerlink" href="#distance-covered-by-parachutist-chapra" title="Link to this heading">#</a></h3>
 <p>The vertical velocity of a parachutist in free fall and under linear drag can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-115c2559-d50d-4bec-83f1-4c5c32b70077">
-<span class="eqno">(9)<a class="headerlink" href="#equation-115c2559-d50d-4bec-83f1-4c5c32b70077" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-75b28751-62a3-44df-b380-65a3a7f9f14b">
+<span class="eqno">(9)<a class="headerlink" href="#equation-75b28751-62a3-44df-b380-65a3a7f9f14b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t\)</span> is the time, <span class="math notranslate nohighlight">\(g = 9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span> (on earth), <span class="math notranslate nohighlight">\(m\)</span> is the mass in kg, and <span class="math notranslate nohighlight">\(c\)</span> is the linear drag coeffcient, in kg/s . Compute the distance travelled by the parachutist in the first 8 seconds, given <span class="math notranslate nohighlight">\(m=80\)</span> kg and <span class="math notranslate nohighlight">\(c = 10\)</span> kg/s. Plot the distance for several mass values <span class="math notranslate nohighlight">\(m\in [50, 120]\)</span> kg.</p>
@@ -979,6 +909,7 @@ v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
 </div>
 </div>
 </div>
+</section>
 </section>
 </section>
 
@@ -1047,33 +978,29 @@ v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical Calculus: Integrals and an introduction to scipy</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-scipy">Introduction to scipy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#common-numerical-integration-algorithms">Common Numerical Integration Algorithms</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">Trapezoidal rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#small-intro-to-lambda-functions">Small intro to lambda functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise"><strong>Exercise</strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simpsons-rule">Simpsons rule</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#common-numerical-integration-algorithms">Common Numerical Integration Algorithms</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trapezoidal-rule">Trapezoidal rule</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#small-intro-to-lambda-functions">Small intro to lambda functions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise"><strong>Exercise</strong></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simpsons-rule">Simpsons rule</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-techniques">Other techniques</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-functions-for-numerical-quadrature">Scipy functions for numerical quadrature</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quad-examples">Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-functions-for-numerical-quadrature">Scipy functions for numerical quadrature</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-quad-examples">Simple <code class="docutils literal notranslate"><span class="pre">quad</span></code> examples</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliptic-integral-fo-the-first-kind">Eliptic integral fo the first kind</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-tabular-data">Integrating tabular data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#difraction-limit-of-a-telescope-newman-5-4">Difraction limit of a telescope (Newman, 5.4)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-capacity-of-a-solid-newman-5-9">Heat capacity of a solid (Newman, 5.9)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-center-of-mass">Computing the center of mass</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-covered-by-parachutist-chapra">Distance covered by parachutist (Chapra)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliptic-integral-fo-the-first-kind">Eliptic integral fo the first kind</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-tabular-data">Integrating tabular data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difraction-limit-of-a-telescope-newman-5-4">Difraction limit of a telescope (Newman, 5.4)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#heat-capacity-of-a-solid-newman-5-9">Heat capacity of a solid (Newman, 5.9)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-the-center-of-mass">Computing the center of mass</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distance-covered-by-parachutist-chapra">Distance covered by parachutist (Chapra)</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>

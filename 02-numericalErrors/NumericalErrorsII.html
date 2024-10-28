@@ -150,8 +150,8 @@
       
     
     
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/ISO_C%2B%2B_Logo.svg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Rayleigh-Taylor_instability.jpg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Rayleigh-Taylor_instability.jpg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
   
   
 </a></div>
@@ -175,102 +175,37 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to or review of Python</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../01-Intro-InstalacionPython/01-B-PythonSetup.html">Python Setup</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/01-IntroProgrammingPython.html">Python Programming (very fast) Introduction</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/02-IntroProgrammingPython-DataStructs.html">Basic data structures</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/matplotlib-Intro.html">Matplotlib</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/numpy-Intro-Reduced.html">Python arrays : Numpy</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/Scipy.html">SciPy - Library of scientific algorithms for Python</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Calculus</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="NumericalErrorsI.html">Numerical errors (very short intro)</a></li>
-
-
-
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Numerical errors II : types of errors and general remarks</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/NumericalDifferentiation.html">Numerical differentiation</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/AutomaticDifferentiation.html">Automatic differentiation</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.html">Numerical Calculus: Integrals and an introduction to scipy</a></li>
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra and Numerical Libraries</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/LinearAlgebra.html">Linear Systems : Matrices, Vectors, eigen systems</a></li>
-
-
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/Perceptron.html">Simple neural network: A perceptron</a></li>
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">Ordinary Differential Equations : Initial value problems</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP-linear-matrices.html">Boundary value problems: linear case and matrices</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../07-vpython/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
-
-
-
-
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
-
-
-
-
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
-
-
-
-
 </ul>
 
     </div>
@@ -507,20 +442,18 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical errors II : types of errors and general remarks</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kind-of-errors">Kind of errors</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roundoff-truncation-example">Roundoff/truncation example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#substractive-cancellation">Substractive cancellation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-substrative-cancellation">Example of substrative cancellation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kind-of-errors">Kind of errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roundoff-truncation-example">Roundoff/truncation example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#substractive-cancellation">Substractive cancellation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-substrative-cancellation">Example of substrative cancellation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#significant-figures-and-relative-precision">Significant figures and relative precision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicative-errors">Multiplicative errors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-in-algorithms-and-their-computational-implementation">Errors in algorithms and their computational implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#significant-figures-and-relative-precision">Significant figures and relative precision</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicative-errors">Multiplicative errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-in-algorithms-and-their-computational-implementation">Errors in algorithms and their computational implementation</a></li>
 </ul>
 </li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -549,9 +482,8 @@
 <li><p>https://slate.com/technology/2019/10/round-floor-software-errors-stock-market-battlefield.html</p></li>
 <li><p>https://stackoverflow.com/questions/2732845/real-life-example-fo-floating-point-error</p></li>
 </ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="kind-of-errors">
-<h1>Kind of errors<a class="headerlink" href="#kind-of-errors" title="Link to this heading">#</a></h1>
+<section id="kind-of-errors">
+<h2>Kind of errors<a class="headerlink" href="#kind-of-errors" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Probability of an error: <code class="docutils literal notranslate"><span class="pre">start</span></code> <span class="math notranslate nohighlight">\(\to U_1 \to U_2 \to \ldots \to U_n \to\)</span> <code class="docutils literal notranslate"><span class="pre">end</span></code></p></li>
 <li><p>Blunders: Typographical, wrong program, etc</p></li>
@@ -560,7 +492,7 @@
 <li><p>Roundoff and truncation of a number in the computer representation</p></li>
 </ul>
 <section id="roundoff-truncation-example">
-<h2>Roundoff/truncation example<a class="headerlink" href="#roundoff-truncation-example" title="Link to this heading">#</a></h2>
+<h3>Roundoff/truncation example<a class="headerlink" href="#roundoff-truncation-example" title="Link to this heading">#</a></h3>
 <p>Let’s compute the following sum as a function of <span class="math notranslate nohighlight">\(k\)</span>,
 $<span class="math notranslate nohighlight">\(f(k) = \left|\frac{k}{10} - \sum_{i=1}^k 0.1\right|\)</span>$
 Mathematically, this function should give 0 always. Is that true?</p>
@@ -603,10 +535,10 @@ Mathematically, this function should give 0 always. Is that true?</p>
 <p><img alt="Untitled.png" src="02-numericalErrors/attachment:Untitled.png" /></p>
 </section>
 <section id="substractive-cancellation">
-<h2>Substractive cancellation<a class="headerlink" href="#substractive-cancellation" title="Link to this heading">#</a></h2>
+<h3>Substractive cancellation<a class="headerlink" href="#substractive-cancellation" title="Link to this heading">#</a></h3>
 <p>Given <span class="math notranslate nohighlight">\(a = b-c\)</span>, then <span class="math notranslate nohighlight">\(a_c = b_c-c_c\)</span>, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-232cbaf7-3d16-4740-b131-6236c5b33e9c">
-<span class="eqno">(1)<a class="headerlink" href="#equation-232cbaf7-3d16-4740-b131-6236c5b33e9c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9af1a9cc-41e1-4508-974c-dac8682c95f9">
+<span class="eqno">(1)<a class="headerlink" href="#equation-9af1a9cc-41e1-4508-974c-dac8682c95f9" title="Permalink to this equation">#</a></span>\[\begin{align}
 a_c &amp;= a(1+\epsilon_a ) = b_c - c_c = b(1+\epsilon_b ) - c(1+\epsilon_c )\\
 \frac{a_c}{a} &amp;= 1 + \epsilon_b \frac{b}{a} - \frac{c}{a}\epsilon_c  
 \end{align}\]</div>
@@ -614,7 +546,7 @@ a_c &amp;= a(1+\epsilon_a ) = b_c - c_c = b(1+\epsilon_b ) - c(1+\epsilon_c )\\
 $<span class="math notranslate nohighlight">\(\epsilon_a = \frac{b}{a}(\epsilon_b - \epsilon_c), \)</span><span class="math notranslate nohighlight">\( 
 which is much larger, when \)</span>b<span class="math notranslate nohighlight">\( and \)</span>c<span class="math notranslate nohighlight">\( are close (so \)</span>a$ is small).</p>
 <section id="example-of-substrative-cancellation">
-<h3>Example of substrative cancellation<a class="headerlink" href="#example-of-substrative-cancellation" title="Link to this heading">#</a></h3>
+<h4>Example of substrative cancellation<a class="headerlink" href="#example-of-substrative-cancellation" title="Link to this heading">#</a></h4>
 <p>The following series,
 $<span class="math notranslate nohighlight">\(S_N^{(1)} = \sum_{n=1}^{2N} (-1)^n \frac{n}{n+1},\)</span><span class="math notranslate nohighlight">\(
 can be written in two mathematically equivalent ways:
@@ -671,7 +603,7 @@ and
 </section>
 </section>
 <section id="significant-figures-and-relative-precision">
-<h2>Significant figures and relative precision<a class="headerlink" href="#significant-figures-and-relative-precision" title="Link to this heading">#</a></h2>
+<h3>Significant figures and relative precision<a class="headerlink" href="#significant-figures-and-relative-precision" title="Link to this heading">#</a></h3>
 <p>Even simple cases like changing a sum order can give surprising results: Compute the following two sums and plot their relative difference as functions of <span class="math notranslate nohighlight">\(N\)</span>,
 $<span class="math notranslate nohighlight">\(S_N^{(1)}  = \sum_{n=1}^{N} \frac{1}{n}\)</span><span class="math notranslate nohighlight">\(
 \)</span><span class="math notranslate nohighlight">\(S_N^{(2)}  = \sum_{n=N}^{1} \frac{1}{n}\)</span>$</p>
@@ -698,20 +630,21 @@ $<span class="math notranslate nohighlight">\(S_N^{(1)}  = \sum_{n=1}^{N} \frac{
 <p><img alt="Untitled.png" src="02-numericalErrors/attachment:Untitled.png" /></p>
 </section>
 <section id="multiplicative-errors">
-<h2>Multiplicative errors<a class="headerlink" href="#multiplicative-errors" title="Link to this heading">#</a></h2>
+<h3>Multiplicative errors<a class="headerlink" href="#multiplicative-errors" title="Link to this heading">#</a></h3>
 <p>When you multiply numbers, like in the expression <span class="math notranslate nohighlight">\(a = b\times c\)</span>, it is possible to show that the error is
 $<span class="math notranslate nohighlight">\(1 + \epsilon_a + \epsilon_b\)</span>$</p>
 </section>
 <section id="errors-in-algorithms-and-their-computational-implementation">
-<h2>Errors in algorithms and their computational implementation<a class="headerlink" href="#errors-in-algorithms-and-their-computational-implementation" title="Link to this heading">#</a></h2>
+<h3>Errors in algorithms and their computational implementation<a class="headerlink" href="#errors-in-algorithms-and-their-computational-implementation" title="Link to this heading">#</a></h3>
 <p>As you can see, there are several source for errors in computation. Some come from the mathematical approximation, , called <span class="math notranslate nohighlight">\(\epsilon_a\)</span>, and some others are intrinsic from the numerical representation, and we can call them <span class="math notranslate nohighlight">\(\epsilon_r\)</span>. Sometimes, the rounding/truncation error are modeled as a random walk, <span class="math notranslate nohighlight">\(\epsilon_r \simeq \sqrt{N} \epsilon_m\)</span>, where <span class="math notranslate nohighlight">\(\epsilon_m\)</span> is the machine precision, and <span class="math notranslate nohighlight">\(N\)</span> is the representative number of “steps”.  From here, the total error can be estimated as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ddb57928-233e-433a-b44f-41f73fde8613">
-<span class="eqno">(2)<a class="headerlink" href="#equation-ddb57928-233e-433a-b44f-41f73fde8613" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f2b8d7ed-17ac-4de1-be72-5c2cc9b86e7d">
+<span class="eqno">(2)<a class="headerlink" href="#equation-f2b8d7ed-17ac-4de1-be72-5c2cc9b86e7d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \epsilon_{\rm tot} &amp;= \epsilon_a + \epsilon_r \\
 &amp;= \frac{\alpha}{N^\beta} + \sqrt{N} \epsilon_m.
 \end{align}\]</div>
 <p>You can derive this equation an compute the optimal value for <span class="math notranslate nohighlight">\(N\)</span>, which will depend on the order of the mathematical algorithm and the machine precision. The next table show some examples that illustrate this point:</p>
 <p><img alt="CleanShot%202022-08-21%20at%2000.12.12&#64;2x.png" src="02-numericalErrors/attachment:CleanShot%202022-08-21%20at%2000.12.12&#64;2x.png" /></p>
+</section>
 </section>
 </section>
 
@@ -780,20 +713,18 @@ $<span class="math notranslate nohighlight">\(1 + \epsilon_a + \epsilon_b\)</spa
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Numerical errors II : types of errors and general remarks</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#kind-of-errors">Kind of errors</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#roundoff-truncation-example">Roundoff/truncation example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#substractive-cancellation">Substractive cancellation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-substrative-cancellation">Example of substrative cancellation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kind-of-errors">Kind of errors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#roundoff-truncation-example">Roundoff/truncation example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#substractive-cancellation">Substractive cancellation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-substrative-cancellation">Example of substrative cancellation</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#significant-figures-and-relative-precision">Significant figures and relative precision</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicative-errors">Multiplicative errors</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-in-algorithms-and-their-computational-implementation">Errors in algorithms and their computational implementation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#significant-figures-and-relative-precision">Significant figures and relative precision</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiplicative-errors">Multiplicative errors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-in-algorithms-and-their-computational-implementation">Errors in algorithms and their computational implementation</a></li>
 </ul>
 </li>
 </ul>
-
   </nav></div>
 
 </div></div>
