@@ -463,8 +463,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="boundary-value-problems-linear-case-and-matrices">
 <h1>Boundary value problems: linear case and matrices<a class="headerlink" href="#boundary-value-problems-linear-case-and-matrices" title="Link to this heading">#</a></h1>
 <p>When the BVP is linear, you can solve it either using the interpolation already shown, or by formulating the problem as a matrix system. The later is based on a <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">finite difference</a> discretization for the derivatives. Let’s start with the following problem, representing the temperature <span class="math notranslate nohighlight">\(T\)</span> across a linear bar (Chapra, 27.1)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ee430dbb-0da5-432b-9318-0d6ddd6a14f1">
-<span class="eqno">(21)<a class="headerlink" href="#equation-ee430dbb-0da5-432b-9318-0d6ddd6a14f1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6b58d309-2d44-410b-b361-99e80377e83c">
+<span class="eqno">(21)<a class="headerlink" href="#equation-6b58d309-2d44-410b-b361-99e80377e83c" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{d^2T}{dx^2} + h'(T_a - T) = 0,  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h'\)</span> is the transfer coefficient (m<span class="math notranslate nohighlight">\(^{-2}\)</span>), and <span class="math notranslate nohighlight">\(T_a\)</span> is the sourronding air temperature. The boundary conditions are <span class="math notranslate nohighlight">\(T(0) = T_1 = 40\)</span>, <span class="math notranslate nohighlight">\(T(L=10) = T_2 = 200\)</span>, and <span class="math notranslate nohighlight">\(T_a = 20\)</span>. Also, <span class="math notranslate nohighlight">\(h' = 0.01\)</span>.</p>
@@ -542,18 +542,18 @@
 </div>
 </div>
 <p>Now let’s proceed with a different way: by discretizing the derivatives and setting the equation on the points. We have,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2cd23f0e-308f-4fc0-ae6a-86f692c553c3">
-<span class="eqno">(22)<a class="headerlink" href="#equation-2cd23f0e-308f-4fc0-ae6a-86f692c553c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d4d3b248-66c6-4896-9911-c4ac41e51750">
+<span class="eqno">(22)<a class="headerlink" href="#equation-d4d3b248-66c6-4896-9911-c4ac41e51750" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dx^2} \simeq \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2},  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> is the partition size, so the original equation takes the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-529d726f-dc7d-4d95-9cf2-74f6fa833322">
-<span class="eqno">(23)<a class="headerlink" href="#equation-529d726f-dc7d-4d95-9cf2-74f6fa833322" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5adc2fb3-2b93-44bf-848f-8bdea309f6c6">
+<span class="eqno">(23)<a class="headerlink" href="#equation-5adc2fb3-2b93-44bf-848f-8bdea309f6c6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2} - h'(T_i - T_a) = 0.  
 \end{equation}\]</div>
 <p>Finally, after collecting terms, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f13755a5-38f2-4534-bccb-21d196f07d76">
-<span class="eqno">(24)<a class="headerlink" href="#equation-f13755a5-38f2-4534-bccb-21d196f07d76" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f67a302e-b825-4715-aa32-340151cf48d0">
+<span class="eqno">(24)<a class="headerlink" href="#equation-f67a302e-b825-4715-aa32-340151cf48d0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -T_{i-1} + (2+h'\Delta x^2)T_i - T_{i+1} = h'\Delta x^2T_a \to -T_{i-1} + \alpha T_i - T_{i+1} = \beta.
 \end{equation}\]</div>
 <p>This is a tri-diagonal system for the internal points.</p>
@@ -608,8 +608,8 @@
 <section id="generic-bvp">
 <h3>Generic BVP<a class="headerlink" href="#generic-bvp" title="Link to this heading">#</a></h3>
 <p>Solve the following equation using the shooting method and the matrix method,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5749bcb5-64a0-4716-906b-448a0f8fc7c0">
-<span class="eqno">(25)<a class="headerlink" href="#equation-5749bcb5-64a0-4716-906b-448a0f8fc7c0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e7c003b5-6b97-4708-b00f-b37f1bbe1744">
+<span class="eqno">(25)<a class="headerlink" href="#equation-e7c003b5-6b97-4708-b00f-b37f1bbe1744" title="Permalink to this equation">#</a></span>\[\begin{equation}
 7\frac{d^2y}{dx^2} -  2\frac{dy}{dx} - y +x = 0,
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(y(0) = 5, y(20) = 8\)</span></p>
@@ -617,8 +617,8 @@
 <section id="bvp-with-newman-condition">
 <h3>BVP with Newman condition<a class="headerlink" href="#bvp-with-newman-condition" title="Link to this heading">#</a></h3>
 <p>Here we will add a boundary condition on the derivative, on the left, which means that the left node is also an unknown. In that case you can use <span class="math notranslate nohighlight">\(dT/dx \simeq = (T_{1} - T_{-1})/2\Delta x\)</span> so <span class="math notranslate nohighlight">\(T_{-1} = T_1 -2 \Delta x dT/\Delta x\)</span> and then you get the value for the imaginary node <span class="math notranslate nohighlight">\(T_{-1}\)</span> which is now needed. Solve following system:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-57586b4c-a2c4-43d3-81f5-2c8fb48961e5">
-<span class="eqno">(26)<a class="headerlink" href="#equation-57586b4c-a2c4-43d3-81f5-2c8fb48961e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-478b3f2a-0b27-4e31-a4d8-422169381951">
+<span class="eqno">(26)<a class="headerlink" href="#equation-478b3f2a-0b27-4e31-a4d8-422169381951" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dr^2} + \frac{1}{r}\frac{dT}{dr} + S = 0,
 \end{equation}\]</div>
 <p>over <span class="math notranslate nohighlight">\(0 \le r\le 1\)</span>, with <span class="math notranslate nohighlight">\(T(r=1) = 1\)</span> and <span class="math notranslate nohighlight">\(\frac{dT}{dr} = 0\)</span> in <span class="math notranslate nohighlight">\(r=0\)</span>, for S = 1, 10, and 20 K/m<span class="math notranslate nohighlight">\(^2\)</span>. This is a model of the temperature distribution on  a circular rod with internal heat source <span class="math notranslate nohighlight">\(S\)</span>.</p>
@@ -626,8 +626,8 @@
 <section id="deflection-of-a-sailboat-mast-chapra-28-22">
 <h3>Deflection of a sailboat mast (Chapra 28.22)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-22" title="Link to this heading">#</a></h3>
 <p>The following equation can be used to model the deflection of a sailboat mast subject to wind force,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78aaefa9-60ba-47d1-9855-ad9a2ec0a4d4">
-<span class="eqno">(27)<a class="headerlink" href="#equation-78aaefa9-60ba-47d1-9855-ad9a2ec0a4d4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6bd382b9-32c6-4fb7-b746-854e0dc83b1e">
+<span class="eqno">(27)<a class="headerlink" href="#equation-6bd382b9-32c6-4fb7-b746-854e0dc83b1e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2y}{dz^2} = \frac{f}{2EI}(L-z)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is the wind force, <span class="math notranslate nohighlight">\(E\)</span> is the modulus of elasticity, <span class="math notranslate nohighlight">\(L\)</span> the mast length, and <span class="math notranslate nohighlight">\(I\)</span> the inertia moment. Compute the deflection as a function of <span class="math notranslate nohighlight">\(z\)</span> if <span class="math notranslate nohighlight">\(y = 0\)</span> and <span class="math notranslate nohighlight">\(dy/dz = 0\)</span> at <span class="math notranslate nohighlight">\(z = 0\)</span>. Use <span class="math notranslate nohighlight">\(f = 60, L = 30, E = 1.25\times 10^8, I = 0.05\)</span></p>
@@ -635,8 +635,8 @@
 <section id="deflection-of-a-sailboat-mast-chapra-28-23">
 <h3>Deflection of a sailboat mast (Chapra 28.23)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-23" title="Link to this heading">#</a></h3>
 <p>Same previous problem but now the force varies with height as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-19593135-330f-4dff-a418-f688d9a170f3">
-<span class="eqno">(28)<a class="headerlink" href="#equation-19593135-330f-4dff-a418-f688d9a170f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a64ca04f-a903-4738-abab-d9ca7f538428">
+<span class="eqno">(28)<a class="headerlink" href="#equation-a64ca04f-a903-4738-abab-d9ca7f538428" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(z) = \frac{200z}{5+z}e^{-2z/30}.
 \end{equation}\]</div>
 </section>
