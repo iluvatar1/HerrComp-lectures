@@ -1,8 +1,6 @@
 # Herramientas Computacionales
 
-These lecture notes are a complement to the class and hopefully a good resource
-for the students.
-
+These lecture notes are a complement to the class and hopefully a good resource for the students.
 
 [Lecture Notes](https://iluvatar1.github.io/HerrComp-lectures/README.html)
 

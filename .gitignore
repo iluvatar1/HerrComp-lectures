@@ -4,5 +4,11 @@
 *.mp4
 *.txt
 *.log
+**/__pycache__
+*.pyc
 _build
 *.key
+solution
+submitted
+release
+drafts

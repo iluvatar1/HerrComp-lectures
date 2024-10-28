@@ -90,7 +90,7 @@ COPY requirements.txt .
 
 
 # Clone the source code repo
-RUN git clone https://github.com/iluvatar1/ProgCPP-lectures-jupyter.git
+RUN git clone https://github.com/iluvatar1/HerrComp-lectures.git
 
 # Switch back to root to install jupyter
 WORKDIR ${HOME}
