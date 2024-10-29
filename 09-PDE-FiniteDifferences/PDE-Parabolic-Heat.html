@@ -466,8 +466,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="partial-differential-equations-the-parabolic-heat-equation">
 <h1>Partial differential equations: The (parabolic) heat equation<a class="headerlink" href="#partial-differential-equations-the-parabolic-heat-equation" title="Link to this heading">#</a></h1>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_equation">heat equation</a> is the typical example of a parabolic partial differential equation. Here we have the time and we are looking for an actual time evolution. It can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d88c2b98-c518-4438-9b21-1f0b2f701c74">
-<span class="eqno">(39)<a class="headerlink" href="#equation-d88c2b98-c518-4438-9b21-1f0b2f701c74" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-59d24208-a45c-4b6e-8276-2eb7c738f763">
+<span class="eqno">(39)<a class="headerlink" href="#equation-59d24208-a45c-4b6e-8276-2eb7c738f763" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial u}{\partial t} = \alpha \nabla^2 u,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(u\)</span> represents the temperature, or the concentration (diffusion problem) and so on. The coefficient <span class="math notranslate nohighlight">\(\alpha\)</span> takes into account the thermal conductivity, specific heat, and density of the material.</p>
@@ -480,14 +480,14 @@
 <section id="the-explicit-method-forward-time-centered-space">
 <h2>The explicit method: Forward time centered space<a class="headerlink" href="#the-explicit-method-forward-time-centered-space" title="Link to this heading">#</a></h2>
 <p>As is usual in finite differences, we discretize both the spatial (up to second order) and the time (linear order) derivatives to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df0088af-e5d9-4f38-b0d2-f70840127cb3">
-<span class="eqno">(40)<a class="headerlink" href="#equation-df0088af-e5d9-4f38-b0d2-f70840127cb3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ac9f93f3-2172-478d-896c-c3b438765a7f">
+<span class="eqno">(40)<a class="headerlink" href="#equation-ac9f93f3-2172-478d-896c-c3b438765a7f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{u^{n+1}_i - u^n_i}{\Delta t} = \alpha \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{\Delta x^2}, 
 \end{equation}\]</div>
 <p>where the superscript corresponds to a step in time, while the subscript corresponds to step in space (we are here solving a one-dimensional equation). This is the so called <a class="reference external" href="https://en.wikipedia.org/wiki/FTCS_scheme">FTCS - Forward Time Centered Space</a> method, which is an <a class="reference external" href="https://en.wikipedia.org/wiki/Explicit_and_implicit_methods">explicit method</a> which allows to compute the next (in time) value in terms of the previous one.</p>
 <p>Reorganizing terms</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fbb857f3-d0c9-4065-a005-bbdbc01318dc">
-<span class="eqno">(41)<a class="headerlink" href="#equation-fbb857f3-d0c9-4065-a005-bbdbc01318dc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3d530de3-0694-415f-aa58-3864482b0292">
+<span class="eqno">(41)<a class="headerlink" href="#equation-3d530de3-0694-415f-aa58-3864482b0292" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}) = u_{i}^{n}+\lambda(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}),
 \end{equation}\]</div>
 <p>which can be visualized as</p>
@@ -495,8 +495,8 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <img src="https://nbviewer.org/github/numerical-mooc/numerical-mooc/blob/master/lessons/04_spreadout/figures/explicitFTCS-BCeffect.png" class="center">
 </center>
 <p>By using the <a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis">von Neumann stability analysis</a> it is possible to show that the solution is stable (errors are not amplified) only if</p>
-<div class="amsmath math notranslate nohighlight" id="equation-95298e36-cd5c-4d76-92e2-2790728b9135">
-<span class="eqno">(42)<a class="headerlink" href="#equation-95298e36-cd5c-4d76-92e2-2790728b9135" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1a512d76-3a7e-4c5c-bf90-6d603b0e2d10">
+<span class="eqno">(42)<a class="headerlink" href="#equation-1a512d76-3a7e-4c5c-bf90-6d603b0e2d10" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2}.
 \end{equation}\]</div>
 <section id="example-finding-the-temperature-distribution-on-a-thind-rod">
@@ -572,8 +572,8 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <section id="a-note-on-derivative-boundary-conditions">
 <h2>A note on derivative boundary conditions<a class="headerlink" href="#a-note-on-derivative-boundary-conditions" title="Link to this heading">#</a></h2>
 <p>In case you need to fix the derivative a the boundary, let’s say an isolated wall on the left, then you could introduce that as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df1d5579-3328-4899-84ab-0b51b6eb95c1">
-<span class="eqno">(43)<a class="headerlink" href="#equation-df1d5579-3328-4899-84ab-0b51b6eb95c1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-deed01e7-f5ab-43ab-abab-e6b800898439">
+<span class="eqno">(43)<a class="headerlink" href="#equation-deed01e7-f5ab-43ab-abab-e6b800898439" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
 \end{equation}\]</div>
 <p>where there is a new imaginary point at <span class="math notranslate nohighlight">\(i = -1\)</span>. But from the derivative condition you can get its value, since <span class="math notranslate nohighlight">\((u_0 - u_{-1})/\Delta x \simeq \partial u/\partial x\)</span>.</p>
@@ -589,13 +589,13 @@ u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
 <section id="parabolic-equations-in-two-dimensions">
 <h2>Parabolic equations in two dimensions<a class="headerlink" href="#parabolic-equations-in-two-dimensions" title="Link to this heading">#</a></h2>
 <p>In this case you could be solving problems like</p>
-<div class="amsmath math notranslate nohighlight" id="equation-696faff6-bd00-44a3-8328-1c0a07f7d13d">
-<span class="eqno">(44)<a class="headerlink" href="#equation-696faff6-bd00-44a3-8328-1c0a07f7d13d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a4163384-5a73-402b-bb16-9b1e18e1963f">
+<span class="eqno">(44)<a class="headerlink" href="#equation-a4163384-5a73-402b-bb16-9b1e18e1963f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right).
 \end{equation}\]</div>
 <p>In this case, stability analysis implies that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9307c084-f756-4b4a-8e72-5d4a910924d3">
-<span class="eqno">(45)<a class="headerlink" href="#equation-9307c084-f756-4b4a-8e72-5d4a910924d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8936f7d6-cadf-4f5e-b3a1-1092a8a5aca8">
+<span class="eqno">(45)<a class="headerlink" href="#equation-8936f7d6-cadf-4f5e-b3a1-1092a8a5aca8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta t \le \frac{1}{8} \frac{\Delta x^2 + \Delta y^2}{\alpha}.
 \end{equation}\]</div>
 <p>As with the previous 1D case, implicit schemes improve the stability , but the matrix systems are no longer tri-diagonal and therefore the matrix storage and computational times increase a lot.</p>
