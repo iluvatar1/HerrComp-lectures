@@ -22,8 +22,8 @@ repo2docker:
 
 devcontainer:
 	@echo "Building and running  devcontainer image "
-    devcontainer build --workspace-folder ./ --image-name devcontest
-    docker run -it devcontest /bin/bash
+	devcontainer build --workspace-folder ./ --image-name devcontest
+	docker run -it devcontest /bin/bash
 
 clean:
 	rm -f *~ #_build
