@@ -476,14 +476,14 @@
 <section id="linear-shooting-method-interpolation">
 <h2>Linear shooting method: interpolation<a class="headerlink" href="#linear-shooting-method-interpolation" title="Link to this heading">#</a></h2>
 <p>The <em>linear</em> shooting method solves the problem for two different initial conditions, and from them computes the exact initial conditions needed.  Then it solves again the BVP as a simple IVP given the extra and correct initial condition found. Let’s assume we have a linear second order equation. If you put the initial values <span class="math notranslate nohighlight">\((y_{0}, v_{0a})\)</span>, you get the final value <span class="math notranslate nohighlight">\(y_{fa}\)</span> (first ICP solution). If you put the initial values <span class="math notranslate nohighlight">\((y_{0}, v_{0b})\)</span>, you get the final value <span class="math notranslate nohighlight">\(y_{fb}\)</span> (second IVP solution). By taking into account the linear nature of the problem, we can compute the straight-line equation in the <span class="math notranslate nohighlight">\(v_0 - y_f\)</span> space to get the right initial condition as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3fef2232-dbc1-4ec5-acf9-3b8700793102">
-<span class="eqno">(17)<a class="headerlink" href="#equation-3fef2232-dbc1-4ec5-acf9-3b8700793102" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4a7f70b4-cd2b-45d1-8a69-a76671b3f002">
+<span class="eqno">(17)<a class="headerlink" href="#equation-4a7f70b4-cd2b-45d1-8a69-a76671b3f002" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v_0 = v_{0a} + \frac{y_f - y_{fa}}{y_{fb} - y_{fa}}(v_{0b} - v_{0a}).
 \end{equation}\]</div>
 <p>Then, by using that initial condition, we compute the actual solution (third IVP solution).</p>
 <p>As an example, let’s solve the following problem (Chapra 24.11): Compound <span class="math notranslate nohighlight">\(A\)</span> diffuses through a 4-cm-long tube and reacts as it diffuses. The process can be  modeled as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c8620e13-4673-4ee9-be3c-62ec96e1375d">
-<span class="eqno">(18)<a class="headerlink" href="#equation-c8620e13-4673-4ee9-be3c-62ec96e1375d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6c9ec9fd-115e-4d07-ab43-d87e977ed70a">
+<span class="eqno">(18)<a class="headerlink" href="#equation-6c9ec9fd-115e-4d07-ab43-d87e977ed70a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 D\frac{d^2A}{dx^2} - kA = 0.  
 \end{equation}\]</div>
 <p>At <span class="math notranslate nohighlight">\(x=0\)</span> there is a large source of <span class="math notranslate nohighlight">\(A\)</span> with fixed concentration of <span class="math notranslate nohighlight">\(0.1\)</span> M. At the other end there is a material that quickly absorbs <span class="math notranslate nohighlight">\(A\)</span>, so the concentration is 0 M. If <span class="math notranslate nohighlight">\(D = 1.5\times 10^{-6}\)</span> cm<span class="math notranslate nohighlight">\(^2\)</span>/s and <span class="math notranslate nohighlight">\(k = 5\times 10^{-6}\)</span> s<span class="math notranslate nohighlight">\(_1\)</span>, what is the concentration along the tube?</p>
@@ -608,8 +608,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="ecuacion-de-schroedinger-workshop">
 <h3>Ecuación de Schroedinger (workshop)<a class="headerlink" href="#ecuacion-de-schroedinger-workshop" title="Link to this heading">#</a></h3>
 <p>Una partícula se encuentra confinada en un potencial infinito descrito por</p>
-<div class="amsmath math notranslate nohighlight" id="equation-db28a416-ea6f-4923-a5ff-240fd55dd3e5">
-<span class="eqno">(19)<a class="headerlink" href="#equation-db28a416-ea6f-4923-a5ff-240fd55dd3e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a6ba1a5b-0656-4bc2-ac37-d450f275c03f">
+<span class="eqno">(19)<a class="headerlink" href="#equation-a6ba1a5b-0656-4bc2-ac37-d450f275c03f" title="Permalink to this equation">#</a></span>\[\begin{equation}
   V(x) = 
   \begin{cases}
   0, 0 \le x \le L,\\
@@ -617,8 +617,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
   \end{cases}
 \end{equation}\]</div>
 <p>La ecuación de onda <span class="math notranslate nohighlight">\(\phi\)</span> de la partícula (independiente del tiempo) es</p>
-<div class="amsmath math notranslate nohighlight" id="equation-52554c76-00c1-45db-a565-696ed255a19e">
-<span class="eqno">(20)<a class="headerlink" href="#equation-52554c76-00c1-45db-a565-696ed255a19e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-41959edc-2aa3-40b2-8004-3eab37962f7f">
+<span class="eqno">(20)<a class="headerlink" href="#equation-41959edc-2aa3-40b2-8004-3eab37962f7f" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{-\hbar^2}{2m} \frac{d^2\phi(x)}{dx^2} + V(x) \phi(x) = E\phi(x).
 \end{equation}\]</div>
 <p>Debido al potencial, la función de onda debe cumplir que <span class="math notranslate nohighlight">\(\phi(0) = \phi(L) = 0\)</span>.</p>
