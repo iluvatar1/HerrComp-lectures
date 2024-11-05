@@ -449,13 +449,14 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython-notebook">iPython notebook</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ide-spyder-pycharm-visual-etc">IDE: Spyder, pycharm, visual, etc</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-command-examples-inside-a-notebook">Some command examples inside a notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-packages">How to install packages</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-installing-on-a-virtual-environment-fenics">Note: Installing on a virtual environment - Fenics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-python-packages">How to install python packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-very-fast-solution-using-uv">A very fast solution: using uv</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-besides-python">Installing packages: besides python</a></li>
 </ul>
             </nav>
         </div>
@@ -564,9 +565,8 @@ Hola
 </div>
 </div>
 </section>
-</section>
 <section id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h2>
+<h3>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h3>
 <p>There are several ways to use python:</p>
 <ul class="simple">
 <li><p>Using the interpreter, <code class="docutils literal notranslate"><span class="pre">python</span></code></p></li>
@@ -577,23 +577,42 @@ Hola
 <p>In the following, we will use a mix of all of them.</p>
 <p>Before leaving, let’s use another example: How to read from standard input</p>
 </section>
-<section id="how-to-install-packages">
-<h2>How to install packages<a class="headerlink" href="#how-to-install-packages" title="Link to this heading">#</a></h2>
-<p>Please go the start menu and open the anaconda prompt. There you con use either the command <code class="docutils literal notranslate"><span class="pre">conda</span></code> or <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install needed packages. For instance, let’s install <code class="docutils literal notranslate"><span class="pre">scipy</span></code>, which is the base framework used in scientific computation. Open the anaconda prompt and write the following:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">install</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">scipy</span>
-</pre></div>
-</div>
-<p>This will install the <code class="docutils literal notranslate"><span class="pre">scipy</span></code> package and all its dependencies on the root environment.</p>
-<section id="note-installing-on-a-virtual-environment-fenics">
-<h3>Note: Installing on a virtual environment - Fenics<a class="headerlink" href="#note-installing-on-a-virtual-environment-fenics" title="Link to this heading">#</a></h3>
-<p>Sometimes it is much better to install packages on an isolated enviroment to avoid collisions with other packages or versions. For instance, to install <code class="docutils literal notranslate"><span class="pre">fenics</span></code> (which is used to solve partial differential equations, see https://fenicsproject.org/), you can do the following on the anaconda prompt</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># this creates an enviroment called fenicsproject</span>
-<span class="n">conda</span> <span class="n">create</span> <span class="o">-</span><span class="n">n</span> <span class="n">fenicsproject</span> <span class="o">-</span><span class="n">c</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span> <span class="n">fenics</span>
-<span class="c1"># this activates the environment</span>
-<span class="n">source</span> <span class="n">activate</span> <span class="n">fenicsproject</span> 
-</pre></div>
-</div>
 </section>
+<section id="how-to-install-python-packages">
+<h2>How to install python packages<a class="headerlink" href="#how-to-install-python-packages" title="Link to this heading">#</a></h2>
+<p>Installing python packages can be a nightmare. The first advice is to NOT install packages (using any tool) at the root system level (something like running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">...</span></code>). That will create problems when some dependencies are colliding across differetn packages that you need. You could try to install packages using your local account <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span> <span class="pre">...</span></code>, but the collisions and dependency hell will come sooner than later. The recommended way right now is to use virtual enviroments, which isolate any package installatio across environments. Basically, a virtual env is a directory, tipically called <code class="docutils literal notranslate"><span class="pre">.env</span></code>, inside a given directory, that has all the packages installed on the virtual env and, when activated, those packages will have preference over the system ones. To create a virtual env with pure python, first tou go to the directory where you want it (<code class="docutils literal notranslate"><span class="pre">/tmp/example</span></code> in this case)</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp/example
+</pre></div>
+</div>
+<p>and then you can run</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="o">.</span><span class="n">venv</span>
+</pre></div>
+</div>
+<p>That will create a hidden dir, <code class="docutils literal notranslate"><span class="pre">.venv</span></code>, which will contain all the modules installed.</p>
+<p>To activate the venv, use</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>.venv/bin/
+</pre></div>
+</div>
+<p>This will prepend <code class="docutils literal notranslate"><span class="pre">.venv/bin</span></code> to the path. To deactivate it, just run <code class="docutils literal notranslate"><span class="pre">deactivate</span></code>.</p>
+<p>Once you have activated a venv, you can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> ito install packages, either from the package name or from a <code class="docutils literal notranslate"><span class="pre">requirements.txt</span></code> file, and all those packages will be isolated from any otrhe installation. You can have as many venv as you want, just don’t forget to activate/activate the one you need.</p>
+<p>If you use conda, you can also create vens using something like</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>fenicsproject<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>fenics
+<span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>fenicsproject<span class="w"> </span>
+</pre></div>
+</div>
+<section id="a-very-fast-solution-using-uv">
+<h3>A very fast solution: using uv<a class="headerlink" href="#a-very-fast-solution-using-uv" title="Link to this heading">#</a></h3>
+<p>Very recently, astral released uv 1.0, https://docs.astral.sh/uv/ , which replaces pip, potery, virtualenv, and so on, and is very very fast.</p>
+<img src="https://github.com/astral-sh/uv/assets/1309177/03aa9163-1c79-4a87-a31d-7a9311ed9310#only-dark" width=600>
+From: https://docs.astral.sh/uv/
+<p>Installing uv is very easy, and you can use it to create virtual envs easily as shown in https://docs.astral.sh/uv/pip/environments/ . You can even use different python versions. And when installing packages, you will be amazed by the speed of uv. Go try it.</p>
+</section>
+</section>
+<section id="installing-packages-besides-python">
+<h2>Installing packages: besides python<a class="headerlink" href="#installing-packages-besides-python" title="Link to this heading">#</a></h2>
+<a class="reference internal image-reference" href="https://pixi.sh/latest/assets/pixi.webp"><img alt="https://pixi.sh/latest/assets/pixi.webp" src="https://pixi.sh/latest/assets/pixi.webp" style="width: 400px;" /></a>
+<p>Although conda can be used to install packages that are not related to python, recently there is a solution called pixi, https://pixi.sh/latest/ , that can be used to install packages locally or at the system level. Go read https://pixi.sh/latest/basic_usage/ .</p>
+<p>It can also create python virtual envs and use uv in the background.</p>
 </section>
 </section>
 
@@ -671,13 +690,14 @@ Hola
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython-notebook">iPython notebook</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ide-spyder-pycharm-visual-etc">IDE: Spyder, pycharm, visual, etc</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-command-examples-inside-a-notebook">Some command examples inside a notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-packages">How to install packages</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#note-installing-on-a-virtual-environment-fenics">Note: Installing on a virtual environment - Fenics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-install-python-packages">How to install python packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-very-fast-solution-using-uv">A very fast solution: using uv</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-packages-besides-python">Installing packages: besides python</a></li>
 </ul>
   </nav></div>
 
