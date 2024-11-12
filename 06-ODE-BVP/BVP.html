@@ -278,7 +278,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/github/iluvatar1/HerrComp-lectures/blob/master/06-ODE-BVP/BVP.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/06-ODE-BVP/BVP.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -476,14 +476,14 @@
 <section id="linear-shooting-method-interpolation">
 <h2>Linear shooting method: interpolation<a class="headerlink" href="#linear-shooting-method-interpolation" title="Link to this heading">#</a></h2>
 <p>The <em>linear</em> shooting method solves the problem for two different initial conditions, and from them computes the exact initial conditions needed.  Then it solves again the BVP as a simple IVP given the extra and correct initial condition found. Let’s assume we have a linear second order equation. If you put the initial values <span class="math notranslate nohighlight">\((y_{0}, v_{0a})\)</span>, you get the final value <span class="math notranslate nohighlight">\(y_{fa}\)</span> (first ICP solution). If you put the initial values <span class="math notranslate nohighlight">\((y_{0}, v_{0b})\)</span>, you get the final value <span class="math notranslate nohighlight">\(y_{fb}\)</span> (second IVP solution). By taking into account the linear nature of the problem, we can compute the straight-line equation in the <span class="math notranslate nohighlight">\(v_0 - y_f\)</span> space to get the right initial condition as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9400c8cf-8de5-4a51-817c-873d8c382a7a">
-<span class="eqno">(17)<a class="headerlink" href="#equation-9400c8cf-8de5-4a51-817c-873d8c382a7a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d7aef953-4831-41d3-b2b7-752f81466d7f">
+<span class="eqno">(17)<a class="headerlink" href="#equation-d7aef953-4831-41d3-b2b7-752f81466d7f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v_0 = v_{0a} + \frac{y_f - y_{fa}}{y_{fb} - y_{fa}}(v_{0b} - v_{0a}).
 \end{equation}\]</div>
 <p>Then, by using that initial condition, we compute the actual solution (third IVP solution).</p>
 <p>As an example, let’s solve the following problem (Chapra 24.11): Compound <span class="math notranslate nohighlight">\(A\)</span> diffuses through a 4-cm-long tube and reacts as it diffuses. The process can be  modeled as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e44d15b9-ae28-4b45-bf4b-d70ec2cce956">
-<span class="eqno">(18)<a class="headerlink" href="#equation-e44d15b9-ae28-4b45-bf4b-d70ec2cce956" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-64a3350d-b8a2-4d74-82c2-535135846282">
+<span class="eqno">(18)<a class="headerlink" href="#equation-64a3350d-b8a2-4d74-82c2-535135846282" title="Permalink to this equation">#</a></span>\[\begin{equation}
 D\frac{d^2A}{dx^2} - kA = 0.  
 \end{equation}\]</div>
 <p>At <span class="math notranslate nohighlight">\(x=0\)</span> there is a large source of <span class="math notranslate nohighlight">\(A\)</span> with fixed concentration of <span class="math notranslate nohighlight">\(0.1\)</span> M. At the other end there is a material that quickly absorbs <span class="math notranslate nohighlight">\(A\)</span>, so the concentration is 0 M. If <span class="math notranslate nohighlight">\(D = 1.5\times 10^{-6}\)</span> cm<span class="math notranslate nohighlight">\(^2\)</span>/s and <span class="math notranslate nohighlight">\(k = 5\times 10^{-6}\)</span> s<span class="math notranslate nohighlight">\(_1\)</span>, what is the concentration along the tube?</p>
@@ -608,8 +608,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="ecuacion-de-schroedinger-workshop">
 <h3>Ecuación de Schroedinger (workshop)<a class="headerlink" href="#ecuacion-de-schroedinger-workshop" title="Link to this heading">#</a></h3>
 <p>Una partícula se encuentra confinada en un potencial infinito descrito por</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0f152333-3418-46e6-a897-8b4a3cd6b157">
-<span class="eqno">(19)<a class="headerlink" href="#equation-0f152333-3418-46e6-a897-8b4a3cd6b157" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6dbddaad-bf10-4a65-83f5-27eb0f602ce0">
+<span class="eqno">(19)<a class="headerlink" href="#equation-6dbddaad-bf10-4a65-83f5-27eb0f602ce0" title="Permalink to this equation">#</a></span>\[\begin{equation}
   V(x) = 
   \begin{cases}
   0, 0 \le x \le L,\\
@@ -617,8 +617,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
   \end{cases}
 \end{equation}\]</div>
 <p>La ecuación de onda <span class="math notranslate nohighlight">\(\phi\)</span> de la partícula (independiente del tiempo) es</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd5c4621-8187-4049-9098-d88b7596beb2">
-<span class="eqno">(20)<a class="headerlink" href="#equation-dd5c4621-8187-4049-9098-d88b7596beb2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-769a4bd6-6ba4-4f07-8eda-89331f15892e">
+<span class="eqno">(20)<a class="headerlink" href="#equation-769a4bd6-6ba4-4f07-8eda-89331f15892e" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{-\hbar^2}{2m} \frac{d^2\phi(x)}{dx^2} + V(x) \phi(x) = E\phi(x).
 \end{equation}\]</div>
 <p>Debido al potencial, la función de onda debe cumplir que <span class="math notranslate nohighlight">\(\phi(0) = \phi(L) = 0\)</span>.</p>
