@@ -493,9 +493,10 @@
 </ul>
 <section id="roundoff-truncation-example">
 <h3>Roundoff/truncation example<a class="headerlink" href="#roundoff-truncation-example" title="Link to this heading">#</a></h3>
-<p>Let’s compute the following sum as a function of <span class="math notranslate nohighlight">\(k\)</span>,
-$<span class="math notranslate nohighlight">\(f(k) = \left|\frac{k}{10} - \sum_{i=1}^k 0.1\right|\)</span>$
-Mathematically, this function should give 0 always. Is that true?</p>
+<p>Let’s compute the following sum as a function of <span class="math notranslate nohighlight">\(k\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[f(k) = \left|\frac{k}{10} - \sum_{i=1}^k 0.1\right|\]</div>
+<p>Mathematically, this function should give 0 always. Is that true?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -532,13 +533,13 @@ Mathematically, this function should give 0 always. Is that true?</p>
 </div>
 </div>
 </div>
-<p><img alt="Untitled.png" src="02-numericalErrors/attachment:Untitled.png" /></p>
+<a class="reference internal image-reference" href="../_images/sumk.png"><img alt="../_images/sumk.png" src="../_images/sumk.png" style="width: 600px;" /></a>
 </section>
 <section id="substractive-cancellation">
 <h3>Substractive cancellation<a class="headerlink" href="#substractive-cancellation" title="Link to this heading">#</a></h3>
 <p>Given <span class="math notranslate nohighlight">\(a = b-c\)</span>, then <span class="math notranslate nohighlight">\(a_c = b_c-c_c\)</span>, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e7cb7dd2-6722-4c31-b7d0-76050b4569aa">
-<span class="eqno">(1)<a class="headerlink" href="#equation-e7cb7dd2-6722-4c31-b7d0-76050b4569aa" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-8e522262-def8-485a-b9fb-863eabbf7a88">
+<span class="eqno">(1)<a class="headerlink" href="#equation-8e522262-def8-485a-b9fb-863eabbf7a88" title="Permalink to this equation">#</a></span>\[\begin{align}
 a_c &amp;= a(1+\epsilon_a ) = b_c - c_c = b(1+\epsilon_b ) - c(1+\epsilon_c )\\
 \frac{a_c}{a} &amp;= 1 + \epsilon_b \frac{b}{a} - \frac{c}{a}\epsilon_c  
 \end{align}\]</div>
@@ -547,12 +548,15 @@ $<span class="math notranslate nohighlight">\(\epsilon_a = \frac{b}{a}(\epsilon_
 which is much larger, when \)</span>b<span class="math notranslate nohighlight">\( and \)</span>c<span class="math notranslate nohighlight">\( are close (so \)</span>a$ is small).</p>
 <section id="example-of-substrative-cancellation">
 <h4>Example of substrative cancellation<a class="headerlink" href="#example-of-substrative-cancellation" title="Link to this heading">#</a></h4>
-<p>The following series,
-$<span class="math notranslate nohighlight">\(S_N^{(1)} = \sum_{n=1}^{2N} (-1)^n \frac{n}{n+1},\)</span><span class="math notranslate nohighlight">\(
-can be written in two mathematically equivalent ways:
-\)</span><span class="math notranslate nohighlight">\(S_N^{(2)} = -\sum_{n=1}^{N} \frac{2n-1}{2n} + \sum_{n=1}^{N} \frac{2n}{2n+1},\)</span><span class="math notranslate nohighlight">\(
-and
-\)</span><span class="math notranslate nohighlight">\(S_N^{(3)} = \sum_{n=1}^{N} \frac{1}{2n(2n+1)}.\)</span>$</p>
+<p>The following series,</p>
+<div class="math notranslate nohighlight">
+\[S_N^{(1)} = \sum_{n=1}^{2N} (-1)^n \frac{n}{n+1},\]</div>
+<p>can be written in two mathematically equivalent ways:</p>
+<div class="math notranslate nohighlight">
+\[S_N^{(2)} = -\sum_{n=1}^{N} \frac{2n-1}{2n} + \sum_{n=1}^{N} \frac{2n}{2n+1},\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[S_N^{(3)} = \sum_{n=1}^{N} \frac{1}{2n(2n+1)}.\]</div>
 <p><strong>Could there be any computational difference? why?</strong></p>
 <p>Write a program that compute all sums, and , assuming that <span class="math notranslate nohighlight">\(S_n^{(3)}\)</span> is the best option (why?), plots the relative difference with the other sums as a function of <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <div class="cell docutils container">
@@ -604,9 +608,11 @@ and
 </section>
 <section id="significant-figures-and-relative-precision">
 <h3>Significant figures and relative precision<a class="headerlink" href="#significant-figures-and-relative-precision" title="Link to this heading">#</a></h3>
-<p>Even simple cases like changing a sum order can give surprising results: Compute the following two sums and plot their relative difference as functions of <span class="math notranslate nohighlight">\(N\)</span>,
-$<span class="math notranslate nohighlight">\(S_N^{(1)}  = \sum_{n=1}^{N} \frac{1}{n}\)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\(S_N^{(2)}  = \sum_{n=N}^{1} \frac{1}{n}\)</span>$</p>
+<p>Even simple cases like changing a sum order can give surprising results: Compute the following two sums and plot their relative difference as functions of <span class="math notranslate nohighlight">\(N\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[S_N^{(1)}  = \sum_{n=1}^{N} \frac{1}{n}\]</div>
+<div class="math notranslate nohighlight">
+\[S_N^{(2)}  = \sum_{n=N}^{1} \frac{1}{n}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -637,13 +643,13 @@ $<span class="math notranslate nohighlight">\(1 + \epsilon_a + \epsilon_b\)</spa
 <section id="errors-in-algorithms-and-their-computational-implementation">
 <h3>Errors in algorithms and their computational implementation<a class="headerlink" href="#errors-in-algorithms-and-their-computational-implementation" title="Link to this heading">#</a></h3>
 <p>As you can see, there are several source for errors in computation. Some come from the mathematical approximation, , called <span class="math notranslate nohighlight">\(\epsilon_a\)</span>, and some others are intrinsic from the numerical representation, and we can call them <span class="math notranslate nohighlight">\(\epsilon_r\)</span>. Sometimes, the rounding/truncation error are modeled as a random walk, <span class="math notranslate nohighlight">\(\epsilon_r \simeq \sqrt{N} \epsilon_m\)</span>, where <span class="math notranslate nohighlight">\(\epsilon_m\)</span> is the machine precision, and <span class="math notranslate nohighlight">\(N\)</span> is the representative number of “steps”.  From here, the total error can be estimated as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-94687d7d-344f-40ba-810a-147ad7a64bcc">
-<span class="eqno">(2)<a class="headerlink" href="#equation-94687d7d-344f-40ba-810a-147ad7a64bcc" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-032526cf-5d90-4801-9eb0-a11cb0728041">
+<span class="eqno">(2)<a class="headerlink" href="#equation-032526cf-5d90-4801-9eb0-a11cb0728041" title="Permalink to this equation">#</a></span>\[\begin{align}
 \epsilon_{\rm tot} &amp;= \epsilon_a + \epsilon_r \\
 &amp;= \frac{\alpha}{N^\beta} + \sqrt{N} \epsilon_m.
 \end{align}\]</div>
 <p>You can derive this equation an compute the optimal value for <span class="math notranslate nohighlight">\(N\)</span>, which will depend on the order of the mathematical algorithm and the machine precision. The next table show some examples that illustrate this point:</p>
-<p><img alt="CleanShot%202022-08-21%20at%2000.12.12&#64;2x.png" src="02-numericalErrors/attachment:CleanShot%202022-08-21%20at%2000.12.12&#64;2x.png" /></p>
+<a class="reference internal image-reference" href="../_images/aprox_table.png"><img alt="../_images/aprox_table.png" src="../_images/aprox_table.png" style="width: 900px;" /></a>
 </section>
 </section>
 </section>
