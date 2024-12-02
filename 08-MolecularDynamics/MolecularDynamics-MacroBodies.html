@@ -640,7 +640,7 @@ Other possible like the radius are not as relevant now since we are focusing onl
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/704d7844956fcbe1ef962522952a13cf523093b7438fe5e9c11436fd96a28424.png" src="../_images/704d7844956fcbe1ef962522952a13cf523093b7438fe5e9c11436fd96a28424.png" />
+<img alt="../_images/0042207f6b09d37d8a22fc3080632b2cf0e11420db17a444734c829bb6ac8fe4.png" src="../_images/0042207f6b09d37d8a22fc3080632b2cf0e11420db17a444734c829bb6ac8fe4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -688,11 +688,11 @@ Other possible like the radius are not as relevant now since we are focusing onl
 <span class="ne">-&gt; </span><span class="mi">1120</span> <span class="bp">self</span><span class="o">.</span><span class="n">_draw_frame</span><span class="p">(</span><span class="n">framedata</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1121</span> <span class="bp">self</span><span class="o">.</span><span class="n">_post_draw</span><span class="p">(</span><span class="n">framedata</span><span class="p">,</span> <span class="n">blit</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:1746,</span> in <span class="ni">FuncAnimation._draw_frame</span><span class="nt">(self, framedata)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1744</span> <span class="c1"># Call the func with framedata and args. If blitting is desired,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1745</span> <span class="c1"># func needs to return a sequence of any artists that were modified.</span>
-<span class="ne">-&gt; </span><span class="mi">1746</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_artists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="n">framedata</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1748</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blit</span><span class="p">:</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:1752,</span> in <span class="ni">FuncAnimation._draw_frame</span><span class="nt">(self, framedata)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1750</span> <span class="c1"># Call the func with framedata and args. If blitting is desired,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1751</span> <span class="c1"># func needs to return a sequence of any artists that were modified.</span>
+<span class="ne">-&gt; </span><span class="mi">1752</span> <span class="bp">self</span><span class="o">.</span><span class="n">_drawn_artists</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_func</span><span class="p">(</span><span class="n">framedata</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_args</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1754</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_blit</span><span class="p">:</span>
 
 <span class="nn">Cell In[7], line 13,</span> in <span class="ni">animate</span><span class="nt">(i)</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="k">def</span> <span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
@@ -754,7 +754,7 @@ Other possible like the radius are not as relevant now since we are focusing onl
 <span class="ne">IndexError</span>: list index out of range
 </pre></div>
 </div>
-<img alt="../_images/78fa8599682fdc2c8bd2da8f6f765d2b40aa5387c8cbed0d6c4ac44ff8afaaaa.png" src="../_images/78fa8599682fdc2c8bd2da8f6f765d2b40aa5387c8cbed0d6c4ac44ff8afaaaa.png" />
+<img alt="../_images/42d8e7f082b1d20d3cf67c0dc039398ce83f530ee4d2fe899de933bfc60e656a.png" src="../_images/42d8e7f082b1d20d3cf67c0dc039398ce83f530ee4d2fe899de933bfc60e656a.png" />
 </div>
 </div>
 </section>
@@ -956,8 +956,8 @@ Other possible like the radius are not as relevant now since we are focusing onl
 <section id="exercise-adding-more-particles">
 <h2>Exercise: Adding more particles<a class="headerlink" href="#exercise-adding-more-particles" title="Link to this heading">#</a></h2>
 <p>Now let’s add more particles. They will not see each other unless we implement a force among them. Also, we will need to generalize our methods to process arrays of bodies. First, the force that particle <span class="math notranslate nohighlight">\(i\)</span> does on particle <span class="math notranslate nohighlight">\(j\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eab1d3a8-cd01-4fb9-aafb-cfdad1062e11">
-<span class="eqno">(30)<a class="headerlink" href="#equation-eab1d3a8-cd01-4fb9-aafb-cfdad1062e11" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f4405f20-af54-48b4-b534-1d3995e3b2d6">
+<span class="eqno">(30)<a class="headerlink" href="#equation-f4405f20-af54-48b4-b534-1d3995e3b2d6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{ij} = k \delta \hat n_{ij},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat n_{ij} = \vec R_{ij} / R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(\vec R_{ij} = \vec R_i - \vec R_j\)</span>, and <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(r\)</span> the radius of each particle.</p>

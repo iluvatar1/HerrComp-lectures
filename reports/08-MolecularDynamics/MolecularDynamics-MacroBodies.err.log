@@ -60,11 +60,11 @@ File [0;32m/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages
 [0;32m-> 1120[0m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_draw_frame[49m[43m([49m[43mframedata[49m[43m)[49m
 [1;32m   1121[0m [38;5;28mself[39m[38;5;241m.[39m_post_draw(framedata, blit)
 
-File [0;32m/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:1746[0m, in [0;36mFuncAnimation._draw_frame[0;34m(self, framedata)[0m
-[1;32m   1744[0m [38;5;66;03m# Call the func with framedata and args. If blitting is desired,[39;00m
-[1;32m   1745[0m [38;5;66;03m# func needs to return a sequence of any artists that were modified.[39;00m
-[0;32m-> 1746[0m [38;5;28mself[39m[38;5;241m.[39m_drawn_artists [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_func[49m[43m([49m[43mframedata[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_args[49m[43m)[49m
-[1;32m   1748[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_blit:
+File [0;32m/opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/matplotlib/animation.py:1752[0m, in [0;36mFuncAnimation._draw_frame[0;34m(self, framedata)[0m
+[1;32m   1750[0m [38;5;66;03m# Call the func with framedata and args. If blitting is desired,[39;00m
+[1;32m   1751[0m [38;5;66;03m# func needs to return a sequence of any artists that were modified.[39;00m
+[0;32m-> 1752[0m [38;5;28mself[39m[38;5;241m.[39m_drawn_artists [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_func[49m[43m([49m[43mframedata[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_args[49m[43m)[49m
+[1;32m   1754[0m [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39m_blit:
 
 Cell [0;32mIn[7], line 13[0m, in [0;36manimate[0;34m(i)[0m
 [1;32m     12[0m [38;5;28;01mdef[39;00m [38;5;21manimate[39m(i):

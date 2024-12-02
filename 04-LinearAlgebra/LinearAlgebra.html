@@ -442,6 +442,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-systems">Linear systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-index-a-matrix-note-python-indexes-start-at-0">How to index a Matrix? NOTE: Python indexes start at 0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-matrices-in-python">Defining matrices in python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy">Scipy</a></li>
@@ -517,9 +518,86 @@ Applications are numerous:</p>
 <a class="reference internal image-reference" href="../_images/Matrices-rotations-eigenvalues.png"><img alt="../_images/Matrices-rotations-eigenvalues.png" src="../_images/Matrices-rotations-eigenvalues.png" style="width: 900px;" /></a>
 <p>Ejemplos de rotaciones:</p>
 <ul class="simple">
-<li><p>https://www.glowscript.org/#/user/GlowScriptDemos/folder/Examples/program/Bounce-VPython</p></li>
-<li><p>https://www.glowscript.org/#/user/GlowScriptDemos/folder/Examples/program/Plot3D</p></li>
+<li><p><a class="reference external" href="https://www.glowscript.org/#/user/GlowScriptDemos/folder/Examples/program/Bounce-VPython">Particle bouncing</a></p></li>
+<li><p><a class="reference external" href="https://www.glowscript.org/#/user/GlowScriptDemos/folder/Examples/program/Plot3D">Plot 3d</a></p></li>
 </ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # READ: </span>
+<span class="c1"># # https://github.com/vpython/vpython-jupyter?tab=readme-ov-file</span>
+<span class="c1"># # https://github.com/dragonnomada/vpython-examples?tab=readme-ov-file</span>
+
+<span class="kn">import</span> <span class="nn">vpython</span> <span class="k">as</span> <span class="nn">vp</span>
+<span class="n">scene</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">canvas</span><span class="p">()</span>
+<span class="c1"># #vp.sphere()</span>
+
+<span class="c1"># axis_x = vp.arrow(pos=vp.vector(0, 0, 0), axis=vp.vector(1, 0, 0), color=vp.color.red)</span>
+<span class="c1"># axis_y = vp.arrow(pos=vp.vector(0, 0, 0), axis=vp.vector(0, 1, 0), color=vp.color.green)</span>
+<span class="c1"># axis_z = vp.arrow(pos=vp.vector(0, 0, 0), axis=vp.vector(0, 0, 1), color=vp.color.blue)</span>
+
+<span class="c1"># https://www.glowscript.org/docs/VPythonDocs/rotation.html</span>
+<span class="n">e</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">gear</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">extrusion</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span> <span class="n">shape</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">vp</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+    <span class="n">vp</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div id="glowscript" class="glowscript"></div></div><script type="application/javascript">if (typeof Jupyter !== "undefined") { window.__context = { glowscript_container: $("#glowscript").removeAttr("id")};}else{ element.textContent = ' ';}</script><div class="output text_html"><div id="glowscript" class="glowscript"></div></div><script type="application/javascript">if (typeof Jupyter !== "undefined") { window.__context = { glowscript_container: $("#glowscript").removeAttr("id")};}else{ element.textContent = ' ';}</script><div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># #vp.sphere()</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># axis_x = vp.arrow(pos=vp.vector(0, 0, 0), axis=vp.vector(1, 0, 0), color=vp.color.red)</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> 
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="c1"># https://www.glowscript.org/docs/VPythonDocs/rotation.html</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">e</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">shapes</span><span class="o">.</span><span class="n">gear</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">f</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">extrusion</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="p">[</span><span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)],</span> <span class="n">shape</span><span class="o">=</span><span class="n">e</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">f</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">vp</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/vpython/vpython.py:3946,</span> in <span class="ni">extrusion.__init__</span><span class="nt">(self, **args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3943</span>     <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">args</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span><span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">attr</span><span class="p">])</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pathlength</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3944</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;The &quot;</span><span class="o">+</span><span class="n">attr</span><span class="o">+</span><span class="s2">&quot; list must be the same length as the list of points on the path (&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pathlength</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;).&quot;</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3946</span> <span class="nb">super</span><span class="p">(</span><span class="n">extrusion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3948</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">_compound</span> <span class="o">=</span> <span class="bp">self</span> <span class="c1"># used by event handler to update pos and size</span>
+<span class="g g-Whitespace">   </span><span class="mi">3949</span> <span class="n">_wait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/vpython/vpython.py:612,</span> in <span class="ni">standardAttributes.setup</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span> <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">612</span>     <span class="nb">super</span><span class="p">(</span><span class="n">standardAttributes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_constructing</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1">## calls to setters are from constructor</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="n">objName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objName</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;_objName&#39;</span><span class="p">]</span>  <span class="c1">## identifies object type</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/vpython/vpython.py:265,</span> in <span class="ni">baseObj.__init__</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">baseObj</span><span class="o">.</span><span class="n">_view_constructed</span> <span class="ow">or</span>
+<span class="g g-Whitespace">    </span><span class="mi">263</span>         <span class="n">baseObj</span><span class="o">.</span><span class="n">_canvas_constructing</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span>     <span class="k">if</span> <span class="n">_isnotebook</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">265</span>         <span class="kn">from</span> <span class="nn">.with_notebook</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="g g-Whitespace">    </span><span class="mi">266</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span>         <span class="kn">from</span> <span class="nn">.no_notebook</span> <span class="kn">import</span> <span class="n">_</span>
+
+<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.10</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.11</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">vpython</span><span class="o">/</span><span class="n">with_notebook</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">71</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span>         <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>             <span class="c1">#logging.info(&quot;PermissionError: Unable to install /vpython_data directory and files for VPython on JupyterLab&quot;)</span>
+<span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="k">pass</span>
+<span class="ne">---&gt; </span><span class="mi">71</span> <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;nbextensions&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">jd</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">notebook</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&lt;=</span> <span class="s1">&#39;6.5.5&#39;</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="n">ldir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">nbdir</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;vpython_data&#39;</span> <span class="ow">in</span> <span class="n">ldir</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">nbdata</span><span class="p">))</span> <span class="o">==</span> <span class="n">datacnt</span> <span class="ow">and</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>        <span class="s1">&#39;vpython_libraries&#39;</span> <span class="ow">in</span> <span class="n">ldir</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">nblib</span><span class="p">))</span> <span class="o">==</span> <span class="n">libcnt</span> <span class="ow">and</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>         <span class="s1">&#39;vpython_version.txt&#39;</span> <span class="ow">in</span> <span class="n">ldir</span><span class="p">):</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/.local/share/jupyter&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="linear-systems">
+<h2>Linear systems<a class="headerlink" href="#linear-systems" title="Link to this heading">#</a></h2>
+<p>How to adapt to python the following matrix system?</p>
 <a class="reference internal image-reference" href="../_images/bungee-family-equ.png"><img alt="../_images/bungee-family-equ.png" src="../_images/bungee-family-equ.png" style="width: 800px;" /></a>
 <blockquote>
 <div><p>Write this as a linear system <span class="math notranslate nohighlight">\(A\vec x = \vec b\)</span>, with unknows <span class="math notranslate nohighlight">\(x_1, x_2, x_3\)</span></p>
@@ -538,6 +616,7 @@ x3)</p>
 <p>b = (m1g
 m2g
 m3g)</p>
+</section>
 <section id="how-to-index-a-matrix-note-python-indexes-start-at-0">
 <h2>How to index a Matrix? NOTE: Python indexes start at 0<a class="headerlink" href="#how-to-index-a-matrix-note-python-indexes-start-at-0" title="Link to this heading">#</a></h2>
 <p>For a discussion about starting at zero see: https://news.ycombinator.com/item?id=32581721
@@ -545,6 +624,7 @@ m3g)</p>
 </section>
 <section id="defining-matrices-in-python">
 <h2>Defining matrices in python<a class="headerlink" href="#defining-matrices-in-python" title="Link to this heading">#</a></h2>
+<p>DO NOT USE PYTHON LISTS!</p>
 <section id="scipy">
 <h3>Scipy<a class="headerlink" href="#scipy" title="Link to this heading">#</a></h3>
 <p>See https://docs.scipy.org/doc/numpy-1.17.0/reference/generated/numpy.array.html#numpy.array</p>
@@ -562,23 +642,6 @@ m3g)</p>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[1][0] : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[:,-1] : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
-Matrix : 
- [[1 2]
- [3 4]]
-Matrix : 
- [[1 2]
- [3 4]]
-A[1,0] : 
- 3
-A[1][0] : 
- 3
-A[:,-1] : 
- [2 4]
 </pre></div>
 </div>
 </div>
@@ -605,20 +668,6 @@ A[:,-1] :
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 6  1]
- [ 0 28]]
-[[ 5 -2]
- [-9 96]]
-[[ 0.2        -2.        ]
- [-1.          0.16666667]]
-0.2
--2.0
-[[1. 1.]
- [1. 1.]]
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="solving-linear-systems-a-vec-x-vec-b">
@@ -640,14 +689,6 @@ A[:,-1] :
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution: 
- [41.202 55.917 71.613]
-Delta:
- [-1.13686838e-13  1.25055521e-12  1.13686838e-13]
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -666,13 +707,6 @@ Delta:
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Solution: 
- [-0.53668664  0.41613785  0.33499696 -0.25658521 -0.38753596 -0.10495264
- -0.46206209  0.27787852 -0.64707541 -0.95912089]
-</pre></div>
-</div>
-</div>
 </div>
 <section id="exercise-rewrite-and-solve-the-following-system">
 <h3>Exercise: Rewrite and solve the following system<a class="headerlink" href="#exercise-rewrite-and-solve-the-following-system" title="Link to this heading">#</a></h3>
@@ -681,17 +715,6 @@ Delta:
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
 <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># YOUR CODE HERE</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-
-<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
 </div>
@@ -706,7 +729,7 @@ Delta:
 </section>
 <section id="id1">
 <h3>Exercise: Rewrite and solve the following system<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
-<p>Extra: Can yu measure the time spent in the computation? (google for timer or timeit in python)</p>
+<p>Extra: Can you measure the time spent in the computation? (google for timer or timeit in python)</p>
 <a class="reference internal image-reference" href="../_images/linear-example-02.png"><img alt="../_images/linear-example-02.png" src="../_images/linear-example-02.png" style="width: 600px;" /></a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -805,16 +828,17 @@ not special. Compute the quantity <code class="docutils literal notranslate"><sp
 </div>
 <section id="the-condition-number">
 <h3>The condition number<a class="headerlink" href="#the-condition-number" title="Link to this heading">#</a></h3>
-<p>The number
-$<span class="math notranslate nohighlight">\(\kappa = ||A|| ||A^{-1}||\)</span><span class="math notranslate nohighlight">\(
-is called the condition number of a matrix. Ideally it is \)</span>1<span class="math notranslate nohighlight">\(. If \)</span>\kappa$ is much
+<p>The number</p>
+<div class="math notranslate nohighlight">
+\[\kappa = ||A|| ||A^{-1}||\]</div>
+<p>is called the condition number of a matrix. Ideally it is <span class="math notranslate nohighlight">\(1\)</span>. If <span class="math notranslate nohighlight">\(\kappa\)</span> is much
 larger than one, the matrix is ill-conditioned and the solution
 might have a lot of error.</p>
 <blockquote>
 <div><p>Compute the condition number of the following matrix:</p>
 </div></blockquote>
-<div class="amsmath math notranslate nohighlight" id="equation-1ee4137d-687d-49fd-9ae4-0930b11fcc9e">
-<span class="eqno">(10)<a class="headerlink" href="#equation-1ee4137d-687d-49fd-9ae4-0930b11fcc9e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-47eb5929-a0e5-44e8-a51a-69dae97c8461">
+<span class="eqno">(10)<a class="headerlink" href="#equation-47eb5929-a0e5-44e8-a51a-69dae97c8461" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A = 
 \begin{bmatrix}
 1.001 &amp; 0.001\\
@@ -864,24 +888,17 @@ A =
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For profiling, check https://stackoverflow.com/questions/44734297/how-to-profile-python-3-5-code-line-by-line-in-jupyter-notebook-5</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>py-heat-magic
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install heat</span>
+<span class="o">%</span><span class="k">load_ext</span> heat
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> heat
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%%heat</span>
-<span class="c1"># YOUR CODE HERE</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%</span><span class="k">heat</span>
+# YOUR CODE HERE
+raise NotImplementedError()
 </pre></div>
 </div>
 </div>
@@ -918,8 +935,8 @@ REF: https://www.reddit.com/r/math/comments/b7ou6t/3blue1brown_overview_of_diffe
 </div>
 <section id="id3">
 <h3>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
-<p>Find the eigen-values and eigen-vectors for the following system
-<a class="reference internal" href="../_images/eigen-exer-02.png"><img alt="../_images/eigen-exer-02.png" src="../_images/eigen-exer-02.png" style="width: 700px;" /></a></p>
+<p>Find the eigen-values and eigen-vectors for the following system</p>
+<a class="reference internal image-reference" href="../_images/eigen-exer-02.png"><img alt="../_images/eigen-exer-02.png" src="../_images/eigen-exer-02.png" style="width: 700px;" /></a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -979,8 +996,8 @@ REF: https://www.reddit.com/r/math/comments/b7ou6t/3blue1brown_overview_of_diffe
 <section id="thick-lens-boas-3-15-9">
 <h3>Thick lens (Boas, 3.15.9)<a class="headerlink" href="#thick-lens-boas-3-15-9" title="Link to this heading">#</a></h3>
 <p>The next matrix is used when discussing a thick lens in air</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ca5d9453-58c4-4384-86f6-c77d8ef53b37">
-<span class="eqno">(11)<a class="headerlink" href="#equation-ca5d9453-58c4-4384-86f6-c77d8ef53b37" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-32848f8c-cd4d-4910-813e-a7e1b8d7e617">
+<span class="eqno">(11)<a class="headerlink" href="#equation-32848f8c-cd4d-4910-813e-a7e1b8d7e617" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A = 
 \begin{pmatrix}
 1 &amp; (n-1)/R_2\\
@@ -1157,6 +1174,7 @@ d/n &amp; 1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-systems">Linear systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-index-a-matrix-note-python-indexes-start-at-0">How to index a Matrix? NOTE: Python indexes start at 0</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-matrices-in-python">Defining matrices in python</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy">Scipy</a></li>
