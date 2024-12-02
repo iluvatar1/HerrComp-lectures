@@ -35,6 +35,8 @@ ipympl
 lmfit
 jupyter-repo2docker
 
+py-heat-magic
+
 # fenics stuff
 # superlu_dist==6.2.0
 # fenics
