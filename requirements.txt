@@ -37,6 +37,9 @@ jupyter-repo2docker
 
 py-heat-magic
 
+nnv
+
+
 # fenics stuff
 # superlu_dist==6.2.0
 # fenics
