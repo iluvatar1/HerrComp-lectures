@@ -478,29 +478,20 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">nnv</span> <span class="kn">import</span> <span class="n">NNV</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">layersList</span> <span class="o">=</span> <span class="p">[</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;input&quot;</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;darkBlue&quot;</span><span class="p">},</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;hidden 1</span><span class="se">\n</span><span class="s2">(sigmoid)&quot;</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;edges_color&quot;</span><span class="p">:</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;edges_width&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="p">{</span><span class="s2">&quot;title&quot;</span><span class="p">:</span><span class="s2">&quot;output</span><span class="se">\n</span><span class="s2">(sigmoid)&quot;</span><span class="p">,</span> <span class="s2">&quot;units&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span><span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;darkBlue&quot;</span><span class="p">},</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="p">]</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">NNV</span><span class="p">(</span><span class="n">layersList</span><span class="p">)</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;nnv&#39;
+<img alt="../_images/1ae21dc3d18c277e9c443c097e1650c101fb22b2ff791d06da706133d56dd520.png" src="../_images/1ae21dc3d18c277e9c443c097e1650c101fb22b2ff791d06da706133d56dd520.png" />
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&lt;Figure size 640x480 with 1 Axes&gt;, &lt;Axes: &gt;)
 </pre></div>
 </div>
 </div>
 </div>
 <p>To understand better the training, let’s show explicitly the weights
 <img alt="weightds" src="../_images/weights.png" /></p>
-<p>Here <span class="math notranslate nohighlight">\(\phi\)</span> is called the activation function, and there are several proposals to it. We will use a sigmoid function
-$<span class="math notranslate nohighlight">\(
+<p>Here <span class="math notranslate nohighlight">\(\phi\)</span> is called the activation function, and there are several proposals to it. We will use a sigmoid function</p>
+<div class="amsmath math notranslate nohighlight" id="equation-81f58560-1fad-4cb3-b8a3-331228a0c660">
+<span class="eqno">(12)<a class="headerlink" href="#equation-81f58560-1fad-4cb3-b8a3-331228a0c660" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x) = \dfrac{1}{1+\exp(-x)},
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>x = \sum x_i w_i$.</p>
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x = \sum x_i w_i\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -523,6 +514,12 @@ where \)</span>x = \sum x_i w_i$.</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">rf</span><span class="s2">&quot;sigmoid(x)&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;sigmoid(x)&#39;)
+</pre></div>
+</div>
+<img alt="../_images/127687d28ce6a2a246a43aa3a740080c6a5b297b2bbf2514aeb2d0bce2898598.png" src="../_images/127687d28ce6a2a246a43aa3a740080c6a5b297b2bbf2514aeb2d0bce2898598.png" />
 </div>
 </div>
 <section id="basic-implementation">
@@ -581,6 +578,21 @@ where \)</span>x = \sum x_i w_i$.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[0 0 1]
+ [1 1 1]
+ [1 0 1]
+ [0 1 1]]
+[[0]
+ [1]
+ [1]
+ [0]]
+[[-0.16595599]
+ [ 0.44064899]
+ [-0.99977125]]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,6 +601,20 @@ where \)</span>x = \sum x_i w_i$.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">outputs_t</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Results after one step training:&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training outputs:
+[[0]
+ [1]
+ [1]
+ [0]]
+Results after one step training:
+[[0.2689864 ]
+ [0.3262757 ]
+ [0.23762817]
+ [0.36375058]]
 </pre></div>
 </div>
 </div>
@@ -608,7 +634,11 @@ where \)</span>x = \sum x_i w_i$.</p>
 \[
 \Delta w = \Delta \times \text{input} \times \phi'(output),
 \]</div>
-<p>where <span class="math notranslate nohighlight">\(\phi'\)</span> is the derivative of the activation function. In our one-dimensional case we can compute it easily, but with more complex problems it becomes a gradient and its efficient computation is very important (remember automatic differentiation?)</p>
+<p>where <span class="math notranslate nohighlight">\(\phi'\)</span> is the derivative of the activation function. In our one-dimensional case we can compute it easily, but with more complex problems it becomes a gradient and its efficient computation is very important (remember automatic differentiation?) . If you want to learn about backpropagation, I recommend to watch the following excellent tutorials:</p>
+<ul class="simple">
+<li><p>https://www.youtube.com/watch?v=SmZmBKc7Lrs</p></li>
+<li><p>https://www.youtube.com/watch?v=Ilg3gGewQ5U</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sigmoid_prime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -660,6 +690,23 @@ where \)</span>x = \sum x_i w_i$.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Training outputs:
+[[0]
+ [1]
+ [1]
+ [0]]
+Results after training:
+[[0.0042779 ]
+ [0.99650925]
+ [0.99715469]
+ [0.00348742]]
+[[11.30926129]
+ [-0.20509237]
+ [-5.45001623]]
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -671,6 +718,12 @@ where \)</span>x = \sum x_i w_i$.</p>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Epoch&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, &#39;Epoch&#39;)
+</pre></div>
+</div>
+<img alt="../_images/449c58bbb5a8887226c634341d95b2cd746257bf8b5f49b1cf90a477530ccd73.png" src="../_images/449c58bbb5a8887226c634341d95b2cd746257bf8b5f49b1cf90a477530ccd73.png" />
 </div>
 </div>
 <p>It seems that our network is very well trained, But how does it perform with a new input? let’s check with <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0]</span></code></p>
@@ -686,6 +739,11 @@ where \)</span>x = \sum x_i w_i$.</p>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999877412862083
+</pre></div>
+</div>
+</div>
 </div>
 <p>Which is basically one, as expected.
 There are more topics related to this that we have not used, like more layers, more neurons per hidden layer, bias on the activation function, and a lot of other details, but hopefully you now see how a neural network works on the core.</p>
@@ -693,6 +751,7 @@ There are more topics related to this that we have not used, like more layers, m
 <ul class="simple">
 <li><p>3blue1brown Neural Networks: https://www.youtube.com/watch?v=aircAruvnKk&amp;list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi</p></li>
 <li><p>Neural networks from scratch: https://www.youtube.com/watch?v=9RN2Wr8xvro</p></li>
+<li><p>NN playground: https://playground.tensorflow.org</p></li>
 </ul>
 <p>TODO:</p>
 <ul class="simple">
