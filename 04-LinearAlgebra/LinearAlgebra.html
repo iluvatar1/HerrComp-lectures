@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles.css?v=03b9d5b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -214,9 +214,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -527,7 +532,7 @@ Applications are numerous:</p>
 <span class="c1"># # https://github.com/vpython/vpython-jupyter?tab=readme-ov-file</span>
 <span class="c1"># # https://github.com/dragonnomada/vpython-examples?tab=readme-ov-file</span>
 
-<span class="kn">import</span> <span class="nn">vpython</span> <span class="k">as</span> <span class="nn">vp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">vpython</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vp</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">canvas</span><span class="p">()</span>
 <span class="c1"># #vp.sphere()</span>
 
@@ -559,28 +564,28 @@ Applications are numerous:</p>
 <span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">f</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">vp</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/vpython/vpython.py:3946,</span> in <span class="ni">extrusion.__init__</span><span class="nt">(self, **args)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/vpython/vpython.py:3946,</span> in <span class="ni">extrusion.__init__</span><span class="nt">(self, **args)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3943</span>     <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">args</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span><span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">attr</span><span class="p">])</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pathlength</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">3944</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;The &quot;</span><span class="o">+</span><span class="n">attr</span><span class="o">+</span><span class="s2">&quot; list must be the same length as the list of points on the path (&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pathlength</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;).&quot;</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">3946</span> <span class="nb">super</span><span class="p">(</span><span class="n">extrusion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3948</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">_compound</span> <span class="o">=</span> <span class="bp">self</span> <span class="c1"># used by event handler to update pos and size</span>
 <span class="g g-Whitespace">   </span><span class="mi">3949</span> <span class="n">_wait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/vpython/vpython.py:612,</span> in <span class="ni">standardAttributes.setup</span><span class="nt">(self, args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">611</span> <span class="k">def</span> <span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/vpython/vpython.py:612,</span> in <span class="ni">standardAttributes.setup</span><span class="nt">(self, args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span> <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">612</span>     <span class="nb">super</span><span class="p">(</span><span class="n">standardAttributes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 <span class="g g-Whitespace">    </span><span class="mi">613</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_constructing</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1">## calls to setters are from constructor</span>
 <span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="n">objName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objName</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;_objName&#39;</span><span class="p">]</span>  <span class="c1">## identifies object type</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.10/x64/lib/python3.11/site-packages/vpython/vpython.py:265,</span> in <span class="ni">baseObj.__init__</span><span class="nt">(self, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.11/x64/lib/python3.11/site-packages/vpython/vpython.py:265,</span> in <span class="ni">baseObj.__init__</span><span class="nt">(self, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">262</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">baseObj</span><span class="o">.</span><span class="n">_view_constructed</span> <span class="ow">or</span>
 <span class="g g-Whitespace">    </span><span class="mi">263</span>         <span class="n">baseObj</span><span class="o">.</span><span class="n">_canvas_constructing</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">264</span>     <span class="k">if</span> <span class="n">_isnotebook</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">265</span>         <span class="kn">from</span> <span class="nn">.with_notebook</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="ne">--&gt; </span><span class="mi">265</span>         <span class="kn">from</span><span class="w"> </span><span class="nn">.with_notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">_</span>
 <span class="g g-Whitespace">    </span><span class="mi">266</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">267</span>         <span class="kn">from</span> <span class="nn">.no_notebook</span> <span class="kn">import</span> <span class="n">_</span>
+<span class="g g-Whitespace">    </span><span class="mi">267</span>         <span class="kn">from</span><span class="w"> </span><span class="nn">.no_notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">_</span>
 
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.10</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.11</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">vpython</span><span class="o">/</span><span class="n">with_notebook</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">71</span>
+<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.11</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.11</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">vpython</span><span class="o">/</span><span class="n">with_notebook</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">71</span>
 <span class="g g-Whitespace">     </span><span class="mi">66</span>         <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">67</span>             <span class="c1">#logging.info(&quot;PermissionError: Unable to install /vpython_data directory and files for VPython on JupyterLab&quot;)</span>
 <span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="k">pass</span>
@@ -630,7 +635,7 @@ m3g)</p>
 <p>See https://docs.scipy.org/doc/numpy-1.17.0/reference/generated/numpy.array.html#numpy.array</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>  <span class="c1"># primera fila, indice es 0</span>
               <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span> <span class="c1"># Segunda fila, indice es 1</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
@@ -653,7 +658,7 @@ m3g)</p>
 <p>Add, substract, multiply, etc</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">24</span><span class="p">]])</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span> <span class="c1"># sum</span>
@@ -676,7 +681,7 @@ m3g)</p>
 <a class="reference internal" href="../_images/linear-example-01.png"><img alt="../_images/linear-example-01.png" src="../_images/linear-example-01.png" style="width: 600px;" /></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> 
               <span class="p">[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">],</span> 
@@ -692,7 +697,7 @@ m3g)</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="c1">#np.random.seed(10) # Play with this value</span>
 
@@ -799,8 +804,8 @@ not special. Compute the quantity <code class="docutils literal notranslate"><sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">time</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span> 
               <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># magic</span>
@@ -814,8 +819,8 @@ not special. Compute the quantity <code class="docutils literal notranslate"><sp
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># magic</span>
@@ -837,8 +842,8 @@ might have a lot of error.</p>
 <blockquote>
 <div><p>Compute the condition number of the following matrix:</p>
 </div></blockquote>
-<div class="amsmath math notranslate nohighlight" id="equation-afc99b7f-7ed4-49d3-b1d4-ecd16d5d37f8">
-<span class="eqno">(10)<a class="headerlink" href="#equation-afc99b7f-7ed4-49d3-b1d4-ecd16d5d37f8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-77d23a80-8485-438f-a016-bc3336a24c0e">
+<span class="eqno">(10)<a class="headerlink" href="#equation-77d23a80-8485-438f-a016-bc3336a24c0e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A = 
 \begin{bmatrix}
 1.001 &amp; 0.001\\
@@ -848,8 +853,8 @@ A =
 <p>Plot the associate system to check for the result</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span>
                 <span class="p">[</span><span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">]])</span>
 <span class="n">kappa</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
@@ -864,9 +869,9 @@ A =
 <p>How does the computing time grows with the matrix size?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">time</span> <span class="c1"># use time.process_time_ns() , compare with monotonic_ns()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span> <span class="c1"># use time.process_time_ns() , compare with monotonic_ns()</span>
 
 <span class="n">MINSIZE</span><span class="o">=</span><span class="mi">1</span>
 <span class="n">MAXSIZE</span><span class="o">=</span><span class="mi">5000</span>
@@ -920,8 +925,8 @@ aeigenvalues is hard, and they can also be complex.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># See : https://docs.scipy.org/doc/scipy/reference/generated/scipy.linalg.eig.html#scipy.linalg.eig</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">linalg</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">linalg</span>
 <span class="c1">#A = np.array([[0., -1.], [1., 0.]])</span>
 <span class="c1">#A = np.array([[1, 0.], [0., 2.]])</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
@@ -997,8 +1002,8 @@ aeigenvalues is hard, and they can also be complex.</p>
 <section id="thick-lens-boas-3-15-9">
 <h3>Thick lens (Boas, 3.15.9)<a class="headerlink" href="#thick-lens-boas-3-15-9" title="Link to this heading">#</a></h3>
 <p>The next matrix is used when discussing a thick lens in air</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0eaa6c3b-06c6-473e-9a7b-a28bd91c338e">
-<span class="eqno">(11)<a class="headerlink" href="#equation-0eaa6c3b-06c6-473e-9a7b-a28bd91c338e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bc06c49b-9e57-419c-b1a0-c1b46f548f3e">
+<span class="eqno">(11)<a class="headerlink" href="#equation-bc06c49b-9e57-419c-b1a0-c1b46f548f3e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A = 
 \begin{pmatrix}
 1 &amp; (n-1)/R_2\\
@@ -1261,8 +1266,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles.css?v=03b9d5b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -214,9 +214,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -470,30 +475,30 @@
 <li><p>Landau y Paez, Computational physics</p></li>
 <li><p>Boudreau et al, Applied Computational Physics</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-43d95d0f-47cb-477f-bd0c-ae63028fe0d9">
-<span class="eqno">(48)<a class="headerlink" href="#equation-43d95d0f-47cb-477f-bd0c-ae63028fe0d9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4d44aeb8-b2b6-4584-8288-b87e22c9c491">
+<span class="eqno">(48)<a class="headerlink" href="#equation-4d44aeb8-b2b6-4584-8288-b87e22c9c491" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = \left[ \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2}\right] = -\frac{\rho}{\epsilon_0}
 \end{equation}\]</div>
 <p>In 2D, there are several solutions and the actual one depends on the boundary conditions. For example, for the Laplace equation you have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb450f71-f316-4dda-a720-d7b68cc199a0">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eb450f71-f316-4dda-a720-d7b68cc199a0" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-76f06f23-b781-4c16-86e2-fe82ffdb8bd7">
+<span class="eqno">(49)<a class="headerlink" href="#equation-76f06f23-b781-4c16-86e2-fe82ffdb8bd7" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, y) &amp; = V_0,\\
 V(x, y) &amp; = \frac{1}{2} A (x^2 - y^2) + Bx + Cy + D
 \end{align}\]</div>
 <p>as solutions.</p>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> method discretizes the derivatives on a grid. For instance, using the central difference it is possible to rewrite the 2D Poisson equation as (<a class="reference external" href="https://en.wikipedia.org/wiki/Laplace%27s_equation">Laplace equation</a> corresponds to <span class="math notranslate nohighlight">\(\rho = 0\)</span> )</p>
-<div class="amsmath math notranslate nohighlight" id="equation-381df997-577e-4a7c-bed1-45df07760c74">
-<span class="eqno">(50)<a class="headerlink" href="#equation-381df997-577e-4a7c-bed1-45df07760c74" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e6cdc397-d255-40f9-b3f2-912dc8ac884f">
+<span class="eqno">(50)<a class="headerlink" href="#equation-e6cdc397-d255-40f9-b3f2-912dc8ac884f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V(x_i + \Delta x, y_j) - 2V(x_i, y_j) + V(x_i - \Delta x, y_j)}{\Delta x^2} + \frac{V(x_i, y_j + \Delta y) - 2V(x_i, y_j) + V(x_i, y_j - \Delta y)}{\Delta y^2} = -\frac{\rho(x_i, y_j)}{\epsilon_0}.
 \end{equation}\]</div>
 <p>which can be rewritten as  (let’s assume <span class="math notranslate nohighlight">\(\Delta x = \Delta y = \Delta\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0b4208cf-ee25-42e4-aea1-3155300a894b">
-<span class="eqno">(51)<a class="headerlink" href="#equation-0b4208cf-ee25-42e4-aea1-3155300a894b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e2dff1a0-c051-4441-8107-d774f5b2e284">
+<span class="eqno">(51)<a class="headerlink" href="#equation-e2dff1a0-c051-4441-8107-d774f5b2e284" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V_{i+1, j} - 2V_{i, j} + V_{i-1, j}}{\Delta^2} + \frac{V_{i,j+1} - 2V_{i, j} + V_{i, j-1}}{\Delta^2} = -\frac{\rho_{i, j}}{\epsilon_0},
 \end{equation}\]</div>
 <p>and, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-96b92f12-9800-4073-a426-6fa0358c1e34">
-<span class="eqno">(52)<a class="headerlink" href="#equation-96b92f12-9800-4073-a426-6fa0358c1e34" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b2670578-f518-42e5-a6d9-4b0508bd0665">
+<span class="eqno">(52)<a class="headerlink" href="#equation-b2670578-f518-42e5-a6d9-4b0508bd0665" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j}\Delta^2}{\epsilon_0}.
 \end{equation}\]</div>
 <p>This can be seen in two ways: as a matrix equation or as an equation showing that the value at a given position, <span class="math notranslate nohighlight">\(V_{i, j}\)</span>, is kind of an average of the surrounding neighbors and the source term (<a class="reference external" href="https://en.wikipedia.org/wiki/Jacobi_method">Jacobi method</a>), as seen (ref: https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation)</p>
@@ -502,24 +507,24 @@ V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j
 <section id="relaxation-solution">
 <h2>Relaxation solution<a class="headerlink" href="#relaxation-solution" title="Link to this heading">#</a></h2>
 <p>Let’s solve the Laplace problem (<span class="math notranslate nohighlight">\(\rho = 0\)</span>) using both methods with a simple example. Fix the boundaries as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-25e75eb3-79db-4ce6-9942-ac299ed4786e">
-<span class="eqno">(53)<a class="headerlink" href="#equation-25e75eb3-79db-4ce6-9942-ac299ed4786e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ee9a4c00-18f9-4395-8b56-396c1afac782">
+<span class="eqno">(53)<a class="headerlink" href="#equation-ee9a4c00-18f9-4395-8b56-396c1afac782" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, 0) &amp;= \sin(\pi x),\\
 V(x, a) &amp;= 0, \\
 V(0, y) &amp;= 0, \\
 V(a, y) &amp;= 0, \\
 \end{align}\]</div>
 <p>with <span class="math notranslate nohighlight">\(x, y \in [0, 1]\)</span>, and <span class="math notranslate nohighlight">\(a \)</span> any value on the border. These are called <a class="reference external" href="https://en.wikipedia.org/wiki/Dirichlet_boundary_condition">Dirichlet boundary conditions</a> (where you specify the function values at the boundary). Finally, use at least <span class="math notranslate nohighlight">\(N_x = N_y = 25\)</span>, so <span class="math notranslate nohighlight">\(\Delta = 1/25\)</span>, <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta, y_j = y_0 + j\Delta\)</span>. We need to solve the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b1ddd451-b879-4d31-9980-fafd6e8decbc">
-<span class="eqno">(54)<a class="headerlink" href="#equation-b1ddd451-b879-4d31-9980-fafd6e8decbc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-86bf3e98-0a35-40ba-b740-076859731c1f">
+<span class="eqno">(54)<a class="headerlink" href="#equation-86bf3e98-0a35-40ba-b740-076859731c1f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 \end{equation}\]</div>
 <p>To do so, we apply this relationship to each point in the grid, without overwriting the boundary conditions, and we do that until the values are not changing much. Firs, let’s define the problem conditions (to be changed later)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Global problem definition</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">def</span> <span class="nf">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="n">XMIN</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">YMIN</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">DELTA</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">N</span>
@@ -561,7 +566,7 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">jacobi</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">jacobi</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.25</span><span class="o">*</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> 
                                <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
@@ -583,8 +588,8 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <p>Finally, let’s perform some iterations to check if the system is converging somewhere</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_system</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">):</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
     <span class="n">bc</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
@@ -611,8 +616,8 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <p>Or let’s check it  graphically</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_system</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">):</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
     <span class="n">bc</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
@@ -645,7 +650,7 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">solve_system</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">):</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
     <span class="n">bc</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
@@ -763,7 +768,7 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <p>Now let’s plot the actual solution</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">solve_system</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">solve_system</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">):</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
     <span class="n">bc</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
@@ -821,8 +826,8 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <section id="exercise-plot-the-electrical-field">
 <h2>Exercise: Plot the electrical field<a class="headerlink" href="#exercise-plot-the-electrical-field" title="Link to this heading">#</a></h2>
 <p>For any of the previous examples, use (for example) a quiver plot to plot the electric field, defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe2636db-7343-4d0e-bedb-105ff2f14bc9">
-<span class="eqno">(55)<a class="headerlink" href="#equation-fe2636db-7343-4d0e-bedb-105ff2f14bc9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ea8cf39c-8db5-447a-bc0a-1f0cb929d49d">
+<span class="eqno">(55)<a class="headerlink" href="#equation-ea8cf39c-8db5-447a-bc0a-1f0cb929d49d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec E = -\vec\nabla V
 \end{equation}\]</div>
 <p>See https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb</p>
@@ -844,9 +849,9 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <p>Calibrate <span class="math notranslate nohighlight">\(\omega\)</span>  (see https://en.wikipedia.org/wiki/Successive_over-relaxation)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">numba</span> <span class="kn">import</span> <span class="n">jit</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">jit</span>
 <span class="nd">@jit</span>
-<span class="k">def</span> <span class="nf">gs_sor_opt</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">omega</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gs_sor_opt</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">omega</span><span class="p">):</span>
     <span class="n">matrix_old</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># Might be slow, creates copies all the time</span>
     <span class="n">gs_opt</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
     <span class="n">rij</span> <span class="o">=</span> <span class="n">matrix</span> <span class="o">-</span> <span class="n">matrix_old</span>
@@ -1011,8 +1016,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

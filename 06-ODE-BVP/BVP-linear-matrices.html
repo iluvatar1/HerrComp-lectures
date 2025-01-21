@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles.css?v=03b9d5b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -214,9 +214,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -460,33 +465,33 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="boundary-value-problems-linear-case-and-matrices">
+  <section id="boundary-value-problems-linear-case-and-matrices">
 <h1>Boundary value problems: linear case and matrices<a class="headerlink" href="#boundary-value-problems-linear-case-and-matrices" title="Link to this heading">#</a></h1>
 <p>When the BVP is linear, you can solve it either using the interpolation already shown, or by formulating the problem as a matrix system. The later is based on a <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">finite difference</a> discretization for the derivatives. Let’s start with the following problem, representing the temperature <span class="math notranslate nohighlight">\(T\)</span> across a linear bar (Chapra, 27.1)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6f3dd85d-be36-4f4b-866e-187a85734022">
-<span class="eqno">(38)<a class="headerlink" href="#equation-6f3dd85d-be36-4f4b-866e-187a85734022" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b9862d7c-c565-4597-a55a-c8a2558df8a5">
+<span class="eqno">(38)<a class="headerlink" href="#equation-b9862d7c-c565-4597-a55a-c8a2558df8a5" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{d^2T}{dx^2} + h'(T_a - T) = 0,  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h'\)</span> is the transfer coefficient (m<span class="math notranslate nohighlight">\(^{-2}\)</span>), and <span class="math notranslate nohighlight">\(T_a\)</span> is the sourronding air temperature. The boundary conditions are <span class="math notranslate nohighlight">\(T(0) = T_1 = 40\)</span>, <span class="math notranslate nohighlight">\(T(L=10) = T_2 = 200\)</span>, and <span class="math notranslate nohighlight">\(T_a = 20\)</span>. Also, <span class="math notranslate nohighlight">\(h' = 0.01\)</span>.</p>
 <p>First, please solve the problem both theoretically and then using <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code> or yout own method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_bvp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_bvp</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">solve_bvp_plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">xf</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">xf</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
@@ -504,7 +509,7 @@
 <span class="ne">---&gt; </span><span class="mi">21</span> <span class="n">solve_bvp_plot</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
 
 <span class="nn">Cell In[1], line 18,</span> in <span class="ni">solve_bvp_plot</span><span class="nt">(x0, xf, params)</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="k">def</span> <span class="nf">solve_bvp_plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">xf</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">xf</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="c1"># YOUR CODE HERE</span>
 <span class="ne">---&gt; </span><span class="mi">18</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
@@ -515,23 +520,23 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
@@ -542,28 +547,28 @@
 </div>
 </div>
 <p>Now let’s proceed with a different way: by discretizing the derivatives and setting the equation on the points. We have,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73521ac1-0673-48c3-9533-44b45e7644de">
-<span class="eqno">(39)<a class="headerlink" href="#equation-73521ac1-0673-48c3-9533-44b45e7644de" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ff628956-5412-4ff1-89b5-a6776af2b2d8">
+<span class="eqno">(39)<a class="headerlink" href="#equation-ff628956-5412-4ff1-89b5-a6776af2b2d8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dx^2} \simeq \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2},  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> is the partition size, so the original equation takes the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b0a9a66d-87f4-45f1-9d56-925dcc9a8b2d">
-<span class="eqno">(40)<a class="headerlink" href="#equation-b0a9a66d-87f4-45f1-9d56-925dcc9a8b2d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f6c5d2f5-c656-4445-8b7d-346e717faf0e">
+<span class="eqno">(40)<a class="headerlink" href="#equation-f6c5d2f5-c656-4445-8b7d-346e717faf0e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2} - h'(T_i - T_a) = 0.  
 \end{equation}\]</div>
 <p>Finally, after collecting terms, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d52bbdc-50e1-4a3e-84ac-a7cdf05f619a">
-<span class="eqno">(41)<a class="headerlink" href="#equation-0d52bbdc-50e1-4a3e-84ac-a7cdf05f619a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3bf5935c-e8a1-480b-b638-84a38fe4acb7">
+<span class="eqno">(41)<a class="headerlink" href="#equation-3bf5935c-e8a1-480b-b638-84a38fe4acb7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -T_{i-1} + (2+h'\Delta x^2)T_i - T_{i+1} = h'\Delta x^2T_a \to -T_{i-1} + \alpha T_i - T_{i+1} = \beta.
 \end{equation}\]</div>
 <p>This is a tri-diagonal system for the internal points.</p>
 <p>YOUR ANSWER HERE</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
 
-<span class="k">def</span> <span class="nf">solve_bvp_finite_diffs</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ALPHA</span><span class="p">,</span> <span class="n">BETA</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_finite_diffs</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ALPHA</span><span class="p">,</span> <span class="n">BETA</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    N : number of internal points</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -593,8 +598,8 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;paper&#39;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">DX</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
@@ -608,8 +613,8 @@
 <section id="generic-bvp">
 <h3>Generic BVP<a class="headerlink" href="#generic-bvp" title="Link to this heading">#</a></h3>
 <p>Solve the following equation using the shooting method and the matrix method,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5e93052e-0e31-4363-be2c-ff104c0d9653">
-<span class="eqno">(42)<a class="headerlink" href="#equation-5e93052e-0e31-4363-be2c-ff104c0d9653" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-86ce2af6-1a30-4681-afd9-49a36c43f82b">
+<span class="eqno">(42)<a class="headerlink" href="#equation-86ce2af6-1a30-4681-afd9-49a36c43f82b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 7\frac{d^2y}{dx^2} -  2\frac{dy}{dx} - y +x = 0,
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(y(0) = 5, y(20) = 8\)</span></p>
@@ -617,8 +622,8 @@
 <section id="bvp-with-newman-condition">
 <h3>BVP with Newman condition<a class="headerlink" href="#bvp-with-newman-condition" title="Link to this heading">#</a></h3>
 <p>Here we will add a boundary condition on the derivative, on the left, which means that the left node is also an unknown. In that case you can use <span class="math notranslate nohighlight">\(dT/dx \simeq = (T_{1} - T_{-1})/2\Delta x\)</span> so <span class="math notranslate nohighlight">\(T_{-1} = T_1 -2 \Delta x dT/\Delta x\)</span> and then you get the value for the imaginary node <span class="math notranslate nohighlight">\(T_{-1}\)</span> which is now needed. Solve following system:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c66754e8-fd3f-4f08-adcd-7bfb8bb7cb41">
-<span class="eqno">(43)<a class="headerlink" href="#equation-c66754e8-fd3f-4f08-adcd-7bfb8bb7cb41" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ac1ea945-5518-421b-927f-7e836014d76a">
+<span class="eqno">(43)<a class="headerlink" href="#equation-ac1ea945-5518-421b-927f-7e836014d76a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dr^2} + \frac{1}{r}\frac{dT}{dr} + S = 0,
 \end{equation}\]</div>
 <p>over <span class="math notranslate nohighlight">\(0 \le r\le 1\)</span>, with <span class="math notranslate nohighlight">\(T(r=1) = 1\)</span> and <span class="math notranslate nohighlight">\(\frac{dT}{dr} = 0\)</span> in <span class="math notranslate nohighlight">\(r=0\)</span>, for S = 1, 10, and 20 K/m<span class="math notranslate nohighlight">\(^2\)</span>. This is a model of the temperature distribution on  a circular rod with internal heat source <span class="math notranslate nohighlight">\(S\)</span>.</p>
@@ -626,8 +631,8 @@
 <section id="deflection-of-a-sailboat-mast-chapra-28-22">
 <h3>Deflection of a sailboat mast (Chapra 28.22)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-22" title="Link to this heading">#</a></h3>
 <p>The following equation can be used to model the deflection of a sailboat mast subject to wind force,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-da538c43-9b78-4cd0-adda-83bf5e2859a9">
-<span class="eqno">(44)<a class="headerlink" href="#equation-da538c43-9b78-4cd0-adda-83bf5e2859a9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0b1354fd-9e02-413c-b9bf-98a00bdfcc91">
+<span class="eqno">(44)<a class="headerlink" href="#equation-0b1354fd-9e02-413c-b9bf-98a00bdfcc91" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2y}{dz^2} = \frac{f}{2EI}(L-z)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is the wind force, <span class="math notranslate nohighlight">\(E\)</span> is the modulus of elasticity, <span class="math notranslate nohighlight">\(L\)</span> the mast length, and <span class="math notranslate nohighlight">\(I\)</span> the inertia moment. Compute the deflection as a function of <span class="math notranslate nohighlight">\(z\)</span> if <span class="math notranslate nohighlight">\(y = 0\)</span> and <span class="math notranslate nohighlight">\(dy/dz = 0\)</span> at <span class="math notranslate nohighlight">\(z = 0\)</span>. Use <span class="math notranslate nohighlight">\(f = 60, L = 30, E = 1.25\times 10^8, I = 0.05\)</span></p>
@@ -635,8 +640,8 @@
 <section id="deflection-of-a-sailboat-mast-chapra-28-23">
 <h3>Deflection of a sailboat mast (Chapra 28.23)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-23" title="Link to this heading">#</a></h3>
 <p>Same previous problem but now the force varies with height as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-badbba11-e871-4238-a322-d868dfc4976a">
-<span class="eqno">(45)<a class="headerlink" href="#equation-badbba11-e871-4238-a322-d868dfc4976a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-391beb1c-8ced-417a-bd57-555ce948a8aa">
+<span class="eqno">(45)<a class="headerlink" href="#equation-391beb1c-8ced-417a-bd57-555ce948a8aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(z) = \frac{200z}{5+z}e^{-2z/30}.
 \end{equation}\]</div>
 </section>
@@ -763,8 +768,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>

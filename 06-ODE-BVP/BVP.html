@@ -16,8 +16,8 @@
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
     document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
-  <!-- 
-    this give us a css class that will be invisible only if js is disabled 
+  <!--
+    this give us a css class that will be invisible only if js is disabled
   -->
   <noscript>
     <style>
@@ -27,10 +27,10 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -40,10 +40,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles.css?v=03b9d5b1" />
   
   <!-- So that users can add custom icons -->
-  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
 
     <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../_static/doctools.js?v=9a2dae69"></script>
@@ -214,9 +214,14 @@
   
   
   <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
   </div>
-  
-  <div id="rtd-footer-container"></div>
 
 
       </div>
@@ -464,42 +469,141 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bvp-boundary-value-problems">
 <h1>BVP: Boundary value problems<a class="headerlink" href="#bvp-boundary-value-problems" title="Link to this heading">#</a></h1>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Boundary_value_problem">Boundary value problems</a> (BVP) are very common in both theoretical (Sturm-Liuvoille problems) and engineering applications . In this case, boundary, not initial, conditions are specified. For example, you specify the initial and final positions of a particles, instead of the initial position and velocity. BVP are more difficult to solve, and also represent our first step towards partial differential equations. Here will learn how to use IVP techniques to solve BVP by using the so-called <a class="reference external" href="https://en.wikipedia.org/wiki/Shooting_method">shooting method</a>. We will also check an alternative formulation, in terms of <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">finite differences</a>, where the BVP will be written as a matrix problem that will be solved using the previously seen techniques. We will also compare our solutions with the ones obtained from using <code class="docutils literal notranslate"><span class="pre">scipy</span></code> and the <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> method, https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_bvp.html.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Boundary_value_problem">Boundary value problems</a> (BVP) are very common in both theoretical (Sturm-Liuvoille problems) and engineering applications . In this case, boundary, not initial, conditions are specified. For example, you specify the initial and final positions of a particles, instead of the initial position and velocity. A typical application is the <a class="reference external" href="https://en.wikipedia.org/wiki/Particle_in_a_box?useskin=vector">infinite well</a>, where the particle must have :</p>
+<figure>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Infinite_potential_well-en.svg/330px-Infinite_potential_well-en.svg.png" width=30%>
+<figcaption>https://en.wikipedia.org/wiki/Particle_in_a_box?useskin=vector </figcaption>
+</figure>
+<p>BVP are more difficult to solve, and also represent our first step towards partial differential equations. Here will learn how to use IVP techniques to solve BVP by using the so-called <a class="reference external" href="https://en.wikipedia.org/wiki/Shooting_method">shooting method</a>. We will also check an alternative formulation, in terms of <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">finite differences</a>, where the BVP will be written as a matrix problem that will be solved using the previously seen techniques. We will also compare our solutions with the ones obtained from using <code class="docutils literal notranslate"><span class="pre">scipy</span></code> and the <code class="docutils literal notranslate"><span class="pre">solve_ivp</span></code> method, <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.15.0/reference/generated/scipy.integrate.solve_bvp.html">solve_bvp</a>.</p>
 <section id="shooting-method">
 <h2>Shooting method<a class="headerlink" href="#shooting-method" title="Link to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Shooting_method">shooting method</a> uses IVP solutions to estimate the best initial condition to solve the BVP. Imagine that you want to estimate the initial velocity for the cannon ball in order to make sure that it hits a given target at position <span class="math notranslate nohighlight">\(b\)</span>.</p>
 <figure>
 <img src="https://pythonnumericalmethods.berkeley.edu/_images/23.02.01-shooting.png" width=60%>
 <figcaption>Reproducido de: https://pythonnumericalmethods.berkeley.edu/notebooks/chapter23.02-The-Shooting-Method.html </figcaption>
-</figure>
-</section>
+</figure></section>
 <section id="linear-shooting-method-interpolation">
 <h2>Linear shooting method: interpolation<a class="headerlink" href="#linear-shooting-method-interpolation" title="Link to this heading">#</a></h2>
-<p>The <em>linear</em> shooting method solves the problem for two different initial conditions, and from them computes the exact initial conditions needed.  Then it solves again the BVP as a simple IVP given the extra and correct initial condition found. Let’s assume we have a linear second order equation. If you put the initial values <span class="math notranslate nohighlight">\((y_{0}, v_{0a})\)</span>, you get the final value <span class="math notranslate nohighlight">\(y_{fa}\)</span> (first ICP solution). If you put the initial values <span class="math notranslate nohighlight">\((y_{0}, v_{0b})\)</span>, you get the final value <span class="math notranslate nohighlight">\(y_{fb}\)</span> (second IVP solution). By taking into account the linear nature of the problem, we can compute the straight-line equation in the <span class="math notranslate nohighlight">\(v_0 - y_f\)</span> space to get the right initial condition as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5e0c2839-6b8b-402b-a757-54cd6d9af235">
-<span class="eqno">(34)<a class="headerlink" href="#equation-5e0c2839-6b8b-402b-a757-54cd6d9af235" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<p>The <em>linear</em> shooting method solves the problem for two different initial conditions, and from them computes the exact initial conditions needed (<strong>on the derivative</strong>).  Then it solves again the BVP as a simple IVP given the extra and correct initial condition found. Let’s assume we have a linear second order equation. If you put the initial values <span class="math notranslate nohighlight">\((y_{0}, v_{0a})\)</span>, you get the final value <span class="math notranslate nohighlight">\(y_{fa}\)</span> (first ICP solution). If you put the initial values <span class="math notranslate nohighlight">\((y_{0}, v_{0b})\)</span>, you get the final value <span class="math notranslate nohighlight">\(y_{fb}\)</span> (second IVP solution).</p>
+<p>For instance, let’s check the following example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span>
+
+<span class="c1"># Define the second-order differential equation (e.g., damped harmonic oscillator)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ode</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Defines the system of first-order differential equations </span>
+<span class="sd">    representing the second-order ODE.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      t: Time.</span>
+<span class="sd">      y: Array containing [y, y&#39;].</span>
+<span class="sd">      k: Spring constant.</span>
+<span class="sd">      b: Damping coefficient.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">      Array containing [y&#39;, y&#39;&#39;].</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">y1</span><span class="p">,</span> <span class="n">y2</span> <span class="o">=</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">y2</span><span class="p">,</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">y1</span> <span class="o">-</span> <span class="n">b</span> <span class="o">*</span> <span class="n">y2</span><span class="p">]</span>
+
+<span class="c1"># Function to solve and plot the ODE</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_and_plot</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">v0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Solves the ODE using solve_ivp and plots the solution.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">      k: Spring constant.</span>
+<span class="sd">      b: Damping coefficient.</span>
+<span class="sd">      y0: Initial displacement.</span>
+<span class="sd">      v0: Initial velocity.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">t_span</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Time interval for integration</span>
+    <span class="n">y0_vec</span> <span class="o">=</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">v0</span><span class="p">]</span>  <span class="c1"># Initial conditions as a vector</span>
+
+    <span class="c1"># Solve the ODE</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">ode</span><span class="p">,</span> <span class="n">t_span</span><span class="p">,</span> <span class="n">y0_vec</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span> <span class="n">dense_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Generate time points for plotting</span>
+    <span class="n">t_plot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t_span</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">t_span</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+
+    <span class="c1"># Interpolate the solution at the plotting points</span>
+    <span class="n">y_plot</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">sol</span><span class="p">(</span><span class="n">t_plot</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="c1"># Plot the solution</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_plot</span><span class="p">,</span> <span class="n">y_plot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Displacement&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;k=</span><span class="si">{</span><span class="n">k</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, b=</span><span class="si">{</span><span class="n">b</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, y0=</span><span class="si">{</span><span class="n">y0</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, v0=</span><span class="si">{</span><span class="n">v0</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">, yf=</span><span class="si">{</span><span class="n">y_plot</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Create interactive widgets</span>
+<span class="n">k_slider</span> <span class="o">=</span> <span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">b_slider</span> <span class="o">=</span> <span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+<span class="n">y0_slider</span> <span class="o">=</span> <span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">5</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;y0&#39;</span><span class="p">)</span>
+<span class="n">v0_slider</span> <span class="o">=</span> <span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mi">10</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;v0&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create the interactive plot</span>
+<span class="n">interact</span><span class="p">(</span><span class="n">solve_and_plot</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k_slider</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="n">b_slider</span><span class="p">,</span> <span class="n">y0</span><span class="o">=</span><span class="n">y0_slider</span><span class="p">,</span> <span class="n">v0</span><span class="o">=</span><span class="n">v0_slider</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0be08c5b64a54cb1aef56a515a4a6f05"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO for you: Create a plot of the final position as a function of y0, with fixed parameters</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In general, if the problem is linear, one has that a given initial condition in the first derivative gives a unique final value in position,</p>
+<img alt="../_images/BVP-solutions.png" src="../_images/BVP-solutions.png" />
+<p>and if this functions is linear (given that the equation is linear) then we can interpolate as shown</p>
+<img alt="../_images/BVP-linear-interpolation.png" src="../_images/BVP-linear-interpolation.png" />
+<p>By taking into account the linear nature of the problem, we can compute the straight-line equation in the <span class="math notranslate nohighlight">\(v_0 - y_f\)</span> space to get the right initial condition as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8adf72c6-90bb-42a4-88ca-713df75eea75">
+<span class="eqno">(34)<a class="headerlink" href="#equation-8adf72c6-90bb-42a4-88ca-713df75eea75" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v_0 = v_{0a} + \frac{y_f - y_{fa}}{y_{fb} - y_{fa}}(v_{0b} - v_{0a}).
 \end{equation}\]</div>
 <p>Then, by using that initial condition, we compute the actual solution (third IVP solution).</p>
+<p><strong>EXAMPLE</strong></p>
 <p>As an example, let’s solve the following problem (Chapra 24.11): Compound <span class="math notranslate nohighlight">\(A\)</span> diffuses through a 4-cm-long tube and reacts as it diffuses. The process can be  modeled as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27226be3-d89d-4b6e-85ca-e501344f5342">
-<span class="eqno">(35)<a class="headerlink" href="#equation-27226be3-d89d-4b6e-85ca-e501344f5342" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6145ff21-af1d-42b5-be2e-cfc3ce076b27">
+<span class="eqno">(35)<a class="headerlink" href="#equation-6145ff21-af1d-42b5-be2e-cfc3ce076b27" title="Permalink to this equation">#</a></span>\[\begin{equation}
 D\frac{d^2A}{dx^2} - kA = 0.  
 \end{equation}\]</div>
 <p>At <span class="math notranslate nohighlight">\(x=0\)</span> there is a large source of <span class="math notranslate nohighlight">\(A\)</span> with fixed concentration of <span class="math notranslate nohighlight">\(0.1\)</span> M. At the other end there is a material that quickly absorbs <span class="math notranslate nohighlight">\(A\)</span>, so the concentration is 0 M. If <span class="math notranslate nohighlight">\(D = 1.5\times 10^{-6}\)</span> cm<span class="math notranslate nohighlight">\(^2\)</span>/s and <span class="math notranslate nohighlight">\(k = 5\times 10^{-6}\)</span> s<span class="math notranslate nohighlight">\(_1\)</span>, what is the concentration along the tube?</p>
-<p>Write a function that returns the correct initial derivative value and plots the concentration along the tube.</p>
+<p>Write a function that returns the correct initial derivative value and plots the concentration along the tube. The pseudo algorithm would be</p>
+<div class="highlight-conf notranslate"><div class="highlight"><pre><span></span>- Solve the ivp with an arbitrary (but reasonable) initial condition on velocity. Store the final &quot;position&quot; value.
+- Solve the ivp with another arbitrary (but reasonable) initial condition on velocity. Store the final &quot;position&quot; value.
+- Applyt hte interpolation formula to compute the appropriate initial condition. 
+- Plot the final solution
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 
-<span class="k">def</span> <span class="nf">mysolve_bvp</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0a</span><span class="p">,</span> <span class="n">v0b</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mysolve_bvp</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0a</span><span class="p">,</span> <span class="n">v0b</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
@@ -511,13 +615,13 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5e-6</span><span class="p">,</span> <span class="mf">5e-6</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">mysolve_bvp</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
 
-<span class="nn">Cell In[1], line 12,</span> in <span class="ni">mysolve_bvp</span><span class="nt">(y0, yf, v0a, v0b, t0, tf, dt, params)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="k">def</span> <span class="nf">mysolve_bvp</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0a</span><span class="p">,</span> <span class="n">v0b</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="nn">Cell In[3], line 12,</span> in <span class="ni">mysolve_bvp</span><span class="nt">(y0, yf, v0a, v0b, t0, tf, dt, params)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="k">def</span><span class="w"> </span><span class="nf">mysolve_bvp</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0a</span><span class="p">,</span> <span class="n">v0b</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="c1"># YOUR CODE HERE</span>
 <span class="ne">---&gt; </span><span class="mi">12</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
@@ -529,31 +633,57 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </section>
 <section id="linear-shooting-method-root-finding">
 <h2>Linear shooting method: root finding<a class="headerlink" href="#linear-shooting-method-root-finding" title="Link to this heading">#</a></h2>
-<p>The previous problem can be written as a root finding procedure. If we see the IVP solution as a function of the initial velocity condition, <span class="math notranslate nohighlight">\(y_f = g(v_0)\)</span> (plus other parameters), then we can see this problem as a root finding one, looking for the right <span class="math notranslate nohighlight">\(v_0\)</span> that gives <span class="math notranslate nohighlight">\(h(v_0) = 0 = g(v_0) - y_f\)</span>. As you can see later, this will allow us to extend the shooting method to non-linear problems. Python allows us to compute roots using the <code class="docutils literal notranslate"><span class="pre">scipy.optimize.root</span></code> method, https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.root.html .</p>
+<p>The previous problem can be written as a root finding procedure. And this allows to generalize the procedure to non-linear problems. If we see the IVP solution as a function of the initial velocity condition, <span class="math notranslate nohighlight">\(y_f = g(v_0)\)</span> (plus other parameters), then we can see this problem as a root finding one, looking for the right <span class="math notranslate nohighlight">\(v_0\)</span> that gives <span class="math notranslate nohighlight">\(h(v_0) = 0 = g(v_0) - y_f\)</span>. As you can see later, this will allow us to extend the shooting method to non-linear problems. Python allows us to compute roots using the <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.15.0/reference/generated/scipy.optimize.root.html"><code class="docutils literal notranslate"><span class="pre">scipy.optimize.root</span></code></a> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_ivp</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
 
+<span class="c1"># Set up seaborn styling</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Derivative function for the ODE system&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 
-<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to be zeroed - returns the difference between computed final value and desired final value&quot;&quot;&quot;</span>
+    <span class="c1"># Convert v0 to float in case it comes as an array</span>
+    <span class="c1">#print(v0)</span>
+    <span class="n">v0</span> <span class="o">=</span> <span class="n">v0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0_guess</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve the boundary value problem using root finding&quot;&quot;&quot;</span>
+    <span class="c1"># Find the initial velocity that satisfies the boundary condition</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">v0_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+    <span class="n">v0</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found initial velocity: </span><span class="si">{</span><span class="n">v0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     
+    <span class="c1"># Solve the IVP with the found initial velocity</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">v0</span><span class="p">],</span> 
+                    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span>
+                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
+    
+    <span class="c1"># Create the plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Solution&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Boundary Value Problem Solution&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">v0</span>
+
+<span class="c1"># Example parameters and solution</span>
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5e-6</span><span class="p">,</span> <span class="mf">5e-6</span><span class="p">)</span>
-<span class="n">solve_bvp_root</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
+<span class="n">v0_solution</span> <span class="o">=</span> <span class="n">solve_bvp_root</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -564,24 +694,52 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <p>As we said, formulating the problem as a root finding one allows us to extend the method to non-linear systems (there are even better generalization like the  https://en.wikipedia.org/wiki/Direct_multiple_shooting_method). Let’s now solve the same problem but adding some  drag coefficient, <span class="math notranslate nohighlight">\(f_v = -b v\)</span></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">root</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
-<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
 
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="c1"># Set up seaborn styling</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;poster&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Derivative function for the ODE system&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
 
-<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Function to be zeroed - returns the difference between computed final value and desired final value&quot;&quot;&quot;</span>
+    <span class="c1"># Convert v0 to float in case it comes as an array</span>
+    <span class="c1">#print(v0)</span>
+    <span class="n">v0</span> <span class="o">=</span> <span class="n">v0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0_guess</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve the boundary value problem using root finding&quot;&quot;&quot;</span>
+    <span class="c1"># Find the initial velocity that satisfies the boundary condition</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">v0_guess</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+    <span class="n">v0</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found initial velocity: </span><span class="si">{</span><span class="n">v0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    
+    <span class="c1"># Solve the IVP with the found initial velocity</span>
+    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">v0</span><span class="p">],</span> 
+                    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span>
+                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
+    
+    <span class="c1"># Create the plot</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Solution&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y(t)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Boundary Value Problem Solution&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">v0</span>
 
+<span class="c1"># Example parameters and solution</span>
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5e-6</span><span class="p">,</span> <span class="mf">5e-6</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
 <span class="n">solve_bvp_root</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.33</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5e-6</span><span class="p">,</span> <span class="mf">5e-6</span><span class="p">,</span> <span class="mf">4.8920</span><span class="p">)</span>
@@ -593,7 +751,7 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </section>
 <section id="using-scipy-solve-bvp">
 <h2>Using <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code><a class="headerlink" href="#using-scipy-solve-bvp" title="Link to this heading">#</a></h2>
-<p>The <code class="docutils literal notranslate"><span class="pre">scipy</span></code> module offers an useful function, https://docs.scipy.org/doc/scipy/reference/generated/scipy.integrate.solve_bvp.html , to solve the problems we have been exploring. Check the manual and adapt the method Be careful: parameters are now treated as something that can vary, like the initial velocity or the energy in a quantum system, so our previous parameter use should be updated.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">scipy</span></code> module offers an useful function, <a class="reference external" href="https://docs.scipy.org/doc/scipy-1.15.0/reference/generated/scipy.integrate.solve_bvp.html">scipy.integrate.solve_ivp</a> , to solve the problems we have been exploring. Check the manual and adapt the method Be careful: parameters are now treated as something that can vary, like the initial velocity or the energy in a quantum system, so our previous parameter use should be updated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
@@ -608,8 +766,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="ecuacion-de-schroedinger-workshop">
 <h3>Ecuación de Schroedinger (workshop)<a class="headerlink" href="#ecuacion-de-schroedinger-workshop" title="Link to this heading">#</a></h3>
 <p>Una partícula se encuentra confinada en un potencial infinito descrito por</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f1b245f9-bc1a-4304-a475-789177cc58c7">
-<span class="eqno">(36)<a class="headerlink" href="#equation-f1b245f9-bc1a-4304-a475-789177cc58c7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-893a124c-db9f-460e-a251-1741598cca69">
+<span class="eqno">(36)<a class="headerlink" href="#equation-893a124c-db9f-460e-a251-1741598cca69" title="Permalink to this equation">#</a></span>\[\begin{equation}
   V(x) = 
   \begin{cases}
   0, 0 \le x \le L,\\
@@ -617,8 +775,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
   \end{cases}
 \end{equation}\]</div>
 <p>La ecuación de onda <span class="math notranslate nohighlight">\(\phi\)</span> de la partícula (independiente del tiempo) es</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5a812df0-8e5f-4604-a173-cac21a6cd923">
-<span class="eqno">(37)<a class="headerlink" href="#equation-5a812df0-8e5f-4604-a173-cac21a6cd923" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9b69b255-e99c-46c4-b5b7-79d1d22c2765">
+<span class="eqno">(37)<a class="headerlink" href="#equation-9b69b255-e99c-46c4-b5b7-79d1d22c2765" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{-\hbar^2}{2m} \frac{d^2\phi(x)}{dx^2} + V(x) \phi(x) = E\phi(x).
 \end{equation}\]</div>
 <p>Debido al potencial, la función de onda debe cumplir que <span class="math notranslate nohighlight">\(\phi(0) = \phi(L) = 0\)</span>.</p>
@@ -629,21 +787,21 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <p>YOUR ANSWER HERE</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">solve_bvp</span><span class="p">,</span> <span class="n">trapezoid</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_bvp</span><span class="p">,</span> <span class="n">trapezoid</span>
 
-<span class="k">def</span> <span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="n">V</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="p">(</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">V</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 
-<span class="k">def</span> <span class="nf">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">ya</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">yb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">ya</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">]</span>
 
-<span class="k">def</span> <span class="nf">solve_bvpE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvpE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </pre></div>
@@ -817,8 +975,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
-<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
 
   <footer class="bd-footer">
   </footer>
