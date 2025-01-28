@@ -67,8 +67,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Boundary value problems: linear case and matrices" href="BVP-linear-matrices.html" />
-    <link rel="prev" title="Ordinary Differential Equations : Initial value problems" href="../05-ODE-IVP/ODESystems-PhasePlane.html" />
+    <link rel="next" title="Molecular Dynamics" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html" />
+    <link rel="prev" title="IVP: Initial value problems" href="../05-ODE-IVP/ODESystems-PhasePlane.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -196,16 +196,31 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">Ordinary Differential Equations : Initial value problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">BVP: Boundary value problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="BVP-linear-matrices.html">Boundary value problems: linear case and matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07-vpython/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbers.html">Pseudo-random number generation</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/MonteCarlo-Simulation.html">Markov-chain Monte Carlo simulations</a></li>
+
+
+
 </ul>
 
     </div>
@@ -456,6 +471,14 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ecuacion-de-schroedinger-workshop">Ecuación de Schroedinger (workshop)</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-formulation-for-linear-boundary-value-problems">Matrix formulation for linear boundary value problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-exercises">Additional Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-bvp">Generic BVP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bvp-with-newman-condition">BVP with Newman condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deflection-of-a-sailboat-mast-chapra-28-22">Deflection of a sailboat mast (Chapra 28.22)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deflection-of-a-sailboat-mast-chapra-28-23">Deflection of a sailboat mast (Chapra 28.23)</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -556,7 +579,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "0be08c5b64a54cb1aef56a515a4a6f05"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fb03bc28b58840a9a058eb03cdafc734"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
 </pre></div>
 </div>
 </div>
@@ -573,15 +596,15 @@
 <p>and if this functions is linear (given that the equation is linear) then we can interpolate as shown</p>
 <img alt="../_images/BVP-linear-interpolation.png" src="../_images/BVP-linear-interpolation.png" />
 <p>By taking into account the linear nature of the problem, we can compute the straight-line equation in the <span class="math notranslate nohighlight">\(v_0 - y_f\)</span> space to get the right initial condition as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8adf72c6-90bb-42a4-88ca-713df75eea75">
-<span class="eqno">(34)<a class="headerlink" href="#equation-8adf72c6-90bb-42a4-88ca-713df75eea75" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-23cd4f56-4261-4102-89ee-bf658c4d0474">
+<span class="eqno">(34)<a class="headerlink" href="#equation-23cd4f56-4261-4102-89ee-bf658c4d0474" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v_0 = v_{0a} + \frac{y_f - y_{fa}}{y_{fb} - y_{fa}}(v_{0b} - v_{0a}).
 \end{equation}\]</div>
 <p>Then, by using that initial condition, we compute the actual solution (third IVP solution).</p>
 <p><strong>EXAMPLE</strong></p>
 <p>As an example, let’s solve the following problem (Chapra 24.11): Compound <span class="math notranslate nohighlight">\(A\)</span> diffuses through a 4-cm-long tube and reacts as it diffuses. The process can be  modeled as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6145ff21-af1d-42b5-be2e-cfc3ce076b27">
-<span class="eqno">(35)<a class="headerlink" href="#equation-6145ff21-af1d-42b5-be2e-cfc3ce076b27" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2bfe7675-f2de-4005-8423-5161c0790586">
+<span class="eqno">(35)<a class="headerlink" href="#equation-2bfe7675-f2de-4005-8423-5161c0790586" title="Permalink to this equation">#</a></span>\[\begin{equation}
 D\frac{d^2A}{dx^2} - kA = 0.  
 \end{equation}\]</div>
 <p>At <span class="math notranslate nohighlight">\(x=0\)</span> there is a large source of <span class="math notranslate nohighlight">\(A\)</span> with fixed concentration of <span class="math notranslate nohighlight">\(0.1\)</span> M. At the other end there is a material that quickly absorbs <span class="math notranslate nohighlight">\(A\)</span>, so the concentration is 0 M. If <span class="math notranslate nohighlight">\(D = 1.5\times 10^{-6}\)</span> cm<span class="math notranslate nohighlight">\(^2\)</span>/s and <span class="math notranslate nohighlight">\(k = 5\times 10^{-6}\)</span> s<span class="math notranslate nohighlight">\(_1\)</span>, what is the concentration along the tube?</p>
@@ -766,8 +789,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="ecuacion-de-schroedinger-workshop">
 <h3>Ecuación de Schroedinger (workshop)<a class="headerlink" href="#ecuacion-de-schroedinger-workshop" title="Link to this heading">#</a></h3>
 <p>Una partícula se encuentra confinada en un potencial infinito descrito por</p>
-<div class="amsmath math notranslate nohighlight" id="equation-893a124c-db9f-460e-a251-1741598cca69">
-<span class="eqno">(36)<a class="headerlink" href="#equation-893a124c-db9f-460e-a251-1741598cca69" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7382ed14-293c-47b3-b886-c676f1eb6718">
+<span class="eqno">(36)<a class="headerlink" href="#equation-7382ed14-293c-47b3-b886-c676f1eb6718" title="Permalink to this equation">#</a></span>\[\begin{equation}
   V(x) = 
   \begin{cases}
   0, 0 \le x \le L,\\
@@ -775,8 +798,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
   \end{cases}
 \end{equation}\]</div>
 <p>La ecuación de onda <span class="math notranslate nohighlight">\(\phi\)</span> de la partícula (independiente del tiempo) es</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9b69b255-e99c-46c4-b5b7-79d1d22c2765">
-<span class="eqno">(37)<a class="headerlink" href="#equation-9b69b255-e99c-46c4-b5b7-79d1d22c2765" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8a77c8db-d958-425b-bcdb-baada6f790b8">
+<span class="eqno">(37)<a class="headerlink" href="#equation-8a77c8db-d958-425b-bcdb-baada6f790b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{-\hbar^2}{2m} \frac{d^2\phi(x)}{dx^2} + V(x) \phi(x) = E\phi(x).
 \end{equation}\]</div>
 <p>Debido al potencial, la función de onda debe cumplir que <span class="math notranslate nohighlight">\(\phi(0) = \phi(L) = 0\)</span>.</p>
@@ -851,6 +874,174 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </div>
 </section>
 </section>
+<section id="matrix-formulation-for-linear-boundary-value-problems">
+<h2>Matrix formulation for linear boundary value problems<a class="headerlink" href="#matrix-formulation-for-linear-boundary-value-problems" title="Link to this heading">#</a></h2>
+<p>When the BVP is linear, you can solve it either using the interpolation already shown, or by formulating the problem as a matrix system. The later is based on a <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">finite difference</a> discretization for the derivatives. Let’s start with the following problem, representing the temperature <span class="math notranslate nohighlight">\(T\)</span> across a linear bar (Chapra, 27.1)</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9f8be325-eb45-4e6c-9ebd-50b7179fb38b">
+<span class="eqno">(38)<a class="headerlink" href="#equation-9f8be325-eb45-4e6c-9ebd-50b7179fb38b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+  \frac{d^2T}{dx^2} + h'(T_a - T) = 0,  
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(h'\)</span> is the transfer coefficient (m<span class="math notranslate nohighlight">\(^{-2}\)</span>), and <span class="math notranslate nohighlight">\(T_a\)</span> is the sourronding air temperature. The boundary conditions are <span class="math notranslate nohighlight">\(T(0) = T_1 = 40\)</span>, <span class="math notranslate nohighlight">\(T(L=10) = T_2 = 200\)</span>, and <span class="math notranslate nohighlight">\(T_a = 20\)</span>. Also, <span class="math notranslate nohighlight">\(h' = 0.01\)</span>.</p>
+<p>First, please solve the problem both theoretically and then using <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code> or yout own method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_bvp</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">xf</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
+<span class="n">solve_bvp_plot</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.optimize</span><span class="w"> </span><span class="kn">import</span> <span class="n">root</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.integrate</span><span class="w"> </span><span class="kn">import</span> <span class="n">solve_ivp</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">solve_bvp_root</span><span class="p">(</span><span class="mf">40.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">10.9</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s proceed with a different way: by discretizing the derivatives and setting the equation on the points. We have,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5c8744f8-9910-43fa-aabb-414c29a12548">
+<span class="eqno">(39)<a class="headerlink" href="#equation-5c8744f8-9910-43fa-aabb-414c29a12548" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{d^2T}{dx^2} \simeq \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2},  
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> is the partition size, so the original equation takes the form</p>
+<div class="amsmath math notranslate nohighlight" id="equation-e4340e1e-a958-43b3-8ede-499a0e0fca40">
+<span class="eqno">(40)<a class="headerlink" href="#equation-e4340e1e-a958-43b3-8ede-499a0e0fca40" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2} - h'(T_i - T_a) = 0.  
+\end{equation}\]</div>
+<p>Finally, after collecting terms, we have</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b986bf27-a3ca-495b-ba52-6bae63ee14b4">
+<span class="eqno">(41)<a class="headerlink" href="#equation-b986bf27-a3ca-495b-ba52-6bae63ee14b4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+-T_{i-1} + (2+h'\Delta x^2)T_i - T_{i+1} = h'\Delta x^2T_a \to -T_{i-1} + \alpha T_i - T_{i+1} = \beta.
+\end{equation}\]</div>
+<p>This is a tri-diagonal system for the internal points.</p>
+<blockquote>
+<div><p><strong>Exercise:</strong> Write the matrix system assuming three internal points plus the boundary points. Hint: Start with <span class="math notranslate nohighlight">\(i=1\)</span>, you will get <span class="math notranslate nohighlight">\(-T_0 + \alpha T_1 - T_2 = \beta\)</span>. Then for <span class="math notranslate nohighlight">\(i=2\)</span> you get <span class="math notranslate nohighlight">\(-T_1 + \alpha T_2 - T_3 = \beta\)</span> and so on. Then you get your matrix system. Your unknowns are the internal points.</p>
+</div></blockquote>
+<p>Now, given the matrix system, solve it using the already seen matrix methods. Compare with the exact solution and the ones obtained from using the shooting method or <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sp</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_finite_diffs</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ALPHA</span><span class="p">,</span> <span class="n">BETA</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    N : number of internal points</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">BETA</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> 
+    <span class="c1"># Set diagonal elements</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="c1"># Solve the system Mx = b</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="n">T1</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">T2</span><span class="p">]))</span>
+
+<span class="n">HPRIME</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">DX</span> <span class="o">=</span> <span class="n">L</span><span class="o">/</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># +2 by adding the boundaries -1 by number of intervals</span>
+<span class="n">TA</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">T1</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">T2</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">ALPHA</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">HPRIME</span><span class="o">*</span><span class="n">DX</span><span class="o">*</span><span class="n">DX</span>
+<span class="n">BETA</span> <span class="o">=</span> <span class="n">HPRIME</span><span class="o">*</span><span class="n">DX</span><span class="o">*</span><span class="n">DX</span><span class="o">*</span><span class="n">TA</span>
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">solve_bvp_finite_diffs</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">ALPHA</span><span class="p">,</span> <span class="n">BETA</span><span class="p">,</span> <span class="n">T1</span><span class="p">,</span> <span class="n">T2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;paper&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">DX</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="additional-exercises">
+<h2>Additional Exercises<a class="headerlink" href="#additional-exercises" title="Link to this heading">#</a></h2>
+<section id="generic-bvp">
+<h3>Generic BVP<a class="headerlink" href="#generic-bvp" title="Link to this heading">#</a></h3>
+<p>Solve the following equation using the shooting method and the matrix method,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dee54b8a-5545-46d5-8566-d79c4b666e31">
+<span class="eqno">(42)<a class="headerlink" href="#equation-dee54b8a-5545-46d5-8566-d79c4b666e31" title="Permalink to this equation">#</a></span>\[\begin{equation}
+7\frac{d^2y}{dx^2} -  2\frac{dy}{dx} - y +x = 0,
+\end{equation}\]</div>
+<p>with <span class="math notranslate nohighlight">\(y(0) = 5, y(20) = 8\)</span></p>
+</section>
+<section id="bvp-with-newman-condition">
+<h3>BVP with Newman condition<a class="headerlink" href="#bvp-with-newman-condition" title="Link to this heading">#</a></h3>
+<p>Here we will add a boundary condition on the derivative, on the left, which means that the left node is also an unknown. In that case you can use <span class="math notranslate nohighlight">\(dT/dx \simeq = (T_{1} - T_{-1})/2\Delta x\)</span> so <span class="math notranslate nohighlight">\(T_{-1} = T_1 -2 \Delta x dT/\Delta x\)</span> and then you get the value for the imaginary node <span class="math notranslate nohighlight">\(T_{-1}\)</span> which is now needed. Solve following system:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7ed9b349-e57b-4cb2-ac4e-b4adcd697059">
+<span class="eqno">(43)<a class="headerlink" href="#equation-7ed9b349-e57b-4cb2-ac4e-b4adcd697059" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{d^2T}{dr^2} + \frac{1}{r}\frac{dT}{dr} + S = 0,
+\end{equation}\]</div>
+<p>over <span class="math notranslate nohighlight">\(0 \le r\le 1\)</span>, with <span class="math notranslate nohighlight">\(T(r=1) = 1\)</span> and <span class="math notranslate nohighlight">\(\frac{dT}{dr} = 0\)</span> in <span class="math notranslate nohighlight">\(r=0\)</span>, for S = 1, 10, and 20 K/m<span class="math notranslate nohighlight">\(^2\)</span>. This is a model of the temperature distribution on  a circular rod with internal heat source <span class="math notranslate nohighlight">\(S\)</span>.</p>
+</section>
+<section id="deflection-of-a-sailboat-mast-chapra-28-22">
+<h3>Deflection of a sailboat mast (Chapra 28.22)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-22" title="Link to this heading">#</a></h3>
+<p>The following equation can be used to model the deflection of a sailboat mast subject to wind force,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-c502e399-08cd-4e55-bb80-b5b02f339049">
+<span class="eqno">(44)<a class="headerlink" href="#equation-c502e399-08cd-4e55-bb80-b5b02f339049" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{d^2y}{dz^2} = \frac{f}{2EI}(L-z)^2,
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(f\)</span> is the wind force, <span class="math notranslate nohighlight">\(E\)</span> is the modulus of elasticity, <span class="math notranslate nohighlight">\(L\)</span> the mast length, and <span class="math notranslate nohighlight">\(I\)</span> the inertia moment. Compute the deflection as a function of <span class="math notranslate nohighlight">\(z\)</span> if <span class="math notranslate nohighlight">\(y = 0\)</span> and <span class="math notranslate nohighlight">\(dy/dz = 0\)</span> at <span class="math notranslate nohighlight">\(z = 0\)</span>. Use <span class="math notranslate nohighlight">\(f = 60, L = 30, E = 1.25\times 10^8, I = 0.05\)</span></p>
+</section>
+<section id="deflection-of-a-sailboat-mast-chapra-28-23">
+<h3>Deflection of a sailboat mast (Chapra 28.23)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-23" title="Link to this heading">#</a></h3>
+<p>Same previous problem but now the force varies with height as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-179313b5-1942-4bb6-a07f-c396f5664367">
+<span class="eqno">(45)<a class="headerlink" href="#equation-179313b5-1942-4bb6-a07f-c396f5664367" title="Permalink to this equation">#</a></span>\[\begin{equation}
+f(z) = \frac{200z}{5+z}e^{-2z/30}.
+\end{equation}\]</div>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -889,15 +1080,15 @@ D\frac{d^2A}{dx^2} - kA = 0.
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Ordinary Differential Equations : Initial value problems</p>
+        <p class="prev-next-title">IVP: Initial value problems</p>
       </div>
     </a>
     <a class="right-next"
-       href="BVP-linear-matrices.html"
+       href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Boundary value problems: linear case and matrices</p>
+        <p class="prev-next-title">Molecular Dynamics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -925,6 +1116,14 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-scipy-solve-bvp">Using <code class="docutils literal notranslate"><span class="pre">scipy</span></code>: <code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ecuacion-de-schroedinger-workshop">Ecuación de Schroedinger (workshop)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-formulation-for-linear-boundary-value-problems">Matrix formulation for linear boundary value problems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-exercises">Additional Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generic-bvp">Generic BVP</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bvp-with-newman-condition">BVP with Newman condition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deflection-of-a-sailboat-mast-chapra-28-22">Deflection of a sailboat mast (Chapra 28.22)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deflection-of-a-sailboat-mast-chapra-28-23">Deflection of a sailboat mast (Chapra 28.23)</a></li>
 </ul>
 </li>
 </ul>

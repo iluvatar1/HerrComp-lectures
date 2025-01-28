@@ -63,12 +63,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '07-vpython/vpython-leapfrog';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '08-MolecularDynamics/vpython-leapfrog';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Molecular Dynamics" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html" />
-    <link rel="prev" title="Boundary value problems: linear case and matrices" href="../06-ODE-BVP/BVP-linear-matrices.html" />
+    <link rel="next" title="Partial Differential equations: Finite differences" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html" />
+    <link rel="prev" title="Molecular Dynamics" href="MolecularDynamics-MacroBodies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -195,17 +195,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/Perceptron.html">Simple neural network: A perceptron</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">Ordinary Differential Equations : Initial value problems</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP-linear-matrices.html">Boundary value problems: linear case and matrices</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Integration and Visualization of a Dynamic System</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbers.html">Pseudo-random number generation</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/MonteCarlo-Simulation.html">Markov-chain Monte Carlo simulations</a></li>
+
+
+
 </ul>
 
     </div>
@@ -265,7 +280,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/iluvatar1/HerrComp-lectures/master?urlpath=lab/tree/07-vpython/vpython-leapfrog.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/iluvatar1/HerrComp-lectures/master?urlpath=lab/tree/08-MolecularDynamics/vpython-leapfrog.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -283,7 +298,7 @@
       
       
       
-      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/07-vpython/vpython-leapfrog.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/08-MolecularDynamics/vpython-leapfrog.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -331,7 +346,7 @@
       
       
       
-      <li><a href="https://github.com/iluvatar1/HerrComp-lectures/issues/new?title=Issue%20on%20page%20%2F07-vpython/vpython-leapfrog.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures/issues/new?title=Issue%20on%20page%20%2F08-MolecularDynamics/vpython-leapfrog.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -361,7 +376,7 @@
       
       
       
-      <li><a href="../_sources/07-vpython/vpython-leapfrog.ipynb" target="_blank"
+      <li><a href="../_sources/08-MolecularDynamics/vpython-leapfrog.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -449,19 +464,15 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-vpython">Introduction to VPython</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-sphere">Creating an sphere</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-dynamical-systems">Integration of Dynamical Systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-frog-algorithm">Leap-frog algorithm</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-falling-under-constant-gravity">Particle falling under constant gravity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-inside-magnetic-field">Particle inside magnetic field</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Homework</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-with-viscous-non-linear-damping">Particle with viscous non-linear damping</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-vpython">Introduction to VPython</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-sphere">Creating an sphere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-the-dynamical-systems">Integration of the Dynamical Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-frog-algorithm">Leap-frog algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-falling-under-constant-gravity">Particle falling under constant gravity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-inside-magnetic-field">Particle inside magnetic field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-with-viscous-non-linear-damping">Particle with viscous non-linear damping</a></li>
 </ul>
             </nav>
         </div>
@@ -473,7 +484,7 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="integration-and-visualization-of-a-dynamic-system">
+  <section id="integration-and-visualization-of-a-dynamic-system">
 <h1>Integration and Visualization of a Dynamic System<a class="headerlink" href="#integration-and-visualization-of-a-dynamic-system" title="Link to this heading">#</a></h1>
 <section id="goals">
 <h2>Goals<a class="headerlink" href="#goals" title="Link to this heading">#</a></h2>
@@ -500,8 +511,9 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 <p>VPython, <a class="reference external" href="http://vpython.org">vpython.org</a>, is an extension of the Python language aimed to help visualize 3D systems easily. The following is based on the Vpython_intro.pdf manual.</p>
 <p>Let’s create an sphere.</p>
 <p><strong>Note: to run any code inside this Jupyter notebook, you have to press shift+enter inside the cell</strong></p>
+</section>
 <section id="creating-an-sphere">
-<h3>Creating an sphere<a class="headerlink" href="#creating-an-sphere" title="Link to this heading">#</a></h3>
+<h2>Creating an sphere<a class="headerlink" href="#creating-an-sphere" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">vpython</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">vp</span>
@@ -594,12 +606,11 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 </div>
 </div>
 </section>
-</section>
-<section id="integration-of-dynamical-systems">
-<h2>Integration of Dynamical Systems<a class="headerlink" href="#integration-of-dynamical-systems" title="Link to this heading">#</a></h2>
+<section id="integration-of-the-dynamical-systems">
+<h2>Integration of the Dynamical Systems<a class="headerlink" href="#integration-of-the-dynamical-systems" title="Link to this heading">#</a></h2>
 <p>The time evolution for a dynamical system is typically expressed in terms of differential equations relating the change in the state of the system. This has its roots on the Newton second law of movement (for constant mass),</p>
-<div class="amsmath math notranslate nohighlight" id="equation-36567629-ca92-401f-91d2-365665607811">
-<span class="eqno">(46)<a class="headerlink" href="#equation-36567629-ca92-401f-91d2-365665607811" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4e741d3a-9f0d-4f03-ad5b-3ca4dfc7edd7">
+<span class="eqno">(47)<a class="headerlink" href="#equation-4e741d3a-9f0d-4f03-ad5b-3ca4dfc7edd7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{net} = m\vec A = m \frac{d^2x}{dt^2}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\vec F_{net} = \sum F_i\)</span> is the net force (sum of all forces acting on the body), <span class="math notranslate nohighlight">\(m\)</span> is its mass, and <span class="math notranslate nohighlight">\(\vec A\)</span> its acceleration. Since the acceleration is the second derivative of the position (or the first derivative of the velocity), then differential equations of second (first) order are expected for the position (velocity).</p>
@@ -631,8 +642,9 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 <p>So you need the velocity at time <span class="math notranslate nohighlight">\(t = -\delta t/2\)</span>, not at time <span class="math notranslate nohighlight">\(t = 0\)</span>. This implies that the method is not “self-started”, and you need first to change the velocity from its initial value to</p>
 <div class="math notranslate nohighlight">
 \[\vec V(-\delta t/2) = \vec V(0) - \delta t\vec A(0)/2.\]</div>
+</section>
 <section id="particle-falling-under-constant-gravity">
-<h3>Particle falling under constant gravity<a class="headerlink" href="#particle-falling-under-constant-gravity" title="Link to this heading">#</a></h3>
+<h2>Particle falling under constant gravity<a class="headerlink" href="#particle-falling-under-constant-gravity" title="Link to this heading">#</a></h2>
 <p>In this part we will use the Leap-Frog method to compute the positions and velocities of a particle falling under gravity. This is a useful test case since we know already the solution to the problem for constant gravity acceleration <span class="math notranslate nohighlight">\(\vec G\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\vec R(t) = \vec R(0) + t\vec V(0) + \frac{dt^2}{2}\vec G\]</div>
@@ -709,7 +721,7 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 </div>
 </section>
 <section id="homework">
-<h3>Homework:<a class="headerlink" href="#homework" title="Link to this heading">#</a></h3>
+<h2>Homework:<a class="headerlink" href="#homework" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Compute the exact initial velocity for the ball to touch the ground, at time <span class="math notranslate nohighlight">\(t = 2.5\)</span>. Put it inside the code. Is it true that the ball just touches the ground at that time? explain</p></li>
 <li><p>Compute the difference percentage between the theoretical and the numerical result. How does it decrease with <span class="math notranslate nohighlight">\(\delta t\)</span>? Make a plot of the percentage of cumulated error, <span class="math notranslate nohighlight">\(\Delta E = \sum_{i} |theo_i - num_i|/|theo_i|\)</span> (<span class="math notranslate nohighlight">\(i\)</span> denotes the time step) as function of <span class="math notranslate nohighlight">\(\delta t\)</span>. What should be the value of <span class="math notranslate nohighlight">\(\delta t\)</span> to get an error less or equal than 1 %?</p></li>
@@ -718,7 +730,7 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 </ul>
 </section>
 <section id="particle-inside-magnetic-field">
-<h3>Particle inside magnetic field<a class="headerlink" href="#particle-inside-magnetic-field" title="Link to this heading">#</a></h3>
+<h2>Particle inside magnetic field<a class="headerlink" href="#particle-inside-magnetic-field" title="Link to this heading">#</a></h2>
 <p>In this case, the force is equal to</p>
 <div class="math notranslate nohighlight">
 \[\vec F = q \vec V\times \vec B ,\]</div>
@@ -789,14 +801,14 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 </div>
 </section>
 <section id="id1">
-<h3>Homework<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<h2>Homework<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Compute the radius of the trajectory. Compare with the theoretical value.</p></li>
 <li><p>After 5 cycles, is the radius still constant? plot the radius after 5 cycles as function of <span class="math notranslate nohighlight">\(\delta t\)</span>. Then give the maximum <span class="math notranslate nohighlight">\(\delta t\)</span> to assure an error less than 1%.</p></li>
 </ul>
 </section>
 <section id="particle-with-viscous-non-linear-damping">
-<h3>Particle with viscous non-linear damping<a class="headerlink" href="#particle-with-viscous-non-linear-damping" title="Link to this heading">#</a></h3>
+<h2>Particle with viscous non-linear damping<a class="headerlink" href="#particle-with-viscous-non-linear-damping" title="Link to this heading">#</a></h2>
 <p>In this case we will add a viscous non-linear damping of the form</p>
 <div class="math notranslate nohighlight">
 \[f_{visc} = -b v^2.\]</div>
@@ -882,7 +894,6 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 </div>
 </section>
 </section>
-</section>
 
     <script type="text/x-thebe-config">
     {
@@ -897,7 +908,7 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
         },
         kernelOptions: {
             name: "python3",
-            path: "./07-vpython"
+            path: "./08-MolecularDynamics"
         },
         predefinedOutput: true
     }
@@ -915,20 +926,20 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../06-ODE-BVP/BVP-linear-matrices.html"
+       href="MolecularDynamics-MacroBodies.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Boundary value problems: linear case and matrices</p>
+        <p class="prev-next-title">Molecular Dynamics</p>
       </div>
     </a>
     <a class="right-next"
-       href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html"
+       href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Molecular Dynamics</p>
+        <p class="prev-next-title">Partial Differential equations: Finite differences</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -951,19 +962,15 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goals">Goals</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-requisites">Pre-requisites</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-vpython">Introduction to VPython</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-sphere">Creating an sphere</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-dynamical-systems">Integration of Dynamical Systems</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-frog-algorithm">Leap-frog algorithm</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-falling-under-constant-gravity">Particle falling under constant gravity</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework:</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-inside-magnetic-field">Particle inside magnetic field</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Homework</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-with-viscous-non-linear-damping">Particle with viscous non-linear damping</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-vpython">Introduction to VPython</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-an-sphere">Creating an sphere</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-the-dynamical-systems">Integration of the Dynamical Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-frog-algorithm">Leap-frog algorithm</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-falling-under-constant-gravity">Particle falling under constant gravity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-inside-magnetic-field">Particle inside magnetic field</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Homework</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-with-viscous-non-linear-damping">Particle with viscous non-linear damping</a></li>
 </ul>
   </nav></div>
 

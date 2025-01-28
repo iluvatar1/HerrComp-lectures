@@ -1,0 +1,1104 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Markov-chain Monte Carlo simulations &#8212; Herramientas Computacionales</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles.css?v=03b9d5b1" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '10-RandomSystems/MonteCarlo-Simulation';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Pseudo-random number generation" href="RandomNumbers.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Rayleigh-Taylor_instability.jpg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Rayleigh-Taylor_instability.jpg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../README.html">
+                    Herramientas Computacionales
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to or review of Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-Intro-InstalacionPython/01-B-PythonSetup.html">Python Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/01-IntroProgrammingPython.html">Python Programming (very fast) Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/02-IntroProgrammingPython-DataStructs.html">Basic data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/matplotlib-Intro.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/numpy-Intro-Reduced.html">Python arrays : Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/Scipy.html">SciPy - Library of scientific algorithms for Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Calculus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsI.html">Numerical errors (very short intro)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsII.html">Numerical errors II : types of errors and general remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/NumericalDifferentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/AutomaticDifferentiation.html">Automatic differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.html">Numerical Calculus: Integrals and an introduction to scipy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra and Numerical Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/LinearAlgebra.html">Linear Systems : Matrices, Vectors, eigen systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/Perceptron.html">Simple neural network: A perceptron</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="RandomNumbers.html">Pseudo-random number generation</a></li>
+
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Markov-chain Monte Carlo simulations</a></li>
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/iluvatar1/HerrComp-lectures/master?urlpath=lab/tree/10-RandomSystems/MonteCarlo-Simulation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/10-RandomSystems/MonteCarlo-Simulation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures/issues/new?title=Issue%20on%20page%20%2F10-RandomSystems/MonteCarlo-Simulation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/10-RandomSystems/MonteCarlo-Simulation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Markov-chain Monte Carlo simulations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Markov-chain Monte Carlo simulations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain">Markov chain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-metropolis-hastings-algorithm">The Metropolis-Hastings algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connections-with-quantum-mechanics">Connections with quantum mechanics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-sampling-techniques">Other sampling techniques</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-mechanics">Statistical mechanics</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ising-model">Ising model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ising-model-and-metropolis-hastings">Ising model and metropolis-Hastings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simulation">The simulation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-topics">More topics:</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>REFS:</p>
+<ul class="simple">
+<li><p>Boudreau, Applied Computational Physics</p></li>
+<li><p>Heath, Scientific Computing</p></li>
+<li><p>Landau y Paez, Computational physics, problem solving with computers</p></li>
+<li><p>Anagnostoupulos, A practical introduction to computational physics and scientific computing</p></li>
+<li><p>Ward, Numerical Mathematicas and Computing</p></li>
+</ul>
+<p>TO CHECK:</p>
+<ul class="simple">
+<li><p>https://www.algorithm-archive.org/contents/metropolis/metropolis.html</p></li>
+<li><p>http://www.cmap.polytechnique.fr/~gobet/DemoPython/MetropolisHastings_GaussianSampling.html</p></li>
+<li><p>https://tmramalho.github.io/blog/2014/02/24/an-introduction-to-the-metropolis-method-with-python/</p></li>
+<li><p>https://stackoverflow.com/questions/55525076/implementing-the-metropolis-hasting-algorithm</p></li>
+<li><p>https://twiecki.io/blog/2015/11/10/mcmc-sampling/</p></li>
+</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="markov-chain-monte-carlo-simulations">
+<h1>Markov-chain Monte Carlo simulations<a class="headerlink" href="#markov-chain-monte-carlo-simulations" title="Link to this heading">#</a></h1>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo simulation method</a> uses random sampling to perform computational experiments. One , very famous example, is the <a class="reference external" href="https://en.wikipedia.org/wiki/Ising_model">Ising model (1920)</a>, used to model magnetic materials (among many other applications). Here, each site on a discrete grid has a magnetic moment (or any other quantity) whose orientation (up/down, left/right, or angle) represents that site state, and there is an interaction with close neighbors (In 1D, neighbors left and right, in 2D, left/right/up/down). The interaction model can represent how the system respond to temperature and external magnetic field, or to external information pressure (for social systems) and so on. Here we will focus on the thermal 2D model that presents a phase transition. First, we will need to define some key concepts. The Ising model represents a system in the canonical ensemble (fixed temperature, number of particles and volume), where the samples are distributed according to a very specific distribution which you need to sample efficiently. To do so, you use a Markov-Chain and the Metropolis-Hastings algorithm.  The random process allows to simulate the intrinsic fluctuations when a system is in contact with a heat bath.</p>
+<section id="markov-chain">
+<h2>Markov chain<a class="headerlink" href="#markov-chain" title="Link to this heading">#</a></h2>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Markov_chain">Markov chain</a> is a sequence of states that are  produced by a stochastic process where the next state, <span class="math notranslate nohighlight">\(\hat X_{i+1}\)</span> depends only on the current one, <span class="math notranslate nohighlight">\(\hat X_i\)</span>. <strong>There is no memory</strong>. The transition between this two states can be represented by the transition probability <span class="math notranslate nohighlight">\(p_{ij}\)</span>, which are the elements of and <span class="math notranslate nohighlight">\(M\times M\)</span> matrix (<span class="math notranslate nohighlight">\(M\)</span> the number of states). They fulfill <span class="math notranslate nohighlight">\(\sum_j p_{ij} = 1\)</span>. Here the transition matrix is independent on time.  Given two states, the <em>transition matrix</em>, <span class="math notranslate nohighlight">\(P_{ij}\)</span> can be used to represent as,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b05bf15b-c6e2-480c-8510-b36e43242e5a">
+<span class="eqno">(73)<a class="headerlink" href="#equation-b05bf15b-c6e2-480c-8510-b36e43242e5a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\hat X_{j} = P \hat X_i.
+\end{equation}\]</div>
+<p>Using a super-script as denoting the iteration or algorithmic time, one has</p>
+<div class="amsmath math notranslate nohighlight" id="equation-abf025bc-11f1-48a6-acb0-008c0b436632">
+<span class="eqno">(74)<a class="headerlink" href="#equation-abf025bc-11f1-48a6-acb0-008c0b436632" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\hat X^N = P \hat X^{N-1} = P^N \hat X^{0}.
+\end{equation}\]</div>
+<p>Under certain conditions, there is a final state independent on the initial condition (a fixed point), which sometimes is called as the ergodic property,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dbec9694-2256-403d-8817-882e42681d38">
+<span class="eqno">(75)<a class="headerlink" href="#equation-dbec9694-2256-403d-8817-882e42681d38" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\vec w = \lim_{N\to\infty} P^N \hat X^0.
+\end{equation}\]</div>
+<p>One way to ensure this is the so-called detailed balance condition</p>
+<div class="amsmath math notranslate nohighlight" id="equation-199ed769-f5cf-417e-ab3a-356f8403d6fe">
+<span class="eqno">(76)<a class="headerlink" href="#equation-199ed769-f5cf-417e-ab3a-356f8403d6fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
+p_{ij} w_i = p_{ji} w_j.
+\end{equation}\]</div>
+<p>Summing over <span class="math notranslate nohighlight">\(j\)</span> demonstrates that <span class="math notranslate nohighlight">\(\vec w\)</span> is, indeed, a fixed point. By equating the fixed point with the desired distribution, by arranging the transition probabilities,  we complete the Markov chain procedure.</p>
+<p>If the actual probability to find the system in state <span class="math notranslate nohighlight">\(\mu\)</span>  depends on time and is given by <span class="math notranslate nohighlight">\(w_\mu(t)\)</span>, its time evolution is given by the <em>master equation</em></p>
+<div class="amsmath math notranslate nohighlight" id="equation-438e30d8-3011-47aa-85f5-edfe63486bdc">
+<span class="eqno">(77)<a class="headerlink" href="#equation-438e30d8-3011-47aa-85f5-edfe63486bdc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{dw_\mu(t)}{dt} = \sum_\nu {w_\nu(t) R(\nu\to\mu) - w_\mu(t) R(\mu\to\nu)},
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R(\mu\to\nu)\)</span> is the transition probability, and <span class="math notranslate nohighlight">\(\sum_\mu w_\mu(t)= 1\)</span>. After a long time the system reaches a steady state  and <span class="math notranslate nohighlight">\(w_\mu(t)\)</span> converge to finite numbers <span class="math notranslate nohighlight">\(p_\mu \le 0\)</span>. In that case one has</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1ab2ff60-b796-4c73-bad8-7eafdcf5b3a3">
+<span class="eqno">(78)<a class="headerlink" href="#equation-1ab2ff60-b796-4c73-bad8-7eafdcf5b3a3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+0 = \sum_\nu {w_\nu(t) R(\nu\to\mu) - w_\mu(t) R(\mu\to\nu)},
+\end{equation}\]</div>
+<p>and the detailed balance condition is a sufficient (but not necessary) condition to fulfill this.</p>
+<p><mark>Exercises</mark></p>
+<ul>
+<li><p>[ ] (Boudreau, 7.8.16) Consider the following transition matrix</p>
+<div class="amsmath math notranslate nohighlight" id="equation-59868b76-e93a-41df-9dc4-d27fd3ec2758">
+<span class="eqno">(79)<a class="headerlink" href="#equation-59868b76-e93a-41df-9dc4-d27fd3ec2758" title="Permalink to this equation">#</a></span>\[\begin{equation}
+P = \begin{pmatrix}
+3/4 &amp; 1/4 &amp; 0\\
+0 &amp; 2/3 &amp; 1/3\\
+1/4 &amp; 1/4 &amp; 1/2
+\end{pmatrix}
+\end{equation}\]</div>
+<p>Find:</p>
+<ul class="simple">
+<li><p>The eigen values and vectors</p></li>
+<li><p>The left and right eigen vectors and values</p></li>
+<li><p>The left and right fixed point probability vector, <span class="math notranslate nohighlight">\(\vec w\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lim_\limits{n\to \infty} P^n\)</span>. Is the fixed point independent of the starting vector?</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="the-metropolis-hastings-algorithm">
+<h2>The Metropolis-Hastings algorithm<a class="headerlink" href="#the-metropolis-hastings-algorithm" title="Link to this heading">#</a></h2>
+<p>The algorithm (Metropolis(1953) and Hastings(1970)) design appropriate transition probabilities to obtain a desired final <span class="math notranslate nohighlight">\(\rho(\hat X)\)</span>. A new state, <span class="math notranslate nohighlight">\(\hat X' \)</span> is generated from an old state, <span class="math notranslate nohighlight">\(\hat X\)</span>, according to a proposal distribution , <span class="math notranslate nohighlight">\(R(\hat X \to \hat X')\)</span>, which depends on the actual problem and the programmer (what random variates and distribution). It has the following steps per iteration:</p>
+<ul>
+<li><p>generate a next state in the Markov chain according to <span class="math notranslate nohighlight">\(R(\hat X \to \hat X')\)</span>.</p></li>
+<li><p>Accept the new state with probability</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ec35198d-d674-460b-ad55-55b51e69674e">
+<span class="eqno">(80)<a class="headerlink" href="#equation-ec35198d-d674-460b-ad55-55b51e69674e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\min \left(1, \frac{R(\hat X' \to \hat X)\rho(\hat X')}{R(\hat X \to \hat X')\rho(\hat X)} \right)
+\end{equation}\]</div>
+</li>
+</ul>
+<p>If the proposal distribution is reversible (like a Gaussian with fixed width), then the acceptance probability is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4e1226da-b209-4ecc-be8a-47aad303a59f">
+<span class="eqno">(81)<a class="headerlink" href="#equation-4e1226da-b209-4ecc-be8a-47aad303a59f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\min \left(1, \frac{\rho(\hat X')}{\rho(\hat X)} \right).
+\end{equation}\]</div>
+<p>This is called the Metropolis method.</p>
+<p>Some possible problems to take into account:</p>
+<ul class="simple">
+<li><p><em>Slow mixing</em>: not efficient exploration of isolated states.</p></li>
+<li><p><em>Thermalization</em>: The simulation must run for a large time before reaching some kind of steady state. This depends, for instance, on temperature.</p></li>
+<li><p><em>Autocorrelation</em>: Successive samples are correlated, so you need to generate a given number of samples before taking one into account if your ensemble.</p></li>
+<li><p><em>Multimodality</em> (many maxima/minima): To explore one region the system must pass on a low probability region.</p></li>
+</ul>
+<section id="connections-with-quantum-mechanics">
+<h3>Connections with quantum mechanics<a class="headerlink" href="#connections-with-quantum-mechanics" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Schroedinger equation in imaginary time: Diffusion advection equation</p></li>
+<li><p>Feynman path integral</p></li>
+</ul>
+</section>
+<section id="other-sampling-techniques">
+<h3>Other sampling techniques<a class="headerlink" href="#other-sampling-techniques" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Cluster algorithms</p></li>
+<li><p>Guided random walks</p></li>
+<li><p>Microcanonical updating</p></li>
+</ul>
+<p><mark> Exercises </mark></p>
+<ul>
+<li><p>[ ] (Boudreau, 7.8.2) A gas is in thermal equilibrium at a temperature <span class="math notranslate nohighlight">\(T\)</span>, so its velocity distribution is</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6b0a892b-ca70-44a1-a386-f3f401bc6a05">
+<span class="eqno">(82)<a class="headerlink" href="#equation-6b0a892b-ca70-44a1-a386-f3f401bc6a05" title="Permalink to this equation">#</a></span>\[\begin{equation}
+p(v) dv = \left( \frac{m}{2\pi \tau} \right)^{3/2} 4\pi v^2 e^{-mv^2/2\tau} dv,
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\tau = k T\)</span>, <span class="math notranslate nohighlight">\(m\)</span> is the molecule mass, and <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant. Non-dimensionalize this equation to show that this (Boltzmann) distribution can be sampled from the gamma distribution. Do it using scipy. Repeat this generation but using Markov chain Monte Carlo.</p>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># YOUR CODE HERE</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="ne">NotImplementedError</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="statistical-mechanics">
+<h1>Statistical mechanics<a class="headerlink" href="#statistical-mechanics" title="Link to this heading">#</a></h1>
+<p>In the canonical ensemble the probability to sample a state <span class="math notranslate nohighlight">\(\mu\)</span>, with energy <span class="math notranslate nohighlight">\(E_\mu\)</span>, at temperature <span class="math notranslate nohighlight">\(T\)</span>, is given by</p>
+<div class="amsmath math notranslate nohighlight" id="equation-77167ce9-3323-4550-8db9-7a2e59cd1af0">
+<span class="eqno">(83)<a class="headerlink" href="#equation-77167ce9-3323-4550-8db9-7a2e59cd1af0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+p_\mu = \frac{1}{Z} e^{-\beta E_\mu},
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta = 1/kT\)</span> and <span class="math notranslate nohighlight">\(Z = \sum_\mu e^{-\beta E_\mu}\)</span> is called the partition function. Is not simply a normalization factor, it stores the information of the system. For instance, to compute an observable average <span class="math notranslate nohighlight">\(\langle O \rangle\)</span>, one has</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f6000444-9a04-471d-b673-6e92bf7a62c7">
+<span class="eqno">(84)<a class="headerlink" href="#equation-f6000444-9a04-471d-b673-6e92bf7a62c7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle O \rangle = \sum_\mu p_\mu O_\mu.
+\end{equation}\]</div>
+<p>When we sample with the actual system distribution, as in the Metropolis-Hastings method, it is called <strong>importance sampling</strong> and the average value for a given observable is simply</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a57b8553-fa97-4902-8196-6575b81caad9">
+<span class="eqno">(85)<a class="headerlink" href="#equation-a57b8553-fa97-4902-8196-6575b81caad9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle O \rangle = \frac{1}{N} \sum O_i,
+\end{equation}\]</div>
+<p>where the samples must be independent (not correlated).</p>
+<p>For the mean energy, one has</p>
+<div class="amsmath math notranslate nohighlight" id="equation-93856285-5927-469b-92ce-d875240cff45">
+<span class="eqno">(86)<a class="headerlink" href="#equation-93856285-5927-469b-92ce-d875240cff45" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle E \rangle = \sum_\mu p_\mu E_\mu = \sum_\mu \frac{1}{Z} e^{-\beta E_\mu} = -\frac{\partial \ln Z}{\partial \beta}
+\end{equation}\]</div>
+<p>The specific heat can be computed as</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fea72cbb-bd31-44e2-9d12-0b2e43888be3">
+<span class="eqno">(87)<a class="headerlink" href="#equation-fea72cbb-bd31-44e2-9d12-0b2e43888be3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+C = \frac{\partial U}{\partial T} = k\beta^2 \frac{\partial^2 \ln Z}{\partial \beta^2} =  k\beta^2 (\Delta E) ^2.
+\end{equation}\]</div>
+<p>The entropy can be shown to be</p>
+<div class="amsmath math notranslate nohighlight" id="equation-53079ffa-10ca-45da-99fc-1239b2a75ba7">
+<span class="eqno">(88)<a class="headerlink" href="#equation-53079ffa-10ca-45da-99fc-1239b2a75ba7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+S = -k\sum_\mu p_\mu \ln p_\mu
+\end{equation}\]</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ising-model">
+<h1>Ising model<a class="headerlink" href="#ising-model" title="Link to this heading">#</a></h1>
+<p>In the <a class="reference external" href="https://www.intechopen.com/chapters/71210">Ising model</a>, each site on a grid is assigned a given state, up or down
+<img alt="https://qph.cf2.quoracdn.net/main-qimg-0fb41bd632ba1eea8a654828dcff5d93-pjlq" src="https://qph.cf2.quoracdn.net/main-qimg-0fb41bd632ba1eea8a654828dcff5d93-pjlq" /></p>
+<p>The state of cell <span class="math notranslate nohighlight">\(i\)</span> will be denote as <span class="math notranslate nohighlight">\(\sigma_i = \pm 1\)</span>. The interaction with the neighbors are represented by the Hamiltonian</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1b182c80-6532-4ef1-babf-fc76d0d0a5e5">
+<span class="eqno">(89)<a class="headerlink" href="#equation-1b182c80-6532-4ef1-babf-fc76d0d0a5e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+H = -J \sum \sigma_i \sigma_{j} - B\sum\sigma_i,
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(J\)</span> is the coupling constant and the sum is over all <span class="math notranslate nohighlight">\(i\)</span> sites and <span class="math notranslate nohighlight">\(j\)</span> are all the neighbors of that site, and <span class="math notranslate nohighlight">\(B\)</span> is the strength of an external magnetic field. If <span class="math notranslate nohighlight">\(J&gt;0\)</span> then the system is ferromagnetic (favors equally oriented spins). The difficulty of modelling a simtem like this is that a simple <span class="math notranslate nohighlight">\(5\times 5\)</span> system, the partition function would need to be summed up on <span class="math notranslate nohighlight">\(2^25 \simeq 3.4\times 10^6\)</span> terms.</p>
+<p>Other observables of interest on the Ising model are</p>
+<ul>
+<li><p>The magnetization:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-142c6954-6c2d-4507-bb13-8cdd4e45dc3a">
+<span class="eqno">(90)<a class="headerlink" href="#equation-142c6954-6c2d-4507-bb13-8cdd4e45dc3a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+M = \left|\sum \sigma_i \right|.
+\end{equation}\]</div>
+</li>
+<li><p>The susceptibility:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-49f5b6db-e5c6-42ac-9673-7cc942a983fd">
+<span class="eqno">(91)<a class="headerlink" href="#equation-49f5b6db-e5c6-42ac-9673-7cc942a983fd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\chi = \beta (\Delta M)^2.
+\end{equation}\]</div>
+</li>
+</ul>
+<p>We would like to simulate the Ising system to reproduce an interesting phenomena: a phase transition. For <span class="math notranslate nohighlight">\(B=0\)</span>, the system will be magnetized (or not) and the behaviour will be clearly determined for a critical temperature</p>
+<div class="amsmath math notranslate nohighlight" id="equation-fdaf9a20-00ee-4ba7-9744-1491e66c3025">
+<span class="eqno">(92)<a class="headerlink" href="#equation-fdaf9a20-00ee-4ba7-9744-1491e66c3025" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\beta_c = \frac{1}{2}\ln(1+\sqrt{2}) \simeq  0.4406867935\ldots
+\end{equation}\]</div>
+<!-- <img src="https://farside.ph.utexas.edu/teaching/329/lectures/img1313.png">
+Reproduced from 
+https://farside.ph.utexas.edu/teaching/329/lectures/node110.html
+ -->
+<img src="https://miro.medium.com/max/1400/1*ODPEcoAf3Rwfyyo7lTsNFw.png">
+From: https://towardsdatascience.com/monte-carlo-method-applied-on-a-2d-binary-alloy-using-an-ising-model-on-python-70afa03b172b
+<p>Check the following:</p>
+<ul class="simple">
+<li><p>https://www.ibiblio.org/e-notes/Perc/ising.htm</p></li>
+<li><p>http://www.bdhammel.com/ising-model/</p></li>
+<li><p>https://www.ippp.dur.ac.uk/~krauss/Lectures/NumericalMethods/PhaseTransitions/Lecture/pt1.html</p></li>
+<li><p>https://rajeshrinet.github.io/blog/2014/ising-model/</p></li>
+</ul>
+<section id="ising-model-and-metropolis-hastings">
+<h2>Ising model and metropolis-Hastings<a class="headerlink" href="#ising-model-and-metropolis-hastings" title="Link to this heading">#</a></h2>
+<p>Since the system is in the canonical ensemble (fixed temperature) it should be sampled from</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d621913a-3b01-4bdf-8c35-ac89eddf95ef">
+<span class="eqno">(93)<a class="headerlink" href="#equation-d621913a-3b01-4bdf-8c35-ac89eddf95ef" title="Permalink to this equation">#</a></span>\[\begin{equation}
+p(X) = \frac{e^{-\beta H(X)}}{Z},
+\end{equation}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\beta = 1/k T\)</span> is the Boltzmann factor and <span class="math notranslate nohighlight">\(Z\)</span> is the partition function, <span class="math notranslate nohighlight">\(Z = \sum e^{-\beta H(x)}\)</span>. Given that the Hamiltonian is local, applying the Metropolis algorithm to this canonical probability simplifies to computing just the change with interacting neighbors. In this our method to generate new states could be chosing (at random) a given site and them flipping its state: This implies that <span class="math notranslate nohighlight">\(R(\hat X \to \hat X')\)</span> is reversible, and then also</p>
+<div class="amsmath math notranslate nohighlight" id="equation-53d7e601-d15f-4db0-93ed-6fc1cadc2ff9">
+<span class="eqno">(94)<a class="headerlink" href="#equation-53d7e601-d15f-4db0-93ed-6fc1cadc2ff9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\min \left(1, \frac{\rho(\hat X')}{\rho(\hat X)} \right) = \min \left(1, e^{-\beta(H(x') - H(x))} \right) = \min \left(1, e^{-\beta(E' - E)} \right) = \min \left(1, e^{-\beta \Delta E} \right).
+\end{equation}\]</div>
+<p>Therefore, you generate a new sample, if the energy is less than the previous one, the new sample is accepted. Otherwise, a random number <span class="math notranslate nohighlight">\(z \in [0, 1) \)</span> is thrown and the new sample is accepted if <span class="math notranslate nohighlight">\(z &lt; e^{-\beta \Delta E}\)</span>. <span class="math notranslate nohighlight">\(\Delta E\)</span> can be easily computed for a 2D system: If a site <span class="math notranslate nohighlight">\(i\)</span> is selected and flipped, and its original value is <span class="math notranslate nohighlight">\(\sigma_i\)</span>, then <span class="math notranslate nohighlight">\(\Delta E = E' - E = 2J\sigma_i \sum_j \sigma_j\)</span>, where the sum is performed over the neighbors.</p>
+</section>
+<section id="the-simulation">
+<h2>The simulation<a class="headerlink" href="#the-simulation" title="Link to this heading">#</a></h2>
+<p>We will use a periodic lattice of size <span class="math notranslate nohighlight">\(N\times N\)</span> (Toroidal geometry). We will need  functions for</p>
+<ul class="simple">
+<li><p>Setting up the initial state</p>
+<ul>
+<li><p>Input: The lattice</p></li>
+<li><p>Output: The lattice with some initial condition</p></li>
+</ul>
+</li>
+<li><p>Perform a montecarlo step:</p>
+<ul>
+<li><p>Input: The lattice, the J constant value, a random number generator already seeded</p></li>
+<li><p>Output: The lattice with the corresponding change.</p></li>
+</ul>
+</li>
+<li><p>Plot/visualize the system:</p>
+<ul>
+<li><p>Input: The lattice</p></li>
+<li><p>Output: A graphical representation</p></li>
+</ul>
+</li>
+<li><p>Observables: compute the energy, magnetization, specific heat, etc.</p>
+<ul>
+<li><p>Input: The lattice</p></li>
+<li><p>Output: The observables values at that realization</p></li>
+</ul>
+</li>
+<li><p>Perform the simulation: Iterate over time, performing many MonteCarlo steps. Also accumulates the observables</p></li>
+</ul>
+<p>Based on : https://rajeshrinet.github.io/blog/2014/ising-model/ and https://towardsdatascience.com/monte-carlo-method-applied-on-a-2d-binary-alloy-using-an-ising-model-on-python-70afa03b172b</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import cell</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">numba</span><span class="w"> </span><span class="kn">import</span> <span class="n">njit</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># functions before the main application</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">initial_state</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Generates a random spin configuration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">rng</span><span class="o">.</span><span class="n">integers</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">)))</span> <span class="o">-</span> <span class="mi">1</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mc_single_step</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Monte Carlo move using the metropolis algorithm</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        
+
+<span class="k">def</span><span class="w"> </span><span class="nf">mc_full_step</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">beta</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Perform a full (on average on every site) monte carlo step</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span><span class="n">n</span>
+    <span class="k">for</span> <span class="n">istep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n2</span><span class="p">):</span>
+        <span class="n">mc_single_step</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_energy</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Energy for this configuration</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="nd">@njit</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_magnetization</span><span class="p">(</span><span class="n">grid</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Constants</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">15</span> <span class="c1"># grid size</span>
+<span class="n">NTEMP</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Number of temperature points</span>
+<span class="n">TEMP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.53</span><span class="p">,</span> <span class="mf">3.28</span><span class="p">,</span> <span class="n">NTEMP</span><span class="p">)</span>
+<span class="n">BETA</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="n">TEMP</span>
+<span class="n">NEQ</span> <span class="o">=</span> <span class="mi">300</span> <span class="c1"># Equilibration steps (full sweep)</span>
+<span class="n">NSAMPLE</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Samples to take</span>
+
+<span class="n">NCOLS</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">NROWS</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">NTEMP</span><span class="o">/</span><span class="n">NCOLS</span><span class="p">)</span>
+
+<span class="c1"># Observables</span>
+<span class="n">E</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NTEMP</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NTEMP</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NTEMP</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">NTEMP</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">NROWS</span><span class="p">,</span> <span class="n">NCOLS</span><span class="p">,</span> <span class="n">sharex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">sharey</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">itemp</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NTEMP</span><span class="p">):</span>
+    <span class="n">SEED</span> <span class="o">=</span> <span class="mi">42</span> <span class="c1"># can be itemp or whatever</span>
+    <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="n">SEED</span><span class="p">)</span>
+    <span class="n">e1</span> <span class="o">=</span> <span class="n">m1</span> <span class="o">=</span> <span class="n">e2</span> <span class="o">=</span> <span class="n">m2</span> <span class="o">=</span> <span class="mf">0.0</span>
+    
+    <span class="c1"># create the grid</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">initial_state</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+    <span class="c1"># equilibration/thermalization</span>
+    <span class="k">for</span> <span class="n">ieq</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NEQ</span><span class="p">):</span>
+        <span class="n">mc_full_step</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">BETA</span><span class="p">[</span><span class="n">itemp</span><span class="p">])</span>
+
+    <span class="c1"># Sampling (what about correlation?)</span>
+    <span class="k">for</span> <span class="n">isample</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">NSAMPLE</span><span class="p">):</span>
+        <span class="n">mc_full_step</span><span class="p">(</span><span class="n">rng</span><span class="p">,</span> <span class="n">grid</span><span class="p">,</span> <span class="n">BETA</span><span class="p">[</span><span class="n">itemp</span><span class="p">])</span>
+        <span class="n">energy</span> <span class="o">=</span> <span class="n">compute_energy</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+        <span class="n">magnetization</span> <span class="o">=</span> <span class="n">compute_magnetization</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+        <span class="n">e1</span> <span class="o">+=</span> <span class="n">energy</span>
+        <span class="n">e2</span> <span class="o">+=</span> <span class="n">energy</span><span class="o">*</span><span class="n">energy</span>
+        <span class="n">m1</span> <span class="o">+=</span> <span class="n">magnetization</span>
+        <span class="n">m2</span> <span class="o">+=</span> <span class="n">magnetization</span><span class="o">*</span><span class="n">magnetization</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">itemp</span><span class="o">//</span><span class="n">NCOLS</span><span class="p">,</span> <span class="n">itemp</span><span class="o">%</span><span class="k">NCOLS</span>].imshow(grid)
+    <span class="n">ax</span><span class="p">[</span><span class="n">itemp</span><span class="o">//</span><span class="n">NCOLS</span><span class="p">,</span> <span class="n">itemp</span><span class="o">%</span><span class="k">NCOLS</span>].set_title(rf&quot;$T = {TEMP[itemp]:.2f}$&quot;)
+
+    <span class="c1"># Compute averages and also normalize by size</span>
+    <span class="n">n1</span> <span class="o">=</span> <span class="mf">1.0</span><span class="o">/</span><span class="p">(</span><span class="n">NSAMPLE</span><span class="o">*</span><span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">n2</span> <span class="o">=</span> <span class="n">n1</span><span class="o">/</span><span class="n">NSAMPLE</span>
+    <span class="n">E</span><span class="p">[</span><span class="n">itemp</span><span class="p">]</span> <span class="o">=</span> <span class="n">e1</span><span class="o">*</span><span class="n">n1</span>
+    <span class="n">M</span><span class="p">[</span><span class="n">itemp</span><span class="p">]</span> <span class="o">=</span> <span class="n">m1</span><span class="o">*</span><span class="n">n1</span>
+    <span class="n">C</span><span class="p">[</span><span class="n">itemp</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">e2</span> <span class="o">-</span> <span class="n">n2</span><span class="o">*</span><span class="n">e1</span><span class="o">*</span><span class="n">e1</span><span class="p">)</span><span class="o">*</span><span class="n">BETA</span><span class="p">[</span><span class="n">itemp</span><span class="p">]</span><span class="o">*</span><span class="n">BETA</span><span class="p">[</span><span class="n">itemp</span><span class="p">]</span>
+    <span class="n">X</span><span class="p">[</span><span class="n">itemp</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">n1</span><span class="o">*</span><span class="n">m2</span> <span class="o">-</span> <span class="n">n2</span><span class="o">*</span><span class="n">m1</span><span class="o">*</span><span class="n">m1</span><span class="p">)</span><span class="o">*</span><span class="n">BETA</span><span class="p">[</span><span class="n">itemp</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the observables</span>
+<span class="c1"># Critical temp: 2.269</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">sharex</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">TEMP</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Energy&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">TEMP</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Magnetization&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">TEMP</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Specific heat&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">TEMP</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Susceptibility&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="more-topics">
+<h1>More topics:<a class="headerlink" href="#more-topics" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>Percolation</p></li>
+<li><p>Fractals</p></li>
+<li><p>Scaling and critical exponents</p></li>
+<li><p>Universality and renormalization</p></li>
+</ul>
+<p><mark> Exercises</mark></p>
+<ul class="simple">
+<li><p>[ ] Plot the observable for several system sizes. Is there any dependence?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>[ ] Plot the energy, magnetization, etc, as functions of time, for several temperatures, including the critical one. What do you observe?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>[ ] Plot the magnetization and energy versus iteration for several seeds.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># PLOT HERE THE ENERGY AND MAGNETIZATION AS FUNCTIONS OF TIME FOR SEVERAL SEEDS</span>
+<span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>[ ] Compute the same observable but average over several seeds to compute the mean and the error of the mean</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>[ ] Create an animation of the evolution of the system.</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ ] There should be a correlation between samples. How will you compute it? or taking samples after a full sweep guarantees something?</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ ] The statistic over several seeds can be computed in parallel using the multiprocessing module (for example). Implement it.</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ ] How does the computation time scales with <span class="math notranslate nohighlight">\(n\)</span>, for a full simulation?</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ ] Is there a relationship between the number of samples and the system size?</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ ] Use vpython to visualize the system and its evolution</p></li>
+</ul>
+<ul class="simple">
+<li><p>[ ] Investigate the Wang-Landau sampling. Implement it. (FINAL PROJECT)</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./10-RandomSystems"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="RandomNumbers.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pseudo-random number generation</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Markov-chain Monte Carlo simulations</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain">Markov chain</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-metropolis-hastings-algorithm">The Metropolis-Hastings algorithm</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#connections-with-quantum-mechanics">Connections with quantum mechanics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-sampling-techniques">Other sampling techniques</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#statistical-mechanics">Statistical mechanics</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ising-model">Ising model</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ising-model-and-metropolis-hastings">Ising model and metropolis-Hastings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-simulation">The simulation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#more-topics">More topics:</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William Oquendo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

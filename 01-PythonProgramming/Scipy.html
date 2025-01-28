@@ -196,16 +196,31 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">Ordinary Differential Equations : Initial value problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP-linear-matrices.html">Boundary value problems: linear case and matrices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../07-vpython/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbers.html">Pseudo-random number generation</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/MonteCarlo-Simulation.html">Markov-chain Monte Carlo simulations</a></li>
+
+
+
 </ul>
 
     </div>
@@ -937,9 +952,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.36063412,  4.86224022,  3.7674943 ],
-       [-0.23508673, -3.29247914, -3.27205939],
-       [ 1.84116918, -3.81295939, -2.00280961]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.11222188,  0.05706037,  1.3890159 ],
+       [ 0.18907887,  0.35237123, -0.42212563],
+       [ 0.04144473,  0.86510848, -0.35858116]])
 </pre></div>
 </div>
 </div>
@@ -952,7 +967,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(6.83481049534862e-16)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.7755575615628914e-16)
 </pre></div>
 </div>
 </div>
@@ -978,7 +993,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.47055824+0.j, -0.06321345+0.j,  0.26056528+0.j])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.72742969+0.j, 0.18940444+0.j, 0.67982633+0.j])
 </pre></div>
 </div>
 </div>
@@ -997,7 +1012,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.47055824+0.j, -0.06321345+0.j,  0.26056528+0.j])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.72742969+0.j, 0.18940444+0.j, 0.67982633+0.j])
 </pre></div>
 </div>
 </div>
@@ -1009,9 +1024,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.69485869,  0.61309702,  0.00119312],
-       [ 0.59331834, -0.33621913, -0.62124678],
-       [ 0.40638005, -0.71489072,  0.78361407]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.51452181,  0.58519661, -0.02293274],
+       [ 0.52291433, -0.57838118, -0.07328328],
+       [ 0.67957922, -0.56834861,  0.99704747]])
 </pre></div>
 </div>
 </div>
@@ -1026,7 +1041,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.5056998261368797e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.671245901146135e-16
 </pre></div>
 </div>
 </div>
@@ -1043,9 +1058,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-7.10654177,  5.9025806 ,  4.69621119],
-       [ 3.6654333 , -0.98828708, -3.83169554],
-       [ 9.8442401 , -8.866819  , -3.20676519]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 2.98223794, -2.19981662, -0.12692687],
+       [-2.36281858,  2.84333008,  0.04652295],
+       [-2.46149001,  1.21972075,  1.50399787]])
 </pre></div>
 </div>
 </div>
@@ -1058,7 +1073,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.024221903617293473)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.22242752058369436)
 </pre></div>
 </div>
 </div>
@@ -1071,7 +1086,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.477484527249076), 1.7317134546510897)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.9698871677354082), 2.0409722665333883)
 </pre></div>
 </div>
 </div>
@@ -1209,7 +1224,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2109/1499142750.py:4: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2129/1499142750.py:4: RuntimeWarning: divide by zero encountered in divide
   return np.tan(2*np.pi*omega) - omega_c/omega
 </pre></div>
 </div>
@@ -1307,7 +1322,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/865dd25728ab6a8cb45697dbb0105bf1a3c16a9a55d010baa0317f0707b22780.png" src="../_images/865dd25728ab6a8cb45697dbb0105bf1a3c16a9a55d010baa0317f0707b22780.png" />
+<img alt="../_images/dee54a51c8db7f8378c90b6918582039ee695dea6508028cebdd634de2d449be.png" src="../_images/dee54a51c8db7f8378c90b6918582039ee695dea6508028cebdd634de2d449be.png" />
 </div>
 </div>
 </section>
@@ -1352,7 +1367,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8ebb6a0043941b2b50dd64747f4e6c01ac333a1a2da9ff254a3814b0272e2517.png" src="../_images/8ebb6a0043941b2b50dd64747f4e6c01ac333a1a2da9ff254a3814b0272e2517.png" />
+<img alt="../_images/06b5fac32c87c814857656333be562c46c5996ac56d2fa541a645c15472860a9.png" src="../_images/06b5fac32c87c814857656333be562c46c5996ac56d2fa541a645c15472860a9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1384,7 +1399,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ab7fd8d0d824b3938e90362cb5265e14255aa616540e44e0b0ec710c9ff25009.png" src="../_images/ab7fd8d0d824b3938e90362cb5265e14255aa616540e44e0b0ec710c9ff25009.png" />
+<img alt="../_images/a1720ac02cf87f12c644407033809b540193558e198242841997e1d9306256ac.png" src="../_images/a1720ac02cf87f12c644407033809b540193558e198242841997e1d9306256ac.png" />
 </div>
 </div>
 <p>Statistics:</p>
@@ -1425,8 +1440,8 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t-statistic = -0.20074004823798264
-p-value = 0.8409222744623389
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t-statistic = 0.09546198899771265
+p-value = 0.923957453734425
 </pre></div>
 </div>
 </div>
@@ -1440,7 +1455,7 @@ p-value = 0.8409222744623389
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-3.265170719010963), pvalue=np.float64(0.0011311514588170184), df=np.int64(999))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-3.9768388307072313), pvalue=np.float64(7.48735065095351e-05), df=np.int64(999))
 </pre></div>
 </div>
 </div>
@@ -1465,7 +1480,7 @@ p-value = 0.8409222744623389
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-0.47709675870073015), pvalue=np.float64(0.6333975725956225), df=np.int64(999))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(0.8329844867868743), pvalue=np.float64(0.4050525755225902), df=np.int64(999))
 </pre></div>
 </div>
 </div>

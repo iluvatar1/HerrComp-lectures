@@ -18,41 +18,24 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
+# Solution to point 1
 import numpy as np
-import seaborn as sns
 import matplotlib.pyplot as plt
-from scipy.integrate import solve_bvp
-sns.set()
-sns.set_context("talk")
+fig, ax = plt.subplots()
 
-def deriv(t, y, params):
-    # YOUR CODE HERE
-    raise NotImplementedError()
-
-def bc(ya, yb, params):
-    # YOUR CODE HERE
-    raise NotImplementedError()
-
-def solve_bvp_plot(x0, xf, params):
-    # YOUR CODE HERE
-    raise NotImplementedError()
-
-PARAMS = (0.01, 20.0)
-solve_bvp_plot(0.0, 10.0, PARAMS)
+rng = np.random.default_rng(seed=21)
+N = 10000
+# YOUR CODE HERE
+raise NotImplementedError()
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNotImplementedError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 21[0m
-[1;32m     18[0m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
-[1;32m     20[0m PARAMS [38;5;241m=[39m ([38;5;241m0.01[39m, [38;5;241m20.0[39m)
-[0;32m---> 21[0m [43msolve_bvp_plot[49m[43m([49m[38;5;241;43m0.0[39;49m[43m,[49m[43m [49m[38;5;241;43m10.0[39;49m[43m,[49m[43m [49m[43mPARAMS[49m[43m)[49m
-
-Cell [0;32mIn[1], line 18[0m, in [0;36msolve_bvp_plot[0;34m(x0, xf, params)[0m
-[1;32m     16[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21msolve_bvp_plot[39m(x0, xf, params):
-[1;32m     17[0m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[0;32m---> 18[0m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
+Cell [0;32mIn[6], line 9[0m
+[1;32m      7[0m N [38;5;241m=[39m [38;5;241m10000[39m
+[1;32m      8[0m [38;5;66;03m# YOUR CODE HERE[39;00m
+[0;32m----> 9[0m [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
 
 [0;31mNotImplementedError[0m: 
 
