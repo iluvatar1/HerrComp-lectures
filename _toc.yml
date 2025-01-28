@@ -34,9 +34,11 @@ parts:
     chapters:
     - file: 05-ODE-IVP/ODESystems-PhasePlane.ipynb
     - file: 06-ODE-BVP/BVP.ipynb
-    - file: 06-ODE-BVP/BVP-linear-matrices.ipynb
-    - file: 07-vpython/vpython-leapfrog.ipynb 
+  - caption: "Introduction to Molecular Dynamics"
+    numbered: false
+    chapters:
     - file: 08-MolecularDynamics/MolecularDynamics-MacroBodies.ipynb
+    - file: 08-MolecularDynamics/vpython-leapfrog.ipynb 
   - caption: "Partial differential equations"
     numbered: false
     chapters:
@@ -45,5 +47,5 @@ parts:
   - caption: "Random methods"
     numbered: false
     chapters:
-    - file: 10-RandomSystems/10-RandomSystems/RandomNumbers.ipynb
-    - file: 10-RandomSystems/10-RandomSystems/MonteCarlo-Simulation.ipynb
+    - file: 10-RandomSystems/RandomNumbers.ipynb
+    - file: 10-RandomSystems/MonteCarlo-Simulation.ipynb
