@@ -21,32 +21,48 @@ nbclient.exceptions.CellExecutionError: An error occurred while executing the fo
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
+from scipy.integrate import solve_bvp
 sns.set()
-sns.set_context("poster")
+sns.set_context("talk")
 
 def deriv(t, y, params):
-    return [y[1], params[1]*y[0]/params[0]]
+    ### BEGIN SOLUTION
+    return [y[1], params[1]*y[0]/params[0] - params[2]*y[1]]
+    ### END SOLUTION
+    
 
-def mysolve_bvp(y0, yf, v0a, v0b, t0, tf, dt, params):
-    # YOUR CODE HERE
-    raise NotImplementedError()
+def bc(ya, yb, params):
+    ### BEGIN SOLUTION
+    return [ya[0]-0.1, yb[0]] # change the initial velocity
+    ### END SOLUTION
+    
 
-PARAMS = (1.5e-6, 5e-6)
-mysolve_bvp(0.1, 0.0, -0.23, -0.14, 0.0, 4.0, 0.1, PARAMS)
+def mysolve_bvp(x, y0, params):
+    ### BEGIN SOLUTION
+    # model it as a 2-arg funtion, params are physical and should not change
+    f_wrapper = lambda x, y0: deriv(x, y0, params)
+    bc_wrapper = lambda ya, yb: bc(ya, yb, params)
+    sol = solve_bvp(f_wrapper, bc_wrapper, x, y0, verbose=2) # print more info
+    ### END SOLUTION
+    
+    return sol
+
+for PARAMS in [np.array([1.5e-6, 5e-6, 0.0]), np.array([1.5e-6, 5e-6, 4.8920])]:
+    x = np.linspace(0, 4.0, 100)
+    y0 = np.ones((2, x.size))
+    fig, ax = plt.subplots()
+    ax.plot(sol.x, sol.y[0])
+    print(sol.p)
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNotImplementedError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[3], line 15[0m
-[1;32m     12[0m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
-[1;32m     14[0m PARAMS [38;5;241m=[39m ([38;5;241m1.5e-6[39m, [38;5;241m5e-6[39m)
-[0;32m---> 15[0m [43mmysolve_bvp[49m[43m([49m[38;5;241;43m0.1[39;49m[43m,[49m[43m [49m[38;5;241;43m0.0[39;49m[43m,[49m[43m [49m[38;5;241;43m-[39;49m[38;5;241;43m0.23[39;49m[43m,[49m[43m [49m[38;5;241;43m-[39;49m[38;5;241;43m0.14[39;49m[43m,[49m[43m [49m[38;5;241;43m0.0[39;49m[43m,[49m[43m [49m[38;5;241;43m4.0[39;49m[43m,[49m[43m [49m[38;5;241;43m0.1[39;49m[43m,[49m[43m [49m[43mPARAMS[49m[43m)[49m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Cell [0;32mIn[6], line 34[0m
+[1;32m     32[0m y0 [38;5;241m=[39m np[38;5;241m.[39mones(([38;5;241m2[39m, x[38;5;241m.[39msize))
+[1;32m     33[0m fig, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots()
+[0;32m---> 34[0m ax[38;5;241m.[39mplot([43msol[49m[38;5;241m.[39mx, sol[38;5;241m.[39my[[38;5;241m0[39m])
+[1;32m     35[0m [38;5;28mprint[39m(sol[38;5;241m.[39mp)
 
-Cell [0;32mIn[3], line 12[0m, in [0;36mmysolve_bvp[0;34m(y0, yf, v0a, v0b, t0, tf, dt, params)[0m
-[1;32m     10[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mmysolve_bvp[39m(y0, yf, v0a, v0b, t0, tf, dt, params):
-[1;32m     11[0m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[0;32m---> 12[0m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
-
-[0;31mNotImplementedError[0m: 
+[0;31mNameError[0m: name 'sol' is not defined
 
