@@ -48,7 +48,7 @@ compare_derivatives()
 ------------------
 
 ----- stderr -----
-/tmp/ipykernel_2278/2607954013.py:5: DeprecationWarning: scipy.misc is deprecated and will be removed in 2.0.0
+/tmp/ipykernel_2243/2607954013.py:5: DeprecationWarning: scipy.misc is deprecated and will be removed in 2.0.0
   from scipy.misc import derivative as spderiv
 ------------------
 
