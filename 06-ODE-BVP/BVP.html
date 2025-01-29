@@ -579,7 +579,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "29d3ff5f9bb9489b9a6e0f550385dd65"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "cdf0ce62eca5491b938b6370fdf6ceaa"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
 </pre></div>
 </div>
 </div>
@@ -592,19 +592,19 @@
 </div>
 </div>
 <p>In general, if the problem is linear, one has that a given initial condition in the first derivative gives a unique final value in position,</p>
-<img alt="06-ODE-BVP/fig/BVP-solutions.png" src="06-ODE-BVP/fig/BVP-solutions.png" />
+<img alt="../_images/BVP-solutions.png" src="../_images/BVP-solutions.png" />
 <p>and if this functions is linear (given that the equation is linear) then we can interpolate as shown</p>
 <img alt="../_images/BVP-linear-interpolation.png" src="../_images/BVP-linear-interpolation.png" />
 <p>By taking into account the linear nature of the problem, we can compute the straight-line equation in the <span class="math notranslate nohighlight">\(v_0 - y_f\)</span> space to get the right initial condition as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9c029919-4153-406f-98e6-3fe7b3a9a42d">
-<span class="eqno">(34)<a class="headerlink" href="#equation-9c029919-4153-406f-98e6-3fe7b3a9a42d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-29840e07-1d75-4bad-a8e7-8b9f365ce8b6">
+<span class="eqno">(34)<a class="headerlink" href="#equation-29840e07-1d75-4bad-a8e7-8b9f365ce8b6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v_0 = v_{0a} + \frac{y_f - y_{fa}}{y_{fb} - y_{fa}}(v_{0b} - v_{0a}).
 \end{equation}\]</div>
 <p>Then, by using that initial condition, we compute the actual solution (third IVP solution).</p>
 <p><strong>EXAMPLE</strong></p>
 <p>As an example, let’s solve the following problem (Chapra 24.11): Compound <span class="math notranslate nohighlight">\(A\)</span> diffuses through a 4-cm-long tube and reacts as it diffuses. The process can be  modeled as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a9deef9d-8835-4be9-836b-88e41a1638e3">
-<span class="eqno">(35)<a class="headerlink" href="#equation-a9deef9d-8835-4be9-836b-88e41a1638e3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ea06515f-8704-406d-ab67-2b388c01c7e6">
+<span class="eqno">(35)<a class="headerlink" href="#equation-ea06515f-8704-406d-ab67-2b388c01c7e6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 D\frac{d^2A}{dx^2} - kA = 0.  
 \end{equation}\]</div>
 <p>At <span class="math notranslate nohighlight">\(x=0\)</span> there is a large source of <span class="math notranslate nohighlight">\(A\)</span> with fixed concentration of <span class="math notranslate nohighlight">\(0.1\)</span> M. At the other end there is a material that quickly absorbs <span class="math notranslate nohighlight">\(A\)</span>, so the concentration is 0 M. If <span class="math notranslate nohighlight">\(D = 1.5\times 10^{-6}\)</span> cm<span class="math notranslate nohighlight">\(^2\)</span>/s and <span class="math notranslate nohighlight">\(k = 5\times 10^{-6}\)</span> s<span class="math notranslate nohighlight">\(_1\)</span>, what is the concentration along the tube?</p>
@@ -627,24 +627,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
     <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">mysolve_bvp</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0a</span><span class="p">,</span> <span class="n">v0b</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="n">aux</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span> 
-                              <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
-    <span class="c1"># first solution</span>
-    <span class="n">sola</span> <span class="o">=</span> <span class="n">aux</span><span class="p">(</span><span class="n">v0a</span><span class="p">)</span>
-    <span class="n">yfa</span> <span class="o">=</span> <span class="n">sola</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="c1"># second solution</span>
-    <span class="n">solb</span> <span class="o">=</span> <span class="n">aux</span><span class="p">(</span><span class="n">v0b</span><span class="p">)</span>
-    <span class="n">yfb</span> <span class="o">=</span> <span class="n">solb</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="c1"># linear interpolation</span>
-    <span class="n">v0</span> <span class="o">=</span> <span class="n">v0a</span> <span class="o">+</span> <span class="p">(</span><span class="n">yf</span> <span class="o">-</span> <span class="n">yfa</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">v0b</span> <span class="o">-</span> <span class="n">v0a</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">yfb</span> <span class="o">-</span> <span class="n">yfa</span><span class="p">)</span>
-    <span class="c1"># third-final solution</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">aux</span><span class="p">(</span><span class="n">v0</span><span class="p">)</span>
-    <span class="c1"># plot</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">v0</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5e-6</span><span class="p">,</span> <span class="mf">5e-6</span><span class="p">)</span>
 <span class="n">mysolve_bvp</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
@@ -652,10 +636,21 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.1825741514595312)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.5e-6</span><span class="p">,</span> <span class="mf">5e-6</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">mysolve_bvp</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.23</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.14</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
+
+<span class="nn">Cell In[3], line 12,</span> in <span class="ni">mysolve_bvp</span><span class="nt">(y0, yf, v0a, v0b, t0, tf, dt, params)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="k">def</span><span class="w"> </span><span class="nf">mysolve_bvp</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0a</span><span class="p">,</span> <span class="n">v0b</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="c1"># YOUR CODE HERE</span>
+<span class="ne">---&gt; </span><span class="mi">12</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+
+<span class="ne">NotImplementedError</span>: 
 </pre></div>
 </div>
-<img alt="../_images/ee3c56334538e00dd0fa209fbdfe0f7678d6a574430d9e2b810db701fb160909.png" src="../_images/ee3c56334538e00dd0fa209fbdfe0f7678d6a574430d9e2b810db701fb160909.png" />
 </div>
 </div>
 </section>
@@ -683,14 +678,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
     <span class="c1"># Convert v0 to float in case it comes as an array</span>
     <span class="c1">#print(v0)</span>
     <span class="n">v0</span> <span class="o">=</span> <span class="n">v0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="c1"># Solve IVP</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">v0</span><span class="p">],</span> 
-                    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span> 
-                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
-    <span class="c1"># Return the difference between computed final value and desired final value</span>
-    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">yf</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0_guess</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve the boundary value problem using root finding&quot;&quot;&quot;</span>
@@ -721,12 +710,6 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found initial velocity: -0.18257435225266522
-</pre></div>
-</div>
-<img alt="../_images/640641439fb8386e67c4bb8d34eddedf45e4d06cd3e718b1696a4ecf662b6dd2.png" src="../_images/640641439fb8386e67c4bb8d34eddedf45e4d06cd3e718b1696a4ecf662b6dd2.png" />
-</div>
 </div>
 </section>
 <section id="non-linear-shooting-method">
@@ -753,14 +736,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
     <span class="c1"># Convert v0 to float in case it comes as an array</span>
     <span class="c1">#print(v0)</span>
     <span class="n">v0</span> <span class="o">=</span> <span class="n">v0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="c1"># Solve IVP</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">v0</span><span class="p">],</span> 
-                    <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span> 
-                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
-    <span class="c1"># Return the difference between computed final value and desired final value</span>
-    <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">yf</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0_guess</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Solve the boundary value problem using root finding&quot;&quot;&quot;</span>
@@ -793,19 +770,6 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found initial velocity: -0.18257435225266513
-</pre></div>
-</div>
-<img alt="../_images/640641439fb8386e67c4bb8d34eddedf45e4d06cd3e718b1696a4ecf662b6dd2.png" src="../_images/640641439fb8386e67c4bb8d34eddedf45e4d06cd3e718b1696a4ecf662b6dd2.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Found initial velocity: -0.5498253268703548
-</pre></div>
-</div>
-<img alt="../_images/21785442ac7fb19a5791ee9480b0822a673d9ea6ab05b258ff5c870c01c2956d.png" src="../_images/21785442ac7fb19a5791ee9480b0822a673d9ea6ab05b258ff5c870c01c2956d.png" />
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.5498253268703548)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="using-scipy-solve-bvp">
@@ -821,24 +785,18 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
     
 
 <span class="k">def</span><span class="w"> </span><span class="nf">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">ya</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">yb</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="c1"># change the initial velocity</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
     
 
 <span class="k">def</span><span class="w"> </span><span class="nf">mysolve_bvp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="c1"># model it as a 2-arg funtion, params are physical and should not change</span>
-    <span class="n">f_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">:</span> <span class="n">deriv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-    <span class="n">bc_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">:</span> <span class="n">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_bvp</span><span class="p">(</span><span class="n">f_wrapper</span><span class="p">,</span> <span class="n">bc_wrapper</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># print more info</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
     
     <span class="k">return</span> <span class="n">sol</span>
 
@@ -850,20 +808,6 @@ D\frac{d^2A}{dx^2} - kA = 0.
     <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">34</span>
-<span class="g g-Whitespace">     </span><span class="mi">32</span> <span class="n">y0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
-<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">34</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">35</span> <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">p</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;sol&#39; is not defined
-</pre></div>
-</div>
-<img alt="../_images/95db1908757cd06f6f437b5acf850b51c9fa770d422caa9b2a73de3faccc8155.png" src="../_images/95db1908757cd06f6f437b5acf850b51c9fa770d422caa9b2a73de3faccc8155.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -878,24 +822,18 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fixed_params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">fixed_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="n">fixed_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">fixed_params</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]]</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
     
 
 <span class="k">def</span><span class="w"> </span><span class="nf">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fixed_params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">ya</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">yb</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ya</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="c1"># change the initial velocity</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
     
 
 <span class="k">def</span><span class="w"> </span><span class="nf">mysolve_bvp</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fixed_params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_bvp</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">deriv</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fixed_params</span><span class="p">),</span> <span class="c1"># model it as a 3-arg funtion, does not change fixed_params</span>
-                    <span class="k">lambda</span> <span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">:</span> <span class="n">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">,</span> <span class="n">fixed_params</span><span class="p">),</span>  <span class="c1"># model it as a 3-arg funtion, does not change fixed_params</span>
-                    <span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> 
-                    <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># print more info</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
     
     <span class="k">return</span> <span class="n">sol</span>
 
@@ -909,11 +847,6 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Writing fixed_param.py
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="exercises">
@@ -921,8 +854,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="ecuacion-de-schroedinger-workshop">
 <h3>Ecuación de Schroedinger (workshop)<a class="headerlink" href="#ecuacion-de-schroedinger-workshop" title="Link to this heading">#</a></h3>
 <p>Una partícula se encuentra confinada en un potencial infinito descrito por</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91c8fd4f-6b9f-47dd-a3f5-beed590a5867">
-<span class="eqno">(36)<a class="headerlink" href="#equation-91c8fd4f-6b9f-47dd-a3f5-beed590a5867" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-63ce36f3-1e64-4506-b8b1-6ba0b4dd91b1">
+<span class="eqno">(36)<a class="headerlink" href="#equation-63ce36f3-1e64-4506-b8b1-6ba0b4dd91b1" title="Permalink to this equation">#</a></span>\[\begin{equation}
   V(x) = 
   \begin{cases}
   0, 0 \le x \le L,\\
@@ -930,8 +863,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
   \end{cases}
 \end{equation}\]</div>
 <p>La ecuación de onda <span class="math notranslate nohighlight">\(\phi\)</span> de la partícula (independiente del tiempo) es</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a2936b22-e49c-4ee4-9714-ec1da7d80919">
-<span class="eqno">(37)<a class="headerlink" href="#equation-a2936b22-e49c-4ee4-9714-ec1da7d80919" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-177ac02e-2588-4a92-9ead-fabd5e0739ee">
+<span class="eqno">(37)<a class="headerlink" href="#equation-177ac02e-2588-4a92-9ead-fabd5e0739ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{-\hbar^2}{2m} \frac{d^2\phi(x)}{dx^2} + V(x) \phi(x) = E\phi(x).
 \end{equation}\]</div>
 <p>Debido al potencial, la función de onda debe cumplir que <span class="math notranslate nohighlight">\(\phi(0) = \phi(L) = 0\)</span>.</p>
@@ -939,12 +872,7 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <li><p>Normalice la ecuación de manera que quede expresada en términos de una energía adimensional, posición adimensional, etc (medir la posición en unidades de <span class="math notranslate nohighlight">\(L\)</span>, etc)</p></li>
 <li><p>Resuelva el sistema usando BVP. El valor de <span class="math notranslate nohighlight">\(E\)</span> determina los niveles de energía. Busque la solución teórica y piense cómo dar un valor inicial para obteneer cada uno de los niveles de energía.</p></li>
 </ul>
-<p><span class="math notranslate nohighlight">\(x\)</span> is measured in units of <span class="math notranslate nohighlight">\(L\)</span>. Energy, therefore, in units of <span class="math notranslate nohighlight">\(\hbar^2/2mL^2\)</span>. Therefore, the equation turns into</p>
-<div class="amsmath math notranslate nohighlight" id="equation-02493c34-a9b8-4abe-95d0-e03ec3537c70">
-<span class="eqno">(38)<a class="headerlink" href="#equation-02493c34-a9b8-4abe-95d0-e03ec3537c70" title="Permalink to this equation">#</a></span>\[\begin{equation}
--\frac{d^2\phi(\hat x)}{d\hat x^2} + \hat V(\hat x) = \hat E \phi(\hat x),
-\end{equation}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\hat E = n^2\pi^2\)</span>.</p>
+<p>YOUR ANSWER HERE</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
@@ -962,14 +890,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
     <span class="k">return</span> <span class="p">[</span><span class="n">ya</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">yb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">ya</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">1.0</span><span class="p">]</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">solve_bvpE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_bvp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="n">bc</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">norma</span> <span class="o">=</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">norma</span><span class="p">)</span>
-    <span class="n">norma</span> <span class="o">=</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span><span class="p">),</span> <span class="n">x</span> <span class="o">=</span> <span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">norma</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">sol</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -987,18 +909,6 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Iteration    Max residual  Max BC residual  Total nodes    Nodes added  
-       1          5.60e-06       0.00e+00          100             0       
-Solved in 1 iterations, number of nodes 100. 
-Maximum relative residual: 5.60e-06 
-Maximum boundary residual: 0.00e+00
-norma=0.9999999999999999
-[9.86954401]
-</pre></div>
-</div>
-<img alt="../_images/8e15e199ed86a0801074ca1fbd5bf6ac7df96444e58422be156c796cf157352f.png" src="../_images/8e15e199ed86a0801074ca1fbd5bf6ac7df96444e58422be156c796cf157352f.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1015,18 +925,6 @@ norma=0.9999999999999999
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Iteration    Max residual  Max BC residual  Total nodes    Nodes added  
-       1          1.65e-05       0.00e+00          100             0       
-Solved in 1 iterations, number of nodes 100. 
-Maximum relative residual: 1.65e-05 
-Maximum boundary residual: 0.00e+00
-norma=0.9999999999999999
-[39.47842637]
-</pre></div>
-</div>
-<img alt="../_images/0fdab28306121a317365b0c245cb4e16af5484175ecbf5318bc9f879d87433e1.png" src="../_images/0fdab28306121a317365b0c245cb4e16af5484175ecbf5318bc9f879d87433e1.png" />
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1038,27 +936,14 @@ norma=0.9999999999999999
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Iteration    Max residual  Max BC residual  Total nodes    Nodes added  
-       1          2.55e-01       0.00e+00          100            113      
-       2          1.91e-06       0.00e+00          213             0       
-Solved in 2 iterations, number of nodes 213. 
-Maximum relative residual: 1.91e-06 
-Maximum boundary residual: 0.00e+00
-norma=0.9999999999999999
-[88.82643866]
-</pre></div>
-</div>
-<img alt="../_images/668267dc760543b14cf02e4e3af3cfcf693b9c7b200ff1977f949cf9a6b8cc9d.png" src="../_images/668267dc760543b14cf02e4e3af3cfcf693b9c7b200ff1977f949cf9a6b8cc9d.png" />
-</div>
 </div>
 </section>
 </section>
 <section id="matrix-formulation-for-linear-boundary-value-problems">
 <h2>Matrix formulation for linear boundary value problems<a class="headerlink" href="#matrix-formulation-for-linear-boundary-value-problems" title="Link to this heading">#</a></h2>
 <p>When the BVP is linear, you can solve it either using the interpolation already shown, or by formulating the problem as a matrix system. The later is based on a <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">finite difference</a> discretization for the derivatives. Let’s start with the following problem, representing the temperature <span class="math notranslate nohighlight">\(T\)</span> across a linear bar (Chapra, 27.1)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5188d516-80da-4c36-a12f-598f667fc956">
-<span class="eqno">(39)<a class="headerlink" href="#equation-5188d516-80da-4c36-a12f-598f667fc956" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b74e84c2-75cb-43d0-bff6-501bea6c921d">
+<span class="eqno">(38)<a class="headerlink" href="#equation-b74e84c2-75cb-43d0-bff6-501bea6c921d" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{d^2T}{dx^2} + h'(T_a - T) = 0,  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h'\)</span> is the transfer coefficient (m<span class="math notranslate nohighlight">\(^{-2}\)</span>), and <span class="math notranslate nohighlight">\(T_a\)</span> is the sourronding air temperature. The boundary conditions are <span class="math notranslate nohighlight">\(T(0) = T_1 = 40\)</span>, <span class="math notranslate nohighlight">\(T(L=10) = T_2 = 200\)</span>, and <span class="math notranslate nohighlight">\(T_a = 20\)</span>. Also, <span class="math notranslate nohighlight">\(h' = 0.01\)</span>.</p>
@@ -1073,46 +958,22 @@ norma=0.9999999999999999
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="n">hprime</span><span class="p">,</span> <span class="n">Ta</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">hprime</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">Ta</span><span class="p">)]</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">ya</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">40</span><span class="p">,</span> <span class="n">yb</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mi">200</span><span class="p">]</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">xf</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="n">N</span><span class="o">=</span><span class="mi">100</span> <span class="c1"># Number of points in the horizontal direction</span>
-    <span class="n">NDIM</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># Dimensions in the state vector</span>
-    <span class="n">deriv_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-    <span class="n">bc_wrapper</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">:</span> <span class="n">bc</span><span class="p">(</span><span class="n">ya</span><span class="p">,</span> <span class="n">yb</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_bvp</span><span class="p">(</span><span class="n">deriv_wrapper</span><span class="p">,</span> <span class="n">bc_wrapper</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="n">xf</span><span class="p">,</span> <span class="n">N</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">NDIM</span><span class="p">,</span> <span class="n">N</span><span class="p">)),</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="c1"># plot</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">)</span>
 <span class="n">solve_bvp_plot</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">PARAMS</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   Iteration    Max residual  Max BC residual  Total nodes    Nodes added  
-       1          1.87e-08       5.68e-14          100             0       
-Solved in 1 iterations, number of nodes 100. 
-Maximum relative residual: 1.87e-08 
-Maximum boundary residual: 5.68e-14
-12.690455824985827
-(0.01, 20.0)
-</pre></div>
-</div>
-<img alt="../_images/3d10af994bcc41c636bb1893590917e219cff45f1d76ae08b4d3c0ce8921f521.png" src="../_images/3d10af994bcc41c636bb1893590917e219cff45f1d76ae08b4d3c0ce8921f521.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1126,54 +987,36 @@ Maximum boundary residual: 5.68e-14
 <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s2">&quot;talk&quot;</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">deriv</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">params</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">h</span><span class="p">(</span><span class="n">v0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="k">return</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">v0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span> 
-                     <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">yf</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">solve_bvp_root</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="c1"># Compute the root : v0 such us h(v0) = 0</span>
-    <span class="n">v0</span> <span class="o">=</span> <span class="n">root</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">v0</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">y0</span><span class="p">,</span> <span class="n">yf</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="c1"># Use the solution and solve the ivp</span>
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">deriv</span><span class="p">,</span> <span class="p">[</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="p">],</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">v0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">t0</span><span class="p">,</span> <span class="n">tf</span><span class="o">+</span><span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span>
-                    <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">params</span><span class="p">,))</span>
-    <span class="c1"># plot</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">t</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">v0</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="n">PARAMS</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">solve_bvp_root</span><span class="p">(</span><span class="mf">40.0</span><span class="p">,</span> <span class="mf">200.0</span><span class="p">,</span> <span class="mf">10.9</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="n">PARAMS</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12.690853836888632
-</pre></div>
-</div>
-<img alt="../_images/1763c0400217b9b447014532db2270e55e092ae4fcb796a8da1998977ac2139c.png" src="../_images/1763c0400217b9b447014532db2270e55e092ae4fcb796a8da1998977ac2139c.png" />
-</div>
 </div>
 <p>Now let’s proceed with a different way: by discretizing the derivatives and setting the equation on the points. We have,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c9c96422-606a-4395-9a18-03dc5dc41899">
-<span class="eqno">(40)<a class="headerlink" href="#equation-c9c96422-606a-4395-9a18-03dc5dc41899" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-34fed0dd-4ea3-4cd2-a091-3bab5b46a917">
+<span class="eqno">(39)<a class="headerlink" href="#equation-34fed0dd-4ea3-4cd2-a091-3bab5b46a917" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dx^2} \simeq \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2},  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> is the partition size, so the original equation takes the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8f75ae59-1310-432b-a9d4-f5202eb16d9e">
-<span class="eqno">(41)<a class="headerlink" href="#equation-8f75ae59-1310-432b-a9d4-f5202eb16d9e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d8d86e3a-a74a-4348-8466-b70cde7c3d8c">
+<span class="eqno">(40)<a class="headerlink" href="#equation-d8d86e3a-a74a-4348-8466-b70cde7c3d8c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2} - h'(T_i - T_a) = 0.  
 \end{equation}\]</div>
 <p>Finally, after collecting terms, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cb892468-7287-45af-ad0e-1f97a24c4bef">
-<span class="eqno">(42)<a class="headerlink" href="#equation-cb892468-7287-45af-ad0e-1f97a24c4bef" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-44e14e55-5006-4f90-bdf7-b508e97c1cf9">
+<span class="eqno">(41)<a class="headerlink" href="#equation-44e14e55-5006-4f90-bdf7-b508e97c1cf9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -T_{i-1} + (2+h'\Delta x^2)T_i - T_{i+1} = h'\Delta x^2T_a \to -T_{i-1} + \alpha T_i - T_{i+1} = \beta.
 \end{equation}\]</div>
 <p>This is a tri-diagonal system for the internal points.</p>
@@ -1193,14 +1036,8 @@ Maximum boundary residual: 5.68e-14
     <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">BETA</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> 
     <span class="c1"># Set diagonal elements</span>
-    <span class="c1">### BEGIN SOLUTION</span>
-    <span class="n">M</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">ALPHA</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">M</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span> 
-    <span class="n">M</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-    <span class="c1"># Set vector first and last element</span>
-    <span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">+=</span> <span class="n">T1</span>
-    <span class="n">b</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">T2</span>
-    <span class="c1">### END SOLUTION</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
     <span class="c1"># Solve the system Mx = b</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">M</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">(([</span><span class="n">T1</span><span class="p">],</span> <span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">T2</span><span class="p">]))</span>
@@ -1231,12 +1068,6 @@ Maximum boundary residual: 5.68e-14
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x29de6f100&gt;]
-</pre></div>
-</div>
-<img alt="../_images/01de28207e68d38a434023d0862e175d4e695f7cd5c094e544b1b66a01891d7f.png" src="../_images/01de28207e68d38a434023d0862e175d4e695f7cd5c094e544b1b66a01891d7f.png" />
-</div>
 </div>
 </section>
 <section id="additional-exercises">
@@ -1244,8 +1075,8 @@ Maximum boundary residual: 5.68e-14
 <section id="generic-bvp">
 <h3>Generic BVP<a class="headerlink" href="#generic-bvp" title="Link to this heading">#</a></h3>
 <p>Solve the following equation using the shooting method and the matrix method,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d3f966a4-0f2f-470e-8090-f70bd7f0a5cd">
-<span class="eqno">(43)<a class="headerlink" href="#equation-d3f966a4-0f2f-470e-8090-f70bd7f0a5cd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a0b62058-2b1a-41ea-b5ab-cf7119f55316">
+<span class="eqno">(42)<a class="headerlink" href="#equation-a0b62058-2b1a-41ea-b5ab-cf7119f55316" title="Permalink to this equation">#</a></span>\[\begin{equation}
 7\frac{d^2y}{dx^2} -  2\frac{dy}{dx} - y +x = 0,
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(y(0) = 5, y(20) = 8\)</span></p>
@@ -1253,8 +1084,8 @@ Maximum boundary residual: 5.68e-14
 <section id="bvp-with-newman-condition">
 <h3>BVP with Newman condition<a class="headerlink" href="#bvp-with-newman-condition" title="Link to this heading">#</a></h3>
 <p>Here we will add a boundary condition on the derivative, on the left, which means that the left node is also an unknown. In that case you can use <span class="math notranslate nohighlight">\(dT/dx \simeq = (T_{1} - T_{-1})/2\Delta x\)</span> so <span class="math notranslate nohighlight">\(T_{-1} = T_1 -2 \Delta x dT/\Delta x\)</span> and then you get the value for the imaginary node <span class="math notranslate nohighlight">\(T_{-1}\)</span> which is now needed. Solve following system:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-852825ba-e0b2-4b0a-81af-37f00554b9ed">
-<span class="eqno">(44)<a class="headerlink" href="#equation-852825ba-e0b2-4b0a-81af-37f00554b9ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1b229e82-e7c0-425b-b5d7-5e95e95f6900">
+<span class="eqno">(43)<a class="headerlink" href="#equation-1b229e82-e7c0-425b-b5d7-5e95e95f6900" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dr^2} + \frac{1}{r}\frac{dT}{dr} + S = 0,
 \end{equation}\]</div>
 <p>over <span class="math notranslate nohighlight">\(0 \le r\le 1\)</span>, with <span class="math notranslate nohighlight">\(T(r=1) = 1\)</span> and <span class="math notranslate nohighlight">\(\frac{dT}{dr} = 0\)</span> in <span class="math notranslate nohighlight">\(r=0\)</span>, for S = 1, 10, and 20 K/m<span class="math notranslate nohighlight">\(^2\)</span>. This is a model of the temperature distribution on  a circular rod with internal heat source <span class="math notranslate nohighlight">\(S\)</span>.</p>
@@ -1262,8 +1093,8 @@ Maximum boundary residual: 5.68e-14
 <section id="deflection-of-a-sailboat-mast-chapra-28-22">
 <h3>Deflection of a sailboat mast (Chapra 28.22)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-22" title="Link to this heading">#</a></h3>
 <p>The following equation can be used to model the deflection of a sailboat mast subject to wind force,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c181335c-2ced-4304-9cee-d17b063c1f4d">
-<span class="eqno">(45)<a class="headerlink" href="#equation-c181335c-2ced-4304-9cee-d17b063c1f4d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5d7e6991-6cf1-4797-bea2-2a2b7150f4b4">
+<span class="eqno">(44)<a class="headerlink" href="#equation-5d7e6991-6cf1-4797-bea2-2a2b7150f4b4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2y}{dz^2} = \frac{f}{2EI}(L-z)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is the wind force, <span class="math notranslate nohighlight">\(E\)</span> is the modulus of elasticity, <span class="math notranslate nohighlight">\(L\)</span> the mast length, and <span class="math notranslate nohighlight">\(I\)</span> the inertia moment. Compute the deflection as a function of <span class="math notranslate nohighlight">\(z\)</span> if <span class="math notranslate nohighlight">\(y = 0\)</span> and <span class="math notranslate nohighlight">\(dy/dz = 0\)</span> at <span class="math notranslate nohighlight">\(z = 0\)</span>. Use <span class="math notranslate nohighlight">\(f = 60, L = 30, E = 1.25\times 10^8, I = 0.05\)</span></p>
@@ -1271,8 +1102,8 @@ Maximum boundary residual: 5.68e-14
 <section id="deflection-of-a-sailboat-mast-chapra-28-23">
 <h3>Deflection of a sailboat mast (Chapra 28.23)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-23" title="Link to this heading">#</a></h3>
 <p>Same previous problem but now the force varies with height as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c278178e-a667-4bd2-b4fb-6268a8096363">
-<span class="eqno">(46)<a class="headerlink" href="#equation-c278178e-a667-4bd2-b4fb-6268a8096363" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3d32934d-9565-4b4c-8407-2ad40fc7a396">
+<span class="eqno">(45)<a class="headerlink" href="#equation-3d32934d-9565-4b4c-8407-2ad40fc7a396" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(z) = \frac{200z}{5+z}e^{-2z/30}.
 \end{equation}\]</div>
 </section>
