@@ -501,8 +501,8 @@
 <li><p>are produced efficiently</p></li>
 </ul>
 <p>Initial examples are the modulo generators,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3958336e-0d94-4635-bc93-761f386deff9">
-<span class="eqno">(63)<a class="headerlink" href="#equation-3958336e-0d94-4635-bc93-761f386deff9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-520ecdfc-b451-46c5-a55a-a1f7832fabaf">
+<span class="eqno">(63)<a class="headerlink" href="#equation-520ecdfc-b451-46c5-a55a-a1f7832fabaf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i = ax_{i-1} + c(\textrm{mod}\, m),
 \end{equation}\]</div>
 <p>where the constants <span class="math notranslate nohighlight">\(a, c, m\)</span> should be chosen with care. For instance, <span class="math notranslate nohighlight">\(m\)</span> determines the period. A bad choice for those constant will lead to low period and large correlations. The generation of random numbers efficiently and with quality is an actual research topic, with huge implications from the field of random simulation of physical systems to the field of cryptography.</p>
@@ -561,7 +561,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f01f08de350&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f67341e5e50&gt;
 </pre></div>
 </div>
 <img alt="../_images/7a05eda470d93cf4b61a3304ac3ba0a897088f488aca4d275066eaf15fd13162.png" src="../_images/7a05eda470d93cf4b61a3304ac3ba0a897088f488aca4d275066eaf15fd13162.png" />
@@ -584,7 +584,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f01f030df90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f6734037550&gt;
 </pre></div>
 </div>
 <img alt="../_images/c8e671c535fa9ace4d0bfdb3909a5c3a4720811e4fc2c145fc9070eead4a4ef3.png" src="../_images/c8e671c535fa9ace4d0bfdb3909a5c3a4720811e4fc2c145fc9070eead4a4ef3.png" />
@@ -600,18 +600,18 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 <section class="tex2jax_ignore mathjax_ignore" id="inverse-transform-method">
 <h1>Inverse transform method<a class="headerlink" href="#inverse-transform-method" title="Link to this heading">#</a></h1>
 <p>In this case you want to invert the cumulative probability function. Let’s say that you have an exponential distribution, whose density is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-177ef54c-d641-45fb-beb7-25e51dc7f7fb">
-<span class="eqno">(64)<a class="headerlink" href="#equation-177ef54c-d641-45fb-beb7-25e51dc7f7fb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-64e73502-e65c-472f-bd8f-e41be471d7b3">
+<span class="eqno">(64)<a class="headerlink" href="#equation-64e73502-e65c-472f-bd8f-e41be471d7b3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(t) = \lambda e^{-\lambda t}, t &gt; 0
 \end{equation}\]</div>
 <p>whose cumulative distribution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-121db9fd-763a-44e6-8b61-7634f4de92e9">
-<span class="eqno">(65)<a class="headerlink" href="#equation-121db9fd-763a-44e6-8b61-7634f4de92e9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d23194b1-deea-4868-b649-2c396b1c37d3">
+<span class="eqno">(65)<a class="headerlink" href="#equation-d23194b1-deea-4868-b649-2c396b1c37d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 F(x) = \int_0^x f(t) dt = 1 - e^{-\lambda x}.
 \end{equation}\]</div>
 <p>Now, the cumulative distribution is in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>. If we equate it to a uniform random number in the same interval, <span class="math notranslate nohighlight">\(z = F(x)\)</span>, then we can invert this expression and obtain <span class="math notranslate nohighlight">\(x = F^{-1}(z)\)</span>. For the exponential distribution we get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c1c286aa-56fc-4e50-abe0-3e49f8e9d0d9">
-<span class="eqno">(66)<a class="headerlink" href="#equation-c1c286aa-56fc-4e50-abe0-3e49f8e9d0d9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e47fc9a3-85e1-4325-82c9-ee2ec0273a8b">
+<span class="eqno">(66)<a class="headerlink" href="#equation-e47fc9a3-85e1-4325-82c9-ee2ec0273a8b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x = -\frac{\ln (1-z)}{\lambda}
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -633,7 +633,7 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0204b9e190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f67341fc0d0&gt;
 </pre></div>
 </div>
 <img alt="../_images/0c752dc4152ea45001009528b70254ccece385b1e6cabe5c4d4c26c9453b5fdd.png" src="../_images/0c752dc4152ea45001009528b70254ccece385b1e6cabe5c4d4c26c9453b5fdd.png" />
@@ -710,30 +710,30 @@ x = -\frac{\ln (1-z)}{\lambda}
 <h1>Computing random integrals<a class="headerlink" href="#computing-random-integrals" title="Link to this heading">#</a></h1>
 <p>REF: Ward</p>
 <p>Computing integrals using random numbers is easy and practical, specially for large dimensions. In the unit interval, one can compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e6a7e8be-f8a3-4bb5-a612-3622dbd397f8">
-<span class="eqno">(67)<a class="headerlink" href="#equation-e6a7e8be-f8a3-4bb5-a612-3622dbd397f8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bd1149c1-c30c-46e8-a674-8980c2ca688d">
+<span class="eqno">(67)<a class="headerlink" href="#equation-bd1149c1-c30c-46e8-a674-8980c2ca688d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^1 f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>so the integral is approximated as the average function value. For a general interval, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e6614697-47ae-4a38-a2e6-1155b9c39765">
-<span class="eqno">(68)<a class="headerlink" href="#equation-e6614697-47ae-4a38-a2e6-1155b9c39765" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5c4cff80-373d-4f70-96c3-6a854eac877c">
+<span class="eqno">(68)<a class="headerlink" href="#equation-5c4cff80-373d-4f70-96c3-6a854eac877c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{b-a}\int_a^b f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>or , in higher dimensions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2f36d022-6e5c-4ee8-8ba7-1fd728b48ea8">
-<span class="eqno">(69)<a class="headerlink" href="#equation-2f36d022-6e5c-4ee8-8ba7-1fd728b48ea8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-56cffa63-8037-440a-9298-273cdd68c143">
+<span class="eqno">(69)<a class="headerlink" href="#equation-56cffa63-8037-440a-9298-273cdd68c143" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{8}\int_1^3\int_{-1}^1 \int_0^2 f(x, y, z) dxdydz \simeq \frac{1}{n} \sum_{i=1}^n f(x_i, y_i, z_i).
 \end{equation}\]</div>
 <p>In general one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-22133413-869e-44ea-b1ab-b6311fe7db9e">
-<span class="eqno">(70)<a class="headerlink" href="#equation-22133413-869e-44ea-b1ab-b6311fe7db9e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6f229394-0d35-4d28-920d-c7606c84bda3">
+<span class="eqno">(70)<a class="headerlink" href="#equation-6f229394-0d35-4d28-920d-c7606c84bda3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_A f \simeq (\text{measure of}\ A) \times (\text{average of}\ f\ \text{over}\ n\ \text{random points on}\ A)
 \end{equation}\]</div>
 <section id="example">
 <h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
 <p>Compute the following integral</p>
-<div class="amsmath math notranslate nohighlight" id="equation-92679d18-bf12-448a-9ead-f34f55ba42e6">
-<span class="eqno">(71)<a class="headerlink" href="#equation-92679d18-bf12-448a-9ead-f34f55ba42e6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a56f650b-5736-457a-8f9a-58c62ae1cb42">
+<span class="eqno">(71)<a class="headerlink" href="#equation-a56f650b-5736-457a-8f9a-58c62ae1cb42" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \iint_\limits{\Omega}\sin\sqrt{\ln(x+y+1)} dx dy, 
 \end{equation}\]</div>
 <p>where the integration region <span class="math notranslate nohighlight">\(\Omega\)</span> is the disk defined as <span class="math notranslate nohighlight">\((x-1/2)^2 + (y-1/2)^2 \le 1/4\)</span>.</p>
@@ -779,8 +779,8 @@ The expected value is around 0.14</p>
 <p><mark>Exercises</mark></p>
 <ul>
 <li><p>[ ] (Ward) Compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2837a254-6112-49e6-bd2f-887f2614a774">
-<span class="eqno">(72)<a class="headerlink" href="#equation-2837a254-6112-49e6-bd2f-887f2614a774" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-11d57564-d6ea-4585-96df-75f1b54ea30a">
+<span class="eqno">(72)<a class="headerlink" href="#equation-11d57564-d6ea-4585-96df-75f1b54ea30a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^2\int_3^6\int_{-1}^1 (y x^2 + z\log y + e^x) dx dy dz
 \end{equation}\]</div>
 </li>
