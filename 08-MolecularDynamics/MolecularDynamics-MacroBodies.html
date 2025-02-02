@@ -798,8 +798,8 @@ Other possible like the radius are not as relevant now since we are focusing onl
 <section id="exercise-adding-more-particles">
 <h2>Exercise: Adding more particles<a class="headerlink" href="#exercise-adding-more-particles" title="Link to this heading">#</a></h2>
 <p>Now let’s add more particles. They will not see each other unless we implement a force among them. Also, we will need to generalize our methods to process arrays of bodies. First, the force that particle <span class="math notranslate nohighlight">\(i\)</span> does on particle <span class="math notranslate nohighlight">\(j\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6eaa3b58-f8b6-4cde-8e12-aa5f83fc9b56">
-<span class="eqno">(46)<a class="headerlink" href="#equation-6eaa3b58-f8b6-4cde-8e12-aa5f83fc9b56" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2b6da39d-541e-448b-953a-3ea954b680b5">
+<span class="eqno">(46)<a class="headerlink" href="#equation-2b6da39d-541e-448b-953a-3ea954b680b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{ij} = k \delta \hat n_{ij},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat n_{ij} = \vec R_{ij} / R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(\vec R_{ij} = \vec R_i - \vec R_j\)</span>, and <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(r\)</span> the radius of each particle.</p>
@@ -908,26 +908,11 @@ Other possible like the radius are not as relevant now since we are focusing onl
 </div>
 </div>
 <p>Now go and open Paraview, and then load the data using open and navigating the the folder where the data is (notice that paraview sees all data files as a series)</p>
-<div style="text-align: center;">
-<figure>
-<img src="fig/paraview_01_open.png" width=40%>
-<figcaption> Paraview open </figcaption>
-</figure>
-</div>
+<a class="reference internal image-reference" href="../_images/paraview_01_open.png"><img alt="paraview open" class="align-center" src="../_images/paraview_01_open.png" style="width: 60%;" /></a>
 <p>Then click on apply to actually load the series</p>
-<div style="text-align: center;">
-<figure>
-<img src="fig/paraview_02_apply.png" width=40%>
-<figcaption> paraview apply </figcaption>
-</figure>
-</div>
+<a class="reference internal image-reference" href="../_images/paraview_02_apply.png"><img alt="paraview apply" class="align-center" src="../_images/paraview_02_apply.png" style="width: 60%;" /></a>
 <p>And, finally, apply some glyph (like spheres) to view the particles:</p>
-<div style="text-align: center;">
-<figure>
-<img src="fig/paraview_03_glyph.png" width=40%>
-<figcaption> paraview glyph </figcaption>
-</figure>
-</div>
+<a class="reference internal image-reference" href="../_images/paraview_03_glyph.png"><img alt="paraview glyph" class="align-center" src="../_images/paraview_03_glyph.png" style="width: 60%;" /></a>
 <p>Then click play to see the actual animation. You can now use the powerful paraview filters and data analysis tools to understand better your system</p>
 <p><strong>Your exercise here is to adapt you <code class="docutils literal notranslate"><span class="pre">md.py</span></code> file to actually write the paraview data every <code class="docutils literal notranslate"><span class="pre">NDISPLAY</span></code> time steps, and then visualize the system using paraview.</strong></p>
 </section>

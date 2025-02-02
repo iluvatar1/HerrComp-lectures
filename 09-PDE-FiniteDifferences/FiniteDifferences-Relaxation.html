@@ -490,30 +490,30 @@
 <li><p>Landau y Paez, Computational physics</p></li>
 <li><p>Boudreau et al, Applied Computational Physics</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-6356ded6-bd75-4182-bec3-6ebe47d72fcb">
-<span class="eqno">(48)<a class="headerlink" href="#equation-6356ded6-bd75-4182-bec3-6ebe47d72fcb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e9eef44c-d616-4cd0-a5c4-433814f6a95e">
+<span class="eqno">(48)<a class="headerlink" href="#equation-e9eef44c-d616-4cd0-a5c4-433814f6a95e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = \left[ \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2}\right] = -\frac{\rho}{\epsilon_0}
 \end{equation}\]</div>
 <p>In 2D, there are several solutions and the actual one depends on the boundary conditions. For example, for the Laplace equation you have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5a6e2033-ed9f-4af6-b4fa-9c31f622c31e">
-<span class="eqno">(49)<a class="headerlink" href="#equation-5a6e2033-ed9f-4af6-b4fa-9c31f622c31e" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4c60a0da-8621-4037-aac4-e7d4f33ccab5">
+<span class="eqno">(49)<a class="headerlink" href="#equation-4c60a0da-8621-4037-aac4-e7d4f33ccab5" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, y) &amp; = V_0,\\
 V(x, y) &amp; = \frac{1}{2} A (x^2 - y^2) + Bx + Cy + D
 \end{align}\]</div>
 <p>as solutions.</p>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> method discretizes the derivatives on a grid. For instance, using the central difference it is possible to rewrite the 2D Poisson equation as (<a class="reference external" href="https://en.wikipedia.org/wiki/Laplace%27s_equation">Laplace equation</a> corresponds to <span class="math notranslate nohighlight">\(\rho = 0\)</span> )</p>
-<div class="amsmath math notranslate nohighlight" id="equation-40e19f16-64ac-4946-8ba7-721702694dfb">
-<span class="eqno">(50)<a class="headerlink" href="#equation-40e19f16-64ac-4946-8ba7-721702694dfb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9ba378b9-f2f3-4ca3-97bc-1bc243c28b3a">
+<span class="eqno">(50)<a class="headerlink" href="#equation-9ba378b9-f2f3-4ca3-97bc-1bc243c28b3a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V(x_i + \Delta x, y_j) - 2V(x_i, y_j) + V(x_i - \Delta x, y_j)}{\Delta x^2} + \frac{V(x_i, y_j + \Delta y) - 2V(x_i, y_j) + V(x_i, y_j - \Delta y)}{\Delta y^2} = -\frac{\rho(x_i, y_j)}{\epsilon_0}.
 \end{equation}\]</div>
 <p>which can be rewritten as  (let’s assume <span class="math notranslate nohighlight">\(\Delta x = \Delta y = \Delta\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5033dced-735b-4dc1-925d-07feced2b1d7">
-<span class="eqno">(51)<a class="headerlink" href="#equation-5033dced-735b-4dc1-925d-07feced2b1d7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e29ae7be-4d69-40cb-b622-5a4ff3bf5212">
+<span class="eqno">(51)<a class="headerlink" href="#equation-e29ae7be-4d69-40cb-b622-5a4ff3bf5212" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V_{i+1, j} - 2V_{i, j} + V_{i-1, j}}{\Delta^2} + \frac{V_{i,j+1} - 2V_{i, j} + V_{i, j-1}}{\Delta^2} = -\frac{\rho_{i, j}}{\epsilon_0},
 \end{equation}\]</div>
 <p>and, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9d8b88f3-952d-4f51-a6db-7e33a28acd43">
-<span class="eqno">(52)<a class="headerlink" href="#equation-9d8b88f3-952d-4f51-a6db-7e33a28acd43" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3989c034-0f1b-4865-9f67-bb2e73252f74">
+<span class="eqno">(52)<a class="headerlink" href="#equation-3989c034-0f1b-4865-9f67-bb2e73252f74" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j}\Delta^2}{\epsilon_0}.
 \end{equation}\]</div>
 <p>This can be seen in two ways: as a matrix equation or as an equation showing that the value at a given position, <span class="math notranslate nohighlight">\(V_{i, j}\)</span>, is kind of an average of the surrounding neighbors and the source term (<a class="reference external" href="https://en.wikipedia.org/wiki/Jacobi_method">Jacobi method</a>), as seen (ref: https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation)</p>
@@ -522,16 +522,16 @@ V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j
 <section id="relaxation-solution">
 <h2>Relaxation solution<a class="headerlink" href="#relaxation-solution" title="Link to this heading">#</a></h2>
 <p>Let’s solve the Laplace problem (<span class="math notranslate nohighlight">\(\rho = 0\)</span>) using both methods with a simple example. Fix the boundaries as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8d22b342-f3be-4814-8b7e-bda121b2b361">
-<span class="eqno">(53)<a class="headerlink" href="#equation-8d22b342-f3be-4814-8b7e-bda121b2b361" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6aabaaf2-4f42-4be6-ae47-a23c0ab6c0ed">
+<span class="eqno">(53)<a class="headerlink" href="#equation-6aabaaf2-4f42-4be6-ae47-a23c0ab6c0ed" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, 0) &amp;= \sin(\pi x),\\
 V(x, a) &amp;= 0, \\
 V(0, y) &amp;= 0, \\
 V(a, y) &amp;= 0, \\
 \end{align}\]</div>
 <p>with <span class="math notranslate nohighlight">\(x, y \in [0, 1]\)</span>, and <span class="math notranslate nohighlight">\(a \)</span> any value on the border. These are called <a class="reference external" href="https://en.wikipedia.org/wiki/Dirichlet_boundary_condition">Dirichlet boundary conditions</a> (where you specify the function values at the boundary). Finally, use at least <span class="math notranslate nohighlight">\(N_x = N_y = 25\)</span>, so <span class="math notranslate nohighlight">\(\Delta = 1/25\)</span>, <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta, y_j = y_0 + j\Delta\)</span>. We need to solve the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ccd9db11-2102-4755-8f15-3267c086b326">
-<span class="eqno">(54)<a class="headerlink" href="#equation-ccd9db11-2102-4755-8f15-3267c086b326" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-13da107a-eb71-44ea-ba3a-625c7f7e292b">
+<span class="eqno">(54)<a class="headerlink" href="#equation-13da107a-eb71-44ea-ba3a-625c7f7e292b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 \end{equation}\]</div>
 <p>To do so, we apply this relationship to each point in the grid, without overwriting the boundary conditions, and we do that until the values are not changing much. Firs, let’s define the problem conditions (to be changed later)</p>
@@ -841,8 +841,8 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <section id="exercise-plot-the-electrical-field">
 <h2>Exercise: Plot the electrical field<a class="headerlink" href="#exercise-plot-the-electrical-field" title="Link to this heading">#</a></h2>
 <p>For any of the previous examples, use (for example) a quiver plot to plot the electric field, defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3d4d4dcc-d8c5-4cb6-ab33-0ff4abce8508">
-<span class="eqno">(55)<a class="headerlink" href="#equation-3d4d4dcc-d8c5-4cb6-ab33-0ff4abce8508" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d8e37e43-27ad-4eee-9696-116ee57a1554">
+<span class="eqno">(55)<a class="headerlink" href="#equation-d8e37e43-27ad-4eee-9696-116ee57a1554" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec E = -\vec\nabla V
 \end{equation}\]</div>
 <p>See https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb</p>
