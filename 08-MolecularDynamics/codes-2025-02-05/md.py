@@ -7,18 +7,19 @@ import integrator as tint
 import matplotlib.pyplot as plt
 
 # Pre-processing: Setup. For more particless: mass distribution, random positions, etc
-particle = bd.Body([1.23, 2.34, 0.0], [2.1, 10.2, 0.0], 0.654, 0.23)
+
+particles = np.array([bd.Body([1.23, 2.34, 0.0], [2.1, 10.2, 0.0], 0.654, 0.23)])
 
 # Collider
 collider = col.Collider()
-collider.computeForce(particle) # Initial force
+collider.computeForce(particles) # Initial force
 
 # Time evolution stuff
 DT = 0.005
 T = np.arange(0.0, 20.5, DT)
 NSTEPS = T.size
 leapfrog = tint.TimeIntegrator(DT)
-leapfrog.startIntegration(particle) # mover la velocidad a -dt/2
+leapfrog.startIntegration(particles) # mover la velocidad a -dt/2
 
 # Save data
 Ry = np.zeros(NSTEPS); 
@@ -29,12 +30,12 @@ Vx = np.zeros(NSTEPS)
 # main evolution loop
 it = 0
 while it < NSTEPS:
-    Ry[it] = particle.R[1]; 
-    Vy[it] = particle.V[1]
-    Rx[it] = particle.R[0]; 
-    Vx[it] = particle.V[0]
-    collider.computeForce(particle)
-    leapfrog.timestep(particle)
+    Ry[it] = particles[0].R[1]; 
+    Vy[it] = particles[0].V[1]
+    Rx[it] = particles[0].R[0]; 
+    Vx[it] = particles[0].V[0]
+    collider.computeForce(particles)
+    leapfrog.timestep(particles)
     it = it + 1
 
 print(Vy[-1])
