@@ -558,8 +558,8 @@
 <section id="substractive-cancellation">
 <h3>Substractive cancellation<a class="headerlink" href="#substractive-cancellation" title="Link to this heading">#</a></h3>
 <p>Given <span class="math notranslate nohighlight">\(a = b-c\)</span>, then <span class="math notranslate nohighlight">\(a_c = b_c-c_c\)</span>, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c355a89-8594-4203-8d42-bb1e20c77d39">
-<span class="eqno">(1)<a class="headerlink" href="#equation-2c355a89-8594-4203-8d42-bb1e20c77d39" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f40d2b53-69fa-4e8b-9756-f580bf616b5a">
+<span class="eqno">(1)<a class="headerlink" href="#equation-f40d2b53-69fa-4e8b-9756-f580bf616b5a" title="Permalink to this equation">#</a></span>\[\begin{align}
 a_c &amp;= a(1+\epsilon_a ) = b_c - c_c = b(1+\epsilon_b ) - c(1+\epsilon_c )\\
 \frac{a_c}{a} &amp;= 1 + \epsilon_b \frac{b}{a} - \frac{c}{a}\epsilon_c  
 \end{align}\]</div>
@@ -663,8 +663,8 @@ $<span class="math notranslate nohighlight">\(1 + \epsilon_a + \epsilon_b\)</spa
 <section id="errors-in-algorithms-and-their-computational-implementation">
 <h3>Errors in algorithms and their computational implementation<a class="headerlink" href="#errors-in-algorithms-and-their-computational-implementation" title="Link to this heading">#</a></h3>
 <p>As you can see, there are several source for errors in computation. Some come from the mathematical approximation, , called <span class="math notranslate nohighlight">\(\epsilon_a\)</span>, and some others are intrinsic from the numerical representation, and we can call them <span class="math notranslate nohighlight">\(\epsilon_r\)</span>. Sometimes, the rounding/truncation error are modeled as a random walk, <span class="math notranslate nohighlight">\(\epsilon_r \simeq \sqrt{N} \epsilon_m\)</span>, where <span class="math notranslate nohighlight">\(\epsilon_m\)</span> is the machine precision, and <span class="math notranslate nohighlight">\(N\)</span> is the representative number of “steps”.  From here, the total error can be estimated as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f4cd91ae-dd5f-4173-8829-8dea4403f821">
-<span class="eqno">(2)<a class="headerlink" href="#equation-f4cd91ae-dd5f-4173-8829-8dea4403f821" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9a08ff39-b9a0-4ba8-8c1a-1d59417724dc">
+<span class="eqno">(2)<a class="headerlink" href="#equation-9a08ff39-b9a0-4ba8-8c1a-1d59417724dc" title="Permalink to this equation">#</a></span>\[\begin{align}
 \epsilon_{\rm tot} &amp;= \epsilon_a + \epsilon_r \\
 &amp;= \frac{\alpha}{N^\beta} + \sqrt{N} \epsilon_m.
 \end{align}\]</div>

@@ -469,9 +469,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-the-dynamical-systems">Integration of the Dynamical Systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-frog-algorithm">Leap-frog algorithm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-falling-under-constant-gravity">Particle falling under constant gravity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-inside-magnetic-field">Particle inside magnetic field</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Homework</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-with-viscous-non-linear-damping">Particle with viscous non-linear damping</a></li>
 </ul>
             </nav>
@@ -496,12 +494,14 @@
 </section>
 <section id="pre-requisites">
 <h2>Pre-requisites<a class="headerlink" href="#pre-requisites" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Python installed (you can use the <a class="reference external" href="https://www.continuum.io/why-anaconda">https://www.continuum.io/why-anaconda</a> python distribution, although you can use any other tool, like the raw python, the Canopy distribution, Pythonxy, etc)</p></li>
-<li><p>Jupyter notebook installed (included in Ananconda and other distributions)</p></li>
-<li><p>Vpython installed. For anaconda, you can install vpython (to be used inside the notebook) by executing the following in the terminal
-pip install vpython
-conda install ipython jupyter notebook numpy matplotlib</p></li>
+<ul>
+<li><p>Python installed (you can use the <a class="reference external" href="https://www.continuum.io/why-anaconda">https://www.continuum.io/why-anaconda</a> python distribution, although you can use any other tool, like the raw python, the Canopy distribution, Pythonxy, uv astral, etc)</p></li>
+<li><p>Jupyter notebook installed</p></li>
+<li><p>Vpython installed. Maybe you can use (if you ave installed uv)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>vpython
+</pre></div>
+</div>
+</li>
 <li><p>Open a jupyter-notebook to play with these codes.</p></li>
 <li><p>Using glowscript: https://glowscript.org/  (importing numpy does not work there)</p></li>
 </ul>
@@ -609,8 +609,8 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 <section id="integration-of-the-dynamical-systems">
 <h2>Integration of the Dynamical Systems<a class="headerlink" href="#integration-of-the-dynamical-systems" title="Link to this heading">#</a></h2>
 <p>The time evolution for a dynamical system is typically expressed in terms of differential equations relating the change in the state of the system. This has its roots on the Newton second law of movement (for constant mass),</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7d0e146f-03b1-4408-8b95-e0716fc4b579">
-<span class="eqno">(47)<a class="headerlink" href="#equation-7d0e146f-03b1-4408-8b95-e0716fc4b579" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a1155b5d-9727-4a70-a73c-e4946aa47197">
+<span class="eqno">(47)<a class="headerlink" href="#equation-a1155b5d-9727-4a70-a73c-e4946aa47197" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{net} = m\vec A = m \frac{d^2x}{dt^2}
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\vec F_{net} = \sum F_i\)</span> is the net force (sum of all forces acting on the body), <span class="math notranslate nohighlight">\(m\)</span> is its mass, and <span class="math notranslate nohighlight">\(\vec A\)</span> its acceleration. Since the acceleration is the second derivative of the position (or the first derivative of the velocity), then differential equations of second (first) order are expected for the position (velocity).</p>
@@ -677,7 +677,9 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 
 <span class="c1"># compute net force</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">force</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">mass</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">mass</span><span class="o">*</span><span class="n">G</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    
 
 <span class="c1"># visualization stuff</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">canvas</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;3D scene&#39;</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -701,7 +703,7 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
     <span class="n">R</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">integration</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">MASS</span><span class="p">,</span> <span class="n">DT</span><span class="p">)</span>
     <span class="n">Y</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span> <span class="n">VY</span><span class="p">[</span><span class="n">it</span><span class="p">]</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="c1"># visual stuff</span>
-    <span class="n">vp</span><span class="o">.</span><span class="n">rate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">vp</span><span class="o">.</span><span class="n">rate</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
     <span class="n">ball</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">R</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> <span class="n">ball</span><span class="o">.</span><span class="n">velocity</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">V</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span> 
     <span class="n">varr</span><span class="o">.</span><span class="n">pos</span> <span class="o">=</span> <span class="n">ball</span><span class="o">.</span><span class="n">pos</span><span class="p">;</span> <span class="n">varr</span><span class="o">.</span><span class="n">axis</span><span class="o">=</span><span class="n">vscale</span><span class="o">*</span><span class="n">ball</span><span class="o">.</span><span class="n">velocity</span>
     <span class="c1"># advance time</span>
@@ -719,14 +721,14 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 </div>
 </div>
 </div>
-</section>
-<section id="homework">
-<h2>Homework:<a class="headerlink" href="#homework" title="Link to this heading">#</a></h2>
+<div style="background-color: #f0f7fb; color: #055781; padding: 10px; border-left: 5px solid #055781; font-weight: bold; font-size: 20px; margin: 10px 0;">EXERCISE</div>
 <ul class="simple">
 <li><p>Compute the exact initial velocity for the ball to touch the ground, at time <span class="math notranslate nohighlight">\(t = 2.5\)</span>. Put it inside the code. Is it true that the ball just touches the ground at that time? explain</p></li>
 <li><p>Compute the difference percentage between the theoretical and the numerical result. How does it decrease with <span class="math notranslate nohighlight">\(\delta t\)</span>? Make a plot of the percentage of cumulated error, <span class="math notranslate nohighlight">\(\Delta E = \sum_{i} |theo_i - num_i|/|theo_i|\)</span> (<span class="math notranslate nohighlight">\(i\)</span> denotes the time step) as function of <span class="math notranslate nohighlight">\(\delta t\)</span>. What should be the value of <span class="math notranslate nohighlight">\(\delta t\)</span> to get an error less or equal than 1 %?</p></li>
 <li><p>Add a line to make the particle bounce on the floor. Check.</p></li>
 <li><p>Plot the velocity as function of time. Is the value as expected? compare with the theory.</p></li>
+<li><p>Add more particles</p></li>
+<li><p>Add walls by constraints</p></li>
 </ul>
 </section>
 <section id="particle-inside-magnetic-field">
@@ -765,7 +767,8 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 
 <span class="c1"># compute net force</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">force</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">mass</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">Q</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cross</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
 
 <span class="c1"># visualization stuff</span>
 <span class="n">scene</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">canvas</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;3D scene&#39;</span><span class="p">,</span> <span class="n">center</span> <span class="o">=</span> <span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -799,9 +802,7 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 </div>
 </div>
 </div>
-</section>
-<section id="id1">
-<h2>Homework<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<div style="background-color: #f0f7fb; color: #055781; padding: 10px; border-left: 5px solid #055781; font-weight: bold; font-size: 20px; margin: 10px 0;">EXERCISE</div>
 <ul class="simple">
 <li><p>Compute the radius of the trajectory. Compare with the theoretical value.</p></li>
 <li><p>After 5 cycles, is the radius still constant? plot the radius after 5 cycles as function of <span class="math notranslate nohighlight">\(\delta t\)</span>. Then give the maximum <span class="math notranslate nohighlight">\(\delta t\)</span> to assure an error less than 1%.</p></li>
@@ -967,9 +968,7 @@ conda install ipython jupyter notebook numpy matplotlib</p></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration-of-the-dynamical-systems">Integration of the Dynamical Systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#leap-frog-algorithm">Leap-frog algorithm</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-falling-under-constant-gravity">Particle falling under constant gravity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#homework">Homework:</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-inside-magnetic-field">Particle inside magnetic field</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Homework</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#particle-with-viscous-non-linear-damping">Particle with viscous non-linear damping</a></li>
 </ul>
   </nav></div>
