@@ -18,16 +18,31 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# YOUR CODE HERE
-raise NotImplementedError()
+# Solve the problem several for different niter and plot it
+fig, ax = plt.subplots()
+x = np.linspace(0.0, L, num=NX)
+for niter in [1, 5, 10, 50, 100, 200, 500, 800]:
+    T = ftcs(T0, niter, DELTAT, DELTAX, LAMBDA)
+    ax.plot(x, T, label=f"{niter=}")
+ax.legend()
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNotImplementedError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[2], line 2[0m
-[1;32m      1[0m [38;5;66;03m# YOUR CODE HERE[39;00m
-[0;32m----> 2[0m [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
+Cell [0;32mIn[4], line 5[0m
+[1;32m      3[0m x [38;5;241m=[39m np[38;5;241m.[39mlinspace([38;5;241m0.0[39m, L, num[38;5;241m=[39mNX)
+[1;32m      4[0m [38;5;28;01mfor[39;00m niter [38;5;129;01min[39;00m [[38;5;241m1[39m, [38;5;241m5[39m, [38;5;241m10[39m, [38;5;241m50[39m, [38;5;241m100[39m, [38;5;241m200[39m, [38;5;241m500[39m, [38;5;241m800[39m]:
+[0;32m----> 5[0m     T [38;5;241m=[39m [43mftcs[49m[43m([49m[43mT0[49m[43m,[49m[43m [49m[43mniter[49m[43m,[49m[43m [49m[43mDELTAT[49m[43m,[49m[43m [49m[43mDELTAX[49m[43m,[49m[43m [49m[43mLAMBDA[49m[43m)[49m
+[1;32m      6[0m     ax[38;5;241m.[39mplot(x, T, label[38;5;241m=[39m[38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00mniter[38;5;132;01m=}[39;00m[38;5;124m"[39m)
+[1;32m      7[0m ax[38;5;241m.[39mlegend()
+
+Cell [0;32mIn[2], line 6[0m, in [0;36mftcs[0;34m(T0, nsteps, deltat, deltax, lambdac)[0m
+[1;32m      3[0m Taux [38;5;241m=[39m T0[38;5;241m.[39mcopy() [38;5;66;03m# avoids overwriting T0[39;00m
+[1;32m      4[0m [38;5;28;01mfor[39;00m niter [38;5;129;01min[39;00m [38;5;28mrange[39m(nsteps):
+[1;32m      5[0m     [38;5;66;03m# YOUR CODE HERE[39;00m
+[0;32m----> 6[0m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
+[1;32m      7[0m [38;5;28;01mreturn[39;00m Taux
 
 [0;31mNotImplementedError[0m: 
 

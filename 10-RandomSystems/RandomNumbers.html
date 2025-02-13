@@ -212,15 +212,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Pseudo-random number generation</a></li>
-
-
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="MonteCarlo-Simulation.html">Markov-chain Monte Carlo simulations</a></li>
-
-
-
 </ul>
 
     </div>
@@ -462,18 +454,16 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pseudo-random number generation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-number-generator">Numpy random number generator</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-transform-method">Inverse transform method</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-samples-in-regions">Generating random samples in regions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-random-integrals">Computing random integrals</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-volume">Example: Volume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-number-generator">Numpy random number generator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-transform-method">Inverse transform method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-samples-in-regions">Generating random samples in regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-random-integrals">Computing random integrals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-volume">Example: Volume</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-simulation-the-random-walk">A first simulation: the random walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-simulation-the-random-walk">A first simulation: the random walk</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -484,7 +474,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>REFS:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="pseudo-random-number-generation">
+<h1>Pseudo-random number generation<a class="headerlink" href="#pseudo-random-number-generation" title="Link to this heading">#</a></h1>
+<p>REFS:</p>
 <ul class="simple">
 <li><p>Boudreau, Applied Computational Physics</p></li>
 <li><p>Heath, Scientific Computing</p></li>
@@ -492,17 +484,15 @@
 <li><p>Anagnostoupulos, A practical introduction to computational physics and scientific computing</p></li>
 <li><p>Ward, Numerical Mathematicas and Computing</p></li>
 </ul>
-<section class="tex2jax_ignore mathjax_ignore" id="pseudo-random-number-generation">
-<h1>Pseudo-random number generation<a class="headerlink" href="#pseudo-random-number-generation" title="Link to this heading">#</a></h1>
-<p>A mathematical rule allows to generate random numbers from a star point (seed) , numbers which hopefully are</p>
+<p>A random number routine is a mathematical rule allows to generate random numbers from a star point (seed) , numbers which hopefully are</p>
 <ul class="simple">
 <li><p>not correlated</p></li>
 <li><p>have a long period</p></li>
 <li><p>are produced efficiently</p></li>
 </ul>
 <p>Initial examples are the modulo generators,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e9aa5c34-d9b9-4220-bcc7-1a87484bd5fb">
-<span class="eqno">(63)<a class="headerlink" href="#equation-e9aa5c34-d9b9-4220-bcc7-1a87484bd5fb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-664086ed-ec1b-444b-8fed-d6311688d31a">
+<span class="eqno">(63)<a class="headerlink" href="#equation-664086ed-ec1b-444b-8fed-d6311688d31a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i = ax_{i-1} + c(\textrm{mod}\, m),
 \end{equation}\]</div>
 <p>where the constants <span class="math notranslate nohighlight">\(a, c, m\)</span> should be chosen with care. For instance, <span class="math notranslate nohighlight">\(m\)</span> determines the period. A bad choice for those constant will lead to low period and large correlations. The generation of random numbers efficiently and with quality is an actual research topic, with huge implications from the field of random simulation of physical systems to the field of cryptography.</p>
@@ -561,15 +551,14 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f8928133f50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7febc03d9a10&gt;
 </pre></div>
 </div>
 <img alt="../_images/7a05eda470d93cf4b61a3304ac3ba0a897088f488aca4d275066eaf15fd13162.png" src="../_images/7a05eda470d93cf4b61a3304ac3ba0a897088f488aca4d275066eaf15fd13162.png" />
 </div>
 </div>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="numpy-random-number-generator">
-<h1>Numpy random number generator<a class="headerlink" href="#numpy-random-number-generator" title="Link to this heading">#</a></h1>
+<section id="numpy-random-number-generator">
+<h2>Numpy random number generator<a class="headerlink" href="#numpy-random-number-generator" title="Link to this heading">#</a></h2>
 <p>Numpy has a powerfull and high quality random number generator. Some time ago they used the <a class="reference external" href="https://en.wikipedia.org/wiki/Mersenne_Twister">Mersenne Twister</a> generator, which has a very large period and passes almost all tests successfully, but now they have moved to the PCG64 generator (see https://numpy.org/doc/stable/reference/random/generator.html and https://numpy.org/doc/stable/reference/random/bit_generators/pcg64.html#numpy.random.PCG64 )</p>
 <p>The following is an example on how to use it (besides using a random seed)</p>
 <div class="cell docutils container">
@@ -584,7 +573,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f89280ce190&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7febc01a3ad0&gt;
 </pre></div>
 </div>
 <img alt="../_images/c8e671c535fa9ace4d0bfdb3909a5c3a4720811e4fc2c145fc9070eead4a4ef3.png" src="../_images/c8e671c535fa9ace4d0bfdb3909a5c3a4720811e4fc2c145fc9070eead4a4ef3.png" />
@@ -597,21 +586,21 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </ul>
 <p>The numpy random generator produces numbers in <span class="math notranslate nohighlight">\([0, 1)\)</span>, which can be transformed into other distributions. Furthermore, numpy also has some distributions already present (see https://numpy.org/doc/stable/reference/random/generator.html#distributions) . If your distribution is not on those already implemented, you will a method to generate variates, like the <a class="reference external" href="https://en.wikipedia.org/wiki/Rejection_sampling#Algorithm">Rejection method</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Ratio_of_uniforms">Ratio of uniforms</a>, the <a class="reference external" href="https://en.wikipedia.org/wiki/Inverse_transform_sampling">inverse transform method</a>, or <a class="reference external" href="https://en.wikipedia.org/wiki/Non-uniform_random_variate_generation">many others</a>.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="inverse-transform-method">
-<h1>Inverse transform method<a class="headerlink" href="#inverse-transform-method" title="Link to this heading">#</a></h1>
+<section id="inverse-transform-method">
+<h2>Inverse transform method<a class="headerlink" href="#inverse-transform-method" title="Link to this heading">#</a></h2>
 <p>In this case you want to invert the cumulative probability function. Let’s say that you have an exponential distribution, whose density is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-60113fd6-bd02-44c7-9e23-ecef9cddbd84">
-<span class="eqno">(64)<a class="headerlink" href="#equation-60113fd6-bd02-44c7-9e23-ecef9cddbd84" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4ec17d89-b59f-4de8-b630-cd8275226ca0">
+<span class="eqno">(64)<a class="headerlink" href="#equation-4ec17d89-b59f-4de8-b630-cd8275226ca0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(t) = \lambda e^{-\lambda t}, t &gt; 0
 \end{equation}\]</div>
 <p>whose cumulative distribution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7aa3c3da-c30c-4835-b5be-37700bb1c144">
-<span class="eqno">(65)<a class="headerlink" href="#equation-7aa3c3da-c30c-4835-b5be-37700bb1c144" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2c3904f6-4ade-4647-b89c-f224a127cb1c">
+<span class="eqno">(65)<a class="headerlink" href="#equation-2c3904f6-4ade-4647-b89c-f224a127cb1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 F(x) = \int_0^x f(t) dt = 1 - e^{-\lambda x}.
 \end{equation}\]</div>
 <p>Now, the cumulative distribution is in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>. If we equate it to a uniform random number in the same interval, <span class="math notranslate nohighlight">\(z = F(x)\)</span>, then we can invert this expression and obtain <span class="math notranslate nohighlight">\(x = F^{-1}(z)\)</span>. For the exponential distribution we get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-732e9dd5-c858-48fa-a9dc-224d2f9f8548">
-<span class="eqno">(66)<a class="headerlink" href="#equation-732e9dd5-c858-48fa-a9dc-224d2f9f8548" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a9f57084-126e-4b16-a907-dbd281b06eaa">
+<span class="eqno">(66)<a class="headerlink" href="#equation-a9f57084-126e-4b16-a907-dbd281b06eaa" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x = -\frac{\ln (1-z)}{\lambda}
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -633,7 +622,7 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f89280100d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7febc03fafd0&gt;
 </pre></div>
 </div>
 <img alt="../_images/0c752dc4152ea45001009528b70254ccece385b1e6cabe5c4d4c26c9453b5fdd.png" src="../_images/0c752dc4152ea45001009528b70254ccece385b1e6cabe5c4d4c26c9453b5fdd.png" />
@@ -646,8 +635,8 @@ x = -\frac{\ln (1-z)}{\lambda}
 <li><p>[ ] Fit the data with an exponential function of the form <span class="math notranslate nohighlight">\(ae^{-at}\)</span>. What is the <span class="math notranslate nohighlight">\(a\)</span> value? is what you expect?</p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="generating-random-samples-in-regions">
-<h1>Generating random samples in regions<a class="headerlink" href="#generating-random-samples-in-regions" title="Link to this heading">#</a></h1>
+<section id="generating-random-samples-in-regions">
+<h2>Generating random samples in regions<a class="headerlink" href="#generating-random-samples-in-regions" title="Link to this heading">#</a></h2>
 <p>Let’s assume that you want to generate random samples uniformly distributed inside the ellipse <span class="math notranslate nohighlight">\(x^2 + 4y^2 = 4\)</span>.  To do so,</p>
 <ol class="arabic simple">
 <li><p>Generate random numbers <span class="math notranslate nohighlight">\(-2 \le x \le 2\)</span>, and <span class="math notranslate nohighlight">\(-1 \le y \le 1\)</span>, reject those outside the region.</p></li>
@@ -706,34 +695,34 @@ x = -\frac{\ln (1-z)}{\lambda}
 <li><p>[ ] Generate a random uniform sample in a sphere, <span class="math notranslate nohighlight">\(x^2 + y^2 + z^2 = R^2\)</span>. Count the fraction of numbers that are in the first octant.</p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="computing-random-integrals">
-<h1>Computing random integrals<a class="headerlink" href="#computing-random-integrals" title="Link to this heading">#</a></h1>
+<section id="computing-random-integrals">
+<h2>Computing random integrals<a class="headerlink" href="#computing-random-integrals" title="Link to this heading">#</a></h2>
 <p>REF: Ward</p>
 <p>Computing integrals using random numbers is easy and practical, specially for large dimensions. In the unit interval, one can compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-54d7a721-46c4-4252-b738-575a723c1d0c">
-<span class="eqno">(67)<a class="headerlink" href="#equation-54d7a721-46c4-4252-b738-575a723c1d0c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ecdbdd27-7c9e-44dc-b143-90b034872467">
+<span class="eqno">(67)<a class="headerlink" href="#equation-ecdbdd27-7c9e-44dc-b143-90b034872467" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^1 f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>so the integral is approximated as the average function value. For a general interval, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3a499325-2686-4d0a-b10a-aaab749ad66b">
-<span class="eqno">(68)<a class="headerlink" href="#equation-3a499325-2686-4d0a-b10a-aaab749ad66b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2b865a56-ddfe-4fe6-b87e-decd760cd616">
+<span class="eqno">(68)<a class="headerlink" href="#equation-2b865a56-ddfe-4fe6-b87e-decd760cd616" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{b-a}\int_a^b f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>or , in higher dimensions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fb332580-9783-4b69-a36e-1b29f2dcbe69">
-<span class="eqno">(69)<a class="headerlink" href="#equation-fb332580-9783-4b69-a36e-1b29f2dcbe69" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3e95b58b-8fb1-4e4d-921d-92ef06d31059">
+<span class="eqno">(69)<a class="headerlink" href="#equation-3e95b58b-8fb1-4e4d-921d-92ef06d31059" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{8}\int_1^3\int_{-1}^1 \int_0^2 f(x, y, z) dxdydz \simeq \frac{1}{n} \sum_{i=1}^n f(x_i, y_i, z_i).
 \end{equation}\]</div>
 <p>In general one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fd9e6fc3-7080-4dc1-8765-ce8cfe088417">
-<span class="eqno">(70)<a class="headerlink" href="#equation-fd9e6fc3-7080-4dc1-8765-ce8cfe088417" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e660ad8b-cbab-4a68-9965-4b5cf022a4b0">
+<span class="eqno">(70)<a class="headerlink" href="#equation-e660ad8b-cbab-4a68-9965-4b5cf022a4b0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_A f \simeq (\text{measure of}\ A) \times (\text{average of}\ f\ \text{over}\ n\ \text{random points on}\ A)
 \end{equation}\]</div>
 <section id="example">
-<h2>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h2>
+<h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <p>Compute the following integral</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ad6c3b45-44ea-41f2-bc5e-3a3e783b4586">
-<span class="eqno">(71)<a class="headerlink" href="#equation-ad6c3b45-44ea-41f2-bc5e-3a3e783b4586" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e3f2b3cc-9796-438f-907e-d85a4b68c461">
+<span class="eqno">(71)<a class="headerlink" href="#equation-e3f2b3cc-9796-438f-907e-d85a4b68c461" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \iint_\limits{\Omega}\sin\sqrt{\ln(x+y+1)} dx dy, 
 \end{equation}\]</div>
 <p>where the integration region <span class="math notranslate nohighlight">\(\Omega\)</span> is the disk defined as <span class="math notranslate nohighlight">\((x-1/2)^2 + (y-1/2)^2 \le 1/4\)</span>.</p>
@@ -754,7 +743,7 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </section>
 <section id="example-volume">
-<h2>Example: Volume<a class="headerlink" href="#example-volume" title="Link to this heading">#</a></h2>
+<h3>Example: Volume<a class="headerlink" href="#example-volume" title="Link to this heading">#</a></h3>
 <p>Now compute the volume of the following region</p>
 <p>\begin{cases}
 &amp;0 \le x\le 1,\ 0 \le y\le 1, \ 0 \le z\le 1, \
@@ -779,8 +768,8 @@ The expected value is around 0.14</p>
 <p><mark>Exercises</mark></p>
 <ul>
 <li><p>[ ] (Ward) Compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-51a3f849-32e7-4b68-84e0-96df945a7589">
-<span class="eqno">(72)<a class="headerlink" href="#equation-51a3f849-32e7-4b68-84e0-96df945a7589" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5aa0b589-09e1-43e6-8f07-53323de56e7d">
+<span class="eqno">(72)<a class="headerlink" href="#equation-5aa0b589-09e1-43e6-8f07-53323de56e7d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^2\int_3^6\int_{-1}^1 (y x^2 + z\log y + e^x) dx dy dz
 \end{equation}\]</div>
 </li>
@@ -797,8 +786,8 @@ The expected value is around 0.14</p>
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="a-first-simulation-the-random-walk">
-<h1>A first simulation: the random walk<a class="headerlink" href="#a-first-simulation-the-random-walk" title="Link to this heading">#</a></h1>
+<section id="a-first-simulation-the-random-walk">
+<h2>A first simulation: the random walk<a class="headerlink" href="#a-first-simulation-the-random-walk" title="Link to this heading">#</a></h2>
 <p>The so-called <a class="reference external" href="https://en.wikipedia.org/wiki/Monte_Carlo_method">MonteCarlo methods</a> are computational methods that use random numbers to perform computations or simulations. Applications are extense, from traffic simulations, to atomic systems, to pedestrian crowds, to probabilistic computations, to neutron scattering in nuclear shielding, to materials design, and so on.</p>
 <p>Up to now, we have used random numbers to perform some computations. Now let’s simulate a very simple process ,as an introduction to the field of MonteCarlo: the <a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk">random walk</a>, which is an example of <a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_process">random process</a>.</p>
 <p>We will define a grid, and our walker will chose the next position at random. We are interested in computing the mean squared distance as function of time, which is related with a diffusion process.</p>
@@ -833,6 +822,7 @@ The expected value is around 0.14</p>
 |-|-|-|-|-|-|-|
 | Probability  | 0.2 | 0.14 | 0.22 | 0.16 | 0.17 | 0.11|</p></li>
 </ul>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -900,18 +890,16 @@ The expected value is around 0.14</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Pseudo-random number generation</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-number-generator">Numpy random number generator</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-transform-method">Inverse transform method</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-samples-in-regions">Generating random samples in regions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-random-integrals">Computing random integrals</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-volume">Example: Volume</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-number-generator">Numpy random number generator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-transform-method">Inverse transform method</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-samples-in-regions">Generating random samples in regions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-random-integrals">Computing random integrals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-volume">Example: Volume</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-simulation-the-random-walk">A first simulation: the random walk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-first-simulation-the-random-walk">A first simulation: the random walk</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

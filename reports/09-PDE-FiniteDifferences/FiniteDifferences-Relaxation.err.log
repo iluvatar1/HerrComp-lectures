@@ -18,16 +18,29 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# YOUR CODE HERE
-raise NotImplementedError()
+solve_system(N=500, niter=10, iter_method=jacobiITER)
+#solve_system(N=500, niter=10, iter_method=jacobi)
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mNotImplementedError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[2], line 2[0m
-[1;32m      1[0m [38;5;66;03m# YOUR CODE HERE[39;00m
-[0;32m----> 2[0m [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
+Cell [0;32mIn[6], line 1[0m
+[0;32m----> 1[0m [43msolve_system[49m[43m([49m[43mN[49m[38;5;241;43m=[39;49m[38;5;241;43m500[39;49m[43m,[49m[43m [49m[43mniter[49m[38;5;241;43m=[39;49m[38;5;241;43m10[39;49m[43m,[49m[43m [49m[43miter_method[49m[38;5;241;43m=[39;49m[43mjacobiITER[49m[43m)[49m
+[1;32m      2[0m [38;5;66;03m#solve_system(N=500, niter=10, iter_method=jacobi)[39;00m
+
+Cell [0;32mIn[5], line 5[0m, in [0;36msolve_system[0;34m(N, niter, iter_method)[0m
+[1;32m      3[0m X, Y [38;5;241m=[39m setup_problem(N)
+[1;32m      4[0m V [38;5;241m=[39m np[38;5;241m.[39mzeros((N, N))
+[0;32m----> 5[0m [43mbc[49m[43m([49m[43mV[49m[43m,[49m[43m [49m[43mX[49m[43m,[49m[43m [49m[43mY[49m[43m)[49m
+[1;32m      6[0m [38;5;66;03m# Example iteration[39;00m
+[1;32m      7[0m [38;5;28;01mfor[39;00m step [38;5;129;01min[39;00m [38;5;28mrange[39m(niter):
+[1;32m      8[0m     [38;5;66;03m#print(V)[39;00m
+
+Cell [0;32mIn[2], line 4[0m, in [0;36mbc[0;34m(matrix, x, y)[0m
+[1;32m      2[0m [38;5;28;01mdef[39;00m[38;5;250m [39m[38;5;21mbc[39m(matrix, x, y):
+[1;32m      3[0m     [38;5;66;03m# YOUR CODE HERE[39;00m
+[0;32m----> 4[0m     [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
 
 [0;31mNotImplementedError[0m: 
 
