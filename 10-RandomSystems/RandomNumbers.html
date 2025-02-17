@@ -68,7 +68,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Markov-chain Monte Carlo simulations" href="MonteCarlo-Simulation.html" />
-    <link rel="prev" title="Partial differential equations: The (parabolic) heat equation" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html" />
+    <link rel="prev" title="Numerical libraries for PDEs" href="../09-PDE-FiniteDifferences/PDELibs.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -208,6 +208,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical libraries for PDEs</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
 <ul class="current nav bd-sidenav">
@@ -491,8 +494,8 @@
 <li><p>are produced efficiently</p></li>
 </ul>
 <p>Initial examples are the modulo generators,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-664086ed-ec1b-444b-8fed-d6311688d31a">
-<span class="eqno">(63)<a class="headerlink" href="#equation-664086ed-ec1b-444b-8fed-d6311688d31a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d52acd52-f77b-4857-bfba-e41a7e2fb9da">
+<span class="eqno">(64)<a class="headerlink" href="#equation-d52acd52-f77b-4857-bfba-e41a7e2fb9da" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i = ax_{i-1} + c(\textrm{mod}\, m),
 \end{equation}\]</div>
 <p>where the constants <span class="math notranslate nohighlight">\(a, c, m\)</span> should be chosen with care. For instance, <span class="math notranslate nohighlight">\(m\)</span> determines the period. A bad choice for those constant will lead to low period and large correlations. The generation of random numbers efficiently and with quality is an actual research topic, with huge implications from the field of random simulation of physical systems to the field of cryptography.</p>
@@ -551,7 +554,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7febc03d9a10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa4882bf810&gt;
 </pre></div>
 </div>
 <img alt="../_images/7a05eda470d93cf4b61a3304ac3ba0a897088f488aca4d275066eaf15fd13162.png" src="../_images/7a05eda470d93cf4b61a3304ac3ba0a897088f488aca4d275066eaf15fd13162.png" />
@@ -573,7 +576,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7febc01a3ad0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fa488021b90&gt;
 </pre></div>
 </div>
 <img alt="../_images/c8e671c535fa9ace4d0bfdb3909a5c3a4720811e4fc2c145fc9070eead4a4ef3.png" src="../_images/c8e671c535fa9ace4d0bfdb3909a5c3a4720811e4fc2c145fc9070eead4a4ef3.png" />
@@ -589,18 +592,18 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 <section id="inverse-transform-method">
 <h2>Inverse transform method<a class="headerlink" href="#inverse-transform-method" title="Link to this heading">#</a></h2>
 <p>In this case you want to invert the cumulative probability function. Let’s say that you have an exponential distribution, whose density is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4ec17d89-b59f-4de8-b630-cd8275226ca0">
-<span class="eqno">(64)<a class="headerlink" href="#equation-4ec17d89-b59f-4de8-b630-cd8275226ca0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f230dd41-aa52-4d35-b4db-7b9204808a94">
+<span class="eqno">(65)<a class="headerlink" href="#equation-f230dd41-aa52-4d35-b4db-7b9204808a94" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(t) = \lambda e^{-\lambda t}, t &gt; 0
 \end{equation}\]</div>
 <p>whose cumulative distribution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c3904f6-4ade-4647-b89c-f224a127cb1c">
-<span class="eqno">(65)<a class="headerlink" href="#equation-2c3904f6-4ade-4647-b89c-f224a127cb1c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ceaf6e24-9a5e-4d2c-970f-2b117cd9343a">
+<span class="eqno">(66)<a class="headerlink" href="#equation-ceaf6e24-9a5e-4d2c-970f-2b117cd9343a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 F(x) = \int_0^x f(t) dt = 1 - e^{-\lambda x}.
 \end{equation}\]</div>
 <p>Now, the cumulative distribution is in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>. If we equate it to a uniform random number in the same interval, <span class="math notranslate nohighlight">\(z = F(x)\)</span>, then we can invert this expression and obtain <span class="math notranslate nohighlight">\(x = F^{-1}(z)\)</span>. For the exponential distribution we get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a9f57084-126e-4b16-a907-dbd281b06eaa">
-<span class="eqno">(66)<a class="headerlink" href="#equation-a9f57084-126e-4b16-a907-dbd281b06eaa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b6aaeb4f-f72a-4741-88eb-e59b6f720e65">
+<span class="eqno">(67)<a class="headerlink" href="#equation-b6aaeb4f-f72a-4741-88eb-e59b6f720e65" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x = -\frac{\ln (1-z)}{\lambda}
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -622,7 +625,7 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7febc03fafd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa4880faf90&gt;
 </pre></div>
 </div>
 <img alt="../_images/0c752dc4152ea45001009528b70254ccece385b1e6cabe5c4d4c26c9453b5fdd.png" src="../_images/0c752dc4152ea45001009528b70254ccece385b1e6cabe5c4d4c26c9453b5fdd.png" />
@@ -699,30 +702,30 @@ x = -\frac{\ln (1-z)}{\lambda}
 <h2>Computing random integrals<a class="headerlink" href="#computing-random-integrals" title="Link to this heading">#</a></h2>
 <p>REF: Ward</p>
 <p>Computing integrals using random numbers is easy and practical, specially for large dimensions. In the unit interval, one can compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ecdbdd27-7c9e-44dc-b143-90b034872467">
-<span class="eqno">(67)<a class="headerlink" href="#equation-ecdbdd27-7c9e-44dc-b143-90b034872467" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4c231026-1fee-43ab-a4c7-0178f0115136">
+<span class="eqno">(68)<a class="headerlink" href="#equation-4c231026-1fee-43ab-a4c7-0178f0115136" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^1 f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>so the integral is approximated as the average function value. For a general interval, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2b865a56-ddfe-4fe6-b87e-decd760cd616">
-<span class="eqno">(68)<a class="headerlink" href="#equation-2b865a56-ddfe-4fe6-b87e-decd760cd616" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f93fff9d-affd-42af-b9ed-60a6e3dcc319">
+<span class="eqno">(69)<a class="headerlink" href="#equation-f93fff9d-affd-42af-b9ed-60a6e3dcc319" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{b-a}\int_a^b f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>or , in higher dimensions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e95b58b-8fb1-4e4d-921d-92ef06d31059">
-<span class="eqno">(69)<a class="headerlink" href="#equation-3e95b58b-8fb1-4e4d-921d-92ef06d31059" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-67598db6-14e2-4827-96bd-d0ac5f2ba4a1">
+<span class="eqno">(70)<a class="headerlink" href="#equation-67598db6-14e2-4827-96bd-d0ac5f2ba4a1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{8}\int_1^3\int_{-1}^1 \int_0^2 f(x, y, z) dxdydz \simeq \frac{1}{n} \sum_{i=1}^n f(x_i, y_i, z_i).
 \end{equation}\]</div>
 <p>In general one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e660ad8b-cbab-4a68-9965-4b5cf022a4b0">
-<span class="eqno">(70)<a class="headerlink" href="#equation-e660ad8b-cbab-4a68-9965-4b5cf022a4b0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-24624043-e87c-451f-aa3a-0355439dc63e">
+<span class="eqno">(71)<a class="headerlink" href="#equation-24624043-e87c-451f-aa3a-0355439dc63e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_A f \simeq (\text{measure of}\ A) \times (\text{average of}\ f\ \text{over}\ n\ \text{random points on}\ A)
 \end{equation}\]</div>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <p>Compute the following integral</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3f2b3cc-9796-438f-907e-d85a4b68c461">
-<span class="eqno">(71)<a class="headerlink" href="#equation-e3f2b3cc-9796-438f-907e-d85a4b68c461" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-de449b04-32ab-4476-b993-7fd2b320dafb">
+<span class="eqno">(72)<a class="headerlink" href="#equation-de449b04-32ab-4476-b993-7fd2b320dafb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \iint_\limits{\Omega}\sin\sqrt{\ln(x+y+1)} dx dy, 
 \end{equation}\]</div>
 <p>where the integration region <span class="math notranslate nohighlight">\(\Omega\)</span> is the disk defined as <span class="math notranslate nohighlight">\((x-1/2)^2 + (y-1/2)^2 \le 1/4\)</span>.</p>
@@ -768,8 +771,8 @@ The expected value is around 0.14</p>
 <p><mark>Exercises</mark></p>
 <ul>
 <li><p>[ ] (Ward) Compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5aa0b589-09e1-43e6-8f07-53323de56e7d">
-<span class="eqno">(72)<a class="headerlink" href="#equation-5aa0b589-09e1-43e6-8f07-53323de56e7d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a35d4171-ad23-4591-95b2-b5724588886d">
+<span class="eqno">(73)<a class="headerlink" href="#equation-a35d4171-ad23-4591-95b2-b5724588886d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^2\int_3^6\int_{-1}^1 (y x^2 + z\log y + e^x) dx dy dz
 \end{equation}\]</div>
 </li>
@@ -856,12 +859,12 @@ The expected value is around 0.14</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html"
+       href="../09-PDE-FiniteDifferences/PDELibs.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Partial differential equations: The (parabolic) heat equation</p>
+        <p class="prev-next-title">Numerical libraries for PDEs</p>
       </div>
     </a>
     <a class="right-next"

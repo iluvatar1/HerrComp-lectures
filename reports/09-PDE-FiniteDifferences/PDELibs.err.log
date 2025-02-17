@@ -18,33 +18,42 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Solve the problem several for different niter and plot it
-NDISPLAY = 50
-fig, ax = plt.subplots()
-x = np.linspace(0.0, L, num=NX)
-T = T0.copy()
-for niter in range(800):
-    T = ftcs(T, DELTAT, DELTAX, LAMBDA)
-    if niter%NDISPLAY == 0:
-        ax.plot(x, T, label=f"{niter=}")
-ax.legend()
+%matplotlib inline
+#!/usr/bin/env python3
+
+from findiff import Diff, Id, PDE, FinDiff, BoundaryConditions
+import numpy as np
+
+
+shape = (100, 100)
+x, y = np.linspace(0, 1, shape[0]), np.linspace(0, 1, shape[1])
+dx, dy = x[1]-x[0], y[1]-y[0]
+X, Y = np.meshgrid(x, y, indexing='ij')
+
+L = FinDiff(0, dx, 2) + FinDiff(1, dy, 2)
+f = np.zeros(shape)
+
+bc = BoundaryConditions(shape)
+bc[1,:] = FinDiff(0, dx, 1), 0  # Neumann BC
+bc[-1,:] = 300. - 200*Y   # Dirichlet BC
+bc[:, 0] = 300.   # Dirichlet BC
+bc[1:-1, -1] = FinDiff(1, dy, 1), 0  # Neumann BC
+
+pde = PDE(L, f, bc)
+u = pde.solve()
+
+
 ------------------
 
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNotImplementedError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[4], line 7[0m
-[1;32m      5[0m T [38;5;241m=[39m T0[38;5;241m.[39mcopy()
-[1;32m      6[0m [38;5;28;01mfor[39;00m niter [38;5;129;01min[39;00m [38;5;28mrange[39m([38;5;241m800[39m):
-[0;32m----> 7[0m     T [38;5;241m=[39m [43mftcs[49m[43m([49m[43mT[49m[43m,[49m[43m [49m[43mDELTAT[49m[43m,[49m[43m [49m[43mDELTAX[49m[43m,[49m[43m [49m[43mLAMBDA[49m[43m)[49m
-[1;32m      8[0m     [38;5;28;01mif[39;00m niter[38;5;241m%[39mNDISPLAY [38;5;241m==[39m [38;5;241m0[39m:
-[1;32m      9[0m         ax[38;5;241m.[39mplot(x, T, label[38;5;241m=[39m[38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00mniter[38;5;132;01m=}[39;00m[38;5;124m"[39m)
+[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [0;32mIn[1], line 4[0m
+[1;32m      1[0m get_ipython()[38;5;241m.[39mrun_line_magic([38;5;124m'[39m[38;5;124mmatplotlib[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124minline[39m[38;5;124m'[39m)
+[1;32m      2[0m [38;5;66;03m#!/usr/bin/env python3[39;00m
+[0;32m----> 4[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mfindiff[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Diff, Id, PDE, FinDiff, BoundaryConditions
+[1;32m      5[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mnumpy[39;00m[38;5;250m [39m[38;5;28;01mas[39;00m[38;5;250m [39m[38;5;21;01mnp[39;00m
+[1;32m      8[0m shape [38;5;241m=[39m ([38;5;241m100[39m, [38;5;241m100[39m)
 
-Cell [0;32mIn[2], line 5[0m, in [0;36mftcs[0;34m(T, deltat, deltax, lambdac)[0m
-[1;32m      3[0m Tnew [38;5;241m=[39m T[38;5;241m.[39mcopy() [38;5;66;03m# avoids overwriting T0[39;00m
-[1;32m      4[0m [38;5;66;03m# YOUR CODE HERE[39;00m
-[0;32m----> 5[0m [38;5;28;01mraise[39;00m [38;5;167;01mNotImplementedError[39;00m()
-[1;32m      6[0m [38;5;28;01mreturn[39;00m Tnew
-
-[0;31mNotImplementedError[0m: 
+[0;31mModuleNotFoundError[0m: No module named 'findiff'
 

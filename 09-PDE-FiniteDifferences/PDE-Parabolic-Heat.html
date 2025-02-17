@@ -67,7 +67,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pseudo-random number generation" href="../10-RandomSystems/RandomNumbers.html" />
+    <link rel="next" title="Numerical libraries for PDEs" href="PDELibs.html" />
     <link rel="prev" title="Partial Differential equations: Finite differences" href="FiniteDifferences-Relaxation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -208,6 +208,9 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Partial differential equations: The (parabolic) heat equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PDELibs.html">Numerical libraries for PDEs</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
 <ul class="nav bd-sidenav">
@@ -456,9 +459,9 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-explicit-method-forward-time-centered-space">The explicit method: Forward time centered space</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-finding-the-temperature-distribution-on-a-thind-rod">Example: Finding the temperature distribution on a thind rod</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-derivative-boundary-conditions">A note on derivative boundary conditions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-derivative-boundary-conditions">A note on derivative boundary conditions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-methods">Implicit methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parabolic-equations-in-two-dimensions">Parabolic equations in two dimensions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
@@ -478,8 +481,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="partial-differential-equations-the-parabolic-heat-equation">
 <h1>Partial differential equations: The (parabolic) heat equation<a class="headerlink" href="#partial-differential-equations-the-parabolic-heat-equation" title="Link to this heading">#</a></h1>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_equation">heat equation</a> is the typical example of a parabolic partial differential equation. Here we have the time and we are looking for an actual time evolution. It can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d8d3748-0ef4-45d5-80f0-0b17517d85d1">
-<span class="eqno">(56)<a class="headerlink" href="#equation-2d8d3748-0ef4-45d5-80f0-0b17517d85d1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-996be275-6eab-431c-8d67-18807f63dbe4">
+<span class="eqno">(56)<a class="headerlink" href="#equation-996be275-6eab-431c-8d67-18807f63dbe4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial u}{\partial t} = \alpha \nabla^2 u,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(u\)</span> represents the temperature, or the concentration (diffusion problem) and so on. The coefficient <span class="math notranslate nohighlight">\(\alpha\)</span> takes into account the thermal conductivity, specific heat, and density of the material.</p>
@@ -492,14 +495,14 @@
 <section id="the-explicit-method-forward-time-centered-space">
 <h2>The explicit method: Forward time centered space<a class="headerlink" href="#the-explicit-method-forward-time-centered-space" title="Link to this heading">#</a></h2>
 <p>As is usual in finite differences, we discretize both the spatial (up to second order) and the time (linear order) derivatives to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9c3587d2-9c21-4e36-bf1b-94063c4e4e15">
-<span class="eqno">(57)<a class="headerlink" href="#equation-9c3587d2-9c21-4e36-bf1b-94063c4e4e15" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cfae59f1-8553-48ce-8076-f20273f33de2">
+<span class="eqno">(57)<a class="headerlink" href="#equation-cfae59f1-8553-48ce-8076-f20273f33de2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{u^{n+1}_i - u^n_i}{\Delta t} = \alpha \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{\Delta x^2}, 
 \end{equation}\]</div>
 <p>where the superscript corresponds to a step in time, while the subscript corresponds to step in space (we are here solving a one-dimensional equation). This is the so called <a class="reference external" href="https://en.wikipedia.org/wiki/FTCS_scheme">FTCS - Forward Time Centered Space</a> method, which is an <a class="reference external" href="https://en.wikipedia.org/wiki/Explicit_and_implicit_methods">explicit method</a> which allows to compute the next (in time) value in terms of the previous one.</p>
 <p>Reorganizing terms</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df0ead86-ff3c-4d4f-92c0-13b09055044e">
-<span class="eqno">(58)<a class="headerlink" href="#equation-df0ead86-ff3c-4d4f-92c0-13b09055044e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9f382ed7-0e55-41d3-8d7d-6c6d6a2568b5">
+<span class="eqno">(58)<a class="headerlink" href="#equation-9f382ed7-0e55-41d3-8d7d-6c6d6a2568b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}) = u_{i}^{n}+\lambda(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}),
 \end{equation}\]</div>
 <p>which can be visualized as</p>
@@ -507,9 +510,14 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <img src="https://nbviewer.org/github/numerical-mooc/numerical-mooc/blob/master/lessons/04_spreadout/figures/explicitFTCS-BCeffect.png" class="center">
 </center>
 <p>By using the <a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis">von Neumann stability analysis</a> it is possible to show that the solution is stable (errors are not amplified) only if</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0c7217a6-cebb-4af3-bd73-b84c4da74477">
-<span class="eqno">(59)<a class="headerlink" href="#equation-0c7217a6-cebb-4af3-bd73-b84c4da74477" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2}.
+<div class="amsmath math notranslate nohighlight" id="equation-e609aaae-3728-464d-a9b9-894210e2d66b">
+<span class="eqno">(59)<a class="headerlink" href="#equation-e609aaae-3728-464d-a9b9-894210e2d66b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2}
+\end{equation}\]</div>
+<p>or, in 2D with different spacing</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7db1bd56-6932-41d0-bacb-e1582bdf5bfa">
+<span class="eqno">(60)<a class="headerlink" href="#equation-7db1bd56-6932-41d0-bacb-e1582bdf5bfa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2(1 + \frac{\Delta x^2}{\Delta y^2})}.
 \end{equation}\]</div>
 <section id="example-finding-the-temperature-distribution-on-a-thind-rod">
 <h3>Example: Finding the temperature distribution on a thind rod<a class="headerlink" href="#example-finding-the-temperature-distribution-on-a-thind-rod" title="Link to this heading">#</a></h3>
@@ -526,12 +534,11 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to evolve</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">ftcs</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">deltat</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">lambdac</span><span class="p">):</span>
-    <span class="n">Taux</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># avoids overwriting T0</span>
-    <span class="k">for</span> <span class="n">niter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
-        <span class="c1"># YOUR CODE HERE</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">Taux</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ftcs</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">deltat</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">lambdac</span><span class="p">):</span>
+    <span class="n">Tnew</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># avoids overwriting T0</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">Tnew</span>
 </pre></div>
 </div>
 </div>
@@ -541,7 +548,7 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Setup problem</span>
 <span class="n">L</span> <span class="o">=</span> <span class="mi">10</span> 
 <span class="n">DELTAT</span> <span class="o">=</span> <span class="mf">0.10</span>
-<span class="n">DELTAX</span> <span class="o">=</span> <span class="mf">1.2</span>
+<span class="n">DELTAX</span> <span class="o">=</span> <span class="mf">2.0</span>
 <span class="n">NX</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">L</span><span class="o">/</span><span class="n">DELTAX</span><span class="p">)</span>
 <span class="n">ALPHA</span> <span class="o">=</span> <span class="mf">0.835</span>
 <span class="n">LAMBDA</span> <span class="o">=</span> <span class="n">ALPHA</span><span class="o">*</span><span class="n">DELTAT</span><span class="o">/</span><span class="p">(</span><span class="n">DELTAX</span><span class="o">*</span><span class="n">DELTAX</span><span class="p">)</span>
@@ -556,7 +563,7 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LAMBDA=0.05798611111111111
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LAMBDA=0.020875
 </pre></div>
 </div>
 </div>
@@ -564,11 +571,14 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Solve the problem several for different niter and plot it</span>
+<span class="n">NDISPLAY</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">NX</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">niter</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">800</span><span class="p">]:</span>
-    <span class="n">T</span> <span class="o">=</span> <span class="n">ftcs</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">DELTAT</span><span class="p">,</span> <span class="n">DELTAX</span><span class="p">,</span> <span class="n">LAMBDA</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">niter</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">niter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">800</span><span class="p">):</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">ftcs</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">DELTAT</span><span class="p">,</span> <span class="n">DELTAX</span><span class="p">,</span> <span class="n">LAMBDA</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">niter</span><span class="o">%</span><span class="k">NDISPLAY</span> == 0:
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">niter</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -576,19 +586,18 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">NX</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">niter</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">800</span><span class="p">]:</span>
-<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">T</span> <span class="o">=</span> <span class="n">ftcs</span><span class="p">(</span><span class="n">T0</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">DELTAT</span><span class="p">,</span> <span class="n">DELTAX</span><span class="p">,</span> <span class="n">LAMBDA</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">niter</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">T</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">for</span> <span class="n">niter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">800</span><span class="p">):</span>
+<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="n">T</span> <span class="o">=</span> <span class="n">ftcs</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">DELTAT</span><span class="p">,</span> <span class="n">DELTAX</span><span class="p">,</span> <span class="n">LAMBDA</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">if</span> <span class="n">niter</span><span class="o">%</span><span class="k">NDISPLAY</span> == 0:
+<span class="g g-Whitespace">      </span><span class="mi">9</span>         <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">niter</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="nn">Cell In[2], line 6,</span> in <span class="ni">ftcs</span><span class="nt">(T0, nsteps, deltat, deltax, lambdac)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">Taux</span> <span class="o">=</span> <span class="n">T0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># avoids overwriting T0</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">niter</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="c1"># YOUR CODE HERE</span>
-<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">return</span> <span class="n">Taux</span>
+<span class="nn">Cell In[2], line 5,</span> in <span class="ni">ftcs</span><span class="nt">(T, deltat, deltax, lambdac)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">Tnew</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># avoids overwriting T0</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># YOUR CODE HERE</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">return</span> <span class="n">Tnew</span>
 
 <span class="ne">NotImplementedError</span>: 
 </pre></div>
@@ -597,17 +606,21 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 </div>
 </div>
 <div style="background-color: #f0f7fb; color: #055781; padding: 10px; border-left: 5px solid #055781; font-weight: bold; font-size: 20px; margin: 10px 0;">EXERCISE</div>
-<p>Play with <span class="math notranslate nohighlight">\(\lambda\)</span>. Is there really any instability?</p>
-</section>
+<ul class="simple">
+<li><p>[ ] Play with <span class="math notranslate nohighlight">\(\lambda\)</span>. Is there really any instability?</p></li>
+<li><p>[ ] Play with the initial conditions: is there any dependence?</p></li>
+<li><p>[ ] Create an animation of the temperature time evolution.</p></li>
+</ul>
 </section>
 <section id="a-note-on-derivative-boundary-conditions">
-<h2>A note on derivative boundary conditions<a class="headerlink" href="#a-note-on-derivative-boundary-conditions" title="Link to this heading">#</a></h2>
+<h3>A note on derivative boundary conditions<a class="headerlink" href="#a-note-on-derivative-boundary-conditions" title="Link to this heading">#</a></h3>
 <p>In case you need to fix the derivative a the boundary, let’s say an isolated wall on the left, then you could introduce that as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9765d356-988c-420b-b51f-ab5382ba366d">
-<span class="eqno">(60)<a class="headerlink" href="#equation-9765d356-988c-420b-b51f-ab5382ba366d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-43465730-f303-4b57-8ab3-3bee358b7311">
+<span class="eqno">(61)<a class="headerlink" href="#equation-43465730-f303-4b57-8ab3-3bee358b7311" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
 \end{equation}\]</div>
 <p>where there is a new imaginary point at <span class="math notranslate nohighlight">\(i = -1\)</span>. But from the derivative condition you can get its value, since <span class="math notranslate nohighlight">\((u_0 - u_{-1})/\Delta x \simeq \partial u/\partial x\)</span>.</p>
+</section>
 </section>
 <section id="implicit-methods">
 <h2>Implicit methods<a class="headerlink" href="#implicit-methods" title="Link to this heading">#</a></h2>
@@ -620,13 +633,13 @@ u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
 <section id="parabolic-equations-in-two-dimensions">
 <h2>Parabolic equations in two dimensions<a class="headerlink" href="#parabolic-equations-in-two-dimensions" title="Link to this heading">#</a></h2>
 <p>In this case you could be solving problems like</p>
-<div class="amsmath math notranslate nohighlight" id="equation-978f5093-8306-47b6-9728-2806c2b2c9e5">
-<span class="eqno">(61)<a class="headerlink" href="#equation-978f5093-8306-47b6-9728-2806c2b2c9e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-aefdffff-7736-481e-85b1-3f6a33b1a438">
+<span class="eqno">(62)<a class="headerlink" href="#equation-aefdffff-7736-481e-85b1-3f6a33b1a438" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right).
 \end{equation}\]</div>
 <p>In this case, stability analysis implies that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e1de0d4d-989b-496d-8e9d-c12f84c22880">
-<span class="eqno">(62)<a class="headerlink" href="#equation-e1de0d4d-989b-496d-8e9d-c12f84c22880" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1270738f-707d-42d6-9b40-cfbae38e34ab">
+<span class="eqno">(63)<a class="headerlink" href="#equation-1270738f-707d-42d6-9b40-cfbae38e34ab" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta t \le \frac{1}{8} \frac{\Delta x^2 + \Delta y^2}{\alpha}.
 \end{equation}\]</div>
 <p>As with the previous 1D case, implicit schemes improve the stability , but the matrix systems are no longer tri-diagonal and therefore the matrix storage and computational times increase a lot.</p>
@@ -681,11 +694,11 @@ u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
       </div>
     </a>
     <a class="right-next"
-       href="../10-RandomSystems/RandomNumbers.html"
+       href="PDELibs.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pseudo-random number generation</p>
+        <p class="prev-next-title">Numerical libraries for PDEs</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -708,9 +721,9 @@ u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-explicit-method-forward-time-centered-space">The explicit method: Forward time centered space</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-finding-the-temperature-distribution-on-a-thind-rod">Example: Finding the temperature distribution on a thind rod</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-derivative-boundary-conditions">A note on derivative boundary conditions</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-note-on-derivative-boundary-conditions">A note on derivative boundary conditions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-methods">Implicit methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parabolic-equations-in-two-dimensions">Parabolic equations in two dimensions</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>

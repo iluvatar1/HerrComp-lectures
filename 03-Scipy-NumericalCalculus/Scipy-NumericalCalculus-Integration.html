@@ -208,6 +208,9 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical libraries for PDEs</a></li>
+
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
 <ul class="nav bd-sidenav">
@@ -626,8 +629,8 @@ Python lambdas are little, anonymous functions, subject to a more restrictive bu
 </section>
 <section id="exercise">
 <h3><strong>Exercise</strong><a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-3415eadc-3e10-4257-9f54-547466d209df">
-<span class="eqno">(3)<a class="headerlink" href="#equation-3415eadc-3e10-4257-9f54-547466d209df" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5ae44bcc-ef2d-4189-9b4a-8279f0f37ae9">
+<span class="eqno">(3)<a class="headerlink" href="#equation-5ae44bcc-ef2d-4189-9b4a-8279f0f37ae9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(x \in [0, 10]\)</span>, <span class="math notranslate nohighlight">\(\Delta x = 0.1\)</span></p>
@@ -695,8 +698,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </table>
 </div>
 <p>Now you compute the integral as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d7f191b8-b090-4120-80f7-6c6b64dd1383">
-<span class="eqno">(4)<a class="headerlink" href="#equation-d7f191b8-b090-4120-80f7-6c6b64dd1383" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-36662998-149b-4508-b6fd-9fd2140e7a95">
+<span class="eqno">(4)<a class="headerlink" href="#equation-36662998-149b-4508-b6fd-9fd2140e7a95" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_a^b f(x) dx \simeq \frac{\Delta x}{3}\left( f(x_0) + 4 \sum_{k=1}^{N/2} f(x_{2k-1}) + 2\sum_{k=1}^{N/2-1} f(x_{2k}) + f(x_N)\right) + O(N^{-3}).
 \end{equation}\]</div>
 <p>Notice that <span class="math notranslate nohighlight">\(N\)</span> must be even.</p>
@@ -800,8 +803,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <section id="eliptic-integral-fo-the-first-kind">
 <h2>Eliptic integral fo the first kind<a class="headerlink" href="#eliptic-integral-fo-the-first-kind" title="Link to this heading">#</a></h2>
 <p>The period of a simple pendulum can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0809105-5c25-4293-b41e-7d05b31a8e5c">
-<span class="eqno">(5)<a class="headerlink" href="#equation-f0809105-5c25-4293-b41e-7d05b31a8e5c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7db2cde2-d686-4da2-a75e-4b5d66c2f480">
+<span class="eqno">(5)<a class="headerlink" href="#equation-7db2cde2-d686-4da2-a75e-4b5d66c2f480" title="Permalink to this equation">#</a></span>\[\begin{equation}
 K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 \end{equation}\]</div>
 <p>Plot the period as a function of <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span>. Use, at least, 100 values for <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -855,13 +858,13 @@ K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 <section id="difraction-limit-of-a-telescope-newman-5-4">
 <h3>Difraction limit of a telescope (Newman, 5.4)<a class="headerlink" href="#difraction-limit-of-a-telescope-newman-5-4" title="Link to this heading">#</a></h3>
 <p>When light from a distant star passes through the circular aperture of a telescope, you get a difraction pattern which can be described as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-87ce5e41-4cad-4714-b2e7-ca657de00ed1">
-<span class="eqno">(6)<a class="headerlink" href="#equation-87ce5e41-4cad-4714-b2e7-ca657de00ed1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-82a1bc23-c04d-4c90-bfb6-a4777ada9264">
+<span class="eqno">(6)<a class="headerlink" href="#equation-82a1bc23-c04d-4c90-bfb6-a4777ada9264" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I(r) = \left(\frac{J_1(kr)}{kr} \right)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> is the distance from the center, <span class="math notranslate nohighlight">\(k=2\pi/\lambda\)</span>, with <span class="math notranslate nohighlight">\(\lambda\)</span> is the wavelenght, and <span class="math notranslate nohighlight">\(J_1(x)\)</span> is a Bessel function. The Bessel functions can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-96a27f63-4358-4960-b43d-2a17c0bcfe5f">
-<span class="eqno">(7)<a class="headerlink" href="#equation-96a27f63-4358-4960-b43d-2a17c0bcfe5f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2ef77d54-bdfb-46a3-bdd5-4f542e6078b0">
+<span class="eqno">(7)<a class="headerlink" href="#equation-2ef77d54-bdfb-46a3-bdd5-4f542e6078b0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(m\)</span> is a positive integer and <span class="math notranslate nohighlight">\(x \ge 0\)</span>. Of course you can use <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code> to compute the Bessel function, but here you will use the quad routine to create a plot of <span class="math notranslate nohighlight">\(J_0, J_1, J_2\)</span> for <span class="math notranslate nohighlight">\(x \in [0, 20]\)</span>.</p>
@@ -878,8 +881,8 @@ J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 <section id="heat-capacity-of-a-solid-newman-5-9">
 <h3>Heat capacity of a solid (Newman, 5.9)<a class="headerlink" href="#heat-capacity-of-a-solid-newman-5-9" title="Link to this heading">#</a></h3>
 <p>Debye’s theory of solids gives the heat capacity, at temperature <span class="math notranslate nohighlight">\(T\)</span>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fa52ebf2-bb99-4cde-9a5e-e2b887768d43">
-<span class="eqno">(8)<a class="headerlink" href="#equation-fa52ebf2-bb99-4cde-9a5e-e2b887768d43" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-95561839-aba9-4dda-8206-fc595e592c83">
+<span class="eqno">(8)<a class="headerlink" href="#equation-95561839-aba9-4dda-8206-fc595e592c83" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \frac{x^4 e^x}{(e^x-1)^2}dx, 
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(V\)</span> is the solid volume, <span class="math notranslate nohighlight">\(\rho\)</span> the atom nuber density, <span class="math notranslate nohighlight">\(k_B\)</span> the Boltzmann’s constant, and <span class="math notranslate nohighlight">\(\theta_D\)</span> is the Debye temperature.</p>
@@ -908,8 +911,8 @@ C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \fra
 <section id="distance-covered-by-parachutist-chapra">
 <h3>Distance covered by parachutist (Chapra)<a class="headerlink" href="#distance-covered-by-parachutist-chapra" title="Link to this heading">#</a></h3>
 <p>The vertical velocity of a parachutist in free fall and under linear drag can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f193ca4e-13ab-47fb-9e11-1a66860c1873">
-<span class="eqno">(9)<a class="headerlink" href="#equation-f193ca4e-13ab-47fb-9e11-1a66860c1873" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5dfc7924-ff20-427c-a304-bf3e929e5e08">
+<span class="eqno">(9)<a class="headerlink" href="#equation-5dfc7924-ff20-427c-a304-bf3e929e5e08" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t\)</span> is the time, <span class="math notranslate nohighlight">\(g = 9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span> (on earth), <span class="math notranslate nohighlight">\(m\)</span> is the mass in kg, and <span class="math notranslate nohighlight">\(c\)</span> is the linear drag coeffcient, in kg/s . Compute the distance travelled by the parachutist in the first 8 seconds, given <span class="math notranslate nohighlight">\(m=80\)</span> kg and <span class="math notranslate nohighlight">\(c = 10\)</span> kg/s. Plot the distance for several mass values <span class="math notranslate nohighlight">\(m\in [50, 120]\)</span> kg.</p>
