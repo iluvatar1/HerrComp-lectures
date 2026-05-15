@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+# Solve the problem several for different niter and plot it
+NDISPLAY = 50
+fig, ax = plt.subplots()
+x = np.linspace(0.0, L, num=NX)
+T = T0.copy()
+for niter in range(800):
+    T = ftcs(T, DELTAT, DELTAX, LAMBDA)
+    if niter%NDISPLAY == 0:
+        ax.plot(x, T, label=f"{niter=}")
+ax.legend()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mNotImplementedError[39m                       Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[4][39m[32m, line 7[39m
+[32m      3[39m fig, ax = plt.subplots()
+[32m      4[39m x = np.linspace([32m0.0[39m, L, num=NX)
+[32m      5[39m T = T0.copy()
+[32m      6[39m [38;5;28;01mfor[39;00m niter [38;5;28;01min[39;00m range([32m800[39m):
+[32m----> [39m[32m7[39m     T = ftcs(T, DELTAT, DELTAX, LAMBDA)
+[32m      8[39m     [38;5;28;01mif[39;00m niter%NDISPLAY == [32m0[39m:
+[32m      9[39m         ax.plot(x, T, label=[33mf"{niter=}"[39m)
+[32m     10[39m ax.legend()
+
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 5[39m, in [36mftcs[39m[34m(T, deltat, deltax, lambdac)[39m
+[32m      2[39m [38;5;28;01mdef[39;00m ftcs(T, deltat, deltax, lambdac):
+[32m      3[39m     Tnew = T.copy() [38;5;66;03m# avoids overwriting T0[39;00m
+[32m      4[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
+[32m----> [39m[32m5[39m     [38;5;28;01mraise[39;00m NotImplementedError()
+[32m      6[39m     [38;5;28;01mreturn[39;00m Tnew
+
+[31mNotImplementedError[39m: 
+

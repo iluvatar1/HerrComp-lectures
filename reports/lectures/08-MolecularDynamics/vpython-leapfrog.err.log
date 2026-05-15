@@ -1,0 +1,65 @@
+Traceback (most recent call last):
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 1323, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import vpython as vp
+#import visual as vp
+vp.sphere()
+------------------
+
+
+[31m---------------------------------------------------------------------------[39m
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 3[39m
+[32m      1[39m [38;5;28;01mimport[39;00m vpython [38;5;28;01mas[39;00m vp
+[32m      2[39m [38;5;66;03m#import visual as vp[39;00m
+[32m----> [39m[32m3[39m vp.sphere()
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/vpython/vpython.py:1189[39m, in [36msphere.__init__[39m[34m(self, **args)[39m
+[32m   1187[39m args[[33m'[39m[33m_default_size[39m[33m'[39m] = vector([32m2[39m,[32m2[39m,[32m2[39m)
+[32m   1188[39m args[[33m'[39m[33m_objName[39m[33m'[39m] = [33m"[39m[33msphere[39m[33m"[39m
+[32m-> [39m[32m1189[39m [30;43msuper[39;49m[30;43m([39;49m[30;43msphere[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mself[39;49m[30;43m)[39;49m[30;43m.[39;49m[30;43msetup[39;49m[30;43m([39;49m[30;43margs[39;49m[30;43m)[39;49m
+[32m   1190[39m [38;5;28mself[39m._sizing = [38;5;28;01mFalse[39;00m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/vpython/vpython.py:612[39m, in [36mstandardAttributes.setup[39m[34m(self, args)[39m
+[32m    611[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34msetup[39m([38;5;28mself[39m, args):
+[32m--> [39m[32m612[39m     [30;43msuper[39;49m[30;43m([39;49m[30;43mstandardAttributes[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mself[39;49m[30;43m)[39;49m[30;43m.[39;49m[30;43m__init__[39;49m[30;43m([39;49m[30;43m)[39;49m
+[32m    613[39m     [38;5;28mself[39m._constructing = [38;5;28;01mTrue[39;00m  [38;5;66;03m## calls to setters are from constructor[39;00m
+[32m    615[39m     objName = [38;5;28mself[39m._objName = args[[33m'[39m[33m_objName[39m[33m'[39m]  [38;5;66;03m## identifies object type[39;00m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/vpython/vpython.py:265[39m, in [36mbaseObj.__init__[39m[34m(self, **kwargs)[39m
+[32m    262[39m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m (baseObj._view_constructed [38;5;129;01mor[39;00m
+[32m    263[39m         baseObj._canvas_constructing):
+[32m    264[39m     [38;5;28;01mif[39;00m _isnotebook:
+[32m--> [39m[32m265[39m         [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mwith_notebook[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m _
+[32m    266[39m     [38;5;28;01melse[39;00m:
+[32m    267[39m         [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[34;01mno_notebook[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m _
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/vpython/with_notebook.py:71[39m
+[32m     66[39m         [38;5;28;01mexcept[39;00m [38;5;167;01mPermissionError[39;00m:
+[32m     67[39m             [38;5;66;03m#logging.info("PermissionError: Unable to install /vpython_data directory and files for VPython on JupyterLab")[39;00m
+[32m     68[39m             [38;5;28;01mpass[39;00m
+[32m---> [39m[32m71[39m [38;5;28;01mif[39;00m ([33m'[39m[33mnbextensions[39m[33m'[39m [38;5;129;01min[39;00m [30;43mos[39;49m[30;43m.[39;49m[30;43mlistdir[39;49m[30;43m([39;49m[30;43mjd[39;49m[30;43m)[39;49m) [38;5;129;01mand[39;00m (notebook.__version__ <= [33m'[39m[33m6.5.5[39m[33m'[39m):
+[32m     72[39m     ldir = os.listdir(nbdir)
+[32m     73[39m     [38;5;28;01mif[39;00m ([33m'[39m[33mvpython_data[39m[33m'[39m [38;5;129;01min[39;00m ldir [38;5;129;01mand[39;00m [38;5;28mlen[39m(os.listdir(nbdata)) == datacnt [38;5;129;01mand[39;00m
+[32m     74[39m        [33m'[39m[33mvpython_libraries[39m[33m'[39m [38;5;129;01min[39;00m ldir [38;5;129;01mand[39;00m [38;5;28mlen[39m(os.listdir(nblib)) == libcnt [38;5;129;01mand[39;00m
+[32m     75[39m         [33m'[39m[33mvpython_version.txt[39m[33m'[39m [38;5;129;01min[39;00m ldir):
+
+[31mFileNotFoundError[39m: [Errno 2] No such file or directory: '/home/runner/.local/share/jupyter'
+
