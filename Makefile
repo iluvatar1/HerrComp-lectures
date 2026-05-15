@@ -1,20 +1,26 @@
-
-.PHONY: book clean actions repo2docker binder devcontainer
+.PHONY: book clean actions repo2docker binder devcontainer serve
 
 book:
 	@echo "Building book with jupyter-book"
 	jupyter-book build -v ./
 
+serve: book
+	@echo "Serving Jupyter Book at http://localhost:8000"
+	@cd _build/html && \
+	python -m http.server 8000 & \
+	sleep 1 && open http://localhost:8000
+
+
 # Check https://github.com/nektos/act/issues/1658
 actions:
 	@echo "Running local actions"
 	@echo "Do not forget to have docker running and also : sudo ln -s ~/.docker/run/docker.sock /var/run/docker.sock"
-	act # act --secret-file .secrets -v --container-architecture linux/amd64
+	act --secret-file .secrets -v --container-architecture linux/amd64
 
 binder:
 	@echo "Building binder image"
 	docker build ./  -f ./Dockerfile  -t bindertest
-    docker run -it --rm -p 8888:8888 bindertest jupyter notebook --NotebookApp.default_url=/lab/ --ip=0.0.0.0 --port=8888 --allow-root
+	docker run -it --rm -p 8888:8888 bindertest jupyter notebook --NotebookApp.default_url=/lab/ --ip=0.0.0.0 --port=8888 --allow-root
 
 repo2docker:
 	@echo "Building docker image with repo2docker"
@@ -24,6 +30,12 @@ devcontainer:
 	@echo "Building and running  devcontainer image "
 	devcontainer build --workspace-folder ./ --image-name devcontest
 	docker run -it devcontest /bin/bash
+
+nbgrader:
+	@echo "Running nbgrader"
+	nbgrader --version
+	nbgrader generate_assignment --assignment="./lectures/*" --notebook="*" --force
+
 
 clean:
 	rm -f *~ #_build
