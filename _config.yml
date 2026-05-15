@@ -131,10 +131,10 @@ sphinx:
 #         - null
 #     hoverxref_intersphinx:
 #      - "sphinxproof"
-  extra_extensions:
-    - sphinx_exercise
-    - sphinx.ext.intersphinx
-    - sphinx_inline_tabs
-    - sphinx_proof
-    - sphinx_examples
-    - hoverxref.extension
+  # extra_extensions:
+  #   - sphinx_exercise
+  #   - sphinx.ext.intersphinx
+  #   - sphinx_inline_tabs
+  #   - sphinx_proof
+  #   - sphinx_examples
+  #   - hoverxref.extension
