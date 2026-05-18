@@ -1,5 +1,13 @@
 .PHONY: book clean actions repo2docker binder devcontainer serve
 
+book-lectures:
+	@echo "Building lectures book with jupyter-book: run nbgrader and sync stuff, then cd into release, then build the book, then open it (note: this leaves the release dir modified, maybe a git checkout . is needed "
+	bash nbgrader_and_sync.sh && \
+	cd release && \
+	jupyter-book build -v ./ && \
+	open -a firefox _build/html/index.html && \
+	git checkout .
+
 book:
 	@echo "Building book with jupyter-book"
 	jupyter-book build -v ./
