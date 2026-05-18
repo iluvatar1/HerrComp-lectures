@@ -211,11 +211,12 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-NonLinear-Chaos/NonLinear-Chaos.html">Non-linear dynamics and chaos</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
@@ -228,6 +229,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbers.html">Pseudo-random number generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbersInSimulations.html">Random numbers in simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/MonteCarlo-Simulation.html">Markov-chain Monte Carlo simulations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Agents and cellular automata</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Agents simulations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to neural networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12-IntroNeuralNetworks/IntroNeuralNetworks.html">An Introduction to Neural Networks and Deep Learning</a></li>
 </ul>
 
     </div>
@@ -938,7 +947,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fed30ae2250&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7faa2c7a5710&gt;
 </pre></div>
 </div>
 <img alt="../../_images/2d7d6b09903142acb8ab2e617ca9eff859e7992243a31f6bb3893878300c4ec6.png" src="../../_images/2d7d6b09903142acb8ab2e617ca9eff859e7992243a31f6bb3893878300c4ec6.png" />
@@ -952,7 +961,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fed309e6dd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7faa2c136290&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/d416c6a7cf3ca207a147ab243502b34c9a076fbc7bad3a8ba40a81b394c4073c.png" src="../../_images/d416c6a7cf3ca207a147ab243502b34c9a076fbc7bad3a8ba40a81b394c4073c.png" />
@@ -1008,7 +1017,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fed30178dd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7faa1d480450&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/190c4c172e1b99d6f3927278f4d02335b89c7adbc9c4d2f216710ec5d6dbbf84.png" src="../../_images/190c4c172e1b99d6f3927278f4d02335b89c7adbc9c4d2f216710ec5d6dbbf84.png" />
@@ -1027,7 +1036,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fed23f21410&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7faa1d32a010&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/77209fb8657c334d0cb4519dff9401722fa99df925462aed74db41d43b7fd8f7.png" src="../../_images/77209fb8657c334d0cb4519dff9401722fa99df925462aed74db41d43b7fd8f7.png" />
@@ -1047,7 +1056,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fed23f78b10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7faa1d36aa50&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/e7400c35d07c9b99db6c192d46fa1e143187d97af00e5221fd7191bb86eba30a.png" src="../../_images/e7400c35d07c9b99db6c192d46fa1e143187d97af00e5221fd7191bb86eba30a.png" />
@@ -1116,7 +1125,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bd61d1a678418560fb6979c1f0b709fc82455f48212e71902c9a0baf257adfdb.png" src="../../_images/bd61d1a678418560fb6979c1f0b709fc82455f48212e71902c9a0baf257adfdb.png" />
+<img alt="../../_images/8cd13232f848bfcb1abe6b17a0342789e2098fdf9548f57e470d999c0b4bfc10.png" src="../../_images/8cd13232f848bfcb1abe6b17a0342789e2098fdf9548f57e470d999c0b4bfc10.png" />
 </div>
 </div>
 </section>
@@ -1145,7 +1154,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5759f43f98d14b947e94f837a5087ef5f36e8a8e9f21f8e43bea8ea4217b8cc8.png" src="../../_images/5759f43f98d14b947e94f837a5087ef5f36e8a8e9f21f8e43bea8ea4217b8cc8.png" />
+<img alt="../../_images/fb7a4a11e2224534004fc8489b52727efd26fff5036aebbb4f44b29aa4b1e42a.png" src="../../_images/fb7a4a11e2224534004fc8489b52727efd26fff5036aebbb4f44b29aa4b1e42a.png" />
 </div>
 </div>
 <div class="cell docutils container">

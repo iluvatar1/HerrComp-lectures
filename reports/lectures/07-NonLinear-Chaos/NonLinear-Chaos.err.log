@@ -18,51 +18,35 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# %%writefile plot_derivs.py
-
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.misc import derivative as spderiv
 
-def forward(f, x, h):
-    return (f(x+h)-f(x))/h
+def lyapunov_logistic(r, N=1000, transient=500, x0=0.5):
+# YOUR CODE HERE
+raise NotImplementedError()
 
-def central(f, x, h):
-    return (f(x+h/2)-f(x-h/2))/h
+# Parameter sweep
+r_vals = np.linspace(2.5, 4.0, 1000)
+lambda_vals = np.array([lyapunov_logistic(r) for r in r_vals])
 
-def central_richardson(f, x, h):
-    # YOUR CODE HERE
-    raise NotImplementedError()
-
-def compare_derivatives():    
-    fig, ax = plt.subplots()
-    h = np.power(10.0, np.arange(-18, 0, +1))
-    x = np.pi/3
-    # YOUR CODE HERE
-    raise NotImplementedError()
-    
-
-compare_derivatives()
-
+# Plot
+plt.figure(figsize=(8, 5))
+plt.plot(r_vals, lambda_vals, 'b-', linewidth=1.5)
+plt.axhline(0, color='k', linestyle='--', linewidth=0.8)
+plt.xlabel('Parameter $r$')
+plt.ylabel('Largest Lyapunov Exponent $\\lambda$')
+plt.title('Lyapunov Exponent vs. $r$ for the Logistic Map')
+plt.grid(True, alpha=0.3)
+plt.tight_layout()
+plt.show()
+#plt.savefig("fig/lyapunov_logistic.png")
 
 ------------------
 
------ stderr -----
-/tmp/ipykernel_2849/2607954013.py:5: DeprecationWarning: scipy.misc is deprecated and will be removed in 2.0.0
-  from scipy.misc import derivative as spderiv
-------------------
 
-[31m---------------------------------------------------------------------------[39m
-[31mImportError[39m                               Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 5[39m
-[32m      1[39m [38;5;66;03m# %%writefile plot_derivs.py[39;00m
-[32m      2[39m 
-[32m      3[39m [38;5;28;01mimport[39;00m numpy [38;5;28;01mas[39;00m np
-[32m      4[39m [38;5;28;01mimport[39;00m matplotlib.pyplot [38;5;28;01mas[39;00m plt
-[32m----> [39m[32m5[39m [38;5;28;01mfrom[39;00m scipy.misc [38;5;28;01mimport[39;00m derivative [38;5;28;01mas[39;00m spderiv
-[32m      6[39m 
-[32m      7[39m [38;5;28;01mdef[39;00m forward(f, x, h):
-[32m      8[39m     [38;5;28;01mreturn[39;00m (f(x+h)-f(x))/h
+  [36mCell[39m[36m [39m[32mIn[8][39m[32m, line 6[39m
+[31m    [39m[31mraise NotImplementedError()[39m
+    ^
+[31mIndentationError[39m[31m:[39m expected an indented block after function definition on line 4
 
-[31mImportError[39m: cannot import name 'derivative' from 'scipy.misc' (/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/misc/__init__.py)
 

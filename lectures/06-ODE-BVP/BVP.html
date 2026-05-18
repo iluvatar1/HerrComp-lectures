@@ -80,7 +80,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Molecular Dynamics" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html" />
+    <link rel="next" title="Non-linear dynamics and chaos" href="../07-NonLinear-Chaos/NonLinear-Chaos.html" />
     <link rel="prev" title="IVP: Initial value problems" href="../05-ODE-IVP/ODESystems-PhasePlane.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -211,11 +211,12 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">BVP: Boundary value problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-NonLinear-Chaos/NonLinear-Chaos.html">Non-linear dynamics and chaos</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/vpython-leapfrog.html">Integration and Visualization of a Dynamic System</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
@@ -228,6 +229,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbers.html">Pseudo-random number generation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbersInSimulations.html">Random numbers in simulations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/MonteCarlo-Simulation.html">Markov-chain Monte Carlo simulations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Agents and cellular automata</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Agents simulations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to neural networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12-IntroNeuralNetworks/IntroNeuralNetworks.html">An Introduction to Neural Networks and Deep Learning</a></li>
 </ul>
 
     </div>
@@ -604,7 +613,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "01d5c58489be46338a178516f0e544ef"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "71a5e9f86a0c4d289d281b73f5a27ea5"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
 </pre></div>
 </div>
 </div>
@@ -621,15 +630,15 @@
 <p>and if this functions is linear (given that the equation is linear) then we can interpolate as shown</p>
 <img alt="../../_images/BVP-linear-interpolation.png" src="../../_images/BVP-linear-interpolation.png" />
 <p>By taking into account the linear nature of the problem, we can compute the straight-line equation in the <span class="math notranslate nohighlight">\(v_0 - y_f\)</span> space to get the right initial condition as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-00bc00e8-04d9-4b26-8775-7c285a883fb7">
-<span class="eqno">(34)<a class="headerlink" href="#equation-00bc00e8-04d9-4b26-8775-7c285a883fb7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ff686564-b131-4a44-b0af-34c0ca7befc3">
+<span class="eqno">(34)<a class="headerlink" href="#equation-ff686564-b131-4a44-b0af-34c0ca7befc3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v_0 = v_{0a} + \frac{y_f - y_{fa}}{y_{fb} - y_{fa}}(v_{0b} - v_{0a}).
 \end{equation}\]</div>
 <p>Then, by using that initial condition, we compute the actual solution (third IVP solution).</p>
 <p><strong>EXAMPLE</strong></p>
 <p>As an example, let’s solve the following problem (Chapra 24.11): Compound <span class="math notranslate nohighlight">\(A\)</span> diffuses through a 4-cm-long tube and reacts as it diffuses. The process can be  modeled as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e1acb24d-1c15-4ac6-b46b-2eb17834c36d">
-<span class="eqno">(35)<a class="headerlink" href="#equation-e1acb24d-1c15-4ac6-b46b-2eb17834c36d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-de9090bd-a62f-4a38-a606-77e2ad50376f">
+<span class="eqno">(35)<a class="headerlink" href="#equation-de9090bd-a62f-4a38-a606-77e2ad50376f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 D\frac{d^2A}{dx^2} - kA = 0.  
 \end{equation}\]</div>
 <p>At <span class="math notranslate nohighlight">\(x=0\)</span> there is a large source of <span class="math notranslate nohighlight">\(A\)</span> with fixed concentration of <span class="math notranslate nohighlight">\(0.1\)</span> M. At the other end there is a material that quickly absorbs <span class="math notranslate nohighlight">\(A\)</span>, so the concentration is 0 M. If <span class="math notranslate nohighlight">\(D = 1.5\times 10^{-6}\)</span> cm<span class="math notranslate nohighlight">\(^2\)</span>/s and <span class="math notranslate nohighlight">\(k = 5\times 10^{-6}\)</span> s<span class="math notranslate nohighlight">\(_1\)</span>, what is the concentration along the tube?</p>
@@ -881,8 +890,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="ecuacion-de-schroedinger-workshop">
 <h3>Ecuación de Schroedinger (workshop)<a class="headerlink" href="#ecuacion-de-schroedinger-workshop" title="Link to this heading">#</a></h3>
 <p>Una partícula se encuentra confinada en un potencial infinito descrito por</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4e4f370a-d6ef-40cb-b95c-c7affedc7d19">
-<span class="eqno">(36)<a class="headerlink" href="#equation-4e4f370a-d6ef-40cb-b95c-c7affedc7d19" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d8f0c6e1-1a3b-4c88-a7a6-940d65fcef38">
+<span class="eqno">(36)<a class="headerlink" href="#equation-d8f0c6e1-1a3b-4c88-a7a6-940d65fcef38" title="Permalink to this equation">#</a></span>\[\begin{equation}
   V(x) = 
   \begin{cases}
   0, 0 \le x \le L,\\
@@ -890,8 +899,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
   \end{cases}
 \end{equation}\]</div>
 <p>La ecuación de onda <span class="math notranslate nohighlight">\(\phi\)</span> de la partícula (independiente del tiempo) es</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ebf0b337-651e-4354-bb35-acf886b8515e">
-<span class="eqno">(37)<a class="headerlink" href="#equation-ebf0b337-651e-4354-bb35-acf886b8515e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e02e4027-72f7-4629-a796-f499b752a388">
+<span class="eqno">(37)<a class="headerlink" href="#equation-e02e4027-72f7-4629-a796-f499b752a388" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{-\hbar^2}{2m} \frac{d^2\phi(x)}{dx^2} + V(x) \phi(x) = E\phi(x).
 \end{equation}\]</div>
 <p>Debido al potencial, la función de onda debe cumplir que <span class="math notranslate nohighlight">\(\phi(0) = \phi(L) = 0\)</span>.</p>
@@ -969,8 +978,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="matrix-formulation-for-linear-boundary-value-problems">
 <h2>Matrix formulation for linear boundary value problems<a class="headerlink" href="#matrix-formulation-for-linear-boundary-value-problems" title="Link to this heading">#</a></h2>
 <p>When the BVP is linear, you can solve it either using the interpolation already shown, or by formulating the problem as a matrix system. The later is based on a <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">finite difference</a> discretization for the derivatives. Let’s start with the following problem, representing the temperature <span class="math notranslate nohighlight">\(T\)</span> across a linear bar (Chapra, 27.1)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-10990548-671d-4d44-96c0-35b79e3f9cf5">
-<span class="eqno">(38)<a class="headerlink" href="#equation-10990548-671d-4d44-96c0-35b79e3f9cf5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b664a11d-2fb5-47f6-9ecc-cec7b8d56eb4">
+<span class="eqno">(38)<a class="headerlink" href="#equation-b664a11d-2fb5-47f6-9ecc-cec7b8d56eb4" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{d^2T}{dx^2} + h'(T_a - T) = 0,  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h'\)</span> is the transfer coefficient (m<span class="math notranslate nohighlight">\(^{-2}\)</span>), and <span class="math notranslate nohighlight">\(T_a\)</span> is the sourronding air temperature. The boundary conditions are <span class="math notranslate nohighlight">\(T(0) = T_1 = 40\)</span>, <span class="math notranslate nohighlight">\(T(L=10) = T_2 = 200\)</span>, and <span class="math notranslate nohighlight">\(T_a = 20\)</span>. Also, <span class="math notranslate nohighlight">\(h' = 0.01\)</span>.</p>
@@ -1032,18 +1041,18 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </div>
 </div>
 <p>Now let’s proceed with a different way: by discretizing the derivatives and setting the equation on the points. We have,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c3d6df96-3efd-4869-a590-e214bc8f59da">
-<span class="eqno">(39)<a class="headerlink" href="#equation-c3d6df96-3efd-4869-a590-e214bc8f59da" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6e84eb09-25ef-43f7-b23f-9964ed7c36ad">
+<span class="eqno">(39)<a class="headerlink" href="#equation-6e84eb09-25ef-43f7-b23f-9964ed7c36ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dx^2} \simeq \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2},  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> is the partition size, so the original equation takes the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-99e2fe5d-375b-4fd3-96b2-007be79c2b90">
-<span class="eqno">(40)<a class="headerlink" href="#equation-99e2fe5d-375b-4fd3-96b2-007be79c2b90" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6502b7ed-a17c-4f54-bf77-b5a6d8c9bb56">
+<span class="eqno">(40)<a class="headerlink" href="#equation-6502b7ed-a17c-4f54-bf77-b5a6d8c9bb56" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2} - h'(T_i - T_a) = 0.  
 \end{equation}\]</div>
 <p>Finally, after collecting terms, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f5239c5a-607d-468f-9a76-8309a650137a">
-<span class="eqno">(41)<a class="headerlink" href="#equation-f5239c5a-607d-468f-9a76-8309a650137a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-278b6401-5bd1-4467-bbdb-13d2c8edb8a1">
+<span class="eqno">(41)<a class="headerlink" href="#equation-278b6401-5bd1-4467-bbdb-13d2c8edb8a1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -T_{i-1} + (2+h'\Delta x^2)T_i - T_{i+1} = h'\Delta x^2T_a \to -T_{i-1} + \alpha T_i - T_{i+1} = \beta.
 \end{equation}\]</div>
 <p>This is a tri-diagonal system for the internal points.</p>
@@ -1102,8 +1111,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="generic-bvp">
 <h3>Generic BVP<a class="headerlink" href="#generic-bvp" title="Link to this heading">#</a></h3>
 <p>Solve the following equation using the shooting method and the matrix method,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-74af646c-b3e3-464d-87dd-b9d073cf2bd9">
-<span class="eqno">(42)<a class="headerlink" href="#equation-74af646c-b3e3-464d-87dd-b9d073cf2bd9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0a70d364-343f-4a2a-a5b1-872af382651f">
+<span class="eqno">(42)<a class="headerlink" href="#equation-0a70d364-343f-4a2a-a5b1-872af382651f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 7\frac{d^2y}{dx^2} -  2\frac{dy}{dx} - y +x = 0,
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(y(0) = 5, y(20) = 8\)</span></p>
@@ -1111,8 +1120,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="bvp-with-newman-condition">
 <h3>BVP with Newman condition<a class="headerlink" href="#bvp-with-newman-condition" title="Link to this heading">#</a></h3>
 <p>Here we will add a boundary condition on the derivative, on the left, which means that the left node is also an unknown. In that case you can use <span class="math notranslate nohighlight">\(dT/dx \simeq = (T_{1} - T_{-1})/2\Delta x\)</span> so <span class="math notranslate nohighlight">\(T_{-1} = T_1 -2 \Delta x dT/\Delta x\)</span> and then you get the value for the imaginary node <span class="math notranslate nohighlight">\(T_{-1}\)</span> which is now needed. Solve following system:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ef64372-fa48-4ac8-b817-1556151b3ed0">
-<span class="eqno">(43)<a class="headerlink" href="#equation-8ef64372-fa48-4ac8-b817-1556151b3ed0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-87b46bf6-9421-4d15-8145-9ef2834a7b3b">
+<span class="eqno">(43)<a class="headerlink" href="#equation-87b46bf6-9421-4d15-8145-9ef2834a7b3b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dr^2} + \frac{1}{r}\frac{dT}{dr} + S = 0,
 \end{equation}\]</div>
 <p>over <span class="math notranslate nohighlight">\(0 \le r\le 1\)</span>, with <span class="math notranslate nohighlight">\(T(r=1) = 1\)</span> and <span class="math notranslate nohighlight">\(\frac{dT}{dr} = 0\)</span> in <span class="math notranslate nohighlight">\(r=0\)</span>, for S = 1, 10, and 20 K/m<span class="math notranslate nohighlight">\(^2\)</span>. This is a model of the temperature distribution on  a circular rod with internal heat source <span class="math notranslate nohighlight">\(S\)</span>.</p>
@@ -1120,8 +1129,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="deflection-of-a-sailboat-mast-chapra-28-22">
 <h3>Deflection of a sailboat mast (Chapra 28.22)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-22" title="Link to this heading">#</a></h3>
 <p>The following equation can be used to model the deflection of a sailboat mast subject to wind force,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-db7ec10d-f673-498c-92cb-6e0cc7657325">
-<span class="eqno">(44)<a class="headerlink" href="#equation-db7ec10d-f673-498c-92cb-6e0cc7657325" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b60b57ef-44f8-4c73-b0be-5b8b477b0238">
+<span class="eqno">(44)<a class="headerlink" href="#equation-b60b57ef-44f8-4c73-b0be-5b8b477b0238" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2y}{dz^2} = \frac{f}{2EI}(L-z)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is the wind force, <span class="math notranslate nohighlight">\(E\)</span> is the modulus of elasticity, <span class="math notranslate nohighlight">\(L\)</span> the mast length, and <span class="math notranslate nohighlight">\(I\)</span> the inertia moment. Compute the deflection as a function of <span class="math notranslate nohighlight">\(z\)</span> if <span class="math notranslate nohighlight">\(y = 0\)</span> and <span class="math notranslate nohighlight">\(dy/dz = 0\)</span> at <span class="math notranslate nohighlight">\(z = 0\)</span>. Use <span class="math notranslate nohighlight">\(f = 60, L = 30, E = 1.25\times 10^8, I = 0.05\)</span></p>
@@ -1129,8 +1138,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <section id="deflection-of-a-sailboat-mast-chapra-28-23">
 <h3>Deflection of a sailboat mast (Chapra 28.23)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-23" title="Link to this heading">#</a></h3>
 <p>Same previous problem but now the force varies with height as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba6520ff-8d1b-4507-b3ab-0dc10d3527a8">
-<span class="eqno">(45)<a class="headerlink" href="#equation-ba6520ff-8d1b-4507-b3ab-0dc10d3527a8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-28de4613-8288-4b3a-84eb-1c0c76f3a904">
+<span class="eqno">(45)<a class="headerlink" href="#equation-28de4613-8288-4b3a-84eb-1c0c76f3a904" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(z) = \frac{200z}{5+z}e^{-2z/30}.
 \end{equation}\]</div>
 </section>
@@ -1177,11 +1186,11 @@ f(z) = \frac{200z}{5+z}e^{-2z/30}.
       </div>
     </a>
     <a class="right-next"
-       href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html"
+       href="../07-NonLinear-Chaos/NonLinear-Chaos.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Molecular Dynamics</p>
+        <p class="prev-next-title">Non-linear dynamics and chaos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
