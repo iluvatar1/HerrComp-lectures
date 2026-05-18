@@ -34,20 +34,23 @@ parts:
     chapters:
     - file: lectures/05-ODE-IVP/ODESystems-PhasePlane.ipynb
     - file: lectures/06-ODE-BVP/BVP.ipynb
+    - file: lectures/07-NonLinear-Chaos/NonLinear-Chaos.ipynb
   - caption: "Introduction to Molecular Dynamics"
     numbered: false
     chapters:
-    - file: lectures/08-MolecularDynamics/MolecularDynamics-MacroBodies.ipynb
-    - file: lectures/08-MolecularDynamics/vpython-leapfrog.ipynb
+    # - file: lectures/08-MolecularDynamics/MolecularDynamics-MacroBodies.ipynb
+    # - file: lectures/08-MolecularDynamics/vpython-leapfrog.ipynb
   - caption: "Partial differential equations"
     numbered: false
     chapters:
-    - file: lectures/09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.ipynb
-    - file: lectures/09-PDE-FiniteDifferences/PDE-Parabolic-Heat.ipynb
-    - file: lectures/09-PDE-FiniteDifferences/PDELibs.ipynb
+    # - file: lectures/09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.ipynb
+    # - file: lectures/09-PDE-FiniteDifferences/PDE-Parabolic-Heat.ipynb
+    # - file: lectures/09-PDE-FiniteDifferences/PDELibs.ipynb
   - caption: "Random methods"
     numbered: false
     chapters:
-    - file: lectures/10-RandomSystems/RandomNumbers.ipynb
-    - file: lectures/10-RandomSystems/RandomNumbersInSimulations.ipynb
-    - file: lectures/10-RandomSystems/MonteCarlo-Simulation.ipynb
+    # - file: lectures/10-RandomSystems/RandomNumbers.ipynb
+    # - file: lectures/10-RandomSystems/RandomNumbersInSimulations.ipynb
+    # - file: lectures/10-RandomSystems/MonteCarlo-Simulation.ipynb
+  - caption: "Agents and cellular automata"
+    numbered: false
