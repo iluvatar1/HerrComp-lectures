@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 550" style="background-color: #fcfcfc; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  
+  <!-- Definitions for arrowheads -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#888" />
+    </marker>
+  </defs>
+
+  <!-- Title & Legend -->
+  <text x="550" y="40" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">Fully Connected Neural Network (4-3-2)</text>
+  
+  <rect x="350" y="480" width="400" height="50" rx="8" fill="#f0f4f8" stroke="#ccc" stroke-width="1"/>
+  <text x="550" y="500" font-size="14" text-anchor="middle" fill="#444" font-weight="bold">Math Logic &amp; Activation:</text>
+  <text x="550" y="520" font-size="13" text-anchor="middle" fill="#555">Neuron Value = ReLU( Σ (Input × Weight) ) &nbsp;|&nbsp; ReLU(x) = max(0, x)</text>
+
+  <!-- Layer Titles -->
+  <g font-size="16" font-weight="bold" fill="#666" text-anchor="middle">
+    <text x="200" y="80">Input Layer</text>
+    <text x="550" y="80">Hidden Layer</text>
+    <text x="900" y="80">Output Layer</text>
+  </g>
+
+  <!-- ==================== CONNECTION LINES ==================== -->
+  <g stroke="#d0d0d0" stroke-width="2">
+    <!-- Input to Hidden -->
+    <line x1="200" y1="100" x2="550" y2="150" />
+    <line x1="200" y1="100" x2="550" y2="250" />
+    <line x1="200" y1="100" x2="550" y2="350" />
+    
+    <line x1="200" y1="200" x2="550" y2="150" />
+    <line x1="200" y1="200" x2="550" y2="250" />
+    <line x1="200" y1="200" x2="550" y2="350" />
+    
+    <line x1="200" y1="300" x2="550" y2="150" />
+    <line x1="200" y1="300" x2="550" y2="250" />
+    <line x1="200" y1="300" x2="550" y2="350" />
+    
+    <line x1="200" y1="400" x2="550" y2="150" />
+    <line x1="200" y1="400" x2="550" y2="250" />
+    <line x1="200" y1="400" x2="550" y2="350" />
+
+    <!-- Hidden to Output -->
+    <line x1="550" y1="150" x2="900" y2="200" />
+    <line x1="550" y1="150" x2="900" y2="300" />
+    
+    <line x1="550" y1="250" x2="900" y2="200" />
+    <line x1="550" y1="250" x2="900" y2="300" />
+    
+    <line x1="550" y1="350" x2="900" y2="200" />
+    <line x1="550" y1="350" x2="900" y2="300" />
+  </g>
+
+  <!-- ==================== WEIGHT LABELS ==================== -->
+  <!-- Note: All weights are placed at the beginning of the lines, spaced dynamically to avoid overlaps -->
+  <g font-size="12" font-weight="bold" fill="#c62828" text-anchor="middle" dominant-baseline="central">
+    
+    <!-- Background Pills for Readability -->
+    <g fill="#ffffff" fill-opacity="0.85">
+      <!-- From I1 -->
+      <rect x="224" y="97" width="32" height="18" rx="4"/>
+      <rect x="264" y="125" width="32" height="18" rx="4"/>
+      <rect x="304" y="177" width="32" height="18" rx="4"/>
+      <!-- From I2 -->
+      <rect x="224" y="185" width="32" height="18" rx="4"/>
+      <rect x="264" y="202" width="32" height="18" rx="4"/>
+      <rect x="304" y="242" width="32" height="18" rx="4"/>
+      <!-- From I3 -->
+      <rect x="224" y="274" width="32" height="18" rx="4"/>
+      <rect x="264" y="280" width="32" height="18" rx="4"/>
+      <rect x="304" y="308" width="32" height="18" rx="4"/>
+      <!-- From I4 -->
+      <rect x="224" y="362" width="32" height="18" rx="4"/>
+      <rect x="264" y="357" width="32" height="18" rx="4"/>
+      <rect x="304" y="374" width="32" height="18" rx="4"/>
+      
+      <!-- From H1 -->
+      <rect x="584" y="148" width="32" height="18" rx="4"/>
+      <rect x="634" y="184" width="32" height="18" rx="4"/>
+      <!-- From H2 -->
+      <rect x="584" y="234" width="32" height="18" rx="4"/>
+      <rect x="634" y="255" width="32" height="18" rx="4"/>
+      <!-- From H3 -->
+      <rect x="584" y="320" width="32" height="18" rx="4"/>
+      <rect x="634" y="327" width="32" height="18" rx="4"/>
+    </g>
+
+    <!-- Weight Values -->
+    <!-- Input to Hidden Layer Weights -->
+    <text x="240" y="106">0.2</text>
+    <text x="280" y="134">-0.1</text>
+    <text x="320" y="186">0.4</text>
+
+    <text x="240" y="194">0.5</text>
+    <text x="280" y="211">0.3</text>
+    <text x="320" y="251">-0.2</text>
+
+    <text x="240" y="283">-0.4</text>
+    <text x="280" y="289">0.6</text>
+    <text x="320" y="317">0.1</text>
+
+    <text x="240" y="371">0.8</text>
+    <text x="280" y="366">-0.5</text>
+    <text x="320" y="383">0.7</text>
+
+    <!-- Hidden to Output Layer Weights -->
+    <text x="600" y="157">0.4</text>
+    <text x="650" y="193">-0.3</text>
+
+    <text x="600" y="243">0.5</text>
+    <text x="650" y="264">0.9</text>
+
+    <text x="600" y="329">-0.6</text>
+    <text x="650" y="336">0.8</text>
+  </g>
+
+  <!-- ==================== NEURONS ==================== -->
+  <g stroke-width="3">
+    <!-- Input Layer Neurons -->
+    <circle cx="200" cy="100" r="32" fill="#e8f5e9" stroke="#4caf50" />
+    <circle cx="200" cy="200" r="32" fill="#e8f5e9" stroke="#4caf50" />
+    <circle cx="200" cy="300" r="32" fill="#e8f5e9" stroke="#4caf50" />
+    <circle cx="200" cy="400" r="32" fill="#e8f5e9" stroke="#4caf50" />
+    
+    <!-- Hidden Layer Neurons -->
+    <circle cx="550" cy="150" r="32" fill="#e3f2fd" stroke="#2196f3" />
+    <circle cx="550" cy="250" r="32" fill="#e3f2fd" stroke="#2196f3" />
+    <circle cx="550" cy="350" r="32" fill="#e3f2fd" stroke="#2196f3" />
+    
+    <!-- Output Layer Neurons -->
+    <circle cx="900" cy="200" r="32" fill="#fff3e0" stroke="#ff9800" />
+    <circle cx="900" cy="300" r="32" fill="#fff3e0" stroke="#ff9800" />
+  </g>
+
+  <!-- ==================== NEURON VALUES (ACTIVATIONS) ==================== -->
+  <g font-size="16" font-weight="bold" fill="#333" text-anchor="middle" dominant-baseline="central">
+    <!-- Given Input Data -->
+    <text x="200" y="100">0.5</text>
+    <text x="200" y="200">0.8</text>
+    <text x="200" y="300">-0.2</text>
+    <text x="200" y="400">1.0</text>
+    
+    <!-- Computed Hidden Values [ ReLU(sum) ] -->
+    <text x="550" y="150">1.38</text>
+    <text x="550" y="250">0.00</text>
+    <text x="550" y="350">0.72</text>
+    
+    <!-- Computed Output Values [ ReLU(sum) ] -->
+    <text x="900" y="200">0.12</text>
+    <text x="900" y="300">0.16</text>
+  </g>
+
+  <!-- ==================== EXTERNAL LABELS & ARROWS ==================== -->
+  <g font-size="14" font-weight="bold" fill="#666">
+    <!-- Input Arrows -->
+    <g stroke="#888" stroke-width="2">
+      <line x1="120" y1="100" x2="160" y2="100" marker-end="url(#arrow)" />
+      <line x1="120" y1="200" x2="160" y2="200" marker-end="url(#arrow)" />
+      <line x1="120" y1="300" x2="160" y2="300" marker-end="url(#arrow)" />
+      <line x1="120" y1="400" x2="160" y2="400" marker-end="url(#arrow)" />
+    </g>
+    <!-- Output Arrows -->
+    <g stroke="#888" stroke-width="2">
+      <line x1="940" y1="200" x2="980" y2="200" marker-end="url(#arrow)" />
+      <line x1="940" y1="300" x2="980" y2="300" marker-end="url(#arrow)" />
+    </g>
+    
+    <!-- Text near arrows -->
+    <text x="110" y="105" text-anchor="end">X1</text>
+    <text x="110" y="205" text-anchor="end">X2</text>
+    <text x="110" y="305" text-anchor="end">X3</text>
+    <text x="110" y="405" text-anchor="end">X4</text>
+    
+    <text x="995" y="205" text-anchor="start">Y1</text>
+    <text x="995" y="305" text-anchor="start">Y2</text>
+  </g>
+
+</svg>

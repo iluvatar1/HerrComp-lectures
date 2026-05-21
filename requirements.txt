@@ -1,4 +1,4 @@
-jupyter-book==1.0.3
+jupyter-book==1.0.4
 jupyter
 notebook
 jupyterlab
@@ -39,6 +39,8 @@ py-heat-magic
 
 nnv
 
+myst-nb
+jupyterlab_myst
 
 # fenics stuff
 # superlu_dist==6.2.0

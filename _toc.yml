@@ -39,6 +39,7 @@ parts:
     numbered: false
     chapters:
     - file: lectures/08-MolecularDynamics/MolecularDynamics-MacroBodies.ipynb
+    - file: lectures/08-MolecularDynamics/RandomMD-Langevin.ipynb
     # - file: lectures/08-MolecularDynamics/vpython-leapfrog.ipynb
   - caption: "Partial differential equations"
     numbered: false
