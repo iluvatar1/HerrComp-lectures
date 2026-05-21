@@ -1,0 +1,1140 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Random Molecular Dynamics and Langevin Equation &#8212; Herramientas Computacionales</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=03b9d5b1" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DX59QS1P22"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DX59QS1P22');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DX59QS1P22');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/08-MolecularDynamics/RandomMD-Langevin';</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Partial Differential equations: Finite differences" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html" />
+    <link rel="prev" title="Molecular Dynamics" href="MolecularDynamics-MacroBodies.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../README.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Rayleigh-Taylor_instability.jpg" class="logo__image only-light" alt="Herramientas Computacionales - Home"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Rayleigh-Taylor_instability.jpg" class="logo__image only-dark pst-js-only" alt="Herramientas Computacionales - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    Herramientas Computacionales
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to or review of Python</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../01-Intro-InstalacionPython/01-B-PythonSetup.html">Python Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/01-IntroProgrammingPython.html">Python Programming (very fast) Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/02-IntroProgrammingPython-DataStructs.html">Basic data structures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/matplotlib-Intro.html">Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/numpy-Intro-Reduced.html">Python arrays : Numpy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-PythonProgramming/Scipy.html">SciPy - Library of scientific algorithms for Python</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Numerical Calculus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsI.html">Numerical errors (very short intro)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-numericalErrors/NumericalErrorsII.html">Numerical errors II : types of errors and general remarks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/NumericalDifferentiation.html">Numerical differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/AutomaticDifferentiation.html">Automatic differentiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-Scipy-NumericalCalculus/Scipy-NumericalCalculus-Integration.html">Numerical Calculus: Integrals and an introduction to scipy</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Linear Algebra and Numerical Libraries</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/LinearAlgebra.html">Linear Systems : Matrices, Vectors, eigen systems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-LinearAlgebra/Perceptron.html">Simple neural network: A perceptron</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-NonLinear-Chaos/NonLinear-Chaos.html">Non-linear dynamics and chaos</a></li>
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Random Molecular Dynamics and Langevin Equation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical libraries for PDEs</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbers.html">Pseudo-random number generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/RandomNumbersInSimulations.html">Random numbers in simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../10-RandomSystems/MonteCarlo-Simulation.html">Markov-chain Monte Carlo simulations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Agents and cellular automata</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Cellular Automata</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to neural networks</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../12-IntroNeuralNetworks/IntroNeuralNetworks.html">An Introduction to Neural Networks and Deep Learning</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/iluvatar1/HerrComp-lectures/master?urlpath=lab/tree/lectures/08-MolecularDynamics/RandomMD-Langevin.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/iluvatar1/HerrComp-lectures/blob/master/lectures/08-MolecularDynamics/RandomMD-Langevin.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Colab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Colab logo" src="../../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/iluvatar1/HerrComp-lectures/issues/new?title=Issue%20on%20page%20%2Flectures/08-MolecularDynamics/RandomMD-Langevin.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/08-MolecularDynamics/RandomMD-Langevin.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Random Molecular Dynamics and Langevin Equation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brownian-motion">Brownian Motion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-langevin-equation">The Langevin Equation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-software">Note on software</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-integration">Time integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-dive-into-the-integrators">Deep Dive into the Integrators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-baseline-euler-maruyama">A. The Baseline: Euler-Maruyama</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-standard-modified-velocity-verlet">B. The Standard: Modified Velocity Verlet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-the-robust-choice-gronbech-jensen-farago-g-jf">C. The Robust Choice: Grønbech-Jensen &amp; Farago (G-JF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-and-comparison-code">Implementation and Comparison Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-the-explosion-point">Exercise: The “Explosion” Point</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-and-testing">Calibration and testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maxwell-boltzmann-distribution">Maxwell-Boltzmann distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equipartition-theorem">The Equipartition Theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-squared-displacement-msd">Mean Squared Displacement (MSD)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bbk-integrator-brungerbrookskarplus">BBK Integrator (Brünger–Brooks–Karplus)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-conservation">Energy “conservation”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underdamped-vs-overdamped">Underdamped vs Overdamped</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-space-exploration">Phase Space Exploration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-temperature">Effective temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-a-double-well-potential">Sampling a Double-Well Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-correlation-function">Time correlation Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-topics">Future topics</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="random-molecular-dynamics-and-langevin-equation">
+<h1>Random Molecular Dynamics and Langevin Equation<a class="headerlink" href="#random-molecular-dynamics-and-langevin-equation" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<div class="highlight-{figure}https://upload.wikimedia.org/wikipedia/commons/c/c2/Brownian_motion_large.gif notranslate"><div class="highlight"><pre><span></span>:class: center
+:width: 20%
+From: https://upload.wikimedia.org/wikipedia/commons/c/c2/Brownian_motion_large.gif
+</pre></div>
+</div>
+<section id="brownian-motion">
+<h3>Brownian Motion<a class="headerlink" href="#brownian-motion" title="Link to this heading">#</a></h3>
+<p>Microscopic particles suspended in a fluid exhibit erratic motion due to
+collisions with surrounding molecules.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><p>Pollen grains in water</p></li>
+<li><p>Dust particles in air</p></li>
+<li><p>Colloidal particles</p></li>
+<li><p>Molecular diffusion</p></li>
+</ul>
+<p>A fully deterministic simulation of all molecules is often impossible,
+so we construct an effective stochastic description.</p>
+</section>
+<section id="the-langevin-equation">
+<h3>The Langevin Equation<a class="headerlink" href="#the-langevin-equation" title="Link to this heading">#</a></h3>
+<p>In standard Molecular Dynamics (MD), we solve Newton’s equations (<span class="math notranslate nohighlight">\(F = ma\)</span>). However, to simulate a system at a constant temperature <span class="math notranslate nohighlight">\(T\)</span> or to model a particle in a solvent (like a protein in water), we need to include</p>
+<ol class="arabic simple">
+<li><p>A friction force</p></li>
+<li><p>A random fluctuating force</p></li>
+</ol>
+<p>To do so, we use the <strong>Langevin Equation</strong>,</p>
+<div class="math notranslate nohighlight">
+\[m \frac{dv}{dt} = F_{ext}(x) - \gamma v + \sqrt{2 \gamma k_B T} \eta(t)\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(F_{ext}(x)\)</span>: External forces (e.g., from a potential <span class="math notranslate nohighlight">\(U(x)\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(-\gamma v\)</span>: <strong>Friction/Drag force</strong> (dissipation).</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sqrt{2 \gamma k_B T} \eta(t)\)</span>: <strong>Stochastic force</strong> (fluctuation), where <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise, which has the following properties:</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-fc531eb1-38ba-41b6-b58b-bf45ed217577">
+<span class="eqno">(52)<a class="headerlink" href="#equation-fc531eb1-38ba-41b6-b58b-bf45ed217577" title="Permalink to this equation">#</a></span>\[\begin{align}
+\langle \eta(t) \rangle &amp;= 0,\\
+\langle \eta(t) \eta(t') \rangle &amp;= \delta(t-t').
+\end{align}\]</div>
+<p>The standard deviation is <span class="math notranslate nohighlight">\(\sigma^2 = 2 \gamma k_B T\)</span>.</p>
+</section>
+</section>
+<section id="note-on-software">
+<h2>Note on software<a class="headerlink" href="#note-on-software" title="Link to this heading">#</a></h2>
+<p>Although we are going to implement some of the simulations by ourselves, there are several MD packages worth visiting:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.lammps.org/">LAMMMPS</a></p></li>
+<li><p><a class="reference external" href="https://www.gromacs.org/">GROMACS</a></p></li>
+<li><p><a class="reference external" href="https://openmm.org/">OpenMM</a></p></li>
+<li><p><a class="reference external" href="https://docs.deepmodeling.com/projects/deepmd/en/stable/index.html#">DeepMD</a></p></li>
+<li><p>…</p></li>
+<li><p>See: <a class="reference external" href="https://en.wikipedia.org/wiki/Category:Molecular_dynamics_software">https://en.wikipedia.org/wiki/Category:Molecular_dynamics_software</a></p></li>
+</ul>
+</section>
+<section id="time-integration">
+<h2>Time integration<a class="headerlink" href="#time-integration" title="Link to this heading">#</a></h2>
+<p>We cannot use the standard Verlet/Leapfrog algorithms in this cases, which are simplectic (they preserve phase-space volume) and time reversible, due to the random term ad the friction term in the Langevin equation, which introduce the following consequences:</p>
+<ol class="arabic simple">
+<li><p>Friction makes the system non-Hamiltonian (energy is dissipated).</p></li>
+<li><p>The noise term is technically non-differentiable (Wiener process).</p></li>
+</ol>
+<p>There are some new algorithms that can be implemented:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-left"><p>Algorithm</p></th>
+<th class="head text-left"><p>Complexity</p></th>
+<th class="head text-left"><p>Stability</p></th>
+<th class="head text-left"><p>Accuracy (<span class="math notranslate nohighlight">\(x\)</span>)</p></th>
+<th class="head text-left"><p>Key Advantage</p></th>
+<th class="head text-left"><p>Disadvantage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-left"><p><strong>Euler-Maruyama</strong></p></td>
+<td class="text-left"><p>Very Low</p></td>
+<td class="text-left"><p>Poor</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(O(\Delta t^{0.5})\)</span></p></td>
+<td class="text-left"><p>Extremely simple to code.</p></td>
+<td class="text-left"><p>Unstable; requires tiny time steps; poor energy/temperature control.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>Langevin Velocity Verlet</strong></p></td>
+<td class="text-left"><p>Medium</p></td>
+<td class="text-left"><p>Good</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(O(\Delta t^{2})\)</span></p></td>
+<td class="text-left"><p>Familiar to MD users; easy to implement.</p></td>
+<td class="text-left"><p>Kinetic energy can be biased depending on how the friction is centered.</p></td>
+</tr>
+<tr class="row-even"><td class="text-left"><p><strong>G-JF (Grønbech-Jensen)</strong></p></td>
+<td class="text-left"><p>Medium</p></td>
+<td class="text-left"><p><strong>Excellent</strong></p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(O(\Delta t^{2})\)</span></p></td>
+<td class="text-left"><p><strong>Exactly</strong> reproduces Boltzmann distribution even for large <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p></td>
+<td class="text-left"><p>Slightly more algebraic overhead in the coefficients.</p></td>
+</tr>
+<tr class="row-odd"><td class="text-left"><p><strong>BAOAB (Splitting)</strong></p></td>
+<td class="text-left"><p>Medium</p></td>
+<td class="text-left"><p>High</p></td>
+<td class="text-left"><p><span class="math notranslate nohighlight">\(O(\Delta t^{2})\)</span></p></td>
+<td class="text-left"><p>Best for sampling configuration space (positions).</p></td>
+<td class="text-left"><p>Velocity statistics are slightly less accurate than G-JF.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<section id="deep-dive-into-the-integrators">
+<h3>Deep Dive into the Integrators<a class="headerlink" href="#deep-dive-into-the-integrators" title="Link to this heading">#</a></h3>
+</section>
+<section id="a-the-baseline-euler-maruyama">
+<h3>A. The Baseline: Euler-Maruyama<a class="headerlink" href="#a-the-baseline-euler-maruyama" title="Link to this heading">#</a></h3>
+<p>This is the stochastic version of the Forward Euler method:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-dc2209c1-d5c1-430f-a873-2c96e0791e79">
+<span class="eqno">(53)<a class="headerlink" href="#equation-dc2209c1-d5c1-430f-a873-2c96e0791e79" title="Permalink to this equation">#</a></span>\[\begin{align}
+v_{n+1} &amp;= v_n + \frac{F_n}{m}\Delta t - \frac{\gamma}{m} v_n \Delta t + \sqrt{\frac{2\gamma k_B T \Delta t}{m^2}} R_n,\\
+x_{n+1} &amp;= x_n + v_n \Delta t,
+\end{align}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(R_n\)</span> is a random number from a Normal distribution <span class="math notranslate nohighlight">\(N(0,1)\)</span>.</p>
+</section>
+<section id="b-the-standard-modified-velocity-verlet">
+<h3>B. The Standard: Modified Velocity Verlet<a class="headerlink" href="#b-the-standard-modified-velocity-verlet" title="Link to this heading">#</a></h3>
+<p>Most MD packages (like LAMMPS or GROMACS) use a variation of this. It splits the velocity update into two half-steps to account for the force, then adds the noise.</p>
+<ul class="simple">
+<li><p><strong>Pros:</strong> It reduces to the standard Verlet if <span class="math notranslate nohighlight">\(\gamma=0\)</span> and <span class="math notranslate nohighlight">\(T=0\)</span>.</p></li>
+<li><p><strong>Cons:</strong> Because the friction depends on <span class="math notranslate nohighlight">\(v\)</span>, and <span class="math notranslate nohighlight">\(v\)</span> is changing during the step, the “correct” velocity to use for the friction term is ambiguous.</p></li>
+</ul>
+<p>See <a class="reference external" href="https://www.sciencedirect.com/science/article/abs/pii/S0301010498002146">https://www.sciencedirect.com/science/article/abs/pii/S0301010498002146</a></p>
+</section>
+<section id="c-the-robust-choice-gronbech-jensen-farago-g-jf">
+<h3>C. The Robust Choice: Grønbech-Jensen &amp; Farago (G-JF)<a class="headerlink" href="#c-the-robust-choice-gronbech-jensen-farago-g-jf" title="Link to this heading">#</a></h3>
+<p>This is currently the “gold standard” for Langevin simulations. It was designed so that for a harmonic oscillator, the calculated averages <span class="math notranslate nohighlight">\(\langle x^2 \rangle\)</span> are <strong>independent of the time step <span class="math notranslate nohighlight">\(\Delta t\)</span></strong>.
+It defines a discrete-time engine where the friction and noise are analytically integrated over the step.</p>
+<p>See <a class="reference external" href="https://arxiv.org/abs/1212.1244">https://arxiv.org/abs/1212.1244</a></p>
+</section>
+<hr class="docutils" />
+<section id="implementation-and-comparison-code">
+<h3>Implementation and Comparison Code<a class="headerlink" href="#implementation-and-comparison-code" title="Link to this heading">#</a></h3>
+<p>Implement the euler-maruyama step. Use a external force as <span class="math notranslate nohighlight">\(-x\)</span>. Then run the code to check if the algorithms produce the same results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="c1"># fix random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">euler_maruyama_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">):</span>
+    <span class="c1"># Noise term</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">random_force</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">kT</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise</span>
+    
+    <span class="c1"># Update</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    
+    <span class="k">return</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">v_new</span><span class="p">,</span> <span class="n">f_new</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">):</span>
+    <span class="c1"># 1. Calculate coefficients</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass</span><span class="p">)))</span>
+    
+    <span class="c1"># 2. Generate random noise (Gaussian)</span>
+    <span class="c1"># Variance is 2 * gamma * kT * dt</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">kT</span> <span class="o">*</span> <span class="n">dt</span><span class="p">))</span>
+    
+    <span class="c1"># 3. Update Position</span>
+    <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">dt</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mass</span><span class="p">))</span> <span class="o">*</span> <span class="n">f</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mass</span><span class="p">))</span> <span class="o">*</span> <span class="n">noise</span>
+    
+    <span class="c1"># 4. We need the force at the NEW position to update velocity</span>
+    <span class="c1"># For a simple harmonic oscillator: F = -k*x</span>
+    <span class="n">f_new</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">x_new</span>  <span class="c1"># Simplified: k=1</span>
+    
+    <span class="c1"># 5. Update Velocity (on-site velocity)</span>
+    <span class="n">v_new</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mass</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">f</span> <span class="o">+</span> <span class="n">f_new</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">mass</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise</span>
+    
+    <span class="k">return</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">v_new</span><span class="p">,</span> <span class="n">f_new</span>
+
+<span class="c1"># Simulation Setup: High Time Step Test</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Large dt to test stability</span>
+<span class="n">n_steps</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span>
+
+<span class="c1"># Initialize</span>
+<span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span>
+<span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span>
+
+<span class="n">traj_em</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">traj_gjf</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+    <span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span> <span class="o">=</span> <span class="n">euler_maruyama_step</span><span class="p">(</span><span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
+    <span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
+    <span class="n">traj_em</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_em</span><span class="p">)</span>
+    <span class="n">traj_gjf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">50</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">traj_em</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">traj_gjf</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">48</span> 
+<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">50</span>     <span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span> <span class="o">=</span> <span class="n">euler_maruyama_step</span><span class="p">(</span><span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="n">traj_em</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_em</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="n">traj_gjf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">)</span>
+
+<span class="nn">Cell In[1], line 13,</span> in <span class="ni">euler_maruyama_step</span><span class="nt">(x, v, f, dt, mass, gamma, kT)</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">random_force</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">kT</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="c1"># Update</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="c1"># YOUR CODE HERE</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> 
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">v_new</span><span class="p">,</span> <span class="n">f_new</span>
+
+<span class="ne">NotImplementedError</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%matplotlib widget</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Plotting comparison</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">traj_em</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Euler-Maruyama&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">traj_gjf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;G-JF Integrator&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Integrator Stability Comparison (dt=</span><span class="si">{</span><span class="n">dt</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Position (x)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Steps&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="c1"># EM often explodes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/integrator_comp.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">image_path</span><span class="o">=</span><span class="s2">&quot;fig/integrator_comp.png&quot;</span>
+<span class="c1"># Display the image only if it exists</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">image_path</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<section id="exercise-the-explosion-point">
+<h4>Exercise: The “Explosion” Point<a class="headerlink" href="#exercise-the-explosion-point" title="Link to this heading">#</a></h4>
+<p>In Numerical Analysis, algorithms have a stability limit.</p>
+<ol class="arabic simple">
+<li><p>Gradually increase <code class="docutils literal notranslate"><span class="pre">dt</span></code> in the simulation above (try 0.1, 0.5, 1.0, 2.0).</p></li>
+<li><p>What is the role of the random generator seed?</p></li>
+<li><p>At what <code class="docutils literal notranslate"><span class="pre">dt</span></code> does the Euler-Maruyama algorithm “explode” (values go to infinity)?</p></li>
+<li><p>Does the G-JF algorithm explode at the same point, or does it remain bounded?</p></li>
+<li><p>Why is stability crucial when simulating complex molecules like proteins where forces can be very high?</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="calibration-and-testing">
+<h2>Calibration and testing<a class="headerlink" href="#calibration-and-testing" title="Link to this heading">#</a></h2>
+<p>It is important to always test the results. In this case, we can test the dynamics in several ways:</p>
+<section id="maxwell-boltzmann-distribution">
+<h3>Maxwell-Boltzmann distribution<a class="headerlink" href="#maxwell-boltzmann-distribution" title="Link to this heading">#</a></h3>
+<p>The ultimate test of a Langevin integrator is if it reproduces the <strong>Maxwell-Boltzmann distribution</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%matplotlib widget</span>
+<span class="c1"># Run a long G-JF simulation</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="mi">50000</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="n">v_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">v_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="c1"># Plot Histogram vs Theory</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">v_list</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Simulated v&#39;</span><span class="p">)</span>
+<span class="n">v_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">v_list</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">v_list</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
+<span class="c1"># Theoretical Maxwell-Boltzmann in 1D: sqrt(m / 2*pi*kT) * exp(-mv^2 / 2kT)</span>
+<span class="n">theory</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">v_range</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v_range</span><span class="p">,</span> <span class="n">theory</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical MB&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Velocity Distribution Calibration&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-equipartition-theorem">
+<h3>The Equipartition Theorem<a class="headerlink" href="#the-equipartition-theorem" title="Link to this heading">#</a></h3>
+<p>A key “calibration” test is to check if the simulation respects the <strong>Equipartition Theorem</strong>:</p>
+<p>$<span class="math notranslate nohighlight">\(\langle \frac{1}{2} m v^2 \rangle = \frac{1}{2} k_B T\)</span>$ (in 1D).</p>
+<p>Calculate the average kinetic energy from your trajectory and compare it to <span class="math notranslate nohighlight">\(\frac{1}{2} kT\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kinetic_energies</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">trajectory</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">avg_ke</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kinetic_energies</span><span class="p">)</span>
+<span class="n">expected_ke</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">kT</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Measured &lt;KE&gt;: </span><span class="si">{</span><span class="n">avg_ke</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Expected &lt;KE&gt;: </span><span class="si">{</span><span class="n">expected_ke</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Error: </span><span class="si">{</span><span class="nb">abs</span><span class="p">(</span><span class="n">avg_ke</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">expected_ke</span><span class="p">)</span><span class="o">/</span><span class="n">expected_ke</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mean-squared-displacement-msd">
+<h3>Mean Squared Displacement (MSD)<a class="headerlink" href="#mean-squared-displacement-msd" title="Link to this heading">#</a></h3>
+<p>How does the particle explore space? For a free particle (<span class="math notranslate nohighlight">\(F_{ext}=0\)</span>):</p>
+<ul class="simple">
+<li><p><strong>Ballistic Regime</strong> (Short times): <span class="math notranslate nohighlight">\(MSD(t) \sim t^2\)</span></p></li>
+<li><p><strong>Diffusive Regime</strong> (Long times): <span class="math notranslate nohighlight">\(MSD(t) \sim 2Dt\)</span></p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Run the simulation for a <strong>Free Particle</strong> (<span class="math notranslate nohighlight">\(F_{ext} = 0\)</span>).</p></li>
+<li><p>Calculate the MSD: <span class="math notranslate nohighlight">\(MSD(\tau) = \langle (x(t+\tau) - x(t))^2 \rangle\)</span>.</p></li>
+<li><p>Plot it on a <strong>Log-Log</strong> scale.
+Do this for both integration schemes.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_msd</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+    <span class="n">msd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+        <span class="n">diffs</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">tau</span><span class="p">:]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[:</span><span class="o">-</span><span class="n">tau</span><span class="p">]</span>
+        <span class="n">msd</span><span class="p">[</span><span class="n">tau</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diffs</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">msd</span>
+
+<span class="c1"># Free particle simulation (f=0)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="n">free_traj</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+    <span class="n">free_traj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">msd</span> <span class="o">=</span> <span class="n">calculate_msd</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">free_traj</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">msd</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MSD&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Slope=1 (Diffusive)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Slope=2 (Ballistic)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MSD: Ballistic to Diffusive Transition&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="bbk-integrator-brungerbrookskarplus">
+<h3>BBK Integrator (Brünger–Brooks–Karplus)<a class="headerlink" href="#bbk-integrator-brungerbrookskarplus" title="Link to this heading">#</a></h3>
+<p>Implement and test the BBK integrator</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5a18d216-2f05-4d3f-b3dd-662ea566a893">
+<span class="eqno">(54)<a class="headerlink" href="#equation-5a18d216-2f05-4d3f-b3dd-662ea566a893" title="Permalink to this equation">#</a></span>\[\begin{align}
+v_{n+1/2} &amp;= \frac{(1 - \gamma\Delta t / 2)v_n + \frac{\Delta t}{2m}F_n + R_n}{1 + \gamma\Delta t / 2},\\
+x_{n+1} &amp;= x_n + v_{n+1/2}\Delta t .
+\end{align}\]</div>
+</section>
+<section id="energy-conservation">
+<h3>Energy “conservation”<a class="headerlink" href="#energy-conservation" title="Link to this heading">#</a></h3>
+<p>Plot <span class="math notranslate nohighlight">\(E(t) = K + U\)</span>. What dou you see? is constant? How does it depends on <span class="math notranslate nohighlight">\(\gamma\)</span>?</p>
+</section>
+<section id="underdamped-vs-overdamped">
+<h3>Underdamped vs Overdamped<a class="headerlink" href="#underdamped-vs-overdamped" title="Link to this heading">#</a></h3>
+<p>The parameter <span class="math notranslate nohighlight">\(\gamma\)</span> determines the “personality” of the dynamics.</p>
+<ul class="simple">
+<li><p><strong>Low <span class="math notranslate nohighlight">\(\gamma\)</span> (Underdamped):</strong> The particle oscillates like a real oscillator but with occasional kicks.</p></li>
+<li><p><strong>High <span class="math notranslate nohighlight">\(\gamma\)</span> (Overdamped):</strong> The particle looks like a random walk; its velocity resets almost instantly.</p></li>
+</ul>
+</section>
+<section id="phase-space-exploration">
+<h3>Phase Space Exploration<a class="headerlink" href="#phase-space-exploration" title="Link to this heading">#</a></h3>
+<p>Create a loop to simulate three different <span class="math notranslate nohighlight">\(\gamma\)</span> values (0.01, 1.0, 10.0) and plot their <strong>Phase Space</strong> (<span class="math notranslate nohighlight">\(v\)</span> vs <span class="math notranslate nohighlight">\(x\)</span>).</p>
+</section>
+<section id="effective-temperature">
+<h3>Effective temperature<a class="headerlink" href="#effective-temperature" title="Link to this heading">#</a></h3>
+<p>Compare measured temperature:</p>
+<div class="math notranslate nohighlight">
+\[
+T_{eff}  = m \langle v^2 \rangle
+\]</div>
+<p>to true temperature, as a function of time.</p>
+</section>
+<section id="sampling-a-double-well-potential">
+<h3>Sampling a Double-Well Potential<a class="headerlink" href="#sampling-a-double-well-potential" title="Link to this heading">#</a></h3>
+<p>Langevin dynamics is often used to study <strong>barrier crossing</strong>.
+Use the following potential: $<span class="math notranslate nohighlight">\(U(x) = a x^4 - b x^2\)</span>$</p>
+<ol class="arabic simple">
+<li><p>Modify the <code class="docutils literal notranslate"><span class="pre">f_new</span></code> to the correct form.</p></li>
+<li><p>Set <span class="math notranslate nohighlight">\(a=1, b=2\)</span>.</p></li>
+<li><p>Observe the trajectory. Does the particle stay in one well or jump between them?</p></li>
+<li><p>How does increasing the temperature <code class="docutils literal notranslate"><span class="pre">kT</span></code> affect the jumping frequency?</p></li>
+<li><p>Look for the <code class="docutils literal notranslate"><span class="pre">Kramers</span> <span class="pre">transition</span></code></p></li>
+</ol>
+</section>
+<section id="time-correlation-function">
+<h3>Time correlation Function<a class="headerlink" href="#time-correlation-function" title="Link to this heading">#</a></h3>
+<p>Compute
+$<span class="math notranslate nohighlight">\(
+C_v(t) = \langle v(0) v(t) \rangle,
+\)</span>$
+and check if it decays exponentially, and the relationship with the exponential constant and the physicl parameters.</p>
+</section>
+</section>
+<section id="future-topics">
+<h2>Future topics<a class="headerlink" href="#future-topics" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>MD Software: lammps, gromacs, OpenMM, …</p></li>
+<li><p>Fokker-Planck equation</p></li>
+<li><p>Ornstein-Uhlenbeck process</p></li>
+<li><p>Andersen Thermostat</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "iluvatar1/HerrComp-lectures",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/08-MolecularDynamics"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="MolecularDynamics-MacroBodies.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Molecular Dynamics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Partial Differential equations: Finite differences</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#brownian-motion">Brownian Motion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-langevin-equation">The Langevin Equation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-software">Note on software</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-integration">Time integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-dive-into-the-integrators">Deep Dive into the Integrators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-baseline-euler-maruyama">A. The Baseline: Euler-Maruyama</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-standard-modified-velocity-verlet">B. The Standard: Modified Velocity Verlet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-the-robust-choice-gronbech-jensen-farago-g-jf">C. The Robust Choice: Grønbech-Jensen &amp; Farago (G-JF)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-and-comparison-code">Implementation and Comparison Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-the-explosion-point">Exercise: The “Explosion” Point</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-and-testing">Calibration and testing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maxwell-boltzmann-distribution">Maxwell-Boltzmann distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-equipartition-theorem">The Equipartition Theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-squared-displacement-msd">Mean Squared Displacement (MSD)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bbk-integrator-brungerbrookskarplus">BBK Integrator (Brünger–Brooks–Karplus)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-conservation">Energy “conservation”</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#underdamped-vs-overdamped">Underdamped vs Overdamped</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-space-exploration">Phase Space Exploration</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#effective-temperature">Effective temperature</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-a-double-well-potential">Sampling a Double-Well Potential</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-correlation-function">Time correlation Function</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#future-topics">Future topics</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By William Oquendo
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2026.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

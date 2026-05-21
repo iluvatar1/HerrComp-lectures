@@ -80,7 +80,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="Agents simulations" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html" />
+    <link rel="prev" title="Cellular Automata" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
@@ -216,6 +216,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/RandomMD-Langevin.html">Random Molecular Dynamics and Langevin Equation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
@@ -231,7 +232,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Agents and cellular automata</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Agents simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Cellular Automata</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to neural networks</span></p>
 <ul class="current nav bd-sidenav">
@@ -624,7 +625,8 @@
 </section>
 <section id="timeline-summary">
 <h3>Timeline Summary<a class="headerlink" href="#timeline-summary" title="Link to this heading">#</a></h3>
-<a class="bg-primary reference internal image-reference" href="../../_images/deeplearning-history.png"><img alt="" class="bg-primary align-center" src="../../_images/deeplearning-history.png" style="width: 70%;" /></a>
+<a class="bg-primary reference internal image-reference" href="../../_images/deeplearning-history.png"><img alt="" class="bg-primary align-center" src="../../_images/deeplearning-history.png" style="width: 70%;" />
+</a>
 </section>
 </section>
 <section id="neural-networks-structure">
@@ -633,11 +635,13 @@
 <section id="what-is-a-deep-neural-network">
 <h2>What is a (Deep) Neural Network?<a class="headerlink" href="#what-is-a-deep-neural-network" title="Link to this heading">#</a></h2>
 <p>A function composed of <strong>layers</strong> of interconnected neurons: From <a class="reference external" href="https://alexlenail.me/NN-SVG/">https://alexlenail.me/NN-SVG/</a></p>
-<a class="reference internal image-reference" href="lectures/12-IntroNeuralNetworks/fig/nn.svg"><img alt="asdas" class="align-center" src="lectures/12-IntroNeuralNetworks/fig/nn.svg" style="width: 100%;" /></a>
+<a class="reference internal image-reference" href="../../_images/nn.svg"><img alt="asdas" class="align-center" src="../../_images/nn.svg" style="width: 100%;" />
+</a>
 <section id="neuron-local-computation">
 <h3>Neuron local computation<a class="headerlink" href="#neuron-local-computation" title="Link to this heading">#</a></h3>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/nn-shallow.png"><img alt="../../_images/nn-shallow.png" src="../../_images/nn-shallow.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/nn-shallow.png"><img alt="../../_images/nn-shallow.png" src="../../_images/nn-shallow.png" style="width: 60%;" />
+</a>
 </figure>
 <p>Each neuron computes:</p>
 <div class="math notranslate nohighlight">
@@ -649,7 +653,8 @@
 <li><p><span class="math notranslate nohighlight">\(\sigma\)</span>: activation function (e.g., ReLU, Sigmoid)</p></li>
 </ul>
 <figure class="align-center">
-<a class="reference internal image-reference" href="../../_images/nn-weights.png"><img alt="../../_images/nn-weights.png" src="../../_images/nn-weights.png" style="width: 80%;" /></a>
+<a class="reference internal image-reference" href="../../_images/nn-weights.png"><img alt="../../_images/nn-weights.png" src="../../_images/nn-weights.png" style="width: 80%;" />
+</a>
 </figure>
 </section>
 <section id="common-activation-functions">
@@ -776,13 +781,14 @@ Please check: <a class="reference external" href="https://developers.google.com/
 <p>here we will implement a neural network from zero.</p>
 <p>Based on <a class="reference external" href="https://www.youtube.com/watch?v=kft1AJ9WVDk">https://www.youtube.com/watch?v=kft1AJ9WVDk</a></p>
 <p>This is what we want to train our neural network with:</p>
-<p><img alt="Alt Text" src="lectures/12-IntroNeuralNetworks/fig/neuralnetwork/inputs.png" /></p>
+<p><img alt="Alt Text" src="../../_images/inputs1.png" /></p>
 <p>And we want to predict the new output (try to guess the rule)</p>
-<p><img alt="Alt Text" src="lectures/12-IntroNeuralNetworks/fig/neuralnetwork/newoutput.png" /></p>
+<p><img alt="Alt Text" src="../../_images/newoutput1.png" /></p>
 <p>This is the neural network that we are going to use (you can also use <a class="reference external" href="http://alexlenail.me/NN-SVG/index.html">http://alexlenail.me/NN-SVG/index.html</a>)</p>
 <p>To understand better the training, let’s show explicitly the weights</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="lectures/12-IntroNeuralNetworks/fig/neuralnetwork/weights.png"><img alt="lectures/12-IntroNeuralNetworks/fig/neuralnetwork/weights.png" src="lectures/12-IntroNeuralNetworks/fig/neuralnetwork/weights.png" style="width: 60%;" /></a>
+<a class="reference internal image-reference" href="../../_images/weights1.png"><img alt="../../_images/weights1.png" src="../../_images/weights1.png" style="width: 60%;" />
+</a>
 </figure>
 <p>Here <span class="math notranslate nohighlight">\(\phi\)</span> is called the activation function, and there are several proposals to it. We will use a sigmoid function
 $<span class="math notranslate nohighlight">\(
@@ -879,29 +885,29 @@ where \)</span>x = \sum x_i w_i$.</p>
 </ul>
 <p>But how to adjust the weights? There are several techniques based on the actual error <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
 <p>First, we will define a cost/loss function as the typical MSE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-56c1e710-b5e7-4298-a56b-d4b92bff8b95">
-<span class="eqno">(111)<a class="headerlink" href="#equation-56c1e710-b5e7-4298-a56b-d4b92bff8b95" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cee9b994-4586-4c79-92a7-e740f21fed20">
+<span class="eqno">(114)<a class="headerlink" href="#equation-cee9b994-4586-4c79-92a7-e740f21fed20" title="Permalink to this equation">#</a></span>\[\begin{equation}
 COST = \frac{1}{2} (\hat y - y)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat y\)</span> is the predicted value and <span class="math notranslate nohighlight">\(y\)</span> is the expected one.  Notice that we are not adding up because we only have one output.</p>
 <p>Second, we will apply gradient descent approximation to our problem, in order to improve our coefficients for our data. This means that we will propagate back the errors into the coefficients!</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bf3fa50c-a349-43a7-8a13-942d815673c0">
-<span class="eqno">(112)<a class="headerlink" href="#equation-bf3fa50c-a349-43a7-8a13-942d815673c0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2878a26e-e16e-483f-a71b-fd60a94b7a38">
+<span class="eqno">(115)<a class="headerlink" href="#equation-2878a26e-e16e-483f-a71b-fd60a94b7a38" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_i' = w_i - \alpha \frac{\partial COST}{\partial w_i},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate. Taking into account that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b7eb711f-1581-4227-8449-0c59523a42d3">
-<span class="eqno">(113)<a class="headerlink" href="#equation-b7eb711f-1581-4227-8449-0c59523a42d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e678aa04-b2ed-44f4-a8ad-35341a4b734a">
+<span class="eqno">(116)<a class="headerlink" href="#equation-e678aa04-b2ed-44f4-a8ad-35341a4b734a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat y = \phi(z) = \frac{1}{1 + \exp(-z)},
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c496f98f-58ca-4adc-9dfd-a4bf9c76c644">
-<span class="eqno">(114)<a class="headerlink" href="#equation-c496f98f-58ca-4adc-9dfd-a4bf9c76c644" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-16fafe8c-2dd4-4138-bb56-cc6489e433fc">
+<span class="eqno">(117)<a class="headerlink" href="#equation-16fafe8c-2dd4-4138-bb56-cc6489e433fc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 z = \sum w_i x_i,
 \end{equation}\]</div>
 <p>then, by using the chain rule, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb8c77a2-888a-4698-93a1-09b670966e3a">
-<span class="eqno">(115)<a class="headerlink" href="#equation-eb8c77a2-888a-4698-93a1-09b670966e3a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d04fbeed-1e4f-4571-9ac8-ebb2e4597b9d">
+<span class="eqno">(118)<a class="headerlink" href="#equation-d04fbeed-1e4f-4571-9ac8-ebb2e4597b9d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial COST}{\partial w_i} = \frac{\partial COST}{\partial \hat y} \frac{\partial \hat y}{\partial z} \frac{\partial z}{\partial w_i} = (\hat y - y)\phi (1-\phi)x_i. 
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -991,7 +997,8 @@ z = \sum w_i x_i,
 <p><a class="reference external" href="https://medium.com/data-science/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464">https://medium.com/data-science/the-mostly-complete-chart-of-neural-networks-explained-3fb6f2367464</a></p>
 <p>The process of passing input data through the network to get an output is called <strong>forward propagation</strong>. For each neuron, we calculate a weighted sum of the outputs from the previous layer, add a bias, and then pass this result through a non-linear <strong>activation function</strong>.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*cuTSPlTq0a_327iTPJyD-Q.png"><img alt="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*cuTSPlTq0a_327iTPJyD-Q.png" src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 70%;" /></a>
+<a class="reference internal image-reference" href="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*cuTSPlTq0a_327iTPJyD-Q.png"><img alt="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*cuTSPlTq0a_327iTPJyD-Q.png" src="https://miro.medium.com/v2/resize:fit:1100/format:webp/1*cuTSPlTq0a_327iTPJyD-Q.png" style="width: 70%;" />
+</a>
 </figure>
 <section id="compute-requirements">
 <h3>Compute requirements:<a class="headerlink" href="#compute-requirements" title="Link to this heading">#</a></h3>
@@ -1001,7 +1008,8 @@ z = \sum w_i x_i,
 <li><p>Memory: store activations for backward pass (unless using checkpointing).</p></li>
 <li><p>Training scales with dataset size, model size and number of epochs; GPUs / TPUs accelerate matrix ops.</p></li>
 </ul>
-<a class="bg-primary reference internal image-reference" href="https://iee.psu.edu/sites/default/files/styles/large_1200_2400_/public/image/total-server-electricity-consumption.png?itok=yNSLVfzC"><img alt="energy" class="bg-primary align-center" src="https://iee.psu.edu/sites/default/files/styles/large_1200_2400_/public/image/total-server-electricity-consumption.png?itok=yNSLVfzC" style="width: 80%;" /></a>
+<a class="bg-primary reference internal image-reference" href="https://iee.psu.edu/sites/default/files/styles/large_1200_2400_/public/image/total-server-electricity-consumption.png?itok=yNSLVfzC"><img alt="energy" class="bg-primary align-center" src="https://iee.psu.edu/sites/default/files/styles/large_1200_2400_/public/image/total-server-electricity-consumption.png?itok=yNSLVfzC" style="width: 80%;" />
+</a>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/">https://www.technologyreview.com/2025/05/20/1116327/ai-energy-usage-climate-footprint-big-tech/</a></p></li>
 <li><p><a class="reference external" href="https://www.nature.com/articles/d41586-025-00616-z">https://www.nature.com/articles/d41586-025-00616-z</a></p></li>
@@ -1278,35 +1286,42 @@ z = \sum w_i x_i,
 <ul class="simple">
 <li><p>See <a class="reference external" href="https://www.youtube.com/embed/UZDiGooFs54?si=qGN1zTpa4F8RvrMS">https://www.youtube.com/embed/UZDiGooFs54?si=qGN1zTpa4F8RvrMS</a></p></li>
 </ul>
-<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/screenshot-2024-09-04-at-3-35-24-pm_orig.png"><img alt="ccn" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/screenshot-2024-09-04-at-3-35-24-pm_orig.png" style="width: 90%;" /></a>
+<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/screenshot-2024-09-04-at-3-35-24-pm_orig.png"><img alt="ccn" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/screenshot-2024-09-04-at-3-35-24-pm_orig.png" style="width: 90%;" />
+</a>
 <p>Check it step-by-step at <a class="reference external" href="https://www.youtube.com/watch?v=jDe5BAsT2-Y">https://www.youtube.com/watch?v=jDe5BAsT2-Y</a></p>
 <p><a class="reference external" href="https://www.geeksforgeeks.org/deep-learning/introduction-to-pooling-layer-cnn/">Pooling</a> explanation.</p>
 <p>This is a nice cnn visualization for the mist digits:
 <a class="reference external" href="https://adamharley.com/nn_vis/cnn/3d.html">https://adamharley.com/nn_vis/cnn/3d.html</a></p>
-<a class="bg-primary reference internal image-reference" href="../../_images/cnn-3d.png"><img alt="cnn-3d" class="bg-primary align-center" src="../../_images/cnn-3d.png" style="width: 100%;" /></a>
+<a class="bg-primary reference internal image-reference" href="../../_images/cnn-3d.png"><img alt="cnn-3d" class="bg-primary align-center" src="../../_images/cnn-3d.png" style="width: 100%;" />
+</a>
 </section>
 <hr class="docutils" />
 <section id="encoder-decoder-networks">
 <h3>Encoder-Decoder Networks<a class="headerlink" href="#encoder-decoder-networks" title="Link to this heading">#</a></h3>
-<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/screenshot-2024-09-04-at-3-39-34-pm_orig.png"><img alt="encoder decoder" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/screenshot-2024-09-04-at-3-39-34-pm_orig.png" style="width: 90%;" /></a>
+<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/screenshot-2024-09-04-at-3-39-34-pm_orig.png"><img alt="encoder decoder" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/screenshot-2024-09-04-at-3-39-34-pm_orig.png" style="width: 90%;" />
+</a>
 </section>
 <hr class="docutils" />
 <section id="generative-adversarial-networks-gans">
 <h3>Generative Adversarial Networks (GANs)<a class="headerlink" href="#generative-adversarial-networks-gans" title="Link to this heading">#</a></h3>
-<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/editor/gan-diagram.png?1643144211"><img alt="GAN" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/editor/gan-diagram.png?1643144211" style="width: 90%;" /></a>
+<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/editor/gan-diagram.png?1643144211"><img alt="GAN" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/editor/gan-diagram.png?1643144211" style="width: 90%;" />
+</a>
 </section>
 <hr class="docutils" />
 <section id="recurrent-neural-networks-rnns">
 <h3>Recurrent Neural Networks (RNNs)<a class="headerlink" href="#recurrent-neural-networks-rnns" title="Link to this heading">#</a></h3>
-<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/published/recurrent-network.png?1643575415"><img alt="rnn" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/published/recurrent-network.png?1643575415" style="width: 80%;" /></a>
+<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/published/recurrent-network.png?1643575415"><img alt="rnn" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/published/recurrent-network.png?1643575415" style="width: 80%;" />
+</a>
 <p>For sequential or time-series data, making them useful for tasks requiring memory of past inputs, such as natural language processing (NLP), speech recognition, machine translation, and time-series forecasting</p>
 </section>
 <hr class="docutils" />
 <section id="transformer-neural-networks-tnns">
 <h3>Transformer Neural Networks (TNNs)<a class="headerlink" href="#transformer-neural-networks-tnns" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="https://imgs.xkcd.com/comics/machine_learning.png"><img alt="https://imgs.xkcd.com/comics/machine_learning.png" src="https://imgs.xkcd.com/comics/machine_learning.png" style="width: 50%;" /></a>
+<a class="reference internal image-reference" href="https://imgs.xkcd.com/comics/machine_learning.png"><img alt="https://imgs.xkcd.com/comics/machine_learning.png" src="https://imgs.xkcd.com/comics/machine_learning.png" style="width: 50%;" />
+</a>
 <p>Used in NLP, Vision, Multimodal models. <a class="reference external" href="https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)?useskin=vector">https://en.wikipedia.org/wiki/Transformer_(deep_learning_architecture)?useskin=vector</a></p>
-<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/transformer_orig.png"><img alt="transformer" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/transformer_orig.png" style="width: 80%;" /></a>
+<a class="bg-primary reference internal image-reference" href="https://mriquestions.com/uploads/3/4/5/7/34572113/transformer_orig.png"><img alt="transformer" class="bg-primary align-center" src="https://mriquestions.com/uploads/3/4/5/7/34572113/transformer_orig.png" style="width: 80%;" />
+</a>
 <ul class="simple">
 <li><p><a class="reference external" href="https://jalammar.github.io/illustrated-transformer/">https://jalammar.github.io/illustrated-transformer/</a></p></li>
 <li><p><a class="reference external" href="https://photonlines.substack.com/p/intuitive-and-visual-guide-to-transformers">https://photonlines.substack.com/p/intuitive-and-visual-guide-to-transformers</a></p></li>
@@ -1881,7 +1896,7 @@ z = \sum w_i x_i,
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Agents simulations</p>
+        <p class="prev-next-title">Cellular Automata</p>
       </div>
     </a>
 </div>

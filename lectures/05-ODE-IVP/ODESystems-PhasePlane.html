@@ -217,6 +217,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/RandomMD-Langevin.html">Random Molecular Dynamics and Langevin Equation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
@@ -232,7 +233,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Agents and cellular automata</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Agents simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Cellular Automata</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to neural networks</span></p>
 <ul class="nav bd-sidenav">
@@ -543,38 +544,38 @@
 <p><a class="github reference external" href="https://github.com/hannorein/rebound">hannorein/rebound</a></p>
 <p>This notebook shows simplified approaches to solve ordinary differential equations with given initial conditions.This is called an <em>Initial Value Problem</em>.</p>
 <p>In general, what we want to solve is the ordinary differential equation  of first-order of the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba5ab0c9-f525-4763-97f2-c4e753afb725">
-<span class="eqno">(13)<a class="headerlink" href="#equation-ba5ab0c9-f525-4763-97f2-c4e753afb725" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-89ec505b-8e0f-4b2b-8bdf-7246b51bb9bb">
+<span class="eqno">(13)<a class="headerlink" href="#equation-89ec505b-8e0f-4b2b-8bdf-7246b51bb9bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dy}{dt} = f(t, y)
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(y\)</span> represents, for instance, the system state, and <span class="math notranslate nohighlight">\(f(y, t)\)</span> is the function that describes the change in time and, in general, depends both on the current system state and the time.</p>
 <p>When you have a higher order ODE, you can introduce auxiliary derivatives to recover the one order formulation. If you an n-order differential equation, you will get a system like</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a0c753f0-1f8a-4404-b09a-33aac3b5494d">
-<span class="eqno">(14)<a class="headerlink" href="#equation-a0c753f0-1f8a-4404-b09a-33aac3b5494d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d918858e-3c5e-48f9-bc09-a0d795e22086">
+<span class="eqno">(14)<a class="headerlink" href="#equation-d918858e-3c5e-48f9-bc09-a0d795e22086" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d\vec y}{dt} = \vec f(t, \vec y),
 \end{equation}\]</div>
 <p>As an example, let’s start with the second Newton equation for a body in free falling under a linear damping viscous force,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5f036856-6742-4b67-85cd-016da2696dae">
-<span class="eqno">(15)<a class="headerlink" href="#equation-5f036856-6742-4b67-85cd-016da2696dae" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1286cf2d-91df-434c-baea-8a7a13d996d3">
+<span class="eqno">(15)<a class="headerlink" href="#equation-1286cf2d-91df-434c-baea-8a7a13d996d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 m a = m \frac{dv}{dt} = m \frac{d^2 z}{dt^2} = -mg - mbv.
 \end{equation}\]</div>
 <p>In this case, we can use the first position time derivative (the velocity) as an auxiliary function, and then we get <span class="math notranslate nohighlight">\(\vec y = [z, v]\)</span> and <span class="math notranslate nohighlight">\(d\vec y /dt = \vec f(t, \vec y) = [v, -g - bv]\)</span> (actually this can also be written as a matrix equation and its eigen-values will have important meaning.</p>
 <p><strong>Exercise:</strong> Transform the following third order equation into a system of three linear equations</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb26d448-0713-465f-9847-9c996ca68761">
-<span class="eqno">(16)<a class="headerlink" href="#equation-eb26d448-0713-465f-9847-9c996ca68761" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-07da13c2-a54f-49f9-bdfd-07c7cee737b1">
+<span class="eqno">(16)<a class="headerlink" href="#equation-07da13c2-a54f-49f9-bdfd-07c7cee737b1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^3x}{dt^3} = -2\sin x + x \frac{dx}{dt} + 4t.
 \end{equation}\]</div>
 <p>YOUR ANSWER HERE</p>
 <section id="euler-method">
 <h2>Euler method<a class="headerlink" href="#euler-method" title="Link to this heading">#</a></h2>
 <p>Let’s take the general equation and check that the derivative can be approximated as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e11d039e-5dfb-4855-ba0c-d3224618ea1a">
-<span class="eqno">(17)<a class="headerlink" href="#equation-e11d039e-5dfb-4855-ba0c-d3224618ea1a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-99cb2c53-16ce-41e8-b1c4-7c1182f88412">
+<span class="eqno">(17)<a class="headerlink" href="#equation-99cb2c53-16ce-41e8-b1c4-7c1182f88412" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dy}{dt} = f(t, y) \simeq \frac{y(t+\delta t) - y(t)}{\delta t} +O(\delta t),
 \end{equation}\]</div>
 <p>for a sufficiently small time step <span class="math notranslate nohighlight">\(\delta t\)</span> . If you discretize the time in steps of size <span class="math notranslate nohighlight">\(\delta t\)</span>, you can identify the time <span class="math notranslate nohighlight">\(t + \delta t\)</span> as the next time after time <span class="math notranslate nohighlight">\(t\)</span>, so you can write the next value for <span class="math notranslate nohighlight">\(y\)</span> in terms of the current one as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-935ba290-64ad-48ea-a665-ac876458876e">
-<span class="eqno">(18)<a class="headerlink" href="#equation-935ba290-64ad-48ea-a665-ac876458876e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-742835f4-f4e0-4b06-8479-747d6bdab843">
+<span class="eqno">(18)<a class="headerlink" href="#equation-742835f4-f4e0-4b06-8479-747d6bdab843" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y(t+\delta t) = y(t) + \delta t f(y, t) +O(\delta t^2) .
 \end{equation}\]</div>
 <p>This is the so-called <strong>Euler Method</strong>, and you can interpret it as constructing a straight line between the two points. See the next figure, from Chapra. The local error is of order <span class="math notranslate nohighlight">\(\delta t^2\)</span> because we are ignoring first that term in the series expansion of <span class="math notranslate nohighlight">\(y(t+\delta t)\)</span>.</p>
@@ -586,18 +587,19 @@ y(t+\delta t) = y(t) + \delta t f(y, t) +O(\delta t^2) .
 <li><p>iter = 3, time = <span class="math notranslate nohighlight">\(3\delta t\)</span>, <span class="math notranslate nohighlight">\(y(3\delta t) = y(2\delta t) + \delta t f(y(2\delta t), 2\delta t)\)</span></p></li>
 <li><p>…</p></li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/euler-01.png"><img alt="../../_images/euler-01.png" src="../../_images/euler-01.png" style="width: 500px;" /></a>
+<a class="reference internal image-reference" href="../../_images/euler-01.png"><img alt="../../_images/euler-01.png" src="../../_images/euler-01.png" style="width: 500px;" />
+</a>
 <p><strong>Although the Euler method is simple to implement, its error is large and sometimes it might be unstable</strong>.</p>
 <section id="example-comparing-the-euler-method-with-the-scipy-function">
 <h3>Example  comparing the Euler method with the scipy function<a class="headerlink" href="#example-comparing-the-euler-method-with-the-scipy-function" title="Link to this heading">#</a></h3>
 <p>Following Chapra, let’s solve the following ordinary differential equation by means of the Euler method,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c8cbbf4e-9bc5-4ef6-9635-5321b0c550ad">
-<span class="eqno">(19)<a class="headerlink" href="#equation-c8cbbf4e-9bc5-4ef6-9635-5321b0c550ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2d66d544-3bed-452b-8275-d91c48a183e8">
+<span class="eqno">(19)<a class="headerlink" href="#equation-2d66d544-3bed-452b-8275-d91c48a183e8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dy}{dt} = 4e^{0.8t} - 0.5y,
 \end{equation}\]</div>
 <p>whose solution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-461d8f1b-2865-492f-a665-b3c3c09c871b">
-<span class="eqno">(20)<a class="headerlink" href="#equation-461d8f1b-2865-492f-a665-b3c3c09c871b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-02b48d0a-cc12-4b78-bb9e-22d98de6a8b4">
+<span class="eqno">(20)<a class="headerlink" href="#equation-02b48d0a-cc12-4b78-bb9e-22d98de6a8b4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y = \frac{4}{1.3}(e^{0.8t} - e^{-0.5t}) + 2e^{-0.5t}.
 \end{equation}\]</div>
 <p>Let’s solve it from <span class="math notranslate nohighlight">\(t =0\)</span> to <span class="math notranslate nohighlight">\(t=4\)</span> in steps <span class="math notranslate nohighlight">\(\delta t = 1\)</span>. The initial condition is <span class="math notranslate nohighlight">\(y=2\)</span> when <span class="math notranslate nohighlight">\(t=0\)</span>. Your task is to  solve the differential equation and to compare with the theoretical solution.</p>
@@ -688,7 +690,8 @@ Diff Euler: [0.         0.2515213  0.58598198 1.04947303 1.71051138 2.67089086
 </section>
 <section id="exercise">
 <h3>Exercise<a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
-<a class="reference internal image-reference" href="../../_images/problem-1.png"><img alt="../../_images/problem-1.png" src="../../_images/problem-1.png" style="width: 700px;" /></a>
+<a class="reference internal image-reference" href="../../_images/problem-1.png"><img alt="../../_images/problem-1.png" src="../../_images/problem-1.png" style="width: 700px;" />
+</a>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -779,19 +782,19 @@ first suggested by Verhulst in 1838. Here the parameter \)</span>r<span class="m
 <section id="systems-of-ordinary-differential-equations">
 <h2>Systems of Ordinary Differential Equations<a class="headerlink" href="#systems-of-ordinary-differential-equations" title="Link to this heading">#</a></h2>
 <p>Previously we studied systems where there was only one interesting variable so the differential equation describe only changes on that variable. There are systems where the state is described by two or more variables. In this case, we have several differential equations, like the following (see the SIR model)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d92f20a3-c0a0-4560-8ced-525b0bbdd2cb">
-<span class="eqno">(21)<a class="headerlink" href="#equation-d92f20a3-c0a0-4560-8ced-525b0bbdd2cb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5011c92c-c749-4001-b806-b3cfa35e51c7">
+<span class="eqno">(21)<a class="headerlink" href="#equation-5011c92c-c749-4001-b806-b3cfa35e51c7" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dx}{dt} = f_1(x, y, t)\\
 \frac{dy}{dt} = f_2(x, y, t),
 \end{align}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are variables that describe the system state  and <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> are the functions describing their derivatives. To solve this system and improve the notation we can think of <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> as the components of a state vector called, for example, <span class="math notranslate nohighlight">\(\vec s = [x, y]\)</span>. Also, the function <span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span> can be seen as the components of a vector, let’s call it <span class="math notranslate nohighlight">\(\vec f = [f_1, f_2]\)</span>. By using this , we can rewrite the system as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a547516-a8a8-4306-a46a-31f5b7ee6834">
-<span class="eqno">(22)<a class="headerlink" href="#equation-1a547516-a8a8-4306-a46a-31f5b7ee6834" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-79a54e03-a5dc-4a6d-bc12-848f3d4d01e9">
+<span class="eqno">(22)<a class="headerlink" href="#equation-79a54e03-a5dc-4a6d-bc12-848f3d4d01e9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d\vec s}{dt} = \vec f(t, \vec s).
 \end{equation}\]</div>
 <p>Solving this system is similar to what we did with the Euler, only that now everything is vectorial, but the same basic equation applies:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d8551b6e-9407-443e-bac6-53da9054cb9d">
-<span class="eqno">(23)<a class="headerlink" href="#equation-d8551b6e-9407-443e-bac6-53da9054cb9d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-02c71f82-84eb-4599-8cc9-9dec2d3c4517">
+<span class="eqno">(23)<a class="headerlink" href="#equation-02c71f82-84eb-4599-8cc9-9dec2d3c4517" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec s_{i+1} = \vec s_i + \vec f \delta t.
 \end{equation}\]</div>
 <p>Therefore, you need to define a function to model <span class="math notranslate nohighlight">\(\vec f\)</span> that receives the state vector <span class="math notranslate nohighlight">\(\vec s\)</span>, the current time, and returns the derivatives.</p>
@@ -815,8 +818,8 @@ first suggested by Verhulst in 1838. Here the parameter \)</span>r<span class="m
 <section id="exercise-from-chapra-projectile-adding-a-stopping-condition">
 <h3>Exercise (From Chapra): Projectile, adding a stopping condition<a class="headerlink" href="#exercise-from-chapra-projectile-adding-a-stopping-condition" title="Link to this heading">#</a></h3>
 <p>(22.6) Suppose that a projectile is launched upward from the earth’s surface. Assume that the only force acting on the object is the downward force of gravity. Under these conditions, a force balance can be used to derive</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9ee10008-22c0-44e5-a708-877167b2ece6">
-<span class="eqno">(24)<a class="headerlink" href="#equation-9ee10008-22c0-44e5-a708-877167b2ece6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d97738d2-6be9-4b4a-90ae-44f03fce721e">
+<span class="eqno">(24)<a class="headerlink" href="#equation-d97738d2-6be9-4b4a-90ae-44f03fce721e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dv}{dt} = -g(0)\frac{R^2}{(R+x)^2},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(v =\)</span> upward velocity (m/s), <span class="math notranslate nohighlight">\(t =\)</span> time (s), <span class="math notranslate nohighlight">\(x =\)</span> altitude (m) measured upward from the earth’s surface, <span class="math notranslate nohighlight">\(g(0) =\)</span> the gravitational acceleration at the earth’s surface (<span class="math notranslate nohighlight">\(\simeq 9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span>), and <span class="math notranslate nohighlight">\(R =\)</span> the earth’s radius (<span class="math notranslate nohighlight">\(\simeq 6.37\times 10^6\)</span> m). Recognizing that <span class="math notranslate nohighlight">\(dx/dt = v\)</span>, use <code class="docutils literal notranslate"><span class="pre">scipy</span></code> method to determine the maximum height that would be obtained if <span class="math notranslate nohighlight">\(v(t = 0) = 1500\)</span> m/s.</p>
@@ -904,13 +907,13 @@ first suggested by Verhulst in 1838. Here the parameter \)</span>r<span class="m
 <section id="id3">
 <h3>Exercise<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <p>A parachutist is under free-fall and under linear viscous damping modeled as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91df4228-d60e-4baf-887e-87e16d50ea1e">
-<span class="eqno">(25)<a class="headerlink" href="#equation-91df4228-d60e-4baf-887e-87e16d50ea1e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5ae7b918-c164-4ef2-8480-a152e2d4660b">
+<span class="eqno">(25)<a class="headerlink" href="#equation-5ae7b918-c164-4ef2-8480-a152e2d4660b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f_v = -m b v,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(m\)</span> is the mass, <span class="math notranslate nohighlight">\(b\)</span> is the damping constant, and <span class="math notranslate nohighlight">\(v\)</span> is the vertical velocity. How does <span class="math notranslate nohighlight">\(b\)</span> affects the final equilibrium velocity? The final equilibrium velocity happens when there is no acceleration, that is, when <span class="math notranslate nohighlight">\(ma = 0 = -mg -mbv_f\)</span>, so</p>
-<div class="amsmath math notranslate nohighlight" id="equation-11019b9b-1712-4870-94de-05cc2e4b267a">
-<span class="eqno">(26)<a class="headerlink" href="#equation-11019b9b-1712-4870-94de-05cc2e4b267a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e1022e4f-8484-4b0b-b953-e6cbf0de891a">
+<span class="eqno">(26)<a class="headerlink" href="#equation-e1022e4f-8484-4b0b-b953-e6cbf0de891a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v_f = -g/b.
 \end{equation}\]</div>
 <p>Show that numerically as way to calibrate the method. Create a function that receives the value of <span class="math notranslate nohighlight">\(b\)</span> and returns the finla velocity. Notice that you will need to simulate the system for a very long time (or, much better, use an event as we will show later). Plot <span class="math notranslate nohighlight">\(v_f\)</span> versus <span class="math notranslate nohighlight">\(b\)</span>. Use <span class="math notranslate nohighlight">\(M = 60.7\)</span> kg and <span class="math notranslate nohighlight">\(G = 9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span>.</p>
@@ -958,8 +961,8 @@ v_f = -g/b.
 <section id="predator-prey-model">
 <h3>Predator prey model<a class="headerlink" href="#predator-prey-model" title="Link to this heading">#</a></h3>
 <p>The Lokta-Volterra equation is a non-linear model for the interaction between a population of preys and predators. The simplest version is as follows:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0532ac4a-2b39-4f5d-8c98-b985d0e1f2f8">
-<span class="eqno">(27)<a class="headerlink" href="#equation-0532ac4a-2b39-4f5d-8c98-b985d0e1f2f8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5741883f-a95f-409d-a6e5-0e822ded5702">
+<span class="eqno">(27)<a class="headerlink" href="#equation-5741883f-a95f-409d-a6e5-0e822ded5702" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dx}{dt} = ax - bxy,\\
 \frac{dy}{dt} = -cy + dxy,
 \end{align}\]</div>
@@ -1013,8 +1016,8 @@ v_f = -g/b.
 <section id="example-lorenz-model">
 <h3>Example : Lorenz model<a class="headerlink" href="#example-lorenz-model" title="Link to this heading">#</a></h3>
 <p>A famous model showing chaotic behavior is the climate model proposed by Lorenz,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-847d5f9f-2c0a-4585-bddf-912913ec7196">
-<span class="eqno">(28)<a class="headerlink" href="#equation-847d5f9f-2c0a-4585-bddf-912913ec7196" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0d3dd1d3-b58d-42a1-b7f7-cdd514da9bf8">
+<span class="eqno">(28)<a class="headerlink" href="#equation-0d3dd1d3-b58d-42a1-b7f7-cdd514da9bf8" title="Permalink to this equation">#</a></span>\[\begin{align}
 \frac{dx}{dt} &amp;= -a x + a y,\\
 \frac{dy}{dt} &amp;= rx -y -xz,\\
 \frac{dz}{dt} &amp;= -bz + xy.
@@ -1436,14 +1439,14 @@ so \)</span>\vec f = [v, -\frac{k}{m} x]$ .</p>
 <section id="linear-stability-analysis">
 <h2>Linear stability analysis<a class="headerlink" href="#linear-stability-analysis" title="Link to this heading">#</a></h2>
 <p>A two dimensional linear system can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-22b2aada-26ca-4495-b054-dbdd10c57fe8">
-<span class="eqno">(29)<a class="headerlink" href="#equation-22b2aada-26ca-4495-b054-dbdd10c57fe8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a0225b94-8551-45eb-aaa0-69dbdf177882">
+<span class="eqno">(29)<a class="headerlink" href="#equation-a0225b94-8551-45eb-aaa0-69dbdf177882" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot x &amp;= ax + by,\\
     \dot y &amp;= cx + dy,
 \end{align}\]</div>
 <p>or, equivalently,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-19abc39b-a6c0-4dc0-9e9c-8a35cae2fe01">
-<span class="eqno">(30)<a class="headerlink" href="#equation-19abc39b-a6c0-4dc0-9e9c-8a35cae2fe01" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9fee14e1-6201-4452-8cc3-c8c6f95a01d2">
+<span class="eqno">(30)<a class="headerlink" href="#equation-9fee14e1-6201-4452-8cc3-c8c6f95a01d2" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \dot{\vec{x}} = \mathbf{A} \vec x =     
     \left[ 
      \begin{array}{c}
@@ -1472,14 +1475,14 @@ so \)</span>\vec f = [v, -\frac{k}{m} x]$ .</p>
 </div>
 </div>
 <p>A two dimensional linear system can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4333a967-edda-4d52-8545-5d3a57b851a7">
-<span class="eqno">(31)<a class="headerlink" href="#equation-4333a967-edda-4d52-8545-5d3a57b851a7" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-39ad8bbb-59b7-492e-b826-5f03b707eeca">
+<span class="eqno">(31)<a class="headerlink" href="#equation-39ad8bbb-59b7-492e-b826-5f03b707eeca" title="Permalink to this equation">#</a></span>\[\begin{align}
     \dot x &amp;= ax + by,\\
     \dot y &amp;= cx + dy,
 \end{align}\]</div>
 <p>or, equivalently,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2c908bdf-050d-41ae-a84b-ea86146b85d5">
-<span class="eqno">(32)<a class="headerlink" href="#equation-2c908bdf-050d-41ae-a84b-ea86146b85d5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6b22326d-19e3-45c7-9094-3df6664df1ac">
+<span class="eqno">(32)<a class="headerlink" href="#equation-6b22326d-19e3-45c7-9094-3df6664df1ac" title="Permalink to this equation">#</a></span>\[\begin{equation}
     \dot{\vec{x}} = \mathbf{A} \vec x =     
     \left[ 
      \begin{array}{c}
@@ -1498,8 +1501,8 @@ so \)</span>\vec f = [v, -\frac{k}{m} x]$ .</p>
 \end{equation}\]</div>
 <p>As you could suspect, all the solutions properties are encoded inside the matrix <span class="math notranslate nohighlight">\(A\)</span>. Fixed points occur wehenever <span class="math notranslate nohighlight">\(\dot{\vec x} = \vec 0\)</span>. From the definition, <span class="math notranslate nohighlight">\((0, 0)\)</span> is always a fixed point. In the case of the harmonic oscillator, the origin is called a focus (since all orbits are around it but never touch it). For the damped harmonic oscillator, the origin is called an stable equilibrium point, snce it attracts all the trajectories in the phase plane. Soon we will learn more classifications.</p>
 <p>Let’s take a system where <span class="math notranslate nohighlight">\(a\)</span> is arbitrary, <span class="math notranslate nohighlight">\(b = c = 0\)</span>, and <span class="math notranslate nohighlight">\(d = -1\)</span>. The solution for this systems is, clearly,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-485c37bc-86c3-49e1-b9b6-17b807a80e72">
-<span class="eqno">(33)<a class="headerlink" href="#equation-485c37bc-86c3-49e1-b9b6-17b807a80e72" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-74964100-da2e-4516-a2bb-d981b5fea792">
+<span class="eqno">(33)<a class="headerlink" href="#equation-74964100-da2e-4516-a2bb-d981b5fea792" title="Permalink to this equation">#</a></span>\[\begin{align}
     x(t) &amp;= x_0e^{at},\\ 
     y(t) &amp;= y_0 e^{-t}.
 \end{align}\]</div>

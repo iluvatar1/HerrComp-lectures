@@ -217,6 +217,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/RandomMD-Langevin.html">Random Molecular Dynamics and Langevin Equation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
@@ -232,7 +233,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Agents and cellular automata</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Agents simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Cellular Automata</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to neural networks</span></p>
 <ul class="nav bd-sidenav">
@@ -550,8 +551,8 @@
 <h2>Finite-difference equations<a class="headerlink" href="#finite-difference-equations" title="Link to this heading">#</a></h2>
 <p>(<em>Based on Understanding Non-linear Dynamics, Kaplan; and Nonlinear Dynamics and Chaos, Strogatz</em>)</p>
 <p>A finite difference equations allows to obtain the new value for a given variable, from the current value, as a function of discrete time steps. This functional relationship can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4cc42741-fba8-4c0e-a37d-6599dba8dc93">
-<span class="eqno">(46)<a class="headerlink" href="#equation-4cc42741-fba8-4c0e-a37d-6599dba8dc93" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e5de8e6f-574a-42bb-acb0-04e78e1b9222">
+<span class="eqno">(46)<a class="headerlink" href="#equation-e5de8e6f-574a-42bb-acb0-04e78e1b9222" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{t+1} = f(x_t)
 \end{equation}\]</div>
 <p>where the function <span class="math notranslate nohighlight">\(f\)</span> characterizes the mapping. Sometimes, <span class="math notranslate nohighlight">\(x_{t+1}\)</span> is denoted as <span class="math notranslate nohighlight">\(x'\)</span>.</p>
@@ -599,7 +600,7 @@ x_{t+1} = f(x_t)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f787373ec10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc85c431450&gt;
 </pre></div>
 </div>
 <img alt="../../_images/a68b439ff1ac5d0628f290f35dbd292de9f82d5cbd30fc12c7a22d5a1e60e2e1.png" src="../../_images/a68b439ff1ac5d0628f290f35dbd292de9f82d5cbd30fc12c7a22d5a1e60e2e1.png" />
@@ -615,8 +616,8 @@ x_{t+1} = f(x_t)
 <section id="the-logistic-map">
 <h3>The logistic map<a class="headerlink" href="#the-logistic-map" title="Link to this heading">#</a></h3>
 <p>The logistic map has been used to model several kind of systems and its origins are related to the study of the pulation dynamics. Imagine that <span class="math notranslate nohighlight">\(x_{t}\)</span> denotes the population of certain system at time <span class="math notranslate nohighlight">\(t\)</span>. One expects that if the population is small, then it will grows proportionally to the current population, <span class="math notranslate nohighlight">\(x_{t+1} \propto x_{t}\)</span>. But, if the population is too large, then competion for resources will decrease the population, <span class="math notranslate nohighlight">\(x_{t+1} \propto 1 - x_{t}\)</span>. Therefore, one can model the population as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-af226830-dab0-47ef-a758-864049d87c3c">
-<span class="eqno">(47)<a class="headerlink" href="#equation-af226830-dab0-47ef-a758-864049d87c3c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-920112be-71ff-402d-94a3-8848e6843822">
+<span class="eqno">(47)<a class="headerlink" href="#equation-920112be-71ff-402d-94a3-8848e6843822" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{t+1} = R x_{t}(1-x_{t}).
 \end{equation}\]</div>
 <p>This is the logistic maps, and its simplicity hides a very rich behaviour. A typical figure (for a normalized) is as follows</p>
@@ -663,7 +664,7 @@ x_{t+1} = R x_{t}(1-x_{t}).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f78711b0610&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc85c131e90&gt;
 </pre></div>
 </div>
 <img alt="../../_images/51daf592d3005099f3d0c3bc5c910f6a14d64fc252cc3d57b52c481a2f7e1ac6.png" src="../../_images/51daf592d3005099f3d0c3bc5c910f6a14d64fc252cc3d57b52c481a2f7e1ac6.png" />
@@ -688,7 +689,7 @@ x_{t+1} = R x_{t}(1-x_{t}).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f7871235ad0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc85c099e90&gt;
 </pre></div>
 </div>
 <img alt="../../_images/ae38da697310529a66dac9a7c0fed35b518ec4f90874c3d6ae370e8994a6a7b4.png" src="../../_images/ae38da697310529a66dac9a7c0fed35b518ec4f90874c3d6ae370e8994a6a7b4.png" />
@@ -729,7 +730,7 @@ x_{t+1} = R x_{t}(1-x_{t}).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f78736411d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc85c304f90&gt;
 </pre></div>
 </div>
 <img alt="../../_images/13472dc0a3b34e4a845d4aa664c844ed0795feca3a9b2cc2fa054134410a4066.png" src="../../_images/13472dc0a3b34e4a845d4aa664c844ed0795feca3a9b2cc2fa054134410a4066.png" />
@@ -764,7 +765,7 @@ x_{t+1} = R x_{t}(1-x_{t}).
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e9b3363a0cdad2c1a6069c1fd0554682cf5b49c64e16a600358b9128975369f7.png" src="../../_images/e9b3363a0cdad2c1a6069c1fd0554682cf5b49c64e16a600358b9128975369f7.png" />
+<img alt="../../_images/c7e4771a21f099af08ddd533f7075a1acc4042085f285d9fdbd48b43038139e7.png" src="../../_images/c7e4771a21f099af08ddd533f7075a1acc4042085f285d9fdbd48b43038139e7.png" />
 </div>
 </div>
 </section>
@@ -818,7 +819,7 @@ x_{t+1} = R x_{t}(1-x_{t}).
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f786da43b50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc85476a150&gt;
 </pre></div>
 </div>
 <img alt="../../_images/70bd8891c046f2cd456a852e54abc570df0ffab7011e7f07c81ecf1a55692e10.png" src="../../_images/70bd8891c046f2cd456a852e54abc570df0ffab7011e7f07c81ecf1a55692e10.png" />
@@ -831,14 +832,14 @@ x_{t+1} = R x_{t}(1-x_{t}).
 <section id="cycles">
 <h3>Cycles<a class="headerlink" href="#cycles" title="Link to this heading">#</a></h3>
 <p>A cycle or <span class="math notranslate nohighlight">\(n\)</span>th-order is a trajectory which repeats itself, defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6c6d94b0-917a-4684-8eec-d40bdfadeb56">
-<span class="eqno">(48)<a class="headerlink" href="#equation-6c6d94b0-917a-4684-8eec-d40bdfadeb56" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3e085486-eecc-4fed-8dd8-b122a80e5acb">
+<span class="eqno">(48)<a class="headerlink" href="#equation-3e085486-eecc-4fed-8dd8-b122a80e5acb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{t+n} = x_{t}, 
 \end{equation}\]</div>
 <p>but <span class="math notranslate nohighlight">\(x_{t+j} \neq x_t\)</span>, for <span class="math notranslate nohighlight">\(j = 1, 2, 3, \ldots, n-1\)</span>.</p>
 <p>A fixed point is a cycle of period 1. A cycle of period 2 is defined as <span class="math notranslate nohighlight">\(x_{t+2} = f(x_t) = f(f(x_t))\)</span>. If the function <span class="math notranslate nohighlight">\(x_{t+1} = f(x_t)\)</span> has a period-2 cycle, then the function <span class="math notranslate nohighlight">\(f(f(x_t))\)</span> has, at least, two fixed points. Longer cycles can be found similarly: “just” solve the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-44ae9214-ae49-471b-9b5c-8800eca76d1f">
-<span class="eqno">(49)<a class="headerlink" href="#equation-44ae9214-ae49-471b-9b5c-8800eca76d1f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6c144ebe-4bc1-43cf-a265-5cbcbb7b8e6f">
+<span class="eqno">(49)<a class="headerlink" href="#equation-6c144ebe-4bc1-43cf-a265-5cbcbb7b8e6f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{t} = \underbrace{f(f( \cdots f(x_{t})))}_{n\  \text{times}} 
 \end{equation}\]</div>
 </section>
@@ -889,7 +890,7 @@ x_{t} = \underbrace{f(f( \cdots f(x_{t})))}_{n\  \text{times}}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f788cb2db90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fc870799c50&gt;
 </pre></div>
 </div>
 <img alt="../../_images/7bb212032934f96cabe3e5356a6d366fc72725924d97a39d4290bfcc2389c3ef.png" src="../../_images/7bb212032934f96cabe3e5356a6d366fc72725924d97a39d4290bfcc2389c3ef.png" />
@@ -1124,8 +1125,8 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 <section id="chaos-in-the-non-linear-driven-pendulum">
 <h2>Chaos in the non-linear driven pendulum<a class="headerlink" href="#chaos-in-the-non-linear-driven-pendulum" title="Link to this heading">#</a></h2>
 <p>As a final example of a chaotic system, we will explore the dynamics of the non-linear driven damped oscillator, described by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b4ca93c4-290b-466b-b688-bc3e910aebaf">
-<span class="eqno">(50)<a class="headerlink" href="#equation-b4ca93c4-290b-466b-b688-bc3e910aebaf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2832cc18-e0c9-49d2-9709-237e4cd760d6">
+<span class="eqno">(50)<a class="headerlink" href="#equation-2832cc18-e0c9-49d2-9709-237e4cd760d6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2\theta}{dt^2} = -\frac{g}{l} \sin\theta - q\frac{d\theta}{dt} + F_D \sin(\Omega_D t).
 \end{equation}\]</div>
 <p>Of course, you need you transform this second order equation into a coupled system of two first order equations. Let’s explore the dynamics as function of the force amplitud <span class="math notranslate nohighlight">\(F_D\)</span>, while fixing the remaining parameters to <span class="math notranslate nohighlight">\(q = 1/2, l = g = 9.8, \Omega_D = 2/3, \theta_0 = 0.2, \omega_0 = 0\)</span>. A typical time series from this system is</p>

@@ -217,6 +217,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Molecular Dynamics</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/MolecularDynamics-MacroBodies.html">Molecular Dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-MolecularDynamics/RandomMD-Langevin.html">Random Molecular Dynamics and Langevin Equation</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
@@ -232,7 +233,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Agents and cellular automata</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Agents simulations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../11-Agents-CellularAutomata/Agents-CellularAutomata.html">Cellular Automata</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to neural networks</span></p>
 <ul class="nav bd-sidenav">
@@ -580,7 +581,7 @@ u = v^2*cos(v)*e^v + 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>418 μs ± 5.59 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>383 μs ± 2.53 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -593,7 +594,7 @@ u = v^2*cos(v)*e^v + 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.38 μs ± 3.38 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.7 μs ± 2.42 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -679,7 +680,7 @@ b = np.arange(1, 9, 2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;memory at 0x7fad9418d260&gt; &lt;memory at 0x7fad9418d300&gt; &lt;memory at 0x7fad9418d1c0&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;memory at 0x7f6b64075300&gt; &lt;memory at 0x7f6b640753a0&gt; &lt;memory at 0x7f6b64075260&gt;
 </pre></div>
 </div>
 </div>
@@ -709,7 +710,7 @@ b = np.arange(1, 9, 2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.4543485  0.54841819 0.51666162 0.67258428]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.7577565  0.5492476  0.77440226 0.93028307]
 </pre></div>
 </div>
 </div>
