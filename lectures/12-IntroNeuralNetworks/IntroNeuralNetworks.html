@@ -885,29 +885,29 @@ where \)</span>x = \sum x_i w_i$.</p>
 </ul>
 <p>But how to adjust the weights? There are several techniques based on the actual error <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
 <p>First, we will define a cost/loss function as the typical MSE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-28b66fef-3a24-4007-ab01-db57560c9491">
-<span class="eqno">(114)<a class="headerlink" href="#equation-28b66fef-3a24-4007-ab01-db57560c9491" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-abd0b0e9-cd20-46a1-905d-43078f422700">
+<span class="eqno">(114)<a class="headerlink" href="#equation-abd0b0e9-cd20-46a1-905d-43078f422700" title="Permalink to this equation">#</a></span>\[\begin{equation}
 COST = \frac{1}{2} (\hat y - y)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat y\)</span> is the predicted value and <span class="math notranslate nohighlight">\(y\)</span> is the expected one.  Notice that we are not adding up because we only have one output.</p>
 <p>Second, we will apply gradient descent approximation to our problem, in order to improve our coefficients for our data. This means that we will propagate back the errors into the coefficients!</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f4243af5-2a0b-4f9f-87d5-5f82bf6290de">
-<span class="eqno">(115)<a class="headerlink" href="#equation-f4243af5-2a0b-4f9f-87d5-5f82bf6290de" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9e380d38-4dc6-42f5-8413-92fc6f27e991">
+<span class="eqno">(115)<a class="headerlink" href="#equation-9e380d38-4dc6-42f5-8413-92fc6f27e991" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_i' = w_i - \alpha \frac{\partial COST}{\partial w_i},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate. Taking into account that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4f3e78ba-3518-4450-a29b-a63bfedd35af">
-<span class="eqno">(116)<a class="headerlink" href="#equation-4f3e78ba-3518-4450-a29b-a63bfedd35af" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3ba5de17-d4ab-42fa-8c9b-f2f62a012b4f">
+<span class="eqno">(116)<a class="headerlink" href="#equation-3ba5de17-d4ab-42fa-8c9b-f2f62a012b4f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat y = \phi(z) = \frac{1}{1 + \exp(-z)},
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-590ed9f0-fd77-4311-af3c-bfc146cb5e93">
-<span class="eqno">(117)<a class="headerlink" href="#equation-590ed9f0-fd77-4311-af3c-bfc146cb5e93" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c0705693-f387-432f-84c0-87652817decd">
+<span class="eqno">(117)<a class="headerlink" href="#equation-c0705693-f387-432f-84c0-87652817decd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 z = \sum w_i x_i,
 \end{equation}\]</div>
 <p>then, by using the chain rule, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f42b76c9-a92a-4b56-b387-b2da6340f2b0">
-<span class="eqno">(118)<a class="headerlink" href="#equation-f42b76c9-a92a-4b56-b387-b2da6340f2b0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c0961f67-976d-4da9-bc68-19e7bea72d04">
+<span class="eqno">(118)<a class="headerlink" href="#equation-c0961f67-976d-4da9-bc68-19e7bea72d04" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial COST}{\partial w_i} = \frac{\partial COST}{\partial \hat y} \frac{\partial \hat y}{\partial z} \frac{\partial z}{\partial w_i} = (\hat y - y)\phi (1-\phi)x_i. 
 \end{equation}\]</div>
 <div class="cell docutils container">
