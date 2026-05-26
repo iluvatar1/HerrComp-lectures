@@ -41,6 +41,12 @@ nnv
 
 myst-nb
 jupyterlab_myst
+myst-parser
+sphinx-proof
+sphinx-exercise
+sphinx-inline-tabs
+sphinx-examples
+sphinx-proof
 
 # fenics stuff
 # superlu_dist==6.2.0

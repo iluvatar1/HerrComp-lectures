@@ -19,17 +19,17 @@ only_build_toc_files        : true
 #######################################################################################
 # Execution settings
 execute:
-  execute_notebooks         : cache  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  execute_notebooks         : force  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
   cache                     : ""    # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
   exclude_patterns          : []    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
-  timeout                   : 10    # The maximum time (in seconds) each notebook cell is allowed to run.
+  timeout                   : 20    # The maximum time (in seconds) each notebook cell is allowed to run.
   run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd),
                                     # otherwise the notebook's parent directory will be the cwd.
   allow_errors              : false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
   stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
   exclude_tags              : ["skip-execution"]
   allow_html_output         : True
-  use_jupyter_labextension: true # 2026-05-25
+  #use_jupyter_labextension: true # 2026-05-25
 # # Define the name of the latex output file for PDF builds
 # latex:
 #   latex_documents:
@@ -76,7 +76,7 @@ html:
   extra_footer              : ""  # Will be displayed underneath the footer.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
   baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
-  use_jupyter_labextension: true # 2026-05-25
+  #use_jupyter_labextension: true # 2026-05-25
   analytics:
     plausible_analytics_domain: ""
     plausible_analytics_url: "https://plausible.io/js/script.js"
@@ -131,15 +131,12 @@ sphinx:
       sd:
         - "https://sphinx-design.readthedocs.io/en/latest"
         - null
-#       sphinxproof:
-#         - "https://sphinx-proof.readthedocs.io/en/latest/"
-#         - null
-#     hoverxref_intersphinx:
-#      - "sphinxproof"
-  # extra_extensions:
-  #   - sphinx_exercise
-  #   - sphinx.ext.intersphinx
-  #   - sphinx_inline_tabs
-  #   - sphinx_proof
-  #   - sphinx_examples
-  #   - hoverxref.extension
+  extra_extensions:
+    - sphinx_proof        # if using {exercise}
+    - sphinx_thebe        # optional
+    - sphinx_exercise
+    - sphinx_inline_tabs
+    - sphinx_proof
+    - sphinx_examples
+    #- hoverxref.extension
+    
