@@ -29,6 +29,7 @@ execute:
   stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
   exclude_tags              : ["skip-execution"]
   allow_html_output         : True
+  use_jupyter_labextension: true # 2026-05-25
 # # Define the name of the latex output file for PDF builds
 # latex:
 #   latex_documents:
@@ -75,6 +76,7 @@ html:
   extra_footer              : ""  # Will be displayed underneath the footer.
   home_page_in_navbar       : true  # Whether to include your home page in the left Navigation Bar
   baseurl                   : ""  # The base URL where your book will be hosted. Used for creating image previews and social links. e.g.: https://mypage.com/mybook/
+  use_jupyter_labextension: true # 2026-05-25
   analytics:
     plausible_analytics_domain: ""
     plausible_analytics_url: "https://plausible.io/js/script.js"
