@@ -132,11 +132,10 @@ sphinx:
         - "https://sphinx-design.readthedocs.io/en/latest"
         - null
   extra_extensions:
-    - sphinx_proof        # if using {exercise}
-    - sphinx_thebe        # optional
+    - sphinx_proof
+    - sphinx_thebe
     - sphinx_exercise
     - sphinx_inline_tabs
-    - sphinx_proof
     - sphinx_examples
     #- hoverxref.extension
     
