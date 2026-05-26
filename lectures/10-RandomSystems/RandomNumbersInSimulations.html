@@ -616,8 +616,8 @@
 </a>
 <p>From: Ward</p>
 <p>The theoretical solution predicts that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e0e79fd-c5e0-48bb-a495-017b354c9cd9">
-<span class="eqno">(83)<a class="headerlink" href="#equation-2e0e79fd-c5e0-48bb-a495-017b354c9cd9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-27b24163-e84b-48dc-bbbc-c15a1bebf164">
+<span class="eqno">(88)<a class="headerlink" href="#equation-27b24163-e84b-48dc-bbbc-c15a1bebf164" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p = \frac{2}{\pi}\frac{l}{t},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(l\)</span> is the needle lenght and <span class="math notranslate nohighlight">\(t\)</span> the lines separation.</p>
@@ -679,59 +679,59 @@ p = \frac{2}{\pi}\frac{l}{t},
 <section id="integrals-using-monte-carlo-again">
 <h2>Integrals using Monte Carlo (again)<a class="headerlink" href="#integrals-using-monte-carlo-again" title="Link to this heading">#</a></h2>
 <p>Monte Carlo methods are well suited to compute multi-dimensional integrals, like</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3551bf76-6ab1-4071-a4c2-b856fa103abd">
-<span class="eqno">(84)<a class="headerlink" href="#equation-3551bf76-6ab1-4071-a4c2-b856fa103abd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b57e66f6-2b2c-4751-81e7-0918f3353930">
+<span class="eqno">(89)<a class="headerlink" href="#equation-b57e66f6-2b2c-4751-81e7-0918f3353930" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I = \int dx_1\int dx_2\int dx_3 \ldots \int x_D f(\vec x),
 \end{equation}\]</div>
 <p>where its numerical form can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78a5dd2e-7f1a-4039-b55e-36518479d219">
-<span class="eqno">(85)<a class="headerlink" href="#equation-78a5dd2e-7f1a-4039-b55e-36518479d219" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c29d8e7b-144d-42ce-9969-6dfa5fcdc987">
+<span class="eqno">(90)<a class="headerlink" href="#equation-c29d8e7b-144d-42ce-9969-6dfa5fcdc987" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I \simeq \sum_{i_1}^n \sum_{i_2}^n \sum_{i_3}^n \ldots \sum_{i_D}^n w_1 w_2 \ldots w_D f(x_1, x_2, x_3, \ldots , x_D).
 \end{equation}\]</div>
 <p>The total number of points needed for this is about <span class="math notranslate nohighlight">\(N = n^D\)</span>. And the error, for a typical quadrature, goes like <span class="math notranslate nohighlight">\(\epsilon_{\text{math}} = (1/n)^p = N^{-p/D}\)</span>. This is impractical. For <span class="math notranslate nohighlight">\(D = 4\)</span>, this makes the Simpson method a first order approximation.</p>
 <p>In Monte Carlo integration, we choose points uniformly in the given region and then compute the integral. The result quality depends on the actual points chosen and its representativity on the function to be integrated. The numerical integral can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3d95ff6-017f-4a29-84a3-c32203214a6c">
-<span class="eqno">(86)<a class="headerlink" href="#equation-e3d95ff6-017f-4a29-84a3-c32203214a6c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e2d894cd-6323-4321-a751-649d2cb9149b">
+<span class="eqno">(91)<a class="headerlink" href="#equation-e2d894cd-6323-4321-a751-649d2cb9149b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_D f dV \simeq V \langle f \rangle \pm\ \sigma, 
 \end{equation}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b4db7a58-f633-40eb-a6aa-44f089c8f788">
-<span class="eqno">(87)<a class="headerlink" href="#equation-b4db7a58-f633-40eb-a6aa-44f089c8f788" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0e55a511-874e-4e0f-9cfc-b23ec04a2594">
+<span class="eqno">(92)<a class="headerlink" href="#equation-0e55a511-874e-4e0f-9cfc-b23ec04a2594" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \sigma = V \sqrt{\frac{\langle f^2 \rangle - \langle f \rangle^2}{n}} = \frac{V}{\sqrt{n}} \sigma_f
 \end{equation}\]</div>
 <p>is the standard deviation (<span class="math notranslate nohighlight">\(\sigma^2\)</span> is called the variance). The error decreases as <span class="math notranslate nohighlight">\(n^{-1/2}\)</span> regardless the dimension, which is very advantageous for <span class="math notranslate nohighlight">\(D \ge 4\)</span>.</p>
 <section id="importance-sampling">
 <h3>Importance sampling<a class="headerlink" href="#importance-sampling" title="Link to this heading">#</a></h3>
 <p>For <span class="math notranslate nohighlight">\(n=20\)</span> and  <span class="math notranslate nohighlight">\(D = 20\)</span>, computing the equipartition function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d41dedf8-fa97-4a8d-9238-43e9ede287c8">
-<span class="eqno">(88)<a class="headerlink" href="#equation-d41dedf8-fa97-4a8d-9238-43e9ede287c8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5f648639-e419-47fb-a535-c8c15929da1d">
+<span class="eqno">(93)<a class="headerlink" href="#equation-5f648639-e419-47fb-a535-c8c15929da1d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 Z = \int \ldots \int d^3 r_1 \ldots d^3 r_N \exp\left[ -\frac{1}{k_B T}E(\vec r_1, \ldots, \vec r_N)\right]
 \end{equation}\]</div>
 <p>requires <span class="math notranslate nohighlight">\(10^{60}\)</span> operations, which, in a petascale supercomputer (more than <span class="math notranslate nohighlight">\(10^{16}\)</span> flops), will take around <span class="math notranslate nohighlight">\(10^{36}\)</span> years. Also, the actual choice of points is important. For instance, to compute points inside an hypersphere in <span class="math notranslate nohighlight">\(D\)</span> dimensions, we sample points uniformly in the hyper cube, and the probability is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f20ae225-7d14-4193-a347-235a358ab46e">
-<span class="eqno">(89)<a class="headerlink" href="#equation-f20ae225-7d14-4193-a347-235a358ab46e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4fbaac52-cb7b-4c75-965d-a466b8d288d8">
+<span class="eqno">(94)<a class="headerlink" href="#equation-4fbaac52-cb7b-4c75-965d-a466b8d288d8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 P(D) = \frac{2}{\Gamma(D/2)} \left(\frac{\sqrt{\pi}}{2} \right)^D, 
 \end{equation}\]</div>
 <p>which, for <span class="math notranslate nohighlight">\(D = 100\)</span>, is about <span class="math notranslate nohighlight">\(10^{-68}\)</span>, so basically all points are rejected.</p>
 <p>Therefore, it is advisable to have a procedure that allows to select points inside the region where the function is more representative. To do so, we rewritte the integral as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e64267bf-6ef4-440b-a094-b8a83a8c6789">
-<span class="eqno">(90)<a class="headerlink" href="#equation-e64267bf-6ef4-440b-a094-b8a83a8c6789" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2ae61fe8-28f5-4a1f-b7cb-964d19dbdbd2">
+<span class="eqno">(95)<a class="headerlink" href="#equation-2ae61fe8-28f5-4a1f-b7cb-964d19dbdbd2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int f(\vec x) d\vec x = \int h(\vec x) w(\vec x) d\vec x,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(w(\vec x)\)</span> is a weight function to choose the points, and must be normalized. After that,<span class="math notranslate nohighlight">\(n\)</span> random points are generated according to the weight function, and the integral is simply given as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c19b5c26-3549-414f-9bd4-8f0eebaee622">
-<span class="eqno">(91)<a class="headerlink" href="#equation-c19b5c26-3549-414f-9bd4-8f0eebaee622" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d6cb9fc6-419f-4661-a708-bd56ae6871a5">
+<span class="eqno">(96)<a class="headerlink" href="#equation-d6cb9fc6-419f-4661-a708-bd56ae6871a5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int d\vec x f(\vec x) \simeq \bar h,
 \end{equation}\]</div>
 <p>with error</p>
-<div class="amsmath math notranslate nohighlight" id="equation-13e4f5d5-0ded-414a-ad28-049e679d25f0">
-<span class="eqno">(92)<a class="headerlink" href="#equation-13e4f5d5-0ded-414a-ad28-049e679d25f0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1b04801f-a9bc-4224-8a42-09bd3ecf52d7">
+<span class="eqno">(97)<a class="headerlink" href="#equation-1b04801f-a9bc-4224-8a42-09bd3ecf52d7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \sigma = \sqrt{\frac{\bar{h^2} - (\bar h)^2}{N-1}}.
 \end{equation}\]</div>
 <p>There is some freedom to chose the weight function.  The idea is to focus the variation in the weight function, so to make the <span class="math notranslate nohighlight">\(h\)</span> function as constant as possible.</p>
 <p>Example (Boudreau): Let’s compute the following</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f14c5fc4-0c94-4410-adfb-3eee4f0c855d">
-<span class="eqno">(93)<a class="headerlink" href="#equation-f14c5fc4-0c94-4410-adfb-3eee4f0c855d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-527f6143-9553-4faa-921a-90d5c8e23e0f">
+<span class="eqno">(98)<a class="headerlink" href="#equation-527f6143-9553-4faa-921a-90d5c8e23e0f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I = \int_0^\infty dx\  x^2 e^{-x},
 \end{equation}\]</div>
 <p>Using three weight functions as follows:</p>
