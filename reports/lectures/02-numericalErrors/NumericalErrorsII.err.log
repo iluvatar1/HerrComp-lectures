@@ -18,35 +18,65 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-%matplotlib inline
+# Substracting cancellation
 import numpy as np
 import matplotlib.pyplot as plt
-def plot_diff(kmax):
-    """
-    This function computes and plot the function f(k), up to a kmax
-    """
+%matplotlib inline
+
+def sum1(N):
     # YOUR CODE HERE
-    raise NotImplementedError()
+    pass
+
+def sum2(N):
+    # YOUR CODE HERE
+    pass
+
+def sum3(N):
+    # YOUR CODE HERE
+    pass
+
+def plot_diff_sums(N):
+    """
+    Plots the relative difference among three sums which are the same mathematically
+    """
+    adata = np.zeros(N+1)
+    bdata = np.zeros(N+1)
+    for n in range(1, N+1):
+        #print n, sum1(n), sum2(n), sum3(n)
+        #adata[n] = sum1(n)
+        #bdata[n] = sum3(n)
+        adata[n] = abs((sum1(n) - sum3(n))/sum3(n))
+        bdata[n] = abs((sum2(n) - sum3(n))/sum3(n))
+
+    fig, axes = plt.subplots()
+    axes.plot(adata, "o-", ms=6.0, label="%sum1")
+    axes.plot(bdata, "g*--", ms = 9.0, label="%sum2")
+    axes.set_xscale("log")
+    axes.set_yscale("log")
+    axes.legend(loc=2)
     
-plot_diff(100000)
+plot_diff_sums(1000)
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mNotImplementedError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 11[39m
-[32m      7[39m     """
-[32m      8[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m      9[39m     [38;5;28;01mraise[39;00m NotImplementedError()
-[32m     10[39m 
-[32m---> [39m[32m11[39m plot_diff([32m100000[39m)
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 38[39m
+[32m     34[39m     axes.set_xscale([33m"log"[39m)
+[32m     35[39m     axes.set_yscale([33m"log"[39m)
+[32m     36[39m     axes.legend(loc=[32m2[39m)
+[32m     37[39m 
+[32m---> [39m[32m38[39m plot_diff_sums([32m1000[39m)
 
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 9[39m, in [36mplot_diff[39m[34m(kmax)[39m
-[32m      5[39m     """
-[32m      6[39m     This function computes [38;5;28;01mand[39;00m plot the function f(k), up to a kmax
-[32m      7[39m     """
-[32m      8[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m----> [39m[32m9[39m     [38;5;28;01mraise[39;00m NotImplementedError()
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 28[39m, in [36mplot_diff_sums[39m[34m(N)[39m
+[32m     24[39m     [38;5;28;01mfor[39;00m n [38;5;28;01min[39;00m range([32m1[39m, N+[32m1[39m):
+[32m     25[39m         [38;5;66;03m#print n, sum1(n), sum2(n), sum3(n)[39;00m
+[32m     26[39m         [38;5;66;03m#adata[n] = sum1(n)[39;00m
+[32m     27[39m         [38;5;66;03m#bdata[n] = sum3(n)[39;00m
+[32m---> [39m[32m28[39m         adata[n] = abs((sum1(n) - sum3(n))/sum3(n))
+[32m     29[39m         bdata[n] = abs((sum2(n) - sum3(n))/sum3(n))
+[32m     30[39m 
+[32m     31[39m     fig, axes = plt.subplots()
 
-[31mNotImplementedError[39m: 
+[31mTypeError[39m: unsupported operand type(s) for -: 'NoneType' and 'NoneType'
 

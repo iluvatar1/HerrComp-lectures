@@ -18,21 +18,17 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-printreversed([1, 2, 3])
-printreversed([1, 2, 3, 4 , "hola", "mundo"])
+import numpy as np
+
+def stats(data):
+# YOUR CODE HERE
+pass
 ------------------
 
 
-[31m---------------------------------------------------------------------------[39m
-[31mNotImplementedError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[9][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m printreversed([[32m1[39m, [32m2[39m, [32m3[39m])
-[32m      2[39m printreversed([[32m1[39m, [32m2[39m, [32m3[39m, [32m4[39m , [33m"hola"[39m, [33m"mundo"[39m])
+  [36mCell[39m[36m [39m[32mIn[12][39m[32m, line 5[39m
+[31m    [39m[31mpass[39m
+    ^
+[31mIndentationError[39m[31m:[39m expected an indented block after function definition on line 3
 
-[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 3[39m, in [36mprintreversed[39m[34m(l)[39m
-[32m      1[39m [38;5;28;01mdef[39;00m printreversed(l):
-[32m      2[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m----> [39m[32m3[39m     [38;5;28;01mraise[39;00m NotImplementedError()
-
-[31mNotImplementedError[39m: 
 

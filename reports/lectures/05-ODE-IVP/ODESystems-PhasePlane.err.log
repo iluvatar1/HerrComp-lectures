@@ -26,37 +26,30 @@ import seaborn as sns
 sns.set()
 sns.set_context("talk")
 
-def fderiv(t, y, r, k):
+def fderiv(t, y, m, b, g):
     # YOUR CODE HERE
-    raise NotImplementedError()
+    pass
 
-def solve_system(T0, TF, Y0, DT, r, k):
+
+def final_vel(m, b, g):
     # YOUR CODE HERE
-    raise NotImplementedError()
+    pass
+final_vel = np.vectorize(final_vel)
 
-solve_system(T0=0.0, TF=2000.0, Y0=3.0, DT=0.2, r=0.01, k=10)
-solve_system(T0=0.0, TF=200.0, Y0=3.0, DT=0.2, r=0.1, k=10)
-solve_system(T0=0.0, TF=200.0, Y0=3.0, DT=0.2, r=1.1, k=10)
-solve_system(T0=0.0, TF=2000.0, Y0=3.0, DT=0.2, r=0.9, k=3)
+def solve_plot():
+# YOUR CODE HERE
+pass
+    
+
+solve_plot()
+# TODO: Decouple plot and simulation
+# TODO: Normalize the system and the plot
 ------------------
 
 
-[31m---------------------------------------------------------------------------[39m
-[31mNotImplementedError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 17[39m
-[32m     13[39m [38;5;28;01mdef[39;00m solve_system(T0, TF, Y0, DT, r, k):
-[32m     14[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m     15[39m     [38;5;28;01mraise[39;00m NotImplementedError()
-[32m     16[39m 
-[32m---> [39m[32m17[39m solve_system(T0=[32m0.0[39m, TF=[32m2000.0[39m, Y0=[32m3.0[39m, DT=[32m0.2[39m, r=[32m0.01[39m, k=[32m10[39m)
-[32m     18[39m solve_system(T0=[32m0.0[39m, TF=[32m200.0[39m, Y0=[32m3.0[39m, DT=[32m0.2[39m, r=[32m0.1[39m, k=[32m10[39m)
-[32m     19[39m solve_system(T0=[32m0.0[39m, TF=[32m200.0[39m, Y0=[32m3.0[39m, DT=[32m0.2[39m, r=[32m1.1[39m, k=[32m10[39m)
-[32m     20[39m solve_system(T0=[32m0.0[39m, TF=[32m2000.0[39m, Y0=[32m3.0[39m, DT=[32m0.2[39m, r=[32m0.9[39m, k=[32m3[39m)
+  [36mCell[39m[36m [39m[32mIn[8][39m[32m, line 21[39m
+[31m    [39m[31mpass[39m
+    ^
+[31mIndentationError[39m[31m:[39m expected an indented block after function definition on line 19
 
-[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 15[39m, in [36msolve_system[39m[34m(T0, TF, Y0, DT, r, k)[39m
-[32m     13[39m [38;5;28;01mdef[39;00m solve_system(T0, TF, Y0, DT, r, k):
-[32m     14[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m---> [39m[32m15[39m     [38;5;28;01mraise[39;00m NotImplementedError()
-
-[31mNotImplementedError[39m: 
 

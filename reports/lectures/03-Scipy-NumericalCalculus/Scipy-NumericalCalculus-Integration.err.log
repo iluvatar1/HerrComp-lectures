@@ -18,24 +18,51 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-#print(trapezoid(lambda x: 2*np.exp(-x*x)/np.sqrt(np.pi), 0, 5, 100))
-#print(trapezoid(fun, 0, 5, 100))
-compute_integral_plot(trapezoid, 0.1, 10.0, 0.1, 500, "Trapezoid")
+print(simpson(np.square, 0, 1, 10))
+print(simpson(np.square, 0, [1, 2], 10)) # Check , two limits for two integrals
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mNotImplementedError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 3[39m
-[32m      1[39m [38;5;66;03m#print(trapezoid(lambda x: 2*np.exp(-x*x)/np.sqrt(np.pi), 0, 5, 100))[39;00m
-[32m      2[39m [38;5;66;03m#print(trapezoid(fun, 0, 5, 100))[39;00m
-[32m----> [39m[32m3[39m compute_integral_plot(trapezoid, [32m0.1[39m, [32m10.0[39m, [32m0.1[39m, [32m500[39m, [33m"Trapezoid"[39m)
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m print(simpson(np.square, [32m0[39m, [32m1[39m, [32m10[39m))
+[32m      2[39m print(simpson(np.square, [32m0[39m, [[32m1[39m, [32m2[39m], [32m10[39m)) [38;5;66;03m# Check , two limits for two integrals[39;00m
 
-[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 12[39m, in [36mcompute_integral_plot[39m[34m(alg, xmin, xmax, deltax, nbins_integral, algname)[39m
-[32m      9[39m [38;5;28;01mdef[39;00m compute_integral_plot(alg, xmin, xmax, deltax, nbins_integral, algname):
-[32m     10[39m     get_ipython().run_line_magic([33m'matplotlib'[39m, [33m'inline'[39m)
-[32m     11[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m---> [39m[32m12[39m     [38;5;28;01mraise[39;00m NotImplementedError()
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2518[39m, in [36mvectorize.__call__[39m[34m(self, *args, **kwargs)[39m
+[32m   2515[39m     [38;5;28mself[39m._init_stage_2(*args, **kwargs)
+[32m   2516[39m     [38;5;28;01mreturn[39;00m [38;5;28mself[39m
+[32m-> [39m[32m2518[39m [38;5;28;01mreturn[39;00m [30;43mself[39;49m[30;43m.[39;49m[30;43m_call_as_normal[39;49m[30;43m([39;49m[30;43m*[39;49m[30;43margs[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m*[39;49m[30;43m*[39;49m[30;43mkwargs[39;49m[30;43m)[39;49m
 
-[31mNotImplementedError[39m: 
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2511[39m, in [36mvectorize._call_as_normal[39m[34m(self, *args, **kwargs)[39m
+[32m   2508[39m     vargs = [args[_i] [38;5;28;01mfor[39;00m _i [38;5;129;01min[39;00m inds]
+[32m   2509[39m     vargs.extend([kwargs[_n] [38;5;28;01mfor[39;00m _n [38;5;129;01min[39;00m names])
+[32m-> [39m[32m2511[39m [38;5;28;01mreturn[39;00m [30;43mself[39;49m[30;43m.[39;49m[30;43m_vectorize_call[39;49m[30;43m([39;49m[30;43mfunc[39;49m[30;43m=[39;49m[30;43mfunc[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43margs[39;49m[30;43m=[39;49m[30;43mvargs[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2596[39m, in [36mvectorize._vectorize_call[39m[34m(self, func, args)[39m
+[32m   2594[39m     res = func()
+[32m   2595[39m [38;5;28;01melse[39;00m:
+[32m-> [39m[32m2596[39m     ufunc, otypes = [30;43mself[39;49m[30;43m.[39;49m[30;43m_get_ufunc_and_otypes[39;49m[30;43m([39;49m[30;43mfunc[39;49m[30;43m=[39;49m[30;43mfunc[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43margs[39;49m[30;43m=[39;49m[30;43margs[39;49m[30;43m)[39;49m
+[32m   2597[39m     [38;5;66;03m# gh-29196: `dtype=object` should eventually be removed[39;00m
+[32m   2598[39m     args = [asanyarray(a, dtype=[38;5;28mobject[39m) [38;5;28;01mfor[39;00m a [38;5;129;01min[39;00m args]
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2556[39m, in [36mvectorize._get_ufunc_and_otypes[39m[34m(self, func, args)[39m
+[32m   2552[39m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([33m'[39m[33mcannot call `vectorize` on size 0 inputs [39m[33m'[39m
+[32m   2553[39m                      [33m'[39m[33munless `otypes` is set[39m[33m'[39m)
+[32m   2555[39m inputs = [arg.flat[[32m0[39m] [38;5;28;01mfor[39;00m arg [38;5;129;01min[39;00m args]
+[32m-> [39m[32m2556[39m outputs = [30;43mfunc[39;49m[30;43m([39;49m[30;43m*[39;49m[30;43minputs[39;49m[30;43m)[39;49m
+[32m   2558[39m [38;5;66;03m# Performance note: profiling indicates that -- for simple[39;00m
+[32m   2559[39m [38;5;66;03m# functions at least -- this wrapping can almost double the[39;00m
+[32m   2560[39m [38;5;66;03m# execution time.[39;00m
+[32m   2561[39m [38;5;66;03m# Hence we make it optional.[39;00m
+[32m   2562[39m [38;5;28;01mif[39;00m [38;5;28mself[39m.cache:
+
+[36mCell[39m[36m [39m[32mIn[7][39m[32m, line 14[39m, in [36msimpson[39m[34m(f, a, b, n)[39m
+[32m     10[39m     [38;5;28;01mif[39;00m n%[32m2[39m != [32m0[39m:
+[32m     11[39m         npoints += [32m1[39m
+[32m     12[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
+[32m     13[39m     [38;5;28;01mpass[39;00m
+[32m---> [39m[32m14[39m     [38;5;28;01mreturn[39;00m result
+
+[31mNameError[39m: name 'result' is not defined
 

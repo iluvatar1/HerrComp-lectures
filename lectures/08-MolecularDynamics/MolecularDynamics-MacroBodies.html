@@ -793,7 +793,7 @@ Other possible like the radius are not as relevant now since we are focusing onl
         <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Reset the force</span>
         <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">+=</span> <span class="n">body</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="c1"># Add gravity</span>
         <span class="c1"># YOUR CODE HERE</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
@@ -819,7 +819,7 @@ Other possible like the radius are not as relevant now since we are focusing onl
         <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Reset the force</span>
         <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">+=</span> <span class="n">body</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="c1"># Add gravity</span>
         <span class="c1"># YOUR CODE HERE</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">pass</span>
 <span class="c1"># ... in md.py</span>
 <span class="c1"># Save data</span>
 <span class="n">NSTEPS</span> <span class="o">=</span> <span class="mi">100</span> <span class="c1"># Fix</span>
@@ -834,8 +834,8 @@ Other possible like the radius are not as relevant now since we are focusing onl
 <section id="exercise-adding-more-particles">
 <h2>Exercise: Adding more particles<a class="headerlink" href="#exercise-adding-more-particles" title="Link to this heading">#</a></h2>
 <p>Now let’s add more particles. They will not see each other unless we implement a force among them. Also, we will need to generalize our methods to process arrays of bodies. First, the force that particle <span class="math notranslate nohighlight">\(i\)</span> does on particle <span class="math notranslate nohighlight">\(j\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-50401b61-3b42-486e-b152-b94e516c1c32">
-<span class="eqno">(51)<a class="headerlink" href="#equation-50401b61-3b42-486e-b152-b94e516c1c32" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-35cd5762-01b7-4e47-a746-40dbb09d4660">
+<span class="eqno">(51)<a class="headerlink" href="#equation-35cd5762-01b7-4e47-a746-40dbb09d4660" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{ij} = k \delta \hat n_{ij},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat n_{ij} = \vec R_{ij} / R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(\vec R_{ij} = \vec R_i - \vec R_j\)</span>, and <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(r\)</span> the radius of each particle.</p>
@@ -851,11 +851,11 @@ Other possible like the radius are not as relevant now since we are focusing onl
         
     <span class="k">def</span><span class="w"> </span><span class="nf">startIntegration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bodies</span><span class="p">):</span>
         <span class="c1"># YOUR CODE HERE</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">pass</span>
         
     <span class="k">def</span><span class="w"> </span><span class="nf">timestep</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bodies</span><span class="p">):</span>
         <span class="c1"># YOUR CODE HERE</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
@@ -878,10 +878,10 @@ Other possible like the radius are not as relevant now since we are focusing onl
             <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># Reset the force</span>
             <span class="n">body</span><span class="o">.</span><span class="n">F</span> <span class="o">+=</span> <span class="n">body</span><span class="o">.</span><span class="n">mass</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="c1"># Add gravity</span>
             <span class="c1"># YOUR CODE HERE</span>
-            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+            <span class="k">pass</span>
         <span class="c1"># Add body-body interactions. Use third Newton law</span>
         <span class="c1"># YOUR CODE HERE</span>
-        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+        <span class="k">pass</span>
 
 
 <span class="c1"># in md.py ...</span>

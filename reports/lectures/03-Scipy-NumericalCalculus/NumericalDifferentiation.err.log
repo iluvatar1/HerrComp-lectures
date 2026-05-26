@@ -32,14 +32,14 @@ def central(f, x, h):
 
 def central_richardson(f, x, h):
     # YOUR CODE HERE
-    raise NotImplementedError()
+    pass
 
 def compare_derivatives():    
     fig, ax = plt.subplots()
     h = np.power(10.0, np.arange(-18, 0, +1))
     x = np.pi/3
     # YOUR CODE HERE
-    raise NotImplementedError()
+    pass
     
 
 compare_derivatives()
@@ -48,7 +48,7 @@ compare_derivatives()
 ------------------
 
 ----- stderr -----
-/tmp/ipykernel_2645/2607954013.py:5: DeprecationWarning: scipy.misc is deprecated and will be removed in 2.0.0
+/tmp/ipykernel_2762/1050150463.py:5: DeprecationWarning: scipy.misc is deprecated and will be removed in 2.0.0
   from scipy.misc import derivative as spderiv
 ------------------
 

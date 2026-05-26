@@ -534,8 +534,8 @@
 <li><p>are produced efficiently</p></li>
 </ul>
 <p>Initial examples are the modulo generators,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-da9008a3-3118-4dbf-bd08-3d05af110058">
-<span class="eqno">(71)<a class="headerlink" href="#equation-da9008a3-3118-4dbf-bd08-3d05af110058" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8f607c16-9fce-4a48-9636-ffee00a6eff8">
+<span class="eqno">(71)<a class="headerlink" href="#equation-8f607c16-9fce-4a48-9636-ffee00a6eff8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i = ax_{i-1} + c(\textrm{mod}\, m),
 \end{equation}\]</div>
 <p>where the constants <span class="math notranslate nohighlight">\(a, c, m\)</span> should be chosen with care. For instance, <span class="math notranslate nohighlight">\(m\)</span> determines the period. A bad choice for those constant will lead to low period and large correlations. The generation of random numbers efficiently and with quality is an actual research topic, with huge implications from the field of random simulation of physical systems to the field of cryptography.</p>
@@ -594,7 +594,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f11837f4ad0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd7c7410790&gt;
 </pre></div>
 </div>
 <img alt="../../_images/505e723160f783fc0c9c8821887803950f2fa9f32a367d6ee2045b0ab3bf94c8.png" src="../../_images/505e723160f783fc0c9c8821887803950f2fa9f32a367d6ee2045b0ab3bf94c8.png" />
@@ -616,7 +616,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f11b8cb6c90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7fd7c775f5d0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/bd058e3b97209545e189ff037856a03a80c855fbe36daf5426dc01106b282d33.png" src="../../_images/bd058e3b97209545e189ff037856a03a80c855fbe36daf5426dc01106b282d33.png" />
@@ -632,18 +632,18 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 <section id="inverse-transform-method">
 <h2>Inverse transform method<a class="headerlink" href="#inverse-transform-method" title="Link to this heading">#</a></h2>
 <p>In this case you want to invert the cumulative probability function. Let’s say that you have an exponential distribution, whose density is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7800f75f-79f1-4ac4-99c0-a685148d0571">
-<span class="eqno">(72)<a class="headerlink" href="#equation-7800f75f-79f1-4ac4-99c0-a685148d0571" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-23355838-891f-41e4-8788-1e2419f80b96">
+<span class="eqno">(72)<a class="headerlink" href="#equation-23355838-891f-41e4-8788-1e2419f80b96" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(t) = \lambda e^{-\lambda t}, t &gt; 0
 \end{equation}\]</div>
 <p>whose cumulative distribution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-be0df2e9-973e-44f3-a849-ef4bd38a5114">
-<span class="eqno">(73)<a class="headerlink" href="#equation-be0df2e9-973e-44f3-a849-ef4bd38a5114" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-39447222-d89e-4d63-aef1-fdc20556b184">
+<span class="eqno">(73)<a class="headerlink" href="#equation-39447222-d89e-4d63-aef1-fdc20556b184" title="Permalink to this equation">#</a></span>\[\begin{equation}
 F(x) = \int_0^x f(t) dt = 1 - e^{-\lambda x}.
 \end{equation}\]</div>
 <p>Now, the cumulative distribution is in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>. If we equate it to a uniform random number in the same interval, <span class="math notranslate nohighlight">\(z = F(x)\)</span>, then we can invert this expression and obtain <span class="math notranslate nohighlight">\(x = F^{-1}(z)\)</span>. For the exponential distribution we get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b034d05e-0d44-4a1b-8cef-b071c09bb5ec">
-<span class="eqno">(74)<a class="headerlink" href="#equation-b034d05e-0d44-4a1b-8cef-b071c09bb5ec" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d9b0ae9d-46ac-410f-8783-2c1842adb9ed">
+<span class="eqno">(74)<a class="headerlink" href="#equation-d9b0ae9d-46ac-410f-8783-2c1842adb9ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x = -\frac{\ln (1-z)}{\lambda}
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -669,7 +669,7 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f118362a150&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fd7c75f5fd0&gt;
 </pre></div>
 </div>
 <img alt="../../_images/189890992eec960db6b2fb932cc1a917e22186365348dcb16cd9995cac397272.png" src="../../_images/189890992eec960db6b2fb932cc1a917e22186365348dcb16cd9995cac397272.png" />
@@ -700,23 +700,11 @@ x = -\frac{\ln (1-z)}{\lambda}
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="c1"># YOUR CODE HERE</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">9</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> 
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="c1"># YOUR CODE HERE</span>
-<span class="ne">----&gt; </span><span class="mi">9</span> <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
 <img alt="../../_images/e4c1e684d1cd5b3ddac7a37c3c2b5025ba754bb01dd7fee6eee1dbb748a2c4cf.png" src="../../_images/e4c1e684d1cd5b3ddac7a37c3c2b5025ba754bb01dd7fee6eee1dbb748a2c4cf.png" />
 </div>
 </div>
@@ -731,9 +719,12 @@ x = -\frac{\ln (1-z)}{\lambda}
 <span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="c1"># YOUR CODE HERE</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="k">pass</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e4c1e684d1cd5b3ddac7a37c3c2b5025ba754bb01dd7fee6eee1dbb748a2c4cf.png" src="../../_images/e4c1e684d1cd5b3ddac7a37c3c2b5025ba754bb01dd7fee6eee1dbb748a2c4cf.png" />
 </div>
 </div>
 <p><mark>Exercises</mark></p>
@@ -748,30 +739,30 @@ x = -\frac{\ln (1-z)}{\lambda}
 <h2>Computing random integrals<a class="headerlink" href="#computing-random-integrals" title="Link to this heading">#</a></h2>
 <p>REF: Ward</p>
 <p>Computing integrals using random numbers is easy and practical, specially for large dimensions. In the unit interval, one can compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e75f9df5-91de-49c8-802d-fa7b406f9b59">
-<span class="eqno">(75)<a class="headerlink" href="#equation-e75f9df5-91de-49c8-802d-fa7b406f9b59" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-114e5a8a-baa8-40d1-90d1-13b89a5fcb7c">
+<span class="eqno">(75)<a class="headerlink" href="#equation-114e5a8a-baa8-40d1-90d1-13b89a5fcb7c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^1 f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>so the integral is approximated as the average function value. For a general interval, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d9187fc0-768c-4fb4-a9ac-4666734e3d87">
-<span class="eqno">(76)<a class="headerlink" href="#equation-d9187fc0-768c-4fb4-a9ac-4666734e3d87" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ab4367ef-9f62-4a2d-9b8f-7ef7f94a49b7">
+<span class="eqno">(76)<a class="headerlink" href="#equation-ab4367ef-9f62-4a2d-9b8f-7ef7f94a49b7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{b-a}\int_a^b f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>or , in higher dimensions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-96a9c187-6288-4d5c-ae0c-d968484e1198">
-<span class="eqno">(77)<a class="headerlink" href="#equation-96a9c187-6288-4d5c-ae0c-d968484e1198" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a084b417-5afc-4af8-9145-8d351c4c7e1e">
+<span class="eqno">(77)<a class="headerlink" href="#equation-a084b417-5afc-4af8-9145-8d351c4c7e1e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{8}\int_1^3\int_{-1}^1 \int_0^2 f(x, y, z) dxdydz \simeq \frac{1}{n} \sum_{i=1}^n f(x_i, y_i, z_i).
 \end{equation}\]</div>
 <p>In general one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b6adfaf8-b221-4fd6-9cf1-a1f1726f7979">
-<span class="eqno">(78)<a class="headerlink" href="#equation-b6adfaf8-b221-4fd6-9cf1-a1f1726f7979" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f83ad840-953c-4bc8-a0e6-decb478d9e24">
+<span class="eqno">(78)<a class="headerlink" href="#equation-f83ad840-953c-4bc8-a0e6-decb478d9e24" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_A f \simeq (\text{measure of}\ A) \times (\text{average of}\ f\ \text{over}\ n\ \text{random points on}\ A)
 \end{equation}\]</div>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <p>Compute the following integral</p>
-<div class="amsmath math notranslate nohighlight" id="equation-69f8687f-26db-4750-8fbf-4fb6fc9fea17">
-<span class="eqno">(79)<a class="headerlink" href="#equation-69f8687f-26db-4750-8fbf-4fb6fc9fea17" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-244849d8-3d07-41fe-b98e-cb061f1cd7a2">
+<span class="eqno">(79)<a class="headerlink" href="#equation-244849d8-3d07-41fe-b98e-cb061f1cd7a2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \iint_\limits{\Omega}\sin\sqrt{\ln(x+y+1)} dx dy, 
 \end{equation}\]</div>
 <p>where the integration region <span class="math notranslate nohighlight">\(\Omega\)</span> is the disk defined as <span class="math notranslate nohighlight">\((x-1/2)^2 + (y-1/2)^2 \le 1/4\)</span>.</p>
@@ -784,10 +775,13 @@ x = -\frac{\ln (1-z)}{\lambda}
 
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="c1"># YOUR CODE HERE</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="k">pass</span>
 <span class="c1"># Expected value around 0.57</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/e4c1e684d1cd5b3ddac7a37c3c2b5025ba754bb01dd7fee6eee1dbb748a2c4cf.png" src="../../_images/e4c1e684d1cd5b3ddac7a37c3c2b5025ba754bb01dd7fee6eee1dbb748a2c4cf.png" />
 </div>
 </div>
 </section>
@@ -808,8 +802,22 @@ The expected value is around 0.14</p>
 
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="c1"># YOUR CODE HERE</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="k">pass</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">VOLUME</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">8</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> 
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># YOUR CODE HERE</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">pass</span>
+<span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="n">VOLUME</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;VOLUME&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -817,8 +825,8 @@ The expected value is around 0.14</p>
 <p><mark>Exercises</mark></p>
 <ul>
 <li><p>[ ] (Ward) Compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0f236f54-d781-40bd-bbe7-148062c20d4b">
-<span class="eqno">(80)<a class="headerlink" href="#equation-0f236f54-d781-40bd-bbe7-148062c20d4b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0cef8590-9b1e-40ba-a512-5f8897eb71b6">
+<span class="eqno">(80)<a class="headerlink" href="#equation-0cef8590-9b1e-40ba-a512-5f8897eb71b6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^2\int_3^6\int_{-1}^1 (y x^2 + z\log y + e^x) dx dy dz
 \end{equation}\]</div>
 </li>
@@ -828,7 +836,7 @@ The expected value is around 0.14</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
-<span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="k">pass</span>
 </pre></div>
 </div>
 </div>
@@ -850,7 +858,7 @@ The expected value is around 0.14</p>
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">nsteps</span><span class="p">)</span>
     <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="k">pass</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     
 <span class="n">NSTEPS</span> <span class="o">=</span> <span class="mi">10000</span>

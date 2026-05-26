@@ -18,30 +18,18 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-solve_system(N=500, niter=10, iter_method=jacobiITER)
-#solve_system(N=500, niter=10, iter_method=jacobi)
+%%timeit 
+tmp = solve_system(N=50, niter=100, iter_method=gs_opt)
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mNotImplementedError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m solve_system(N=[32m500[39m, niter=[32m10[39m, iter_method=jacobiITER)
-[32m      2[39m [38;5;66;03m#solve_system(N=500, niter=10, iter_method=jacobi)[39;00m
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[18][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m get_ipython().run_cell_magic([33m'timeit'[39m, [33m''[39m, [33m'tmp = solve_system(N=50, niter=100, iter_method=gs_opt)\n'[39m)
 
-[36mCell[39m[36m [39m[32mIn[5][39m[32m, line 5[39m, in [36msolve_system[39m[34m(N, niter, iter_method)[39m
-[32m      2[39m [38;5;28;01mdef[39;00m solve_system(N, niter, iter_method):
-[32m      3[39m     X, Y = setup_problem(N)
-[32m      4[39m     V = np.zeros((N, N))
-[32m----> [39m[32m5[39m     bc(V, X, Y)
-[32m      6[39m     [38;5;66;03m# Example iteration[39;00m
-[32m      7[39m     [38;5;28;01mfor[39;00m step [38;5;28;01min[39;00m range(niter):
-[32m      8[39m         [38;5;66;03m#print(V)[39;00m
+[36mFile [39m[32m<magic-timeit>:1[39m, in [36minner[39m[34m(_it, _timer)[39m
+[32m----> [39m[32m1[39m [33m'Could not get source, probably due dynamically evaluated source code.'[39m
 
-[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 4[39m, in [36mbc[39m[34m(matrix, x, y)[39m
-[32m      2[39m [38;5;28;01mdef[39;00m bc(matrix, x, y):
-[32m      3[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m----> [39m[32m4[39m     [38;5;28;01mraise[39;00m NotImplementedError()
-
-[31mNotImplementedError[39m: 
+[31mNameError[39m: name 'gs_opt' is not defined
 

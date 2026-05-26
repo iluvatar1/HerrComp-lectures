@@ -37,8 +37,8 @@ nbclient.exceptions.CellTimeoutError: A cell timed out while it was being execut
 The message was: Cell execution timed out.
 Here is a preview of the cell contents:
 -------------------
-['# ── Run LBM and animate vorticity ────────────────────────────────────────────', 'N_WARMUP  = 4000   # steps before recording', 'N_FRAMES  = 80', 'STEPS_PER_FRAME = 15', '']
+['# Simulating 1D Diffusion using a probabilistic Cellular Automaton ', 'def simulate_diffusion(length=100, steps=200, particles=5000):', '    """Simulates 1D diffusion using thousands of random walkers on a discrete lattice."""', '    # Place all particles in the middle of the lattice', '    grid = np.zeros(length)']
 ...
-['', 'anim_lbm = animation.FuncAnimation(fig_lbm, update_lbm,', '                                    frames=N_FRAMES, interval=80, blit=True)', 'plt.close(fig_lbm)', 'HTML(anim_lbm.to_jshtml())']
+['', 'anim_diff = FuncAnimation(fig, animate_diff, frames=200, interval=40, blit=True)', 'plt.close()', '', 'HTML(anim_diff.to_jshtml())']
 -------------------
 

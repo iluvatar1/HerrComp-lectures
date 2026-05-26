@@ -567,7 +567,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2577/1874025384.py:13: RuntimeWarning: overflow encountered in cast
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2693/1874025384.py:13: RuntimeWarning: overflow encountered in cast
   odata[ii] = over
 </pre></div>
 </div>
@@ -623,7 +623,7 @@ $<span class="math notranslate nohighlight">\(e^{-x} = \sum_{i=0}^{\infty} (-1)^
     <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">fout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
     <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="k">pass</span>
     <span class="n">fout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
@@ -638,28 +638,6 @@ $<span class="math notranslate nohighlight">\(e^{-x} = \sum_{i=0}^{\infty} (-1)^
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">18</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span>         <span class="n">result</span> <span class="o">*=</span> <span class="n">ii</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">result</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> 
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="c1"># Call the function</span>
-<span class="ne">---&gt; </span><span class="mi">18</span> <span class="n">exp_expansion</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">1.8766</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">fname</span><span class="o">=</span><span class="s2">&quot;sumdata.txt&quot;</span><span class="p">)</span>
-
-<span class="nn">Cell In[3], line 7,</span> in <span class="ni">exp_expansion</span><span class="nt">(x, N, fname)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Add docs here&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">total</span> <span class="o">=</span> <span class="mf">0.0</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">fout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="c1"># YOUR CODE HERE</span>
-<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="n">fout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-
-<span class="ne">NotImplementedError</span>: 
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -670,6 +648,25 @@ $<span class="math notranslate nohighlight">\(e^{-x} = \sum_{i=0}^{\infty} (-1)^
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;sumdata.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2693/398410380.py:6: UserWarning: loadtxt: input contained no data: &quot;sumdata.txt&quot;
+  x, y = np.loadtxt(&#39;sumdata.txt&#39;, unpack = True)
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># Plot the data</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> 
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="s1">&#39;sumdata.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: not enough values to unpack (expected 2, got 0)
 </pre></div>
 </div>
 </div>
@@ -691,7 +688,7 @@ how could you write \)</span>a_{i+1}<span class="math notranslate nohighlight">\
     <span class="n">total2</span> <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">fout</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
     <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="k">pass</span>
     <span class="n">fout</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
 <span class="c1"># Call the NEW function  </span>

@@ -581,8 +581,8 @@ so we construct an effective stochastic description.</p>
 <li><p><span class="math notranslate nohighlight">\(-\gamma v\)</span>: <strong>Friction/Drag force</strong> (dissipation).</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sqrt{2 \gamma k_B T} \eta(t)\)</span>: <strong>Stochastic force</strong> (fluctuation), where <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise, which has the following properties:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-bd28d67c-7e5f-4a15-af99-488524d5c0ea">
-<span class="eqno">(52)<a class="headerlink" href="#equation-bd28d67c-7e5f-4a15-af99-488524d5c0ea" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0fa1598b-3fa5-4306-9a9e-ef7acb50bec8">
+<span class="eqno">(52)<a class="headerlink" href="#equation-0fa1598b-3fa5-4306-9a9e-ef7acb50bec8" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle \eta(t) \rangle &amp;= 0,\\
 \langle \eta(t) \eta(t') \rangle &amp;= \delta(t-t').
 \end{align}\]</div>
@@ -658,8 +658,8 @@ so we construct an effective stochastic description.</p>
 <section id="a-the-baseline-euler-maruyama">
 <h3>A. The Baseline: Euler-Maruyama<a class="headerlink" href="#a-the-baseline-euler-maruyama" title="Link to this heading">#</a></h3>
 <p>This is the stochastic version of the Forward Euler method:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-15a2ec8a-292c-45e4-9ff3-9236e64f3d5a">
-<span class="eqno">(53)<a class="headerlink" href="#equation-15a2ec8a-292c-45e4-9ff3-9236e64f3d5a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-45ba1623-634f-4139-bcdf-b82593f411d5">
+<span class="eqno">(53)<a class="headerlink" href="#equation-45ba1623-634f-4139-bcdf-b82593f411d5" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1} &amp;= v_n + \frac{F_n}{m}\Delta t - \frac{\gamma}{m} v_n \Delta t + \sqrt{\frac{2\gamma k_B T \Delta t}{m^2}} R_n,\\
 x_{n+1} &amp;= x_n + v_n \Delta t,
 \end{align}\]</div>
@@ -698,7 +698,7 @@ It defines a discrete-time engine where the friction and noise are analytically 
     
     <span class="c1"># Update</span>
     <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+    <span class="k">pass</span>
     
     <span class="k">return</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">v_new</span><span class="p">,</span> <span class="n">f_new</span>
 
@@ -744,7 +744,7 @@ It defines a discrete-time engine where the friction and noise are analytically 
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NotImplementedError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">50</span>
 <span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">traj_em</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">traj_gjf</span> <span class="o">=</span> <span class="p">[]</span>
@@ -755,16 +755,14 @@ It defines a discrete-time engine where the friction and noise are analytically 
 <span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="n">traj_em</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_em</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="n">traj_gjf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">)</span>
 
-<span class="nn">Cell In[1], line 13,</span> in <span class="ni">euler_maruyama_step</span><span class="nt">(x, v, f, dt, mass, gamma, kT)</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">random_force</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">kT</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="nn">Cell In[1], line 15,</span> in <span class="ni">euler_maruyama_step</span><span class="nt">(x, v, f, dt, mass, gamma, kT)</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="c1"># Update</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="c1"># YOUR CODE HERE</span>
-<span class="ne">---&gt; </span><span class="mi">13</span>     <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">pass</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> 
-<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">v_new</span><span class="p">,</span> <span class="n">f_new</span>
+<span class="ne">---&gt; </span><span class="mi">15</span>     <span class="k">return</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">v_new</span><span class="p">,</span> <span class="n">f_new</span>
 
-<span class="ne">NotImplementedError</span>: 
+<span class="ne">NameError</span>: name &#39;x_new&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -920,8 +918,8 @@ Do this for both integration schemes.</p></li>
 <section id="bbk-integrator-brungerbrookskarplus">
 <h3>BBK Integrator (Brünger–Brooks–Karplus)<a class="headerlink" href="#bbk-integrator-brungerbrookskarplus" title="Link to this heading">#</a></h3>
 <p>Implement and test the BBK integrator</p>
-<div class="amsmath math notranslate nohighlight" id="equation-62ea252b-6d90-48ca-bcd1-42b2f1fb508c">
-<span class="eqno">(54)<a class="headerlink" href="#equation-62ea252b-6d90-48ca-bcd1-42b2f1fb508c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-95ccac1d-3f49-496f-81ff-75d375650485">
+<span class="eqno">(54)<a class="headerlink" href="#equation-95ccac1d-3f49-496f-81ff-75d375650485" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1/2} &amp;= \frac{(1 - \gamma\Delta t / 2)v_n + \frac{\Delta t}{2m}F_n + R_n}{1 + \gamma\Delta t / 2},\\
 x_{n+1} &amp;= x_n + v_{n+1/2}\Delta t .
 \end{align}\]</div>

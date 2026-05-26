@@ -18,26 +18,25 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Solution to point 1
 import numpy as np
 import matplotlib.pyplot as plt
-fig, ax = plt.subplots()
-
 rng = np.random.default_rng(seed=21)
+
 N = 10000
 # YOUR CODE HERE
-raise NotImplementedError()
+pass
+print(VOLUME)
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mNotImplementedError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[6][39m[32m, line 9[39m
-[32m      5[39m 
-[32m      6[39m rng = np.random.default_rng(seed=[32m21[39m)
-[32m      7[39m N = [32m10000[39m
-[32m      8[39m [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m----> [39m[32m9[39m [38;5;28;01mraise[39;00m NotImplementedError()
+[31mNameError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[9][39m[32m, line 8[39m
+[32m      4[39m 
+[32m      5[39m N = [32m10000[39m
+[32m      6[39m [38;5;66;03m# YOUR CODE HERE[39;00m
+[32m      7[39m [38;5;28;01mpass[39;00m
+[32m----> [39m[32m8[39m print(VOLUME)
 
-[31mNotImplementedError[39m: 
+[31mNameError[39m: name 'VOLUME' is not defined
 
