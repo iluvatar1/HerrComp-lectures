@@ -36,6 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=03b9d5b1" />
   
@@ -51,6 +55,7 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -739,7 +744,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 <figure class="align-default" id="id1" style="width: 60%">
 <img alt="../../_images/SGD.png" src="../../_images/SGD.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text"><a class="reference external" href="https://introtodeeplearning.com/">https://introtodeeplearning.com/</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text"><a class="reference external" href="https://introtodeeplearning.com/">https://introtodeeplearning.com/</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -757,6 +762,13 @@ Please check: <a class="reference external" href="https://developers.google.com/
 <li><p><a class="reference external" href="https://visionbook.mit.edu/backpropagation.html">https://visionbook.mit.edu/backpropagation.html</a></p></li>
 <li><p><a class="reference external" href="https://www.youtube.com/watch?v=SmZmBKc7Lrs">https://www.youtube.com/watch?v=SmZmBKc7Lrs</a></p></li>
 </ul>
+<div class="exercise admonition" id="lectures/12-IntroNeuralNetworks/IntroNeuralNetworks-exercise-0">
+
+<p class="admonition-title"><span class="caption-number">Exercise 9 </span> (Relu and linear activation)</p>
+<section id="exercise-content">
+<p>Why is the derivative of the activation function (<span class="math notranslate nohighlight">\(g'\)</span>) important in the backpropagation equation above? What would happen if we used a linear activation function (where <span class="math notranslate nohighlight">\(g'(z)\)</span> is just a constant) in all hidden layers?</p>
+</section>
+</div>
 </section>
 </section>
 <section id="how-complex-is-the-loss-landscape">
@@ -764,7 +776,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 <figure class="align-default" id="id2" style="width: 70%">
 <img alt="../../_images/loss-01.png" src="../../_images/loss-01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Visualizing the loss landscape of Neural nets, 2017, hao Li et. al. <a class="reference external" href="https://arxiv.org/abs/1712.09913">https://arxiv.org/abs/1712.09913</a> , <a class="github reference external" href="https://github.com/tomgoldstein/loss-landscape">tomgoldstein/loss-landscape</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Visualizing the loss landscape of Neural nets, 2017, hao Li et. al. <a class="reference external" href="https://arxiv.org/abs/1712.09913">https://arxiv.org/abs/1712.09913</a> , <a class="github reference external" href="https://github.com/tomgoldstein/loss-landscape">tomgoldstein/loss-landscape</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="some-visualizations">
@@ -885,29 +897,29 @@ where \)</span>x = \sum x_i w_i$.</p>
 </ul>
 <p>But how to adjust the weights? There are several techniques based on the actual error <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
 <p>First, we will define a cost/loss function as the typical MSE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-32f535b4-4238-410a-942b-a4801c7cc2ad">
-<span class="eqno">(114)<a class="headerlink" href="#equation-32f535b4-4238-410a-942b-a4801c7cc2ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8c458b5e-0da8-469d-afd4-10e269a9288d">
+<span class="eqno">(116)<a class="headerlink" href="#equation-8c458b5e-0da8-469d-afd4-10e269a9288d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 COST = \frac{1}{2} (\hat y - y)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat y\)</span> is the predicted value and <span class="math notranslate nohighlight">\(y\)</span> is the expected one.  Notice that we are not adding up because we only have one output.</p>
 <p>Second, we will apply gradient descent approximation to our problem, in order to improve our coefficients for our data. This means that we will propagate back the errors into the coefficients!</p>
-<div class="amsmath math notranslate nohighlight" id="equation-363a273a-6b83-4378-b71a-0a430c91ae4c">
-<span class="eqno">(115)<a class="headerlink" href="#equation-363a273a-6b83-4378-b71a-0a430c91ae4c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0e9405e9-de60-4613-a315-c3c69d4b9fec">
+<span class="eqno">(117)<a class="headerlink" href="#equation-0e9405e9-de60-4613-a315-c3c69d4b9fec" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_i' = w_i - \alpha \frac{\partial COST}{\partial w_i},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate. Taking into account that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1500987a-a54d-41f8-a6fa-0ea7236c84b9">
-<span class="eqno">(116)<a class="headerlink" href="#equation-1500987a-a54d-41f8-a6fa-0ea7236c84b9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-957549a4-68a3-4df5-a8c6-cc1836dccab3">
+<span class="eqno">(118)<a class="headerlink" href="#equation-957549a4-68a3-4df5-a8c6-cc1836dccab3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat y = \phi(z) = \frac{1}{1 + \exp(-z)},
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e1cc3795-3fad-4840-9248-5fe41cdb0bc8">
-<span class="eqno">(117)<a class="headerlink" href="#equation-e1cc3795-3fad-4840-9248-5fe41cdb0bc8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-614f2372-1ec4-4dbe-a86d-de2921ea4b40">
+<span class="eqno">(119)<a class="headerlink" href="#equation-614f2372-1ec4-4dbe-a86d-de2921ea4b40" title="Permalink to this equation">#</a></span>\[\begin{equation}
 z = \sum w_i x_i,
 \end{equation}\]</div>
 <p>then, by using the chain rule, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e182c03-92a5-4805-ab43-10374bdcb765">
-<span class="eqno">(118)<a class="headerlink" href="#equation-3e182c03-92a5-4805-ab43-10374bdcb765" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-52f08572-ea77-4b47-8f33-53788f19fc4f">
+<span class="eqno">(120)<a class="headerlink" href="#equation-52f08572-ea77-4b47-8f33-53788f19fc4f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial COST}{\partial w_i} = \frac{\partial COST}{\partial \hat y} \frac{\partial \hat y}{\partial z} \frac{\partial z}{\partial w_i} = (\hat y - y)\phi (1-\phi)x_i. 
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -1194,6 +1206,13 @@ z = \sum w_i x_i,
 </div>
 </div>
 </details>
+</div>
+<div class="exercise admonition" id="lectures/12-IntroNeuralNetworks/IntroNeuralNetworks-exercise-1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 10 </span></p>
+<section id="exercise-content">
+<p>Play with hyperparameters</p>
+</section>
 </div>
 </section>
 <section id="tensorflow">

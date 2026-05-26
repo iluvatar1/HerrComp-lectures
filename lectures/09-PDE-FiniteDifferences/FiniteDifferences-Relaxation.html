@@ -36,6 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=03b9d5b1" />
   
@@ -51,6 +55,7 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -528,30 +533,30 @@
 </ul>
 <hr class="docutils" />
 <p>The following is an example of an elliptical differential equation, determined by the boundary conditions :</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6e61e942-fec0-44d2-ba5d-5747abae568d">
-<span class="eqno">(55)<a class="headerlink" href="#equation-6e61e942-fec0-44d2-ba5d-5747abae568d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ff21fe52-ec52-42e2-aaa9-d989fcf5d2ce">
+<span class="eqno">(57)<a class="headerlink" href="#equation-ff21fe52-ec52-42e2-aaa9-d989fcf5d2ce" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = \left[ \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2}\right] = -\frac{\rho}{\epsilon_0}
 \end{equation}\]</div>
 <p>In 2D, there are several solutions and the actual one depends on the boundary conditions. For example, for the Laplace equation you have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9803cdf5-a262-4bf7-9968-e2f7f9e69a21">
-<span class="eqno">(56)<a class="headerlink" href="#equation-9803cdf5-a262-4bf7-9968-e2f7f9e69a21" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9525a822-b3d4-48e1-80e6-9ddf8cc67945">
+<span class="eqno">(58)<a class="headerlink" href="#equation-9525a822-b3d4-48e1-80e6-9ddf8cc67945" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, y) &amp; = V_0,\\
 V(x, y) &amp; = \frac{1}{2} A (x^2 - y^2) + Bx + Cy + D
 \end{align}\]</div>
 <p>as solutions.</p>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> method discretizes the derivatives on a grid. For instance, using the central difference it is possible to rewrite the 2D Poisson equation as (<a class="reference external" href="https://en.wikipedia.org/wiki/Laplace%27s_equation">Laplace equation</a> corresponds to <span class="math notranslate nohighlight">\(\rho = 0\)</span> )</p>
-<div class="amsmath math notranslate nohighlight" id="equation-32e031ba-f3b7-47f4-8acf-6399764f2cc6">
-<span class="eqno">(57)<a class="headerlink" href="#equation-32e031ba-f3b7-47f4-8acf-6399764f2cc6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-05b0b876-2957-4a83-8478-bb5b3ee25004">
+<span class="eqno">(59)<a class="headerlink" href="#equation-05b0b876-2957-4a83-8478-bb5b3ee25004" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V(x_i + \Delta x, y_j) - 2V(x_i, y_j) + V(x_i - \Delta x, y_j)}{\Delta x^2} +\frac{V(x_i, y_j + \Delta y) - 2V(x_i, y_j) + V(x_i, y_j - \Delta y)}{\Delta y^2} = -\frac{\rho(x_i, y_j)}{\epsilon_0}.
 \end{equation}\]</div>
 <p>which can be rewritten as  (let’s assume <span class="math notranslate nohighlight">\(\Delta x = \Delta y = \Delta\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c8a8613a-fff8-460f-93ab-211749c3b422">
-<span class="eqno">(58)<a class="headerlink" href="#equation-c8a8613a-fff8-460f-93ab-211749c3b422" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7c6fe11f-65f5-4ee5-9177-907af7e2ffba">
+<span class="eqno">(60)<a class="headerlink" href="#equation-7c6fe11f-65f5-4ee5-9177-907af7e2ffba" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V_{i+1, j} - 2V_{i, j} + V_{i-1, j}}{\Delta^2} + \frac{V_{i,j+1} - 2V_{i, j} + V_{i, j-1}}{\Delta^2} = -\frac{\rho_{i, j}}{\epsilon_0},
 \end{equation}\]</div>
 <p>and, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7aa47385-1982-40a4-a80b-9279420f843f">
-<span class="eqno">(59)<a class="headerlink" href="#equation-7aa47385-1982-40a4-a80b-9279420f843f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c4d5c1bb-a7d1-4503-a644-0fb9efe8ce7a">
+<span class="eqno">(61)<a class="headerlink" href="#equation-c4d5c1bb-a7d1-4503-a644-0fb9efe8ce7a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j}\Delta^2}{\epsilon_0}.
 \end{equation}\]</div>
 <p>This can be seen in two ways: as a matrix equation or as an equation showing that the value at a given position, <span class="math notranslate nohighlight">\(V_{i, j}\)</span>, is kind of an average of the surrounding neighbors and the source term (<a class="reference external" href="https://en.wikipedia.org/wiki/Jacobi_method">Jacobi method</a>), as seen (ref: <a class="reference external" href="https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation">https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation</a>)</p>
@@ -562,16 +567,16 @@ V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j
 <section id="relaxation-solution">
 <h2>Relaxation solution<a class="headerlink" href="#relaxation-solution" title="Link to this heading">#</a></h2>
 <p>Let’s solve the Laplace problem (<span class="math notranslate nohighlight">\(\rho = 0\)</span>) using both methods with a simple example. Fix the boundaries as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3166813e-04b0-4e20-939f-5d513cadd546">
-<span class="eqno">(60)<a class="headerlink" href="#equation-3166813e-04b0-4e20-939f-5d513cadd546" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c35c62f3-d2a7-4d4d-ad76-32964399bdbf">
+<span class="eqno">(62)<a class="headerlink" href="#equation-c35c62f3-d2a7-4d4d-ad76-32964399bdbf" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, 0) &amp;= \sin(\pi x),\\
 V(x, a) &amp;= 0, \\
 V(0, y) &amp;= 0, \\
 V(a, y) &amp;= 0, \\
 \end{align}\]</div>
 <p>with <span class="math notranslate nohighlight">\(x, y \in [0, 1]\)</span>, and <span class="math notranslate nohighlight">\(a \)</span> any value on the border. These are called <a class="reference external" href="https://en.wikipedia.org/wiki/Dirichlet_boundary_condition">Dirichlet boundary conditions</a> (where you specify the function values at the boundary). Finally, use at least <span class="math notranslate nohighlight">\(N_x = N_y = 25\)</span>, so <span class="math notranslate nohighlight">\(\Delta = 1/25\)</span>, <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta, y_j = y_0 + j\Delta\)</span>. We need to solve the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0e34b290-5bee-4a38-9fed-2d698eb79525">
-<span class="eqno">(61)<a class="headerlink" href="#equation-0e34b290-5bee-4a38-9fed-2d698eb79525" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-745397b4-61bc-4b65-afe3-e1da0780114f">
+<span class="eqno">(63)<a class="headerlink" href="#equation-745397b4-61bc-4b65-afe3-e1da0780114f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 \end{equation}\]</div>
 <p>To do so, we apply this relationship to each point in the grid, without overwriting the boundary conditions, and we do that until the values are not changing much. Firs, let’s define the problem conditions (to be changed later)</p>
@@ -653,13 +658,13 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time iterating: 4.76837158203125e-07
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time iterating: 7.152557373046875e-07
 Total time iterating: 4.76837158203125e-07
 Total time iterating: 2.384185791015625e-07
 Total time iterating: 2.384185791015625e-07
 Total time iterating: 2.384185791015625e-07
 Total time iterating: 2.384185791015625e-07
-Total time iterating: 2.384185791015625e-07
+Total time iterating: 0.0
 Total time iterating: 4.76837158203125e-07
 Total time iterating: 2.384185791015625e-07
 Total time iterating: 0.0
@@ -748,7 +753,7 @@ Total time iterating: 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x7f0122e9b560&gt; (for post_execute), with arguments args (),kwargs {}:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x7f32e31bf560&gt; (for post_execute), with arguments args (),kwargs {}:
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -1012,10 +1017,10 @@ Total time iterating: 0.0
 500
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f011e09d510&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f32de489410&gt;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x7f0122e9b560&gt; (for post_execute), with arguments args (),kwargs {}:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x7f32e31bf560&gt; (for post_execute), with arguments args (),kwargs {}:
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -1297,10 +1302,10 @@ Total time iterating: 0.0
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>500
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f011df997d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f32e03bd690&gt;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x7f0122e9b560&gt; (for post_execute), with arguments args (),kwargs {}:
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Error in callback &lt;function _draw_all_if_interactive at 0x7f32e31bf560&gt; (for post_execute), with arguments args (),kwargs {}:
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -1552,7 +1557,7 @@ Total time iterating: 0.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>114 μs ± 735 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>117 μs ± 631 ns per loop (mean ± std. dev. of 7 runs, 10,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -1678,8 +1683,8 @@ Total time iterating: 0.0
 <section id="exercise-plot-the-electrical-field">
 <h2>Exercise: Plot the electrical field<a class="headerlink" href="#exercise-plot-the-electrical-field" title="Link to this heading">#</a></h2>
 <p>For any of the previous examples, use (for example) a quiver plot to plot the electric field, defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2fabeca6-929c-45c5-a499-92e89d53e39c">
-<span class="eqno">(62)<a class="headerlink" href="#equation-2fabeca6-929c-45c5-a499-92e89d53e39c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-42f1dc9c-7e35-4c9e-816b-4e6c3efa358a">
+<span class="eqno">(64)<a class="headerlink" href="#equation-42f1dc9c-7e35-4c9e-816b-4e6c3efa358a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec E = -\vec\nabla V
 \end{equation}\]</div>
 <p>See <a class="reference external" href="https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb">https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb</a></p>

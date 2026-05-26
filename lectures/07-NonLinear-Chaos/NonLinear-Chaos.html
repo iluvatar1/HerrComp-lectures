@@ -36,6 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=03b9d5b1" />
   
@@ -51,6 +55,7 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -498,18 +503,16 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Non-linear dynamics and chaos</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ths-stability-of-the-solar-system">Ths stability of the solar system</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-vs-nonlinear-dynamics">Linear vs Nonlinear Dynamics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-space-and-dynamical-systems">Phase Space and Dynamical Systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poincare-map">Poincaré Map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-equations">Finite-difference equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-logistic-map-finite-difference-equations">The logistic map: Finite-difference equations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-logistic-map">The logistic map</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cobweb-plots">Cobweb plots</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-stability-and-fixed-points">Local stability and fixed points</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-period-2-cycles">Analytical Period-2 Cycles</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -527,7 +530,7 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chaos-in-a-more-complex-system-the-non-linear-driven-pendulum">Chaos in a more complex system:the non-linear driven pendulum</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chaos-in-a-more-complex-system-the-non-linear-driven-pendulum">Chaos in a more complex system: the non-linear driven pendulum</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-to-initial-conditions">Sensitivity to initial conditions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-portrait">Phase portrait</a></li>
 </ul>
@@ -559,6 +562,20 @@
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/1/13/A_Trajectory_Through_Phase_Space_in_a_Lorenz_Attractor.gif"><img alt="https://upload.wikimedia.org/wikipedia/commons/1/13/A_Trajectory_Through_Phase_Space_in_a_Lorenz_Attractor.gif" src="https://upload.wikimedia.org/wikipedia/commons/1/13/A_Trajectory_Through_Phase_Space_in_a_Lorenz_Attractor.gif" style="width: 30%;" />
 </a>
 </figure>
+<section id="ths-stability-of-the-solar-system">
+<h2>Ths stability of the solar system<a class="headerlink" href="#ths-stability-of-the-solar-system" title="Link to this heading">#</a></h2>
+<p><strong>The King’s Prize and the Unstable Universe</strong></p>
+<p>For a long time after Isaac Newton, scientists thought the universe was like a giant, predictable clock. They believed that if you knew where the planets were today, you could use math to predict their positions forever. But there was a big, scary question: Is our solar system actually safe, or will a planet one day fly out into deep space? In 1887, King Oscar II of Sweden offered a big prize to anyone who could prove the solar system is stable. This was called the <span class="math notranslate nohighlight">\(n\)</span>-body problem—predicting how many planets move when pulling on each other with gravity.</p>
+<p><strong>Henri Poincaré’s Big Mistake</strong></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/f/f4/PSM_V82_D416_Henri_Poincare.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/f/f4/PSM_V82_D416_Henri_Poincare.png" src="https://upload.wikimedia.org/wikipedia/commons/f/f4/PSM_V82_D416_Henri_Poincare.png" style="width: 20%;" />
+</a>
+</figure>
+<p>A smart French mathematician named Henri Poincaré tried to solve it. To make it easier, he looked at just three objects (like the Sun, Earth, and Moon). This is the famous Three-Body Problem. At first, Poincaré thought he solved it and won the King’s prize. But before the paper was printed, someone found a mistake in his math. When Poincaré tried to fix it, he found something shocking. He realized that even with just three objects, the math became super complicated. The paths of the planets looked like a crazy, messy web. Poincaré discovered deterministic chaos. He realized that even if you know the rules of gravity, a tiny, invisible change in the beginning can completely change the final result.</p>
+<p><strong>The Start of Chaos Theory: Henri Poincaré’s (one of many) Big Contribution</strong></p>
+<p>Poincaré’s discovery changed science forever. He understood that we cannot always predict the exact future with perfect formulas. Instead, he started a new field called Dynamical Systems. He stopped asking, “Where exactly will the Earth be in a billion years?” and started asking bigger questions, like, “What are the general shapes of these orbits over time?” Decades later, computers helped scientists fully understand “Chaos Theory” and the famous “Butterfly Effect.” But it all started because Poincaré looked at the stars and realized nature is beautifully unpredictable.</p>
+<p>You can read more about the solar system stability, which might be of interest, at <a class="reference external" href="https://physics.aps.org/articles/v16/57">https://physics.aps.org/articles/v16/57</a></p>
+</section>
 <section id="linear-vs-nonlinear-dynamics">
 <h2>Linear vs Nonlinear Dynamics<a class="headerlink" href="#linear-vs-nonlinear-dynamics" title="Link to this heading">#</a></h2>
 <p>In most introductory physics courses, we study <strong>linear systems</strong> because they are mathematically tractable and often provide excellent approximations for small perturbations.</p>
@@ -570,7 +587,7 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-center"><p><span class="math notranslate nohighlight">\(F(a x_1 + b x_2) = aF(x_1) + bF(x_2)\)</span></p></td>
+<tr class="row-even"><td class="text-center"><p>Superposition works: <span class="math notranslate nohighlight">\(F(a x_1 + b x_2) = aF(x_1) + bF(x_2)\)</span></p></td>
 <td class="text-center"><p>Superposition does not work, contains terms like <span class="math notranslate nohighlight">\(x^2, y^2, xy\)</span></p></td>
 </tr>
 <tr class="row-odd"><td class="text-center"><p>amplitudes scale proportionally</p></td>
@@ -602,7 +619,7 @@
 </ul>
 <p>Stability determines whether nearby trajectories move toward or away from the fixed point.</p>
 <figure class="align-center" id="id1">
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/0/00/Fixed_Points.gif?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled"><img alt="https://upload.wikimedia.org/wikipedia/commons/0/00/Fixed_Points.gif?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled" src="https://upload.wikimedia.org/wikipedia/commons/0/00/Fixed_Points.gif?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled" style="width: 30%;" />
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/0/00/Fixed_Points.gif?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled"><img alt="https://upload.wikimedia.org/wikipedia/commons/0/00/Fixed_Points.gif?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled" src="https://upload.wikimedia.org/wikipedia/commons/0/00/Fixed_Points.gif?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail_unscaled" style="width: 40%;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">From: <a class="reference external" href="https://en.wikipedia.org/wiki/Stability_theory">https://en.wikipedia.org/wiki/Stability_theory</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
@@ -720,13 +737,13 @@
 <img alt="../../_images/ae033dc64e3cd43e14cad953f7f43e51bcc9d02242e48eba7e652b37520ec4ea.png" src="../../_images/ae033dc64e3cd43e14cad953f7f43e51bcc9d02242e48eba7e652b37520ec4ea.png" />
 </div>
 </div>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
 <p class="collapsed admonition-title">Show code cell source</p>
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
 <span class="n">img_path</span> <span class="o">=</span> <span class="s2">&quot;fig/phase.png&quot;</span>
@@ -736,9 +753,26 @@
 </div>
 </div>
 </details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
 <div class="cell_output docutils container">
 <img alt="../../_images/bf35bc39506b3e6c7e720232ad7c5d92a283d8ae259c9779fb4707a750a620b4.png" src="../../_images/bf35bc39506b3e6c7e720232ad7c5d92a283d8ae259c9779fb4707a750a620b4.png" />
 </div>
+</details>
+</div>
+<div class="exercise admonition" id="lectures/07-NonLinear-Chaos/NonLinear-Chaos-exercise-0">
+
+<p class="admonition-title"><span class="caption-number">Exercise 1 </span> (Phase map for the non-linear pendulum)</p>
+<section id="exercise-content">
+<p>Compute the phase map for the non-linear pendulum and for many initial conditions. What happens at low amplitudes?</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9cd70c65-ea13-4693-8bb9-207723a711a0">
+<span class="eqno">(46)<a class="headerlink" href="#equation-9cd70c65-ea13-4693-8bb9-207723a711a0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{d^2\theta}{dt^2} + \omega^2 \sin\theta = 0.
+\end{equation}\]</div>
+</section>
 </div>
 </section>
 <section id="poincare-map">
@@ -829,59 +863,16 @@
 </div>
 </details>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">21</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> 
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="k">def</span><span class="w"> </span><span class="nf">harmonic_driven</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="k">return</span> <span class="p">[</span><span class="n">z</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">omega_harm</span><span class="o">*</span><span class="n">omega_harm</span><span class="o">*</span><span class="n">z</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> 
-<span class="ne">---&gt; </span><span class="mi">21</span> <span class="n">sol_harm</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span>     <span class="n">harmonic_driven</span><span class="p">,</span> <span class="n">tspan_harm</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">times_harm</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">method</span><span class="o">=</span><span class="s2">&quot;DOP853&quot;</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-12</span>  <span class="c1"># Ultra-tight tolerances eliminate the donut</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/ivp.py:657,</span> in <span class="ni">solve_ivp</span><span class="nt">(fun, t_span, y0, method, t_eval, dense_output, events, vectorized, args, **options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">655</span> <span class="n">status</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">656</span> <span class="k">while</span> <span class="n">status</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">657</span>     <span class="n">message</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">659</span>     <span class="k">if</span> <span class="n">solver</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s1">&#39;finished&#39;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span>         <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/base.py:201,</span> in <span class="ni">OdeSolver.step</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
-<span class="ne">--&gt; </span><span class="mi">201</span>     <span class="n">success</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step_impl</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span>         <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">&#39;failed&#39;</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/rk.py:144,</span> in <span class="ni">RungeKutta._step_impl</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="n">h</span> <span class="o">=</span> <span class="n">t_new</span> <span class="o">-</span> <span class="n">t</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="n">h_abs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">144</span> <span class="n">y_new</span><span class="p">,</span> <span class="n">f_new</span> <span class="o">=</span> <span class="n">rk_step</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fun</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>                        <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">atol</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_new</span><span class="p">))</span> <span class="o">*</span> <span class="n">rtol</span>
-<span class="g g-Whitespace">    </span><span class="mi">147</span> <span class="n">error_norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estimate_error_norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/rk.py:64,</span> in <span class="ni">rk_step</span><span class="nt">(fun, t, y, f, h, A, B, C, K)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>     <span class="n">dy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">[:</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">a</span><span class="p">[:</span><span class="n">s</span><span class="p">])</span> <span class="o">*</span> <span class="n">h</span>
-<span class="ne">---&gt; </span><span class="mi">64</span>     <span class="n">K</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span> <span class="n">y_new</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="n">f_new</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y_new</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
+<img alt="../../_images/a46b2c8697fc5f243ac9ebdacac2a4795e2fd48d4d8e319ee61b79aeabf6972a.png" src="../../_images/a46b2c8697fc5f243ac9ebdacac2a4795e2fd48d4d8e319ee61b79aeabf6972a.png" />
 </div>
 </div>
-</div>
-<div class="cell tag_hide-input docutils container">
+<div class="cell tag_hide-input tag_hide-output docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
 <p class="collapsed admonition-title">Show code cell source</p>
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
-<div class="cell_input docutils container">
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
 <span class="n">img_path</span> <span class="o">=</span> <span class="s2">&quot;fig/poincare1.png&quot;</span>
@@ -891,14 +882,37 @@
 </div>
 </div>
 </details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/d3f7665c0b1fc82ebf70f9743c193aab495c5f8b4bbc3d34f5854d84ece2ca95.png" src="../../_images/d3f7665c0b1fc82ebf70f9743c193aab495c5f8b4bbc3d34f5854d84ece2ca95.png" />
+</div>
+</details>
+</div>
+<div class="exercise admonition" id="lectures/07-NonLinear-Chaos/NonLinear-Chaos-exercise-1">
+
+<p class="admonition-title"><span class="caption-number">Exercise 2 </span> (Duffing attractor properties)</p>
+<section id="exercise-content">
+<p>Look for the Duffin atractor properties. Is it “strange”? what does that mean?</p>
+</section>
+</div>
+<div class="exercise admonition" id="lectures/07-NonLinear-Chaos/NonLinear-Chaos-exercise-2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 3 </span> (Poincaré map for the non linear pendulum)</p>
+<section id="exercise-content">
+<p>Plot the poincaré map for the non-linear pendulum. What effect does the sampling frequency has?</p>
+</section>
 </div>
 </section>
-<section id="finite-difference-equations">
-<h2>Finite-difference equations<a class="headerlink" href="#finite-difference-equations" title="Link to this heading">#</a></h2>
+<section id="the-logistic-map-finite-difference-equations">
+<h2>The logistic map: Finite-difference equations<a class="headerlink" href="#the-logistic-map-finite-difference-equations" title="Link to this heading">#</a></h2>
 <p>(<em>Based on Understanding Non-linear Dynamics, Kaplan; and Nonlinear Dynamics and Chaos, Strogatz</em>)</p>
 <p>A finite difference equations allows to obtain the new value for a given variable, from the current value, as a function of discrete time steps. This functional relationship can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6c45c5d5-19d4-4748-8381-d07a8a22adca">
-<span class="eqno">(46)<a class="headerlink" href="#equation-6c45c5d5-19d4-4748-8381-d07a8a22adca" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bbb50fb6-0e4a-4e6f-a8a8-2d30e1199f65">
+<span class="eqno">(47)<a class="headerlink" href="#equation-bbb50fb6-0e4a-4e6f-a8a8-2d30e1199f65" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{t+1} = f(x_t)
 \end{equation}\]</div>
 <p>where the function <span class="math notranslate nohighlight">\(f\)</span> characterizes the mapping. Sometimes, <span class="math notranslate nohighlight">\(x_{t+1}\)</span> is denoted as <span class="math notranslate nohighlight">\(x'\)</span>.</p>
@@ -913,8 +927,8 @@ x_{t+1} = f(x_t)
 <section id="the-logistic-map">
 <h3>The logistic map<a class="headerlink" href="#the-logistic-map" title="Link to this heading">#</a></h3>
 <p>The logistic map has been used to model several kind of systems and its origins are related to the study of the pulation dynamics. Imagine that <span class="math notranslate nohighlight">\(x_{t}\)</span> denotes the population of certain system at time <span class="math notranslate nohighlight">\(t\)</span>. One expects that if the population is small, then it will grows proportionally to the current population, <span class="math notranslate nohighlight">\(x_{t+1} \propto x_{t}\)</span>. But, if the population is too large, then competion for resources will decrease the population, <span class="math notranslate nohighlight">\(x_{t+1} \propto 1 - x_{t}\)</span>. Therefore, one can model the population as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7f20dd5d-2dec-4a45-98d6-fc28b2f14191">
-<span class="eqno">(47)<a class="headerlink" href="#equation-7f20dd5d-2dec-4a45-98d6-fc28b2f14191" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-977c739e-fbcf-47a1-9196-de39d168c9b6">
+<span class="eqno">(48)<a class="headerlink" href="#equation-977c739e-fbcf-47a1-9196-de39d168c9b6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{t+1} = R x_{t}(1-x_{t}).
 \end{equation}\]</div>
 <p>This is the logistic maps, and its simplicity hides a very rich behaviour. A typical figure (for a normalized) is as follows</p>
@@ -954,6 +968,12 @@ x_{t+1} = R x_{t}(1-x_{t}).
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7effe48d5ed0&gt;
+</pre></div>
+</div>
+<img alt="../../_images/69f187718e73278634272dd7250a25a458226ce1464a320dda2c398868d16176.png" src="../../_images/69f187718e73278634272dd7250a25a458226ce1464a320dda2c398868d16176.png" />
+</div>
 </div>
 <p>As you can see, the actual behaviour of the solutions is very different from the linear map, and there are some ranges for <span class="math notranslate nohighlight">\(R\)</span> where the solutions is steady, decaying, periodic, and non-periodic.</p>
 <p>Actually, it is uncommon to focus on the <span class="math notranslate nohighlight">\(x_{t}\ vs.\ t\)</span> plot, since it can hide a lot of information. For example, how can you now that actually you are looking at some steady state? or you need to perform more iterations? In these cases is customary to rely on <strong>return maps</strong> or <strong>phase portraits</strong>, that is, plots of <span class="math notranslate nohighlight">\(x_{t+1} \ vs. \ x_{t}\)</span>. In this case is easy to check if the system is reaching a single point, like  <span class="math notranslate nohighlight">\(x = 0\)</span>, or a periodic orbit, or something much strange (like a fractal). Let’s plot the return map for the previous values of <span class="math notranslate nohighlight">\(R\)</span>.</p>
@@ -961,59 +981,11 @@ x_{t+1} = R x_{t}(1-x_{t}).
 </section>
 <section id="cobweb-plots">
 <h3>Cobweb plots<a class="headerlink" href="#cobweb-plots" title="Link to this heading">#</a></h3>
-<p>They plot the curve <span class="math notranslate nohighlight">\(y = f(x)\)</span> alongside the line <span class="math notranslate nohighlight">\(y = x\)</span>. By drawing lines vertically to the curve and horizontally to the diagonal, you can visually “see” the iteration process and understand why fixed points become unstable when the slope of the curve is steeper than 1.</p>
-<div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
-<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">logistic_map</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">r</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">plot_cobweb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="c1"># 1. Setup the plot</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-    
-    <span class="c1"># 2. Plot the logistic map curve and y=x line</span>
-    <span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">logistic_map</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x_range</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;$f(x) = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">x(1-x)$&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$y = x$&#39;</span><span class="p">)</span>
-    
-    <span class="c1"># 3. Compute and plot the cobweb trajectory</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">logistic_map</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        <span class="c1"># Line from (x, x) to (x, y) - Vertical step to the curve</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-        <span class="c1"># Line from (x, y) to (y, y) - Horizontal step to the y=x line</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-        
-    <span class="c1"># 4. Aesthetics</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="c1">#ax.set_title(0, 1)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cobweb Plot for Logistic Map ($r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">$, $x_0 = </span><span class="si">{</span><span class="n">x0</span><span class="si">}</span><span class="s1">$)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x_n$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$x_{n+1}$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-    
-    <span class="c1">#plt.show()</span>
-
-<span class="c1"># Run the script with chaotic parameters</span>
-<span class="n">plot_cobweb</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mf">3.8</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
+<p>They plot the curve <span class="math notranslate nohighlight">\(y = f(x)\)</span> alongside the line <span class="math notranslate nohighlight">\(y = x\)</span>. By drawing lines vertically to the curve and horizontally to the diagonal, you can visually “see” the iteration process and understand why fixed points become unstable when the slope of the curve is steeper than 1. See: <a class="reference external" href="https://en.wikipedia.org/wiki/Cobweb_plot">https://en.wikipedia.org/wiki/Cobweb_plot</a></p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/e/ed/LogisticCobwebChaos.gif"><img alt="https://upload.wikimedia.org/wikipedia/commons/e/ed/LogisticCobwebChaos.gif" src="https://upload.wikimedia.org/wikipedia/commons/e/ed/LogisticCobwebChaos.gif" style="width: 60%;" />
+</a>
+</figure>
 <div class="cell tag_hide-input docutils container">
 <details class="admonition hide above-input">
 <summary aria-label="Toggle hidden content">
@@ -1022,81 +994,504 @@ x_{t+1} = R x_{t}(1-x_{t}).
 </summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ipywidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">interact</span><span class="p">,</span> <span class="n">FloatSlider</span><span class="p">,</span> <span class="n">IntSlider</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.io</span><span class="w"> </span><span class="kn">import</span> <span class="n">output_notebook</span><span class="p">,</span> <span class="n">show</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.layouts</span><span class="w"> </span><span class="kn">import</span> <span class="n">column</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Slider</span><span class="p">,</span> <span class="n">ColumnDataSource</span><span class="p">,</span> <span class="n">CustomJS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bokeh.plotting</span><span class="w"> </span><span class="kn">import</span> <span class="n">figure</span>
+
+<span class="n">output_notebook</span><span class="p">()</span>
+
+<span class="n">NSTEPS</span><span class="o">=</span><span class="mi">50</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">logistic_map</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">r</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
 
-<span class="c1"># This function updates dynamically based on the widget inputs</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">interactive_cobweb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="n">steps</span><span class="p">):</span>
-    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
-    
-    <span class="c1"># Curve and diagonal</span>
-    <span class="n">x_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_range</span><span class="p">,</span> <span class="n">logistic_map</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x_range</span><span class="p">),</span> <span class="s1">&#39;crimson&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-    
-    <span class="c1"># Trace the cobweb</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">cobweb</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x0</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">steps</span><span class="o">=</span><span class="n">NSTEPS</span><span class="p">):</span>
+    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
     <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
         <span class="n">y</span> <span class="o">=</span> <span class="n">logistic_map</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="s1">&#39;teal&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="p">[</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">],</span> <span class="s1">&#39;teal&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
-        
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;$x_n$&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$x_{n+1}$&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Interactive Logistic Map (r = </span><span class="si">{</span><span class="n">r</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
-<span class="c1"># Define smooth sliders for the web interface</span>
-<span class="n">interact</span><span class="p">(</span>
-    <span class="n">interactive_cobweb</span><span class="p">,</span>
-    <span class="n">r</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">4.0</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;r:&#39;</span><span class="p">),</span>
-    <span class="n">x0</span><span class="o">=</span><span class="n">FloatSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;x₀:&#39;</span><span class="p">),</span>
-    <span class="n">steps</span><span class="o">=</span><span class="n">IntSlider</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="s1">&#39;Steps:&#39;</span><span class="p">)</span>
-<span class="p">);</span>
+        <span class="n">xs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+        <span class="n">ys</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">])</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="n">y</span>
+
+    <span class="k">return</span> <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+
+<span class="n">source_curve</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">logistic_map</span><span class="p">(</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+
+<span class="n">cx</span><span class="p">,</span> <span class="n">cy</span> <span class="o">=</span> <span class="n">cobweb</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
+<span class="n">source_cobweb</span> <span class="o">=</span> <span class="n">ColumnDataSource</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">cx</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">cy</span><span class="p">))</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="n">figure</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">line_dash</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source_curve</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">p</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">source</span><span class="o">=</span><span class="n">source_cobweb</span><span class="p">)</span>
+
+<span class="n">slider</span> <span class="o">=</span> <span class="n">Slider</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mf">3.5</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">)</span>
+
+<span class="n">callback</span> <span class="o">=</span> <span class="n">CustomJS</span><span class="p">(</span>
+    <span class="n">args</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">curve</span><span class="o">=</span><span class="n">source_curve</span><span class="p">,</span> <span class="n">cob</span><span class="o">=</span><span class="n">source_cobweb</span><span class="p">),</span>
+    <span class="n">code</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    const r = cb_obj.value;</span>
+
+<span class="s2">    const x = [];</span>
+<span class="s2">    const y = [];</span>
+
+<span class="s2">    for (let i=0; i&lt;500; i++) {</span>
+<span class="s2">        const xx = i/499;</span>
+<span class="s2">        x.push(xx);</span>
+<span class="s2">        y.push(r * xx * (1 - xx));</span>
+<span class="s2">    }</span>
+
+<span class="s2">    curve.data = {x:x, y:y};</span>
+
+<span class="s2">    let cx = [];</span>
+<span class="s2">    let cy = [];</span>
+
+<span class="s2">    let xn = 0.2;</span>
+
+<span class="s2">    for (let i=0; i&lt;50; i++) {</span>
+<span class="s2">        let yn = r * xn * (1 - xn);</span>
+
+<span class="s2">        cx.push(xn); cy.push(xn);</span>
+<span class="s2">        cx.push(xn); cy.push(yn);</span>
+
+<span class="s2">        cx.push(xn); cy.push(yn);</span>
+<span class="s2">        cx.push(yn); cy.push(yn);</span>
+
+<span class="s2">        xn = yn;</span>
+<span class="s2">    }</span>
+
+<span class="s2">    cob.data = {x:cx, y:cy};</span>
+
+<span class="s2">    curve.change.emit();</span>
+<span class="s2">    cob.change.emit();</span>
+<span class="s2">&quot;&quot;&quot;</span>
+<span class="p">)</span>
+
+<span class="n">slider</span><span class="o">.</span><span class="n">js_on_change</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">,</span> <span class="n">callback</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">(</span><span class="n">column</span><span class="p">(</span><span class="n">slider</span><span class="p">,</span> <span class="n">p</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<div class="output text_html">    <style>
+        .bk-notebook-logo {
+            display: block;
+            width: 20px;
+            height: 20px;
+            background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAOkSURBVDiNjZRtaJVlGMd/1/08zzln5zjP1LWcU9N0NkN8m2CYjpgQYQXqSs0I84OLIC0hkEKoPtiH3gmKoiJDU7QpLgoLjLIQCpEsNJ1vqUOdO7ppbuec5+V+rj4ctwzd8IIbbi6u+8f1539dt3A78eXC7QizUF7gyV1fD1Yqg4JWz84yffhm0qkFqBogB9rM8tZdtwVsPUhWhGcFJngGeWrPzHm5oaMmkfEg1usvLFyc8jLRqDOMru7AyC8saQr7GG7f5fvDeH7Ej8CM66nIF+8yngt6HWaKh7k49Soy9nXurCi1o3qUbS3zWfrYeQDTB/Qj6kX6Ybhw4B+bOYoLKCC9H3Nu/leUTZ1JdRWkkn2ldcCamzrcf47KKXdAJllSlxAOkRgyHsGC/zRday5Qld9DyoM4/q/rUoy/CXh3jzOu3bHUVZeU+DEn8FInkPBFlu3+nW3Nw0mk6vCDiWg8CeJaxEwuHS3+z5RgY+YBR6V1Z1nxSOfoaPa4LASWxxdNp+VWTk7+4vzaou8v8PN+xo+KY2xsw6une2frhw05CTYOmQvsEhjhWjn0bmXPjpE1+kplmmkP3suftwTubK9Vq22qKmrBhpY4jvd5afdRA3wGjFAgcnTK2s4hY0/GPNIb0nErGMCRxWOOX64Z8RAC4oCXdklmEvcL8o0BfkNK4lUg9HTl+oPlQxdNo3Mg4Nv175e/1LDGzZen30MEjRUtmXSfiTVu1kK8W4txyV6BMKlbgk3lMwYCiusNy9fVfvvwMxv8Ynl6vxoByANLTWplvuj/nF9m2+PDtt1eiHPBr1oIfhCChQMBw6Aw0UulqTKZdfVvfG7VcfIqLG9bcldL/+pdWTLxLUy8Qq38heUIjh4XlzZxzQm19lLFlr8vdQ97rjZVOLf8nclzckbcD4wxXMidpX30sFd37Fv/GtwwhzhxGVAprjbg0gCAEeIgwCZyTV2Z1REEW8O4py0wsjeloKoMr6iCY6dP92H6Vw/oTyICIthibxjm/DfN9lVz8IqtqKYLUXfoKVMVQVVJOElGjrnnUt9T9wbgp8AyYKaGlqingHZU/uG2NTZSVqwHQTWkx9hxjkpWDaCg6Ckj5qebgBVbT3V3NNXMSiWSDdGV3hrtzla7J+duwPOToIg42ChPQOQjspnSlp1V+Gjdged7+8UN5CRAV7a5EdFNwCjEaBR27b3W890TE7g24NAP/mMDXRWrGoFPQI9ls/MWO2dWFAar/xcOIImbbpA3zgAAAABJRU5ErkJggg==);
+        }
+    </style>
+    <div>
+        <a href="https://bokeh.org" target="_blank" class="bk-notebook-logo"></a>
+        <span id="b72c048a-c064-433d-a9be-4577f0001272">Loading BokehJS ...</span>
+    </div>
+</div><script type="application/javascript">'use strict';
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded(error = null) {
+    const el = document.getElementById("b72c048a-c064-433d-a9be-4577f0001272");
+    if (el != null) {
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(() => display_loaded(error), 100);
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.9.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.9.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.9.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.9.0.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.9.0.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+
+      } catch (error) {display_loaded(error);throw error;
+      }if (force === true) {
+        display_loaded();
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById("b72c048a-c064-433d-a9be-4577f0001272")).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script><div class="output text_html">
+  <div id="dbc61992-7e8d-4576-b0e0-483294448d6f" data-root-id="p1071" style="display: contents;"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+  const docs_json = {"6b43d767-6c8a-43f1-95cf-877773989f13":{"version":"3.9.0","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1072","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1073"}}},"roots":[{"type":"object","name":"Column","id":"p1071","attributes":{"children":[{"type":"object","name":"Slider","id":"p1069","attributes":{"js_property_callbacks":{"type":"map","entries":[["change:value",[{"type":"object","name":"CustomJS","id":"p1070","attributes":{"args":{"type":"map","entries":[["curve",{"type":"object","name":"ColumnDataSource","id":"p1008","attributes":{"selected":{"type":"object","name":"Selection","id":"p1009","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1010"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[500],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[500],"dtype":"float64","order":"little"}]]}}}],["cob",{"type":"object","name":"ColumnDataSource","id":"p1011","attributes":{"selected":{"type":"object","name":"Selection","id":"p1012","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1013"},"data":{"type":"map","entries":[["x",[0.2,0.2,0.2,0.56,0.56,0.56,0.56,0.8623999999999999,0.8623999999999999,0.8623999999999999,0.8623999999999999,0.4153318400000001,0.4153318400000001,0.4153318400000001,0.4153318400000001,0.8499095593877504,0.8499095593877504,0.8499095593877504,0.8499095593877504,0.4464715508717464,0.4464715508717464,0.4464715508717464,0.4464715508717464,0.8649714679687339,0.8649714679687339,0.8649714679687339,0.8649714679687339,0.408785396490616,0.408785396490616,0.408785396490616,0.408785396490616,0.8458796363731905,0.8458796363731905,0.8458796363731905,0.8458796363731905,0.4562854699982232,0.4562854699982232,0.4562854699982232,0.4562854699982232,0.8683116395335331,0.8683116395335331,0.8683116395335331,0.8683116395335331,0.4002128766444228,0.4002128766444228,0.4002128766444228,0.4002128766444228,0.8401488550434658,0.8401488550434658,0.8401488550434658,0.8401488550434658,0.4700456474441675,0.4700456474441675,0.4700456474441675,0.4700456474441675,0.8718595786703632,0.8718595786703632,0.8718595786703632,0.8718595786703632,0.3910215881288498,0.3910215881288498,0.3910215881288498,0.3910215881288498,0.8334329701111468,0.8334329701111468,0.8334329701111468,0.8334329701111468,0.48587859055000676,0.48587859055000676,0.48587859055000676,0.48587859055000676,0.8743020502830099,0.8743020502830099,0.8743020502830099,0.8743020502830099,0.38464291303877296,0.38464291303877296,0.38464291303877296,0.38464291303877296,0.8284245987073696,0.8284245987073696,0.8284245987073696,0.8284245987073696,0.49748049037366127,0.49748049037366127,0.49748049037366127,0.49748049037366127,0.8749777822493497,0.8749777822493497,0.8749777822493497,0.8749777822493497,0.38287081986775734,0.38287081986775734,0.38287081986775734,0.38287081986775734,0.8269826430654204,0.8269826430654204,0.8269826430654204,0.8269826430654204,0.5007882289688317,0.5007882289688317,0.5007882289688317,0.5007882289688317,0.8749978254328244,0.8749978254328244,0.8749978254328244,0.8749978254328244,0.3828182082222852,0.3828182082222852,0.3828182082222852,0.3828182082222852,0.8269394968651751,0.8269394968651751,0.8269394968651751,0.8269394968651751,0.5008869788634116,0.5008869788634116,0.5008869788634116,0.5008869788634116,0.8749972464397355,0.8749972464397355,0.8749972464397355,0.8749972464397355,0.3828197280691569,0.3828197280691569,0.3828197280691569,0.3828197280691569,0.8269407435457478,0.8269407435457478,0.8269407435457478,0.8269407435457478,0.5008841257341375,0.5008841257341375,0.5008841257341375,0.5008841257341375,0.8749972641259018,0.8749972641259018,0.8749972641259018,0.8749972641259018,0.38281968164331015,0.38281968164331015,0.38281968164331015,0.38281968164331015,0.8269407054643868,0.8269407054643868,0.8269407054643868,0.8269407054643868,0.5008842128865718,0.5008842128865718,0.5008842128865718,0.5008842128865718,0.8749972635864993,0.8749972635864993,0.8749972635864993,0.8749972635864993,0.3828196830592315,0.3828196830592315,0.3828196830592315,0.3828196830592315,0.8269407066258138,0.8269407066258138,0.8269407066258138,0.8269407066258138,0.5008842102285476,0.5008842102285476,0.5008842102285476,0.5008842102285476,0.874997263602951,0.874997263602951,0.874997263602951,0.874997263602951,0.3828196830160459,0.3828196830160459,0.3828196830160459,0.3828196830160459,0.8269407065903901,0.8269407065903901,0.8269407065903901,0.8269407065903901,0.5008842103096176,0.5008842103096176,0.5008842103096176,0.5008842103096176,0.8749972636024492,0.8749972636024492,0.8749972636024492,0.8749972636024492,0.38281968301736324,0.38281968301736324,0.38281968301736324,0.38281968301736324,0.8269407065914708,0.8269407065914708,0.8269407065914708,0.8269407065914708,0.5008842103071444,0.5008842103071444,0.5008842103071444,0.5008842103071444,0.8749972636024647]],["y",[0.2,0.56,0.56,0.56,0.56,0.8623999999999999,0.8623999999999999,0.8623999999999999,0.8623999999999999,0.4153318400000001,0.4153318400000001,0.4153318400000001,0.4153318400000001,0.8499095593877504,0.8499095593877504,0.8499095593877504,0.8499095593877504,0.4464715508717464,0.4464715508717464,0.4464715508717464,0.4464715508717464,0.8649714679687339,0.8649714679687339,0.8649714679687339,0.8649714679687339,0.408785396490616,0.408785396490616,0.408785396490616,0.408785396490616,0.8458796363731905,0.8458796363731905,0.8458796363731905,0.8458796363731905,0.4562854699982232,0.4562854699982232,0.4562854699982232,0.4562854699982232,0.8683116395335331,0.8683116395335331,0.8683116395335331,0.8683116395335331,0.4002128766444228,0.4002128766444228,0.4002128766444228,0.4002128766444228,0.8401488550434658,0.8401488550434658,0.8401488550434658,0.8401488550434658,0.4700456474441675,0.4700456474441675,0.4700456474441675,0.4700456474441675,0.8718595786703632,0.8718595786703632,0.8718595786703632,0.8718595786703632,0.3910215881288498,0.3910215881288498,0.3910215881288498,0.3910215881288498,0.8334329701111468,0.8334329701111468,0.8334329701111468,0.8334329701111468,0.48587859055000676,0.48587859055000676,0.48587859055000676,0.48587859055000676,0.8743020502830099,0.8743020502830099,0.8743020502830099,0.8743020502830099,0.38464291303877296,0.38464291303877296,0.38464291303877296,0.38464291303877296,0.8284245987073696,0.8284245987073696,0.8284245987073696,0.8284245987073696,0.49748049037366127,0.49748049037366127,0.49748049037366127,0.49748049037366127,0.8749777822493497,0.8749777822493497,0.8749777822493497,0.8749777822493497,0.38287081986775734,0.38287081986775734,0.38287081986775734,0.38287081986775734,0.8269826430654204,0.8269826430654204,0.8269826430654204,0.8269826430654204,0.5007882289688317,0.5007882289688317,0.5007882289688317,0.5007882289688317,0.8749978254328244,0.8749978254328244,0.8749978254328244,0.8749978254328244,0.3828182082222852,0.3828182082222852,0.3828182082222852,0.3828182082222852,0.8269394968651751,0.8269394968651751,0.8269394968651751,0.8269394968651751,0.5008869788634116,0.5008869788634116,0.5008869788634116,0.5008869788634116,0.8749972464397355,0.8749972464397355,0.8749972464397355,0.8749972464397355,0.3828197280691569,0.3828197280691569,0.3828197280691569,0.3828197280691569,0.8269407435457478,0.8269407435457478,0.8269407435457478,0.8269407435457478,0.5008841257341375,0.5008841257341375,0.5008841257341375,0.5008841257341375,0.8749972641259018,0.8749972641259018,0.8749972641259018,0.8749972641259018,0.38281968164331015,0.38281968164331015,0.38281968164331015,0.38281968164331015,0.8269407054643868,0.8269407054643868,0.8269407054643868,0.8269407054643868,0.5008842128865718,0.5008842128865718,0.5008842128865718,0.5008842128865718,0.8749972635864993,0.8749972635864993,0.8749972635864993,0.8749972635864993,0.3828196830592315,0.3828196830592315,0.3828196830592315,0.3828196830592315,0.8269407066258138,0.8269407066258138,0.8269407066258138,0.8269407066258138,0.5008842102285476,0.5008842102285476,0.5008842102285476,0.5008842102285476,0.874997263602951,0.874997263602951,0.874997263602951,0.874997263602951,0.3828196830160459,0.3828196830160459,0.3828196830160459,0.3828196830160459,0.8269407065903901,0.8269407065903901,0.8269407065903901,0.8269407065903901,0.5008842103096176,0.5008842103096176,0.5008842103096176,0.5008842103096176,0.8749972636024492,0.8749972636024492,0.8749972636024492,0.8749972636024492,0.38281968301736324,0.38281968301736324,0.38281968301736324,0.38281968301736324,0.8269407065914708,0.8269407065914708,0.8269407065914708,0.8269407065914708,0.5008842103071444,0.5008842103071444,0.5008842103071444,0.5008842103071444,0.8749972636024647,0.8749972636024647,0.8749972636024647]]]}}}]]},"code":"\n    const r = cb_obj.value;\n\n    const x = [];\n    const y = [];\n\n    for (let i=0; i<500; i++) {\n        const xx = i/499;\n        x.push(xx);\n        y.push(r * xx * (1 - xx));\n    }\n\n    curve.data = {x:x, y:y};\n\n    let cx = [];\n    let cy = [];\n\n    let xn = 0.2;\n\n    for (let i=0; i<50; i++) {\n        let yn = r * xn * (1 - xn);\n\n        cx.push(xn); cy.push(xn);\n        cx.push(xn); cy.push(yn);\n\n        cx.push(xn); cy.push(yn);\n        cx.push(yn); cy.push(yn);\n\n        xn = yn;\n    }\n\n    cob.data = {x:cx, y:cy};\n\n    curve.change.emit();\n    cob.change.emit();\n"}}]]]},"title":"r","start":0,"end":4,"value":3.5,"step":0.01}},{"type":"object","name":"Figure","id":"p1014","attributes":{"x_range":{"type":"object","name":"DataRange1d","id":"p1015"},"y_range":{"type":"object","name":"DataRange1d","id":"p1016"},"x_scale":{"type":"object","name":"LinearScale","id":"p1023"},"y_scale":{"type":"object","name":"LinearScale","id":"p1024"},"title":{"type":"object","name":"Title","id":"p1021"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1054","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1048","attributes":{"selected":{"type":"object","name":"Selection","id":"p1049","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1050"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[500],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"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"},"shape":[500],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1055","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1056"}}},"glyph":{"type":"object","name":"Line","id":"p1051","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_dash":[6]}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1052","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1,"line_dash":[6]}},"muted_glyph":{"type":"object","name":"Line","id":"p1053","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2,"line_dash":[6]}}}},{"type":"object","name":"GlyphRenderer","id":"p1060","attributes":{"data_source":{"id":"p1008"},"view":{"type":"object","name":"CDSView","id":"p1061","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1062"}}},"glyph":{"type":"object","name":"Line","id":"p1057","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red"}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1058","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.1}},"muted_glyph":{"type":"object","name":"Line","id":"p1059","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.2}}}},{"type":"object","name":"GlyphRenderer","id":"p1066","attributes":{"data_source":{"id":"p1011"},"view":{"type":"object","name":"CDSView","id":"p1067","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1068"}}},"glyph":{"type":"object","name":"Line","id":"p1063","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4"}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1064","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1}},"muted_glyph":{"type":"object","name":"Line","id":"p1065","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1022","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1035"},{"type":"object","name":"WheelZoomTool","id":"p1036","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1037","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1038","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1044","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1043","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1045"},{"type":"object","name":"ResetTool","id":"p1046"},{"type":"object","name":"HelpTool","id":"p1047"}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1030","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1031","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1032"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1033"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1025","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1026","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1027"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1028"}}}],"center":[{"type":"object","name":"Grid","id":"p1029","attributes":{"axis":{"id":"p1025"}}},{"type":"object","name":"Grid","id":"p1034","attributes":{"dimension":1,"axis":{"id":"p1030"}}}]}}]}}]}};
+  const render_items = [{"docid":"6b43d767-6c8a-43f1-95cf-877773989f13","roots":{"p1071":"dbc61992-7e8d-4576-b0e0-483294448d6f"},"root_ids":["p1071"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
 </div>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Logistic_Map_Bifurcation_Diagram%2C_Matplotlib.svg/960px-Logistic_Map_Bifurcation_Diagram%2C_Matplotlib.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Logistic_Map_Bifurcation_Diagram%2C_Matplotlib.svg/960px-Logistic_Map_Bifurcation_Diagram%2C_Matplotlib.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Logistic_Map_Bifurcation_Diagram%2C_Matplotlib.svg/960px-Logistic_Map_Bifurcation_Diagram%2C_Matplotlib.svg.png" style="width: 100%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">From: <a class="reference external" href="https://en.wikipedia.org/wiki/Bifurcation_diagram">https://en.wikipedia.org/wiki/Bifurcation_diagram</a></span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="local-stability-and-fixed-points">
 <h3>Local stability and fixed points<a class="headerlink" href="#local-stability-and-fixed-points" title="Link to this heading">#</a></h3>
 <p>A <strong>fixed point</strong> is a point where <span class="math notranslate nohighlight">\(x_{t+1} = f(x_t) = x_t\)</span> (or, for continous equations, <span class="math notranslate nohighlight">\(0 = dx/dt\)</span>). The behavior of small perturbations around this points are related to the <strong>stability</strong> of the fixed point. If the small perturbations separates from the point, the point is said to unstable. Otherwise it is stable.</p>
-<p>Let’s assume the existence of a fixed point, <span class="math notranslate nohighlight">\(x_p\)</span>. A small perturbation around it can be written as <span class="math notranslate nohighlight">\(\eta = x_t - x_p\)</span>, therefore, <span class="math notranslate nohighlight">\(\eta_{t+1} = x_{t+1} - x_p = f(x_{t}) - x_p = f(\eta + x_p) - x_p = f(x_p) + f'(x_p)\eta_t - x_p = f'(x_p)\eta_t\)</span>, in other words, <span class="math notranslate nohighlight">\(\eta_{t+1}/\eta_{t} = f'(x_p)\)</span>.  Therefore, if <span class="math notranslate nohighlight">\(|f'(x_p)| &gt; 1\)</span>, the point is unstable; else, if <span class="math notranslate nohighlight">\(|f'(x_p)| &lt; 1\)</span>, the point is stable (The equivalent for continous functions is with <span class="math notranslate nohighlight">\(f'(x_p) &gt; 0\)</span> etc).</p>
-<blockquote>
-<div><p><strong>Exercise</strong> : Compute the fixed points and the stability for the following maps: <span class="math notranslate nohighlight">\(x_{t+1} = Rx_t(1-x_t)\)</span>, and <span class="math notranslate nohighlight">\(x_{t+1} = R\cos x\)</span> .</p>
-</div></blockquote>
+<p>Let’s assume the existence of a fixed point, <span class="math notranslate nohighlight">\(x_p\)</span>. A small perturbation around it can be written as $<span class="math notranslate nohighlight">\(\eta = x_t - x_p\)</span>$, therefore,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-8d7fce08-9cbf-4985-b0cb-c7764a530059">
+<span class="eqno">(49)<a class="headerlink" href="#equation-8d7fce08-9cbf-4985-b0cb-c7764a530059" title="Permalink to this equation">#</a></span>\[\begin{align}
+\eta_{t+1} &amp;= x_{t+1} - x_p \\ 
+&amp;= f(x_{t}) - x_p\\
+&amp;= f(\eta + x_p) - x_p \\
+&amp;= f(x_p) + f'(x_p)\eta_t - x_p \\
+&amp;= f'(x_p)\eta_t,
+\end{align}\]</div>
+<p>in other words,</p>
+<div class="math notranslate nohighlight">
+\[\eta_{t+1}/\eta_{t} = f'(x_p).\]</div>
+<p>Therefore, if <span class="math notranslate nohighlight">\(|f'(x_p)| &gt; 1\)</span>, the point is unstable; else, if <span class="math notranslate nohighlight">\(|f'(x_p)| &lt; 1\)</span>, the point is stable (The equivalent for continous functions is with <span class="math notranslate nohighlight">\(f'(x_p) &gt; 0\)</span> etc).</p>
+<div class="exercise admonition" id="lectures/07-NonLinear-Chaos/NonLinear-Chaos-exercise-3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 4 </span> (Fixed points for some maps)</p>
+<section id="exercise-content">
+<p>Compute the fixed points and the stability for the following maps: <span class="math notranslate nohighlight">\(x_{t+1} = Rx_t(1-x_t)\)</span>, and <span class="math notranslate nohighlight">\(x_{t+1} = R\cos x\)</span> .</p>
+</section>
+</div>
 <p>The fixed points for the logistic map are <span class="math notranslate nohighlight">\(a = 0\)</span> and <span class="math notranslate nohighlight">\(b = (R-1)/R\)</span>, and the criteria for stability are <span class="math notranslate nohighlight">\(R\)</span> and <span class="math notranslate nohighlight">\(2\)</span>, respectively. Assuming <span class="math notranslate nohighlight">\(R &gt; 1\)</span>, then <span class="math notranslate nohighlight">\(a\)</span> is unstable and <span class="math notranslate nohighlight">\(b\)</span> is stable.</p>
-<p>If a point is locally stable, then some iterations would be needed to reach it. Those iterations are called the <strong>transient</strong>. Let’s check that after some iterations, the logistic map reaches a stable point for <span class="math notranslate nohighlight">\(R = 3.1\)</span>.</p>
-<blockquote>
-<div><p>The set of local initial conditions which reach the same limit fixed point is called the basin of atraction of the fixed point. They can have a very complicated geometry.</p>
-</div></blockquote>
+<p>If a point is locally stable, then some iterations would be needed to reach it. Those iterations are called the <strong>transient</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The set of local initial conditions which reach the same limit fixed point is called the basin of atraction of the fixed point. They can have a very complicated geometry.</p>
+</div>
 </section>
 <section id="cycles">
 <h3>Cycles<a class="headerlink" href="#cycles" title="Link to this heading">#</a></h3>
 <p>A cycle or <span class="math notranslate nohighlight">\(n\)</span>th-order is a trajectory which repeats itself, defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a3fffde0-7ed1-42f0-a2f6-b4eb31e8e421">
-<span class="eqno">(48)<a class="headerlink" href="#equation-a3fffde0-7ed1-42f0-a2f6-b4eb31e8e421" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-38aae795-8c8a-4145-b2ad-7a42aeec1769">
+<span class="eqno">(50)<a class="headerlink" href="#equation-38aae795-8c8a-4145-b2ad-7a42aeec1769" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{t+n} = x_{t}, 
 \end{equation}\]</div>
 <p>but <span class="math notranslate nohighlight">\(x_{t+j} \neq x_t\)</span>, for <span class="math notranslate nohighlight">\(j = 1, 2, 3, \ldots, n-1\)</span>.</p>
 <p>A fixed point is a cycle of period 1. A cycle of period 2 is defined as <span class="math notranslate nohighlight">\(x_{t+2} = f(x_t) = f(f(x_t))\)</span>. If the function <span class="math notranslate nohighlight">\(x_{t+1} = f(x_t)\)</span> has a period-2 cycle, then the function <span class="math notranslate nohighlight">\(f(f(x_t))\)</span> has, at least, two fixed points. Longer cycles can be found similarly: “just” solve the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4dd18cf4-36ba-439b-a8ff-691768c61c94">
-<span class="eqno">(49)<a class="headerlink" href="#equation-4dd18cf4-36ba-439b-a8ff-691768c61c94" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ba9c84fd-faaf-43f9-999f-8c47c53e74a8">
+<span class="eqno">(51)<a class="headerlink" href="#equation-ba9c84fd-faaf-43f9-999f-8c47c53e74a8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{t} = \underbrace{f(f( \cdots f(x_{t})))}_{n\  \text{times}} 
 \end{equation}\]</div>
 </section>
 <section id="exercises">
 <h3>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h3>
-<section id="analytical-period-2-cycles">
-<h4>Analytical Period-2 Cycles<a class="headerlink" href="#analytical-period-2-cycles" title="Link to this heading">#</a></h4>
+<div class="exercise admonition" id="lectures/07-NonLinear-Chaos/NonLinear-Chaos-exercise-4">
+
+<p class="admonition-title"><span class="caption-number">Exercise 5 </span> (Analytical Period-2 Cycles)</p>
+<section id="exercise-content">
 <p>For the logistic map, a period-2 cycle oscillates between two distinc points, <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>. To do so:</p>
 <ol class="arabic simple">
 <li><p>Write down the condition <span class="math notranslate nohighlight">\(p = f(f(p))\)</span></p></li>
@@ -1104,6 +1499,7 @@ x_{t} = \underbrace{f(f( \cdots f(x_{t})))}_{n\  \text{times}}
 <li><p>For what <span class="math notranslate nohighlight">\(R\)</span> values the cycle is stable?</p></li>
 </ol>
 </section>
+</div>
 </section>
 </section>
 </section>
@@ -1151,9 +1547,20 @@ x_{t} = \underbrace{f(f( \cdots f(x_{t})))}_{n\  \text{times}}
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7effe0624f50&gt;
+</pre></div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
+<img alt="../../_images/7bb212032934f96cabe3e5356a6d366fc72725924d97a39d4290bfcc2389c3ef.png" src="../../_images/7bb212032934f96cabe3e5356a6d366fc72725924d97a39d4290bfcc2389c3ef.png" />
+</div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
 <span class="n">img_path</span> <span class="o">=</span> <span class="s2">&quot;fig/initialcond.png&quot;</span>
@@ -1162,16 +1569,30 @@ x_{t} = \underbrace{f(f( \cdots f(x_{t})))}_{n\  \text{times}}
 </pre></div>
 </div>
 </div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/b86ea36bcc79adeadd07af7c6c51026d9acf4cc91ca03987eec47233fd610848.png" src="../../_images/b86ea36bcc79adeadd07af7c6c51026d9acf4cc91ca03987eec47233fd610848.png" />
+</div>
+</details>
 </div>
 <section id="lyapunov-exponents">
 <h2>Lyapunov exponents<a class="headerlink" href="#lyapunov-exponents" title="Link to this heading">#</a></h2>
 <p>Lyapunov exponents quantify the average exponential rates at which infinitesimally close trajectories in a dynamical system diverge or converge. They are the primary diagnostic for chaos: a positive largest Lyapunov exponent indicates sensitive dependence on initial conditions, while negative exponents signal stability and attraction to invariant sets.</p>
-<figure class="align-center" id="id3">
+<figure class="align-center" id="id4">
 <a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Orbital_instability_%28Lyapunov_exponent%29.png/500px-Orbital_instability_%28Lyapunov_exponent%29.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Orbital_instability_%28Lyapunov_exponent%29.png/500px-Orbital_instability_%28Lyapunov_exponent%29.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Orbital_instability_%28Lyapunov_exponent%29.png/500px-Orbital_instability_%28Lyapunov_exponent%29.png" style="width: 50%;" />
 </a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">From: <a class="reference external" href="https://en.wikipedia.org/wiki/Lyapunov_exponent">https://en.wikipedia.org/wiki/Lyapunov_exponent</a></span><a class="headerlink" href="#id3" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">From: <a class="reference external" href="https://en.wikipedia.org/wiki/Lyapunov_exponent">https://en.wikipedia.org/wiki/Lyapunov_exponent</a></span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
 </figcaption>
+</figure>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Lorenz_diverging_trajectories_small.gif/500px-Lorenz_diverging_trajectories_small.gif"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Lorenz_diverging_trajectories_small.gif/500px-Lorenz_diverging_trajectories_small.gif" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Lorenz_diverging_trajectories_small.gif/500px-Lorenz_diverging_trajectories_small.gif" style="width: 60%;" />
+</a>
 </figure>
 <p>For the largest Lyapunov coefficient, and a continuum map <span class="math notranslate nohighlight">\(F\)</span>, one has</p>
 <div class="math notranslate nohighlight">
@@ -1182,7 +1603,7 @@ e^{\lambda t} &amp;\approx \frac{\left|F^{t}(x_{0}+\epsilon)-F^{t}(x_{0})\right|
 \frac{1}{t}\log\left(
 \frac{\left|F^{t}(x_{0}+\epsilon)-F^{t}(x_{0})\right|}{\epsilon}
 \right) \\[1em]
-&amp;= \lim_{t\to\infty,\ \epsilon\to 0}
+&amp;= \lim_{t\to\infty}
 \frac{1}{t}\log\left|
 \frac{dF}{dx}
 \right|_{x=x_0}
@@ -1196,6 +1617,18 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 \)</span><span class="math notranslate nohighlight">\(
 \lambda = \lim_{N \to \infty} \frac{1}{N} \sum_{n=0}^{N-1} \ln |f'(x_n)|.
 \)</span>$</p>
+<p>See:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.29.2928">Lyapunov-exponent spectra for the Lorenz model</a></p></li>
+<li><p><a class="reference external" href="https://physics.aps.org/articles/v16/57">Tackling the Puzzle of Our Solar System’s Stability</a></p></li>
+</ul>
+<div class="exercise admonition" id="lectures/07-NonLinear-Chaos/NonLinear-Chaos-exercise-5">
+
+<p class="admonition-title"><span class="caption-number">Exercise 6 </span></p>
+<section id="exercise-content">
+<p>Compute the expression for the logistic map</p>
+</section>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1219,13 +1652,26 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lyapunov Exponent vs. $r$ for the Logistic Map&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/lyapunov_logistic.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/lyapunov_logistic.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+    <span class="k">pass</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block after function definition on line 5
+</pre></div>
 </div>
-<div class="cell docutils container">
+</div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
@@ -1235,6 +1681,7 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <section id="the-route-to-chaos">
 <h3>The route to chaos<a class="headerlink" href="#the-route-to-chaos" title="Link to this heading">#</a></h3>
@@ -1242,9 +1689,16 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 <p>The logistic map, and actually any map with a quadratic maximum, show the period-doubling route to chaos. After varying the constant <span class="math notranslate nohighlight">\(r\)</span>, the final values (after transient) start to reach one, then 2, then four and so on values. To visualize it , we use the bifurcaton diagram: visualizes how the long-term attractor evolves as the control parameter <span class="math notranslate nohighlight">\(r\)</span> increases from <span class="math notranslate nohighlight">\(2.5\)</span> to <span class="math notranslate nohighlight">\(4\)</span>. For each <span class="math notranslate nohighlight">\(r\)</span>, the map is iterated after discarding an initial transient; the remaining <span class="math notranslate nohighlight">\(x_n\)</span> values are plotted vertically against <span class="math notranslate nohighlight">\(r\)</span>. The diagram reveals a <strong>period-doubling cascade</strong>: a stable fixed point splits into 2-cycles, then 4-cycles, 8-cycles, and so on, accumulating at <span class="math notranslate nohighlight">\(r_\infty \approx 3.56995\)</span> before transitioning to chaos.</p>
 <p><strong>Universality</strong>: This period-doubling route to chaos is not specific to the logistic map. It is a <strong>universal characteristic</strong> of all smooth, unimodal maps <span class="math notranslate nohighlight">\(f(x)\)</span> with a single quadratic maximum (i.e., <span class="math notranslate nohighlight">\(f''(x_c) \neq 0\)</span>). The geometric scaling of the bifurcation parameter values and the spatial scaling of the attractor branches are governed by universal constants discovered by Mitchell Feigenbaum (1978), independent of the map’s specific functional form.</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Logistic_Bifurcation_map_High_Resolution.png/960px-Logistic_Bifurcation_map_High_Resolution.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Logistic_Bifurcation_map_High_Resolution.png/960px-Logistic_Bifurcation_map_High_Resolution.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Logistic_Bifurcation_map_High_Resolution.png/960px-Logistic_Bifurcation_map_High_Resolution.png" style="width: 50%;" />
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Logistic_Bifurcation_map_High_Resolution.png/960px-Logistic_Bifurcation_map_High_Resolution.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Logistic_Bifurcation_map_High_Resolution.png/960px-Logistic_Bifurcation_map_High_Resolution.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Logistic_Bifurcation_map_High_Resolution.png/960px-Logistic_Bifurcation_map_High_Resolution.png" style="width: 60%;" />
 </a>
 </figure>
+<div class="exercise admonition" id="lectures/07-NonLinear-Chaos/NonLinear-Chaos-exercise-6">
+
+<p class="admonition-title"><span class="caption-number">Exercise 7 </span> (Compute the bifurcation diagram for the logistic map)</p>
+<section id="exercise-content">
+<p>For each <span class="math notranslate nohighlight">\(r\)</span>, run the iteration many times. Discard some transient and store the final value. Plor a scatter plot of that final value as function of <span class="math notranslate nohighlight">\(r\)</span>.</p>
+</section>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1300,7 +1754,12 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 <li><p>Compute <span class="math notranslate nohighlight">\(\delta\)</span> from successive differences of <span class="math notranslate nohighlight">\(R_n\)</span>.</p></li>
 <li><p>Compute <span class="math notranslate nohighlight">\(\alpha\)</span> from the attractor widths at each <span class="math notranslate nohighlight">\(R_n\)</span>.</p></li>
 </ol>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
@@ -1369,6 +1828,7 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 </section>
 </section>
@@ -1405,11 +1865,11 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 </section>
 </section>
 <section id="chaos-in-a-more-complex-system-the-non-linear-driven-pendulum">
-<h2>Chaos in a more complex system:the non-linear driven pendulum<a class="headerlink" href="#chaos-in-a-more-complex-system-the-non-linear-driven-pendulum" title="Link to this heading">#</a></h2>
+<h2>Chaos in a more complex system: the non-linear driven pendulum<a class="headerlink" href="#chaos-in-a-more-complex-system-the-non-linear-driven-pendulum" title="Link to this heading">#</a></h2>
 <p>Many continuous system display chaotic behaviour. The study of dynamical systems goes back to Poincaré. He develop many methods to devise if the solar system was stable. Among them, the Poincaré section, where the points crossing a surface are plotted, allows to reduce the dimensoionality of the space describing the system dynamics, and is complementary to the typical phase space. For exampple, for the Duffing oscillator, you find something like <a class="reference external" href="https://en.wikipedia.org/wiki/Poincar%C3%A9_map">https://en.wikipedia.org/wiki/Poincaré_map</a>.</p>
 <p>As an example of a continuous chaotic system, we will explore the dynamics of the non-linear driven damped oscillator, described by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-42dfc153-64b0-4061-81ab-09eb96f16d70">
-<span class="eqno">(50)<a class="headerlink" href="#equation-42dfc153-64b0-4061-81ab-09eb96f16d70" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-105064a2-3d30-45ef-9d28-97c40419889f">
+<span class="eqno">(52)<a class="headerlink" href="#equation-105064a2-3d30-45ef-9d28-97c40419889f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2\theta}{dt^2} = -\frac{g}{l} \sin\theta - q\frac{d\theta}{dt} + F_D \sin(\Omega_D t).
 \end{equation}\]</div>
 <p>Of course, you need you transform this second order equation into a coupled system of two first order equations. Let’s explore the dynamics as function of the force amplitud <span class="math notranslate nohighlight">\(F_D\)</span>, while fixing the remaining parameters to <span class="math notranslate nohighlight">\(q = 1/2, l = g = 9.8, \Omega_D = 2/3, \theta_0 = 0.2, \omega_0 = 0\)</span>. A typical time series from this system is</p>
@@ -1455,7 +1915,7 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 </div>
 <section id="sensitivity-to-initial-conditions">
 <h3>Sensitivity to initial conditions<a class="headerlink" href="#sensitivity-to-initial-conditions" title="Link to this heading">#</a></h3>
-<p>For <span class="math notranslate nohighlight">\(F_D = 1.2\)</span>, we can check if two nearby trajectories diverge (exponentially), which is a signature of chaos</p>
+<p>For <span class="math notranslate nohighlight">\(F_D = 1.2\)</span>, we can check if two nearby trajectories diverge (exponentially), which is a signature of chaos. Plot the difference between two close solutions to check if there is any exponential divergence.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># global imports</span>
@@ -1475,8 +1935,8 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 
 <span class="c1"># function to return the derivatives</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">derivatives</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">FD</span><span class="p">):</span> 
-    <span class="n">xd</span>  <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">yd</span> <span class="o">=</span> <span class="o">-</span><span class="n">G</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">L</span> <span class="o">-</span> <span class="n">Q</span><span class="o">*</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">FD</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">WD</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">pass</span>
     <span class="k">return</span> <span class="n">xd</span><span class="p">,</span> <span class="n">yd</span>
 
 <span class="c1"># solving the differential equation</span>
@@ -1497,9 +1957,27 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="c1">#plt.ylabel(&#39;$x, v$&#39;, fontsize=20)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/lyapunov_pendulum.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s2">&quot;fig/lyapunov_pendulum.png&quot;</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">img_path</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">img_path</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 <p>As you can see, there is an exponential grow on the difference of the two trajectories, which is a signature of chaos. (The exponential behaviour is at the beginning if the curve, since its trend is linear in a semilog plot). This also shows that the Lyapunov exponent is larger than zero.</p>
 </section>
@@ -1526,9 +2004,9 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 <span class="n">X0</span> <span class="o">=</span> <span class="mf">0.2</span>
 
 <span class="c1"># function to return the derivatives</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">derivatives</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">FD</span><span class="p">):</span> 
-    <span class="n">xd</span>  <span class="o">=</span> <span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">yd</span> <span class="o">=</span> <span class="o">-</span><span class="n">G</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">state</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">L</span> <span class="o">-</span> <span class="n">Q</span><span class="o">*</span><span class="n">state</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">FD</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">WD</span><span class="o">*</span><span class="n">t</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">derivatives</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">FD</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">pass</span>
     <span class="k">return</span> <span class="n">xd</span><span class="p">,</span> <span class="n">yd</span>
 
 <span class="c1"># solving the differential equation</span>
@@ -1554,7 +2032,12 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -1624,6 +2107,7 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <blockquote>
 <div><p><strong>Exercise:</strong> Compute the bifurcation diagram.</p>
@@ -1746,6 +2230,13 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 \[\log N(\varepsilon) \approx -D_0 \log \varepsilon + \text{const}\]</div>
 <p>So <span class="math notranslate nohighlight">\(D_0\)</span> is the (negative) slope of <span class="math notranslate nohighlight">\(\log N\)</span> vs <span class="math notranslate nohighlight">\(\log \varepsilon\)</span> in the limit <span class="math notranslate nohighlight">\(\varepsilon \to 0\)</span>. This is the <strong>box-counting dimension</strong> (also called the Minkowski–Bouligand dimension or <span class="math notranslate nohighlight">\(D_0\)</span>).</p>
 <p>For a smooth curve: <span class="math notranslate nohighlight">\(D_0 = 1\)</span>. For a filled area: <span class="math notranslate nohighlight">\(D_0 = 2\)</span>. For the Hénon attractor: <span class="math notranslate nohighlight">\(D_0 \approx 1.26\)</span>, a non-integer confirming its fractal nature.</p>
+<div class="exercise admonition" id="lectures/07-NonLinear-Chaos/NonLinear-Chaos-exercise-7">
+
+<p class="admonition-title"><span class="caption-number">Exercise 8 </span> (Fractal dimension)</p>
+<section id="exercise-content">
+<p>Implement the box counting algorithm to compute the fractal dimension of the Henon strange attractor</p>
+</section>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1766,30 +2257,8 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 <span class="sd">    -------</span>
 <span class="sd">    D0 : float  — estimated box-counting dimension</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">xs</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">ys</span><span class="p">)</span>
-
-    <span class="c1"># Normalise to [0, 1]^2 for convenience</span>
-    <span class="n">xs_n</span> <span class="o">=</span> <span class="p">(</span><span class="n">xs</span> <span class="o">-</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">xs</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">xs</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-    <span class="n">ys_n</span> <span class="o">=</span> <span class="p">(</span><span class="n">ys</span> <span class="o">-</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">ys</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">ys</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
-
-    <span class="k">if</span> <span class="n">eps_values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="c1"># Logarithmically spaced box sizes from 1/4 down to 1/512</span>
-        <span class="n">eps_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.7</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
-
-    <span class="n">counts</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">eps</span> <span class="ow">in</span> <span class="n">eps_values</span><span class="p">:</span>
-        <span class="c1"># Assign each point to a box index</span>
-        <span class="n">ix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">xs_n</span> <span class="o">/</span> <span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-        <span class="n">iy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="n">ys_n</span> <span class="o">/</span> <span class="n">eps</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
-        <span class="n">occupied</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">)))</span>
-        <span class="n">counts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">occupied</span><span class="p">)</span>
-
-    <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">counts</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="n">log_eps</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">eps_values</span><span class="p">)</span>
-    <span class="n">log_N</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">counts</span><span class="p">)</span>
-
-    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="o">*</span><span class="n">_</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">log_eps</span><span class="p">,</span> <span class="n">log_N</span><span class="p">)</span>
-    <span class="n">D0</span> <span class="o">=</span> <span class="o">-</span><span class="n">slope</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">pass</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Box-counting dimension D0 ≈ </span><span class="si">{</span><span class="n">D0</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">  (R² = </span><span class="si">{</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
@@ -1804,13 +2273,24 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
                      <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-        <span class="c1">#plt.savefig(&#39;fig/box_counting_fit.png&#39;, dpi=200)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/box_counting_fit.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">D0</span>
 
 <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="n">henon_attractor</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">500_000</span><span class="p">)</span>
 <span class="n">D0</span> <span class="o">=</span> <span class="n">box_counting_dimension</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
+<span class="n">img_path</span> <span class="o">=</span> <span class="s2">&quot;fig/box_counting_fit.png&quot;</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">img_path</span><span class="p">):</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">img_path</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1991,18 +2471,16 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Non-linear dynamics and chaos</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ths-stability-of-the-solar-system">Ths stability of the solar system</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-vs-nonlinear-dynamics">Linear vs Nonlinear Dynamics</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-space-and-dynamical-systems">Phase Space and Dynamical Systems</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#poincare-map">Poincaré Map</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-equations">Finite-difference equations</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-logistic-map-finite-difference-equations">The logistic map: Finite-difference equations</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-logistic-map">The logistic map</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cobweb-plots">Cobweb plots</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#local-stability-and-fixed-points">Local stability and fixed points</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-period-2-cycles">Analytical Period-2 Cycles</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
 </li>
 </ul>
@@ -2020,7 +2498,7 @@ where \)</span>\delta \mathbf{x}<em>n^{(i)}<span class="math notranslate nohighl
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chaos-in-a-more-complex-system-the-non-linear-driven-pendulum">Chaos in a more complex system:the non-linear driven pendulum</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chaos-in-a-more-complex-system-the-non-linear-driven-pendulum">Chaos in a more complex system: the non-linear driven pendulum</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-to-initial-conditions">Sensitivity to initial conditions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-portrait">Phase portrait</a></li>
 </ul>

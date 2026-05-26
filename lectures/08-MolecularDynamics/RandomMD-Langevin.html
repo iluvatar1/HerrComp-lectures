@@ -36,6 +36,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=03b9d5b1" />
   
@@ -51,6 +55,7 @@
     <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../../_static/copybutton.js?v=f281be69"></script>
     <script src="../../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script src="../../_static/tabs.js?v=3ee01567"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
@@ -581,8 +586,8 @@ so we construct an effective stochastic description.</p>
 <li><p><span class="math notranslate nohighlight">\(-\gamma v\)</span>: <strong>Friction/Drag force</strong> (dissipation).</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sqrt{2 \gamma k_B T} \eta(t)\)</span>: <strong>Stochastic force</strong> (fluctuation), where <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise, which has the following properties:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-0fa1598b-3fa5-4306-9a9e-ef7acb50bec8">
-<span class="eqno">(52)<a class="headerlink" href="#equation-0fa1598b-3fa5-4306-9a9e-ef7acb50bec8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-59e7a15d-80ff-49ab-9724-2093cbafa2e8">
+<span class="eqno">(54)<a class="headerlink" href="#equation-59e7a15d-80ff-49ab-9724-2093cbafa2e8" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle \eta(t) \rangle &amp;= 0,\\
 \langle \eta(t) \eta(t') \rangle &amp;= \delta(t-t').
 \end{align}\]</div>
@@ -658,8 +663,8 @@ so we construct an effective stochastic description.</p>
 <section id="a-the-baseline-euler-maruyama">
 <h3>A. The Baseline: Euler-Maruyama<a class="headerlink" href="#a-the-baseline-euler-maruyama" title="Link to this heading">#</a></h3>
 <p>This is the stochastic version of the Forward Euler method:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-45ba1623-634f-4139-bcdf-b82593f411d5">
-<span class="eqno">(53)<a class="headerlink" href="#equation-45ba1623-634f-4139-bcdf-b82593f411d5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-233e0624-b4b9-4699-a620-ea053ed3e90d">
+<span class="eqno">(55)<a class="headerlink" href="#equation-233e0624-b4b9-4699-a620-ea053ed3e90d" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1} &amp;= v_n + \frac{F_n}{m}\Delta t - \frac{\gamma}{m} v_n \Delta t + \sqrt{\frac{2\gamma k_B T \Delta t}{m^2}} R_n,\\
 x_{n+1} &amp;= x_n + v_n \Delta t,
 \end{align}\]</div>
@@ -918,8 +923,8 @@ Do this for both integration schemes.</p></li>
 <section id="bbk-integrator-brungerbrookskarplus">
 <h3>BBK Integrator (Brünger–Brooks–Karplus)<a class="headerlink" href="#bbk-integrator-brungerbrookskarplus" title="Link to this heading">#</a></h3>
 <p>Implement and test the BBK integrator</p>
-<div class="amsmath math notranslate nohighlight" id="equation-95ccac1d-3f49-496f-81ff-75d375650485">
-<span class="eqno">(54)<a class="headerlink" href="#equation-95ccac1d-3f49-496f-81ff-75d375650485" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-a065e660-adeb-4420-b34a-2551f56c7e23">
+<span class="eqno">(56)<a class="headerlink" href="#equation-a065e660-adeb-4420-b34a-2551f56c7e23" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1/2} &amp;= \frac{(1 - \gamma\Delta t / 2)v_n + \frac{\Delta t}{2m}F_n + R_n}{1 + \gamma\Delta t / 2},\\
 x_{n+1} &amp;= x_n + v_{n+1/2}\Delta t .
 \end{align}\]</div>
