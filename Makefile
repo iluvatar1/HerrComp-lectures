@@ -5,7 +5,7 @@ book-lectures:
 	bash nbgrader_and_sync.sh && \
 	cd release && \
 	jupyter-book clean . && \
-	jupyter-book build -v ./ && \
+	jupyter-book build -v --all ./ && \
 	cd _build/html && \
 	python -m http.server 0
 
