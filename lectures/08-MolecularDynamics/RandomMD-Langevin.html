@@ -586,8 +586,8 @@ so we construct an effective stochastic description.</p>
 <li><p><span class="math notranslate nohighlight">\(-\gamma v\)</span>: <strong>Friction/Drag force</strong> (dissipation).</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sqrt{2 \gamma k_B T} \eta(t)\)</span>: <strong>Stochastic force</strong> (fluctuation), where <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise, which has the following properties:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-90a5549d-958b-4f70-a884-6702aa1a51e5">
-<span class="eqno">(59)<a class="headerlink" href="#equation-90a5549d-958b-4f70-a884-6702aa1a51e5" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d188751f-865d-4f12-84ee-3808a908b892">
+<span class="eqno">(62)<a class="headerlink" href="#equation-d188751f-865d-4f12-84ee-3808a908b892" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle \eta(t) \rangle &amp;= 0,\\
 \langle \eta(t) \eta(t') \rangle &amp;= \delta(t-t').
 \end{align}\]</div>
@@ -663,8 +663,8 @@ so we construct an effective stochastic description.</p>
 <section id="a-the-baseline-euler-maruyama">
 <h3>A. The Baseline: Euler-Maruyama<a class="headerlink" href="#a-the-baseline-euler-maruyama" title="Link to this heading">#</a></h3>
 <p>This is the stochastic version of the Forward Euler method:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-08592524-ddab-4dea-a9fb-be24a789bab3">
-<span class="eqno">(60)<a class="headerlink" href="#equation-08592524-ddab-4dea-a9fb-be24a789bab3" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-98941c16-202d-4047-a3e6-7d9736be0c41">
+<span class="eqno">(63)<a class="headerlink" href="#equation-98941c16-202d-4047-a3e6-7d9736be0c41" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1} &amp;= v_n + \frac{F_n}{m}\Delta t - \frac{\gamma}{m} v_n \Delta t + \sqrt{\frac{2\gamma k_B T \Delta t}{m^2}} R_n,\\
 x_{n+1} &amp;= x_n + v_n \Delta t,
 \end{align}\]</div>
@@ -923,8 +923,8 @@ Do this for both integration schemes.</p></li>
 <section id="bbk-integrator-brungerbrookskarplus">
 <h3>BBK Integrator (Brünger–Brooks–Karplus)<a class="headerlink" href="#bbk-integrator-brungerbrookskarplus" title="Link to this heading">#</a></h3>
 <p>Implement and test the BBK integrator</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ebec2327-cc17-482c-a02e-229abd468f39">
-<span class="eqno">(61)<a class="headerlink" href="#equation-ebec2327-cc17-482c-a02e-229abd468f39" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f711d361-8026-4785-96ef-43f42774208c">
+<span class="eqno">(64)<a class="headerlink" href="#equation-f711d361-8026-4785-96ef-43f42774208c" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1/2} &amp;= \frac{(1 - \gamma\Delta t / 2)v_n + \frac{\Delta t}{2m}F_n + R_n}{1 + \gamma\Delta t / 2},\\
 x_{n+1} &amp;= x_n + v_{n+1/2}\Delta t .
 \end{align}\]</div>

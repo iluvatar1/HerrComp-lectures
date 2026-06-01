@@ -18,20 +18,62 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-R0 = np.array([0, 0.9, 0.0])
-V0 = np.array([0.98, 1.23, 0.0])
-mass = 0.4343
-body = Body(R0, V0, mass)
+%matplotlib inline
+import matplotlib.pyplot as plt
+import numpy as np
+
+T, Rx, Ry, Vy = np.genfromtxt('data.txt', unpack=True)
+
+# plot final trayectories
+fig, ax = plt.subplots(1, 2, figsize=(9,4))
+ax[0].plot(T, Ry, 'o', label="R-lf")
+#ax[0].plot(T, R0[1] + V0[1]*T + 0.5*T*T*G[1], '-', label="Exact", lw=3)
+ax[1].plot(T, Vy, 'o', label="Vy-lf")
+ax[0].legend()
+ax[1].legend()
+ax[0].set_xlabel(r"$t(s)$", fontsize=23)
+ax[0].set_ylabel(r"$R_y(m)$", fontsize=23)
+ax[1].set_xlabel(r"$t(s)$", fontsize=23)
+ax[1].set_ylabel(r"$V_y(m)$", fontsize=23)
+plt.tight_layout()
+fig.savefig("md.pdf")
+
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m R0 = np.array([[32m0[39m, [32m0.9[39m, [32m0.0[39m])
-[32m      2[39m V0 = np.array([[32m0.98[39m, [32m1.23[39m, [32m0.0[39m])
-[32m      3[39m mass = [32m0.4343[39m
-[32m      4[39m body = Body(R0, V0, mass)
+[31mFileNotFoundError[39m                         Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[8][39m[32m, line 5[39m
+[32m      1[39m get_ipython().run_line_magic([33m'matplotlib'[39m, [33m'inline'[39m)
+[32m      2[39m [38;5;28;01mimport[39;00m matplotlib.pyplot [38;5;28;01mas[39;00m plt
+[32m      3[39m [38;5;28;01mimport[39;00m numpy [38;5;28;01mas[39;00m np
+[32m      4[39m 
+[32m----> [39m[32m5[39m T, Rx, Ry, Vy = np.genfromtxt([33m'data.txt'[39m, unpack=[38;5;28;01mTrue[39;00m)
+[32m      6[39m 
+[32m      7[39m [38;5;66;03m# plot final trayectories[39;00m
+[32m      8[39m fig, ax = plt.subplots([32m1[39m, [32m2[39m, figsize=([32m9[39m,[32m4[39m))
 
-[31mNameError[39m: name 'np' is not defined
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_npyio_impl.py:1978[39m, in [36mgenfromtxt[39m[34m(fname, dtype, comments, delimiter, skip_header, skip_footer, converters, missing_values, filling_values, usecols, names, excludelist, deletechars, replace_space, autostrip, case_sensitive, defaultfmt, unpack, usemask, loose, invalid_raise, max_rows, encoding, ndmin, like)[39m
+[32m   1976[39m     fname = os.fspath(fname)
+[32m   1977[39m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(fname, [38;5;28mstr[39m):
+[32m-> [39m[32m1978[39m     fid = [30;43mnp[39;49m[30;43m.[39;49m[30;43mlib[39;49m[30;43m.[39;49m[30;43m_datasource[39;49m[30;43m.[39;49m[30;43mopen[39;49m[30;43m([39;49m[30;43mfname[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43m'[39;49m[30;43mrt[39;49m[30;43m'[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mencoding[39;49m[30;43m=[39;49m[30;43mencoding[39;49m[30;43m)[39;49m
+[32m   1979[39m     fid_ctx = contextlib.closing(fid)
+[32m   1980[39m [38;5;28;01melse[39;00m:
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_datasource.py:192[39m, in [36mopen[39m[34m(path, mode, destpath, encoding, newline)[39m
+[32m    155[39m [38;5;250m[39m[33;03m"""[39;00m
+[32m    156[39m [33;03mOpen `path` with `mode` and return the file object.[39;00m
+[32m    157[39m 
+[32m   (...)[39m[32m    188[39m 
+[32m    189[39m [33;03m"""[39;00m
+[32m    191[39m ds = DataSource(destpath)
+[32m--> [39m[32m192[39m [38;5;28;01mreturn[39;00m [30;43mds[39;49m[30;43m.[39;49m[30;43mopen[39;49m[30;43m([39;49m[30;43mpath[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mmode[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mencoding[39;49m[30;43m=[39;49m[30;43mencoding[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mnewline[39;49m[30;43m=[39;49m[30;43mnewline[39;49m[30;43m)[39;49m
+
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_datasource.py:529[39m, in [36mDataSource.open[39m[34m(self, path, mode, encoding, newline)[39m
+[32m    526[39m     [38;5;28;01mreturn[39;00m _file_openers[ext](found, mode=mode,
+[32m    527[39m                               encoding=encoding, newline=newline)
+[32m    528[39m [38;5;28;01melse[39;00m:
+[32m--> [39m[32m529[39m     [38;5;28;01mraise[39;00m [38;5;167;01mFileNotFoundError[39;00m([33mf[39m[33m"[39m[38;5;132;01m{[39;00mpath[38;5;132;01m}[39;00m[33m not found.[39m[33m"[39m)
+
+[31mFileNotFoundError[39m: data.txt not found.
 
