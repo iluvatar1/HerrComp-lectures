@@ -18,42 +18,6 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import numpy as np
-
-# fix random seed for reproducibility
-np.random.seed(1)
-
-def euler_maruyama_step(x, v, f, dt, mass, gamma, kT):
-    # Noise term
-    noise = np.random.normal(0, 1)
-    random_force = np.sqrt(2 * gamma * kT * dt) * noise
-    
-    # Update
-    # YOUR CODE HERE
-    pass
-    
-    return x_new, v_new, f_new
-
-def gjf_step(x, v, f, dt, mass, gamma, kT):
-    # 1. Calculate coefficients
-    b = 1.0 / (1.0 + (gamma * dt / (2.0 * mass)))
-    
-    # 2. Generate random noise (Gaussian)
-    # Variance is 2 * gamma * kT * dt
-    noise = np.random.normal(0, np.sqrt(2 * gamma * kT * dt))
-    
-    # 3. Update Position
-    x_new = x + b * dt * v + (b * dt**2 / (2 * mass)) * f + (b * dt / (2 * mass)) * noise
-    
-    # 4. We need the force at the NEW position to update velocity
-    # For a simple harmonic oscillator: F = -k*x
-    f_new = -1.0 * x_new  # Simplified: k=1
-    
-    # 5. Update Velocity (on-site velocity)
-    v_new = b * v + (dt / (2 * mass)) * (b * f + f_new) + (b / mass) * noise
-    
-    return x_new, v_new, f_new
-
 # Simulation Setup: High Time Step Test
 dt = 0.5  # Large dt to test stability
 n_steps = 1000
@@ -67,8 +31,8 @@ traj_em = []
 traj_gjf = []
 
 for _ in range(n_steps):
-    x_em, v_em, f_em = euler_maruyama_step(x_em, v_em, f_em, dt, mass, gamma, kT)
-    x_gjf, v_gjf, f_gjf = gjf_step(x_gjf, v_gjf, f_gjf, dt, mass, gamma, kT)
+    x_em, v_em, f_em = euler_maruyama_step(x_em, v_em, f_em, dt, mass, gamma, kT, force_harmonic)
+    x_gjf, v_gjf, f_gjf = gjf_step(x_gjf, v_gjf, f_gjf, dt, mass, gamma, kT, force_harmonic)
     traj_em.append(x_em)
     traj_gjf.append(x_gjf)
 ------------------
@@ -76,17 +40,17 @@ for _ in range(n_steps):
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 50[39m
-[32m     46[39m traj_em = []
-[32m     47[39m traj_gjf = []
-[32m     48[39m 
-[32m     49[39m [38;5;28;01mfor[39;00m _ [38;5;28;01min[39;00m range(n_steps):
-[32m---> [39m[32m50[39m     x_em, v_em, f_em = euler_maruyama_step(x_em, v_em, f_em, dt, mass, gamma, kT)
-[32m     51[39m     x_gjf, v_gjf, f_gjf = gjf_step(x_gjf, v_gjf, f_gjf, dt, mass, gamma, kT)
-[32m     52[39m     traj_em.append(x_em)
-[32m     53[39m     traj_gjf.append(x_gjf)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 14[39m
+[32m     10[39m traj_em = []
+[32m     11[39m traj_gjf = []
+[32m     12[39m 
+[32m     13[39m [38;5;28;01mfor[39;00m _ [38;5;28;01min[39;00m range(n_steps):
+[32m---> [39m[32m14[39m     x_em, v_em, f_em = euler_maruyama_step(x_em, v_em, f_em, dt, mass, gamma, kT, force_harmonic)
+[32m     15[39m     x_gjf, v_gjf, f_gjf = gjf_step(x_gjf, v_gjf, f_gjf, dt, mass, gamma, kT, force_harmonic)
+[32m     16[39m     traj_em.append(x_em)
+[32m     17[39m     traj_gjf.append(x_gjf)
 
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 15[39m, in [36meuler_maruyama_step[39m[34m(x, v, f, dt, mass, gamma, kT)[39m
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 15[39m, in [36meuler_maruyama_step[39m[34m(x, v, f, dt, mass, gamma, kT, fext)[39m
 [32m     11[39m     [38;5;66;03m# Update[39;00m
 [32m     12[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
 [32m     13[39m     [38;5;28;01mpass[39;00m

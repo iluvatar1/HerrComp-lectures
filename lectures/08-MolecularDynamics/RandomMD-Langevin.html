@@ -508,15 +508,21 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-software">Note on software</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-integration">Time integration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-dive-into-the-integrators">Deep Dive into the Integrators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-approach-for-a-free-particle">Theoretical approach for a free particle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-langevin-equation-definition">The Langevin Equation Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-for-velocity-v-t">Solution for Velocity <span class="math notranslate nohighlight">\(v(t)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-for-mean-squared-displacement-langle-x-2-t-rangle">Solution for Mean Squared Displacement <span class="math notranslate nohighlight">\(\langle x^2(t) \rangle\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-regimes">Limiting Regimes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-fluctuations-and-the-role-of-noise">Velocity Fluctuations and the Role of Noise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#future-steps-from-trajectories-to-probabilities">Future Steps: From Trajectories to Probabilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-time-integration">Numerical time integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-tima-integrators">Different tima-integrators</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-baseline-euler-maruyama">A. The Baseline: Euler-Maruyama</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-standard-modified-velocity-verlet">B. The Standard: Modified Velocity Verlet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-the-robust-choice-gronbech-jensen-farago-g-jf">C. The Robust Choice: Grønbech-Jensen &amp; Farago (G-JF)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-and-comparison-code">Implementation and Comparison Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-the-explosion-point">Exercise: The “Explosion” Point</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-and-comparison-code">Implementation and Comparison Code</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-and-testing">Calibration and testing</a><ul class="nav section-nav flex-column">
@@ -551,11 +557,11 @@
 <h1>Random Molecular Dynamics and Langevin Equation<a class="headerlink" href="#random-molecular-dynamics-and-langevin-equation" title="Link to this heading">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<div class="highlight-{figure}https://upload.wikimedia.org/wikipedia/commons/c/c2/Brownian_motion_large.gif notranslate"><div class="highlight"><pre><span></span>:class: center
-:width: 20%
-From: https://upload.wikimedia.org/wikipedia/commons/c/c2/Brownian_motion_large.gif
-</pre></div>
-</div>
+<figure class="align-center">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/c/c2/Brownian_motion_large.gif"><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Brownian_motion_large.gif" style="width: 50%;" />
+</a>
+</figure>
+<p>Now we will study systems where there are random fluctuations on the main particle path, due to thermal fluctuatins and the environment it is in.</p>
 <section id="brownian-motion">
 <h3>Brownian Motion<a class="headerlink" href="#brownian-motion" title="Link to this heading">#</a></h3>
 <p>Microscopic particles suspended in a fluid exhibit erratic motion due to
@@ -567,8 +573,50 @@ collisions with surrounding molecules.</p>
 <li><p>Colloidal particles</p></li>
 <li><p>Molecular diffusion</p></li>
 </ul>
-<p>A fully deterministic simulation of all molecules is often impossible,
-so we construct an effective stochastic description.</p>
+<p>A fully deterministic simulation of all molecules is often impossible, so we construct an effective stochastic description.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Year</p></th>
+<th class="head"><p>Key Figure(s)</p></th>
+<th class="head"><p>Historical Milestone &amp; Impact</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1827</p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Robert_Brown_(botanist,_born_1773)">Robert Brown</a></p></td>
+<td><p>Observes the erratic motion of pollen grains suspended in water, demonstrating that the phenomenon is physical rather than biological.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1877</p></td>
+<td><p><a class="reference external" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1365-2818.1877.tb00093.x">Joseph Delsaulx</a></p></td>
+<td><p>Suggests that Brownian motion arises from collisions between suspended particles and surrounding fluid molecules.</p></td>
+</tr>
+<tr class="row-even"><td><p>1900</p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Louis_Bachelier">Louis Bachelier</a></p></td>
+<td><p>Introduces the mathematics of random walks to model fluctuations in financial markets, laying foundations for quantitative finance.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1905</p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Albert_Einstein">Albert Einstein</a></p></td>
+<td><p>Develops the first quantitative theory of Brownian motion, linking observable particle motion to molecular collisions and providing evidence for atoms.</p></td>
+</tr>
+<tr class="row-even"><td><p>1906</p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Marian_Smoluchowski">Marian Smoluchowski</a></p></td>
+<td><p>Independently formulates a complementary theoretical description based on random molecular impacts.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1908</p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Paul_Langevin">Paul Langevin</a></p></td>
+<td><p>Recasts Brownian motion as a dynamical equation with deterministic and stochastic forces, introducing the Langevin equation.</p></td>
+</tr>
+<tr class="row-even"><td><p>1908</p></td>
+<td><p><a class="reference external" href="https://es.wikipedia.org/wiki/Jean_Perrin">Jean Perrin</a></p></td>
+<td><p>Performs experiments confirming Einstein’s predictions and obtains an accurate estimate of Avogadro’s number.</p></td>
+</tr>
+<tr class="row-odd"><td><p>1923</p></td>
+<td><p><a class="reference external" href="https://en.wikipedia.org/wiki/Norbert_Wiener">Norbert Wiener</a></p></td>
+<td><p>Provides a rigorous mathematical foundation for continuous-time stochastic processes through the Wiener process.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 <section id="the-langevin-equation">
 <h3>The Langevin Equation<a class="headerlink" href="#the-langevin-equation" title="Link to this heading">#</a></h3>
@@ -579,15 +627,15 @@ so we construct an effective stochastic description.</p>
 </ol>
 <p>To do so, we use the <strong>Langevin Equation</strong>,</p>
 <div class="math notranslate nohighlight">
-\[m \frac{dv}{dt} = F_{ext}(x) - \gamma v + \sqrt{2 \gamma k_B T} \eta(t)\]</div>
+\[m \frac{dv}{dt} = F_{ext}(x) - \gamma v + \sqrt{2 \gamma k_B T}\hspace{0.5em}\eta(t)\]</div>
 <p>Where:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(F_{ext}(x)\)</span>: External forces (e.g., from a potential <span class="math notranslate nohighlight">\(U(x)\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(F_{ext}(x)\)</span>: <strong>External forces</strong> (e.g., from a potential <span class="math notranslate nohighlight">\(U(x)\)</span>).</p></li>
 <li><p><span class="math notranslate nohighlight">\(-\gamma v\)</span>: <strong>Friction/Drag force</strong> (dissipation).</p></li>
-<li><p><span class="math notranslate nohighlight">\(\sqrt{2 \gamma k_B T} \eta(t)\)</span>: <strong>Stochastic force</strong> (fluctuation), where <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise, which has the following properties:</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sqrt{2 \gamma k_B T}\hspace{0.5em}\eta(t)\)</span>: <strong>Stochastic force</strong> (fluctuation), where <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise, which has the following properties:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-d188751f-865d-4f12-84ee-3808a908b892">
-<span class="eqno">(62)<a class="headerlink" href="#equation-d188751f-865d-4f12-84ee-3808a908b892" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0f257e1d-5cb1-4eb2-ad48-8c0f6a217d5d">
+<span class="eqno">(62)<a class="headerlink" href="#equation-0f257e1d-5cb1-4eb2-ad48-8c0f6a217d5d" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle \eta(t) \rangle &amp;= 0,\\
 \langle \eta(t) \eta(t') \rangle &amp;= \delta(t-t').
 \end{align}\]</div>
@@ -606,8 +654,206 @@ so we construct an effective stochastic description.</p>
 <li><p>See: <a class="reference external" href="https://en.wikipedia.org/wiki/Category:Molecular_dynamics_software">https://en.wikipedia.org/wiki/Category:Molecular_dynamics_software</a></p></li>
 </ul>
 </section>
-<section id="time-integration">
-<h2>Time integration<a class="headerlink" href="#time-integration" title="Link to this heading">#</a></h2>
+<section id="theoretical-approach-for-a-free-particle">
+<h2>Theoretical approach for a free particle<a class="headerlink" href="#theoretical-approach-for-a-free-particle" title="Link to this heading">#</a></h2>
+<section id="the-langevin-equation-definition">
+<h3>The Langevin Equation Definition<a class="headerlink" href="#the-langevin-equation-definition" title="Link to this heading">#</a></h3>
+<p>For a free particle of mass <span class="math notranslate nohighlight">\(m\)</span>, the equation of motion is:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-592fa4af-430d-4c04-abb3-ec40f886e96a">
+<span class="eqno">(63)<a class="headerlink" href="#equation-592fa4af-430d-4c04-abb3-ec40f886e96a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+m \dot{v}(t) = -m \gamma v(t) + \eta(t)
+\end{equation}\]</div>
+<p>Dividing the entire equation by <span class="math notranslate nohighlight">\(m\)</span>, we eliminate the need for extra constants:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-7ccdba86-52ce-40b8-add5-ca8e84a54c41">
+<span class="eqno">(64)<a class="headerlink" href="#equation-7ccdba86-52ce-40b8-add5-ca8e84a54c41" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\dot{v}(t) + \gamma v(t) = \frac{\eta(t)}{m}
+\end{equation}\]</div>
+<p>The random force <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise. The Fluctuation-Dissipation Theorem dictates the following properties:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bfe53dee-9313-4069-968a-a61670123297">
+<span class="eqno">(65)<a class="headerlink" href="#equation-bfe53dee-9313-4069-968a-a61670123297" title="Permalink to this equation">#</a></span>\[\begin{align}
+\langle \eta(t) \rangle &amp;= 0,\\
+\langle \eta(t) \eta(t') \rangle &amp;= 2 m \gamma k_B T \delta(t - t')
+\end{align}\]</div>
+<p>For the scaled noise term <span class="math notranslate nohighlight">\(A(t) = \frac{\eta(t)}{m}\)</span>, the autocorrelation simplifies to:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4be923db-8e6c-4e5f-a83a-b288f958df3d">
+<span class="eqno">(66)<a class="headerlink" href="#equation-4be923db-8e6c-4e5f-a83a-b288f958df3d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle A(t) A(t') \rangle = \frac{2 \gamma k_B T}{m} \delta(t - t').
+\end{equation}\]</div>
+</section>
+<hr class="docutils" />
+<section id="solution-for-velocity-v-t">
+<h3>Solution for Velocity <span class="math notranslate nohighlight">\(v(t)\)</span><a class="headerlink" href="#solution-for-velocity-v-t" title="Link to this heading">#</a></h3>
+<p>We start with the first-order linear differential equation:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ff6635c0-a7c8-4dea-9182-6b374eb20b39">
+<span class="eqno">(67)<a class="headerlink" href="#equation-ff6635c0-a7c8-4dea-9182-6b374eb20b39" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\dot{v}(t) + \gamma v(t) = A(t).
+\end{equation}\]</div>
+<p>Multiply by the integrating factor <span class="math notranslate nohighlight">\(e^{\gamma t}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a4be5046-f5f6-4b89-a01a-7d2573d9fc53">
+<span class="eqno">(68)<a class="headerlink" href="#equation-a4be5046-f5f6-4b89-a01a-7d2573d9fc53" title="Permalink to this equation">#</a></span>\[\begin{equation}
+e^{\gamma t} \dot{v}(t) + \gamma e^{\gamma t} v(t) = e^{\gamma t} A(t).
+\end{equation}\]</div>
+<p>By the product rule, the left side is the exact derivative of <span class="math notranslate nohighlight">\(v(t)e^{\gamma t}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-d1a8691c-b248-4448-a549-a6e6a4a2709e">
+<span class="eqno">(69)<a class="headerlink" href="#equation-d1a8691c-b248-4448-a549-a6e6a4a2709e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{d}{dt} \left[ v(t) e^{\gamma t} \right] = e^{\gamma t} A(t).
+\end{equation}\]</div>
+<p>Integrate both sides with respect to time from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1b50d940-e951-4e4a-b689-55b8a73e56ef">
+<span class="eqno">(70)<a class="headerlink" href="#equation-1b50d940-e951-4e4a-b689-55b8a73e56ef" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v(t) e^{\gamma t} - v(0) = \int_0^t e^{\gamma t'} A(t') dt'.
+\end{equation}\]</div>
+<p>Isolating <span class="math notranslate nohighlight">\(v(t)\)</span>, we obtain the <strong>exact solution for the velocity</strong>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bf8be49e-6075-4308-ab85-2ded96f6fc0e">
+<span class="eqno">(71)<a class="headerlink" href="#equation-bf8be49e-6075-4308-ab85-2ded96f6fc0e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+v(t) = v_0 e^{-\gamma t} + \int_0^t e^{-\gamma (t - t')} A(t') dt'.
+\end{equation}\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ensemble average and integral elimination
+By taking the ensemble average we eliminate the integral due to the noise propertis</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="solution-for-mean-squared-displacement-langle-x-2-t-rangle">
+<h3>Solution for Mean Squared Displacement <span class="math notranslate nohighlight">\(\langle x^2(t) \rangle\)</span><a class="headerlink" href="#solution-for-mean-squared-displacement-langle-x-2-t-rangle" title="Link to this heading">#</a></h3>
+<p>We use Langevin’s trick to solve directly for the variance. Start with the equation of motion in terms of position <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-30a6c9d0-6ebc-4a05-abc2-9b7ef993b899">
+<span class="eqno">(72)<a class="headerlink" href="#equation-30a6c9d0-6ebc-4a05-abc2-9b7ef993b899" title="Permalink to this equation">#</a></span>\[\begin{equation}
+m \ddot{x} = -m \gamma \dot{x} + \eta(t).
+\end{equation}\]</div>
+<p>Multiply the entire equation by <span class="math notranslate nohighlight">\(x\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0c8bdd80-1b01-4f2d-bae3-518984113e4e">
+<span class="eqno">(73)<a class="headerlink" href="#equation-0c8bdd80-1b01-4f2d-bae3-518984113e4e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+m x \ddot{x} = -m \gamma x \dot{x} + x \eta(t).
+\end{equation}\]</div>
+<p>Substitute the chain rule identities <span class="math notranslate nohighlight">\(x \dot{x} = \frac{1}{2} \frac{d}{dt}(x^2)\)</span> and <span class="math notranslate nohighlight">\(x \ddot{x} = \frac{1}{2} \frac{d^2}{dt^2}(x^2) - \dot{x}^2\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-cec5f4a7-8311-49c2-a6fd-ade660d2d1fa">
+<span class="eqno">(74)<a class="headerlink" href="#equation-cec5f4a7-8311-49c2-a6fd-ade660d2d1fa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{m}{2} \frac{d^2}{dt^2}(x^2) - m \dot{x}^2 = -\frac{m \gamma}{2} \frac{d}{dt}(x^2) + x \eta(t).
+\end{equation}\]</div>
+<p>Take the ensemble average <span class="math notranslate nohighlight">\(\langle ... \rangle\)</span>. The noise and position are uncorrelated (<span class="math notranslate nohighlight">\(\langle x \eta(t) \rangle = 0\)</span>), and by the equipartition theorem, the average kinetic energy is <span class="math notranslate nohighlight">\(\langle m \dot{x}^2 \rangle = k_B T\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-b9b5dcda-d924-4ee4-8dd4-9f221a1fd169">
+<span class="eqno">(75)<a class="headerlink" href="#equation-b9b5dcda-d924-4ee4-8dd4-9f221a1fd169" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{m}{2} \frac{d^2}{dt^2}\langle x^2 \rangle - k_B T = -\frac{m \gamma}{2} \frac{d}{dt}\langle x^2 \rangle.
+\end{equation}\]</div>
+<p>Divide by <span class="math notranslate nohighlight">\(m/2\)</span> to clean up the equation, and let <span class="math notranslate nohighlight">\(u(t) = \frac{d}{dt}\langle x^2 \rangle\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5a4b3167-9458-4776-89ee-3dcd422ba54d">
+<span class="eqno">(76)<a class="headerlink" href="#equation-5a4b3167-9458-4776-89ee-3dcd422ba54d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\dot{u}(t) + \gamma u(t) = \frac{2 k_B T}{m}.
+\end{equation}\]</div>
+<p>Multiply by the integrating factor <span class="math notranslate nohighlight">\(e^{\gamma t}\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-9c42dc16-1860-45ea-b900-1a3a24d961c7">
+<span class="eqno">(77)<a class="headerlink" href="#equation-9c42dc16-1860-45ea-b900-1a3a24d961c7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{d}{dt} \left[ u(t) e^{\gamma t} \right] = \frac{2 k_B T}{m} e^{\gamma t}.
+\end{equation}\]</div>
+<p>Integrate from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(t\)</span>. Assuming the particle starts at the origin, the initial variance expansion rate is <span class="math notranslate nohighlight">\(u(0) = 0\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-0a8400bc-3214-475b-a0c0-eb9f98946af5">
+<span class="eqno">(78)<a class="headerlink" href="#equation-0a8400bc-3214-475b-a0c0-eb9f98946af5" title="Permalink to this equation">#</a></span>\[\begin{align}
+u(t) e^{\gamma t} &amp;= \frac{2 k_B T}{m \gamma} \left( e^{\gamma t} - 1 \right)\\
+u(t) = \frac{2 k_B T}{m \gamma} \left( 1 - e^{-\gamma t} \right).
+\end{align}\]</div>
+<p>Finally, integrate <span class="math notranslate nohighlight">\(u(t) = \frac{d}{dt}\langle x^2 \rangle\)</span> from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(t\)</span> to find the MSD:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-76df6621-a88e-4554-811a-36f0ed4f4771">
+<span class="eqno">(79)<a class="headerlink" href="#equation-76df6621-a88e-4554-811a-36f0ed4f4771" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle x^2(t) \rangle = \int_0^t \frac{2 k_B T}{m \gamma} \left( 1 - e^{-\gamma t'} \right) dt'.
+\end{equation}\]</div>
+<p>This yields the <strong>exact solution for the Mean Squared Displacement</strong>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6a0b6a13-347d-472b-81c0-c1b018736c23">
+<span class="eqno">(80)<a class="headerlink" href="#equation-6a0b6a13-347d-472b-81c0-c1b018736c23" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle x^2(t) \rangle = \frac{2 k_B T}{m \gamma} \left[ t - \frac{1}{\gamma} \left( 1 - e^{-\gamma t} \right) \right].
+\end{equation}\]</div>
+</section>
+<hr class="docutils" />
+<section id="limiting-regimes">
+<h3>Limiting Regimes<a class="headerlink" href="#limiting-regimes" title="Link to this heading">#</a></h3>
+<p>We can Taylor expand the exact MSD solution to show the transition between regimes:</p>
+<p><strong>1. Short Times (<span class="math notranslate nohighlight">\(t \ll 1/\gamma\)</span>): The Ballistic Regime</strong>
+Using the expansion <span class="math notranslate nohighlight">\(e^{-\gamma t} \approx 1 - \gamma t + \frac{1}{2}\gamma^2 t^2\)</span>:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-60e4f87e-9804-4e89-9632-330a1ea7b704">
+<span class="eqno">(81)<a class="headerlink" href="#equation-60e4f87e-9804-4e89-9632-330a1ea7b704" title="Permalink to this equation">#</a></span>\[\begin{align}
+\langle x^2(t) \rangle &amp;\approx \frac{2 k_B T}{m \gamma} \left[ t - \frac{1}{\gamma} \left( 1 - \left( 1 - \gamma t + \frac{1}{2}\gamma^2 t^2 \right) \right) \right]\\
+\langle x^2(t) \rangle &amp;\approx \frac{k_B T}{m} t^2.
+\end{align}\]</div>
+<p><em>(The particle moves with thermal velocity before friction takes effect).</em></p>
+<p><strong>2. Long Times (<span class="math notranslate nohighlight">\(t \gg 1/\gamma\)</span>): The Diffusive Regime</strong>
+The exponential term <span class="math notranslate nohighlight">\(e^{-\gamma t}\)</span> rapidly decays to zero, leaving:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-314c9104-d94b-44b6-8c05-50597f0c2002">
+<span class="eqno">(82)<a class="headerlink" href="#equation-314c9104-d94b-44b6-8c05-50597f0c2002" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle x^2(t) \rangle \approx \frac{2 k_B T}{m \gamma} t = 2 D t.
+\end{equation}\]</div>
+<p>Where the Einstein diffusion coefficient is <span class="math notranslate nohighlight">\(D = \frac{k_B T}{m \gamma}\)</span>.
+<em>(The particle undergoes a random walk governed by viscous drag).</em></p>
+</section>
+<section id="velocity-fluctuations-and-the-role-of-noise">
+<h3>Velocity Fluctuations and the Role of Noise<a class="headerlink" href="#velocity-fluctuations-and-the-role-of-noise" title="Link to this heading">#</a></h3>
+<p>While the average velocity of the particle decays to zero (<span class="math notranslate nohighlight">\(\langle v(t) \rangle = v_0 e^{-\gamma t}\)</span>), the <em>fluctuations</em> around this average do not. These fluctuations are driven entirely by the random thermal noise.</p>
+<p>To find the velocity variance, we square our exact solution for <span class="math notranslate nohighlight">\(v(t)\)</span> and take the ensemble average:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-a4e0c189-9fbe-4430-b3b3-5d376df54145">
+<span class="eqno">(83)<a class="headerlink" href="#equation-a4e0c189-9fbe-4430-b3b3-5d376df54145" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle v^2(t) \rangle = \left\langle \left( v_0 e^{-\gamma t} + \int_0^t e^{-\gamma (t - t')} A(t') dt' \right)^2 \right\rangle.
+\end{equation}\]</div>
+<p>Expanding this, the cross-term vanishes because the noise has zero mean (<span class="math notranslate nohighlight">\(\langle A(t') \rangle = 0\)</span>):</p>
+<div class="amsmath math notranslate nohighlight" id="equation-ea143049-f86f-4783-b805-0a7809114486">
+<span class="eqno">(84)<a class="headerlink" href="#equation-ea143049-f86f-4783-b805-0a7809114486" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle v^2(t) \rangle = v_0^2 e^{-2\gamma t} + \int_0^t \int_0^t e^{-\gamma (t - t')} e^{-\gamma (t - t'')} \langle A(t') A(t'') \rangle dt' dt''.
+\end{equation}\]</div>
+<p>Now, we substitute the noise autocorrelation <span class="math notranslate nohighlight">\(\langle A(t') A(t'') \rangle = \frac{2 \gamma k_B T}{m} \delta(t' - t'')\)</span>. The Dirac delta function collapses the double integral into a single one (evaluating <span class="math notranslate nohighlight">\(t''\)</span> at <span class="math notranslate nohighlight">\(t'\)</span>):</p>
+<div class="amsmath math notranslate nohighlight" id="equation-6014b19c-b29c-409b-aee5-477b2a106341">
+<span class="eqno">(85)<a class="headerlink" href="#equation-6014b19c-b29c-409b-aee5-477b2a106341" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle v^2(t) \rangle = v_0^2 e^{-2\gamma t} + \frac{2 \gamma k_B T}{m} \int_0^t e^{-2\gamma (t - t')} dt'.
+\end{equation}\]</div>
+<p>Evaluating the integral:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1532464a-2ffd-4720-bcd1-d22aff1cb946">
+<span class="eqno">(86)<a class="headerlink" href="#equation-1532464a-2ffd-4720-bcd1-d22aff1cb946" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\int_0^t e^{-2\gamma (t - t')} dt' = e^{-2\gamma t} \left[ \frac{e^{2\gamma t'}}{2\gamma} \right]_0^t = \frac{1 - e^{-2\gamma t}}{2\gamma}.
+\end{equation}\]</div>
+<p>Substituting this back yields the exact expression for the velocity variance:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-1f73f105-8b1d-4f0d-a32f-432bc3dbcf0f">
+<span class="eqno">(87)<a class="headerlink" href="#equation-1f73f105-8b1d-4f0d-a32f-432bc3dbcf0f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle v^2(t) \rangle = v_0^2 e^{-2\gamma t} + \frac{k_B T}{m} \left( 1 - e^{-2\gamma t} \right).
+\end{equation}\]</div>
+<p><strong>Physical Interpretation (The Fluctuation-Dissipation Balance):</strong>
+This equation beautifully illustrates the competing physical forces:</p>
+<ol class="arabic simple">
+<li><p><strong>Dissipation (Friction):</strong> The first term <span class="math notranslate nohighlight">\(v_0^2 e^{-2\gamma t}\)</span> shows the particle’s initial kinetic energy being dissipated into the surrounding fluid by the viscous drag <span class="math notranslate nohighlight">\(\gamma\)</span>.</p></li>
+<li><p><strong>Fluctuation (Noise):</strong> The second term shows the random kicks of the fluid pumping energy <em>back</em> into the particle.</p></li>
+</ol>
+<p>As <span class="math notranslate nohighlight">\(t \to \infty\)</span>, the transient terms decay and the system reaches thermal equilibrium. The variance perfectly settles at:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5d60f46b-7318-4bdd-8358-f6ad6e074f44">
+<span class="eqno">(88)<a class="headerlink" href="#equation-5d60f46b-7318-4bdd-8358-f6ad6e074f44" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\lim_{t \to \infty} \langle v^2(t) \rangle = \frac{k_B T}{m}.
+\end{equation}\]</div>
+<p>This recovers the <strong>Equipartition Theorem</strong> (<span class="math notranslate nohighlight">\(\frac{1}{2}m\langle v^2 \rangle = \frac{1}{2}k_B T\)</span>). The fact that the <span class="math notranslate nohighlight">\(\gamma\)</span> terms perfectly canceled out to leave exactly <span class="math notranslate nohighlight">\(k_B T/m\)</span> is not a coincidence; it is the direct result of defining the noise variance as <span class="math notranslate nohighlight">\(2m\gamma k_B T\)</span>. This proves that to maintain equilibrium, the amplitude of the noise (fluctuations) and the strength of the drag (dissipation) must be intrinsically linked.</p>
+</section>
+<hr class="docutils" />
+<section id="future-steps-from-trajectories-to-probabilities">
+<h3>Future Steps: From Trajectories to Probabilities<a class="headerlink" href="#future-steps-from-trajectories-to-probabilities" title="Link to this heading">#</a></h3>
+<p>The Langevin equation is a <strong>Stochastic Differential Equation (SDE)</strong>. It describes the precise <em>individual trajectory</em> of a single realization of noise. However, in statistical mechanics, we often care more about the macroscopic behavior of an ensemble of particles.</p>
+<p>The next logical step in this theoretical framework is to transition from tracking trajectories to calculating the evolution of probability distributions.</p>
+<ul class="simple">
+<li><p><strong>The Fokker-Planck Equation:</strong>
+Instead of solving for <span class="math notranslate nohighlight">\(x(t)\)</span> and <span class="math notranslate nohighlight">\(v(t)\)</span> directly, we can derive a deterministic Partial Differential Equation (PDE) for the probability density function <span class="math notranslate nohighlight">\(P(x, v, t)\)</span>. This function describes the probability of finding a particle at position <span class="math notranslate nohighlight">\(x\)</span> with velocity <span class="math notranslate nohighlight">\(v\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>.
+For the Langevin equation, the corresponding Fokker-Planck equation (often called the <strong>Klein-Kramers equation</strong>) is:</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-86a6a31e-ccf7-4cb9-b049-7c0fd3d11ff0">
+<span class="eqno">(89)<a class="headerlink" href="#equation-86a6a31e-ccf7-4cb9-b049-7c0fd3d11ff0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{\partial P}{\partial t} = -v \frac{\partial P}{\partial x} + \frac{\partial}{\partial v} \left( \gamma v P + \frac{F_{ext}(x)}{m} P \right) + \frac{\gamma k_B T}{m} \frac{\partial^2 P}{\partial v^2}
+\end{equation}\]</div>
+<p>Here, the noise translates into a “diffusion” term in velocity space (<span class="math notranslate nohighlight">\(\dfrac{\partial^2 P}{\partial v^2}\)</span>), while the deterministic forces map to drift terms.</p>
+<ul class="simple">
+<li><p><strong>The Overdamped Limit (Smoluchowski Equation):</strong>
+If the friction is very high (<span class="math notranslate nohighlight">\(\gamma \to \infty\)</span>) or the mass is very small (like biological macromolecules in water), the particle’s momentum relaxes almost instantaneously. The velocity is essentially slaved to the forces, and inertia (<span class="math notranslate nohighlight">\(m\dot{v}\)</span>) can be neglected. By adiabatically eliminating the velocity from the Kramers equation, we obtain the <strong>Smoluchowski equation</strong>, which operates purely in position space:
+\begin{equation}
+\frac{\partial P(x,t)}{\partial t} = \frac{\partial}{\partial x} \left( \frac{-F_{ext}(x)}{m\gamma} P(x,t) + D \frac{\partial P(x,t)}{\partial x} \right)
+\end{equation}
+where <span class="math notranslate nohighlight">\(D = \dfrac{k_B T}{m\gamma}\)</span>.</p></li>
+</ul>
+<p>Computationally, solving the Fokker-Planck equation yields exact, smooth analytical distributions. However, PDEs suffer heavily from the “curse of dimensionality” (they are incredibly hard to solve for multi-particle 3D systems). This is precisely why we rely on numerical Langevin integrators to simulate large systems—sampling millions of trajectories via the Langevin SDE is far more efficient than solving a high-dimensional Fokker-Planck PDE.</p>
+</section>
+</section>
+<section id="numerical-time-integration">
+<h2>Numerical time integration<a class="headerlink" href="#numerical-time-integration" title="Link to this heading">#</a></h2>
 <p>We cannot use the standard Verlet/Leapfrog algorithms in this cases, which are simplectic (they preserve phase-space volume) and time reversible, due to the random term ad the friction term in the Langevin equation, which introduce the following consequences:</p>
 <ol class="arabic simple">
 <li><p>Friction makes the system non-Hamiltonian (energy is dissipated).</p></li>
@@ -657,14 +903,14 @@ so we construct an effective stochastic description.</p>
 </table>
 </div>
 <hr class="docutils" />
-<section id="deep-dive-into-the-integrators">
-<h3>Deep Dive into the Integrators<a class="headerlink" href="#deep-dive-into-the-integrators" title="Link to this heading">#</a></h3>
+<section id="different-tima-integrators">
+<h3>Different tima-integrators<a class="headerlink" href="#different-tima-integrators" title="Link to this heading">#</a></h3>
 </section>
 <section id="a-the-baseline-euler-maruyama">
 <h3>A. The Baseline: Euler-Maruyama<a class="headerlink" href="#a-the-baseline-euler-maruyama" title="Link to this heading">#</a></h3>
 <p>This is the stochastic version of the Forward Euler method:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-98941c16-202d-4047-a3e6-7d9736be0c41">
-<span class="eqno">(63)<a class="headerlink" href="#equation-98941c16-202d-4047-a3e6-7d9736be0c41" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-4fe07c2f-b472-4922-b0f0-0c4b47ff50c1">
+<span class="eqno">(90)<a class="headerlink" href="#equation-4fe07c2f-b472-4922-b0f0-0c4b47ff50c1" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1} &amp;= v_n + \frac{F_n}{m}\Delta t - \frac{\gamma}{m} v_n \Delta t + \sqrt{\frac{2\gamma k_B T \Delta t}{m^2}} R_n,\\
 x_{n+1} &amp;= x_n + v_n \Delta t,
 \end{align}\]</div>
@@ -696,7 +942,7 @@ It defines a discrete-time engine where the friction and noise are analytically 
 <span class="c1"># fix random seed for reproducibility</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">euler_maruyama_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">euler_maruyama_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">,</span> <span class="n">fext</span><span class="p">):</span>
     <span class="c1"># Noise term</span>
     <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">random_force</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">kT</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise</span>
@@ -707,27 +953,41 @@ It defines a discrete-time engine where the friction and noise are analytically 
     
     <span class="k">return</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">v_new</span><span class="p">,</span> <span class="n">f_new</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">,</span> <span class="n">fext</span><span class="p">):</span>
     <span class="c1"># 1. Calculate coefficients</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass</span><span class="p">)))</span>
+    <span class="n">alpha</span> <span class="o">=</span> <span class="p">(</span><span class="n">gamma</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">*</span> <span class="n">mass</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">alpha</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">alpha</span><span class="p">)</span> 
     
     <span class="c1"># 2. Generate random noise (Gaussian)</span>
     <span class="c1"># Variance is 2 * gamma * kT * dt</span>
     <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">kT</span> <span class="o">*</span> <span class="n">dt</span><span class="p">))</span>
     
-    <span class="c1"># 3. Update Position</span>
+    <span class="c1"># 3. Update Position (uses b)</span>
     <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">*</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">dt</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mass</span><span class="p">))</span> <span class="o">*</span> <span class="n">f</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mass</span><span class="p">))</span> <span class="o">*</span> <span class="n">noise</span>
     
     <span class="c1"># 4. We need the force at the NEW position to update velocity</span>
-    <span class="c1"># For a simple harmonic oscillator: F = -k*x</span>
-    <span class="n">f_new</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">x_new</span>  <span class="c1"># Simplified: k=1</span>
+    <span class="n">f_new</span> <span class="o">=</span> <span class="n">fext</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
     
     <span class="c1"># 5. Update Velocity (on-site velocity)</span>
-    <span class="n">v_new</span> <span class="o">=</span> <span class="n">b</span> <span class="o">*</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mass</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">f</span> <span class="o">+</span> <span class="n">f_new</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">mass</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise</span>
+    <span class="n">v_new</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">v</span> <span class="o">+</span> <span class="p">(</span><span class="n">dt</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">mass</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">*</span> <span class="n">f</span> <span class="o">+</span> <span class="n">f_new</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">/</span> <span class="n">mass</span><span class="p">)</span> <span class="o">*</span> <span class="n">noise</span>
     
     <span class="k">return</span> <span class="n">x_new</span><span class="p">,</span> <span class="n">v_new</span><span class="p">,</span> <span class="n">f_new</span>
 
-<span class="c1"># Simulation Setup: High Time Step Test</span>
+<span class="c1"># Define the force for a FREE PARTICLE (no restoring spring)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">force_free_particle</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.0</span>
+
+<span class="c1"># (For later: if you want to test the harmonic oscillator again)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">force_harmonic</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="mf">1.0</span> <span class="o">*</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Simulation Setup: High Time Step Test</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Large dt to test stability</span>
 <span class="n">n_steps</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span>
@@ -740,8 +1000,8 @@ It defines a discrete-time engine where the friction and noise are analytically 
 <span class="n">traj_gjf</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
-    <span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span> <span class="o">=</span> <span class="n">euler_maruyama_step</span><span class="p">(</span><span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
-    <span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
+    <span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span> <span class="o">=</span> <span class="n">euler_maruyama_step</span><span class="p">(</span><span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">,</span> <span class="n">force_harmonic</span><span class="p">)</span>
+    <span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">,</span> <span class="n">force_harmonic</span><span class="p">)</span>
     <span class="n">traj_em</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_em</span><span class="p">)</span>
     <span class="n">traj_gjf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">)</span>
 </pre></div>
@@ -750,17 +1010,17 @@ It defines a discrete-time engine where the friction and noise are analytically 
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">50</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span> <span class="n">traj_em</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span> <span class="n">traj_gjf</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">     </span><span class="mi">48</span> 
-<span class="g g-Whitespace">     </span><span class="mi">49</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
-<span class="ne">---&gt; </span><span class="mi">50</span>     <span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span> <span class="o">=</span> <span class="n">euler_maruyama_step</span><span class="p">(</span><span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">51</span>     <span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">52</span>     <span class="n">traj_em</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_em</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">53</span>     <span class="n">traj_gjf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">traj_em</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">traj_gjf</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> 
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_steps</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">14</span>     <span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span> <span class="o">=</span> <span class="n">euler_maruyama_step</span><span class="p">(</span><span class="n">x_em</span><span class="p">,</span> <span class="n">v_em</span><span class="p">,</span> <span class="n">f_em</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">,</span> <span class="n">force_harmonic</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">,</span> <span class="n">v_gjf</span><span class="p">,</span> <span class="n">f_gjf</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">,</span> <span class="n">force_harmonic</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span>     <span class="n">traj_em</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_em</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">traj_gjf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_gjf</span><span class="p">)</span>
 
-<span class="nn">Cell In[1], line 15,</span> in <span class="ni">euler_maruyama_step</span><span class="nt">(x, v, f, dt, mass, gamma, kT)</span>
+<span class="nn">Cell In[1], line 15,</span> in <span class="ni">euler_maruyama_step</span><span class="nt">(x, v, f, dt, mass, gamma, kT, fext)</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="c1"># Update</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="c1"># YOUR CODE HERE</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">pass</span>
@@ -793,26 +1053,14 @@ It defines a discrete-time engine where the friction and noise are analytically 
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
-</summary>
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">display</span>
-<span class="n">image_path</span><span class="o">=</span><span class="s2">&quot;fig/integrator_comp.png&quot;</span>
-<span class="c1"># Display the image only if it exists</span>
-<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">image_path</span><span class="p">):</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="n">image_path</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</details>
-</div>
-<section id="exercise-the-explosion-point">
-<h4>Exercise: The “Explosion” Point<a class="headerlink" href="#exercise-the-explosion-point" title="Link to this heading">#</a></h4>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/integrator_comp.png"><img alt="" class="bg-primary" src="../../_images/integrator_comp.png" style="width: 100%;" />
+</a>
+</figure>
+<div class="exercise admonition" id="lectures/08-MolecularDynamics/RandomMD-Langevin-exercise-0">
+
+<p class="admonition-title"><span class="caption-number">Exercise 10 </span> (The “Explosion” Point)</p>
+<section id="exercise-content">
 <p>In Numerical Analysis, algorithms have a stability limit.</p>
 <ol class="arabic simple">
 <li><p>Gradually increase <code class="docutils literal notranslate"><span class="pre">dt</span></code> in the simulation above (try 0.1, 0.5, 1.0, 2.0).</p></li>
@@ -822,48 +1070,73 @@ It defines a discrete-time engine where the friction and noise are analytically 
 <li><p>Why is stability crucial when simulating complex molecules like proteins where forces can be very high?</p></li>
 </ol>
 </section>
+</div>
 </section>
 </section>
 <section id="calibration-and-testing">
 <h2>Calibration and testing<a class="headerlink" href="#calibration-and-testing" title="Link to this heading">#</a></h2>
 <p>It is important to always test the results. In this case, we can test the dynamics in several ways:</p>
-<section id="maxwell-boltzmann-distribution">
-<h3>Maxwell-Boltzmann distribution<a class="headerlink" href="#maxwell-boltzmann-distribution" title="Link to this heading">#</a></h3>
-<p>The ultimate test of a Langevin integrator is if it reproduces the <strong>Maxwell-Boltzmann distribution</strong>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#%matplotlib widget</span>
-<span class="c1"># Run a long G-JF simulation</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run a long G-JF simulation</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="n">steps</span> <span class="o">=</span> <span class="mi">50000</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
-<span class="n">v_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">x_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+<span class="n">v_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+<span class="n">f_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">v_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
-<span class="c1"># Plot Histogram vs Theory</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">v_list</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Simulated v&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="n">force_harmonic</span><span class="p">)</span>
+    <span class="n">x_list</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="n">v_list</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">v</span>
+    <span class="n">f_list</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="maxwell-boltzmann-distribution">
+<h3>Maxwell-Boltzmann distribution<a class="headerlink" href="#maxwell-boltzmann-distribution" title="Link to this heading">#</a></h3>
+<p>A good test of a Langevin integrator is if it reproduces the <strong>Maxwell-Boltzmann distribution</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot Histogram vs Theory</span>
+<span class="c1"># Histogram</span>
+<span class="c1"># YOUR CODE HERE</span>
+<span class="k">pass</span>
+
 <span class="n">v_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">v_list</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">v_list</span><span class="p">),</span> <span class="mi">100</span><span class="p">)</span>
 <span class="c1"># Theoretical Maxwell-Boltzmann in 1D: sqrt(m / 2*pi*kT) * exp(-mv^2 / 2kT)</span>
-<span class="n">theory</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">v_range</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="mf">1.0</span><span class="p">))</span>
+<span class="c1"># YOUR CODE HERE</span>
+<span class="k">pass</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">v_range</span><span class="p">,</span> <span class="n">theory</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical MB&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Velocity Distribution Calibration&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Velocity Distribution Calibration example&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/histo.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/histo.png"><img alt="" class="bg-primary" src="../../_images/histo.png" style="width: 70%;" />
+</a>
+</figure>
 </section>
 <section id="the-equipartition-theorem">
 <h3>The Equipartition Theorem<a class="headerlink" href="#the-equipartition-theorem" title="Link to this heading">#</a></h3>
 <p>A key “calibration” test is to check if the simulation respects the <strong>Equipartition Theorem</strong>:</p>
-<p>$<span class="math notranslate nohighlight">\(\langle \frac{1}{2} m v^2 \rangle = \frac{1}{2} k_B T\)</span>$ (in 1D).</p>
+<div class="amsmath math notranslate nohighlight" id="equation-4c8598f8-dc72-46d3-8897-65a7d9f38aed">
+<span class="eqno">(91)<a class="headerlink" href="#equation-4c8598f8-dc72-46d3-8897-65a7d9f38aed" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\langle \frac{1}{2} m v^2 \rangle = \frac{1}{2} k_B T
+\end{equation}\]</div>
+<p>(in 1D).</p>
 <p>Calculate the average kinetic energy from your trajectory and compare it to <span class="math notranslate nohighlight">\(\frac{1}{2} kT\)</span>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kinetic_energies</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">trajectory</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">kinetic_energies</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">mass</span> <span class="o">*</span> <span class="n">v_list</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">avg_ke</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">kinetic_energies</span><span class="p">)</span>
 <span class="n">expected_ke</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">kT</span>
 
@@ -890,32 +1163,69 @@ Do this for both integration schemes.</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate_msd</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+
+<span class="c1"># Run a long G-JF simulation for a FREE PARTICLE</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="mi">50000</span>
+<span class="n">dt_sim</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
+<span class="n">x_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">steps</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">dt_sim</span><span class="p">,</span> <span class="n">mass</span><span class="p">,</span> <span class="n">gamma</span><span class="p">,</span> <span class="n">kT</span><span class="p">,</span> <span class="n">force_free_particle</span><span class="p">)</span>
+    <span class="n">x_list</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+
+<span class="c1"># Calculate MSD</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">calculate_msd</span><span class="p">(</span><span class="n">pos</span><span class="p">):</span>
     <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
-    <span class="n">msd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="c1"># We only need a fraction of the points to see the regimes</span>
+    <span class="c1"># (MSD gets noisy at large tau anyway)</span>
+    <span class="n">max_tau</span> <span class="o">=</span> <span class="mi">2000</span> 
+    <span class="n">msd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">max_tau</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">max_tau</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
         <span class="n">diffs</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="n">tau</span><span class="p">:]</span> <span class="o">-</span> <span class="n">pos</span><span class="p">[:</span><span class="o">-</span><span class="n">tau</span><span class="p">]</span>
-        <span class="n">msd</span><span class="p">[</span><span class="n">tau</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diffs</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">msd</span><span class="p">[</span><span class="n">tau</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">diffs</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">msd</span>
 
-<span class="c1"># Free particle simulation (f=0)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span>
-<span class="n">free_traj</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2000</span><span class="p">):</span>
-    <span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gjf_step</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-    <span class="n">free_traj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">msd</span> <span class="o">=</span> <span class="n">calculate_msd</span><span class="p">(</span><span class="n">x_list</span><span class="p">)</span>
 
-<span class="n">msd</span> <span class="o">=</span> <span class="n">calculate_msd</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">free_traj</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">msd</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;MSD&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Slope=1 (Diffusive)&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Slope=2 (Ballistic)&quot;</span><span class="p">)</span>
+<span class="c1"># --- NEW PLOTTING BLOCK ---</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># Create a true time axis (tau_index * dt)</span>
+<span class="n">times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">msd</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt_sim</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">msd</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulated MSD&quot;</span><span class="p">)</span>
+
+<span class="c1"># Theoretical Ballistic line: MSD = (kT/m) * t^2</span>
+<span class="n">ballistic_theory</span> <span class="o">=</span> <span class="p">(</span><span class="n">kT</span> <span class="o">/</span> <span class="n">mass</span><span class="p">)</span> <span class="o">*</span> <span class="n">times</span><span class="o">**</span><span class="mi">2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">ballistic_theory</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Theoretical Ballistic ($t^2$)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Theoretical Diffusive line: MSD = 2 * D * t</span>
+<span class="c1"># Where Diffusion coefficient D = kT / gamma</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">kT</span> <span class="o">/</span> <span class="n">gamma</span>
+<span class="n">diffusive_theory</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">D</span> <span class="o">*</span> <span class="n">times</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">diffusive_theory</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Theoretical Diffusive ($t^1$)&quot;</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MSD: Ballistic to Diffusive Transition&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Mean Squared Displacement (MSD)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Free Particle MSD example: Ballistic to Diffusive Transition&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">)</span> <span class="c1"># Adjust viewing window</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/msd.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/msd.png"><img alt="" class="bg-primary" src="../../_images/msd.png" style="width: 90%;" />
+</a>
+</figure>
 </section>
 </section>
 <section id="exercises">
@@ -923,8 +1233,8 @@ Do this for both integration schemes.</p></li>
 <section id="bbk-integrator-brungerbrookskarplus">
 <h3>BBK Integrator (Brünger–Brooks–Karplus)<a class="headerlink" href="#bbk-integrator-brungerbrookskarplus" title="Link to this heading">#</a></h3>
 <p>Implement and test the BBK integrator</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f711d361-8026-4785-96ef-43f42774208c">
-<span class="eqno">(64)<a class="headerlink" href="#equation-f711d361-8026-4785-96ef-43f42774208c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d684313f-0e60-4083-b3bc-f93d27aa7872">
+<span class="eqno">(92)<a class="headerlink" href="#equation-d684313f-0e60-4083-b3bc-f93d27aa7872" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1/2} &amp;= \frac{(1 - \gamma\Delta t / 2)v_n + \frac{\Delta t}{2m}F_n + R_n}{1 + \gamma\Delta t / 2},\\
 x_{n+1} &amp;= x_n + v_{n+1/2}\Delta t .
 \end{align}\]</div>
@@ -1058,15 +1368,21 @@ and check if it decays exponentially, and the relationship with the exponential 
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#note-on-software">Note on software</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-integration">Time integration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deep-dive-into-the-integrators">Deep Dive into the Integrators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-approach-for-a-free-particle">Theoretical approach for a free particle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-langevin-equation-definition">The Langevin Equation Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-for-velocity-v-t">Solution for Velocity <span class="math notranslate nohighlight">\(v(t)\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-for-mean-squared-displacement-langle-x-2-t-rangle">Solution for Mean Squared Displacement <span class="math notranslate nohighlight">\(\langle x^2(t) \rangle\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#limiting-regimes">Limiting Regimes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#velocity-fluctuations-and-the-role-of-noise">Velocity Fluctuations and the Role of Noise</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#future-steps-from-trajectories-to-probabilities">Future Steps: From Trajectories to Probabilities</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-time-integration">Numerical time integration</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#different-tima-integrators">Different tima-integrators</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-the-baseline-euler-maruyama">A. The Baseline: Euler-Maruyama</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#b-the-standard-modified-velocity-verlet">B. The Standard: Modified Velocity Verlet</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-the-robust-choice-gronbech-jensen-farago-g-jf">C. The Robust Choice: Grønbech-Jensen &amp; Farago (G-JF)</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-and-comparison-code">Implementation and Comparison Code</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-the-explosion-point">Exercise: The “Explosion” Point</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation-and-comparison-code">Implementation and Comparison Code</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#calibration-and-testing">Calibration and testing</a><ul class="nav section-nav flex-column">

@@ -589,8 +589,8 @@
 <section id="example-the-lennard-jones-potential">
 <h3>Example: The Lennard-Jones Potential<a class="headerlink" href="#example-the-lennard-jones-potential" title="Link to this heading">#</a></h3>
 <p>The classic non-bonded interaction is the Lennard-Jones potential, which features strong short-range repulsion (Pauli exclusion) and weak long-range attraction (Van der Waals).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7743bc90-8d78-4e64-9a82-ca0d5ded3d34">
-<span class="eqno">(58)<a class="headerlink" href="#equation-7743bc90-8d78-4e64-9a82-ca0d5ded3d34" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-183844ca-7f21-4e79-a84c-27fad184b390">
+<span class="eqno">(58)<a class="headerlink" href="#equation-183844ca-7f21-4e79-a84c-27fad184b390" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} -
 \left(\frac{\sigma}{r}\right)^{6}
 \right],
@@ -632,14 +632,14 @@ V_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} -
 <h3>Verlet algorithm<a class="headerlink" href="#verlet-algorithm" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Verlet_integration">https://en.wikipedia.org/wiki/Verlet_integration</a></p>
 <p>We start by using a Taylor expansion</p>
-<div class="amsmath math notranslate nohighlight" id="equation-25586d5e-11ff-4d6b-a90b-d39215c6cd37">
-<span class="eqno">(59)<a class="headerlink" href="#equation-25586d5e-11ff-4d6b-a90b-d39215c6cd37" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0716bf4e-14f1-48c4-b463-2ae96c006c61">
+<span class="eqno">(59)<a class="headerlink" href="#equation-0716bf4e-14f1-48c4-b463-2ae96c006c61" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbf{x}(t+\Delta t)&amp;=\mathbf{x}(t)+\mathbf{v}(t)\Delta t+\frac{\mathbf{a}(t)\Delta t^2}{2}+\frac{\mathbf{b}(t)\Delta t^3}{6}+\mathcal{O}(\Delta t^4),\\
 \mathbf{x}(t-\Delta t)&amp;=\mathbf{x}(t)-\mathbf{v}(t)\Delta t+\frac{\mathbf{a}(t)\Delta t^2}{2}-\frac{\mathbf{b}(t)\Delta t^3}{6}+\mathcal{O}(\Delta t^4),
 \end{align}\]</div>
 <p>and then we add up to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2b0c9a1d-84a1-4c3c-a41e-81a2ef07cf86">
-<span class="eqno">(60)<a class="headerlink" href="#equation-2b0c9a1d-84a1-4c3c-a41e-81a2ef07cf86" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9e0aee82-0298-45e7-999e-69d3f010165b">
+<span class="eqno">(60)<a class="headerlink" href="#equation-9e0aee82-0298-45e7-999e-69d3f010165b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathbf{x}(t+\Delta t)=2\mathbf{x}(t)-\mathbf{x}(t-\Delta t)+\mathbf{a}(t)\Delta t^2+\mathcal{O}(\Delta t^4).
 \end{equation}\]</div>
 </section>
@@ -1122,8 +1122,8 @@ IndentationError: expected an indented block after function definition on line 1
 <section id="exercise-adding-more-particles">
 <h2>Exercise: Adding more particles<a class="headerlink" href="#exercise-adding-more-particles" title="Link to this heading">#</a></h2>
 <p>Now let’s add more particles. They will not see each other unless we implement a force among them. Also, we will need to generalize our methods to process arrays of bodies. First, the force that particle <span class="math notranslate nohighlight">\(i\)</span> does on particle <span class="math notranslate nohighlight">\(j\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b166150e-8d23-48e7-9a4d-4fb951c8fbb3">
-<span class="eqno">(61)<a class="headerlink" href="#equation-b166150e-8d23-48e7-9a4d-4fb951c8fbb3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-00082781-0d8c-4a99-8122-cbedd5681b12">
+<span class="eqno">(61)<a class="headerlink" href="#equation-00082781-0d8c-4a99-8122-cbedd5681b12" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{ij} = k \delta \hat n_{ij},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat n_{ij} = \vec R_{ij} / R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(\vec R_{ij} = \vec R_i - \vec R_j\)</span>, and <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(r\)</span> the radius of each particle.</p>
