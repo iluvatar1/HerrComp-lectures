@@ -570,7 +570,7 @@
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Smoothed-particle_hydrodynamics"><strong>Fluid Dynamics:</strong></a> Smoothed Particle Hydrodynamics (SPH) for water or blood flow.</p></li>
 </ul>
 <figure class="align-center">
-<a class="bg-primary reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/SPHInterpolationColorsVerbose.svg/500px-SPHInterpolationColorsVerbose.svg.png"><img alt="" class="bg-primary" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/SPHInterpolationColorsVerbose.svg/500px-SPHInterpolationColorsVerbose.svg.png" style="width: 20%;" />
+<a class="bg-primary reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/SPHInterpolationColorsVerbose.svg/500px-SPHInterpolationColorsVerbose.svg.png"><img alt="" class="bg-primary" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/SPHInterpolationColorsVerbose.svg/500px-SPHInterpolationColorsVerbose.svg.png" style="width: 40%;" />
 </a>
 </figure>
 <p>In this context, a “particle” is simply a discrete node with a position, mass, and velocity. The only difference between simulating a protein and an avalanche is the <strong>Force Field</strong>.</p>
@@ -589,8 +589,8 @@
 <section id="example-the-lennard-jones-potential">
 <h3>Example: The Lennard-Jones Potential<a class="headerlink" href="#example-the-lennard-jones-potential" title="Link to this heading">#</a></h3>
 <p>The classic non-bonded interaction is the Lennard-Jones potential, which features strong short-range repulsion (Pauli exclusion) and weak long-range attraction (Van der Waals).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-183844ca-7f21-4e79-a84c-27fad184b390">
-<span class="eqno">(58)<a class="headerlink" href="#equation-183844ca-7f21-4e79-a84c-27fad184b390" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a892a4bc-d995-497a-b59a-b53cc3b56f54">
+<span class="eqno">(58)<a class="headerlink" href="#equation-a892a4bc-d995-497a-b59a-b53cc3b56f54" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} -
 \left(\frac{\sigma}{r}\right)^{6}
 \right],
@@ -609,7 +609,7 @@ V_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} -
 <h3>Leap-frog algorithm<a class="headerlink" href="#leap-frog-algorithm" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Leapfrog_integration">https://en.wikipedia.org/wiki/Leapfrog_integration</a></p>
 <figure class="align-center">
-<a class="bg-primary reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/a/ac/Euler_leapfrog_comparison.gif"><img alt="" class="bg-primary" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Euler_leapfrog_comparison.gif" style="width: 60%;" />
+<a class="bg-primary reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/a/ac/Euler_leapfrog_comparison.gif"><img alt="" class="bg-primary" src="https://upload.wikimedia.org/wikipedia/commons/a/ac/Euler_leapfrog_comparison.gif" style="width: 80%;" />
 </a>
 </figure>
 <p>First, let’s expand the position around <span class="math notranslate nohighlight">\(t + \delta t\)</span>,</p>
@@ -632,14 +632,14 @@ V_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} -
 <h3>Verlet algorithm<a class="headerlink" href="#verlet-algorithm" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Verlet_integration">https://en.wikipedia.org/wiki/Verlet_integration</a></p>
 <p>We start by using a Taylor expansion</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0716bf4e-14f1-48c4-b463-2ae96c006c61">
-<span class="eqno">(59)<a class="headerlink" href="#equation-0716bf4e-14f1-48c4-b463-2ae96c006c61" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-e1b9e7c5-3478-40ac-9557-f3a8111f329c">
+<span class="eqno">(59)<a class="headerlink" href="#equation-e1b9e7c5-3478-40ac-9557-f3a8111f329c" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbf{x}(t+\Delta t)&amp;=\mathbf{x}(t)+\mathbf{v}(t)\Delta t+\frac{\mathbf{a}(t)\Delta t^2}{2}+\frac{\mathbf{b}(t)\Delta t^3}{6}+\mathcal{O}(\Delta t^4),\\
 \mathbf{x}(t-\Delta t)&amp;=\mathbf{x}(t)-\mathbf{v}(t)\Delta t+\frac{\mathbf{a}(t)\Delta t^2}{2}-\frac{\mathbf{b}(t)\Delta t^3}{6}+\mathcal{O}(\Delta t^4),
 \end{align}\]</div>
 <p>and then we add up to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9e0aee82-0298-45e7-999e-69d3f010165b">
-<span class="eqno">(60)<a class="headerlink" href="#equation-9e0aee82-0298-45e7-999e-69d3f010165b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7dbbe9e6-10f5-421f-83d1-e42fe6d7e0b2">
+<span class="eqno">(60)<a class="headerlink" href="#equation-7dbbe9e6-10f5-421f-83d1-e42fe6d7e0b2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathbf{x}(t+\Delta t)=2\mathbf{x}(t)-\mathbf{x}(t-\Delta t)+\mathbf{a}(t)\Delta t^2+\mathcal{O}(\Delta t^4).
 \end{equation}\]</div>
 </section>
@@ -880,6 +880,8 @@ IndentationError: expected an indented block after function definition on line 1
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">T</span><span class="p">,</span> <span class="n">Rx</span><span class="p">,</span> <span class="n">Ry</span><span class="p">,</span> <span class="n">Vy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -891,27 +893,27 @@ IndentationError: expected an indented block after function definition on line 1
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Vy</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vy-lf&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;md.pdf&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/mdgrav.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> 
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">T</span><span class="p">,</span> <span class="n">Rx</span><span class="p">,</span> <span class="n">Ry</span><span class="p">,</span> <span class="n">Vy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">7</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> 
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1"># plot final trayectories</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">7</span> <span class="n">T</span><span class="p">,</span> <span class="n">Rx</span><span class="p">,</span> <span class="n">Ry</span><span class="p">,</span> <span class="n">Vy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> 
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># plot final trayectories</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_npyio_impl.py:1978,</span> in <span class="ni">genfromtxt</span><span class="nt">(fname, dtype, comments, delimiter, skip_header, skip_footer, converters, missing_values, filling_values, usecols, names, excludelist, deletechars, replace_space, autostrip, case_sensitive, defaultfmt, unpack, usemask, loose, invalid_raise, max_rows, encoding, ndmin, like)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1976</span>     <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">fspath</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
@@ -940,6 +942,10 @@ IndentationError: expected an indented block after function definition on line 1
 </div>
 </div>
 </div>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/mdgrav.png"><img alt="" class="bg-primary" src="../../_images/mdgrav.png" style="width: 95%;" />
+</a>
+</figure>
 <p>Let’s fit the data to check how good the parabolic movement is</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -960,13 +966,14 @@ IndentationError: expected an indented block after function definition on line 1
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">T</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">T</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">Ry</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Ry</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 
-<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">():</span>
     <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">([],</span> <span class="p">[])</span>
@@ -986,15 +993,24 @@ IndentationError: expected an indented block after function definition on line 1
     <span class="c1">#interval=20, # delay between frames</span>
     <span class="n">blit</span><span class="o">=</span><span class="kc">True</span>
 <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span> <span class="c1"># avoid empty canvas at the end</span>
+<span class="c1">#HTML(anim.to_jshtml()) # embed as js, might be large</span>
 
 <span class="n">writer</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FFMpegWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;ParticleGravity.mp4&quot;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<figure class="align-center" id="id1">
+<a class="bg-primary reference internal image-reference" href="lectures/08-MolecularDynamics/ParticleGravity.mp4"><video class="bg-primary" src="lectures/08-MolecularDynamics/ParticleGravity.mp4" style="width: 90%;" title="">
+<a href="lectures/08-MolecularDynamics/ParticleGravity.mp4"></a>
+</video>
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Falling under gravity</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 </section>
 <section id="exercise-damping-and-bouncing">
@@ -1036,6 +1052,8 @@ IndentationError: expected an indented block after function definition on line 1
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
 
 <span class="n">T</span><span class="p">,</span> <span class="n">Rx</span><span class="p">,</span> <span class="n">Ry</span><span class="p">,</span> <span class="n">Vy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1046,16 +1064,20 @@ IndentationError: expected an indented block after function definition on line 1
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Vy</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vy-lf&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;md.pdf&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/damping.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/damping.png"><img alt="" class="bg-primary" src="../../_images/damping.png" style="width: 90%;" />
+</a>
+</figure>
 </section>
 <section id="exercise-bouncing-with-left-and-right-walls">
 <h2>Exercise: Bouncing with left and right walls<a class="headerlink" href="#exercise-bouncing-with-left-and-right-walls" title="Link to this heading">#</a></h2>
@@ -1108,12 +1130,77 @@ IndentationError: expected an indented block after function definition on line 1
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Vy</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vy-lf&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_x$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;md.pdf&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/walls.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/walls.png"><img alt="" class="bg-primary" src="../../_images/walls.png" style="width: 95%;" />
+</a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">Rx</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Rx</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">Ry</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Ry</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">);</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">():</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">([],</span> <span class="p">[])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="p">,)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">Rx</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">Ry</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="p">,)</span>
+
+<span class="n">skip</span><span class="o">=</span><span class="mi">10</span>
+<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span>
+    <span class="n">fig</span><span class="p">,</span>
+    <span class="n">animate</span><span class="p">,</span>
+    <span class="n">init_func</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
+    <span class="c1">#frames=len(T),</span>
+    <span class="n">frames</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">skip</span><span class="p">),</span>
+    <span class="c1">#interval=20, # delay between frames</span>
+    <span class="n">blit</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span> <span class="c1"># avoid empty canvas at the end</span>
+<span class="c1">#HTML(anim.to_jshtml()) # embed as js, might be large</span>
+
+<span class="n">writer</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FFMpegWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;walls.mp4&quot;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<figure class="align-center" id="id2">
+<a class="bg-primary reference internal image-reference" href="lectures/08-MolecularDynamics/walls.mp4"><video class="bg-primary" src="lectures/08-MolecularDynamics/walls.mp4" style="width: 90%;" title="">
+<a href="lectures/08-MolecularDynamics/walls.mp4"></a>
+</video>
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Bouncing on wall</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test 8</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Video</span>
+<span class="n">Video</span><span class="p">(</span><span class="s2">&quot;walls.mp4&quot;</span><span class="p">,</span> <span class="n">embed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1">#- jupyterlab: works ok, viedo + controls</span>
+<span class="c1">#- jupyterbook: works ok, viedo + controls</span>
 </pre></div>
 </div>
 </div>
@@ -1122,8 +1209,8 @@ IndentationError: expected an indented block after function definition on line 1
 <section id="exercise-adding-more-particles">
 <h2>Exercise: Adding more particles<a class="headerlink" href="#exercise-adding-more-particles" title="Link to this heading">#</a></h2>
 <p>Now let’s add more particles. They will not see each other unless we implement a force among them. Also, we will need to generalize our methods to process arrays of bodies. First, the force that particle <span class="math notranslate nohighlight">\(i\)</span> does on particle <span class="math notranslate nohighlight">\(j\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-00082781-0d8c-4a99-8122-cbedd5681b12">
-<span class="eqno">(61)<a class="headerlink" href="#equation-00082781-0d8c-4a99-8122-cbedd5681b12" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1ac57785-7d1a-4d00-a992-4e97c2b87c23">
+<span class="eqno">(61)<a class="headerlink" href="#equation-1ac57785-7d1a-4d00-a992-4e97c2b87c23" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{ij} = k \delta \hat n_{ij},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat n_{ij} = \vec R_{ij} / R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(\vec R_{ij} = \vec R_i - \vec R_j\)</span>, and <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(r\)</span> the radius of each particle.</p>
@@ -1259,6 +1346,9 @@ IndentationError: expected an indented block after function definition on line 1
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_context</span><span class="p">(</span><span class="s1">&#39;talk&#39;</span><span class="p">)</span>
+
 
 <span class="n">T</span><span class="p">,</span> <span class="n">Rx0</span><span class="p">,</span> <span class="n">Ry0</span><span class="p">,</span> <span class="n">Vx0</span><span class="p">,</span> <span class="n">Vy0</span><span class="p">,</span> <span class="n">Rx1</span><span class="p">,</span> <span class="n">Ry1</span><span class="p">,</span> <span class="n">Vx1</span><span class="p">,</span> <span class="n">Vy1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">genfromtxt</span><span class="p">(</span><span class="s1">&#39;data.txt&#39;</span><span class="p">,</span> <span class="n">unpack</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -1270,56 +1360,20 @@ IndentationError: expected an indented block after function definition on line 1
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">Vx1</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Vy-lf&quot;</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
-<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">23</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$R_y(m)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$t(s)$&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;$V_y(m)$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;md.pdf&quot;</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/particles.png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">90</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.animation</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">animation</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="n">Rx0</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Rx0</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">Ry0</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">Ry0</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-
-<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([],</span> <span class="p">[],</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">init</span><span class="p">():</span>
-    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">([],</span> <span class="p">[])</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="p">,)</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">animate</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
-    <span class="n">line</span><span class="o">.</span><span class="n">set_data</span><span class="p">(</span><span class="n">Rx0</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">Ry0</span><span class="p">[:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">line</span><span class="p">,)</span>
-
-<span class="n">skip</span><span class="o">=</span><span class="mi">10</span>
-<span class="n">anim</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span>
-    <span class="n">fig</span><span class="p">,</span>
-    <span class="n">animate</span><span class="p">,</span>
-    <span class="n">init_func</span><span class="o">=</span><span class="n">init</span><span class="p">,</span>
-    <span class="c1">#frames=len(T),</span>
-    <span class="n">frames</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">skip</span><span class="p">),</span>
-    <span class="c1">#interval=20, # delay between frames</span>
-    <span class="n">blit</span><span class="o">=</span><span class="kc">True</span>
-<span class="p">)</span>
-
-<span class="n">writer</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FFMpegWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
-<span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;Particles.mp4&quot;</span><span class="p">,</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/particles.png"><img alt="" class="bg-primary" src="../../_images/particles.png" style="width: 95%;" />
+</a>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># particles with trails</span>
@@ -1367,12 +1421,42 @@ IndentationError: expected an indented block after function definition on line 1
 <span class="p">)</span>
 
 <span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;Particles2.mp4&quot;</span><span class="p">,</span>
-          <span class="n">writer</span><span class="o">=</span><span class="n">animation</span><span class="o">.</span><span class="n">FFMpegWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span>
+          <span class="n">writer</span><span class="o">=</span><span class="n">animation</span><span class="o">.</span><span class="n">FFMpegWriter</span><span class="p">(</span>
+              <span class="n">fps</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+              <span class="c1"># codec=&#39;libx264&#39;,</span>
+              <span class="c1"># extra_args=[&#39;-crf&#39;, &#39;28&#39;, &#39;-preset&#39;, &#39;fast&#39;, &#39;-tune&#39;, &#39;animation&#39;, &#39;-movflags&#39;, &#39;faststart&#39;, &#39;-pix_fmt&#39;, &#39;yuv420p&#39;]</span>
+          <span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</div>
+<figure class="align-default" id="video-ref">
+<a class="reference internal image-reference" href="lectures/08-MolecularDynamics/Particles2.mp4"><video src="lectures/08-MolecularDynamics/Particles2.mp4" style="width: 80%;" title="Only seen when exported to jupyterbook">
+<a href="lectures/08-MolecularDynamics/Particles2.mp4">Only seen when exported to jupyterbook</a>
+</video>
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Two particles</span><a class="headerlink" href="#video-ref" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Only visible in jupyterlab</span>
+<span class="c1"># %%html</span>
+<span class="c1"># &lt;video controls width=&quot;100%&quot;&gt;</span>
+<span class="c1">#   &lt;source src=&quot;../../_static/videos/Particles2.mp4&quot; type=&quot;video/mp4&quot;&gt;</span>
+<span class="c1"># &lt;/video&gt;</span>
+</pre></div>
+</div>
+</div>
+</details>
 </div>
 </section>
 <section id="exercise-two-planets">
