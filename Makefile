@@ -4,6 +4,7 @@ book-lectures:
 	@echo "Building and serving Jupyter Book..."
 	bash nbgrader_and_sync.sh && \
 	cd release && \
+    rm -rf _build .jupyter_cache/&& \
 	jupyter-book clean . && \
 	jupyter-book build -v --all ./ && \
 	cd _build/html && \
