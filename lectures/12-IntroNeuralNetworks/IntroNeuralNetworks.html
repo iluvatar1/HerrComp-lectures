@@ -764,7 +764,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 </ul>
 <div class="exercise admonition" id="lectures/12-IntroNeuralNetworks/IntroNeuralNetworks-exercise-0">
 
-<p class="admonition-title"><span class="caption-number">Exercise 11 </span> (Relu and linear activation)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 12 </span> (Relu and linear activation)</p>
 <section id="exercise-content">
 <p>Why is the derivative of the activation function (<span class="math notranslate nohighlight">\(g'\)</span>) important in the backpropagation equation above? What would happen if we used a linear activation function (where <span class="math notranslate nohighlight">\(g'(z)\)</span> is just a constant) in all hidden layers?</p>
 </section>
@@ -897,29 +897,29 @@ where \)</span>x = \sum x_i w_i$.</p>
 </ul>
 <p>But how to adjust the weights? There are several techniques based on the actual error <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
 <p>First, we will define a cost/loss function as the typical MSE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d90e82ea-d6be-4462-9568-e42c1bb5d705">
-<span class="eqno">(155)<a class="headerlink" href="#equation-d90e82ea-d6be-4462-9568-e42c1bb5d705" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e07ee56b-ac09-4af6-90c3-79ed9b47bb51">
+<span class="eqno">(163)<a class="headerlink" href="#equation-e07ee56b-ac09-4af6-90c3-79ed9b47bb51" title="Permalink to this equation">#</a></span>\[\begin{equation}
 COST = \frac{1}{2} (\hat y - y)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat y\)</span> is the predicted value and <span class="math notranslate nohighlight">\(y\)</span> is the expected one.  Notice that we are not adding up because we only have one output.</p>
 <p>Second, we will apply gradient descent approximation to our problem, in order to improve our coefficients for our data. This means that we will propagate back the errors into the coefficients!</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e1754d2f-9386-41ef-9c3f-4d780b539b52">
-<span class="eqno">(156)<a class="headerlink" href="#equation-e1754d2f-9386-41ef-9c3f-4d780b539b52" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4d96da6e-8a24-4480-9612-5ea031f8ea57">
+<span class="eqno">(164)<a class="headerlink" href="#equation-4d96da6e-8a24-4480-9612-5ea031f8ea57" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_i' = w_i - \alpha \frac{\partial COST}{\partial w_i},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate. Taking into account that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e7391a48-baea-4766-b8f3-d47cb65c7c1a">
-<span class="eqno">(157)<a class="headerlink" href="#equation-e7391a48-baea-4766-b8f3-d47cb65c7c1a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-89448d33-43e8-4d8c-8944-22f25f07891c">
+<span class="eqno">(165)<a class="headerlink" href="#equation-89448d33-43e8-4d8c-8944-22f25f07891c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat y = \phi(z) = \frac{1}{1 + \exp(-z)},
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-41a755df-32da-4789-a293-94624784fe3d">
-<span class="eqno">(158)<a class="headerlink" href="#equation-41a755df-32da-4789-a293-94624784fe3d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7b37a0f8-7c4f-4e2a-85ec-4d537abf6d37">
+<span class="eqno">(166)<a class="headerlink" href="#equation-7b37a0f8-7c4f-4e2a-85ec-4d537abf6d37" title="Permalink to this equation">#</a></span>\[\begin{equation}
 z = \sum w_i x_i,
 \end{equation}\]</div>
 <p>then, by using the chain rule, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b0d8cb6f-21c7-4b20-8cb7-36422db43eba">
-<span class="eqno">(159)<a class="headerlink" href="#equation-b0d8cb6f-21c7-4b20-8cb7-36422db43eba" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a96d42de-e695-42d9-be49-03c6d0f3b822">
+<span class="eqno">(167)<a class="headerlink" href="#equation-a96d42de-e695-42d9-be49-03c6d0f3b822" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial COST}{\partial w_i} = \frac{\partial COST}{\partial \hat y} \frac{\partial \hat y}{\partial z} \frac{\partial z}{\partial w_i} = (\hat y - y)\phi (1-\phi)x_i. 
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -1209,7 +1209,7 @@ z = \sum w_i x_i,
 </div>
 <div class="exercise admonition" id="lectures/12-IntroNeuralNetworks/IntroNeuralNetworks-exercise-1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 12 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 13 </span></p>
 <section id="exercise-content">
 <p>Play with hyperparameters</p>
 </section>

@@ -18,18 +18,14 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-%%timeit 
-tmp = solve_system(N=50, niter=100, iter_method=gs_opt)
+tmp = solve_system(N=20, niter=200, iter_method=jacobiITER, NDISPLAY=20)
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
-[31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[18][39m[32m, line 1[39m
-[32m----> [39m[32m1[39m get_ipython().run_cell_magic([33m'timeit'[39m, [33m''[39m, [33m'tmp = solve_system(N=50, niter=100, iter_method=gs_opt)\n'[39m)
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[10][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m tmp = solve_system(N=[32m20[39m, niter=[32m200[39m, iter_method=jacobiITER, NDISPLAY=[32m20[39m)
 
-[36mFile [39m[32m<magic-timeit>:1[39m, in [36minner[39m[34m(_it, _timer)[39m
-[32m----> [39m[32m1[39m [33m'Could not get source, probably due dynamically evaluated source code.'[39m
-
-[31mNameError[39m: name 'gs_opt' is not defined
+[31mTypeError[39m: solve_system() got an unexpected keyword argument 'NDISPLAY'
 
