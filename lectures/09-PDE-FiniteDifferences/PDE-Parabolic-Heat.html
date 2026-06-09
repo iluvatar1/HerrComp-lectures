@@ -526,8 +526,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="partial-differential-equations-the-parabolic-heat-equation">
 <h1>Partial differential equations: The (parabolic) heat equation<a class="headerlink" href="#partial-differential-equations-the-parabolic-heat-equation" title="Link to this heading">#</a></h1>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_equation">heat equation</a> is the typical example of a parabolic partial differential equation. Here we have the time and we are looking for an actual time evolution. It can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3c0f5eab-b226-40a0-bb49-19cb014a93ca">
-<span class="eqno">(101)<a class="headerlink" href="#equation-3c0f5eab-b226-40a0-bb49-19cb014a93ca" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ff43bea4-6806-402a-a66e-8b5f800eed5b">
+<span class="eqno">(104)<a class="headerlink" href="#equation-ff43bea4-6806-402a-a66e-8b5f800eed5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial u}{\partial t} = \alpha \nabla^2 u,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(u\)</span> represents the temperature, or the concentration (diffusion problem) and so on. The coefficient <span class="math notranslate nohighlight">\(\alpha\)</span> takes into account the thermal conductivity, specific heat, and density of the material.</p>
@@ -540,14 +540,14 @@
 <section id="the-explicit-method-forward-time-centered-space">
 <h2>The explicit method: Forward time centered space<a class="headerlink" href="#the-explicit-method-forward-time-centered-space" title="Link to this heading">#</a></h2>
 <p>As is usual in finite differences, we discretize both the spatial (up to second order) and the time (linear order) derivatives to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-762239d6-1d9c-41ac-ba37-b38d8985c260">
-<span class="eqno">(102)<a class="headerlink" href="#equation-762239d6-1d9c-41ac-ba37-b38d8985c260" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b97eaecc-88da-40ff-909f-314763aeff94">
+<span class="eqno">(105)<a class="headerlink" href="#equation-b97eaecc-88da-40ff-909f-314763aeff94" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{u^{n+1}_i - u^n_i}{\Delta t} = \alpha \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{\Delta x^2}, 
 \end{equation}\]</div>
 <p>where the superscript corresponds to a step in time, while the subscript corresponds to step in space (we are here solving a one-dimensional equation). This is the so called <a class="reference external" href="https://en.wikipedia.org/wiki/FTCS_scheme">FTCS - Forward Time Centered Space</a> method, which is an <a class="reference external" href="https://en.wikipedia.org/wiki/Explicit_and_implicit_methods">explicit method</a> which allows to compute the next (in time) value in terms of the previous one.</p>
 <p>Reorganizing terms</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ea2046a8-5a4a-457d-b9b6-73806040ea65">
-<span class="eqno">(103)<a class="headerlink" href="#equation-ea2046a8-5a4a-457d-b9b6-73806040ea65" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3131eeaf-c17a-485b-b454-482e76bf2970">
+<span class="eqno">(106)<a class="headerlink" href="#equation-3131eeaf-c17a-485b-b454-482e76bf2970" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}) = u_{i}^{n}+\lambda(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}),
 \end{equation}\]</div>
 <p>which can be visualized as</p>
@@ -555,13 +555,13 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <img src="https://nbviewer.org/github/numerical-mooc/numerical-mooc/blob/master/lessons/04_spreadout/figures/explicitFTCS-BCeffect.png" class="center">
 </center>
 <p>By using the <a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis">von Neumann stability analysis</a> it is possible to show that the solution is stable (errors are not amplified) only if</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ba65f79d-5950-4c5a-9785-0a7a89f0acab">
-<span class="eqno">(104)<a class="headerlink" href="#equation-ba65f79d-5950-4c5a-9785-0a7a89f0acab" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d45a2840-e1cd-442d-bc7d-d4cdacdd2d9f">
+<span class="eqno">(107)<a class="headerlink" href="#equation-d45a2840-e1cd-442d-bc7d-d4cdacdd2d9f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2}
 \end{equation}\]</div>
 <p>or, in 2D with different spacing</p>
-<div class="amsmath math notranslate nohighlight" id="equation-08fdbae3-dfac-4016-aa3f-a322c1e8464e">
-<span class="eqno">(105)<a class="headerlink" href="#equation-08fdbae3-dfac-4016-aa3f-a322c1e8464e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3007cd43-c1a3-404c-b413-1ea34d55f70c">
+<span class="eqno">(108)<a class="headerlink" href="#equation-3007cd43-c1a3-404c-b413-1ea34d55f70c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2(1 + \frac{\Delta x^2}{\Delta y^2})}.
 \end{equation}\]</div>
 <section id="example-finding-the-temperature-distribution-on-a-thind-rod">
@@ -629,7 +629,7 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f1e34d822d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f0f4f362b10&gt;
 </pre></div>
 </div>
 <img alt="../../_images/1f97b9b8c6062f24651c4ce8ddd0aeb7f8c42b4cf03ec10f60cd346fc8e3cf2e.png" src="../../_images/1f97b9b8c6062f24651c4ce8ddd0aeb7f8c42b4cf03ec10f60cd346fc8e3cf2e.png" />
@@ -645,8 +645,8 @@ u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}
 <section id="a-note-on-derivative-boundary-conditions">
 <h3>A note on derivative boundary conditions<a class="headerlink" href="#a-note-on-derivative-boundary-conditions" title="Link to this heading">#</a></h3>
 <p>In case you need to fix the derivative a the boundary, let’s say an isolated wall on the left, then you could introduce that as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-734bf7dc-db95-43ff-88b6-eb5ee8588bba">
-<span class="eqno">(106)<a class="headerlink" href="#equation-734bf7dc-db95-43ff-88b6-eb5ee8588bba" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-81343db4-470d-4b0c-b036-bb567876e578">
+<span class="eqno">(109)<a class="headerlink" href="#equation-81343db4-470d-4b0c-b036-bb567876e578" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
 \end{equation}\]</div>
 <p>where there is a new imaginary point at <span class="math notranslate nohighlight">\(i = -1\)</span>. But from the derivative condition you can get its value, since <span class="math notranslate nohighlight">\((u_0 - u_{-1})/\Delta x \simeq \partial u/\partial x\)</span>.</p>
@@ -663,13 +663,13 @@ u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
 <section id="parabolic-equations-in-two-dimensions">
 <h2>Parabolic equations in two dimensions<a class="headerlink" href="#parabolic-equations-in-two-dimensions" title="Link to this heading">#</a></h2>
 <p>In this case you could be solving problems like</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2ce2f9b5-10fb-4029-98d5-5ea7c7262b3f">
-<span class="eqno">(107)<a class="headerlink" href="#equation-2ce2f9b5-10fb-4029-98d5-5ea7c7262b3f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9b2ac364-effb-4f3f-9bec-4bb9d9b67529">
+<span class="eqno">(110)<a class="headerlink" href="#equation-9b2ac364-effb-4f3f-9bec-4bb9d9b67529" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right).
 \end{equation}\]</div>
 <p>In this case, stability analysis implies that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c9f9ed7f-43c9-4dcb-ac8d-20fc1d3fef93">
-<span class="eqno">(108)<a class="headerlink" href="#equation-c9f9ed7f-43c9-4dcb-ac8d-20fc1d3fef93" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ea712c67-4f81-4936-b5b6-73fcc21dcc11">
+<span class="eqno">(111)<a class="headerlink" href="#equation-ea712c67-4f81-4936-b5b6-73fcc21dcc11" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta t \le \frac{1}{8} \frac{\Delta x^2 + \Delta y^2}{\alpha}.
 \end{equation}\]</div>
 <p>As with the previous 1D case, implicit schemes improve the stability , but the matrix systems are no longer tri-diagonal and therefore the matrix storage and computational times increase a lot.</p>

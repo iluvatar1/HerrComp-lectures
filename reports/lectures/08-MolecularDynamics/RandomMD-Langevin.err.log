@@ -18,44 +18,76 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Simulation Setup: High Time Step Test
-dt = 0.5  # Large dt to test stability
-n_steps = 1000
+import seaborn as sns
+sns.set_context('talk')
+
+# Run a long G-JF simulation for a FREE PARTICLE
+steps = 50000
+dt_sim = 0.1
 mass, gamma, kT = 1.0, 0.5, 1.0
 
-# Initialize
-x_em, v_em, f_em = 1.0, 0.0, -1.0
-x_gjf, v_gjf, f_gjf = 1.0, 0.0, -1.0
+x, v, f = 0.0, 0.0, 0.0
+x_list = np.zeros(steps)
 
-traj_em = []
-traj_gjf = []
+for ii in range(steps):
+    x, v, f = gjf_step(x, v, 0.0, dt_sim, mass, gamma, kT, force_free_particle)
+    x_list[ii] = x
 
-for _ in range(n_steps):
-    x_em, v_em, f_em = euler_maruyama_step(x_em, v_em, f_em, dt, mass, gamma, kT, force_harmonic)
-    x_gjf, v_gjf, f_gjf = gjf_step(x_gjf, v_gjf, f_gjf, dt, mass, gamma, kT, force_harmonic)
-    traj_em.append(x_em)
-    traj_gjf.append(x_gjf)
+# Calculate MSD
+def calculate_msd(pos):
+    n = len(pos)
+    # We only need a fraction of the points to see the regimes
+    # (MSD gets noisy at large tau anyway)
+    max_tau = 2000 
+    msd = np.zeros(max_tau)
+    for tau in range(1, max_tau + 1):
+        # For each tau, compute the mean square displacement
+        # YOUR CODE HERE
+        pass
+    return msd
+
+msd = calculate_msd(x_list)
+
+# --- NEW PLOTTING BLOCK ---
+import matplotlib.pyplot as plt
+
+# Create a true time axis (tau_index * dt)
+times = np.arange(1, len(msd) + 1) * dt_sim
+
+plt.figure(figsize=(8, 5))
+plt.loglog(times, msd, label="Simulated MSD")
+
+# Theoretical Ballistic line: MSD = (kT/m) * t^2
+ballistic_theory = (kT / mass) * times**2
+plt.loglog(times, ballistic_theory, ':', linewidth=2, label="Theoretical Ballistic ($t^2$)")
+
+# Theoretical Diffusive line: MSD = 2 * D * t
+# Where Diffusion coefficient D = kT / gamma
+D = kT / gamma
+diffusive_theory = 2 * D * times
+plt.loglog(times, diffusive_theory, '--', linewidth=2, label="Theoretical Diffusive ($t^1$)")
+
+plt.legend()
+plt.xlabel("Time (t)")
+plt.ylabel("Mean Squared Displacement (MSD)")
+plt.title("Free Particle MSD example: Ballistic to Diffusive Transition")
+plt.ylim(1e-2, 1e4) # Adjust viewing window
+#plt.savefig("fig/msd.png", dpi=90)
+plt.show()
 ------------------
 
 
 [31m---------------------------------------------------------------------------[39m
 [31mNameError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 14[39m
-[32m     10[39m traj_em = []
-[32m     11[39m traj_gjf = []
-[32m     12[39m 
-[32m     13[39m [38;5;28;01mfor[39;00m _ [38;5;28;01min[39;00m range(n_steps):
-[32m---> [39m[32m14[39m     x_em, v_em, f_em = euler_maruyama_step(x_em, v_em, f_em, dt, mass, gamma, kT, force_harmonic)
-[32m     15[39m     x_gjf, v_gjf, f_gjf = gjf_step(x_gjf, v_gjf, f_gjf, dt, mass, gamma, kT, force_harmonic)
-[32m     16[39m     traj_em.append(x_em)
-[32m     17[39m     traj_gjf.append(x_gjf)
+[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 10[39m
+[32m      6[39m dt_sim = [32m0.1[39m
+[32m      7[39m mass, gamma, kT = [32m1.0[39m, [32m0.5[39m, [32m1.0[39m
+[32m      8[39m 
+[32m      9[39m x, v, f = [32m0.0[39m, [32m0.0[39m, [32m0.0[39m
+[32m---> [39m[32m10[39m x_list = np.zeros(steps)
+[32m     11[39m 
+[32m     12[39m [38;5;28;01mfor[39;00m ii [38;5;28;01min[39;00m range(steps):
+[32m     13[39m     x, v, f = gjf_step(x, v, [32m0.0[39m, dt_sim, mass, gamma, kT, force_free_particle)
 
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 15[39m, in [36meuler_maruyama_step[39m[34m(x, v, f, dt, mass, gamma, kT, fext)[39m
-[32m     11[39m     [38;5;66;03m# Update[39;00m
-[32m     12[39m     [38;5;66;03m# YOUR CODE HERE[39;00m
-[32m     13[39m     [38;5;28;01mpass[39;00m
-[32m     14[39m 
-[32m---> [39m[32m15[39m     [38;5;28;01mreturn[39;00m x_new, v_new, f_new
-
-[31mNameError[39m: name 'x_new' is not defined
+[31mNameError[39m: name 'np' is not defined
 
