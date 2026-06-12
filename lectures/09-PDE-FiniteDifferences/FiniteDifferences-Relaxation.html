@@ -81,6 +81,9 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script type="application/vnd.jupyter.widget-state+json">{"state": {"0270798bcd81448693738d7921cdc7ba": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"layout": "IPY_MODEL_7281bca3150e4e848e9c012e4fb62bc4", "style": "IPY_MODEL_e5c88bdd36cc40e3958607aec0183046", "value": "<iframe src=\"http://localhost:53984/index.html?ui=P_0x326363560_3&reconnect=auto\" class=\"pyvista\" style=\"width: 100%; height: 600px; border: 1px solid rgb(221,221,221);\" scrolling=\"no\"></iframe>"}}, "27e1c7b0685a4c0db4d6a2823805f356": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"layout": "IPY_MODEL_291fe494bee247419be67ba781d6c050", "style": "IPY_MODEL_cd39871bc722455c878b9465396f8616", "value": "<iframe src=\"http://localhost:53984/index.html?ui=P_0x334061640_5&reconnect=auto\" class=\"pyvista\" style=\"width: 100%; height: 600px; border: 1px solid rgb(221,221,221);\" scrolling=\"no\"></iframe>"}}, "291fe494bee247419be67ba781d6c050": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "49cd11cba8904276881e2a3361c164ba": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"description_width": "", "font_size": null, "text_color": null}}, "658d5b9936c24e3bb6f93ecdd12c98e0": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "6a787d4b900941e7b964ae8e811303ad": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"description_width": "", "font_size": null, "text_color": null}}, "7281bca3150e4e848e9c012e4fb62bc4": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "7632cb7e56424cb3ae2a855c84bad098": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"layout": "IPY_MODEL_658d5b9936c24e3bb6f93ecdd12c98e0", "style": "IPY_MODEL_49cd11cba8904276881e2a3361c164ba", "value": "<iframe src=\"http://localhost:53984/index.html?ui=P_0x326363da0_2&reconnect=auto\" class=\"pyvista\" style=\"width: 100%; height: 600px; border: 1px solid rgb(221,221,221);\" scrolling=\"no\"></iframe>"}}, "a14be9bb31e64a9bb5a60f6325f7becb": {"model_module": "@jupyter-widgets/base", "model_module_version": "2.0.0", "model_name": "LayoutModel", "state": {}}, "cd39871bc722455c878b9465396f8616": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"description_width": "", "font_size": null, "text_color": null}}, "d6f52c0f957440e5b66f98ac5ef3cbb7": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLModel", "state": {"layout": "IPY_MODEL_a14be9bb31e64a9bb5a60f6325f7becb", "style": "IPY_MODEL_6a787d4b900941e7b964ae8e811303ad", "value": "<iframe src=\"http://localhost:53984/index.html?ui=P_0x334061820_4&reconnect=auto\" class=\"pyvista\" style=\"width: 100%; height: 600px; border: 1px solid rgb(221,221,221);\" scrolling=\"no\"></iframe>"}}, "e5c88bdd36cc40e3958607aec0183046": {"model_module": "@jupyter-widgets/controls", "model_module_version": "2.0.0", "model_name": "HTMLStyleModel", "state": {"description_width": "", "font_size": null, "text_color": null}}}, "version_major": 2, "version_minor": 0}</script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script crossorigin="anonymous" data-jupyter-widgets-cdn="https://cdn.jsdelivr.net/npm/" src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@1.0.6/dist/embed-amd.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/09-PDE-FiniteDifferences/FiniteDifferences-Relaxation';</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -504,9 +507,9 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-partial-differential-equations">Why Partial Differential Equations?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-pdes">Classification of PDEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-numerical-methods">Why Numerical Methods?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finite-difference-idea-in-one-picture">The Finite Difference Idea (in One Picture)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-poisson-equation">The Poisson equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-numerical-methods">Why Do We Need Numerical Methods?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finite-difference-idea">The Finite Difference Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-example-the-poisson-equation">The first example: The Poisson equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxation-solution">Relaxation solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-setup">Problem setup</a></li>
 </ul>
@@ -515,8 +518,12 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration">Iteration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-solution">System solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-verification">Graphical verification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-animation">2D animation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-animation-with-matplotlib">3D animation with matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-animation-with-pyvista">3D animation with pyvista</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-stabilization">Numerical stabilization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-performance-discussion">A performance discussion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-plane-capacitor">Exercise: Plane capacitor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-circular-ring">Exercise: circular ring</a></li>
@@ -545,6 +552,50 @@
 <li><p>Boudreau et al, Applied Computational Physics</p></li>
 </ul>
 <hr class="docutils" />
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RUN ME FOR EMBEDING VIDEOS AND URLS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span><span class="p">,</span> <span class="n">parse_qs</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert any YouTube URL to embed format.&quot;&quot;&quot;</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s2">&quot;youtu.be&quot;</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s2">&quot;shorts&quot;</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/shorts/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s2">&quot;embed&quot;</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">url</span>  <span class="c1"># already embed format, do nothing</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;https://www.youtube.com/embed/</span><span class="si">{</span><span class="n">vid</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">vid</span> <span class="k">else</span> <span class="n">url</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;90%&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">&quot;youtube.com&quot;</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">or</span> <span class="s2">&quot;youtu.be&quot;</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">aspect</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">))</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">w</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">&lt;div style=&quot;display:flex; flex-direction:column; align-items:center; width:100%;&quot;&gt;</span>
+<span class="s1">  &lt;div style=&quot;position:relative; width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; padding-bottom:</span><span class="si">{</span><span class="n">padding</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%; height:0; overflow:hidden;&quot;&gt;</span>
+<span class="s1">    &lt;iframe src=&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot;</span>
+<span class="s1">      style=&quot;position:absolute; top:0; left:0; width:100%; height:100%; border:0;&quot;</span>
+<span class="s1">      allowfullscreen title=&quot;</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">&quot;&gt;</span>
+<span class="s1">    &lt;/iframe&gt;</span>
+<span class="s1">  &lt;/div&gt;</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">&quot;&lt;p style=&#39;font-style:italic; margin-top:0.4em;&#39;&gt;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;&lt;/p&gt;&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;&#39;&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <section id="why-partial-differential-equations">
 <h2>Why Partial Differential Equations?<a class="headerlink" href="#why-partial-differential-equations" title="Link to this heading">#</a></h2>
 <p>Many physical systems depend simultaneously on <strong>space</strong> and <strong>time</strong>.</p>
@@ -559,11 +610,66 @@
 <p>Such systems cannot be described by ordinary differential equations (ODEs), because ODEs involve derivatives with respect to a single independent variable.</p>
 <p>Instead, we need <strong>partial differential equations (PDEs)</strong>.</p>
 <p>A PDE relates a function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fd796c2d-209a-4fd6-a9d8-b0a3086e55bf">
-<span class="eqno">(96)<a class="headerlink" href="#equation-fd796c2d-209a-4fd6-a9d8-b0a3086e55bf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3abb4f3e-8acf-4969-9451-ac85e22fd357">
+<span class="eqno">(96)<a class="headerlink" href="#equation-3abb4f3e-8acf-4969-9451-ac85e22fd357" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,y,z,t)
 \end{equation}\]</div>
 <p>to its partial derivatives with respect to several variables. For nice visualizations check <a class="reference external" href="https://visualpde.com/explore.html">VisualPDE</a>.</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/watch?v=ly4S0oi3Yz8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://www.youtube.com/embed/ly4S0oi3Yz8"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;ly4S0oi3Yz8&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;80%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span><span class="p">,</span> <span class="n">controls</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<div class="output text_html">
+        <iframe
+            width="80%"
+            height="600"
+            src="https://www.youtube.com/embed/ly4S0oi3Yz8?controls=1"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</details>
+</div>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Physical phenomenon</p></th>
@@ -602,8 +708,8 @@ u(x,y,z,t)
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Laplace Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b907dff0-2b91-4fd8-b178-36b1fae43d99">
-<span class="eqno">(97)<a class="headerlink" href="#equation-b907dff0-2b91-4fd8-b178-36b1fae43d99" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-110ae01b-443c-42d9-8917-d723469ad401">
+<span class="eqno">(97)<a class="headerlink" href="#equation-110ae01b-443c-42d9-8917-d723469ad401" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 \phi = 0
 \end{equation}\]</div>
 <p>Describes electrostatic potentials in charge-free regions.</p>
@@ -615,77 +721,195 @@ u(x,y,z,t)
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;deQAnSDPrSs&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">560</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/shorts/deQAnSDPrSs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html">
-        <iframe
-            width="315"
-            height="560"
-            src="https://www.youtube.com/embed/deQAnSDPrSs"
-            frameborder="0"
-            allowfullscreen
-            
-        ></iframe>
-        </div></div>
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://www.youtube.com/embed/deQAnSDPrSs"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
 </div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Heat Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8ea09339-efe7-41a2-990f-8a7f5ca24638">
-<span class="eqno">(98)<a class="headerlink" href="#equation-8ea09339-efe7-41a2-990f-8a7f5ca24638" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-395d7959-15fd-4f9a-b0c3-1e4366880d48">
+<span class="eqno">(98)<a class="headerlink" href="#equation-395d7959-15fd-4f9a-b0c3-1e4366880d48" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial T}{\partial t} = D\nabla^2 T
 \end{equation}\]</div>
 <p>Describes diffusion of heat.</p>
 </div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/sim/?preset=heatEquation1D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://visualpde.com/sim/?preset=heatEquation1D"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/embed/uVKMY-WTrVo?si=igW34UBr8oNjdb9N&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://www.youtube.com/embed/uVKMY-WTrVo?si=igW34UBr8oNjdb9N"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Wave Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-52baa826-8572-44e1-a13d-f03b5e4cef7a">
-<span class="eqno">(99)<a class="headerlink" href="#equation-52baa826-8572-44e1-a13d-f03b5e4cef7a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-87c79200-c004-4a19-a8a9-7d7fc4901db1">
+<span class="eqno">(99)<a class="headerlink" href="#equation-87c79200-c004-4a19-a8a9-7d7fc4901db1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2\nabla^2 u
 \end{equation}\]</div>
 <p>Describes vibrations, sound, and electromagnetic waves.</p>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_all.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_all.html"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/sim/?preset=waveEquation1D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://visualpde.com/sim/?preset=waveEquation1D"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/sim/?preset=waveEquation3D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://visualpde.com/sim/?preset=waveEquation3D"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
 </div>
 <p>See more at <a class="reference external" href="https://www.acs.psu.edu/drussell/demos.html">https://www.acs.psu.edu/drussell/demos.html</a>, <a class="reference external" href="https://falstad.com/ripple/">https://falstad.com/ripple/</a></p>
 </section>
 <section id="classification-of-pdes">
 <h2>Classification of PDEs<a class="headerlink" href="#classification-of-pdes" title="Link to this heading">#</a></h2>
 <p>All linear second-order PDEs in two variables can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6a69ffa-6eba-48a9-8fea-cccfb16e1171">
-<span class="eqno">(100)<a class="headerlink" href="#equation-a6a69ffa-6eba-48a9-8fea-cccfb16e1171" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-662a8b89-c738-431d-acc1-5b9fe41cb086">
+<span class="eqno">(100)<a class="headerlink" href="#equation-662a8b89-c738-431d-acc1-5b9fe41cb086" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A \frac{\partial^2 u}{\partial x^2} + B \frac{\partial^2 u}{\partial x \partial y} + C \frac{\partial^2 u}{\partial y^2} + \text{lower order terms} = 0.
 \end{equation}\]</div>
 <p>The sign of the <em>discriminant</em> <span class="math notranslate nohighlight">\(\Delta = B^2 - 4AC\)</span> determines the character of the equation — and completely determines the type of numerical method needed:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Discriminant &lt; 0  →  Elliptic   (e.g. Laplace, Poisson)
-                      Describes steady states.
-                      Boundary conditions on a closed domain.
-
-Discriminant = 0  →  Parabolic  (e.g. Heat / diffusion)
-                      Describes irreversible evolution in time.
-                      Initial condition + boundary conditions.
-
-Discriminant &gt; 0  →  Hyperbolic (e.g. Wave equation)
-                      Describes reversible wave propagation.
-                      Initial conditions + boundary conditions.
-</pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Discriminant &lt; 0  →  Elliptic   (e.g. Laplace, Poisson)
+Describes steady states.
+Boundary conditions on a closed domain.</p>
 </div>
-<p>This is not just a mathematical curiosity. The physics is completely different in each case:</p>
-<ul class="simple">
-<li><p><strong>Elliptic</strong> equations have no preferred direction — a boundary perturbation is felt everywhere instantly. Perfect for equilibrium problems.</p></li>
-<li><p><strong>Parabolic</strong> equations have a preferred time direction — information propagates at infinite speed but is damped. Perfect for diffusion.</p></li>
-<li><p><strong>Hyperbolic</strong> equations have a <em>finite</em> propagation speed — information travels along <em>characteristics</em>. Perfect for wave phenomena.</p></li>
-</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Discriminant = 0  →  Parabolic  (e.g. Heat / diffusion)
+Describes irreversible evolution in time.
+Initial condition + boundary conditions.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Discriminant &gt; 0  →  Hyperbolic (e.g. Wave equation)
+Describes reversible wave propagation.
+Initial conditions + boundary conditions.</p>
+</div>
 </section>
-<section id="why-numerical-methods">
-<h2>Why Numerical Methods?<a class="headerlink" href="#why-numerical-methods" title="Link to this heading">#</a></h2>
+<section id="why-do-we-need-numerical-methods">
+<h2>Why Do We Need Numerical Methods?<a class="headerlink" href="#why-do-we-need-numerical-methods" title="Link to this heading">#</a></h2>
 <p>Only a limited number of PDEs possess analytical solutions. Even simple geometries may prevent exact solutions. For simple geometries and boundary conditions, exact solutions exist and are taught in mathematical physics courses (separation of variables, Green’s functions, Fourier series…). For example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-94d17509-be4a-4e56-8667-25278268024c">
-<span class="eqno">(101)<a class="headerlink" href="#equation-94d17509-be4a-4e56-8667-25278268024c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bf9febbc-84e0-4abf-98b6-c52db6cd0685">
+<span class="eqno">(101)<a class="headerlink" href="#equation-bf9febbc-84e0-4abf-98b6-c52db6cd0685" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = 0, \quad V(x,0) = \sin(\pi x), \quad \text{zero on other walls}
 \end{equation}\]</div>
 <p>has the analytical solution <span class="math notranslate nohighlight">\(V(x, y) = \sin(\pi x)\, e^{-\pi y}\)</span>.</p>
@@ -700,6 +924,7 @@ Discriminant &gt; 0  →  Hyperbolic (e.g. Wave equation)
 <li><p>Vibrations of a non-uniform membrane.</p></li>
 <li><p>Fluid flow around an airplane wing.</p></li>
 </ul>
+<p>See more at <a class="reference external" href="https://visualpde.com/explore">https://visualpde.com/explore</a></p>
 <p>In all such cases <strong>numerical methods</strong> are the only practical tool.</p>
 <p>The basic idea is simple:</p>
 <ol class="arabic simple">
@@ -707,18 +932,17 @@ Discriminant &gt; 0  →  Hyperbolic (e.g. Wave equation)
 <li><p>Replace derivatives by finite differences.</p></li>
 <li><p>Solve the resulting algebraic equations.</p></li>
 </ol>
-<p>This process converts a PDE into a problem that computers can handle.</p>
 </section>
-<section id="the-finite-difference-idea-in-one-picture">
-<h2>The Finite Difference Idea (in One Picture)<a class="headerlink" href="#the-finite-difference-idea-in-one-picture" title="Link to this heading">#</a></h2>
-<p>All the numerical methods in this chapter share one core idea: replace continuous derivatives by discrete differences on a grid.</p>
+<section id="the-finite-difference-idea">
+<h2>The Finite Difference Idea<a class="headerlink" href="#the-finite-difference-idea" title="Link to this heading">#</a></h2>
+<p>All the numerical methods in this chapter share one core idea: replace continuous derivatives by <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">discrete differences</a> on a grid.</p>
 <p>For a function <span class="math notranslate nohighlight">\(u(x)\)</span> sampled at points <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta x\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-067db7cf-2036-4d94-ad4a-4478ba03aab0">
-<span class="eqno">(102)<a class="headerlink" href="#equation-067db7cf-2036-4d94-ad4a-4478ba03aab0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-76318410-c1cf-4b89-b857-d82acab7cee3">
+<span class="eqno">(102)<a class="headerlink" href="#equation-76318410-c1cf-4b89-b857-d82acab7cee3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial u}{\partial x}\bigg|_i \approx \frac{u_{i+1} - u_{i-1}}{2\Delta x} \qquad (\text{central difference, } O(\Delta x^2))
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-c5769780-3ae5-4f5d-8c3b-c5a41b31ff0c">
-<span class="eqno">(103)<a class="headerlink" href="#equation-c5769780-3ae5-4f5d-8c3b-c5a41b31ff0c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5efade72-ccf5-4210-b817-e5b2900ea12a">
+<span class="eqno">(103)<a class="headerlink" href="#equation-5efade72-ccf5-4210-b817-e5b2900ea12a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial x^2}\bigg|_i \approx \frac{u_{i+1} - 2u_i + u_{i-1}}{\Delta x^2} \qquad (\text{central second difference, } O(\Delta x^2))
 \end{equation}\]</div>
 <p>Substituting these into a PDE turns it into a system of <strong>algebraic equations</strong> — one per grid point — that a computer can solve.</p>
@@ -730,38 +954,38 @@ Discriminant &gt; 0  →  Hyperbolic (e.g. Wave equation)
 </ul>
 </section>
 <hr class="docutils" />
-<section id="the-poisson-equation">
-<h2>The Poisson equation<a class="headerlink" href="#the-poisson-equation" title="Link to this heading">#</a></h2>
+<section id="the-first-example-the-poisson-equation">
+<h2>The first example: The Poisson equation<a class="headerlink" href="#the-first-example-the-poisson-equation" title="Link to this heading">#</a></h2>
 <p>The following is an example of an elliptical differential equation, determined by the boundary conditions :</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0cdaa9a9-7556-48dd-97ca-bbeca830c9cf">
-<span class="eqno">(104)<a class="headerlink" href="#equation-0cdaa9a9-7556-48dd-97ca-bbeca830c9cf" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5cc1efaa-cbbd-4e4d-9205-bb3d0d3a885a">
+<span class="eqno">(104)<a class="headerlink" href="#equation-5cc1efaa-cbbd-4e4d-9205-bb3d0d3a885a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = \left[ \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2}\right] = -\frac{\rho}{\epsilon_0}
 \end{equation}\]</div>
 <p>In 2D, there are several solutions and the actual one depends on the boundary conditions. For example, for the Laplace equation you have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2e9ae508-0d4f-4762-873a-5c89c4349415">
-<span class="eqno">(105)<a class="headerlink" href="#equation-2e9ae508-0d4f-4762-873a-5c89c4349415" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6e1ca88f-27dd-445d-987e-17440ada0b30">
+<span class="eqno">(105)<a class="headerlink" href="#equation-6e1ca88f-27dd-445d-987e-17440ada0b30" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, y) &amp; = V_0,\\
 V(x, y) &amp; = \frac{1}{2} A (x^2 - y^2) + Bx + Cy + D
 \end{align}\]</div>
 <p>as solutions. We the density <span class="math notranslate nohighlight">\(\rho\)</span> is null, we have the Laplace equation. It appears also when the heat equation stabilizes</p>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> method discretizes the derivatives on a grid. For instance, using the central difference it is possible to rewrite the 2D Poisson equation as (<a class="reference external" href="https://en.wikipedia.org/wiki/Laplace%27s_equation">Laplace equation</a> corresponds to <span class="math notranslate nohighlight">\(\rho = 0\)</span> )</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0cad4560-34c1-4274-b0f9-4179140af1bd">
-<span class="eqno">(106)<a class="headerlink" href="#equation-0cad4560-34c1-4274-b0f9-4179140af1bd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-442a5791-51f6-454a-943c-e896946e468d">
+<span class="eqno">(106)<a class="headerlink" href="#equation-442a5791-51f6-454a-943c-e896946e468d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V(x_i + \Delta x, y_j) - 2V(x_i, y_j) + V(x_i - \Delta x, y_j)}{\Delta x^2} +\frac{V(x_i, y_j + \Delta y) - 2V(x_i, y_j) + V(x_i, y_j - \Delta y)}{\Delta y^2} = -\frac{\rho(x_i, y_j)}{\epsilon_0}.
 \end{equation}\]</div>
 <p>which can be rewritten as  (let’s assume <span class="math notranslate nohighlight">\(\Delta x = \Delta y = \Delta\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e8d4d3b7-90e6-4aba-b4eb-f6a0ff1eca89">
-<span class="eqno">(107)<a class="headerlink" href="#equation-e8d4d3b7-90e6-4aba-b4eb-f6a0ff1eca89" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a6ce8b10-7309-4571-a6a6-0ea9e6b1e8cf">
+<span class="eqno">(107)<a class="headerlink" href="#equation-a6ce8b10-7309-4571-a6a6-0ea9e6b1e8cf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V_{i+1, j} - 2V_{i, j} + V_{i-1, j}}{\Delta^2} + \frac{V_{i,j+1} - 2V_{i, j} + V_{i, j-1}}{\Delta^2} = -\frac{\rho_{i, j}}{\epsilon_0},
 \end{equation}\]</div>
 <p>and, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b355ae50-2cfd-40aa-ba76-584556fbb265">
-<span class="eqno">(108)<a class="headerlink" href="#equation-b355ae50-2cfd-40aa-ba76-584556fbb265" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c9643dce-d0c8-4fe9-afbc-cea249bebfc0">
+<span class="eqno">(108)<a class="headerlink" href="#equation-c9643dce-d0c8-4fe9-afbc-cea249bebfc0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j}\Delta^2}{\epsilon_0}.
 \end{equation}\]</div>
 <p>This can be seen in two ways: as a matrix equation or as an equation showing that the value at a given position, <span class="math notranslate nohighlight">\(V_{i, j}\)</span>, is kind of an average of the surrounding neighbors and the source term (<a class="reference external" href="https://en.wikipedia.org/wiki/Jacobi_method">Jacobi method</a>), as seen (ref: <a class="reference external" href="https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation">https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation</a>)</p>
 <figure class="align-center">
-<a class="reference internal image-reference" href="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg"><img alt="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg" src="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg" style="width: 90%;" />
+<a class="reference internal image-reference" href="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg"><img alt="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg" src="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg" style="width: 50%;" />
 </a>
 </figure>
 <!-- <img src="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg" alt="adads" width="50%" align="center"> -->
@@ -771,16 +995,16 @@ V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j
 <section id="relaxation-solution">
 <h2>Relaxation solution<a class="headerlink" href="#relaxation-solution" title="Link to this heading">#</a></h2>
 <p>Let’s solve the Laplace problem (<span class="math notranslate nohighlight">\(\rho = 0\)</span>) using both methods with a simple example. Fix the boundaries as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-274b5ddd-0cdb-4c48-9826-ec268e2df0d8">
-<span class="eqno">(109)<a class="headerlink" href="#equation-274b5ddd-0cdb-4c48-9826-ec268e2df0d8" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1fe7e9ae-3f52-48cc-98e9-08f494efe1c2">
+<span class="eqno">(109)<a class="headerlink" href="#equation-1fe7e9ae-3f52-48cc-98e9-08f494efe1c2" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, 0) &amp;= \sin(\pi x),\\
 V(x, a) &amp;= 0, \\
 V(0, y) &amp;= 0, \\
 V(a, y) &amp;= 0, \\
 \end{align}\]</div>
 <p>with <span class="math notranslate nohighlight">\(x, y \in [0, 1]\)</span>, and <span class="math notranslate nohighlight">\(a \)</span> any value on the border. These are called <a class="reference external" href="https://en.wikipedia.org/wiki/Dirichlet_boundary_condition">Dirichlet boundary conditions</a> (where you specify the function values at the boundary). Finally, use at least <span class="math notranslate nohighlight">\(N_x = N_y = 25\)</span>, so <span class="math notranslate nohighlight">\(\Delta = 1/25\)</span>, <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta, y_j = y_0 + j\Delta\)</span>. We need to solve the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4c2e7945-68fd-4202-9982-3806caf6c837">
-<span class="eqno">(110)<a class="headerlink" href="#equation-4c2e7945-68fd-4202-9982-3806caf6c837" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2ca9da78-cdc0-43d0-bf0f-caf4a3a40e01">
+<span class="eqno">(110)<a class="headerlink" href="#equation-2ca9da78-cdc0-43d0-bf0f-caf4a3a40e01" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 \end{equation}\]</div>
 <p>To do so, we apply this relationship to each point in the grid, without overwriting the boundary conditions, and we do that until the values are not changing much. Firs, let’s define the problem conditions (to be changed later)</p>
@@ -791,23 +1015,22 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;deQAnSDPrSs&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">315</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">560</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/shorts/deQAnSDPrSs&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </details>
 <div class="cell_output docutils container">
 <div class="output text_html">
-        <iframe
-            width="315"
-            height="560"
-            src="https://www.youtube.com/embed/deQAnSDPrSs"
-            frameborder="0"
-            allowfullscreen
-            
-        ></iframe>
-        </div></div>
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://www.youtube.com/embed/deQAnSDPrSs"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
 </div>
 <p>To solve the system, we will create functions to</p>
 <ul class="simple">
@@ -841,6 +1064,9 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Boundary conditions</span>
+<span class="c1"># Apply the boundary conditions here</span>
+<span class="c1"># Assume a square matrix</span>
+<span class="c1"># Verify with the next plot</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">bc</span><span class="p">(</span><span class="n">matrix</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">pass</span>
@@ -886,14 +1112,20 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 </section>
 <section id="iteration">
 <h2>Iteration<a class="headerlink" href="#iteration" title="Link to this heading">#</a></h2>
+<p>Now let’s perform an iteration, which means, going through the matrix and applying the average per site as shown before.</p>
 <figure class="align-center">
-<a class="bg-primary reference internal image-reference" href="https://aquaulb.github.io/book_solving_pde_mooc/_images/GSgrid_e.png"><img alt="" class="bg-primary" src="https://aquaulb.github.io/book_solving_pde_mooc/_images/GSgrid_e.png" style="width: 90%;" />
+<a class="reference internal image-reference" href="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg"><img alt="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg" src="https://barbagroup.github.io/essential_skills_RRC/laplace/figures/laplace.svg" style="width: 50%;" />
 </a>
 </figure>
 <p>And this will be a simple example for single iteration step. In this case, we are avoiding the external walls since they are boundary conditions. We are using the fast numpy notation (see also <a class="reference external" href="https://becksteinlab.physics.asu.edu/learning/76/phy494-computational-physics?wchannelid=bp7lsp6dmx&amp;amp;wmediaid=284owsl3dp">https://becksteinlab.physics.asu.edu/learning/76/phy494-computational-physics?wchannelid=bp7lsp6dmx&amp;wmediaid=284owsl3dp</a>), but of course you can use loops (specially for more complex boundary problems). Here we are updating into the same matrix.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be careful with the boundary conditions
+Be careful to not affect the boundaries when updating the matrix</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Full iteration using for loops</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Full iteration using for loops, this is a single jacobi iteration (overwrite the matrix)</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">jacobiITER</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">pass</span>
@@ -904,7 +1136,7 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test</span>
-<span class="c1"># Visualize the boundary condition</span>
+<span class="c1"># Visualize the iteration condition: some information must have propagated</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">25</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
@@ -976,16 +1208,16 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time iterating: 0.006784915924072266
-Total time iterating: 0.0018045902252197266
-Total time iterating: 0.0006465911865234375
-Total time iterating: 0.0006175041198730469
-Total time iterating: 0.0006535053253173828
-Total time iterating: 0.0006420612335205078
-Total time iterating: 0.0006258487701416016
-Total time iterating: 0.0006554126739501953
-Total time iterating: 0.0006282329559326172
-Total time iterating: 0.0006203651428222656
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time iterating: 0.00652003288269043
+Total time iterating: 0.0016312599182128906
+Total time iterating: 0.0006160736083984375
+Total time iterating: 0.0006375312805175781
+Total time iterating: 0.0006284713745117188
+Total time iterating: 0.0006170272827148438
+Total time iterating: 0.0006377696990966797
+Total time iterating: 0.0006275177001953125
+Total time iterating: 0.0006227493286132812
+Total time iterating: 0.0006244182586669922
 </pre></div>
 </div>
 </div>
@@ -993,7 +1225,7 @@ Total time iterating: 0.0006203651428222656
 <p>But the numpy approach can be complicated to write if the boundary conditions are not easy to express.</p>
 <section id="graphical-verification">
 <h3>Graphical verification<a class="headerlink" href="#graphical-verification" title="Link to this heading">#</a></h3>
-<p>Let’s check it  graphically</p>
+<p>Let’s check it  graphically. This function creates some plots to show the evolution. You can also write an animation</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
@@ -1045,7 +1277,7 @@ Total time iterating: 0.0006203651428222656
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">solve_system</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">iter_method</span><span class="o">=</span><span class="n">jacobiITER</span><span class="p">,</span> <span class="n">NDISPLAY</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: solve_system() got an unexpected keyword argument &#39;NDISPLAY&#39;
@@ -1057,13 +1289,130 @@ Total time iterating: 0.0006203651428222656
 <a class="bg-primary reference internal image-reference" href="../../_images/laplace_relax.png"><img alt="" class="bg-primary" src="../../_images/laplace_relax.png" style="width: 90%;" />
 </a>
 </figure>
+</section>
+<section id="d-animation">
+<h3>2D animation<a class="headerlink" href="#d-animation" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">solve_system_animated</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">,</span> <span class="n">NDISPLAY</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">bc</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">niter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">iter_method</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="n">NDISPLAY</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">step</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">step</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span><span class="n">copy</span><span class="p">()))</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">mesh</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step=1/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="n">step</span><span class="p">,</span> <span class="n">V_snap</span> <span class="o">=</span> <span class="n">frames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">mesh</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">V_snap</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
+        <span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="c1"># contours must be redrawn from scratch each frame</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>  <span class="c1"># [0] is the pcolormesh, skip it</span>
+            <span class="n">c</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">V_snap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">title</span>
+
+    <span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">frames</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">ani</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solve_system_animated</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">iter_method</span><span class="o">=</span><span class="n">jacobiITER</span><span class="p">,</span> <span class="n">NDISPLAY</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="d-animation-with-matplotlib">
+<h3>3D animation with matplotlib<a class="headerlink" href="#d-animation-with-matplotlib" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">solve_system_animated_3d</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="p">,</span> <span class="n">iter_method</span><span class="p">,</span> <span class="n">NDISPLAY</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">setup_problem</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">XX</span><span class="p">,</span> <span class="n">YY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>   <span class="c1"># both (N, N)</span>
+
+    <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span>
+    <span class="n">bc</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
+
+    <span class="n">frames</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">niter</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">iter_method</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">step</span> <span class="o">%</span> <span class="n">NDISPLAY</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">step</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">step</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span><span class="n">copy</span><span class="p">()))</span>
+
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
+        <span class="n">step</span><span class="p">,</span> <span class="n">V_snap</span> <span class="o">=</span> <span class="n">frames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">V_snap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elev</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">frames</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="n">ani</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">solve_system_animated_3d</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">iter_method</span><span class="o">=</span><span class="n">jacobiITER</span><span class="p">,</span> <span class="n">NDISPLAY</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="d-animation-with-pyvista">
+<h3>3D animation with pyvista<a class="headerlink" href="#d-animation-with-pyvista" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://pyvista.org/">https://pyvista.org/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Installation</span>
+<span class="c1">#!uv pip install pip</span>
+<span class="c1">#!pip install pyvista trame</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pv</span>
+
+<span class="c1"># COMPLETE IT!</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="numerical-stabilization">
+<h2>Numerical stabilization<a class="headerlink" href="#numerical-stabilization" title="Link to this heading">#</a></h2>
 <p>To have a quantitative relaxation index, we could compare the new values with the old ones, so let’s redefine the iteration step method to return the estimator</p>
 <div class="cell tag_skip-execution docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">jacobi_diff</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the difference between the old and the updated matrix</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">jacobi_diff</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
     <span class="n">matrix_old</span> <span class="o">=</span> <span class="n">matrix</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="c1"># Might be slow, creates copies all the time</span>
-    <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">pass</span>
+    <span class="n">jacobiITER</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">matrix</span> <span class="o">-</span> <span class="n">matrix_old</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">diff</span>
 </pre></div>
 </div>
 </div>
@@ -1087,7 +1436,6 @@ Total time iterating: 0.0006203651428222656
 <a class="bg-primary reference internal image-reference" href="../../_images/laplace_relax_2.png"><img alt="" class="bg-primary" src="../../_images/laplace_relax_2.png" style="width: 90%;" />
 </a>
 </figure>
-</section>
 </section>
 <section id="a-performance-discussion">
 <h2>A performance discussion<a class="headerlink" href="#a-performance-discussion" title="Link to this heading">#</a></h2>
@@ -1176,8 +1524,8 @@ Total time iterating: 0.0006203651428222656
 <section id="exercise-plot-the-electrical-field">
 <h2>Exercise: Plot the electrical field<a class="headerlink" href="#exercise-plot-the-electrical-field" title="Link to this heading">#</a></h2>
 <p>For any of the previous examples, use (for example) a quiver plot to plot the electric field, defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d9ddf850-2951-4dfe-af94-2d0e890b4ffa">
-<span class="eqno">(111)<a class="headerlink" href="#equation-d9ddf850-2951-4dfe-af94-2d0e890b4ffa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-32903863-e35d-4887-a5ce-78dd796dec79">
+<span class="eqno">(111)<a class="headerlink" href="#equation-32903863-e35d-4887-a5ce-78dd796dec79" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec E = -\vec\nabla V
 \end{equation}\]</div>
 <p>See <a class="reference external" href="https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb">https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb</a></p>
@@ -1324,9 +1672,9 @@ Total time iterating: 0.0006203651428222656
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-partial-differential-equations">Why Partial Differential Equations?</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification-of-pdes">Classification of PDEs</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-numerical-methods">Why Numerical Methods?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finite-difference-idea-in-one-picture">The Finite Difference Idea (in One Picture)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-poisson-equation">The Poisson equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-we-need-numerical-methods">Why Do We Need Numerical Methods?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finite-difference-idea">The Finite Difference Idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-first-example-the-poisson-equation">The first example: The Poisson equation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relaxation-solution">Relaxation solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-setup">Problem setup</a></li>
 </ul>
@@ -1335,8 +1683,12 @@ Total time iterating: 0.0006203651428222656
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#iteration">Iteration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#system-solution">System solution</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphical-verification">Graphical verification</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-animation">2D animation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-animation-with-matplotlib">3D animation with matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#d-animation-with-pyvista">3D animation with pyvista</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-stabilization">Numerical stabilization</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-performance-discussion">A performance discussion</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-plane-capacitor">Exercise: Plane capacitor</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-circular-ring">Exercise: circular ring</a></li>

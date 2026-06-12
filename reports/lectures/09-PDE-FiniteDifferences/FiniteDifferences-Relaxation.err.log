@@ -24,7 +24,7 @@ tmp = solve_system(N=20, niter=200, iter_method=jacobiITER, NDISPLAY=20)
 
 [31m---------------------------------------------------------------------------[39m
 [31mTypeError[39m                                 Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[10][39m[32m, line 1[39m
+[36mCell[39m[36m [39m[32mIn[18][39m[32m, line 1[39m
 [32m----> [39m[32m1[39m tmp = solve_system(N=[32m20[39m, niter=[32m200[39m, iter_method=jacobiITER, NDISPLAY=[32m20[39m)
 
 [31mTypeError[39m: solve_system() got an unexpected keyword argument 'NDISPLAY'
