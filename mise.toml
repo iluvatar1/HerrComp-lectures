@@ -1,0 +1,39 @@
+[tools]
+# Install the latest stable version of uv
+uv = "latest"
+python = "3.12"
+starship = "latest"
+pixi = "latest"
+# This replaces `pipx install black` and `pipx install ruff`
+"pipx:black" = "latest"
+"pipx:ruff" = "latest"
+# more examples
+# CLI essentials
+ripgrep = "latest"      # rg  — fast grep, respects .gitignore
+fd = "latest"           # fd  — fast find with sane syntax
+bat = "latest"          # bat — cat with syntax highlighting + git diff
+eza = "latest"          # eza — modern ls with colors, icons, git status
+fzf = "latest"          # fzf — fuzzy finder (Ctrl+R history, Ctrl+T files)
+zoxide = "latest"       # z   — smarter cd that learns your paths
+delta = "latest"        # beautiful git diffs
+gh = "latest"           # GitHub CLI
+jq = "latest"           # JSON processor
+difftastic = "latest"        # Nice diff
+
+[plugins]
+
+[env]
+## This tells python tools to look for a local .venv folder 
+#VIRTUAL_ENV = "{{config_root}}/.venv"
+#VIRTUAL_ENV = "{{env.HOME}}/Downloads/venvs/herrcomp/"
+_.python.venv = { path = "{{env.HOME}}/Downloads/venvs/herrcomp/", create = true }
+
+[settings]
+auto_install = true           # auto-install tools when entering a directory
+not_found_auto_install = true # suggest/install tools if command not found
+minimum_release_age = "7d"    # avoid brand-new broken releases for `latest`
+python.compile = false  # Tells mise to prefer pre-compiled binaries where possible
+# Note: mise automatically integrates with uv if uv is in your PATH.
+# "create|source" will create the .venv if it doesn't exist, and instantly activate it
+python.uv_venv_auto = "create|source"
+#python.uv_venv_auto = true # old

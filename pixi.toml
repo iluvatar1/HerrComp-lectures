@@ -1,0 +1,11 @@
+[workspace]
+authors = ["iluvatar1 <woquendo@gmail.com>"]
+channels = ["conda-forge"]
+name = "HerrComp-Lectures-MASTER"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+ncdu = ">=1.22,<2"
