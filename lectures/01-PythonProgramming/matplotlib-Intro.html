@@ -41,7 +41,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=03b9d5b1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
   <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
@@ -577,7 +577,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/71f964ab38678a8c086e6b3a129ace1d568303f57651c69695fb7cf408a2c065.png" src="../../_images/71f964ab38678a8c086e6b3a129ace1d568303f57651c69695fb7cf408a2c065.png" />
+<img alt="../../_images/f3303852c8d55cc3826ac973e21f45293da212a7ee544b3b29552530082d457a.png" src="../../_images/f3303852c8d55cc3826ac973e21f45293da212a7ee544b3b29552530082d457a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -589,7 +589,7 @@
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function plot in module matplotlib.pyplot:
 
-plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, scaley: &#39;bool&#39; = True, data=None, **kwargs) -&gt; &#39;list[Line2D]&#39;
+plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, scaley: &#39;bool&#39; = True, data: &#39;DataParamType&#39; = None, **kwargs) -&gt; &#39;list[Line2D]&#39;
     Plot y versus x as lines and/or markers.
     
     Call signatures::
@@ -755,7 +755,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
         gid: str
         in_layout: bool
         label: object
-        linestyle or ls: {&#39;-&#39;, &#39;--&#39;, &#39;-.&#39;, &#39;:&#39;, &#39;&#39;, (offset, on-off-seq), ...}
+        linestyle or ls: {&#39;-&#39;, &#39;--&#39;, &#39;-.&#39;, &#39;:&#39;, &#39;&#39;, ...} or (offset, on-off-seq)
         linewidth or lw: float
         marker: marker style string, `~.path.Path` or `~.markers.MarkerStyle`
         markeredgecolor or mec: :mpltype:`color`
@@ -898,7 +898,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;This is a title which includes LaTeX $\\alpha, \\beta^\\gamma$&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/29854a67a1bdad6994b080579d78f142bfef97270ae2071ebd5786aefedf440a.png" src="../../_images/29854a67a1bdad6994b080579d78f142bfef97270ae2071ebd5786aefedf440a.png" />
+<img alt="../../_images/ebe6e2970392f835baad499ee7ab04c86cdc28fba5b986f8715f8cbaf13581ac.png" src="../../_images/ebe6e2970392f835baad499ee7ab04c86cdc28fba5b986f8715f8cbaf13581ac.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -922,7 +922,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;This is an inset&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/adf4f15a3378999afc78b0df461d4a8b463d587561e02262a29bb822c953e9ba.png" src="../../_images/adf4f15a3378999afc78b0df461d4a8b463d587561e02262a29bb822c953e9ba.png" />
+<img alt="../../_images/d916c771c14ad03d67c50b6df37a0ac8f7b76881d217067f3d356a940ef57a31.png" src="../../_images/d916c771c14ad03d67c50b6df37a0ac8f7b76881d217067f3d356a940ef57a31.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -938,7 +938,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/90f998b98ee9386db607e4dc4212855e366b6e3469095cc5d3d79f984c676d99.png" src="../../_images/90f998b98ee9386db607e4dc4212855e366b6e3469095cc5d3d79f984c676d99.png" />
+<img alt="../../_images/5388ab0d7937aa131b4eb88974cb8a022962436b179af13b9d109c2044dccdd0.png" src="../../_images/5388ab0d7937aa131b4eb88974cb8a022962436b179af13b9d109c2044dccdd0.png" />
 </div>
 </div>
 <p>As you can see, there are several defaults employed: the type of data plotting (lines), the color (blue and then green), the axis sizes, no labels, no legends, etc. Now let’s start modifying some settings.</p>
@@ -953,10 +953,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3179d272d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7fa8502471d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/2d7d6b09903142acb8ab2e617ca9eff859e7992243a31f6bb3893878300c4ec6.png" src="../../_images/2d7d6b09903142acb8ab2e617ca9eff859e7992243a31f6bb3893878300c4ec6.png" />
+<img alt="../../_images/ee3f46188734d5731a6af7f690fa069b1d36f398c7fea9fe2459c844446f8975.png" src="../../_images/ee3f46188734d5731a6af7f690fa069b1d36f398c7fea9fe2459c844446f8975.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -967,10 +967,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3177ab4250&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa835576350&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/d416c6a7cf3ca207a147ab243502b34c9a076fbc7bad3a8ba40a81b394c4073c.png" src="../../_images/d416c6a7cf3ca207a147ab243502b34c9a076fbc7bad3a8ba40a81b394c4073c.png" />
+<img alt="../../_images/d6b1619c5397e8e2abc1b0479551a2e5807e64bc3bbdcbe9ef98c04edbee684c.png" src="../../_images/d6b1619c5397e8e2abc1b0479551a2e5807e64bc3bbdcbe9ef98c04edbee684c.png" />
 </div>
 </div>
 <p>There are more standard color : red, cyan, magenta, yellow, black, white. Actually, matplotlib can use a full range of html colors and even more! Check <a class="reference external" href="http://matplotlib.org/api/colors_api.html#module-matplotlib.colors">Matplotlib colors</a>.</p>
@@ -990,7 +990,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/908f73bcefa8cc4354a3a0278986055da373a3d4f93aa4ed797b9b2f0a03cb1c.png" src="../../_images/908f73bcefa8cc4354a3a0278986055da373a3d4f93aa4ed797b9b2f0a03cb1c.png" />
+<img alt="../../_images/1680d5a4a11e92d79ac816a5699bec85ad8d7d92b3bd64b0a8a6139ddbcc1a08.png" src="../../_images/1680d5a4a11e92d79ac816a5699bec85ad8d7d92b3bd64b0a8a6139ddbcc1a08.png" />
 </div>
 </div>
 </section>
@@ -1007,7 +1007,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/90f998b98ee9386db607e4dc4212855e366b6e3469095cc5d3d79f984c676d99.png" src="../../_images/90f998b98ee9386db607e4dc4212855e366b6e3469095cc5d3d79f984c676d99.png" />
+<img alt="../../_images/5388ab0d7937aa131b4eb88974cb8a022962436b179af13b9d109c2044dccdd0.png" src="../../_images/5388ab0d7937aa131b4eb88974cb8a022962436b179af13b9d109c2044dccdd0.png" />
 </div>
 </div>
 </section>
@@ -1023,10 +1023,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3176da9710&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa83481e290&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/190c4c172e1b99d6f3927278f4d02335b89c7adbc9c4d2f216710ec5d6dbbf84.png" src="../../_images/190c4c172e1b99d6f3927278f4d02335b89c7adbc9c4d2f216710ec5d6dbbf84.png" />
+<img alt="../../_images/c4dd3b3287a2af81b24e6b91fc246daa09cfa4f143e538f8d3bc1276fc373f77.png" src="../../_images/c4dd3b3287a2af81b24e6b91fc246daa09cfa4f143e538f8d3bc1276fc373f77.png" />
 </div>
 </div>
 <section id="setting-tics">
@@ -1042,10 +1042,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3176c47390&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa8348dbb10&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/77209fb8657c334d0cb4519dff9401722fa99df925462aed74db41d43b7fd8f7.png" src="../../_images/77209fb8657c334d0cb4519dff9401722fa99df925462aed74db41d43b7fd8f7.png" />
+<img alt="../../_images/f2e82695b4bb92bdfe28e5c78de494f8e7f66ef8a5957ab824e7ef90997e9145.png" src="../../_images/f2e82695b4bb92bdfe28e5c78de494f8e7f66ef8a5957ab824e7ef90997e9145.png" />
 </div>
 </div>
 </section>
@@ -1062,10 +1062,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f3176c79d10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa834722390&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/e7400c35d07c9b99db6c192d46fa1e143187d97af00e5221fd7191bb86eba30a.png" src="../../_images/e7400c35d07c9b99db6c192d46fa1e143187d97af00e5221fd7191bb86eba30a.png" />
+<img alt="../../_images/9764bcd0bf679f8d6ccd8170dc683f735d9758522b9f66ab2cf27425262f0b73.png" src="../../_images/9764bcd0bf679f8d6ccd8170dc683f735d9758522b9f66ab2cf27425262f0b73.png" />
 </div>
 </div>
 </section>
@@ -1113,7 +1113,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1f3c26ac26fa20c73c0bf9b839dce2dcc313b59570e0b5e0fcfc44ee92920a32.png" src="../../_images/1f3c26ac26fa20c73c0bf9b839dce2dcc313b59570e0b5e0fcfc44ee92920a32.png" />
+<img alt="../../_images/6a976c442b87c275601d8909a952176abb0636a79a6299fd8dda26fb79016d27.png" src="../../_images/6a976c442b87c275601d8909a952176abb0636a79a6299fd8dda26fb79016d27.png" />
 </div>
 </div>
 </section>
@@ -1131,7 +1131,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/8cd13232f848bfcb1abe6b17a0342789e2098fdf9548f57e470d999c0b4bfc10.png" src="../../_images/8cd13232f848bfcb1abe6b17a0342789e2098fdf9548f57e470d999c0b4bfc10.png" />
+<img alt="../../_images/880d028fdca14bb303c39ace8ce18ed627bd00d7ee1b52a65647a30126c76ded.png" src="../../_images/880d028fdca14bb303c39ace8ce18ed627bd00d7ee1b52a65647a30126c76ded.png" />
 </div>
 </div>
 </section>
@@ -1160,7 +1160,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/532a462aae791c625a6ae148e07e476642a46e3b324a4f77d50ead65abea4373.png" src="../../_images/532a462aae791c625a6ae148e07e476642a46e3b324a4f77d50ead65abea4373.png" />
+<img alt="../../_images/d17dc38bfcaaf84403958fc1e7377c722c49c03b4becb273e08f56bb9414f456.png" src="../../_images/d17dc38bfcaaf84403958fc1e7377c722c49c03b4becb273e08f56bb9414f456.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1174,7 +1174,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2e31386cf24c485d08ff0ef311f533299edef57cbef649944d6cba9a8c71051b.png" src="../../_images/2e31386cf24c485d08ff0ef311f533299edef57cbef649944d6cba9a8c71051b.png" />
+<img alt="../../_images/cf5e517121ec5069f015ccaaca6a0431990f099ac319570bf0ee1be6762a763d.png" src="../../_images/cf5e517121ec5069f015ccaaca6a0431990f099ac319570bf0ee1be6762a763d.png" />
 </div>
 </div>
 </section>
@@ -1217,7 +1217,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a57493ae1e36d241e7f8f8538c952887415a58a56c3faa345ca4e70ecc1c2944.png" src="../../_images/a57493ae1e36d241e7f8f8538c952887415a58a56c3faa345ca4e70ecc1c2944.png" />
+<img alt="../../_images/6937f0f5dde991ffeca4146ccad7fab5f78eb8cb239ff0864a3699af18350d84.png" src="../../_images/6937f0f5dde991ffeca4146ccad7fab5f78eb8cb239ff0864a3699af18350d84.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1235,7 +1235,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/52ac9b0f7a2e5f88a8a43c0098348d2e3c72d4062b9c161080f2394ef9db10d6.png" src="../../_images/52ac9b0f7a2e5f88a8a43c0098348d2e3c72d4062b9c161080f2394ef9db10d6.png" />
+<img alt="../../_images/d3495cfce7e38b722af6b07a4e65b9b9e4b7a9878af4b8d96065cca07090dc20.png" src="../../_images/d3495cfce7e38b722af6b07a4e65b9b9e4b7a9878af4b8d96065cca07090dc20.png" />
 </div>
 </div>
 </section>
@@ -1340,16 +1340,16 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 <span class="ne">---&gt; </span><span class="mi">29</span> <span class="n">anim</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;animation.mp4&quot;</span><span class="p">,</span> <span class="n">fps</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:1110,</span> in <span class="ni">Animation.save</span><span class="nt">(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">a</span>
-<span class="g g-Whitespace">   </span><span class="mi">1107</span> <span class="c1"># canvas._is_saving = True makes the draw_event animation-starting</span>
-<span class="g g-Whitespace">   </span><span class="mi">1108</span> <span class="c1"># callback a no-op; canvas.manager = None prevents resizing the GUI</span>
-<span class="g g-Whitespace">   </span><span class="mi">1109</span> <span class="c1"># widget (both are likewise done in savefig()).</span>
-<span class="ne">-&gt; </span><span class="mi">1110</span> <span class="k">with</span> <span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">saving</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fig</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">dpi</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1111</span>       <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fig</span><span class="o">.</span><span class="n">canvas</span><span class="p">,</span> <span class="n">_is_saving</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="kc">None</span><span class="p">)):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1112</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">writer</span><span class="o">.</span><span class="n">_supports_transparency</span><span class="p">():</span>
-<span class="g g-Whitespace">   </span><span class="mi">1113</span>         <span class="n">facecolor</span> <span class="o">=</span> <span class="n">savefig_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;facecolor&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1114</span>                                        <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;savefig.facecolor&#39;</span><span class="p">])</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:1114,</span> in <span class="ni">Animation.save</span><span class="nt">(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1109</span>     <span class="k">return</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">r</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">b</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">a</span>
+<span class="g g-Whitespace">   </span><span class="mi">1111</span> <span class="c1"># canvas._is_saving = True makes the draw_event animation-starting</span>
+<span class="g g-Whitespace">   </span><span class="mi">1112</span> <span class="c1"># callback a no-op; canvas.manager = None prevents resizing the GUI</span>
+<span class="g g-Whitespace">   </span><span class="mi">1113</span> <span class="c1"># widget (both are likewise done in savefig()).</span>
+<span class="ne">-&gt; </span><span class="mi">1114</span> <span class="k">with</span> <span class="p">(</span><span class="n">writer</span><span class="o">.</span><span class="n">saving</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fig</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">dpi</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1115</span>       <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_fig</span><span class="o">.</span><span class="n">canvas</span><span class="p">,</span> <span class="n">_is_saving</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">manager</span><span class="o">=</span><span class="kc">None</span><span class="p">)):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1116</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">writer</span><span class="o">.</span><span class="n">_supports_transparency</span><span class="p">():</span>
+<span class="g g-Whitespace">   </span><span class="mi">1117</span>         <span class="n">facecolor</span> <span class="o">=</span> <span class="n">savefig_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;facecolor&#39;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1118</span>                                        <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;savefig.facecolor&#39;</span><span class="p">])</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/contextlib.py:144,</span> in <span class="ni">_GeneratorContextManager.__exit__</span><span class="nt">(self, typ, value, traceback)</span>
 <span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="k">if</span> <span class="n">typ</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -1358,16 +1358,16 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 <span class="g g-Whitespace">    </span><span class="mi">145</span>     <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">146</span>         <span class="k">return</span> <span class="kc">False</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:226,</span> in <span class="ni">AbstractMovieWriter.saving</span><span class="nt">(self, fig, outfile, dpi, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">224</span>     <span class="k">yield</span> <span class="bp">self</span>
-<span class="g g-Whitespace">    </span><span class="mi">225</span> <span class="k">finally</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">226</span>     <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:228,</span> in <span class="ni">AbstractMovieWriter.saving</span><span class="nt">(self, fig, outfile, dpi, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span>     <span class="k">yield</span> <span class="bp">self</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span> <span class="k">finally</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">228</span>     <span class="bp">self</span><span class="o">.</span><span class="n">finish</span><span class="p">()</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:506,</span> in <span class="ni">PillowWriter.finish</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">505</span> <span class="k">def</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">506</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span>         <span class="bp">self</span><span class="o">.</span><span class="n">outfile</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
-<span class="g g-Whitespace">    </span><span class="mi">508</span>         <span class="n">duration</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">fps</span><span class="p">),</span> <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:510,</span> in <span class="ni">PillowWriter.finish</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">509</span> <span class="k">def</span><span class="w"> </span><span class="nf">finish</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">510</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="bp">self</span><span class="o">.</span><span class="n">outfile</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
+<span class="g g-Whitespace">    </span><span class="mi">512</span>         <span class="n">duration</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">fps</span><span class="p">),</span> <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2671,</span> in <span class="ni">Image.save</span><span class="nt">(self, fp, format, **params)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2669</span>     <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
@@ -1379,7 +1379,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 <span class="ne">ValueError</span>: unknown file extension: .mp4
 </pre></div>
 </div>
-<img alt="../../_images/88f3cf32b7d8d767cfa48eef223eee7fd5478730acf67f9eb3943b411bca5935.png" src="../../_images/88f3cf32b7d8d767cfa48eef223eee7fd5478730acf67f9eb3943b411bca5935.png" />
+<img alt="../../_images/49c0004487c77b0f47fe43d80566016cec2af320186b920837a22aa60cebaa7b.png" src="../../_images/49c0004487c77b0f47fe43d80566016cec2af320186b920837a22aa60cebaa7b.png" />
 </div>
 </div>
 </section>
