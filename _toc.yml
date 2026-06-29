@@ -46,6 +46,7 @@ parts:
     chapters:
     - file: lectures/09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.ipynb
     - file: lectures/09-PDE-FiniteDifferences/PDE-Parabolic-Heat.ipynb
+    - file: lectures/09-PDE-FiniteDifferences/PDE-WaveEquation.ipynb
     - file: lectures/09-PDE-FiniteDifferences/PDELibs.ipynb
   - caption: "Random methods"
     numbered: false
