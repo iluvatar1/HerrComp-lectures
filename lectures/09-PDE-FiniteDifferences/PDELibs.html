@@ -501,10 +501,21 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#findiff">findiff</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#py-pde">Py-pde</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mfem">MFEM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fenics">Fenics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-differences">Finite differences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#findiff">findiff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#py-pde">Py-pde</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#devito">Devito</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-element-method-libs">Finite Element Method libs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-fem">Scikit-fem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mfem">MFEM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fenics">Fenics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-using-pixi-dev">Example using pixi dev</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-check">To Check</a></li>
 </ul>
             </nav>
@@ -519,12 +530,58 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="numerical-libraries-for-pdes">
 <h1>Numerical libraries for PDEs<a class="headerlink" href="#numerical-libraries-for-pdes" title="Link to this heading">#</a></h1>
-<p>Give n the enormous complexity that PDE can present, there are scientific libraries targeted to their solutions. Here we will show just a few to highlight their use. In particular, two libraries that use the powerful <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_element_method?useskin=vector">finite element method</a> to solve PDE in complex geometries, will be shown at the end.</p>
+<p>Given the enormous complexity that PDE can present, there are scientific libraries targeted to their solutions. Furhtermore, those libraries implement more advanced methods like the Finite Element Method. Here we will show just a few  to highlight their use. In particular, two libraries that use the powerful <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_element_method?useskin=vector">finite element method</a> to solve PDE in complex geometries, will be shown at the end.</p>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import needed utils, like for embeding videos and url</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;utils&#39;</span><span class="p">)))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">embed</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/explore&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://visualpde.com/explore"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
+<section id="finite-differences">
+<h2>Finite differences<a class="headerlink" href="#finite-differences" title="Link to this heading">#</a></h2>
 <section id="findiff">
-<h2>findiff<a class="headerlink" href="#findiff" title="Link to this heading">#</a></h2>
-<p><a class="github reference external" href="https://github.com/maroba/findiff">maroba/findiff</a></p>
+<h3>findiff<a class="headerlink" href="#findiff" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://maroba.github.io/findiff/">https://maroba.github.io/findiff/</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/maroba/findiff">maroba/findiff</a></p></li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>findiff
 </pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!uv pip install findiff</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -557,7 +614,7 @@
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#!/usr/bin/env python3</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
@@ -581,13 +638,20 @@
 </div>
 </section>
 <section id="py-pde">
-<h2>Py-pde<a class="headerlink" href="#py-pde" title="Link to this heading">#</a></h2>
+<h3>Py-pde<a class="headerlink" href="#py-pde" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://py-pde.readthedocs.io/">https://py-pde.readthedocs.io/</a></p></li>
 <li><p><a class="github reference external" href="https://github.com/zwicker-group/py-pde">zwicker-group/py-pde</a></p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>py-pde
 </pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!uv pip install py-pde</span>
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -646,17 +710,102 @@
 </div>
 </div>
 </section>
+<section id="devito">
+<h3>Devito<a class="headerlink" href="#devito" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.devitoproject.org/">https://www.devitoproject.org/</a></p></li>
+<li><p><a class="reference external" href="https://www.devitoproject.org/download.html">https://www.devitoproject.org/download.html</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!pip install devito # better to do it in a different env</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="finite-element-method-libs">
+<h2>Finite Element Method libs<a class="headerlink" href="#finite-element-method-libs" title="Link to this heading">#</a></h2>
+<p>Introduction to the FEM: <a class="reference external" href="https://www.youtube.com/watch?v=GHjopp47vvQ">https://www.youtube.com/watch?v=GHjopp47vvQ</a></p>
+<section id="scikit-fem">
+<h3>Scikit-fem<a class="headerlink" href="#scikit-fem" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-fem.readthedocs.io/en/latest/">https://scikit-fem.readthedocs.io/en/latest/</a></p></li>
+<li><p><a class="github reference external" href="https://github.com/kinnala/scikit-fem">kinnala/scikit-fem</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !uv pip install pip</span>
+<span class="c1"># !pip install scikit-fem</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from: https://github.com/kinnala/scikit-fem/blob/master/docs/examples/ex01.py</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skfem</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">skfem.helpers</span><span class="w"> </span><span class="kn">import</span> <span class="n">dot</span><span class="p">,</span> <span class="n">grad</span>
+
+<span class="c1"># # enable additional mesh validity checks, sacrificing performance</span>
+<span class="c1"># import logging</span>
+<span class="c1"># logging.basicConfig(format=&#39;%(levelname)s %(asctime)s %(name)s %(message)s&#39;)</span>
+<span class="c1"># logging.getLogger(&#39;skfem&#39;).setLevel(logging.DEBUG)</span>
+
+<span class="c1"># create the mesh</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">MeshTri</span><span class="p">()</span><span class="o">.</span><span class="n">refined</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+<span class="c1"># or, with your own points and cells:</span>
+<span class="c1"># m = MeshTri(points, cells)</span>
+<span class="c1"># or, load from file</span>
+<span class="c1"># m = MeshTri.load(&quot;mesh.msh&quot;)</span>
+
+<span class="n">e</span> <span class="o">=</span> <span class="n">ElementTriP1</span><span class="p">()</span>
+<span class="n">basis</span> <span class="o">=</span> <span class="n">Basis</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+
+
+<span class="nd">@BilinearForm</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">laplace</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">dot</span><span class="p">(</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+
+
+<span class="nd">@LinearForm</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">rhs</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">_</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="n">v</span>
+
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">laplace</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">rhs</span><span class="o">.</span><span class="n">assemble</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span>
+
+<span class="c1"># enforce Dirichlet boundary conditions</span>
+<span class="n">A</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">enforce</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">D</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">boundary_nodes</span><span class="p">())</span>
+
+<span class="c1"># solve -- can be anything that takes a sparse matrix and a right-hand side</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">visualize</span><span class="p">():</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">skfem.visuals.matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
+    <span class="k">return</span> <span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;gouraud&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">visualize</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="mfem">
-<h2>MFEM<a class="headerlink" href="#mfem" title="Link to this heading">#</a></h2>
+<h3>MFEM<a class="headerlink" href="#mfem" title="Link to this heading">#</a></h3>
 <p>Although it is c++, it has a python wrapper</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://mfem.org/">https://mfem.org/</a></p></li>
 <li><p><a class="github reference external" href="https://github.com/mfem/PyMFEM">mfem/PyMFEM</a></p></li>
 <li><p><a class="reference external" href="https://mfem.org/examples/">https://mfem.org/examples/</a></p></li>
+<li><p>State of MFEM 2025: <a class="reference external" href="https://www.youtube.com/watch?v=Sq1EwYyjFzc">https://www.youtube.com/watch?v=Sq1EwYyjFzc</a></p></li>
+<li><p>es in HPC: <a class="reference external" href="https://www.youtube.com/watch?v=GHjopp47vvQ">https://www.youtube.com/watch?v=GHjopp47vvQ</a></p></li>
 <li><p><a class="reference external" href="https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex1.ipynb">https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex1.ipynb</a></p></li>
 <li><p><a class="reference external" href="https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex9.ipynb">https://colab.research.google.com/github/mfem/pymfem/blob/master/examples/jupyter/ex9.ipynb</a></p></li>
 <li><p><a class="github reference external" href="https://github.com/mfem/PyMFEM/tree/master/examples">mfem/PyMFEM</a></p></li>
-<li></li>
 </ul>
 <p>Only works on linux</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>pip
@@ -666,94 +815,126 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 <p>(for advanced options, like parallelization, you should download the sources and compile with the right options)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">mfem.ser</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mfem</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="ch">#!uv pip install pip</span>
+<span class="c1">#!pip install mfem # be sure to be used the uv installed pip. NOTE: TAKES A LOT OF TIME BUILDING</span>
+<span class="c1">#!uv pip install mpi4py</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Poisson equation</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mfem.ser</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mfem</span>
 
-<span class="c1"># Create a square mesh</span>
-<span class="n">mesh</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">Mesh</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s2">&quot;TRIANGLE&quot;</span><span class="p">)</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Mesh</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">mesh</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">Mesh</span><span class="o">.</span><span class="n">MakeCartesian2D</span><span class="p">(</span>
+    <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">mfem</span><span class="o">.</span><span class="n">Element</span><span class="o">.</span><span class="n">QUADRILATERAL</span><span class="p">,</span>
+    <span class="kc">True</span><span class="p">,</span>
+    <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span>
+<span class="p">)</span>
 
-<span class="c1"># Define the finite element function space</span>
-<span class="n">fec</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">H1_FECollection</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Dimension</span><span class="p">())</span>   <span class="c1"># H1 order=1</span>
-<span class="n">fespace</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">FiniteElementSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">fec</span><span class="p">)</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Finite element space</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">fec</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">H1_FECollection</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Dimension</span><span class="p">())</span>
+<span class="n">fes</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">FiniteElementSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">fec</span><span class="p">)</span>
 
-<span class="c1"># Define the essential dofs</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of unknowns:&quot;</span><span class="p">,</span> <span class="n">fes</span><span class="o">.</span><span class="n">GetTrueVSize</span><span class="p">())</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Essential boundary conditions</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">ess_bdr</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">intArray</span><span class="p">(</span><span class="n">mesh</span><span class="o">.</span><span class="n">bdr_attributes</span><span class="o">.</span><span class="n">Max</span><span class="p">())</span>
+<span class="n">ess_bdr</span><span class="o">.</span><span class="n">Assign</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
 <span class="n">ess_tdof_list</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">intArray</span><span class="p">()</span>
-<span class="n">ess_bdr</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">intArray</span><span class="p">([</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">mesh</span><span class="o">.</span><span class="n">bdr_attributes</span><span class="o">.</span><span class="n">Size</span><span class="p">())</span>
-<span class="n">fespace</span><span class="o">.</span><span class="n">GetEssentialTrueDofs</span><span class="p">(</span><span class="n">ess_bdr</span><span class="p">,</span> <span class="n">ess_tdof_list</span><span class="p">)</span>
+<span class="n">fes</span><span class="o">.</span><span class="n">GetEssentialTrueDofs</span><span class="p">(</span><span class="n">ess_bdr</span><span class="p">,</span> <span class="n">ess_tdof_list</span><span class="p">)</span>
 
-<span class="c1"># Define constants for alpha (diffusion coefficient) and f (RHS)</span>
-<span class="n">alpha</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">ConstantCoefficient</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
-<span class="n">rhs</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">ConstantCoefficient</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Right-hand side</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">one</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">ConstantCoefficient</span><span class="p">(</span><span class="mf">1.0</span><span class="p">)</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Note</span>
-<span class="sd">-----</span>
-<span class="sd">In order to represent a variable diffusion coefficient, you</span>
-<span class="sd">must use a numba-JIT compiled function. For example:</span>
-
-<span class="sd">&gt;&gt;&gt; @mfem.jit.scalar</span>
-<span class="sd">&gt;&gt;&gt; def alpha(x):</span>
-<span class="sd">&gt;&gt;&gt;     return x+1.0</span>
-<span class="sd">&quot;&quot;&quot;</span>
-
-<span class="c1"># Define the bilinear and linear operators</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">BilinearForm</span><span class="p">(</span><span class="n">fespace</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">AddDomainIntegrator</span><span class="p">(</span><span class="n">mfem</span><span class="o">.</span><span class="n">DiffusionIntegrator</span><span class="p">(</span><span class="n">alpha</span><span class="p">))</span>
-<span class="n">a</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
-<span class="n">b</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">LinearForm</span><span class="p">(</span><span class="n">fespace</span><span class="p">)</span>
-<span class="n">b</span><span class="o">.</span><span class="n">AddDomainIntegrator</span><span class="p">(</span><span class="n">mfem</span><span class="o">.</span><span class="n">DomainLFIntegrator</span><span class="p">(</span><span class="n">rhs</span><span class="p">))</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">LinearForm</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">AddDomainIntegrator</span><span class="p">(</span><span class="n">mfem</span><span class="o">.</span><span class="n">DomainLFIntegrator</span><span class="p">(</span><span class="n">one</span><span class="p">))</span>
 <span class="n">b</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
 
-<span class="c1"># Initialize a gridfunction to store the solution vector</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">(</span><span class="n">fespace</span><span class="p">)</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Bilinear form</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">BilinearForm</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">AddDomainIntegrator</span><span class="p">(</span><span class="n">mfem</span><span class="o">.</span><span class="n">DiffusionIntegrator</span><span class="p">())</span>
+<span class="n">a</span><span class="o">.</span><span class="n">Assemble</span><span class="p">()</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Linear system</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">GridFunction</span><span class="p">(</span><span class="n">fes</span><span class="p">)</span>
 <span class="n">x</span><span class="o">.</span><span class="n">Assign</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 
-<span class="c1"># Form the linear system of equations (AX=B)</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">OperatorPtr</span><span class="p">()</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">Vector</span><span class="p">()</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">Vector</span><span class="p">()</span>
-<span class="n">a</span><span class="o">.</span><span class="n">FormLinearSystem</span><span class="p">(</span><span class="n">ess_tdof_list</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Size of linear system: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">Height</span><span class="p">()))</span>
 
-<span class="c1"># Solve the linear system using PCG and store the solution in x</span>
-<span class="n">AA</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">OperatorHandle2SparseMatrix</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
-<span class="n">M</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">GSSmoother</span><span class="p">(</span><span class="n">AA</span><span class="p">)</span>
-<span class="n">mfem</span><span class="o">.</span><span class="n">PCG</span><span class="p">(</span><span class="n">AA</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mf">1e-12</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">FormLinearSystem</span><span class="p">(</span>
+    <span class="n">ess_tdof_list</span><span class="p">,</span>
+    <span class="n">x</span><span class="p">,</span>
+    <span class="n">b</span><span class="p">,</span>
+    <span class="n">A</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="n">B</span>
+<span class="p">)</span>
+
+<span class="c1"># --------------------------------------------------</span>
+<span class="c1"># Solve</span>
+<span class="c1"># --------------------------------------------------</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">GSSmoother</span><span class="p">(</span><span class="n">A</span><span class="o">.</span><span class="n">AsSparseMatrix</span><span class="p">())</span>
+<span class="n">mfem</span><span class="o">.</span><span class="n">PCG</span><span class="p">(</span>
+    <span class="n">A</span><span class="p">,</span>
+    <span class="n">solver</span><span class="p">,</span>
+    <span class="n">B</span><span class="p">,</span>
+    <span class="n">X</span><span class="p">,</span>
+    <span class="mi">1</span><span class="p">,</span>
+    <span class="mi">200</span><span class="p">,</span>
+    <span class="mf">1e-12</span><span class="p">,</span>
+    <span class="mf">0.0</span>
+<span class="p">)</span>
+
+<span class="c1"># Recover finite element solution</span>
 <span class="n">a</span><span class="o">.</span><span class="n">RecoverFEMSolution</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
-<span class="c1"># Extract vertices and solution as numpy arrays</span>
-<span class="n">verts</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">GetVertexArray</span><span class="p">()</span>
-<span class="n">sol</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">GetDataArray</span><span class="p">()</span>
+<span class="c1"># Save solution</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="s2">&quot;mesh.mesh&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="s2">&quot;solution.gf&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 
-<span class="c1"># Plot the solution using matplotlib</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.tri</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tri</span>
-
-<span class="n">triang</span> <span class="o">=</span> <span class="n">tri</span><span class="o">.</span><span class="n">Triangulation</span><span class="p">(</span><span class="n">verts</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">verts</span><span class="p">[:,</span><span class="mi">1</span><span class="p">])</span>
-
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">tpc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">tripcolor</span><span class="p">(</span><span class="n">triang</span><span class="p">,</span> <span class="n">sol</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;gouraud&#39;</span><span class="p">)</span>
-<span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">tpc</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done.&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="fenics">
-<h2>Fenics<a class="headerlink" href="#fenics" title="Link to this heading">#</a></h2>
+<h3>Fenics<a class="headerlink" href="#fenics" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://fenicsproject.org/">https://fenicsproject.org/</a></p></li>
-<li><p><a class="reference external" href="https://fenicsproject.org/documentation/">https://fenicsproject.org/documentation/</a></p></li>
-<li><p><a class="reference external" href="https://docs.fenicsproject.org/dolfinx/v0.9.0/python/demos.html">https://docs.fenicsproject.org/dolfinx/v0.9.0/python/demos.html</a></p></li>
-<li><p><a class="reference external" href="https://jsdokken.com/dolfinx-tutorial/chapter1/fundamentals.html">https://jsdokken.com/dolfinx-tutorial/chapter1/fundamentals.html</a></p></li>
-<li><p><a class="reference external" href="https://docs.pyvista.org/">https://docs.pyvista.org/</a></p></li>
+<li><p>&lt;<a class="reference external" href="https://fenicsproject.org/">https://fenicsproject.org/</a></p></li>
+<li><p>&lt;<a class="reference external" href="https://fenicsproject.org/documentation/">https://fenicsproject.org/documentation/</a></p></li>
+<li><p>&lt;<a class="reference external" href="https://docs.fenicsproject.org/dolfinx/v0.9.0/python/demos.html">https://docs.fenicsproject.org/dolfinx/v0.9.0/python/demos.html</a></p></li>
+<li><p>&lt;<a class="reference external" href="https://jsdokken.com/dolfinx-tutorial/chapter1/fundamentals.html">https://jsdokken.com/dolfinx-tutorial/chapter1/fundamentals.html</a></p></li>
+<li><p>&lt;<a class="reference external" href="https://docs.pyvista.org/">https://docs.pyvista.org/</a></p></li>
 </ul>
-<p>Installation is much more complicated than</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>fenics<span class="w"> </span>dolphin<span class="w"> </span>mpi4py
+<p>Installation is much more complicated than <a class="reference external" href="https://fenicsproject.org/documentation/">https://fenicsproject.org/documentation/</a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>fenics<span class="w"> </span>dolphin<span class="w"> </span>mpi4py
 </pre></div>
 </div>
 <p>It is better to use a docker container or use the binder setups</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>run<span class="w"> </span>-ti<span class="w"> </span>dolfinx/dolfinx:stable
+</pre></div>
+</div>
+<p>See below for an example using pixi dev.</p>
 <p>Example: 2D poisson equation</p>
 <ul class="simple">
 <li><p>Notation and method intro: <a class="reference external" href="https://jsdokken.com/dolfinx-tutorial/chapter1/fundamentals.html">https://jsdokken.com/dolfinx-tutorial/chapter1/fundamentals.html</a></p></li>
@@ -762,6 +943,323 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 <a class="reference internal image-reference" href="https://jsdokken.com/dolfinx-tutorial/_images/u_time.gif"><img alt="example" class="align-center" src="https://jsdokken.com/dolfinx-tutorial/_images/u_time.gif" style="width: 100%;" />
 </a>
 <p>From : <a class="reference external" href="https://jsdokken.com/dolfinx-tutorial/chapter2/diffusion_code.html">https://jsdokken.com/dolfinx-tutorial/chapter2/diffusion_code.html</a></p>
+<section id="example-using-pixi-dev">
+<h4>Example using pixi dev<a class="headerlink" href="#example-using-pixi-dev" title="Link to this heading">#</a></h4>
+<p>According to <a class="reference external" href="https://fenicsproject.org/documentation/">https://fenicsproject.org/documentation/</a>, the recommended way to use fenics (the latest version) is to use conda. But we can do even better by using <a class="reference external" href="https://pixi.prefix.dev/latest/">https://pixi.prefix.dev/latest/</a>. This allows to get the full conda repo with uv support when needed, plus many other things. Do the following in your machine</p>
+<ul>
+<li><p>[ ] Install pixi:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://pixi.sh/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</pre></div>
+</div>
+<p>It will install pixi on <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code>. You might need to close and reopen the shell.</p>
+</li>
+<li><p>[ ] Create a virtual pixi env with conda-forge as repo, and enter</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pixi<span class="w"> </span>init<span class="w"> </span>fenicsx-env<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>-c<span class="w"> </span>nodefaults
+<span class="nb">cd</span><span class="w"> </span>fenicsx-en
+</pre></div>
+</div>
+</li>
+<li><p>[ ] Add and install the needed packages</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pixi<span class="w"> </span>add<span class="w"> </span>fenics-dolfinx<span class="w"> </span>mpich<span class="w"> </span>pyvista
+</pre></div>
+</div>
+</li>
+<li><p>[ ] Run the scripts through pixi</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pixi<span class="w"> </span>run<span class="w"> </span>python<span class="w"> </span>your_script.py
+</pre></div>
+</div>
+</li>
+</ul>
+<div class="cell tag_hide-output tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> fenics_example_01.py
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpi4py</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dolfinx</span><span class="w"> </span><span class="kn">import</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">fem</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dolfinx.fem.petsc</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearProblem</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">ufl</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">domain</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">create_unit_square</span><span class="p">(</span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">functionspace</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Lagrange&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mesh: </span><span class="si">{</span><span class="n">domain</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">index_map</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">size_local</span><span class="si">}</span><span class="s2"> cells, &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">V</span><span class="o">.</span><span class="n">dofmap</span><span class="o">.</span><span class="n">index_map</span><span class="o">.</span><span class="n">size_local</span><span class="si">}</span><span class="s2"> DOFs&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">boundary</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="n">facets</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">locate_entities_boundary</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="n">domain</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">boundary</span><span class="p">)</span>
+<span class="n">dofs</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">locate_dofs_topological</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">domain</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">facets</span><span class="p">)</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">dirichletbc</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">dofs</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span>
+
+<span class="n">u</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">Constant</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="o">-</span><span class="mf">6.0</span><span class="p">)</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">ufl</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">ufl</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">dx</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">v</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">dx</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">LinearProblem</span><span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">bc</span><span class="p">],</span>
+    <span class="n">petsc_options_prefix</span><span class="o">=</span><span class="s2">&quot;poisson_&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">uh</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+
+<span class="c1"># --- Diagnostics: print solution stats ---</span>
+<span class="n">u_array</span> <span class="o">=</span> <span class="n">uh</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">array</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution min: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution max: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution mean: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First 10 values: </span><span class="si">{</span><span class="n">u_array</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># --- Visualization with pyvista ---</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dolfinx</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
+
+<span class="n">pyvista</span><span class="o">.</span><span class="n">OFF_SCREEN</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># set False if you want an interactive window</span>
+
+<span class="n">topology</span><span class="p">,</span> <span class="n">cell_types</span><span class="p">,</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">vtk_mesh</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">cell_types</span><span class="p">,</span> <span class="n">geometry</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u_array</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+
+<span class="n">plotter</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">view_xy</span><span class="p">()</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">add_scalar_bar</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s2">&quot;solution.png&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved plot to solution.png&quot;</span><span class="p">)</span>
+
+<span class="c1"># Optional: interactive window if not off-screen</span>
+<span class="c1"># plotter.show()</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell tag_hide-output tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%writefile</span> fenics_example_02.py
+<span class="c1"># From https://github.com/FEniCS/dolfinx/blob/main/python/demo/demo_po</span>
+<span class="c1"># ---</span>
+<span class="c1"># jupyter:</span>
+<span class="c1">#   jupytext:</span>
+<span class="c1">#     text_representation:</span>
+<span class="c1">#       extension: .py</span>
+<span class="c1">#       format_name: light</span>
+<span class="c1">#       format_version: &#39;1.5&#39;</span>
+<span class="c1">#       jupytext_version: 1.13.6</span>
+<span class="c1"># ---</span>
+
+<span class="c1"># # Poisson equation</span>
+<span class="c1">#</span>
+<span class="c1"># This demo illustrates how to:</span>
+<span class="c1">#</span>
+<span class="c1"># - Create a {py:class}`function space &lt;dolfinx.fem.FunctionSpace&gt;`</span>
+<span class="c1"># - Solve a linear partial differential equation</span>
+<span class="c1">#</span>
+<span class="c1"># ```{admonition} Download sources</span>
+<span class="c1"># :class: download</span>
+<span class="c1"># * {download}`Python script &lt;./demo_poisson.py&gt;`</span>
+<span class="c1"># * {download}`Jupyter notebook &lt;./demo_poisson.ipynb&gt;`</span>
+<span class="c1"># ```</span>
+<span class="c1"># ## Equation and problem definition</span>
+<span class="c1">#</span>
+<span class="c1"># For a domain $\Omega \subset \mathbb{R}^n$ with boundary $\partial</span>
+<span class="c1"># \Omega = \Gamma_{D} \cup \Gamma_{N}$, the Poisson equation with</span>
+<span class="c1"># particular boundary conditions reads:</span>
+<span class="c1">#</span>
+<span class="c1"># $$</span>
+<span class="c1"># \begin{aligned}</span>
+<span class="c1">#   - \nabla^{2} u &amp;= f \quad {\rm in} \ \Omega, \\</span>
+<span class="c1">#   u &amp;= 0 \quad {\rm on} \ \Gamma_{D}, \\</span>
+<span class="c1">#   \nabla u \cdot n &amp;= g \quad {\rm on} \ \Gamma_{N}. \\</span>
+<span class="c1"># \end{aligned}</span>
+<span class="c1"># $$</span>
+<span class="c1">#</span>
+<span class="c1"># where $f$ and $g$ are input data and $n$ denotes the outward directed</span>
+<span class="c1"># boundary normal. The variational problem reads: find $u \in V$ such</span>
+<span class="c1"># that</span>
+<span class="c1">#</span>
+<span class="c1"># $$</span>
+<span class="c1"># a(u, v) = L(v) \quad \forall \ v \in V,</span>
+<span class="c1"># $$</span>
+<span class="c1">#</span>
+<span class="c1"># where $V$ is a suitable function space and</span>
+<span class="c1">#</span>
+<span class="c1"># $$</span>
+<span class="c1"># \begin{aligned}</span>
+<span class="c1">#   a(u, v) &amp;:= \int_{\Omega} \nabla u \cdot \nabla v \, {\rm d} x, \\</span>
+<span class="c1">#   L(v)    &amp;:= \int_{\Omega} f v \, {\rm d} x + \int_{\Gamma_{N}} g v \,</span>
+<span class="c1">#               {\rm d} s.</span>
+<span class="c1"># \end{aligned}</span>
+<span class="c1"># $$</span>
+<span class="c1">#</span>
+<span class="c1"># The expression $a(u, v)$ is the bilinear form and $L(v)$</span>
+<span class="c1"># is the linear form. It is assumed that all functions in $V$</span>
+<span class="c1"># satisfy the Dirichlet boundary conditions ($u = 0 \ {\rm on} \</span>
+<span class="c1"># \Gamma_{D}$).</span>
+<span class="c1">#</span>
+<span class="c1"># In this demo we consider:</span>
+<span class="c1">#</span>
+<span class="c1"># - $\Omega = [0,2] \times [0,1]$ (a rectangle)</span>
+<span class="c1"># - $\Gamma_{D} = \{(0, y) \cup (2, y) \subset \partial \Omega\}$</span>
+<span class="c1"># - $\Gamma_{N} = \{(x, 0) \cup (x, 1) \subset \partial \Omega\}$</span>
+<span class="c1"># - $g = \sin(5x)$</span>
+<span class="c1"># - $f = 10\exp(-((x - 0.5)^2 + (y - 0.5)^2) / 0.02)$</span>
+<span class="c1">#</span>
+<span class="c1"># ## Implementation</span>
+<span class="c1">#</span>
+<span class="c1"># The modules that will be used are imported:</span>
+
+<span class="c1"># +</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">mpi4py</span><span class="w"> </span><span class="kn">import</span> <span class="n">MPI</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">petsc4py.PETSc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ScalarType</span>  <span class="c1"># type: ignore</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">ufl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dolfinx</span><span class="w"> </span><span class="kn">import</span> <span class="n">fem</span><span class="p">,</span> <span class="n">io</span><span class="p">,</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">plot</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dolfinx.fem.petsc</span><span class="w"> </span><span class="kn">import</span> <span class="n">LinearProblem</span>
+
+<span class="c1"># -</span>
+
+<span class="c1"># Note that it is important to first `from mpi4py import MPI` to</span>
+<span class="c1"># ensure that MPI is correctly initialised.</span>
+
+<span class="c1"># We create a rectangular {py:class}`Mesh &lt;dolfinx.mesh.Mesh&gt;` using</span>
+<span class="c1"># {py:func}`create_rectangle &lt;dolfinx.mesh.create_rectangle&gt;`, and</span>
+<span class="c1"># create a finite element {py:class}`function space</span>
+<span class="c1"># &lt;dolfinx.fem.FunctionSpace&gt;` $V$ on the mesh.</span>
+
+<span class="c1"># +</span>
+<span class="n">msh</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">create_rectangle</span><span class="p">(</span>
+    <span class="n">comm</span><span class="o">=</span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">,</span>
+    <span class="n">points</span><span class="o">=</span><span class="p">((</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span> <span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)),</span>
+    <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
+    <span class="n">cell_type</span><span class="o">=</span><span class="n">mesh</span><span class="o">.</span><span class="n">CellType</span><span class="o">.</span><span class="n">triangle</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">functionspace</span><span class="p">(</span><span class="n">msh</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Lagrange&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="c1"># -</span>
+
+<span class="c1"># The second argument to {py:func}`functionspace</span>
+<span class="c1"># &lt;dolfinx.fem.functionspace&gt;` is a tuple `(family, degree)`, where</span>
+<span class="c1"># `family` is the finite element family, and `degree` specifies the</span>
+<span class="c1"># polynomial degree. In this case `V` is a space of continuous Lagrange</span>
+<span class="c1"># finite elements of degree 1. For further details of how one can specify</span>
+<span class="c1"># finite elements as tuples, see {py:class}`ElementMetaData</span>
+<span class="c1"># &lt;dolfinx.fem.ElementMetaData&gt;`.</span>
+<span class="c1">#</span>
+<span class="c1"># To apply the Dirichlet boundary conditions, we find the mesh facets</span>
+<span class="c1"># (entities of topological co-dimension 1) that lie on the boundary</span>
+<span class="c1"># $\Gamma_D$ using {py:func}`locate_entities_boundary</span>
+<span class="c1"># &lt;dolfinx.mesh.locate_entities_boundary&gt;`. The function is provided</span>
+<span class="c1"># with a &#39;marker&#39; function that returns `True` for points `x` on the</span>
+<span class="c1"># boundary and `False` otherwise.</span>
+
+<span class="n">tdim</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span>
+<span class="n">fdim</span> <span class="o">=</span> <span class="n">tdim</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">facets</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">locate_entities_boundary</span><span class="p">(</span>
+    <span class="n">msh</span><span class="p">,</span>
+    <span class="n">dim</span><span class="o">=</span><span class="n">fdim</span><span class="p">,</span>
+    <span class="n">marker</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">0.0</span><span class="p">)</span> <span class="o">|</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mf">2.0</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># We now find the degrees-of-freedom that are associated with the</span>
+<span class="c1"># boundary facets using {py:func}`locate_dofs_topological</span>
+<span class="c1"># &lt;dolfinx.fem.locate_dofs_topological&gt;`:</span>
+
+<span class="n">dofs</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">locate_dofs_topological</span><span class="p">(</span><span class="n">V</span><span class="o">=</span><span class="n">V</span><span class="p">,</span> <span class="n">entity_dim</span><span class="o">=</span><span class="n">fdim</span><span class="p">,</span> <span class="n">entities</span><span class="o">=</span><span class="n">facets</span><span class="p">)</span>
+
+<span class="c1"># and use {py:func}`dirichletbc &lt;dolfinx.fem.dirichletbc&gt;` to create a</span>
+<span class="c1"># {py:class}`DirichletBC &lt;dolfinx.fem.DirichletBC&gt;` class that</span>
+<span class="c1"># represents the boundary condition:</span>
+
+<span class="n">bc</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">dirichletbc</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="n">ScalarType</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">dofs</span><span class="o">=</span><span class="n">dofs</span><span class="p">,</span> <span class="n">V</span><span class="o">=</span><span class="n">V</span><span class="p">)</span>
+
+<span class="c1"># Next, the variational problem is defined:</span>
+
+<span class="c1"># +</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">TrialFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">v</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">TestFunction</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">SpatialCoordinate</span><span class="p">(</span><span class="n">msh</span><span class="p">)</span>
+<span class="n">f</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mf">0.02</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">ufl</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">ufl</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">v</span><span class="p">))</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">dx</span>
+<span class="n">L</span> <span class="o">=</span> <span class="n">ufl</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">dx</span> <span class="o">+</span> <span class="n">ufl</span><span class="o">.</span><span class="n">inner</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">ufl</span><span class="o">.</span><span class="n">ds</span>
+<span class="c1"># -</span>
+
+<span class="c1"># A {py:class}`LinearProblem &lt;dolfinx.fem.petsc.LinearProblem&gt;` object is</span>
+<span class="c1"># created that brings together the variational problem, the Dirichlet</span>
+<span class="c1"># boundary condition, and which specifies the linear solver. In this</span>
+<span class="c1"># case an LU solver is used, and we ask that PETSc throws an error</span>
+<span class="c1"># if the solver does not converge. The {py:func}`solve</span>
+<span class="c1"># &lt;dolfinx.fem.petsc.LinearProblem.solve&gt;` computes the solution.</span>
+
+<span class="c1"># +</span>
+<span class="n">problem</span> <span class="o">=</span> <span class="n">LinearProblem</span><span class="p">(</span>
+    <span class="n">a</span><span class="p">,</span>
+    <span class="n">L</span><span class="p">,</span>
+    <span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">bc</span><span class="p">],</span>
+    <span class="n">petsc_options_prefix</span><span class="o">=</span><span class="s2">&quot;demo_poisson_&quot;</span><span class="p">,</span>
+    <span class="n">petsc_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ksp_type&quot;</span><span class="p">:</span> <span class="s2">&quot;preonly&quot;</span><span class="p">,</span> <span class="s2">&quot;pc_type&quot;</span><span class="p">:</span> <span class="s2">&quot;lu&quot;</span><span class="p">,</span> <span class="s2">&quot;ksp_error_if_not_converged&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+<span class="p">)</span>
+<span class="n">uh</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
+<span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uh</span><span class="p">,</span> <span class="n">fem</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
+<span class="c1"># -</span>
+
+<span class="c1"># The solution can be written to a {py:class}`XDMFFile</span>
+<span class="c1"># &lt;dolfinx.io.XDMFFile&gt;` file visualization with [ParaView](https://www.paraview.org/)</span>
+<span class="c1"># or [VisIt](https://visit-dav.github.io/visit-website/):</span>
+
+<span class="c1"># +</span>
+<span class="n">out_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;out_poisson&quot;</span><span class="p">)</span>
+<span class="n">out_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">XDMFFile</span><span class="p">(</span><span class="n">msh</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="n">out_folder</span> <span class="o">/</span> <span class="s2">&quot;poisson.xdmf&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write_mesh</span><span class="p">(</span><span class="n">msh</span><span class="p">)</span>
+    <span class="n">file</span><span class="o">.</span><span class="n">write_function</span><span class="p">(</span><span class="n">uh</span><span class="p">)</span>
+<span class="c1"># -</span>
+
+<span class="c1"># and displayed using [pyvista](https://docs.pyvista.org/).</span>
+
+<span class="c1"># +</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span>
+
+    <span class="n">cells</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">vtk_mesh</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+    <span class="n">grid</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uh</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+    <span class="n">plotter</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">warped</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">warp_by_scalar</span><span class="p">()</span>
+    <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">warped</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">OFF_SCREEN</span><span class="p">:</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">out_folder</span> <span class="o">/</span> <span class="s2">&quot;uh_poisson.png&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&#39;pyvista&#39; is required to visualise the solution.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;To install pyvista with pip: &#39;python3 -m pip install pyvista&#39;.&quot;</span><span class="p">)</span>
+<span class="c1"># -</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+</section>
+</section>
 </section>
 <section id="to-check">
 <h2>To Check<a class="headerlink" href="#to-check" title="Link to this heading">#</a></h2>
@@ -841,10 +1339,21 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#findiff">findiff</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#py-pde">Py-pde</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mfem">MFEM</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fenics">Fenics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-differences">Finite differences</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#findiff">findiff</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#py-pde">Py-pde</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#devito">Devito</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-element-method-libs">Finite Element Method libs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-fem">Scikit-fem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mfem">MFEM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fenics">Fenics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-using-pixi-dev">Example using pixi dev</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#to-check">To Check</a></li>
 </ul>
   </nav></div>

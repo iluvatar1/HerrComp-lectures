@@ -554,42 +554,42 @@
 <section id="markov-chain">
 <h2>Markov chain<a class="headerlink" href="#markov-chain" title="Link to this heading">#</a></h2>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Markov_chain">Markov chain</a> is a sequence of states that are  produced by a stochastic process where the next state, <span class="math notranslate nohighlight">\(\hat X_{i+1}\)</span> depends only on the current one, <span class="math notranslate nohighlight">\(\hat X_i\)</span>. <strong>There is no memory</strong>. The transition between this two states can be represented by the transition probability <span class="math notranslate nohighlight">\(p_{ij}\)</span>, which are the elements of and <span class="math notranslate nohighlight">\(M\times M\)</span> matrix (<span class="math notranslate nohighlight">\(M\)</span> the number of states). They fulfill <span class="math notranslate nohighlight">\(\sum_j p_{ij} = 1\)</span>. Here the transition matrix is independent on time.  Given two states, the <em>transition matrix</em>, <span class="math notranslate nohighlight">\(P_{ij}\)</span> can be used to represent as,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78e64523-ffdd-4f5e-a8bc-bc535e950abc">
-<span class="eqno">(155)<a class="headerlink" href="#equation-78e64523-ffdd-4f5e-a8bc-bc535e950abc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-12901212-bb7a-440d-901b-2653e2e7d994">
+<span class="eqno">(155)<a class="headerlink" href="#equation-12901212-bb7a-440d-901b-2653e2e7d994" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat X_{j} = P \hat X_i.
 \end{equation}\]</div>
 <p>Using a super-script as denoting the iteration or algorithmic time, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bb230ce3-ee43-4a0c-9066-4900c0b4dcab">
-<span class="eqno">(156)<a class="headerlink" href="#equation-bb230ce3-ee43-4a0c-9066-4900c0b4dcab" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c7b4fc66-a4f3-4b6b-aead-0fe342daf78d">
+<span class="eqno">(156)<a class="headerlink" href="#equation-c7b4fc66-a4f3-4b6b-aead-0fe342daf78d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat X^N = P \hat X^{N-1} = P^N \hat X^{0}.
 \end{equation}\]</div>
 <p>Under certain conditions, there is a final state independent on the initial condition (a fixed point), which sometimes is called as the ergodic property,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f0586b8d-1a7b-48d9-b4e4-da8969854470">
-<span class="eqno">(157)<a class="headerlink" href="#equation-f0586b8d-1a7b-48d9-b4e4-da8969854470" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-45ac8f57-c1e4-485f-866f-5e88815f371f">
+<span class="eqno">(157)<a class="headerlink" href="#equation-45ac8f57-c1e4-485f-866f-5e88815f371f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec w = \lim_{N\to\infty} P^N \hat X^0.
 \end{equation}\]</div>
 <p>One way to ensure this is the so-called detailed balance condition</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1c201d58-053e-4ad9-a028-23200a53694e">
-<span class="eqno">(158)<a class="headerlink" href="#equation-1c201d58-053e-4ad9-a028-23200a53694e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8627b0a3-2fcf-4842-9538-33fe1f8d5277">
+<span class="eqno">(158)<a class="headerlink" href="#equation-8627b0a3-2fcf-4842-9538-33fe1f8d5277" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p_{ij} w_i = p_{ji} w_j.
 \end{equation}\]</div>
 <p>Summing over <span class="math notranslate nohighlight">\(j\)</span> demonstrates that <span class="math notranslate nohighlight">\(\vec w\)</span> is, indeed, a fixed point. By equating the fixed point with the desired distribution, by arranging the transition probabilities,  we complete the Markov chain procedure.</p>
 <p>If the actual probability to find the system in state <span class="math notranslate nohighlight">\(\mu\)</span>  depends on time and is given by <span class="math notranslate nohighlight">\(w_\mu(t)\)</span>, its time evolution is given by the <em>master equation</em></p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0d83b24-62b8-4586-9466-46691d91bf95">
-<span class="eqno">(159)<a class="headerlink" href="#equation-d0d83b24-62b8-4586-9466-46691d91bf95" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-610b906b-36fc-4033-940d-4f548d49a255">
+<span class="eqno">(159)<a class="headerlink" href="#equation-610b906b-36fc-4033-940d-4f548d49a255" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dw_\mu(t)}{dt} = \sum_\nu {w_\nu(t) R(\nu\to\mu) - w_\mu(t) R(\mu\to\nu)},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(R(\mu\to\nu)\)</span> is the transition probability, and <span class="math notranslate nohighlight">\(\sum_\mu w_\mu(t)= 1\)</span>. After a long time the system reaches a steady state  and <span class="math notranslate nohighlight">\(w_\mu(t)\)</span> converge to finite numbers <span class="math notranslate nohighlight">\(p_\mu \le 0\)</span>. In that case one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c488be82-597b-4e26-a263-ba292caed5a9">
-<span class="eqno">(160)<a class="headerlink" href="#equation-c488be82-597b-4e26-a263-ba292caed5a9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6d236d4d-aaf0-4f9b-8541-419d213781af">
+<span class="eqno">(160)<a class="headerlink" href="#equation-6d236d4d-aaf0-4f9b-8541-419d213781af" title="Permalink to this equation">#</a></span>\[\begin{equation}
 0 = \sum_\nu {w_\nu(t) R(\nu\to\mu) - w_\mu(t) R(\mu\to\nu)},
 \end{equation}\]</div>
 <p>and the detailed balance condition is a sufficient (but not necessary) condition to fulfill this.</p>
 <p><mark>Exercises</mark></p>
 <ul>
 <li><p>[ ] (Boudreau, 7.8.16) Consider the following transition matrix</p>
-<div class="amsmath math notranslate nohighlight" id="equation-175359a6-5637-40ca-834b-30363cc27d19">
-<span class="eqno">(161)<a class="headerlink" href="#equation-175359a6-5637-40ca-834b-30363cc27d19" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4f8286c9-f179-47e3-8c6d-3fc1b73bacec">
+<span class="eqno">(161)<a class="headerlink" href="#equation-4f8286c9-f179-47e3-8c6d-3fc1b73bacec" title="Permalink to this equation">#</a></span>\[\begin{equation}
 P = \begin{pmatrix}
 3/4 &amp; 1/4 &amp; 0\\
 0 &amp; 2/3 &amp; 1/3\\
@@ -612,15 +612,15 @@ P = \begin{pmatrix}
 <ul>
 <li><p>generate a next state in the Markov chain according to <span class="math notranslate nohighlight">\(R(\hat X \to \hat X')\)</span>.</p></li>
 <li><p>Accept the new state with probability</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1042c51d-9db9-4010-b451-1bc5e2f3308c">
-<span class="eqno">(162)<a class="headerlink" href="#equation-1042c51d-9db9-4010-b451-1bc5e2f3308c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2086c37e-d53f-4867-b499-e64f004b3bfc">
+<span class="eqno">(162)<a class="headerlink" href="#equation-2086c37e-d53f-4867-b499-e64f004b3bfc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min \left(1, \frac{R(\hat X' \to \hat X)\rho(\hat X')}{R(\hat X \to \hat X')\rho(\hat X)} \right)
 \end{equation}\]</div>
 </li>
 </ul>
 <p>If the proposal distribution is reversible (like a Gaussian with fixed width), then the acceptance probability is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-40ead698-3c9e-41a1-ad3e-8a08b50075d3">
-<span class="eqno">(163)<a class="headerlink" href="#equation-40ead698-3c9e-41a1-ad3e-8a08b50075d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7c9bef58-a785-4e16-bc5a-96211f3015b8">
+<span class="eqno">(163)<a class="headerlink" href="#equation-7c9bef58-a785-4e16-bc5a-96211f3015b8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min \left(1, \frac{\rho(\hat X')}{\rho(\hat X)} \right).
 \end{equation}\]</div>
 <p>This is called the Metropolis method.</p>
@@ -648,8 +648,8 @@ P = \begin{pmatrix}
 <p><mark> Exercises </mark></p>
 <ul>
 <li><p>[ ] (Boudreau, 7.8.2) A gas is in thermal equilibrium at a temperature <span class="math notranslate nohighlight">\(T\)</span>, so its velocity distribution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6f42b0a2-6bbe-4198-b29d-e21b1a6bfeae">
-<span class="eqno">(164)<a class="headerlink" href="#equation-6f42b0a2-6bbe-4198-b29d-e21b1a6bfeae" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-048fa3b8-412a-4646-a3f4-846025dda9b3">
+<span class="eqno">(164)<a class="headerlink" href="#equation-048fa3b8-412a-4646-a3f4-846025dda9b3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(v) dv = \left( \frac{m}{2\pi \tau} \right)^{3/2} 4\pi v^2 e^{-mv^2/2\tau} dv,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\tau = k T\)</span>, <span class="math notranslate nohighlight">\(m\)</span> is the molecule mass, and <span class="math notranslate nohighlight">\(k_B\)</span> is the Boltzmann constant. Non-dimensionalize this equation to show that this (Boltzmann) distribution can be sampled from the gamma distribution. Do it using scipy. Repeat this generation but using Markov chain Monte Carlo.</p>
@@ -668,34 +668,34 @@ p(v) dv = \left( \frac{m}{2\pi \tau} \right)^{3/2} 4\pi v^2 e^{-mv^2/2\tau} dv,
 <section id="statistical-mechanics">
 <h2>Statistical mechanics<a class="headerlink" href="#statistical-mechanics" title="Link to this heading">#</a></h2>
 <p>In the canonical ensemble the probability to sample a state <span class="math notranslate nohighlight">\(\mu\)</span>, with energy <span class="math notranslate nohighlight">\(E_\mu\)</span>, at temperature <span class="math notranslate nohighlight">\(T\)</span>, is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a9659fe-66fa-4476-9586-23779b4f9b95">
-<span class="eqno">(165)<a class="headerlink" href="#equation-1a9659fe-66fa-4476-9586-23779b4f9b95" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dee33223-f737-45a3-8a91-7e4939b69d84">
+<span class="eqno">(165)<a class="headerlink" href="#equation-dee33223-f737-45a3-8a91-7e4939b69d84" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p_\mu = \frac{1}{Z} e^{-\beta E_\mu},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta = 1/kT\)</span> and <span class="math notranslate nohighlight">\(Z = \sum_\mu e^{-\beta E_\mu}\)</span> is called the partition function. Is not simply a normalization factor, it stores the information of the system. For instance, to compute an observable average <span class="math notranslate nohighlight">\(\langle O \rangle\)</span>, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8344760e-1df2-4b51-9974-3208a3885fa2">
-<span class="eqno">(166)<a class="headerlink" href="#equation-8344760e-1df2-4b51-9974-3208a3885fa2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5712dffc-1824-4898-ab74-092564040f45">
+<span class="eqno">(166)<a class="headerlink" href="#equation-5712dffc-1824-4898-ab74-092564040f45" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle O \rangle = \sum_\mu p_\mu O_\mu.
 \end{equation}\]</div>
 <p>When we sample with the actual system distribution, as in the Metropolis-Hastings method, it is called <strong>importance sampling</strong> and the average value for a given observable is simply</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f02967a8-b79e-4f0c-b272-5792d4a5fec2">
-<span class="eqno">(167)<a class="headerlink" href="#equation-f02967a8-b79e-4f0c-b272-5792d4a5fec2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5bddd7eb-3d64-4b89-a54c-73b326ff35d6">
+<span class="eqno">(167)<a class="headerlink" href="#equation-5bddd7eb-3d64-4b89-a54c-73b326ff35d6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle O \rangle = \frac{1}{N} \sum O_i,
 \end{equation}\]</div>
 <p>where the samples must be independent (not correlated).</p>
 <p>For the mean energy, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eb77dcf0-ace4-479b-a31d-79892633c79c">
-<span class="eqno">(168)<a class="headerlink" href="#equation-eb77dcf0-ace4-479b-a31d-79892633c79c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b6999941-726e-46bd-b8fd-a0f92efe494b">
+<span class="eqno">(168)<a class="headerlink" href="#equation-b6999941-726e-46bd-b8fd-a0f92efe494b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle E \rangle = \sum_\mu p_\mu E_\mu = \sum_\mu \frac{1}{Z} e^{-\beta E_\mu} = -\frac{\partial \ln Z}{\partial \beta}
 \end{equation}\]</div>
 <p>The specific heat can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fe50d7d2-ac51-4ca6-b333-5f97ea69caf2">
-<span class="eqno">(169)<a class="headerlink" href="#equation-fe50d7d2-ac51-4ca6-b333-5f97ea69caf2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7ffa0739-bc95-47c1-a9b0-7195c440a28d">
+<span class="eqno">(169)<a class="headerlink" href="#equation-7ffa0739-bc95-47c1-a9b0-7195c440a28d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C = \frac{\partial U}{\partial T} = k\beta^2 \frac{\partial^2 \ln Z}{\partial \beta^2} =  k\beta^2 (\Delta E) ^2.
 \end{equation}\]</div>
 <p>The entropy can be shown to be</p>
-<div class="amsmath math notranslate nohighlight" id="equation-795512d0-089d-4eb7-817b-1ca448235ff4">
-<span class="eqno">(170)<a class="headerlink" href="#equation-795512d0-089d-4eb7-817b-1ca448235ff4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-db9fdfac-b6e7-4750-981e-650eb47d9173">
+<span class="eqno">(170)<a class="headerlink" href="#equation-db9fdfac-b6e7-4750-981e-650eb47d9173" title="Permalink to this equation">#</a></span>\[\begin{equation}
 S = -k\sum_\mu p_\mu \ln p_\mu
 \end{equation}\]</div>
 </section>
@@ -704,29 +704,29 @@ S = -k\sum_\mu p_\mu \ln p_\mu
 <p>In the <a class="reference external" href="https://www.intechopen.com/chapters/71210">Ising model</a>, each site on a grid is assigned a given state, up or down
 <img alt="https://qph.cf2.quoracdn.net/main-qimg-0fb41bd632ba1eea8a654828dcff5d93-pjlq" src="https://qph.cf2.quoracdn.net/main-qimg-0fb41bd632ba1eea8a654828dcff5d93-pjlq" /></p>
 <p>The state of cell <span class="math notranslate nohighlight">\(i\)</span> will be denote as <span class="math notranslate nohighlight">\(\sigma_i = \pm 1\)</span>. The interaction with the neighbors are represented by the Hamiltonian</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0b08b46a-9989-4ff4-a980-95f2127a0a09">
-<span class="eqno">(171)<a class="headerlink" href="#equation-0b08b46a-9989-4ff4-a980-95f2127a0a09" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-284d54ec-947e-4e11-93b2-dd124ec21c53">
+<span class="eqno">(171)<a class="headerlink" href="#equation-284d54ec-947e-4e11-93b2-dd124ec21c53" title="Permalink to this equation">#</a></span>\[\begin{equation}
 H = -J \sum \sigma_i \sigma_{j} - B\sum\sigma_i,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(J\)</span> is the coupling constant and the sum is over all <span class="math notranslate nohighlight">\(i\)</span> sites and <span class="math notranslate nohighlight">\(j\)</span> are all the neighbors of that site, and <span class="math notranslate nohighlight">\(B\)</span> is the strength of an external magnetic field. If <span class="math notranslate nohighlight">\(J&gt;0\)</span> then the system is ferromagnetic (favors equally oriented spins). The difficulty of modelling a simtem like this is that a simple <span class="math notranslate nohighlight">\(5\times 5\)</span> system, the partition function would need to be summed up on <span class="math notranslate nohighlight">\(2^25 \simeq 3.4\times 10^6\)</span> terms.</p>
 <p>Other observables of interest on the Ising model are</p>
 <ul>
 <li><p>The magnetization:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4659d613-00cb-439e-9bd8-d79a4312a241">
-<span class="eqno">(172)<a class="headerlink" href="#equation-4659d613-00cb-439e-9bd8-d79a4312a241" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-61c3ee6b-dda6-4b45-84b9-36c3abb77f4f">
+<span class="eqno">(172)<a class="headerlink" href="#equation-61c3ee6b-dda6-4b45-84b9-36c3abb77f4f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 M = \left|\sum \sigma_i \right|.
 \end{equation}\]</div>
 </li>
 <li><p>The susceptibility:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7029454a-641d-4d90-99d8-605aa67d810a">
-<span class="eqno">(173)<a class="headerlink" href="#equation-7029454a-641d-4d90-99d8-605aa67d810a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-98fc9296-ba3b-41ee-aecb-16164df3e6f5">
+<span class="eqno">(173)<a class="headerlink" href="#equation-98fc9296-ba3b-41ee-aecb-16164df3e6f5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \chi = \beta (\Delta M)^2.
 \end{equation}\]</div>
 </li>
 </ul>
 <p>We would like to simulate the Ising system to reproduce an interesting phenomena: a phase transition. For <span class="math notranslate nohighlight">\(B=0\)</span>, the system will be magnetized (or not) and the behaviour will be clearly determined for a critical temperature</p>
-<div class="amsmath math notranslate nohighlight" id="equation-04ce30e2-857f-46fe-beab-19f375e5255f">
-<span class="eqno">(174)<a class="headerlink" href="#equation-04ce30e2-857f-46fe-beab-19f375e5255f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-beea3295-1a56-40bd-9992-4ddec4ec2eac">
+<span class="eqno">(174)<a class="headerlink" href="#equation-beea3295-1a56-40bd-9992-4ddec4ec2eac" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \beta_c = \frac{1}{2}\ln(1+\sqrt{2}) \simeq  0.4406867935\ldots
 \end{equation}\]</div>
 <!-- <img src="https://farside.ph.utexas.edu/teaching/329/lectures/img1313.png">
@@ -746,13 +746,13 @@ From: https://towardsdatascience.com/monte-carlo-method-applied-on-a-2d-binary-a
 <section id="ising-model-and-metropolis-hastings">
 <h2>Ising model and metropolis-Hastings<a class="headerlink" href="#ising-model-and-metropolis-hastings" title="Link to this heading">#</a></h2>
 <p>Since the system is in the canonical ensemble (fixed temperature) it should be sampled from</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e3d0600f-1387-4edf-8a1d-8377d25c700b">
-<span class="eqno">(175)<a class="headerlink" href="#equation-e3d0600f-1387-4edf-8a1d-8377d25c700b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-51362673-52c3-4e96-bb30-c112076b7ea5">
+<span class="eqno">(175)<a class="headerlink" href="#equation-51362673-52c3-4e96-bb30-c112076b7ea5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p(X) = \frac{e^{-\beta H(X)}}{Z},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\beta = 1/k T\)</span> is the Boltzmann factor and <span class="math notranslate nohighlight">\(Z\)</span> is the partition function, <span class="math notranslate nohighlight">\(Z = \sum e^{-\beta H(x)}\)</span>. Given that the Hamiltonian is local, applying the Metropolis algorithm to this canonical probability simplifies to computing just the change with interacting neighbors. In this our method to generate new states could be chosing (at random) a given site and them flipping its state: This implies that <span class="math notranslate nohighlight">\(R(\hat X \to \hat X')\)</span> is reversible, and then also</p>
-<div class="amsmath math notranslate nohighlight" id="equation-566ca97b-de48-41fb-b1ca-d909e7b7dd71">
-<span class="eqno">(176)<a class="headerlink" href="#equation-566ca97b-de48-41fb-b1ca-d909e7b7dd71" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fb1094bd-927c-42bb-b61f-42ff6c083bd3">
+<span class="eqno">(176)<a class="headerlink" href="#equation-fb1094bd-927c-42bb-b61f-42ff6c083bd3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \min \left(1, \frac{\rho(\hat X')}{\rho(\hat X)} \right) = \min \left(1, e^{-\beta(H(x') - H(x))} \right) = \min \left(1, e^{-\beta(E' - E)} \right) = \min \left(1, e^{-\beta \Delta E} \right).
 \end{equation}\]</div>
 <p>Therefore, you generate a new sample, if the energy is less than the previous one, the new sample is accepted. Otherwise, a random number <span class="math notranslate nohighlight">\(z \in [0, 1) \)</span> is thrown and the new sample is accepted if <span class="math notranslate nohighlight">\(z &lt; e^{-\beta \Delta E}\)</span>. <span class="math notranslate nohighlight">\(\Delta E\)</span> can be easily computed for a 2D system: If a site <span class="math notranslate nohighlight">\(i\)</span> is selected and flipped, and its original value is <span class="math notranslate nohighlight">\(\sigma_i\)</span>, then <span class="math notranslate nohighlight">\(\Delta E = E' - E = 2J\sigma_i \sum_j \sigma_j\)</span>, where the sum is performed over the neighbors.</p>
