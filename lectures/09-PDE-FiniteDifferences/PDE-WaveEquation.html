@@ -505,10 +505,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrations-and-waves">Vibrations and Waves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-from-a-vibrating-string">Derivation from a Vibrating String</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dalemberts-general-solution-1d">D’Alembert’s General Solution (1D)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-characteristic-diagram">The Characteristic Diagram</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dalemberts-general-solution-1d">D’Alembert’s General Solution (1D)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-approximation">Finite Difference Approximation</a><ul class="nav section-nav flex-column">
@@ -519,12 +516,13 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-analysis">Von Neumann Analysis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-comparison-and-verification">Analytical Comparison and Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions-and-their-physics">Boundary Conditions and Their Physics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-ends-dirichlet-u-0-t-u-l-t-0">Fixed ends (Dirichlet): <span class="math notranslate nohighlight">\(u(0,t) = u(L,t) = 0\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#free-ends-neumann-partial-u-partial-x-0-at-boundaries">Free ends (Neumann): <span class="math notranslate nohighlight">\(\partial u/\partial x = 0\)</span> at boundaries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbing-non-reflecting-boundaries">Absorbing (non-reflecting) boundaries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-boundaries">Periodic boundaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-picture-illustrating-boundary-conditions">A picture illustrating boundary conditions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
@@ -559,6 +557,10 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-wave-equation">
 <h1>The Wave Equation<a class="headerlink" href="#the-wave-equation" title="Link to this heading">#</a></h1>
+<div class="amsmath math notranslate nohighlight" id="equation-633aa37c-8231-4ead-a0af-643b1c20c6c5">
+<span class="eqno">(120)<a class="headerlink" href="#equation-633aa37c-8231-4ead-a0af-643b1c20c6c5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\frac{\partial^2 u}{\partial t^2} = c^2 \left[ \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right].
+\end{equation}\]</div>
 <section id="vibrations-and-waves">
 <h2>Vibrations and Waves<a class="headerlink" href="#vibrations-and-waves" title="Link to this heading">#</a></h2>
 <p>Many physical systems exhibit oscillatory motion. Unlike the heat equation (which describes irreversible diffusion), the wave equation describes <strong>reversible, finite-speed propagation</strong>. It appears in:</p>
@@ -593,30 +595,80 @@
 </tbody>
 </table>
 </div>
-<p>The simplest mathematical model describing this behavior is the wave equation.</p>
+<p>The simplest mathematical model describing this behavior is the wave equation. For more info see <a class="reference external" href="https://en.wikipedia.org/wiki/Wave_equation?useskin=vector">https://en.wikipedia.org/wiki/Wave_equation?useskin=vector</a>.</p>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/1/1f/Wave_equation_1D_fixed_endpoints.gif"><img alt="" class="bg-primary" src="https://upload.wikimedia.org/wikipedia/commons/1/1f/Wave_equation_1D_fixed_endpoints.gif" style="width: 80%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/b/bb/2D_Wave_Function_resize.gif"><img alt="" class="bg-primary" src="https://upload.wikimedia.org/wikipedia/commons/b/bb/2D_Wave_Function_resize.gif" style="width: 80%;" />
+</a>
+</figure>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/7/7e/Spherical_Wave.gif"><img alt="" class="bg-primary" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Spherical_Wave.gif" style="width: 80%;" />
+</a>
+</figure>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import needed utils, like for embeding videos and url</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;utils&#39;</span><span class="p">)))</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">embed</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/sim/?preset=waveEquation3D&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://visualpde.com/sim/?preset=waveEquation3D"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
 </section>
 <section id="derivation-from-a-vibrating-string">
 <h2>Derivation from a Vibrating String<a class="headerlink" href="#derivation-from-a-vibrating-string" title="Link to this heading">#</a></h2>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/1/15/StringParameters.svg"><img alt="" class="bg-primary" src="https://upload.wikimedia.org/wikipedia/commons/1/15/StringParameters.svg" style="width: 50%;" />
+</a>
+</figure>
 <p>Consider a string under tension <span class="math notranslate nohighlight">\(T\)</span> with linear mass density <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 <p>Let</p>
-<div class="amsmath math notranslate nohighlight" id="equation-587cf3ca-55da-4a56-945b-384a3a683007">
-<span class="eqno">(120)<a class="headerlink" href="#equation-587cf3ca-55da-4a56-945b-384a3a683007" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-11a0ba18-5815-4edd-bff4-8380483c1b91">
+<span class="eqno">(121)<a class="headerlink" href="#equation-11a0ba18-5815-4edd-bff4-8380483c1b91" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,t)
 \end{equation}\]</div>
 <p>represent the transverse displacement.</p>
 <p>Applying Newton’s second law to a small segment yields</p>
-<div class="amsmath math notranslate nohighlight" id="equation-90cb44a2-fa23-461c-b9c3-416d478d3a63">
-<span class="eqno">(121)<a class="headerlink" href="#equation-90cb44a2-fa23-461c-b9c3-416d478d3a63" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1ade5d6d-37cf-4645-8a74-0e914a3d9c71">
+<span class="eqno">(122)<a class="headerlink" href="#equation-1ade5d6d-37cf-4645-8a74-0e914a3d9c71" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mu \frac{\partial^2 u}{\partial t^2} = T \frac{\partial^2 u}{\partial x^2}.
 \end{equation}\]</div>
 <p>Defining</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bca95ba9-c3d3-4cab-9d2c-7fc122d31095">
-<span class="eqno">(122)<a class="headerlink" href="#equation-bca95ba9-c3d3-4cab-9d2c-7fc122d31095" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a88ec358-9985-43ba-889c-7fb2f1f0c109">
+<span class="eqno">(123)<a class="headerlink" href="#equation-a88ec358-9985-43ba-889c-7fb2f1f0c109" title="Permalink to this equation">#</a></span>\[\begin{equation}
 c=\sqrt{\frac{T}{\mu}},
 \end{equation}\]</div>
 <p>we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b91ae0d6-b9ab-486f-91cb-675e50ce2923">
-<span class="eqno">(123)<a class="headerlink" href="#equation-b91ae0d6-b9ab-486f-91cb-675e50ce2923" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e3fcc4d3-da1e-427e-a09f-431dc8aa326d">
+<span class="eqno">(124)<a class="headerlink" href="#equation-e3fcc4d3-da1e-427e-a09f-431dc8aa326d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}.
 \end{equation}\]</div>
 <p>This is the one-dimensional wave equation.</p>
@@ -635,28 +687,23 @@ u(x, t) = f(x - ct) + g(x + ct)
 <blockquote>
 <div><p><strong>Key insight:</strong> Information propagates at <em>exactly</em> speed <span class="math notranslate nohighlight">\(c\)</span> — no faster, no slower. This is the defining feature of hyperbolic PDEs and the origin of the concept of <em>causality</em> in physics.</p>
 </div></blockquote>
-<section id="the-characteristic-diagram">
-<h4>The Characteristic Diagram<a class="headerlink" href="#the-characteristic-diagram" title="Link to this heading">#</a></h4>
-<p>The wave equation has two families of <em>characteristics</em>: lines <span class="math notranslate nohighlight">\(x - ct = \text{const}\)</span> and <span class="math notranslate nohighlight">\(x + ct = \text{const}\)</span> in the <span class="math notranslate nohighlight">\((x,t)\)</span> plane. The solution at point <span class="math notranslate nohighlight">\((x_0, t_0)\)</span> depends only on the initial data within the interval <span class="math notranslate nohighlight">\([x_0 - ct_0,\; x_0 + ct_0]\)</span> — the <em>domain of dependence</em>.</p>
-<p>This will be crucial for understanding the numerical stability condition.</p>
-</section>
 </section>
 </section>
 <section id="finite-difference-approximation">
 <h2>Finite Difference Approximation<a class="headerlink" href="#finite-difference-approximation" title="Link to this heading">#</a></h2>
 <p>Discretize space:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e34f83f7-b8a3-4d37-ad3f-11715825cec9">
-<span class="eqno">(124)<a class="headerlink" href="#equation-e34f83f7-b8a3-4d37-ad3f-11715825cec9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-22aad6a4-cefe-43f3-8ae9-59eca01419c3">
+<span class="eqno">(125)<a class="headerlink" href="#equation-22aad6a4-cefe-43f3-8ae9-59eca01419c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i=i\Delta x
 \end{equation}\]</div>
 <p>and time:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a854237-4b95-462c-a0cd-162d09437dd5">
-<span class="eqno">(125)<a class="headerlink" href="#equation-1a854237-4b95-462c-a0cd-162d09437dd5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b1433cb3-76b1-44fb-9d2e-8021871540af">
+<span class="eqno">(126)<a class="headerlink" href="#equation-b1433cb3-76b1-44fb-9d2e-8021871540af" title="Permalink to this equation">#</a></span>\[\begin{equation}
 t_n=n\Delta t.
 \end{equation}\]</div>
 <p>Approximating derivatives,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6708bcc7-66e3-481b-a5b1-25ec481c01bb">
-<span class="eqno">(126)<a class="headerlink" href="#equation-6708bcc7-66e3-481b-a5b1-25ec481c01bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f78683b6-db5d-4ad3-a23e-f7954d118d88">
+<span class="eqno">(127)<a class="headerlink" href="#equation-f78683b6-db5d-4ad3-a23e-f7954d118d88" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2}
 \approx
 \frac{
@@ -664,8 +711,8 @@ u_i^{n+1}-2u_i^n+u_i^{n-1}
 }
 {\Delta t^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-faf60924-bb28-4b15-8cac-ffe5e9a18de4">
-<span class="eqno">(127)<a class="headerlink" href="#equation-faf60924-bb28-4b15-8cac-ffe5e9a18de4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-59b1af2b-94f7-4aa1-a39b-b1285810393d">
+<span class="eqno">(128)<a class="headerlink" href="#equation-59b1af2b-94f7-4aa1-a39b-b1285810393d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial x^2}
 \approx
 \frac{
@@ -674,15 +721,19 @@ u_{i+1}^n-2u_i^n+u_{i-1}^n
 {\Delta x^2}.
 \end{equation}\]</div>
 <p>Substitution gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a7987aaa-31ea-4ab7-87f4-158ff375c260">
-<span class="eqno">(128)<a class="headerlink" href="#equation-a7987aaa-31ea-4ab7-87f4-158ff375c260" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-34833573-9edf-4bed-94b0-427e32cd8f73">
+<span class="eqno">(129)<a class="headerlink" href="#equation-34833573-9edf-4bed-94b0-427e32cd8f73" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_i^{n+1} = 2u_i^n-u_i^{n-1} + r^2 \left( u_{i+1}^n - 2u_i^n + u_{i-1}^n\right),
 \end{equation}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-56c4c1a7-5cf6-4cca-9d98-c183c7b0ef41">
-<span class="eqno">(129)<a class="headerlink" href="#equation-56c4c1a7-5cf6-4cca-9d98-c183c7b0ef41" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0345bdaf-9488-47a0-8aad-74ac4ab4a07b">
+<span class="eqno">(130)<a class="headerlink" href="#equation-0345bdaf-9488-47a0-8aad-74ac4ab4a07b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 r=\frac{c\Delta t}{\Delta x}.
 \end{equation}\]</div>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/wave-discreteSol.png"><img alt="" class="bg-primary" src="../../_images/wave-discreteSol.png" style="width: 90%;" />
+</a>
+</figure>
 <section id="starting-the-scheme-the-first-step">
 <h3>Starting the Scheme: The First Step<a class="headerlink" href="#starting-the-scheme-the-first-step" title="Link to this heading">#</a></h3>
 <p>Because the leapfrog scheme needs <span class="math notranslate nohighlight">\(n=0\)</span> and <span class="math notranslate nohighlight">\(n=1\)</span> to compute <span class="math notranslate nohighlight">\(n=2\)</span>, but we only have the initial condition at <span class="math notranslate nohighlight">\(n=0\)</span>, we use the initial velocity condition <span class="math notranslate nohighlight">\(\partial u/\partial t |_{t=0} = v_0(x)\)</span> to construct the first step. Using a centered difference in time:</p>
@@ -702,18 +753,22 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 <h2>Stability: The CFL Condition<a class="headerlink" href="#stability-the-cfl-condition" title="Link to this heading">#</a></h2>
 <section id="von-neumann-analysis">
 <h3>Von Neumann Analysis<a class="headerlink" href="#von-neumann-analysis" title="Link to this heading">#</a></h3>
-<p>Substituting a Fourier mode <span class="math notranslate nohighlight">\(u_i^n = \xi^n e^{ik x_i}\)</span> into the leapfrog scheme and solving for the amplification factor <span class="math notranslate nohighlight">\(\xi = |u_{i+1}/u{i}|\)</span> gives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-30f4a842-5126-4a4d-922b-17b55617502b">
-<span class="eqno">(130)<a class="headerlink" href="#equation-30f4a842-5126-4a4d-922b-17b55617502b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<p>Substituting a Fourier mode <span class="math notranslate nohighlight">\(u_i^n = \xi^n e^{ik x_i}\)</span> into the leapfrog scheme and solving for the amplification factor <span class="math notranslate nohighlight">\(\xi = |u_{i+1}/u_{i}|\)</span> gives:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-5a03ee89-b79c-4c49-8210-b60f40722b75">
+<span class="eqno">(131)<a class="headerlink" href="#equation-5a03ee89-b79c-4c49-8210-b60f40722b75" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \xi = 1 - 2r^2\sin^2\left(\frac{k\Delta x}{2}\right) \pm i\cdot 2r\sin\left(\frac{k\Delta x}{2}\right)\sqrt{1 - r^2\sin^2\left(\frac{k\Delta x}{2}\right)}.
 \end{equation}\]</div>
 <p>For stability we need <span class="math notranslate nohighlight">\(|\xi| \le 1\)</span> for all wavenumbers <span class="math notranslate nohighlight">\(k\)</span>. This is satisfied if and only if:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9650c86c-d641-4a10-a753-d584584aebe4">
-<span class="eqno">(131)<a class="headerlink" href="#equation-9650c86c-d641-4a10-a753-d584584aebe4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0c447d70-62e5-46b3-b6a2-43bd497d8a38">
+<span class="eqno">(132)<a class="headerlink" href="#equation-0c447d70-62e5-46b3-b6a2-43bd497d8a38" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boxed{r = \frac{c\,\Delta t}{\Delta x} \le 1} \tag{CFL condition}
 \end{equation}\]</div>
-<p>This is the <strong>Courant–Friedrichs–Lewy (CFL) condition</strong>, one of the most important results in numerical PDE theory.</p>
+<p>This is the <strong>Courant–Friedrichs–Lewy (CFL) condition</strong>.</p>
 <p>Physically, the numerical propagation speed must not exceed the grid resolution.</p>
+</section>
+</section>
+<section id="numerical-example">
+<h2>Numerical example<a class="headerlink" href="#numerical-example" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -818,7 +873,7 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 
 <span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;1D Wave Equation — Gaussian Pulse (r = 0.9)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/wave1d_snapshots.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="c1">#plt.savefig(&#39;fig/wave1d_snapshots.png&#39;, dpi=120)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -852,72 +907,18 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 
 <span class="n">ani</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">frames</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1">#ani.save(&#39;fig/wave1d.gif&#39;, writer=&#39;pillow&#39;, fps=30)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="c1">#plt.show()</span>
 
 <span class="c1"># To save: ani.save(&#39;wave1d.gif&#39;, writer=&#39;pillow&#39;, fps=30)</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../../_images/b77e0dea0a11b5a4450815d457f910009689a17e97845b9acc43396a78285a36.png" src="../../_images/b77e0dea0a11b5a4450815d457f910009689a17e97845b9acc43396a78285a36.png" />
 </div>
 </div>
 <figure class="align-center">
 <a class="bg-primary reference internal image-reference" href="../../_images/wave1d.gif"><img alt="" class="bg-primary" src="../../_images/wave1d.gif" style="width: 90%;" />
 </a>
 </figure>
-</section>
-</section>
-<section id="analytical-comparison-and-verification">
-<h2>Analytical Comparison and Verification<a class="headerlink" href="#analytical-comparison-and-verification" title="Link to this heading">#</a></h2>
-<p>For the fixed string with initial displacement <span class="math notranslate nohighlight">\(u(x,0) = \sin(\pi x/L)\)</span> and zero initial velocity, the exact solution is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a1f2abcb-be81-4416-9b16-1b729a7fdfa1">
-<span class="eqno">(132)<a class="headerlink" href="#equation-a1f2abcb-be81-4416-9b16-1b729a7fdfa1" title="Permalink to this equation">#</a></span>\[\begin{equation}
-u(x, t) = \sin\!\left(\frac{\pi x}{L}\right)\cos\!\left(\frac{\pi c t}{L}\right)
-\end{equation}\]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">analytical_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">n_modes</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exact solution: standing wave from sin(π x/L) initial condition.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">c</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
-
-<span class="c1"># ── Compare numerical vs analytical ──────────────────────────────────────────</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">run_verification</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">NX</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
-    <span class="n">dx</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">NX</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">dt</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">dx</span> <span class="o">/</span> <span class="n">c</span>
-    <span class="n">NT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
-    <span class="n">x</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">NX</span><span class="p">)</span>
-
-    <span class="n">u_init_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span> <span class="o">/</span> <span class="n">L</span><span class="p">)</span>
-    <span class="n">v_init_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-    <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_wave_1d</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">NT</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">u_init_fn</span><span class="p">,</span> <span class="n">v_init_fn</span><span class="p">,</span> <span class="n">apply_bc</span><span class="p">)</span>
-
-    <span class="c1"># Error at t = T</span>
-    <span class="n">u_num</span>  <span class="o">=</span> <span class="n">sol</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">u_anal</span> <span class="o">=</span> <span class="n">analytical_solution</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
-    <span class="n">err</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u_num</span> <span class="o">-</span> <span class="n">u_anal</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">dx</span><span class="p">,</span> <span class="n">err</span>
-
-<span class="c1"># Convergence study</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;NX&#39;</span><span class="si">:</span><span class="s2">&gt;6</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="s1">&#39;dx&#39;</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="s1">&#39;max error&#39;</span><span class="si">:</span><span class="s2">&gt;12</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">NX</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">400</span><span class="p">]:</span>
-    <span class="n">dx</span><span class="p">,</span> <span class="n">err</span> <span class="o">=</span> <span class="n">run_verification</span><span class="p">(</span><span class="n">r</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">NX</span><span class="o">=</span><span class="n">NX</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">NX</span><span class="si">:</span><span class="s2">&gt;6</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">dx</span><span class="si">:</span><span class="s2">&gt;10.4f</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">err</span><span class="si">:</span><span class="s2">&gt;12.3e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    NX          dx     max error
-    25      0.0417     1.244e-02
-    50      0.0204     5.953e-03
-   100      0.0101     1.634e-03
-   200      0.0050     1.510e-04
-   400      0.0025     6.978e-05
-</pre></div>
-</div>
-</div>
-</div>
 </section>
 <section id="boundary-conditions-and-their-physics">
 <h2>Boundary Conditions and Their Physics<a class="headerlink" href="#boundary-conditions-and-their-physics" title="Link to this heading">#</a></h2>
@@ -961,38 +962,66 @@ u_N^{n+1} = u_{N-1}^n
 </pre></div>
 </div>
 </section>
+<section id="a-picture-illustrating-boundary-conditions">
+<h3>A picture illustrating boundary conditions<a class="headerlink" href="#a-picture-illustrating-boundary-conditions" title="Link to this heading">#</a></h3>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/wave-bc.png"><img alt="" class="bg-primary" src="../../_images/wave-bc.png" style="width: 100%;" />
+</a>
+</figure>
+</section>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-0">
 
-<p class="admonition-title"><span class="caption-number">Exercise 12 </span> (Dispersion)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 12 </span> (Free ends bc)</p>
 <section id="exercise-content">
-<p>Change the pulse width and study dispersion.</p>
+<p>Implement free ends boundary conditions.</p>
 </section>
 </div>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 13 </span> (CFL)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 13 </span> (Absorbing bc)</p>
 <section id="exercise-content">
-<p>Verify numerically the CFL condition.</p>
+<p>Implement absorbing  boundary conditions.</p>
 </section>
 </div>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 14 </span> (Sinusoidal excitation)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 14 </span> (Periodic bc)</p>
+<section id="exercise-content">
+<p>Implement periodoc  boundary conditions.</p>
+</section>
+</div>
+<div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-3">
+
+<p class="admonition-title"><span class="caption-number">Exercise 15 </span> (Dispersion)</p>
+<section id="exercise-content">
+<p>Change the pulse width and study dispersion.</p>
+</section>
+</div>
+<div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-4">
+
+<p class="admonition-title"><span class="caption-number">Exercise 16 </span> (CFL)</p>
+<section id="exercise-content">
+<p>Verify numerically the CFL condition.</p>
+</section>
+</div>
+<div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-5">
+
+<p class="admonition-title"><span class="caption-number">Exercise 17 </span> (Sinusoidal excitation)</p>
 <section id="exercise-content">
 <p>Excite the string with</p>
-<div class="amsmath math notranslate nohighlight" id="equation-912f5660-7066-4038-8c15-f9daf615455c">
-<span class="eqno">(133)<a class="headerlink" href="#equation-912f5660-7066-4038-8c15-f9daf615455c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2fd09ad3-37aa-49d0-8166-bdad37f93e6b">
+<span class="eqno">(133)<a class="headerlink" href="#equation-2fd09ad3-37aa-49d0-8166-bdad37f93e6b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,0)=sin(πx)
 \end{equation}\]</div>
 <p>and compare with the analytical solution.</p>
 </section>
 </div>
-<div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-3">
+<div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-6">
 
-<p class="admonition-title"><span class="caption-number">Exercise 15 </span> (Sinusoidal excitation)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 18 </span> (Sinusoidal excitation)</p>
 <section id="exercise-content">
 <p>Superpose two pulses moving in opposite directions.</p>
 </section>
@@ -1016,6 +1045,10 @@ u_{i,j}^{n+1} = 2u_{i,j}^n - u_{i,j}^{n-1} + r^2\left(u_{i+1,j}^n + u_{i-1,j}^n 
 r = \frac{c\,\Delta t}{\Delta} \le \frac{1}{\sqrt{2}} \approx 0.707
 \]</div>
 <p>In general <span class="math notranslate nohighlight">\(d\)</span> dimensions: <span class="math notranslate nohighlight">\(r \le 1/\sqrt{d}\)</span>.</p>
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/wave-2d-points.png"><img alt="" class="bg-primary" src="../../_images/wave-2d-points.png" style="width: 95%;" />
+</a>
+</figure>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -1080,6 +1113,7 @@ r = \frac{c\,\Delta t}{\Delta} \le \frac{1}{\sqrt{2}} \approx 0.707
 <span class="n">ani2d</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update2d</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sol2d</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="c1">#ani2d.save(&#39;fig/wave2d.gif&#39;, writer=&#39;pillow&#39;, fps=30)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1305,10 +1339,7 @@ where <span class="math notranslate nohighlight">\(r_i = c(x_i)\Delta t/\Delta x
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrations-and-waves">Vibrations and Waves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-from-a-vibrating-string">Derivation from a Vibrating String</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dalemberts-general-solution-1d">D’Alembert’s General Solution (1D)</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-characteristic-diagram">The Characteristic Diagram</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dalemberts-general-solution-1d">D’Alembert’s General Solution (1D)</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finite-difference-approximation">Finite Difference Approximation</a><ul class="nav section-nav flex-column">
@@ -1319,12 +1350,13 @@ where <span class="math notranslate nohighlight">\(r_i = c(x_i)\Delta t/\Delta x
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-analysis">Von Neumann Analysis</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-comparison-and-verification">Analytical Comparison and Verification</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example">Numerical example</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions-and-their-physics">Boundary Conditions and Their Physics</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-ends-dirichlet-u-0-t-u-l-t-0">Fixed ends (Dirichlet): <span class="math notranslate nohighlight">\(u(0,t) = u(L,t) = 0\)</span></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#free-ends-neumann-partial-u-partial-x-0-at-boundaries">Free ends (Neumann): <span class="math notranslate nohighlight">\(\partial u/\partial x = 0\)</span> at boundaries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#absorbing-non-reflecting-boundaries">Absorbing (non-reflecting) boundaries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#periodic-boundaries">Periodic boundaries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-picture-illustrating-boundary-conditions">A picture illustrating boundary conditions</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>

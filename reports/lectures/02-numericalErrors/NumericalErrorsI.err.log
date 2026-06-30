@@ -28,7 +28,7 @@ plt.plot(x, y, 'ro')
 ------------------
 
 ----- stderr -----
-/tmp/ipykernel_2632/398410380.py:6: UserWarning: loadtxt: input contained no data: "sumdata.txt"
+/tmp/ipykernel_2655/398410380.py:6: UserWarning: loadtxt: input contained no data: "sumdata.txt"
   x, y = np.loadtxt('sumdata.txt', unpack = True)
 ------------------
 

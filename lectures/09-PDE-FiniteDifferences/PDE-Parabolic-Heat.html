@@ -528,8 +528,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="partial-differential-equations-the-parabolic-heat-equation">
 <h1>Partial differential equations: The (parabolic) heat equation<a class="headerlink" href="#partial-differential-equations-the-parabolic-heat-equation" title="Link to this heading">#</a></h1>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_equation">heat equation</a> is the typical example of a parabolic partial differential equation. Here we have the time and we are looking for an actual time evolution. It can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-926f8a89-3a35-4816-baaa-b922d153e5e8">
-<span class="eqno">(112)<a class="headerlink" href="#equation-926f8a89-3a35-4816-baaa-b922d153e5e8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-08092980-2abe-47ec-838c-0dd9971d1fdb">
+<span class="eqno">(112)<a class="headerlink" href="#equation-08092980-2abe-47ec-838c-0dd9971d1fdb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial u}{\partial t} = \alpha \nabla^2 u,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(u\)</span> represents the temperature, or the concentration (diffusion problem) and so on. The coefficient <span class="math notranslate nohighlight">\(\alpha\)</span> takes into account the thermal conductivity, specific heat, and density of the material.</p>
@@ -582,14 +582,14 @@
 <section id="the-explicit-method-forward-time-centered-space">
 <h2>The explicit method: Forward time centered space<a class="headerlink" href="#the-explicit-method-forward-time-centered-space" title="Link to this heading">#</a></h2>
 <p>As is usual in finite differences, we discretize both the spatial (up to second order) and the time (linear order) derivatives to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-71ad67c7-5fbf-41c4-a97f-d13bceb81e24">
-<span class="eqno">(113)<a class="headerlink" href="#equation-71ad67c7-5fbf-41c4-a97f-d13bceb81e24" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8f187545-5ff2-4cf2-9413-b8245f108f17">
+<span class="eqno">(113)<a class="headerlink" href="#equation-8f187545-5ff2-4cf2-9413-b8245f108f17" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{u^{n+1}_i - u^n_i}{\Delta t} = \alpha \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{\Delta x^2}, 
 \end{equation}\]</div>
 <p>where the superscript corresponds to a step in time, while the subscript corresponds to step in space (we are here solving a one-dimensional equation). This is the so called <a class="reference external" href="https://en.wikipedia.org/wiki/FTCS_scheme">FTCS - Forward Time Centered Space</a> method, which is an <a class="reference external" href="https://en.wikipedia.org/wiki/Explicit_and_implicit_methods">explicit method</a> which allows to compute the next (in time) value in terms of the previous one.</p>
 <p>Reorganizing terms</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0df30c8a-eff1-4bc1-8396-ff942f9f0a15">
-<span class="eqno">(114)<a class="headerlink" href="#equation-0df30c8a-eff1-4bc1-8396-ff942f9f0a15" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5e2ff2d5-bcf5-4be0-bf7e-b35f968186cc">
+<span class="eqno">(114)<a class="headerlink" href="#equation-5e2ff2d5-bcf5-4be0-bf7e-b35f968186cc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}) = u_{i}^{n}+\lambda(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}),
 \end{equation}\]</div>
 <p>which can be visualized as</p>
@@ -605,13 +605,13 @@ The explicit ftcs method is <span class="math notranslate nohighlight">\(O(N)\)<
 <section id="numerical-stability">
 <h3>Numerical stability<a class="headerlink" href="#numerical-stability" title="Link to this heading">#</a></h3>
 <p>By using the <a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis">von Neumann stability analysis</a> it is possible to show that the solution is stable (errors are not amplified) only if</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e81b2dec-5032-41d1-8d7b-8f39c317f610">
-<span class="eqno">(115)<a class="headerlink" href="#equation-e81b2dec-5032-41d1-8d7b-8f39c317f610" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ed05caad-225b-4a1f-8feb-14bcc5afa1b7">
+<span class="eqno">(115)<a class="headerlink" href="#equation-ed05caad-225b-4a1f-8feb-14bcc5afa1b7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2}
 \end{equation}\]</div>
 <p>or, in 2D with different spacing</p>
-<div class="amsmath math notranslate nohighlight" id="equation-89eddaab-e4f7-4e89-9c68-4ca3162a4092">
-<span class="eqno">(116)<a class="headerlink" href="#equation-89eddaab-e4f7-4e89-9c68-4ca3162a4092" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a2ef3965-30a4-4470-9eab-52303af2cd78">
+<span class="eqno">(116)<a class="headerlink" href="#equation-a2ef3965-30a4-4470-9eab-52303af2cd78" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2(1 + \frac{\Delta x^2}{\Delta y^2})}.
 \end{equation}\]</div>
 <p>This is very important: the discretization cannot be changed arbitrarily, otherwise you will have instabilities.</p>
@@ -748,86 +748,135 @@ The explicit ftcs method is <span class="math notranslate nohighlight">\(O(N)\)<
 </div>
 <div class="cell_output docutils container">
 <img alt="../../_images/ec535586e6e475240bfc37584478d2edfa02d0b9eab71392a5dea5bbf82f635b.png" src="../../_images/ec535586e6e475240bfc37584478d2edfa02d0b9eab71392a5dea5bbf82f635b.png" />
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Unexpected exception formatting exception. Falling back to standard exception
-</pre></div>
-</div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/IPython/core/interactiveshell.py&quot;, line 3748, in run_code
-    exec(code_obj, self.user_global_ns, self.user_ns)
-  File &quot;/tmp/ipykernel_2951/574059392.py&quot;, line 27, in &lt;module&gt;
-    HTML(anim.to_jshtml())
-         ^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py&quot;, line 1392, in to_jshtml
-    self.save(str(path), writer=writer)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py&quot;, line 1142, in save
-    writer.grab_frame(**savefig_kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py&quot;, line 801, in grab_frame
-    self.fig.savefig(f, format=self.frame_format,
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/figure.py&quot;, line 3515, in savefig
-    self.canvas.print_figure(fname, **kwargs)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backend_bases.py&quot;, line 2281, in print_figure
-    result = print_method(
-             ^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backend_bases.py&quot;, line 2138, in &lt;lambda&gt;
-    print_method = functools.wraps(meth)(lambda *args, **kwargs: meth(
-                                                                 ^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py&quot;, line 537, in print_png
-    self._print_pil(filename_or_obj, &quot;png&quot;, pil_kwargs, metadata)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py&quot;, line 485, in _print_pil
-    FigureCanvasAgg.draw(self)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py&quot;, line 438, in draw
-    self.figure.draw(self.renderer)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/artist.py&quot;, line 94, in draw_wrapper
-    result = draw(artist, renderer, *args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/artist.py&quot;, line 71, in draw_wrapper
-    return draw(artist, renderer)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/figure.py&quot;, line 3282, in draw
-    mimage._draw_list_compositing_images(
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/image.py&quot;, line 133, in _draw_list_compositing_images
-    a.draw(renderer)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/artist.py&quot;, line 71, in draw_wrapper
-    return draw(artist, renderer)
-           ^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/axes/_base.py&quot;, line 3314, in draw
-    self._update_title_position(renderer)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/axes/_base.py&quot;, line 3258, in _update_title_position
-    ax.yaxis.get_tightbbox(renderer)  # update offsetText
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/axis.py&quot;, line 1427, in get_tightbbox
-    self._update_label_position(renderer)
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/axis.py&quot;, line 2848, in _update_label_position
-    *bboxes, self.axes.spines.get(&quot;left&quot;, self.axes).get_window_extent()])
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/spines.py&quot;, line 158, in get_window_extent
-    drawn_ticks = self.axis._update_ticks()
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/axis.py&quot;, line None, in _update_ticks
-KeyboardInterrupt
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/ImageFile.py:663,</span> in <span class="ni">_save</span><span class="nt">(im, fp, tile, bufsize)</span>
+<span class="g g-Whitespace">    </span><span class="mi">662</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">663</span>     <span class="n">fh</span> <span class="o">=</span> <span class="n">fp</span><span class="o">.</span><span class="n">fileno</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">664</span>     <span class="n">fp</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
 
-During handling of the above exception, another exception occurred:
+<span class="ne">AttributeError</span>: &#39;_idat&#39; object has no attribute &#39;fileno&#39;
 
-Traceback (most recent call last):
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/IPython/core/interactiveshell.py&quot;, line 2223, in showtraceback
-    stb = self.InteractiveTB.structured_traceback(
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/IPython/core/ultratb.py&quot;, line 1270, in structured_traceback
-    return FormattedTB.structured_traceback(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/IPython/core/ultratb.py&quot;, line 1139, in structured_traceback
-    return VerboseTB.structured_traceback(
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/IPython/core/ultratb.py&quot;, line 947, in structured_traceback
-    formatted_exceptions: list[list[str]] = self.format_exception_as_a_whole(
-                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/IPython/core/ultratb.py&quot;, line 831, in format_exception_as_a_whole
-    frames.append(self.format_record(record))
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File &quot;/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/IPython/core/ultratb.py&quot;, line 580, in format_record
-    assert isinstance(frame_info.lineno, int)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AssertionError
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="n">line</span> <span class="mi">27</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> 
+<span class="g g-Whitespace">     </span><span class="mi">24</span> <span class="n">anim</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig_anim</span><span class="p">,</span> <span class="n">animate</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">N_STEPS</span><span class="p">,</span> <span class="n">init_func</span><span class="o">=</span><span class="n">init</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> 
+<span class="ne">---&gt; </span><span class="mi">27</span> <span class="n">HTML</span><span class="p">(</span><span class="n">anim</span><span class="o">.</span><span class="n">to_jshtml</span><span class="p">())</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:1392,</span> in <span class="ni">Animation.to_jshtml</span><span class="nt">(self, fps, embed_frames, default_mode)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1388</span>         <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">tmpdir</span><span class="p">,</span> <span class="s2">&quot;temp.html&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1389</span>         <span class="n">writer</span> <span class="o">=</span> <span class="n">HTMLWriter</span><span class="p">(</span><span class="n">fps</span><span class="o">=</span><span class="n">fps</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1390</span>                             <span class="n">embed_frames</span><span class="o">=</span><span class="n">embed_frames</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1391</span>                             <span class="n">default_mode</span><span class="o">=</span><span class="n">default_mode</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1392</span>         <span class="bp">self</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">path</span><span class="p">),</span> <span class="n">writer</span><span class="o">=</span><span class="n">writer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1393</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_html_representation</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1395</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_html_representation</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:1142,</span> in <span class="ni">Animation.save</span><span class="nt">(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1140</span>         <span class="n">progress_callback</span><span class="p">(</span><span class="n">frame_number</span><span class="p">,</span> <span class="n">total_frames</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1141</span>         <span class="n">frame_number</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="ne">-&gt; </span><span class="mi">1142</span> <span class="n">writer</span><span class="o">.</span><span class="n">grab_frame</span><span class="p">(</span><span class="o">**</span><span class="n">savefig_kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:801,</span> in <span class="ni">HTMLWriter.grab_frame</span><span class="nt">(self, **savefig_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="k">return</span>
+<span class="g g-Whitespace">    </span><span class="mi">800</span> <span class="n">f</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">801</span> <span class="bp">self</span><span class="o">.</span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">frame_format</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">802</span>                  <span class="n">dpi</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">dpi</span><span class="p">,</span> <span class="o">**</span><span class="n">savefig_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="n">imgdata64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">encodebytes</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">getvalue</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;ascii&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">804</span> <span class="bp">self</span><span class="o">.</span><span class="n">_total_bytes</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">imgdata64</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/figure.py:3515,</span> in <span class="ni">Figure.savefig</span><span class="nt">(self, fname, transparent, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3513</span>     <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">3514</span>         <span class="n">_recursively_make_axes_transparent</span><span class="p">(</span><span class="n">stack</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">3515</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">print_figure</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backend_bases.py:2281,</span> in <span class="ni">FigureCanvasBase.print_figure</span><span class="nt">(self, filename, dpi, facecolor, edgecolor, orientation, format, bbox_inches, pad_inches, bbox_extra_artists, backend, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2277</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2278</span>     <span class="c1"># _get_renderer may change the figure dpi (as vector formats</span>
+<span class="g g-Whitespace">   </span><span class="mi">2279</span>     <span class="c1"># force the figure dpi to 72), so we need to set it again here.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2280</span>     <span class="k">with</span> <span class="n">cbook</span><span class="o">.</span><span class="n">_setattr_cm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="n">dpi</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2281</span>         <span class="n">result</span> <span class="o">=</span> <span class="n">print_method</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2282</span>             <span class="n">filename</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2283</span>             <span class="n">facecolor</span><span class="o">=</span><span class="n">facecolor</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2284</span>             <span class="n">edgecolor</span><span class="o">=</span><span class="n">edgecolor</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2285</span>             <span class="n">orientation</span><span class="o">=</span><span class="n">orientation</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2286</span>             <span class="n">bbox_inches_restore</span><span class="o">=</span><span class="n">_bbox_inches_restore</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2287</span>             <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2288</span> <span class="k">finally</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2289</span>     <span class="k">if</span> <span class="n">bbox_inches</span> <span class="ow">and</span> <span class="n">restore_bbox</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backend_bases.py:2138,</span> in <span class="ni">FigureCanvasBase._switch_canvas_and_return_print_method.&lt;locals&gt;.&lt;lambda&gt;</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2134</span>     <span class="n">optional_kws</span> <span class="o">=</span> <span class="p">{</span>  <span class="c1"># Passed by print_figure for other renderers.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2135</span>         <span class="s2">&quot;dpi&quot;</span><span class="p">,</span> <span class="s2">&quot;facecolor&quot;</span><span class="p">,</span> <span class="s2">&quot;edgecolor&quot;</span><span class="p">,</span> <span class="s2">&quot;orientation&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2136</span>         <span class="s2">&quot;bbox_inches_restore&quot;</span><span class="p">}</span>
+<span class="g g-Whitespace">   </span><span class="mi">2137</span>     <span class="n">skip</span> <span class="o">=</span> <span class="n">optional_kws</span> <span class="o">-</span> <span class="p">{</span><span class="o">*</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">meth</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">}</span>
+<span class="ne">-&gt; </span><span class="mi">2138</span>     <span class="n">print_method</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">meth</span><span class="p">)(</span><span class="k">lambda</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">:</span> <span class="n">meth</span><span class="p">(</span>
+<span class="nn">   2139         *args, **{k: v for k, v</span> in <span class="ni">kwargs.items</span><span class="nt">() if k not in skip}))</span>
+<span class="g g-Whitespace">   </span><span class="mi">2140</span> <span class="k">else</span><span class="p">:</span>  <span class="c1"># Let third-parties do as they see fit.</span>
+<span class="g g-Whitespace">   </span><span class="mi">2141</span>     <span class="n">print_method</span> <span class="o">=</span> <span class="n">meth</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py:537,</span> in <span class="ni">FigureCanvasAgg.print_png</span><span class="nt">(self, filename_or_obj, metadata, pil_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span> <span class="k">def</span><span class="w"> </span><span class="nf">print_png</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename_or_obj</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">491</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span><span class="sd">     Write the figure to a PNG file.</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span><span class="sd"> </span>
+<span class="sd">   (...)    535         *metadata*, including the default &#39;Software&#39; key.</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">537</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_print_pil</span><span class="p">(</span><span class="n">filename_or_obj</span><span class="p">,</span> <span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="p">,</span> <span class="n">metadata</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py:486,</span> in <span class="ni">FigureCanvasAgg._print_pil</span><span class="nt">(self, filename_or_obj, fmt, pil_kwargs, metadata)</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span><span class="sd"> Draw the canvas, then save it using `.image.imsave` (to which</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span><span class="sd"> *pil_kwargs* and *metadata* are forwarded).</span>
+<span class="g g-Whitespace">    </span><span class="mi">484</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">485</span> <span class="n">FigureCanvasAgg</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">486</span> <span class="n">mpl</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">imsave</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span>     <span class="n">filename_or_obj</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_rgba</span><span class="p">(),</span> <span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">&quot;upper&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">488</span>     <span class="n">dpi</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">figure</span><span class="o">.</span><span class="n">dpi</span><span class="p">,</span> <span class="n">metadata</span><span class="o">=</span><span class="n">metadata</span><span class="p">,</span> <span class="n">pil_kwargs</span><span class="o">=</span><span class="n">pil_kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/image.py:1722,</span> in <span class="ni">imsave</span><span class="nt">(fname, arr, vmin, vmax, cmap, format, origin, dpi, metadata, pil_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1720</span> <span class="n">pil_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1721</span> <span class="n">pil_kwargs</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s2">&quot;dpi&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">dpi</span><span class="p">,</span> <span class="n">dpi</span><span class="p">))</span>
+<span class="ne">-&gt; </span><span class="mi">1722</span> <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="o">**</span><span class="n">pil_kwargs</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2713,</span> in <span class="ni">Image.save</span><span class="nt">(self, fp, format, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2710</span>     <span class="n">fp</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span> <span class="n">fp</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2712</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2713</span>     <span class="n">save_handler</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2714</span> <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2715</span>     <span class="k">if</span> <span class="n">open_fp</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/PngImagePlugin.py:1507,</span> in <span class="ni">_save</span><span class="nt">(im, fp, filename, chunk, save_all)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1505</span> <span class="k">if</span> <span class="n">single_im</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1506</span>     <span class="n">_apply_encoderinfo</span><span class="p">(</span><span class="n">single_im</span><span class="p">,</span> <span class="n">im</span><span class="o">.</span><span class="n">encoderinfo</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1507</span>     <span class="n">ImageFile</span><span class="o">.</span><span class="n">_save</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1508</span>         <span class="n">single_im</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1509</span>         <span class="n">cast</span><span class="p">(</span><span class="n">IO</span><span class="p">[</span><span class="nb">bytes</span><span class="p">],</span> <span class="n">_idat</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="n">chunk</span><span class="p">)),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1510</span>         <span class="p">[</span><span class="n">ImageFile</span><span class="o">.</span><span class="n">_Tile</span><span class="p">(</span><span class="s2">&quot;zip&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="n">single_im</span><span class="o">.</span><span class="n">size</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">rawmode</span><span class="p">)],</span>
+<span class="g g-Whitespace">   </span><span class="mi">1511</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1513</span> <span class="k">if</span> <span class="n">info</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1514</span>     <span class="k">for</span> <span class="n">info_chunk</span> <span class="ow">in</span> <span class="n">info</span><span class="o">.</span><span class="n">chunks</span><span class="p">:</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/ImageFile.py:667,</span> in <span class="ni">_save</span><span class="nt">(im, fp, tile, bufsize)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span>     <span class="n">_encode_tile</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">tile</span><span class="p">,</span> <span class="n">bufsize</span><span class="p">,</span> <span class="n">fh</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span> <span class="k">except</span> <span class="p">(</span><span class="ne">AttributeError</span><span class="p">,</span> <span class="n">io</span><span class="o">.</span><span class="n">UnsupportedOperation</span><span class="p">)</span> <span class="k">as</span> <span class="n">exc</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">667</span>     <span class="n">_encode_tile</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">tile</span><span class="p">,</span> <span class="n">bufsize</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">exc</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">668</span> <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">fp</span><span class="p">,</span> <span class="s2">&quot;flush&quot;</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span>     <span class="n">fp</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/ImageFile.py:693,</span> in <span class="ni">_encode_tile</span><span class="nt">(im, fp, tile, bufsize, fh, exc)</span>
+<span class="g g-Whitespace">    </span><span class="mi">690</span> <span class="k">if</span> <span class="n">exc</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">691</span>     <span class="c1"># compress to Python file-compatible object</span>
+<span class="g g-Whitespace">    </span><span class="mi">692</span>     <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">693</span>         <span class="n">errcode</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">bufsize</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="g g-Whitespace">    </span><span class="mi">694</span>         <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">695</span>         <span class="k">if</span> <span class="n">errcode</span><span class="p">:</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -855,8 +904,8 @@ AssertionError
 <section id="a-note-on-derivative-boundary-conditions">
 <h3>A note on derivative boundary conditions<a class="headerlink" href="#a-note-on-derivative-boundary-conditions" title="Link to this heading">#</a></h3>
 <p>In case you need to fix the derivative a the boundary, let’s say an isolated wall on the left, where <span class="math notranslate nohighlight">\(\partial u / \partial x = c_1\)</span>, then you could introduce that as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-edf3f145-2c57-4301-8f23-91fc218bd7c7">
-<span class="eqno">(117)<a class="headerlink" href="#equation-edf3f145-2c57-4301-8f23-91fc218bd7c7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cf3de040-21a9-465e-8edd-7d367dcdc5dc">
+<span class="eqno">(117)<a class="headerlink" href="#equation-cf3de040-21a9-465e-8edd-7d367dcdc5dc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
 \end{equation}\]</div>
 <p>where there is a new imaginary point at <span class="math notranslate nohighlight">\(i = -1\)</span>. But from the derivative condition you can get its value, since <span class="math notranslate nohighlight">\((u_0 - u_{-1})/\Delta x \simeq \partial u/\partial x\)</span>.</p>
@@ -975,13 +1024,13 @@ They can be <span class="math notranslate nohighlight">\(O(N^3)\)</span>, or <sp
 <section id="parabolic-equations-in-two-dimensions">
 <h2>Parabolic equations in two dimensions<a class="headerlink" href="#parabolic-equations-in-two-dimensions" title="Link to this heading">#</a></h2>
 <p>In this case you could be solving problems like</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0f269521-3e00-4486-9f7a-c408c43369e5">
-<span class="eqno">(118)<a class="headerlink" href="#equation-0f269521-3e00-4486-9f7a-c408c43369e5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ca96e7c1-93a0-40e7-a135-a576bcd59a1d">
+<span class="eqno">(118)<a class="headerlink" href="#equation-ca96e7c1-93a0-40e7-a135-a576bcd59a1d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right).
 \end{equation}\]</div>
 <p>In this case, stability analysis implies that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e790e12e-7ea2-4955-a2a9-08df055795b7">
-<span class="eqno">(119)<a class="headerlink" href="#equation-e790e12e-7ea2-4955-a2a9-08df055795b7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1870d683-aef3-4f6c-9bb9-0f01f6712544">
+<span class="eqno">(119)<a class="headerlink" href="#equation-1870d683-aef3-4f6c-9bb9-0f01f6712544" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta t \le \frac{1}{8} \frac{\Delta x^2 + \Delta y^2}{\alpha}.
 \end{equation}\]</div>
 <p>As with the previous 1D case, implicit schemes improve the stability , but the matrix systems are no longer tri-diagonal and therefore the matrix storage and computational times increase a lot.</p>
