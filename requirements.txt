@@ -52,3 +52,5 @@ sphinx-proof
 # superlu_dist==6.2.0
 # fenics
 # mshr
+
+numba
