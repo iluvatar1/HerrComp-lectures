@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -44,10 +44,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +66,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -75,6 +81,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -82,6 +94,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/09-PDE-FiniteDifferences/PDE-WaveEquation';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -90,20 +103,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -129,7 +148,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -502,7 +565,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrations-and-waves">Vibrations and Waves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-from-a-vibrating-string">Derivation from a Vibrating String</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dalemberts-general-solution-1d">D’Alembert’s General Solution (1D)</a></li>
@@ -557,8 +620,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-wave-equation">
 <h1>The Wave Equation<a class="headerlink" href="#the-wave-equation" title="Link to this heading">#</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-e8135494-6a69-4072-92b0-df2bab4cd16e">
-<span class="eqno">(120)<a class="headerlink" href="#equation-e8135494-6a69-4072-92b0-df2bab4cd16e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-78476d8c-49ba-427e-9c02-c75744786461">
+<span class="eqno">(120)<a class="headerlink" href="#equation-78476d8c-49ba-427e-9c02-c75744786461" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2 \left[ \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right].
 \end{equation}\]</div>
 <section id="vibrations-and-waves">
@@ -651,24 +714,24 @@
 </figure>
 <p>Consider a string under tension <span class="math notranslate nohighlight">\(T\)</span> with linear mass density <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 <p>Let</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cc267adb-5571-4786-8274-7c8df160630d">
-<span class="eqno">(121)<a class="headerlink" href="#equation-cc267adb-5571-4786-8274-7c8df160630d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4bb9db29-3c77-4f7d-9d32-0030377e0822">
+<span class="eqno">(121)<a class="headerlink" href="#equation-4bb9db29-3c77-4f7d-9d32-0030377e0822" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,t)
 \end{equation}\]</div>
 <p>represent the transverse displacement.</p>
 <p>Applying Newton’s second law to a small segment yields</p>
-<div class="amsmath math notranslate nohighlight" id="equation-725d05ab-b160-4184-9740-5cf9445fcfda">
-<span class="eqno">(122)<a class="headerlink" href="#equation-725d05ab-b160-4184-9740-5cf9445fcfda" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a543cf54-9973-4ca8-8a8b-0e56b409d32f">
+<span class="eqno">(122)<a class="headerlink" href="#equation-a543cf54-9973-4ca8-8a8b-0e56b409d32f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mu \frac{\partial^2 u}{\partial t^2} = T \frac{\partial^2 u}{\partial x^2}.
 \end{equation}\]</div>
 <p>Defining</p>
-<div class="amsmath math notranslate nohighlight" id="equation-21d65531-56ac-4d8e-9c9b-78f8803b5cf1">
-<span class="eqno">(123)<a class="headerlink" href="#equation-21d65531-56ac-4d8e-9c9b-78f8803b5cf1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b7230599-86a6-428b-9310-16f5c046b761">
+<span class="eqno">(123)<a class="headerlink" href="#equation-b7230599-86a6-428b-9310-16f5c046b761" title="Permalink to this equation">#</a></span>\[\begin{equation}
 c=\sqrt{\frac{T}{\mu}},
 \end{equation}\]</div>
 <p>we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ed600084-429f-4731-83e9-38fc3f33f268">
-<span class="eqno">(124)<a class="headerlink" href="#equation-ed600084-429f-4731-83e9-38fc3f33f268" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c50f9103-7231-4ea7-894a-ec2215c2cea7">
+<span class="eqno">(124)<a class="headerlink" href="#equation-c50f9103-7231-4ea7-894a-ec2215c2cea7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}.
 \end{equation}\]</div>
 <p>This is the one-dimensional wave equation.</p>
@@ -692,18 +755,18 @@ u(x, t) = f(x - ct) + g(x + ct)
 <section id="finite-difference-approximation">
 <h2>Finite Difference Approximation<a class="headerlink" href="#finite-difference-approximation" title="Link to this heading">#</a></h2>
 <p>Discretize space:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bd018f36-5c69-4489-9a35-caffca3f1efa">
-<span class="eqno">(125)<a class="headerlink" href="#equation-bd018f36-5c69-4489-9a35-caffca3f1efa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2d22ec4d-2ce4-49cc-9e69-a17a947ad0f7">
+<span class="eqno">(125)<a class="headerlink" href="#equation-2d22ec4d-2ce4-49cc-9e69-a17a947ad0f7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i=i\Delta x
 \end{equation}\]</div>
 <p>and time:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1d38f14b-ec40-467c-aad0-8dad6ea354e8">
-<span class="eqno">(126)<a class="headerlink" href="#equation-1d38f14b-ec40-467c-aad0-8dad6ea354e8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3dce80a5-0f3f-4432-9585-f9ecc2421118">
+<span class="eqno">(126)<a class="headerlink" href="#equation-3dce80a5-0f3f-4432-9585-f9ecc2421118" title="Permalink to this equation">#</a></span>\[\begin{equation}
 t_n=n\Delta t.
 \end{equation}\]</div>
 <p>Approximating derivatives,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c5c12563-6e58-4ad0-96f0-800385d98635">
-<span class="eqno">(127)<a class="headerlink" href="#equation-c5c12563-6e58-4ad0-96f0-800385d98635" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-732b6e5e-b7f2-4a69-8fb3-63922cee4eb7">
+<span class="eqno">(127)<a class="headerlink" href="#equation-732b6e5e-b7f2-4a69-8fb3-63922cee4eb7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2}
 \approx
 \frac{
@@ -711,8 +774,8 @@ u_i^{n+1}-2u_i^n+u_i^{n-1}
 }
 {\Delta t^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-97f778ef-ab8e-4449-b060-f5d5c78d4982">
-<span class="eqno">(128)<a class="headerlink" href="#equation-97f778ef-ab8e-4449-b060-f5d5c78d4982" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bd9d1273-7f88-466a-9f02-beff66fc40dc">
+<span class="eqno">(128)<a class="headerlink" href="#equation-bd9d1273-7f88-466a-9f02-beff66fc40dc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial x^2}
 \approx
 \frac{
@@ -721,13 +784,13 @@ u_{i+1}^n-2u_i^n+u_{i-1}^n
 {\Delta x^2}.
 \end{equation}\]</div>
 <p>Substitution gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c70f35de-7c92-4b63-9bb6-84ffb070bd99">
-<span class="eqno">(129)<a class="headerlink" href="#equation-c70f35de-7c92-4b63-9bb6-84ffb070bd99" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-20b3e94d-8914-4b69-9784-d816c24dd639">
+<span class="eqno">(129)<a class="headerlink" href="#equation-20b3e94d-8914-4b69-9784-d816c24dd639" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_i^{n+1} = 2u_i^n-u_i^{n-1} + r^2 \left( u_{i+1}^n - 2u_i^n + u_{i-1}^n\right),
 \end{equation}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-81a9e2ed-8033-4843-b162-55c15ce7f578">
-<span class="eqno">(130)<a class="headerlink" href="#equation-81a9e2ed-8033-4843-b162-55c15ce7f578" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-400a11c4-e73b-4573-be23-ff38733a2aac">
+<span class="eqno">(130)<a class="headerlink" href="#equation-400a11c4-e73b-4573-be23-ff38733a2aac" title="Permalink to this equation">#</a></span>\[\begin{equation}
 r=\frac{c\Delta t}{\Delta x}.
 \end{equation}\]</div>
 <figure class="align-center">
@@ -754,13 +817,13 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 <section id="von-neumann-analysis">
 <h3>Von Neumann Analysis<a class="headerlink" href="#von-neumann-analysis" title="Link to this heading">#</a></h3>
 <p>Substituting a Fourier mode <span class="math notranslate nohighlight">\(u_i^n = \xi^n e^{ik x_i}\)</span> into the leapfrog scheme and solving for the amplification factor <span class="math notranslate nohighlight">\(\xi = |u_{i+1}/u_{i}|\)</span> gives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8399ff54-fd1b-4a81-9b2b-5d6eb7ba6af3">
-<span class="eqno">(131)<a class="headerlink" href="#equation-8399ff54-fd1b-4a81-9b2b-5d6eb7ba6af3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5374e0e9-f67e-495d-b321-58be5d1f42ea">
+<span class="eqno">(131)<a class="headerlink" href="#equation-5374e0e9-f67e-495d-b321-58be5d1f42ea" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \xi = 1 - 2r^2\sin^2\left(\frac{k\Delta x}{2}\right) \pm i\cdot 2r\sin\left(\frac{k\Delta x}{2}\right)\sqrt{1 - r^2\sin^2\left(\frac{k\Delta x}{2}\right)}.
 \end{equation}\]</div>
 <p>For stability we need <span class="math notranslate nohighlight">\(|\xi| \le 1\)</span> for all wavenumbers <span class="math notranslate nohighlight">\(k\)</span>. This is satisfied if and only if:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a2d306c2-8832-4115-b291-a044ddbaa7fa">
-<span class="eqno">(132)<a class="headerlink" href="#equation-a2d306c2-8832-4115-b291-a044ddbaa7fa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e58b20b7-8ee7-42ac-aa60-b6e362aa11ed">
+<span class="eqno">(132)<a class="headerlink" href="#equation-e58b20b7-8ee7-42ac-aa60-b6e362aa11ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boxed{r = \frac{c\,\Delta t}{\Delta x} \le 1} \tag{CFL condition}
 \end{equation}\]</div>
 <p>This is the <strong>Courant–Friedrichs–Lewy (CFL) condition</strong>.</p>
@@ -879,7 +942,7 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/65da144149aa755d86b90e19c15fb986f75d31e86bf9d62f920b9634d595d0c4.png" src="../../_images/65da144149aa755d86b90e19c15fb986f75d31e86bf9d62f920b9634d595d0c4.png" />
+<img alt="../../_images/4c045d151e32206456e9ac84fe98eab1e239329ab110c9880f16888dace9d921.png" src="../../_images/4c045d151e32206456e9ac84fe98eab1e239329ab110c9880f16888dace9d921.png" />
 </div>
 </div>
 <figure class="align-center">
@@ -1012,8 +1075,8 @@ u_N^{n+1} = u_{N-1}^n
 <p class="admonition-title"><span class="caption-number">Exercise 17 </span> (Sinusoidal excitation)</p>
 <section id="exercise-content">
 <p>Excite the string with</p>
-<div class="amsmath math notranslate nohighlight" id="equation-189b17b4-3315-49af-9430-2f00428d4c8e">
-<span class="eqno">(133)<a class="headerlink" href="#equation-189b17b4-3315-49af-9430-2f00428d4c8e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8fc0aebf-2779-49bf-ad42-58517e686662">
+<span class="eqno">(133)<a class="headerlink" href="#equation-8fc0aebf-2779-49bf-ad42-58517e686662" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,0)=sin(πx)
 \end{equation}\]</div>
 <p>and compare with the analytical solution.</p>
@@ -1121,7 +1184,7 @@ r = \frac{c\,\Delta t}{\Delta} \le \frac{1}{\sqrt{2}} \approx 0.707
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2D: dx=0.0127, dy=0.0127, dt=0.00448, NT=223
 </pre></div>
 </div>
-<img alt="../../_images/18574923c9529e2f9873654a0b01b1745c7cb4f5dd9133c6a2e8e9b7680fb2e0.png" src="../../_images/18574923c9529e2f9873654a0b01b1745c7cb4f5dd9133c6a2e8e9b7680fb2e0.png" />
+<img alt="../../_images/7e35f7c34a8df133c6fc2dda1c466198cac5dac4ae0aedca540d6e76a0636903.png" src="../../_images/7e35f7c34a8df133c6fc2dda1c466198cac5dac4ae0aedca540d6e76a0636903.png" />
 </div>
 </div>
 <figure class="align-center">
@@ -1188,7 +1251,7 @@ Check <a class="reference external" href="https://www.youtube.com/watch?v=7nG4Y7
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c6948003063d9f269d4a7fc4f8c0aa83ab3f9f17760363837d59171543751154.png" src="../../_images/c6948003063d9f269d4a7fc4f8c0aa83ab3f9f17760363837d59171543751154.png" />
+<img alt="../../_images/fced3b1e3430e7f3028a6d164f9414732018b89dcefdb709b47cffd0bb9ba9f8.png" src="../../_images/fced3b1e3430e7f3028a6d164f9414732018b89dcefdb709b47cffd0bb9ba9f8.png" />
 </div>
 </div>
 <figure class="align-center">
@@ -1336,7 +1399,7 @@ where <span class="math notranslate nohighlight">\(r_i = c(x_i)\Delta t/\Delta x
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vibrations-and-waves">Vibrations and Waves</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-from-a-vibrating-string">Derivation from a Vibrating String</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dalemberts-general-solution-1d">D’Alembert’s General Solution (1D)</a></li>
@@ -1426,8 +1489,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

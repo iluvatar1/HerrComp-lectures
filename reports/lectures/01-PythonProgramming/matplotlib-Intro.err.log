@@ -56,10 +56,10 @@ MovieWriter ffmpeg unavailable; using Pillow instead.
 
 [31m---------------------------------------------------------------------------[39m
 [31mKeyError[39m                                  Traceback (most recent call last)
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2668[39m, in [36mImage.save[39m[34m(self, fp, format, **params)[39m
-[32m   2667[39m [38;5;28;01mtry[39;00m:
-[32m-> [39m[32m2668[39m     [38;5;28mformat[39m = [30;43mEXTENSION[39;49m[30;43m[[39;49m[30;43mext[39;49m[30;43m][39;49m
-[32m   2669[39m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m e:
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2666[39m, in [36mImage.save[39m[34m(self, fp, format, **params)[39m
+[32m   2665[39m [38;5;28;01mtry[39;00m:
+[32m-> [39m[32m2666[39m     [38;5;28mformat[39m = [30;43mEXTENSION[39;49m[30;43m[[39;49m[30;43mext[39;49m[30;43m][39;49m
+[32m   2667[39m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m e:
 
 [31mKeyError[39m: '.mp4'
 
@@ -103,12 +103,12 @@ The above exception was the direct cause of the following exception:
 [32m    511[39m [30;43m        [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43moutfile[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43msave_all[39;49m[30;43m=[39;49m[30;43;01mTrue[39;49;00m[30;43m,[39;49m[30;43m [39;49m[30;43mappend_images[39;49m[30;43m=[39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_frames[39;49m[30;43m[[39;49m[30;43m1[39;49m[30;43m:[39;49m[30;43m][39;49m[30;43m,[39;49m
 [32m    512[39m [30;43m        [39;49m[30;43mduration[39;49m[30;43m=[39;49m[30;43mint[39;49m[30;43m([39;49m[30;43m1000[39;49m[30;43m [39;49m[30;43m/[39;49m[30;43m [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43mfps[39;49m[30;43m)[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mloop[39;49m[30;43m=[39;49m[30;43m0[39;49m[30;43m)[39;49m
 
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2671[39m, in [36mImage.save[39m[34m(self, fp, format, **params)[39m
-[32m   2669[39m     [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m e:
-[32m   2670[39m         msg = [33mf[39m[33m"[39m[33munknown file extension: [39m[38;5;132;01m{[39;00mext[38;5;132;01m}[39;00m[33m"[39m
-[32m-> [39m[32m2671[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01me[39;00m
-[32m   2673[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m ImageFile
-[32m   2675[39m [38;5;66;03m# may mutate self![39;00m
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2669[39m, in [36mImage.save[39m[34m(self, fp, format, **params)[39m
+[32m   2667[39m     [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m e:
+[32m   2668[39m         msg = [33mf[39m[33m"[39m[33munknown file extension: [39m[38;5;132;01m{[39;00mext[38;5;132;01m}[39;00m[33m"[39m
+[32m-> [39m[32m2669[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01me[39;00m
+[32m   2671[39m [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01m.[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m ImageFile
+[32m   2673[39m [38;5;66;03m# may mutate self![39;00m
 
 [31mValueError[39m: unknown file extension: .mp4
 

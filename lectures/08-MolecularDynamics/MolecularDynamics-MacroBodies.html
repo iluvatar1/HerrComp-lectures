@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -44,10 +44,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +66,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -75,6 +81,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -82,6 +94,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/08-MolecularDynamics/MolecularDynamics-MacroBodies';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -90,20 +103,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -129,7 +148,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -502,7 +565,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-molecules-the-universal-particle">Beyond Molecules: The Universal “Particle”</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-fields-the-why-particles-move">Force Fields (The “Why” particles move)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-lennard-jones-potential">Example: The Lennard-Jones Potential</a></li>
@@ -590,8 +653,8 @@
 <section id="example-the-lennard-jones-potential">
 <h3>Example: The Lennard-Jones Potential<a class="headerlink" href="#example-the-lennard-jones-potential" title="Link to this heading">#</a></h3>
 <p>The classic non-bonded interaction is the Lennard-Jones potential, which features strong short-range repulsion (Pauli exclusion) and weak long-range attraction (Van der Waals).</p>
-<div class="amsmath math notranslate nohighlight" id="equation-206405ca-cb68-42cf-83cd-5d55cdea46ff">
-<span class="eqno">(58)<a class="headerlink" href="#equation-206405ca-cb68-42cf-83cd-5d55cdea46ff" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ad6c03c4-1852-4d21-977d-a7aab0910a49">
+<span class="eqno">(58)<a class="headerlink" href="#equation-ad6c03c4-1852-4d21-977d-a7aab0910a49" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} -
 \left(\frac{\sigma}{r}\right)^{6}
 \right],
@@ -633,14 +696,14 @@ V_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} -
 <h3>Verlet algorithm<a class="headerlink" href="#verlet-algorithm" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Verlet_integration">https://en.wikipedia.org/wiki/Verlet_integration</a></p>
 <p>We start by using a Taylor expansion</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7b843791-4802-43a4-82ad-9d77dcf46cfe">
-<span class="eqno">(59)<a class="headerlink" href="#equation-7b843791-4802-43a4-82ad-9d77dcf46cfe" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-155c442b-74d0-42ee-af88-6b3c3dee5ebe">
+<span class="eqno">(59)<a class="headerlink" href="#equation-155c442b-74d0-42ee-af88-6b3c3dee5ebe" title="Permalink to this equation">#</a></span>\[\begin{align}
 \mathbf{x}(t+\Delta t)&amp;=\mathbf{x}(t)+\mathbf{v}(t)\Delta t+\frac{\mathbf{a}(t)\Delta t^2}{2}+\frac{\mathbf{b}(t)\Delta t^3}{6}+\mathcal{O}(\Delta t^4),\\
 \mathbf{x}(t-\Delta t)&amp;=\mathbf{x}(t)-\mathbf{v}(t)\Delta t+\frac{\mathbf{a}(t)\Delta t^2}{2}-\frac{\mathbf{b}(t)\Delta t^3}{6}+\mathcal{O}(\Delta t^4),
 \end{align}\]</div>
 <p>and then we add up to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a95d9839-98ff-4deb-9963-d15a6f98d6ec">
-<span class="eqno">(60)<a class="headerlink" href="#equation-a95d9839-98ff-4deb-9963-d15a6f98d6ec" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fb6cd2df-c869-47bc-8015-0509412487ae">
+<span class="eqno">(60)<a class="headerlink" href="#equation-fb6cd2df-c869-47bc-8015-0509412487ae" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mathbf{x}(t+\Delta t)=2\mathbf{x}(t)-\mathbf{x}(t-\Delta t)+\mathbf{a}(t)\Delta t^2+\mathcal{O}(\Delta t^4).
 \end{equation}\]</div>
 </section>
@@ -1210,8 +1273,8 @@ IndentationError: expected an indented block after function definition on line 1
 <section id="exercise-adding-more-particles">
 <h2>Exercise: Adding more particles<a class="headerlink" href="#exercise-adding-more-particles" title="Link to this heading">#</a></h2>
 <p>Now let’s add more particles. They will not see each other unless we implement a force among them. Also, we will need to generalize our methods to process arrays of bodies. First, the force that particle <span class="math notranslate nohighlight">\(i\)</span> does on particle <span class="math notranslate nohighlight">\(j\)</span> is given by</p>
-<div class="amsmath math notranslate nohighlight" id="equation-53c7195c-920d-44bd-ab7a-ef4f01263a5b">
-<span class="eqno">(61)<a class="headerlink" href="#equation-53c7195c-920d-44bd-ab7a-ef4f01263a5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e42bd43a-fd90-4c7e-8b05-9fb0ecd43b49">
+<span class="eqno">(61)<a class="headerlink" href="#equation-e42bd43a-fd90-4c7e-8b05-9fb0ecd43b49" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{ij} = k \delta \hat n_{ij},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat n_{ij} = \vec R_{ij} / R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(\vec R_{ij} = \vec R_i - \vec R_j\)</span>, and <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>, with <span class="math notranslate nohighlight">\(r\)</span> the radius of each particle.</p>
@@ -1629,7 +1692,7 @@ IndentationError: expected an indented block after function definition on line 1
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#beyond-molecules-the-universal-particle">Beyond Molecules: The Universal “Particle”</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#force-fields-the-why-particles-move">Force Fields (The “Why” particles move)</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-lennard-jones-potential">Example: The Lennard-Jones Potential</a></li>
@@ -1705,8 +1768,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -44,10 +44,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +66,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -75,6 +81,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -82,6 +94,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/01-PythonProgramming/Scipy';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -90,20 +103,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -129,7 +148,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -502,7 +565,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-functions">Special functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration">Integration</a><ul class="nav section-nav flex-column">
@@ -633,7 +696,7 @@ Y_0(1.000000) = 0.088257
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a425a15b426c9f3b4393c250e71b35a487113f9f3320baefb909c84827eb975e.png" src="../../_images/a425a15b426c9f3b4393c250e71b35a487113f9f3320baefb909c84827eb975e.png" />
+<img alt="../../_images/8607e4e4b9fc4677a2fbba66d21e4dc6f65c0a24a211b66928637de5b1a7b5f6.png" src="../../_images/8607e4e4b9fc4677a2fbba66d21e4dc6f65c0a24a211b66928637de5b1a7b5f6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -855,7 +918,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a1c21d7069bcd7b12d65615131cd0c69c67ba23db1adbf0e33ee095c629629eb.png" src="../../_images/a1c21d7069bcd7b12d65615131cd0c69c67ba23db1adbf0e33ee095c629629eb.png" />
+<img alt="../../_images/a7abd4b26980893addbe77dad1aaa6e6b92500531530e8fdd9879c602837397b.png" src="../../_images/a7abd4b26980893addbe77dad1aaa6e6b92500531530e8fdd9879c602837397b.png" />
 </div>
 </div>
 </section>
@@ -895,7 +958,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5886038a7252252b6f644a1cfafce5be5e40734b867976279412b097405cd555.png" src="../../_images/5886038a7252252b6f644a1cfafce5be5e40734b867976279412b097405cd555.png" />
+<img alt="../../_images/f4ec18fa01a907328217f40f99eb93f657ff9718ddb5cba0eb4174970275fc99.png" src="../../_images/f4ec18fa01a907328217f40f99eb93f657ff9718ddb5cba0eb4174970275fc99.png" />
 </div>
 </div>
 <p>Since the signal is real, the spectrum is symmetric. We therefore only need to plot the part that corresponds to the postive frequencies. To extract that part of the <code class="docutils literal notranslate"><span class="pre">w</span></code> and <code class="docutils literal notranslate"><span class="pre">F</span></code> we can use some of the indexing tricks for NumPy arrays that we saw in Lecture 2:</p>
@@ -917,7 +980,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a098d64e1ccc7dbfe672d9fd1da3ce62e180c57333d16fb0c3794de78dbc6f18.png" src="../../_images/a098d64e1ccc7dbfe672d9fd1da3ce62e180c57333d16fb0c3794de78dbc6f18.png" />
+<img alt="../../_images/f3e264229819bb672e6a1dc6086c2abd1b8dfd48f3c8cd8f45fba94b06665d94.png" src="../../_images/f3e264229819bb672e6a1dc6086c2abd1b8dfd48f3c8cd8f45fba94b06665d94.png" />
 </div>
 </div>
 <p>As expected, we now see a peak in the spectrum that is centered around 1, which is the frequency we used in the damped oscillator example.</p>
@@ -993,9 +1056,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-1.31976723, -2.62652347,  2.0574279 ],
-       [-1.66796242,  1.69311707, -0.59749805],
-       [ 1.9951264 ,  1.93929598, -0.51430132]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ -0.66671361,  -0.4382488 ,   1.36642578],
+       [ -3.04706014,  19.13087642, -10.89044278],
+       [  2.79054915,  -7.25028378,   4.43382138]])
 </pre></div>
 </div>
 </div>
@@ -1008,7 +1071,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(3.576728904403046e-16)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(7.09024586127786e-16)
 </pre></div>
 </div>
 </div>
@@ -1034,7 +1097,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.34598285+0.j, -0.12837629+0.j,  0.15796283+0.j])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.61461928+0.j,  0.06011391+0.j, -0.0637693 +0.j])
 </pre></div>
 </div>
 </div>
@@ -1053,7 +1116,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.34598285+0.j, -0.12837629+0.j,  0.15796283+0.j])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.61461928+0.j,  0.06011391+0.j, -0.0637693 +0.j])
 </pre></div>
 </div>
 </div>
@@ -1065,9 +1128,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.46875871, -0.75164257, -0.49143599],
-       [-0.80918885,  0.58956637, -0.64538444],
-       [-0.3542297 ,  0.29571091,  0.58478166]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.43727227, -0.22733284,  0.19017753],
+       [-0.47635552, -0.75350834, -0.95886378],
+       [-0.76280953,  0.61688327,  0.21074335]])
 </pre></div>
 </div>
 </div>
@@ -1082,7 +1145,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.063081476116683e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.065511365135231e-16
 </pre></div>
 </div>
 </div>
@@ -1099,9 +1162,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-5.26081297,  5.22020549, -3.97994629],
-       [ 4.47953648, -0.29767185, -3.55069294],
-       [ 2.44919884, -3.21339529,  4.84243936]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  1.23707352,   2.88216824,  -2.15395059],
+       [ 43.45015799, -10.95011842, -17.68249188],
+       [-20.61108255,   1.83910454,  11.28594513]])
 </pre></div>
 </div>
 </div>
@@ -1114,7 +1177,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.027294759599735253)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.006189516886546236)
 </pre></div>
 </div>
 </div>
@@ -1127,7 +1190,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.6921571601285421), 2.255190504670777)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.7559689571403385), 2.1430638608011376)
 </pre></div>
 </div>
 </div>
@@ -1167,7 +1230,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f0740f26c9294d3ae9468b4a5f21239f26fdadee2f86299700052e3af5353c19.png" src="../../_images/f0740f26c9294d3ae9468b4a5f21239f26fdadee2f86299700052e3af5353c19.png" />
+<img alt="../../_images/3b0fee53062a00cd28dd41e9e12fca10db00f9c866f4b9cb451c849ba389213a.png" src="../../_images/3b0fee53062a00cd28dd41e9e12fca10db00f9c866f4b9cb451c849ba389213a.png" />
 </div>
 </div>
 <p>We can use the <code class="docutils literal notranslate"><span class="pre">fmin_bfgs</span></code> function to find the minima of a function:</p>
@@ -1265,11 +1328,11 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2541/1499142750.py:4: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2532/1499142750.py:4: RuntimeWarning: divide by zero encountered in divide
   return np.tan(2*np.pi*omega) - omega_c/omega
 </pre></div>
 </div>
-<img alt="../../_images/cf7c1720133f6cb86eb8ef2d493acf813471955b0e9b1a7cad29494064dcfd74.png" src="../../_images/cf7c1720133f6cb86eb8ef2d493acf813471955b0e9b1a7cad29494064dcfd74.png" />
+<img alt="../../_images/8789aa87254a6368b482361e108dc23e96d26066bb1c781ee509fa6432a66ebc.png" src="../../_images/8789aa87254a6368b482361e108dc23e96d26066bb1c781ee509fa6432a66ebc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1363,7 +1426,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ae791363c3904c24b3fd732108e7f29875885bb2cdd3d9b909dcd963bf33896e.png" src="../../_images/ae791363c3904c24b3fd732108e7f29875885bb2cdd3d9b909dcd963bf33896e.png" />
+<img alt="../../_images/b6149ba02640227ca168cc138bae7bf0b65ab1dd08b4c6b8162a1d86a0dabcb8.png" src="../../_images/b6149ba02640227ca168cc138bae7bf0b65ab1dd08b4c6b8162a1d86a0dabcb8.png" />
 </div>
 </div>
 </section>
@@ -1408,7 +1471,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/616f9ff5758ad1faf23b71867a2b87bfbb04d927014e160c64ca4be48d60823a.png" src="../../_images/616f9ff5758ad1faf23b71867a2b87bfbb04d927014e160c64ca4be48d60823a.png" />
+<img alt="../../_images/11eddb3c11718fd0ba9d5d76e5c444b709b84887b1fbe28cd5f6b21b1ffbd0e4.png" src="../../_images/11eddb3c11718fd0ba9d5d76e5c444b709b84887b1fbe28cd5f6b21b1ffbd0e4.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1440,7 +1503,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3bc6997017ea5e273aa2970df8039b08998a9345d0fff0a64980494cdfe593e6.png" src="../../_images/3bc6997017ea5e273aa2970df8039b08998a9345d0fff0a64980494cdfe593e6.png" />
+<img alt="../../_images/1786e690d3457b71d954aec155a20780501b457703c55d2e66a88b46c435275f.png" src="../../_images/1786e690d3457b71d954aec155a20780501b457703c55d2e66a88b46c435275f.png" />
 </div>
 </div>
 <p>Statistics:</p>
@@ -1481,8 +1544,8 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t-statistic = 0.1673562501462715
-p-value = 0.8671066830465024
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t-statistic = 1.3119580087041915
+p-value = 0.18968501673510815
 </pre></div>
 </div>
 </div>
@@ -1496,7 +1559,7 @@ p-value = 0.8671066830465024
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-2.8850194096210284), pvalue=np.float64(0.00399802874989633), df=np.int64(999))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-3.0883822891080084), pvalue=np.float64(0.0020680736381024894), df=np.int64(999))
 </pre></div>
 </div>
 </div>
@@ -1521,7 +1584,7 @@ p-value = 0.8671066830465024
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(0.5947851420236839), pvalue=np.float64(0.5521217874693229), df=np.int64(999))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-0.09376741209771249), pvalue=np.float64(0.925312720986841), df=np.int64(999))
 </pre></div>
 </div>
 </div>
@@ -1603,7 +1666,7 @@ p-value = 0.8671066830465024
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-functions">Special functions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#integration">Integration</a><ul class="nav section-nav flex-column">
@@ -1680,8 +1743,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -44,10 +44,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +66,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -75,6 +81,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -82,6 +94,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/12-IntroNeuralNetworks/IntroNeuralNetworks';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -89,20 +102,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -128,7 +147,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -501,7 +564,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-overview-the-rise-of-neural-networks">Historical Overview: The Rise of Neural Networks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s1950s-birth-of-the-perceptron">1940s–1950s: Birth of the Perceptron</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s1990s-backpropagation-and-the-first-wave">1980s–1990s: Backpropagation and the First Wave</a></li>
@@ -713,7 +776,7 @@
 </div>
 </details>
 <div class="cell_output docutils container">
-<img alt="../../_images/63f7cd1400897d97a5ab5f0e3bf14a7ee9b50c898840a7ee39e9bb5ca3b39552.png" src="../../_images/63f7cd1400897d97a5ab5f0e3bf14a7ee9b50c898840a7ee39e9bb5ca3b39552.png" />
+<img alt="../../_images/44ab756522a901a8a0cb5bd4b0d74d5c07d649ed27b43b3ef755933dce9d4346.png" src="../../_images/44ab756522a901a8a0cb5bd4b0d74d5c07d649ed27b43b3ef755933dce9d4346.png" />
 </div>
 </div>
 <div class="admonition tip">
@@ -745,7 +808,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 <figure class="align-default" id="id1" style="width: 60%">
 <img alt="../../_images/SGD.png" src="../../_images/SGD.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 8 </span><span class="caption-text"><a class="reference external" href="https://introtodeeplearning.com/">https://introtodeeplearning.com/</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text"><a class="reference external" href="https://introtodeeplearning.com/">https://introtodeeplearning.com/</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -765,7 +828,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 </ul>
 <div class="exercise admonition" id="lectures/12-IntroNeuralNetworks/IntroNeuralNetworks-exercise-0">
 
-<p class="admonition-title"><span class="caption-number">Exercise 19 </span> (Relu and linear activation)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 22 </span> (Relu and linear activation)</p>
 <section id="exercise-content">
 <p>Why is the derivative of the activation function (<span class="math notranslate nohighlight">\(g'\)</span>) important in the backpropagation equation above? What would happen if we used a linear activation function (where <span class="math notranslate nohighlight">\(g'(z)\)</span> is just a constant) in all hidden layers?</p>
 </section>
@@ -777,7 +840,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 <figure class="align-default" id="id2" style="width: 70%">
 <img alt="../../_images/loss-01.png" src="../../_images/loss-01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Visualizing the loss landscape of Neural nets, 2017, hao Li et. al. <a class="reference external" href="https://arxiv.org/abs/1712.09913">https://arxiv.org/abs/1712.09913</a> , <a class="github reference external" href="https://github.com/tomgoldstein/loss-landscape">tomgoldstein/loss-landscape</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Visualizing the loss landscape of Neural nets, 2017, hao Li et. al. <a class="reference external" href="https://arxiv.org/abs/1712.09913">https://arxiv.org/abs/1712.09913</a> , <a class="github reference external" href="https://github.com/tomgoldstein/loss-landscape">tomgoldstein/loss-landscape</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="some-visualizations">
@@ -898,29 +961,29 @@ where \)</span>x = \sum x_i w_i$.</p>
 </ul>
 <p>But how to adjust the weights? There are several techniques based on the actual error <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
 <p>First, we will define a cost/loss function as the typical MSE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-68485484-6e94-4f01-8f94-6ec9694020b4">
-<span class="eqno">(177)<a class="headerlink" href="#equation-68485484-6e94-4f01-8f94-6ec9694020b4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2c2042a8-4ff8-4490-9313-b88432ac31ac">
+<span class="eqno">(187)<a class="headerlink" href="#equation-2c2042a8-4ff8-4490-9313-b88432ac31ac" title="Permalink to this equation">#</a></span>\[\begin{equation}
 COST = \frac{1}{2} (\hat y - y)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat y\)</span> is the predicted value and <span class="math notranslate nohighlight">\(y\)</span> is the expected one.  Notice that we are not adding up because we only have one output.</p>
 <p>Second, we will apply gradient descent approximation to our problem, in order to improve our coefficients for our data. This means that we will propagate back the errors into the coefficients!</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b59300a2-eebb-44d9-b081-3f3a280fdb73">
-<span class="eqno">(178)<a class="headerlink" href="#equation-b59300a2-eebb-44d9-b081-3f3a280fdb73" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3f822f82-919f-4f00-9482-85f1d0db783e">
+<span class="eqno">(188)<a class="headerlink" href="#equation-3f822f82-919f-4f00-9482-85f1d0db783e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_i' = w_i - \alpha \frac{\partial COST}{\partial w_i},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate. Taking into account that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6a8e06f3-e0fa-4170-a3dc-88d77bf4b0af">
-<span class="eqno">(179)<a class="headerlink" href="#equation-6a8e06f3-e0fa-4170-a3dc-88d77bf4b0af" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dcd5d9d9-c622-43aa-94f9-91c4bbf7d57d">
+<span class="eqno">(189)<a class="headerlink" href="#equation-dcd5d9d9-c622-43aa-94f9-91c4bbf7d57d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat y = \phi(z) = \frac{1}{1 + \exp(-z)},
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9da01ba1-b882-4322-8d1d-e732a920e9f7">
-<span class="eqno">(180)<a class="headerlink" href="#equation-9da01ba1-b882-4322-8d1d-e732a920e9f7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e125c84c-ed02-418e-8fb5-91eb3dbb7e29">
+<span class="eqno">(190)<a class="headerlink" href="#equation-e125c84c-ed02-418e-8fb5-91eb3dbb7e29" title="Permalink to this equation">#</a></span>\[\begin{equation}
 z = \sum w_i x_i,
 \end{equation}\]</div>
 <p>then, by using the chain rule, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b00d3f62-62c2-4ec4-8843-415887ec13a0">
-<span class="eqno">(181)<a class="headerlink" href="#equation-b00d3f62-62c2-4ec4-8843-415887ec13a0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0ff44b59-bc3d-4432-b6c1-773477fe0f40">
+<span class="eqno">(191)<a class="headerlink" href="#equation-0ff44b59-bc3d-4432-b6c1-773477fe0f40" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial COST}{\partial w_i} = \frac{\partial COST}{\partial \hat y} \frac{\partial \hat y}{\partial z} \frac{\partial z}{\partial w_i} = (\hat y - y)\phi (1-\phi)x_i. 
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -1210,7 +1273,7 @@ z = \sum w_i x_i,
 </div>
 <div class="exercise admonition" id="lectures/12-IntroNeuralNetworks/IntroNeuralNetworks-exercise-1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 20 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 23 </span></p>
 <section id="exercise-content">
 <p>Play with hyperparameters</p>
 </section>
@@ -1936,7 +1999,7 @@ z = \sum w_i x_i,
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#historical-overview-the-rise-of-neural-networks">Historical Overview: The Rise of Neural Networks</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s1950s-birth-of-the-perceptron">1940s–1950s: Birth of the Perceptron</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#s1990s-backpropagation-and-the-first-wave">1980s–1990s: Backpropagation and the First Wave</a></li>
@@ -2045,8 +2108,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

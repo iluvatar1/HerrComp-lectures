@@ -18,20 +18,112 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# Import cell
 import numpy as np
 import matplotlib.pyplot as plt
-from numba import njit
+
+# -------------------------------------------------------
+# Physical parameters
+# -------------------------------------------------------
+
+m = 1.2323423
+tau = 2.534534          # tau = k_B T
+
+# -------------------------------------------------------
+# Dimensionless Maxwell distribution
+#
+# p(x) ∝ x² exp(-x²),    x >= 0
+# -------------------------------------------------------
+
+def target(x):
+    if x <= 0:
+        return 0.0
+    return x**2 * np.exp(-x**2)
+
+
+# -------------------------------------------------------
+# One Metropolis step
+# -------------------------------------------------------
+
+def metropolis_step(x, sigma):
+    """
+    Performs one Metropolis update.
+    """
+# YOUR CODE HERE
+pass
+    return x
+
+
+# -------------------------------------------------------
+# Generate dimensionless samples
+# -------------------------------------------------------
+
+def metropolis(nsteps, x0=1.0, sigma=0.8):
+    samples = np.empty(nsteps)
+    x = x0
+    for i in range(nsteps):
+        x = metropolis_step(x, sigma)
+        samples[i] = x
+
+    return samples
+
+# -------------------------------------------------------
+# Generate samples
+# -------------------------------------------------------
+x_samples = metropolis(nsteps=50000, x0=1.0, sigma=0.8)
+
+# Remove burn-in
+x_samples = x_samples[5000:]
+
+
+# -------------------------------------------------------
+# Transform back to the physical speed
+#
+# v = sqrt(2 tau / m) x
+# -------------------------------------------------------
+v_samples = np.sqrt(2 * tau / m) * x_samples
+
+# -------------------------------------------------------
+# Exact Maxwell speed distribution
+# -------------------------------------------------------
+
+def maxwell(v):
+    return (
+        (m / (2 * np.pi * tau))**1.5
+        * 4 * np.pi * v**2
+        * np.exp(-m * v**2 / (2 * tau))
+    )
+
+
+# -------------------------------------------------------
+# Prepare figure
+# -------------------------------------------------------
+fig, ax = plt.subplots(figsize=(8,4))
+
+v = np.linspace(0, 6, 500)
+
+pdf = maxwell(v)
+
+ax.set_xlim(0, 6)
+ax.set_ylim(0, 1.1 * pdf.max())
+
+ax.plot(v, pdf, lw=2, color='k', label='Exact distribution')
+
+hist = None
+hist = ax.hist(
+    v_samples[:],
+    bins=50,
+    density=True,
+    alpha=0.6,
+    color='tab:blue'
+)
+plt.show()
+
 ------------------
 
 
-[31m---------------------------------------------------------------------------[39m
-[31mModuleNotFoundError[39m                       Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 4[39m
-[32m      1[39m [38;5;66;03m# Import cell[39;00m
-[32m      2[39m [38;5;28;01mimport[39;00m numpy [38;5;28;01mas[39;00m np
-[32m      3[39m [38;5;28;01mimport[39;00m matplotlib.pyplot [38;5;28;01mas[39;00m plt
-[32m----> [39m[32m4[39m [38;5;28;01mfrom[39;00m numba [38;5;28;01mimport[39;00m njit
+  [36mCell[39m[36m [39m[32mIn[5][39m[32m, line 33[39m
+[31m    [39m[31mreturn x[39m
+    ^
+[31mIndentationError[39m[31m:[39m unexpected indent
 
-[31mModuleNotFoundError[39m: No module named 'numba'
 

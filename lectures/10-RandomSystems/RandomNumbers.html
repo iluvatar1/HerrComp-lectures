@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -44,10 +44,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +66,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -75,6 +81,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -82,6 +94,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/10-RandomSystems/RandomNumbers';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -90,20 +103,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -129,7 +148,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -502,7 +565,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-number-generator">Numpy random number generator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-transform-method">Inverse transform method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-samples-in-regions">Generating random samples in regions</a></li>
@@ -540,8 +603,8 @@
 <li><p>are produced efficiently</p></li>
 </ul>
 <p>Initial examples are the modulo generators,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-59566ca9-c0ba-4688-a696-e6bfd268b6da">
-<span class="eqno">(134)<a class="headerlink" href="#equation-59566ca9-c0ba-4688-a696-e6bfd268b6da" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bc1cd807-ef55-4785-b4c5-88fca82d91cd">
+<span class="eqno">(134)<a class="headerlink" href="#equation-bc1cd807-ef55-4785-b4c5-88fca82d91cd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i = ax_{i-1} + c(\textrm{mod}\, m),
 \end{equation}\]</div>
 <p>where the constants <span class="math notranslate nohighlight">\(a, c, m\)</span> should be chosen with care. For instance, <span class="math notranslate nohighlight">\(m\)</span> determines the period. A bad choice for those constant will lead to low period and large correlations. The generation of random numbers efficiently and with quality is an actual research topic, with huge implications from the field of random simulation of physical systems to the field of cryptography.</p>
@@ -600,10 +663,10 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f62c56bebd0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f3c5968f090&gt;
 </pre></div>
 </div>
-<img alt="../../_images/1538f307409608bbf80ab778cd2f23e6175cec41b044fb1ed1707f27de362d20.png" src="../../_images/1538f307409608bbf80ab778cd2f23e6175cec41b044fb1ed1707f27de362d20.png" />
+<img alt="../../_images/b7736508fe580fa92d52b2f948355b4cbd049cd8fbe0d8c9a8492a730ed6869f.png" src="../../_images/b7736508fe580fa92d52b2f948355b4cbd049cd8fbe0d8c9a8492a730ed6869f.png" />
 </div>
 </div>
 <section id="numpy-random-number-generator">
@@ -622,10 +685,10 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f62c330aa10&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f3c5731c850&gt;
 </pre></div>
 </div>
-<img alt="../../_images/029d63e973a41f364bf6b2cc22b8c4c4632ab10ed60422008f49e3cb597aa040.png" src="../../_images/029d63e973a41f364bf6b2cc22b8c4c4632ab10ed60422008f49e3cb597aa040.png" />
+<img alt="../../_images/df49711cce6403858c4921169e32931254d48e864830ca986568c537b21008bd.png" src="../../_images/df49711cce6403858c4921169e32931254d48e864830ca986568c537b21008bd.png" />
 </div>
 </div>
 <p><mark>Exercises</mark>:</p>
@@ -638,18 +701,18 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 <section id="inverse-transform-method">
 <h2>Inverse transform method<a class="headerlink" href="#inverse-transform-method" title="Link to this heading">#</a></h2>
 <p>In this case you want to invert the cumulative probability function. Let’s say that you have an exponential distribution, whose density is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-22b8d10d-0ca1-4db9-9216-9b0b8b4b2785">
-<span class="eqno">(135)<a class="headerlink" href="#equation-22b8d10d-0ca1-4db9-9216-9b0b8b4b2785" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-806c83a1-d2e0-4f99-8055-c1a9def57f90">
+<span class="eqno">(135)<a class="headerlink" href="#equation-806c83a1-d2e0-4f99-8055-c1a9def57f90" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(t) = \lambda e^{-\lambda t}, t &gt; 0
 \end{equation}\]</div>
 <p>whose cumulative distribution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9e30717f-5c05-4107-924b-009bddca66e8">
-<span class="eqno">(136)<a class="headerlink" href="#equation-9e30717f-5c05-4107-924b-009bddca66e8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c38f9ef2-c62e-453d-806d-917d807925db">
+<span class="eqno">(136)<a class="headerlink" href="#equation-c38f9ef2-c62e-453d-806d-917d807925db" title="Permalink to this equation">#</a></span>\[\begin{equation}
 F(x) = \int_0^x f(t) dt = 1 - e^{-\lambda x}.
 \end{equation}\]</div>
 <p>Now, the cumulative distribution is in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>. If we equate it to a uniform random number in the same interval, <span class="math notranslate nohighlight">\(z = F(x)\)</span>, then we can invert this expression and obtain <span class="math notranslate nohighlight">\(x = F^{-1}(z)\)</span>. For the exponential distribution we get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cdfb03fb-cfc3-45bc-9066-c541bd0cb9b3">
-<span class="eqno">(137)<a class="headerlink" href="#equation-cdfb03fb-cfc3-45bc-9066-c541bd0cb9b3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-19fa6a96-e397-41b5-9113-0b33e92b40b5">
+<span class="eqno">(137)<a class="headerlink" href="#equation-19fa6a96-e397-41b5-9113-0b33e92b40b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x = -\frac{\ln (1-z)}{\lambda}
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -675,10 +738,10 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f62c56eb450&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3c573e61d0&gt;
 </pre></div>
 </div>
-<img alt="../../_images/f9b65226209fdd3f84b7da516bc15571804e7d0592a0a1f8745f5f256996814c.png" src="../../_images/f9b65226209fdd3f84b7da516bc15571804e7d0592a0a1f8745f5f256996814c.png" />
+<img alt="../../_images/d3462a40e6105dc56bb3161a0412509beccea9fc117f1d9a38cd1cebe9c19e17.png" src="../../_images/d3462a40e6105dc56bb3161a0412509beccea9fc117f1d9a38cd1cebe9c19e17.png" />
 </div>
 </div>
 <p><mark>Exercise:</mark></p>
@@ -711,7 +774,7 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3a257bfccd6e4884acc4be60419489c291497e506f74711b8e1d4a49b2cdb1ac.png" src="../../_images/3a257bfccd6e4884acc4be60419489c291497e506f74711b8e1d4a49b2cdb1ac.png" />
+<img alt="../../_images/a95043f0360fbeba50fc0ddf0fcc3f1730c465bf435e2ecc6f37fe8be5c34fdb.png" src="../../_images/a95043f0360fbeba50fc0ddf0fcc3f1730c465bf435e2ecc6f37fe8be5c34fdb.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -730,7 +793,7 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3a257bfccd6e4884acc4be60419489c291497e506f74711b8e1d4a49b2cdb1ac.png" src="../../_images/3a257bfccd6e4884acc4be60419489c291497e506f74711b8e1d4a49b2cdb1ac.png" />
+<img alt="../../_images/a95043f0360fbeba50fc0ddf0fcc3f1730c465bf435e2ecc6f37fe8be5c34fdb.png" src="../../_images/a95043f0360fbeba50fc0ddf0fcc3f1730c465bf435e2ecc6f37fe8be5c34fdb.png" />
 </div>
 </div>
 <p><mark>Exercises</mark></p>
@@ -745,30 +808,30 @@ x = -\frac{\ln (1-z)}{\lambda}
 <h2>Computing random integrals<a class="headerlink" href="#computing-random-integrals" title="Link to this heading">#</a></h2>
 <p>REF: Ward</p>
 <p>Computing integrals using random numbers is easy and practical, specially for large dimensions. In the unit interval, one can compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7b607601-7ec5-4620-8258-0e583213183a">
-<span class="eqno">(138)<a class="headerlink" href="#equation-7b607601-7ec5-4620-8258-0e583213183a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-78881bc9-35d4-4b0e-9613-794872213d70">
+<span class="eqno">(138)<a class="headerlink" href="#equation-78881bc9-35d4-4b0e-9613-794872213d70" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^1 f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>so the integral is approximated as the average function value. For a general interval, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-20380a98-012e-4912-83dd-d034132a5735">
-<span class="eqno">(139)<a class="headerlink" href="#equation-20380a98-012e-4912-83dd-d034132a5735" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8bb9b440-9c27-4680-8dc9-7389e7f2ec8a">
+<span class="eqno">(139)<a class="headerlink" href="#equation-8bb9b440-9c27-4680-8dc9-7389e7f2ec8a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{b-a}\int_a^b f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>or , in higher dimensions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6dbc5b13-1e26-4d8c-a26e-e833b63d2cfb">
-<span class="eqno">(140)<a class="headerlink" href="#equation-6dbc5b13-1e26-4d8c-a26e-e833b63d2cfb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-716b7471-156e-4323-85c4-a818c5d20cb4">
+<span class="eqno">(140)<a class="headerlink" href="#equation-716b7471-156e-4323-85c4-a818c5d20cb4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{8}\int_1^3\int_{-1}^1 \int_0^2 f(x, y, z) dxdydz \simeq \frac{1}{n} \sum_{i=1}^n f(x_i, y_i, z_i).
 \end{equation}\]</div>
 <p>In general one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d44f8e07-a2bf-4220-96f9-9d30e8ad6516">
-<span class="eqno">(141)<a class="headerlink" href="#equation-d44f8e07-a2bf-4220-96f9-9d30e8ad6516" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a54c9092-a75a-447d-8751-afd848e2b37c">
+<span class="eqno">(141)<a class="headerlink" href="#equation-a54c9092-a75a-447d-8751-afd848e2b37c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_A f \simeq (\text{measure of}\ A) \times (\text{average of}\ f\ \text{over}\ n\ \text{random points on}\ A)
 \end{equation}\]</div>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <p>Compute the following integral</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2079d558-1df8-4d6f-b4f5-81d30c629c61">
-<span class="eqno">(142)<a class="headerlink" href="#equation-2079d558-1df8-4d6f-b4f5-81d30c629c61" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c66669af-d720-45a0-a168-2222efca56ed">
+<span class="eqno">(142)<a class="headerlink" href="#equation-c66669af-d720-45a0-a168-2222efca56ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \iint_\limits{\Omega}\sin\sqrt{\ln(x+y+1)} dx dy, 
 \end{equation}\]</div>
 <p>where the integration region <span class="math notranslate nohighlight">\(\Omega\)</span> is the disk defined as <span class="math notranslate nohighlight">\((x-1/2)^2 + (y-1/2)^2 \le 1/4\)</span>.</p>
@@ -787,7 +850,7 @@ x = -\frac{\ln (1-z)}{\lambda}
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3a257bfccd6e4884acc4be60419489c291497e506f74711b8e1d4a49b2cdb1ac.png" src="../../_images/3a257bfccd6e4884acc4be60419489c291497e506f74711b8e1d4a49b2cdb1ac.png" />
+<img alt="../../_images/a95043f0360fbeba50fc0ddf0fcc3f1730c465bf435e2ecc6f37fe8be5c34fdb.png" src="../../_images/a95043f0360fbeba50fc0ddf0fcc3f1730c465bf435e2ecc6f37fe8be5c34fdb.png" />
 </div>
 </div>
 </section>
@@ -831,8 +894,8 @@ The expected value is around 0.14</p>
 <p><mark>Exercises</mark></p>
 <ul>
 <li><p>[ ] (Ward) Compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e0a13e80-e5f1-4dd2-8217-f908d3a70156">
-<span class="eqno">(143)<a class="headerlink" href="#equation-e0a13e80-e5f1-4dd2-8217-f908d3a70156" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7e600718-abf9-47c3-9f60-73c2b24d9318">
+<span class="eqno">(143)<a class="headerlink" href="#equation-7e600718-abf9-47c3-9f60-73c2b24d9318" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^2\int_3^6\int_{-1}^1 (y x^2 + z\log y + e^x) dx dy dz
 \end{equation}\]</div>
 </li>
@@ -953,7 +1016,7 @@ The expected value is around 0.14</p>
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-random-number-generator">Numpy random number generator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-transform-method">Inverse transform method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-random-samples-in-regions">Generating random samples in regions</a></li>
@@ -1011,8 +1074,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>

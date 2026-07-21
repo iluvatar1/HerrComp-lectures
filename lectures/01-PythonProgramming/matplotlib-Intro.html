@@ -27,8 +27,8 @@
   </noscript>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
-<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+  <link href="../../_static/styles/theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=55c26ed414f5f8a31ebb" rel="stylesheet" />
 
     <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
@@ -44,10 +44,10 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
-  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/fontawesome.js?digest=55c26ed414f5f8a31ebb"></script>
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
-<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb" />
 
     <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
     <script src="../../_static/doctools.js?v=9a2dae69"></script>
@@ -66,6 +66,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -75,6 +81,12 @@
     <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){ dataLayer.push(arguments); }
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',
+                    'ad_user_data': 'denied',
+                    'ad_personalization': 'denied',
+                    'analytics_storage': 'denied'
+                });
                 gtag('js', new Date());
                 gtag('config', 'G-DX59QS1P22');
             </script>
@@ -82,6 +94,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/01-PythonProgramming/matplotlib-Intro';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -90,20 +103,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   <meta name="docsearch:version" content="" />
+  
+    
+    <script src="../../_static/searchtools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../searchindex.js"></script>
+  
   </head>
-  
-  
-  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
-
+  <body data-default-mode="">
   
   
   <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
   
   <div id="pst-scroll-pixel-helper"></div>
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
     <i class="fa-solid fa-arrow-up"></i>Back to top</button>
-
+  
+  
+  
   
   <dialog id="pst-search-dialog">
     
@@ -129,7 +148,51 @@
 </div>
 
   
-    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
     </header>
   
 
@@ -502,7 +565,7 @@
                 <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+                <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-colors-widths-and-adding-legends">Changing colors, widths, and adding legends</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-figure-size-and-resolution">Changing the figure size and resolution</a></li>
@@ -578,7 +641,7 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f3303852c8d55cc3826ac973e21f45293da212a7ee544b3b29552530082d457a.png" src="../../_images/f3303852c8d55cc3826ac973e21f45293da212a7ee544b3b29552530082d457a.png" />
+<img alt="../../_images/ef59cc53f553c45907d27c95367b259aa3dcf8f3a25522c7be30cda983ce74d1.png" src="../../_images/ef59cc53f553c45907d27c95367b259aa3dcf8f3a25522c7be30cda983ce74d1.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -899,7 +962,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;This is a title which includes LaTeX $\\alpha, \\beta^\\gamma$&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/ebe6e2970392f835baad499ee7ab04c86cdc28fba5b986f8715f8cbaf13581ac.png" src="../../_images/ebe6e2970392f835baad499ee7ab04c86cdc28fba5b986f8715f8cbaf13581ac.png" />
+<img alt="../../_images/1c62d3d282f28e7ca7e57c8ecf281d5c4f462ff4b6c6034b7911745a91d80174.png" src="../../_images/1c62d3d282f28e7ca7e57c8ecf281d5c4f462ff4b6c6034b7911745a91d80174.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -923,7 +986,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;This is an inset&#39;)
 </pre></div>
 </div>
-<img alt="../../_images/d916c771c14ad03d67c50b6df37a0ac8f7b76881d217067f3d356a940ef57a31.png" src="../../_images/d916c771c14ad03d67c50b6df37a0ac8f7b76881d217067f3d356a940ef57a31.png" />
+<img alt="../../_images/95c046b5afe6b96ae661764e85c945eb67749107af5e4766b005000400112ed5.png" src="../../_images/95c046b5afe6b96ae661764e85c945eb67749107af5e4766b005000400112ed5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -939,7 +1002,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5388ab0d7937aa131b4eb88974cb8a022962436b179af13b9d109c2044dccdd0.png" src="../../_images/5388ab0d7937aa131b4eb88974cb8a022962436b179af13b9d109c2044dccdd0.png" />
+<img alt="../../_images/59b5427cf831e697eba21ba5bced22048025c04187ddb482d3ecbf56eb742ecd.png" src="../../_images/59b5427cf831e697eba21ba5bced22048025c04187ddb482d3ecbf56eb742ecd.png" />
 </div>
 </div>
 <p>As you can see, there are several defaults employed: the type of data plotting (lines), the color (blue and then green), the axis sizes, no labels, no legends, etc. Now let’s start modifying some settings.</p>
@@ -954,10 +1017,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f27c45ebe90&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f668cc1ae10&gt;
 </pre></div>
 </div>
-<img alt="../../_images/ee3f46188734d5731a6af7f690fa069b1d36f398c7fea9fe2459c844446f8975.png" src="../../_images/ee3f46188734d5731a6af7f690fa069b1d36f398c7fea9fe2459c844446f8975.png" />
+<img alt="../../_images/88f7c7e6895aa83e16f06c62a8622100cc32c553c89c1493ec40d6cc2b8a3533.png" src="../../_images/88f7c7e6895aa83e16f06c62a8622100cc32c553c89c1493ec40d6cc2b8a3533.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -968,10 +1031,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f27c421fb10&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f668cb26810&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/d6b1619c5397e8e2abc1b0479551a2e5807e64bc3bbdcbe9ef98c04edbee684c.png" src="../../_images/d6b1619c5397e8e2abc1b0479551a2e5807e64bc3bbdcbe9ef98c04edbee684c.png" />
+<img alt="../../_images/078b454877c165203b1a00c4fdd184746ce66e432c742ec0bca478e89c27b200.png" src="../../_images/078b454877c165203b1a00c4fdd184746ce66e432c742ec0bca478e89c27b200.png" />
 </div>
 </div>
 <p>There are more standard color : red, cyan, magenta, yellow, black, white. Actually, matplotlib can use a full range of html colors and even more! Check <a class="reference external" href="http://matplotlib.org/api/colors_api.html#module-matplotlib.colors">Matplotlib colors</a>.</p>
@@ -991,7 +1054,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1680d5a4a11e92d79ac816a5699bec85ad8d7d92b3bd64b0a8a6139ddbcc1a08.png" src="../../_images/1680d5a4a11e92d79ac816a5699bec85ad8d7d92b3bd64b0a8a6139ddbcc1a08.png" />
+<img alt="../../_images/412bc3763151d8d7cf64916c482cf3025b8f2e1e9984968d0262bdf9c3bca818.png" src="../../_images/412bc3763151d8d7cf64916c482cf3025b8f2e1e9984968d0262bdf9c3bca818.png" />
 </div>
 </div>
 </section>
@@ -1008,7 +1071,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5388ab0d7937aa131b4eb88974cb8a022962436b179af13b9d109c2044dccdd0.png" src="../../_images/5388ab0d7937aa131b4eb88974cb8a022962436b179af13b9d109c2044dccdd0.png" />
+<img alt="../../_images/59b5427cf831e697eba21ba5bced22048025c04187ddb482d3ecbf56eb742ecd.png" src="../../_images/59b5427cf831e697eba21ba5bced22048025c04187ddb482d3ecbf56eb742ecd.png" />
 </div>
 </div>
 </section>
@@ -1024,10 +1087,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f27c4295250&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f668c4c6610&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/c4dd3b3287a2af81b24e6b91fc246daa09cfa4f143e538f8d3bc1276fc373f77.png" src="../../_images/c4dd3b3287a2af81b24e6b91fc246daa09cfa4f143e538f8d3bc1276fc373f77.png" />
+<img alt="../../_images/c30982148a88947deba8e8f0292112cf4de7eafac515b3dc70fedd186f7d7d10.png" src="../../_images/c30982148a88947deba8e8f0292112cf4de7eafac515b3dc70fedd186f7d7d10.png" />
 </div>
 </div>
 <section id="setting-tics">
@@ -1043,10 +1106,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f27b53e0f90&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f668c3ba090&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/f2e82695b4bb92bdfe28e5c78de494f8e7f66ef8a5957ab824e7ef90997e9145.png" src="../../_images/f2e82695b4bb92bdfe28e5c78de494f8e7f66ef8a5957ab824e7ef90997e9145.png" />
+<img alt="../../_images/a1870fae0c522945d5aafc857ed12ed0b599fda44de5e0c682481201b0899eaf.png" src="../../_images/a1870fae0c522945d5aafc857ed12ed0b599fda44de5e0c682481201b0899eaf.png" />
 </div>
 </div>
 </section>
@@ -1063,10 +1126,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f27b5226bd0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f668c20d790&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/9764bcd0bf679f8d6ccd8170dc683f735d9758522b9f66ab2cf27425262f0b73.png" src="../../_images/9764bcd0bf679f8d6ccd8170dc683f735d9758522b9f66ab2cf27425262f0b73.png" />
+<img alt="../../_images/de9d0963566f318d9ec0a6d20f79982efa87f629917c12dd7f26ce000e894f9d.png" src="../../_images/de9d0963566f318d9ec0a6d20f79982efa87f629917c12dd7f26ce000e894f9d.png" />
 </div>
 </div>
 </section>
@@ -1114,7 +1177,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6a976c442b87c275601d8909a952176abb0636a79a6299fd8dda26fb79016d27.png" src="../../_images/6a976c442b87c275601d8909a952176abb0636a79a6299fd8dda26fb79016d27.png" />
+<img alt="../../_images/739cf8438fa0fc4c7e7f32da4c124fb2910aa260801ba4e616463faab931c963.png" src="../../_images/739cf8438fa0fc4c7e7f32da4c124fb2910aa260801ba4e616463faab931c963.png" />
 </div>
 </div>
 </section>
@@ -1132,7 +1195,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/880d028fdca14bb303c39ace8ce18ed627bd00d7ee1b52a65647a30126c76ded.png" src="../../_images/880d028fdca14bb303c39ace8ce18ed627bd00d7ee1b52a65647a30126c76ded.png" />
+<img alt="../../_images/e495493f097efb2ba5070b271c25dcfd8fdb8c0f8e677c9f62adc2de3f3bb899.png" src="../../_images/e495493f097efb2ba5070b271c25dcfd8fdb8c0f8e677c9f62adc2de3f3bb899.png" />
 </div>
 </div>
 </section>
@@ -1161,7 +1224,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/61ff55b123ca6823a3de811875459315b7d6c54eec048b723a49607ae51e0c17.png" src="../../_images/61ff55b123ca6823a3de811875459315b7d6c54eec048b723a49607ae51e0c17.png" />
+<img alt="../../_images/b879d9d12db5c1e3043864b628390d02d253db1c09cb251cacc4cea98d086d29.png" src="../../_images/b879d9d12db5c1e3043864b628390d02d253db1c09cb251cacc4cea98d086d29.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1175,7 +1238,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cf5e517121ec5069f015ccaaca6a0431990f099ac319570bf0ee1be6762a763d.png" src="../../_images/cf5e517121ec5069f015ccaaca6a0431990f099ac319570bf0ee1be6762a763d.png" />
+<img alt="../../_images/31b59aa6cd6fdefa89809b2b0ae862ae3a37822f6310a21b4fb839f0419e9b43.png" src="../../_images/31b59aa6cd6fdefa89809b2b0ae862ae3a37822f6310a21b4fb839f0419e9b43.png" />
 </div>
 </div>
 </section>
@@ -1218,7 +1281,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6937f0f5dde991ffeca4146ccad7fab5f78eb8cb239ff0864a3699af18350d84.png" src="../../_images/6937f0f5dde991ffeca4146ccad7fab5f78eb8cb239ff0864a3699af18350d84.png" />
+<img alt="../../_images/00d6707acfde5b544bb5cbd8866ece0b362a8d4d6a55b5fec549bf7904c331f9.png" src="../../_images/00d6707acfde5b544bb5cbd8866ece0b362a8d4d6a55b5fec549bf7904c331f9.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1236,7 +1299,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d3495cfce7e38b722af6b07a4e65b9b9e4b7a9878af4b8d96065cca07090dc20.png" src="../../_images/d3495cfce7e38b722af6b07a4e65b9b9e4b7a9878af4b8d96065cca07090dc20.png" />
+<img alt="../../_images/4beb38d9490c671f7c0212d864abc08d867b0b57fbde7049c402af6e92404dd7.png" src="../../_images/4beb38d9490c671f7c0212d864abc08d867b0b57fbde7049c402af6e92404dd7.png" />
 </div>
 </div>
 </section>
@@ -1323,10 +1386,10 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2668,</span> in <span class="ni">Image.save</span><span class="nt">(self, fp, format, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2667</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2668</span>     <span class="nb">format</span> <span class="o">=</span> <span class="n">EXTENSION</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">2669</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2666,</span> in <span class="ni">Image.save</span><span class="nt">(self, fp, format, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2665</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">2666</span>     <span class="nb">format</span> <span class="o">=</span> <span class="n">EXTENSION</span><span class="p">[</span><span class="n">ext</span><span class="p">]</span>
+<span class="g g-Whitespace">   </span><span class="mi">2667</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
 
 <span class="ne">KeyError</span>: &#39;.mp4&#39;
 
@@ -1370,17 +1433,17 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
 <span class="g g-Whitespace">    </span><span class="mi">511</span>         <span class="bp">self</span><span class="o">.</span><span class="n">outfile</span><span class="p">,</span> <span class="n">save_all</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">append_images</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_frames</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span>
 <span class="g g-Whitespace">    </span><span class="mi">512</span>         <span class="n">duration</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="mi">1000</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">fps</span><span class="p">),</span> <span class="n">loop</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2671,</span> in <span class="ni">Image.save</span><span class="nt">(self, fp, format, **params)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2669</span>     <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">2670</span>         <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;unknown file extension: </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">2671</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
-<span class="g g-Whitespace">   </span><span class="mi">2673</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageFile</span>
-<span class="g g-Whitespace">   </span><span class="mi">2675</span> <span class="c1"># may mutate self!</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2669,</span> in <span class="ni">Image.save</span><span class="nt">(self, fp, format, **params)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2667</span>     <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">2668</span>         <span class="n">msg</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;unknown file extension: </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">2669</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+<span class="g g-Whitespace">   </span><span class="mi">2671</span> <span class="kn">from</span><span class="w"> </span><span class="nn">.</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageFile</span>
+<span class="g g-Whitespace">   </span><span class="mi">2673</span> <span class="c1"># may mutate self!</span>
 
 <span class="ne">ValueError</span>: unknown file extension: .mp4
 </pre></div>
 </div>
-<img alt="../../_images/49c0004487c77b0f47fe43d80566016cec2af320186b920837a22aa60cebaa7b.png" src="../../_images/49c0004487c77b0f47fe43d80566016cec2af320186b920837a22aa60cebaa7b.png" />
+<img alt="../../_images/dbbfd4966588911b11664afd87a4de7530a0ef924ea0a3a221313593793320e7.png" src="../../_images/dbbfd4966588911b11664afd87a4de7530a0ef924ea0a3a221313593793320e7.png" />
 </div>
 </div>
 </section>
@@ -1813,7 +1876,7 @@ plot(*args: &#39;float | ArrayLike | str&#39;, scalex: &#39;bool&#39; = True, sc
     <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
-    <ul class="visible nav section-nav flex-column">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#a-simple-example">A simple example</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-colors-widths-and-adding-legends">Changing colors, widths, and adding legends</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-the-figure-size-and-resolution">Changing the figure size and resolution</a></li>
@@ -1895,8 +1958,8 @@ By William Oquendo
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
-<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+  <script defer src="../../_static/scripts/bootstrap.js?digest=55c26ed414f5f8a31ebb"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=55c26ed414f5f8a31ebb"></script>
 
   <footer class="bd-footer">
   </footer>
