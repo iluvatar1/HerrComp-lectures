@@ -650,10 +650,10 @@ np.sin?
 <p>You have already seen how to print to the screen. To read, you can use the function call <code class="docutils literal notranslate"><span class="pre">input</span></code>. Try it:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;something&quot;</span>
-<span class="c1"># var = input(&quot;Please write something :\t&quot;)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;You have written : &quot;</span> <span class="o">+</span> <span class="n">var</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;You have written : </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="c1"># uses a f-string: https://realpython.com/python-f-strings/</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="s2">"something"</span>
+<span class="c1"># var = input("Please write something :\t")</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"You have written : "</span> <span class="o">+</span> <span class="n">var</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"You have written : </span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="c1"># uses a f-string: https://realpython.com/python-f-strings/</span>
 </pre></div>
 </div>
 </div>
@@ -669,8 +669,8 @@ You have written : something
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">y</span> <span class="o">=</span> <span class="mf">2.34</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x = </span><span class="si">%04d</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> y = </span><span class="si">%.1f</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> y=</span><span class="si">%20.16e</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> y = </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> y=</span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">20.16e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x = </span><span class="si">%04d</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> y = </span><span class="si">%.1f</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> y=</span><span class="si">%20.16e</span><span class="se">\n</span><span class="s2">"</span><span class="o">%</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"x = </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">04d</span><span class="si">}</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> y = </span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2"> y=</span><span class="si">{</span><span class="n">y</span><span class="si">:</span><span class="s2">20.16e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -705,11 +705,11 @@ x = 0005 	 y = 2.3
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="k">if</span> <span class="n">m</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> is smaller than 1&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> is smaller than 1"</span><span class="p">)</span>
 <span class="k">elif</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">m</span> <span class="o">&lt;=</span> <span class="mi">4</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> is in between 1 and 4&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> is in between 1 and 4"</span><span class="p">)</span>
 <span class="k">else</span> <span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> is larger than 4&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2"> is larger than 4"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -758,7 +758,7 @@ True
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
     <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span>
 </pre></div>
 </div>
@@ -772,7 +772,7 @@ True
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s2">"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">" "</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -784,9 +784,9 @@ True
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;My name&quot;</span> <span class="c1"># a string is an array for characters</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">"My name"</span> <span class="c1"># a string is an array for characters</span>
 <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">name</span><span class="p">:</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">"-"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">name</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
@@ -832,7 +832,7 @@ e
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">()</span> <span class="p">:</span> 
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;I am the function&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">"I am the function"</span><span class="p">)</span>
     
 <span class="n">my_function</span><span class="p">()</span> <span class="c1"># this calls the function    </span>
 </pre></div>
@@ -848,7 +848,7 @@ e
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this shows how to pass arguments</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value of argument is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"Value of argument is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     
 <span class="c1">#my_function() # error, requires argument</span>
 <span class="n">my_function</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
@@ -867,7 +867,7 @@ Value of argument is 0.9
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this shows how to pass arguments, and assign default values</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Value of argument is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"Value of argument is </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     
 <span class="n">my_function</span><span class="p">()</span> <span class="c1"># no longer an error</span>
 <span class="n">my_function</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">)</span>
@@ -885,9 +885,9 @@ Value of argument is -3
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this shows how to pass arguments, assign default values, and also calls by named arguments</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">my_function</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">):</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Calling my_function&quot;</span><span class="p">)</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;x &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;y &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">"Calling my_function"</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">"x "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">"y "</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
     
 <span class="n">my_function</span><span class="p">()</span> <span class="c1"># no longer an error</span>
 <span class="n">my_function</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="c1"># x = -3, y = -2</span>
@@ -934,10 +934,10 @@ y -3
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">FtoC</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;The temperature 0 F is equivalent to -17.78 C&quot;</span>
-<span class="k">assert</span> <span class="n">FtoC</span><span class="p">(</span><span class="mf">10.3</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;The temperature 10.3 F is equivalent to -12.06 C&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">assert</span> <span class="n">FtoC</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"The temperature 0 F is equivalent to -17.78 C"</span>
+<span class="k">assert</span> <span class="n">FtoC</span><span class="p">(</span><span class="mf">10.3</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"The temperature 10.3 F is equivalent to -12.06 C"</span>
 <span class="c1">### BEGIN HIDDEN TEST</span>
-<span class="k">assert</span> <span class="n">FtoC</span><span class="p">(</span><span class="o">-</span><span class="mf">10.3</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;The temperature -10.3 F is equivalent to -23.50 C&quot;</span>
+<span class="k">assert</span> <span class="n">FtoC</span><span class="p">(</span><span class="o">-</span><span class="mf">10.3</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"The temperature -10.3 F is equivalent to -23.50 C"</span>
 <span class="c1">### END HIDDEN TEST</span>
 </pre></div>
 </div>

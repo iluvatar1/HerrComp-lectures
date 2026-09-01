@@ -603,7 +603,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import needed utils, like for embeding videos and url</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;utils&#39;</span><span class="p">)))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'..'</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">,</span> <span class="s1">'utils'</span><span class="p">)))</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">embed</span>
 </pre></div>
 </div>
@@ -612,7 +612,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/explore&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://visualpde.com/explore"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -658,7 +658,7 @@
 <span class="n">shape</span> <span class="o">=</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">'ij'</span><span class="p">)</span>
 
 <span class="n">L</span> <span class="o">=</span> <span class="n">FinDiff</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">dx</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="n">FinDiff</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">dy</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">shape</span><span class="p">)</span>
@@ -678,7 +678,7 @@
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">&#39;matplotlib&#39;</span><span class="p">,</span> <span class="s1">&#39;inline&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">run_line_magic</span><span class="p">(</span><span class="s1">'matplotlib'</span><span class="p">,</span> <span class="s1">'inline'</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1">#!/usr/bin/env python3</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> 
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="kn">from</span><span class="w"> </span><span class="nn">findiff</span><span class="w"> </span><span class="kn">import</span> <span class="n">Diff</span><span class="p">,</span> <span class="n">Id</span><span class="p">,</span> <span class="n">PDE</span><span class="p">,</span> <span class="n">FinDiff</span><span class="p">,</span> <span class="n">BoundaryConditions</span>
@@ -686,7 +686,7 @@
 <span class="g g-Whitespace">      </span><span class="mi">6</span> 
 <span class="g g-Whitespace">      </span><span class="mi">7</span> 
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;findiff&#39;
+<span class="ne">ModuleNotFoundError</span>: No module named 'findiff'
 </pre></div>
 </div>
 </div>
@@ -737,7 +737,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">pde</span><span class="w"> </span><span class="kn">import</span> <span class="n">CartesianGrid</span><span class="p">,</span> <span class="n">solve_laplace_equation</span>
 
 <span class="n">grid</span> <span class="o">=</span> <span class="n">CartesianGrid</span><span class="p">([[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">]],</span> <span class="mi">64</span><span class="p">)</span>
-<span class="n">bcs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;sin(y)&quot;</span><span class="p">},</span> <span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;sin(x)&quot;</span><span class="p">}}</span>
+<span class="n">bcs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"x"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"value"</span><span class="p">:</span> <span class="s2">"sin(y)"</span><span class="p">},</span> <span class="s2">"y"</span><span class="p">:</span> <span class="p">{</span><span class="s2">"value"</span><span class="p">:</span> <span class="s2">"sin(x)"</span><span class="p">}}</span>
 
 <span class="n">res</span> <span class="o">=</span> <span class="n">solve_laplace_equation</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">bcs</span><span class="p">)</span>
 <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
@@ -755,8 +755,8 @@
 <span class="n">storage</span> <span class="o">=</span> <span class="n">pde</span><span class="o">.</span><span class="n">MemoryStorage</span><span class="p">()</span>
 
 <span class="n">trackers</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="s2">&quot;progress&quot;</span><span class="p">,</span>  <span class="c1"># show progress bar during simulation</span>
-    <span class="s2">&quot;steady_state&quot;</span><span class="p">,</span>  <span class="c1"># abort when steady state is reached</span>
+    <span class="s2">"progress"</span><span class="p">,</span>  <span class="c1"># show progress bar during simulation</span>
+    <span class="s2">"steady_state"</span><span class="p">,</span>  <span class="c1"># abort when steady state is reached</span>
     <span class="n">storage</span><span class="o">.</span><span class="n">tracker</span><span class="p">(</span><span class="n">interrupts</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>  <span class="c1"># store data every simulation time unit</span>
     <span class="n">pde</span><span class="o">.</span><span class="n">PlotTracker</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>  <span class="c1"># show images during simulation</span>
     <span class="c1"># print some output every 5 real seconds:</span>
@@ -813,15 +813,15 @@
 
 <span class="c1"># # enable additional mesh validity checks, sacrificing performance</span>
 <span class="c1"># import logging</span>
-<span class="c1"># logging.basicConfig(format=&#39;%(levelname)s %(asctime)s %(name)s %(message)s&#39;)</span>
-<span class="c1"># logging.getLogger(&#39;skfem&#39;).setLevel(logging.DEBUG)</span>
+<span class="c1"># logging.basicConfig(format='%(levelname)s %(asctime)s %(name)s %(message)s')</span>
+<span class="c1"># logging.getLogger('skfem').setLevel(logging.DEBUG)</span>
 
 <span class="c1"># create the mesh</span>
 <span class="n">m</span> <span class="o">=</span> <span class="n">MeshTri</span><span class="p">()</span><span class="o">.</span><span class="n">refined</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 <span class="c1"># or, with your own points and cells:</span>
 <span class="c1"># m = MeshTri(points, cells)</span>
 <span class="c1"># or, load from file</span>
-<span class="c1"># m = MeshTri.load(&quot;mesh.msh&quot;)</span>
+<span class="c1"># m = MeshTri.load("mesh.msh")</span>
 
 <span class="n">e</span> <span class="o">=</span> <span class="n">ElementTriP1</span><span class="p">()</span>
 <span class="n">basis</span> <span class="o">=</span> <span class="n">Basis</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
@@ -848,9 +848,9 @@
 
 <span class="k">def</span><span class="w"> </span><span class="nf">visualize</span><span class="p">():</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">skfem.visuals.matplotlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot</span>
-    <span class="k">return</span> <span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">&#39;gouraud&#39;</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">plot</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">shading</span><span class="o">=</span><span class="s1">'gouraud'</span><span class="p">,</span> <span class="n">colorbar</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">visualize</span><span class="p">()</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -906,7 +906,7 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 <span class="n">fec</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">H1_FECollection</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">mesh</span><span class="o">.</span><span class="n">Dimension</span><span class="p">())</span>
 <span class="n">fes</span> <span class="o">=</span> <span class="n">mfem</span><span class="o">.</span><span class="n">FiniteElementSpace</span><span class="p">(</span><span class="n">mesh</span><span class="p">,</span> <span class="n">fec</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of unknowns:&quot;</span><span class="p">,</span> <span class="n">fes</span><span class="o">.</span><span class="n">GetTrueVSize</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Number of unknowns:"</span><span class="p">,</span> <span class="n">fes</span><span class="o">.</span><span class="n">GetTrueVSize</span><span class="p">())</span>
 
 <span class="c1"># --------------------------------------------------</span>
 <span class="c1"># Essential boundary conditions</span>
@@ -971,10 +971,10 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 <span class="n">a</span><span class="o">.</span><span class="n">RecoverFEMSolution</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
 <span class="c1"># Save solution</span>
-<span class="n">mesh</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="s2">&quot;mesh.mesh&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
-<span class="n">x</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="s2">&quot;solution.gf&quot;</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">mesh</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="s2">"mesh.mesh"</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<span class="n">x</span><span class="o">.</span><span class="n">Save</span><span class="p">(</span><span class="s2">"solution.gf"</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Done.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Done."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1048,10 +1048,10 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 
 <span class="n">domain</span> <span class="o">=</span> <span class="n">mesh</span><span class="o">.</span><span class="n">create_unit_square</span><span class="p">(</span><span class="n">MPI</span><span class="o">.</span><span class="n">COMM_WORLD</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">)</span>
-<span class="n">V</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">functionspace</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Lagrange&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">functionspace</span><span class="p">(</span><span class="n">domain</span><span class="p">,</span> <span class="p">(</span><span class="s2">"Lagrange"</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mesh: </span><span class="si">{</span><span class="n">domain</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">index_map</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">size_local</span><span class="si">}</span><span class="s2"> cells, &quot;</span>
-      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">V</span><span class="o">.</span><span class="n">dofmap</span><span class="o">.</span><span class="n">index_map</span><span class="o">.</span><span class="n">size_local</span><span class="si">}</span><span class="s2"> DOFs&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Mesh: </span><span class="si">{</span><span class="n">domain</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">index_map</span><span class="p">(</span><span class="n">domain</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span><span class="o">.</span><span class="n">size_local</span><span class="si">}</span><span class="s2"> cells, "</span>
+      <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">V</span><span class="o">.</span><span class="n">dofmap</span><span class="o">.</span><span class="n">index_map</span><span class="o">.</span><span class="n">size_local</span><span class="si">}</span><span class="s2"> DOFs"</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">boundary</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="kc">True</span><span class="p">)</span>
@@ -1068,16 +1068,16 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 
 <span class="n">problem</span> <span class="o">=</span> <span class="n">LinearProblem</span><span class="p">(</span>
     <span class="n">a</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">bc</span><span class="p">],</span>
-    <span class="n">petsc_options_prefix</span><span class="o">=</span><span class="s2">&quot;poisson_&quot;</span><span class="p">,</span>
+    <span class="n">petsc_options_prefix</span><span class="o">=</span><span class="s2">"poisson_"</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">uh</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 
 <span class="c1"># --- Diagnostics: print solution stats ---</span>
 <span class="n">u_array</span> <span class="o">=</span> <span class="n">uh</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">array</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution min: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution max: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Solution mean: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;First 10 values: </span><span class="si">{</span><span class="n">u_array</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Solution min: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Solution max: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Solution mean: </span><span class="si">{</span><span class="n">u_array</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"First 10 values: </span><span class="si">{</span><span class="n">u_array</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
 <span class="c1"># --- Visualization with pyvista ---</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pyvista</span>
@@ -1087,15 +1087,15 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 
 <span class="n">topology</span><span class="p">,</span> <span class="n">cell_types</span><span class="p">,</span> <span class="n">geometry</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">vtk_mesh</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
 <span class="n">grid</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">topology</span><span class="p">,</span> <span class="n">cell_types</span><span class="p">,</span> <span class="n">geometry</span><span class="p">)</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">u_array</span>
-<span class="n">grid</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s2">"u"</span><span class="p">]</span> <span class="o">=</span> <span class="n">u_array</span>
+<span class="n">grid</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="s2">"u"</span><span class="p">)</span>
 
 <span class="n">plotter</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
-<span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;viridis&quot;</span><span class="p">)</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"viridis"</span><span class="p">)</span>
 <span class="n">plotter</span><span class="o">.</span><span class="n">view_xy</span><span class="p">()</span>
-<span class="n">plotter</span><span class="o">.</span><span class="n">add_scalar_bar</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
-<span class="n">plotter</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s2">&quot;solution.png&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Saved plot to solution.png&quot;</span><span class="p">)</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">add_scalar_bar</span><span class="p">(</span><span class="s2">"u"</span><span class="p">)</span>
+<span class="n">plotter</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="s2">"solution.png"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Saved plot to solution.png"</span><span class="p">)</span>
 
 <span class="c1"># Optional: interactive window if not off-screen</span>
 <span class="c1"># plotter.show()</span>
@@ -1119,7 +1119,7 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 <span class="c1">#     text_representation:</span>
 <span class="c1">#       extension: .py</span>
 <span class="c1">#       format_name: light</span>
-<span class="c1">#       format_version: &#39;1.5&#39;</span>
+<span class="c1">#       format_version: '1.5'</span>
 <span class="c1">#       jupytext_version: 1.13.6</span>
 <span class="c1"># ---</span>
 
@@ -1213,7 +1213,7 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
     <span class="n">n</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">16</span><span class="p">),</span>
     <span class="n">cell_type</span><span class="o">=</span><span class="n">mesh</span><span class="o">.</span><span class="n">CellType</span><span class="o">.</span><span class="n">triangle</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="n">V</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">functionspace</span><span class="p">(</span><span class="n">msh</span><span class="p">,</span> <span class="p">(</span><span class="s2">&quot;Lagrange&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">fem</span><span class="o">.</span><span class="n">functionspace</span><span class="p">(</span><span class="n">msh</span><span class="p">,</span> <span class="p">(</span><span class="s2">"Lagrange"</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="c1"># -</span>
 
 <span class="c1"># The second argument to {py:func}`functionspace</span>
@@ -1228,7 +1228,7 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 <span class="c1"># (entities of topological co-dimension 1) that lie on the boundary</span>
 <span class="c1"># $\Gamma_D$ using {py:func}`locate_entities_boundary</span>
 <span class="c1"># &lt;dolfinx.mesh.locate_entities_boundary&gt;`. The function is provided</span>
-<span class="c1"># with a &#39;marker&#39; function that returns `True` for points `x` on the</span>
+<span class="c1"># with a 'marker' function that returns `True` for points `x` on the</span>
 <span class="c1"># boundary and `False` otherwise.</span>
 
 <span class="n">tdim</span> <span class="o">=</span> <span class="n">msh</span><span class="o">.</span><span class="n">topology</span><span class="o">.</span><span class="n">dim</span>
@@ -1275,8 +1275,8 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
     <span class="n">a</span><span class="p">,</span>
     <span class="n">L</span><span class="p">,</span>
     <span class="n">bcs</span><span class="o">=</span><span class="p">[</span><span class="n">bc</span><span class="p">],</span>
-    <span class="n">petsc_options_prefix</span><span class="o">=</span><span class="s2">&quot;demo_poisson_&quot;</span><span class="p">,</span>
-    <span class="n">petsc_options</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;ksp_type&quot;</span><span class="p">:</span> <span class="s2">&quot;preonly&quot;</span><span class="p">,</span> <span class="s2">&quot;pc_type&quot;</span><span class="p">:</span> <span class="s2">&quot;lu&quot;</span><span class="p">,</span> <span class="s2">&quot;ksp_error_if_not_converged&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
+    <span class="n">petsc_options_prefix</span><span class="o">=</span><span class="s2">"demo_poisson_"</span><span class="p">,</span>
+    <span class="n">petsc_options</span><span class="o">=</span><span class="p">{</span><span class="s2">"ksp_type"</span><span class="p">:</span> <span class="s2">"preonly"</span><span class="p">,</span> <span class="s2">"pc_type"</span><span class="p">:</span> <span class="s2">"lu"</span><span class="p">,</span> <span class="s2">"ksp_error_if_not_converged"</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span>
 <span class="p">)</span>
 <span class="n">uh</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">solve</span><span class="p">()</span>
 <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">uh</span><span class="p">,</span> <span class="n">fem</span><span class="o">.</span><span class="n">Function</span><span class="p">)</span>
@@ -1287,9 +1287,9 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 <span class="c1"># or [VisIt](https://visit-dav.github.io/visit-website/):</span>
 
 <span class="c1"># +</span>
-<span class="n">out_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;out_poisson&quot;</span><span class="p">)</span>
+<span class="n">out_folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"out_poisson"</span><span class="p">)</span>
 <span class="n">out_folder</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">XDMFFile</span><span class="p">(</span><span class="n">msh</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="n">out_folder</span> <span class="o">/</span> <span class="s2">&quot;poisson.xdmf&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">io</span><span class="o">.</span><span class="n">XDMFFile</span><span class="p">(</span><span class="n">msh</span><span class="o">.</span><span class="n">comm</span><span class="p">,</span> <span class="n">out_folder</span> <span class="o">/</span> <span class="s2">"poisson.xdmf"</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
     <span class="n">file</span><span class="o">.</span><span class="n">write_mesh</span><span class="p">(</span><span class="n">msh</span><span class="p">)</span>
     <span class="n">file</span><span class="o">.</span><span class="n">write_function</span><span class="p">(</span><span class="n">uh</span><span class="p">)</span>
 <span class="c1"># -</span>
@@ -1302,19 +1302,19 @@ pip<span class="w"> </span>install<span class="w"> </span>mfem<span class="w"> <
 
     <span class="n">cells</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">x</span> <span class="o">=</span> <span class="n">plot</span><span class="o">.</span><span class="n">vtk_mesh</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
     <span class="n">grid</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">UnstructuredGrid</span><span class="p">(</span><span class="n">cells</span><span class="p">,</span> <span class="n">types</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
-    <span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s2">&quot;u&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">uh</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">real</span>
-    <span class="n">grid</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="s2">&quot;u&quot;</span><span class="p">)</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">point_data</span><span class="p">[</span><span class="s2">"u"</span><span class="p">]</span> <span class="o">=</span> <span class="n">uh</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">array</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">grid</span><span class="o">.</span><span class="n">set_active_scalars</span><span class="p">(</span><span class="s2">"u"</span><span class="p">)</span>
     <span class="n">plotter</span> <span class="o">=</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">Plotter</span><span class="p">()</span>
     <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="n">show_edges</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">warped</span> <span class="o">=</span> <span class="n">grid</span><span class="o">.</span><span class="n">warp_by_scalar</span><span class="p">()</span>
     <span class="n">plotter</span><span class="o">.</span><span class="n">add_mesh</span><span class="p">(</span><span class="n">warped</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">pyvista</span><span class="o">.</span><span class="n">OFF_SCREEN</span><span class="p">:</span>
-        <span class="n">plotter</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">out_folder</span> <span class="o">/</span> <span class="s2">&quot;uh_poisson.png&quot;</span><span class="p">)</span>
+        <span class="n">plotter</span><span class="o">.</span><span class="n">screenshot</span><span class="p">(</span><span class="n">out_folder</span> <span class="o">/</span> <span class="s2">"uh_poisson.png"</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">plotter</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="k">except</span> <span class="ne">ModuleNotFoundError</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&#39;pyvista&#39; is required to visualise the solution.&quot;</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;To install pyvista with pip: &#39;python3 -m pip install pyvista&#39;.&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"'pyvista' is required to visualise the solution."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"To install pyvista with pip: 'python3 -m pip install pyvista'."</span><span class="p">)</span>
 <span class="c1"># -</span>
 </pre></div>
 </div>

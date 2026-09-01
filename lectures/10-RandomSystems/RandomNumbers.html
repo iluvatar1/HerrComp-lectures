@@ -603,8 +603,8 @@
 <li><p>are produced efficiently</p></li>
 </ul>
 <p>Initial examples are the modulo generators,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bc1cd807-ef55-4785-b4c5-88fca82d91cd">
-<span class="eqno">(134)<a class="headerlink" href="#equation-bc1cd807-ef55-4785-b4c5-88fca82d91cd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6f658244-3f51-467f-84a8-a528776e71d9">
+<span class="eqno">(134)<a class="headerlink" href="#equation-6f658244-3f51-467f-84a8-a528776e71d9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i = ax_{i-1} + c(\textrm{mod}\, m),
 \end{equation}\]</div>
 <p>where the constants <span class="math notranslate nohighlight">\(a, c, m\)</span> should be chosen with care. For instance, <span class="math notranslate nohighlight">\(m\)</span> determines the period. A bad choice for those constant will lead to low period and large correlations. The generation of random numbers efficiently and with quality is an actual research topic, with huge implications from the field of random simulation of physical systems to the field of cryptography.</p>
@@ -663,7 +663,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f3c5968f090&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f51dea86490&gt;
 </pre></div>
 </div>
 <img alt="../../_images/b7736508fe580fa92d52b2f948355b4cbd049cd8fbe0d8c9a8492a730ed6869f.png" src="../../_images/b7736508fe580fa92d52b2f948355b4cbd049cd8fbe0d8c9a8492a730ed6869f.png" />
@@ -685,7 +685,7 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f3c5731c850&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.PathCollection at 0x7f51dc77c690&gt;
 </pre></div>
 </div>
 <img alt="../../_images/df49711cce6403858c4921169e32931254d48e864830ca986568c537b21008bd.png" src="../../_images/df49711cce6403858c4921169e32931254d48e864830ca986568c537b21008bd.png" />
@@ -701,18 +701,18 @@ x_i = ax_{i-1} + c(\textrm{mod}\, m),
 <section id="inverse-transform-method">
 <h2>Inverse transform method<a class="headerlink" href="#inverse-transform-method" title="Link to this heading">#</a></h2>
 <p>In this case you want to invert the cumulative probability function. Let’s say that you have an exponential distribution, whose density is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-806c83a1-d2e0-4f99-8055-c1a9def57f90">
-<span class="eqno">(135)<a class="headerlink" href="#equation-806c83a1-d2e0-4f99-8055-c1a9def57f90" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d4b10390-ec4c-4db2-927e-543ebee4509c">
+<span class="eqno">(135)<a class="headerlink" href="#equation-d4b10390-ec4c-4db2-927e-543ebee4509c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(t) = \lambda e^{-\lambda t}, t &gt; 0
 \end{equation}\]</div>
 <p>whose cumulative distribution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c38f9ef2-c62e-453d-806d-917d807925db">
-<span class="eqno">(136)<a class="headerlink" href="#equation-c38f9ef2-c62e-453d-806d-917d807925db" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-92d738b5-ba39-4858-97a8-e7c18e905127">
+<span class="eqno">(136)<a class="headerlink" href="#equation-92d738b5-ba39-4858-97a8-e7c18e905127" title="Permalink to this equation">#</a></span>\[\begin{equation}
 F(x) = \int_0^x f(t) dt = 1 - e^{-\lambda x}.
 \end{equation}\]</div>
 <p>Now, the cumulative distribution is in the range <span class="math notranslate nohighlight">\([0, 1]\)</span>. If we equate it to a uniform random number in the same interval, <span class="math notranslate nohighlight">\(z = F(x)\)</span>, then we can invert this expression and obtain <span class="math notranslate nohighlight">\(x = F^{-1}(z)\)</span>. For the exponential distribution we get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-19fa6a96-e397-41b5-9113-0b33e92b40b5">
-<span class="eqno">(137)<a class="headerlink" href="#equation-19fa6a96-e397-41b5-9113-0b33e92b40b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6ef15224-2d84-4db7-bc91-31ea95769379">
+<span class="eqno">(137)<a class="headerlink" href="#equation-6ef15224-2d84-4db7-bc91-31ea95769379" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x = -\frac{\ln (1-z)}{\lambda}
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -727,18 +727,18 @@ x = -\frac{\ln (1-z)}{\lambda}
     <span class="n">z</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="n">N</span><span class="p">,))</span>
     <span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">z</span><span class="p">)</span><span class="o">/</span><span class="n">LAMBDA</span>
     <span class="n">hist</span><span class="p">,</span> <span class="n">bin_edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">80</span><span class="p">)</span>
-    <span class="c1"># #ax.plot(x, &#39;o&#39;, ms=0.1)</span>
-    <span class="c1"># ax.plot(bin_edges[:-1], hist, &quot;-o&quot;, label=rf&quot;$\lambda={LAMBDA}$&quot;)</span>
+    <span class="c1"># #ax.plot(x, 'o', ms=0.1)</span>
+    <span class="c1"># ax.plot(bin_edges[:-1], hist, "-o", label=rf"$\lambda={LAMBDA}$")</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">hist</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span><span class="o">-</span><span class="n">bin_edges</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">f</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\lambda=</span><span class="si">{</span><span class="n">LAMBDA</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">LAMBDA</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">LAMBDA</span><span class="o">*</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">&quot;$\lambda=</span><span class="si">{</span><span class="n">LAMBDA</span><span class="si">}</span><span class="s2">$&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">f</span><span class="p">,</span> <span class="s2">"-o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">"$\lambda=</span><span class="si">{</span><span class="n">LAMBDA</span><span class="si">}</span><span class="s2">$"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">LAMBDA</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">LAMBDA</span><span class="o">*</span><span class="n">bin_edges</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="s2">"-o"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">rf</span><span class="s2">"$\lambda=</span><span class="si">{</span><span class="n">LAMBDA</span><span class="si">}</span><span class="s2">$"</span><span class="p">)</span>
     
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f3c573e61d0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.legend.Legend at 0x7f51deb0d150&gt;
 </pre></div>
 </div>
 <img alt="../../_images/d3462a40e6105dc56bb3161a0412509beccea9fc117f1d9a38cd1cebe9c19e17.png" src="../../_images/d3462a40e6105dc56bb3161a0412509beccea9fc117f1d9a38cd1cebe9c19e17.png" />
@@ -808,30 +808,30 @@ x = -\frac{\ln (1-z)}{\lambda}
 <h2>Computing random integrals<a class="headerlink" href="#computing-random-integrals" title="Link to this heading">#</a></h2>
 <p>REF: Ward</p>
 <p>Computing integrals using random numbers is easy and practical, specially for large dimensions. In the unit interval, one can compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78881bc9-35d4-4b0e-9613-794872213d70">
-<span class="eqno">(138)<a class="headerlink" href="#equation-78881bc9-35d4-4b0e-9613-794872213d70" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-319d191f-1751-4fec-8c0a-7ebd43727228">
+<span class="eqno">(138)<a class="headerlink" href="#equation-319d191f-1751-4fec-8c0a-7ebd43727228" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^1 f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>so the integral is approximated as the average function value. For a general interval, one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8bb9b440-9c27-4680-8dc9-7389e7f2ec8a">
-<span class="eqno">(139)<a class="headerlink" href="#equation-8bb9b440-9c27-4680-8dc9-7389e7f2ec8a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-33f139a6-ba0a-455b-98b9-bf0b3740b98e">
+<span class="eqno">(139)<a class="headerlink" href="#equation-33f139a6-ba0a-455b-98b9-bf0b3740b98e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{b-a}\int_a^b f(x) dx \simeq \frac{1}{n} \sum_{i=1}^n f(x_i),
 \end{equation}\]</div>
 <p>or , in higher dimensions</p>
-<div class="amsmath math notranslate nohighlight" id="equation-716b7471-156e-4323-85c4-a818c5d20cb4">
-<span class="eqno">(140)<a class="headerlink" href="#equation-716b7471-156e-4323-85c4-a818c5d20cb4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fcc599a8-d716-4a2c-add6-ea956e3f88aa">
+<span class="eqno">(140)<a class="headerlink" href="#equation-fcc599a8-d716-4a2c-add6-ea956e3f88aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{1}{8}\int_1^3\int_{-1}^1 \int_0^2 f(x, y, z) dxdydz \simeq \frac{1}{n} \sum_{i=1}^n f(x_i, y_i, z_i).
 \end{equation}\]</div>
 <p>In general one has</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a54c9092-a75a-447d-8751-afd848e2b37c">
-<span class="eqno">(141)<a class="headerlink" href="#equation-a54c9092-a75a-447d-8751-afd848e2b37c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-89574223-9238-4cde-a2d3-5d3b8851a34b">
+<span class="eqno">(141)<a class="headerlink" href="#equation-89574223-9238-4cde-a2d3-5d3b8851a34b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_A f \simeq (\text{measure of}\ A) \times (\text{average of}\ f\ \text{over}\ n\ \text{random points on}\ A)
 \end{equation}\]</div>
 <section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
 <p>Compute the following integral</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c66669af-d720-45a0-a168-2222efca56ed">
-<span class="eqno">(142)<a class="headerlink" href="#equation-c66669af-d720-45a0-a168-2222efca56ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1048c52a-1300-4c28-b569-e02bc76b16cc">
+<span class="eqno">(142)<a class="headerlink" href="#equation-1048c52a-1300-4c28-b569-e02bc76b16cc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \iint_\limits{\Omega}\sin\sqrt{\ln(x+y+1)} dx dy, 
 \end{equation}\]</div>
 <p>where the integration region <span class="math notranslate nohighlight">\(\Omega\)</span> is the disk defined as <span class="math notranslate nohighlight">\((x-1/2)^2 + (y-1/2)^2 \le 1/4\)</span>.</p>
@@ -886,7 +886,7 @@ The expected value is around 0.14</p>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="k">pass</span>
 <span class="ne">----&gt; </span><span class="mi">8</span> <span class="nb">print</span><span class="p">(</span><span class="n">VOLUME</span><span class="p">)</span>
 
-<span class="ne">NameError</span>: name &#39;VOLUME&#39; is not defined
+<span class="ne">NameError</span>: name 'VOLUME' is not defined
 </pre></div>
 </div>
 </div>
@@ -894,8 +894,8 @@ The expected value is around 0.14</p>
 <p><mark>Exercises</mark></p>
 <ul>
 <li><p>[ ] (Ward) Compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7e600718-abf9-47c3-9f60-73c2b24d9318">
-<span class="eqno">(143)<a class="headerlink" href="#equation-7e600718-abf9-47c3-9f60-73c2b24d9318" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a9b59ea7-50d1-4f88-bc41-a6133ce2fcdd">
+<span class="eqno">(143)<a class="headerlink" href="#equation-a9b59ea7-50d1-4f88-bc41-a6133ce2fcdd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^2\int_3^6\int_{-1}^1 (y x^2 + z\log y + e^x) dx dy dz
 \end{equation}\]</div>
 </li>

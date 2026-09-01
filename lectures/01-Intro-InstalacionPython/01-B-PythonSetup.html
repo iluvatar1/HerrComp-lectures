@@ -570,8 +570,9 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-python-interpreter">The Python interpreter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython">iPython</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-scripts">Python scripts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython-notebook">iPython notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython-jupyter-notebook">iPython/Jupyter notebook</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ide-spyder-pycharm-visual-etc">IDE: Spyder, pycharm, visual, etc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environments">Python environments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-command-examples-inside-a-notebook">Some command examples inside a notebook</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
@@ -595,6 +596,50 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-setup">
 <h1>Python Setup<a class="headerlink" href="#python-setup" title="Link to this heading">#</a></h1>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RUN ME FOR EMBEDING VIDEOS AND URLS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span><span class="p">,</span> <span class="n">parse_qs</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Convert any YouTube URL to embed format."""</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s2">"youtu.be"</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s2">"shorts"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/shorts/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s2">"embed"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">url</span>  <span class="c1"># already embed format, do nothing</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"v"</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"https://www.youtube.com/embed/</span><span class="si">{</span><span class="n">vid</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">vid</span> <span class="k">else</span> <span class="n">url</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"90%"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">"youtube.com"</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">or</span> <span class="s2">"youtu.be"</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">aspect</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"%"</span><span class="p">))</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">w</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">&lt;div style="display:flex; flex-direction:column; align-items:center; width:100%;"&gt;</span>
+<span class="s1">  &lt;div style="position:relative; width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; padding-bottom:</span><span class="si">{</span><span class="n">padding</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%; height:0; overflow:hidden;"&gt;</span>
+<span class="s1">    &lt;iframe src="</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">"</span>
+<span class="s1">      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"</span>
+<span class="s1">      allowfullscreen title="</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">"&gt;</span>
+<span class="s1">    &lt;/iframe&gt;</span>
+<span class="s1">  &lt;/div&gt;</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">"&lt;p style='font-style:italic; margin-top:0.4em;'&gt;"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&lt;/p&gt;"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;'''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <p>Python is :</p>
 <ul class="simple">
 <li><p>An interpreted and dynamic language</p></li>
@@ -602,11 +647,32 @@
 <li><p>A very popular language</p></li>
 <li><p>Well suited for scientific computing</p></li>
 </ul>
-<a class="reference internal image-reference" href="../../_images/prog-lang-trends.png"><img alt="../../_images/prog-lang-trends.png" src="../../_images/prog-lang-trends.png" style="width: 70%;" />
+<figure class="align-center">
+<a class="bg-primary reference internal image-reference" href="../../_images/prog-lang-trends.png"><img alt="" class="bg-primary" src="../../_images/prog-lang-trends.png" style="width: 80%;" />
 </a>
+</figure>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://www.tiobe.com/tiobe-index/"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:50.62%; height:0; overflow:hidden;">
+    <iframe src="https://www.tiobe.com/tiobe-index/"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
 <section id="how-to-install-use-python-on-your-computer">
 <h2>How to install/use python on your computer<a class="headerlink" href="#how-to-install-use-python-on-your-computer" title="Link to this heading">#</a></h2>
-<ol class="arabic simple">
+<ol class="arabic simple" start="0">
+<li><p>Install from: <a class="reference external" href="https://www.python.org/">https://www.python.org/</a></p></li>
 <li><p>Local install python using anaconda : <a class="reference external" href="https://www.anaconda.com/distribution/#download-section">https://www.anaconda.com/distribution/#download-section</a> .</p></li>
 </ol>
 <ol class="arabic simple" start="2">
@@ -630,41 +696,111 @@
 <h2>How to execute/use Python code<a class="headerlink" href="#how-to-execute-use-python-code" title="Link to this heading">#</a></h2>
 <section id="the-python-interpreter">
 <h3>The Python interpreter<a class="headerlink" href="#the-python-interpreter" title="Link to this heading">#</a></h3>
-<p>The python interpreter is very primitive and basically interprets commands as you type them. For example, you can type commands like<code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">&quot;Hello</span> <span class="pre">World&quot;</span> </code> and expect the output.</p>
+<p>The python interpreter is very primitive and basically interprets commands as you type them. For example, you can type commands like<code class="docutils literal notranslate"><span class="pre">print</span> <span class="pre">(&quot;Hello</span> <span class="pre">World&quot;)</span> </code> and expect the output.</p>
 <p>Since it is much more convenient to use the iPython super-enhanced interpreter, we will not focus here on the bare-bones python interpreter.</p>
 <p>How to quit from the command prompt? try whatever you think (<code class="docutils literal notranslate"><span class="pre">quit</span></code>, <code class="docutils literal notranslate"><span class="pre">ctrl+d</span></code>, etc)</p>
-<p><img alt="" src="../../_images/interpreter.png" /></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Gido Van Rossum, Python creator</div>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Guido_van_Rossum_in_PyConUS24_%28cropped%29.jpg/500px-Guido_van_Rossum_in_PyConUS24_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" width="30%">
+From: https://en.wikipedia.org/wiki/Guido_van_Rossum
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Python simple shell</div>
+<p class="sd-card-text"><img alt="" src="../../_images/interpreter.png" /></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="ipython">
 <h3>iPython<a class="headerlink" href="#ipython" title="Link to this heading">#</a></h3>
 <p>iPython is, currently, the standard interactive interpreter. It has many advantages over the original python interpreter, like autocopletion of variables, tight integration with the system commands, history, easy documentation access, etc.</p>
 <p><strong>Exercise:</strong> Please open an ipython console, by either going to the appropriate part on the Spyder IDE, or by open ipython through the Anaconda launcher. Type some commands there.</p>
 <p>The ipython interpreter is a much more advanced interpreter which allows to get better error reporting, interactive help, magic commands, fast history access, and muhco more.</p>
-<p><img alt="asds" src="../../_images/ipython.png" /></p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Fernando Perez</div>
+<img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/8/80/Fernando_Perez_-_2012_FSF_Award_%28cropped%29.jpg/250px-Fernando_Perez_-_2012_FSF_Award_%28cropped%29.jpg?utm_source=es.wikipedia.org&utm_campaign=parser&utm_content=thumbnail" width="30%">
+From: https://es.wikipedia.org/wiki/Fernando_P%C3%A9rez_(programador)
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+ipython</div>
+<p class="sd-card-text"><img alt="asds" src="../../_images/ipython.png" /></p>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="python-scripts">
 <h3>Python scripts<a class="headerlink" href="#python-scripts" title="Link to this heading">#</a></h3>
 <p>In general, interactive sessions are designed for fast testing and propotyping. But, if you want to store a group of commands for later use (a program), then ypu should save it on Python file, whose termination is <code class="docutils literal notranslate"><span class="pre">.py</span></code>. <strong>Exercise:</strong> On the Spyder editor, type some commands and save the file with the appropriate extension. Then re-open it and run it. You can also load/run the file directly from ipython. You need to use the magic words <code class="docutils literal notranslate"><span class="pre">%load</span></code> or <code class="docutils literal notranslate"><span class="pre">%run</span></code> . Check the docs and do it.</p>
 <p><img alt="" src="../../_images/emacs.png" /></p>
 </section>
-<section id="ipython-notebook">
-<h3>iPython notebook<a class="headerlink" href="#ipython-notebook" title="Link to this heading">#</a></h3>
+<section id="ipython-jupyter-notebook">
+<h3>iPython/Jupyter notebook<a class="headerlink" href="#ipython-jupyter-notebook" title="Link to this heading">#</a></h3>
 <p>The ipython notebook is a very convinient way to store ipython commands, together with notes, figures, and results. Currently, you are looking at the result obtained from an ipython notebook. This is very useful for logs, instructions, manuals, and interactive programming. An ipython notebook is stored in <code class="docutils literal notranslate"><span class="pre">json</span></code> format, which allows to include not only instructions but also command results and even figures. To execute a given cell, you should use the combination shift+enter.</p>
 <p><strong>Exercise:</strong> Open an ipython notebook by using the anaconda launcher, and write some commands and some instructions. Save it. Re-open it.
 Or use google collab, or mybinder</p>
 </section>
 <section id="ide-spyder-pycharm-visual-etc">
 <h3>IDE: Spyder, pycharm, visual, etc<a class="headerlink" href="#ide-spyder-pycharm-visual-etc" title="Link to this heading">#</a></h3>
-<p>You have already used the IDE Spyder. This is an integrated develompment environment which allows editing, running, debugging, etc. of simple and complex (projects) python files. We will use only the very basic but you should get familiar with Spyder to exploit it better.
-admasnda sad as das das</p>
+<p>You have already used the IDE Spyder. This is an integrated develompment environment which allows editing, running, debugging, etc. of simple and complex (projects) python files. We will use only the very basic but you should get familiar with Spyder to exploit it better.</p>
 <p>There are other multiplatform solutions, like Canopy (free for academics) or Python(X, Y). Look at them on google.</p>
+</section>
+<section id="python-environments">
+<h3>Python environments<a class="headerlink" href="#python-environments" title="Link to this heading">#</a></h3>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row sd-row-cols-2 sd-row-cols-xs-2 sd-row-cols-sm-2 sd-row-cols-md-2 sd-row-cols-lg-2 docutils">
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Before</div>
+<img src="https://www.explainxkcd.com/w/images/c/cb/python_environment.png" width="100%">
+From: https://www.explainxkcd.com/wiki/index.php/1987:_Python_Environment
+</div>
+</div>
+</div>
+<div class="sd-col sd-d-flex-row docutils">
+<div class="sd-card sd-sphinx-override sd-w-100 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Now</div>
+<img src="https://www.dataquest.io/wp-content/uploads/2022/01/python-virtual-envs1-1024x576.webp" width="100%">
+Better to use envs. From: https://www.dataquest.io/blog/a-complete-guide-to-python-virtual-environments/
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="some-command-examples-inside-a-notebook">
 <h3>Some command examples inside a notebook<a class="headerlink" href="#some-command-examples-inside-a-notebook" title="Link to this heading">#</a></h3>
 <p>You can also try them on ipython.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Hello World, from python!&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span><span class="s2">"Hello World, from python!"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -676,10 +812,10 @@ admasnda sad as das das</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">)</span>
-<span class="c1">#name = input(&quot;Dime tu nombre:  &quot;)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">""</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Hola"</span><span class="p">)</span>
+<span class="c1">#name = input("Dime tu nombre:  ")</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Hola"</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -733,6 +869,103 @@ Hola
 From: https://docs.astral.sh/uv/
 <p>Installing uv is very easy, and you can use it to create virtual envs easily as shown in <a class="reference external" href="https://docs.astral.sh/uv/pip/environments/">https://docs.astral.sh/uv/pip/environments/</a> . You can even use different python versions. And when installing packages, you will be amazed by the speed of uv. Go try it.</p>
 <p>For using uv in a Dockerfile, check <a class="reference external" href="https://mkennedy.codes/posts/python-docker-images-using-uv-s-new-python-features/">https://mkennedy.codes/posts/python-docker-images-using-uv-s-new-python-features/</a></p>
+<p>It is so convenient, that you can even include deps in your scripts and then run it, and uv will install those in a ephemeral env and run your script</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># /// script</span>
+<span class="c1"># requires-python = "&gt;=3.12"</span>
+<span class="c1"># dependencies = [</span>
+<span class="c1">#     "requests",</span>
+<span class="c1">#     "requests-mock",</span>
+<span class="c1">#     "rich",</span>
+<span class="c1"># ]</span>
+<span class="c1"># ///</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests_mock</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich</span><span class="w"> </span><span class="kn">import</span> <span class="nb">print</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.panel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Panel</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">"https://mock-university-api.local"</span>
+    
+    <span class="c1"># We use requests_mock to simulate a perfect API response locally</span>
+    <span class="k">with</span> <span class="n">requests_mock</span><span class="o">.</span><span class="n">Mocker</span><span class="p">()</span> <span class="k">as</span> <span class="n">mock</span><span class="p">:</span>
+        <span class="n">mock</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+            <span class="s2">"status"</span><span class="p">:</span> <span class="s2">"success"</span><span class="p">,</span>
+            <span class="s2">"course"</span><span class="p">:</span> <span class="s2">"Física Computacional I"</span><span class="p">,</span>
+            <span class="s2">"topic"</span><span class="p">:</span> <span class="s2">"Astral uv Environment Management"</span>
+        <span class="p">})</span>
+        
+        <span class="c1"># This HTTP call stays entirely local to the machine</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+        
+        <span class="c1"># Display the result using rich formatting</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">Panel</span><span class="p">(</span><span class="sa">f</span><span class="s2">"[bold green]🚀 uv Script Successfully Executed![/bold green]"</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Intercepted request to: [cyan]</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">[/cyan]"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Course: [yellow]</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'course'</span><span class="p">]</span><span class="si">}</span><span class="s2">[/yellow]"</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Topic: [magenta]</span><span class="si">{</span><span class="n">data</span><span class="p">[</span><span class="s1">'topic'</span><span class="p">]</span><span class="si">}</span><span class="s2">[/magenta]"</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+</pre></div>
+</div>
+<p>Run it as</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>myscript.py
+</pre></div>
+</div>
+<p>Another example</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># /// script</span>
+<span class="c1"># requires-python = "&gt;=3.12"</span>
+<span class="c1"># dependencies = [</span>
+<span class="c1">#     "rich",</span>
+<span class="c1"># ]</span>
+<span class="c1"># ///</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.console</span><span class="w"> </span><span class="kn">import</span> <span class="n">Console</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.table</span><span class="w"> </span><span class="kn">import</span> <span class="n">Table</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.progress</span><span class="w"> </span><span class="kn">import</span> <span class="n">track</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rich.panel</span><span class="w"> </span><span class="kn">import</span> <span class="n">Panel</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+    <span class="n">console</span> <span class="o">=</span> <span class="n">Console</span><span class="p">()</span>
+
+    <span class="c1"># 1. Show off a clean UI Banner</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">Panel</span><span class="p">(</span>
+        <span class="s2">"[bold green]🚀 Astral uv + Rich Demo[/bold green]</span><span class="se">\n</span><span class="s2">"</span>
+        <span class="s2">"[dim]Running completely offline with zero network requests[/dim]"</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="s2">"Física Computacional I"</span><span class="p">,</span>
+        <span class="n">expand</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">))</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+
+    <span class="c1"># 2. Show off a dynamic terminal Progress Bar</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="s2">"[bold cyan]Compiling simulation grid...[/bold cyan]"</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">track</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="n">description</span><span class="o">=</span><span class="s2">"Processing tasks"</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.01</span><span class="p">)</span>  <span class="c1"># Simulates quick computations</span>
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">()</span>
+
+    <span class="c1"># 3. Show off a beautifully formatted Data Table</span>
+    <span class="n">table</span> <span class="o">=</span> <span class="n">Table</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">"Simulation Summary"</span><span class="p">,</span> <span class="n">title_style</span><span class="o">=</span><span class="s2">"bold magenta"</span><span class="p">)</span>
+    
+    <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">"Parameter"</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s2">"left"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"cyan"</span><span class="p">,</span> <span class="n">no_wrap</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">"Value"</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s2">"right"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"green"</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_column</span><span class="p">(</span><span class="s2">"Status"</span><span class="p">,</span> <span class="n">justify</span><span class="o">=</span><span class="s2">"center"</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s2">"bold yellow"</span><span class="p">)</span>
+
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">"Grid Resolution"</span><span class="p">,</span> <span class="s2">"1024 x 1024"</span><span class="p">,</span> <span class="s2">"Ready"</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">"Time Step (dt)"</span><span class="p">,</span> <span class="s2">"0.001 s"</span><span class="p">,</span> <span class="s2">"Ready"</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">"Total Iterations"</span><span class="p">,</span> <span class="s2">"10,000"</span><span class="p">,</span> <span class="s2">"Running"</span><span class="p">)</span>
+    <span class="n">table</span><span class="o">.</span><span class="n">add_row</span><span class="p">(</span><span class="s2">"Energy Conservation"</span><span class="p">,</span> <span class="s2">"99.98%"</span><span class="p">,</span> <span class="s2">"Optimal"</span><span class="p">)</span>
+
+    <span class="n">console</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+
+</pre></div>
+</div>
 </section>
 </section>
 <section id="installing-packages-besides-python">
@@ -820,8 +1053,9 @@ From: https://docs.astral.sh/uv/
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-python-interpreter">The Python interpreter</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython">iPython</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-scripts">Python scripts</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython-notebook">iPython notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ipython-jupyter-notebook">iPython/Jupyter notebook</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ide-spyder-pycharm-visual-etc">IDE: Spyder, pycharm, visual, etc</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-environments">Python environments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-command-examples-inside-a-notebook">Some command examples inside a notebook</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>

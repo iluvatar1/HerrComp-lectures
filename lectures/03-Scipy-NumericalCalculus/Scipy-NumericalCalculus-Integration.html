@@ -672,12 +672,12 @@ where \)</span>x_k = x_0 + k \Delta x<span class="math notranslate nohighlight">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Function to compute an integral using the trapezoid rule</span>
 <span class="sd">    f: function to integrate</span>
 <span class="sd">    a, b: integral limits, b&gt;a</span>
 <span class="sd">    n: Number of intervals to use</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">npoints</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
     <span class="n">xk</span><span class="p">,</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">npoints</span><span class="p">,</span> <span class="n">retstep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">dx</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
@@ -738,8 +738,8 @@ Python lambdas are little, anonymous functions, subject to a more restrictive bu
 </section>
 <section id="exercise">
 <h3><strong>Exercise</strong><a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-0646a5b2-47aa-4c98-b3c5-f900490a80f7">
-<span class="eqno">(3)<a class="headerlink" href="#equation-0646a5b2-47aa-4c98-b3c5-f900490a80f7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f76918ba-4570-4a92-9ec1-408fdf74b9c1">
+<span class="eqno">(3)<a class="headerlink" href="#equation-f76918ba-4570-4a92-9ec1-408fdf74b9c1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(x \in [0, 10]\)</span>, <span class="math notranslate nohighlight">\(\Delta x = 0.1\)</span></p>
@@ -767,7 +767,7 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(trapezoid(lambda x: 2*np.exp(-x*x)/np.sqrt(np.pi), 0, 5, 100))</span>
 <span class="c1">#print(trapezoid(fun, 0, 5, 100))</span>
-<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Trapezoid&quot;</span><span class="p">)</span>
+<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">"Trapezoid"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -790,8 +790,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </table>
 </div>
 <p>Now you compute the integral as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-014fea5c-60f8-4753-b852-cdf8afb27d02">
-<span class="eqno">(4)<a class="headerlink" href="#equation-014fea5c-60f8-4753-b852-cdf8afb27d02" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-75afc4b5-d397-40c2-9db0-bf99a2bdf5cd">
+<span class="eqno">(4)<a class="headerlink" href="#equation-75afc4b5-d397-40c2-9db0-bf99a2bdf5cd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_a^b f(x) dx \simeq \frac{\Delta x}{3}\left( f(x_0) + 4 \sum_{k=1}^{N/2} f(x_{2k-1}) + 2\sum_{k=1}^{N/2-1} f(x_{2k}) + f(x_N)\right) + O(N^{-3}).
 \end{equation}\]</div>
 <p>Notice that <span class="math notranslate nohighlight">\(N\)</span> must be even.</p>
@@ -800,12 +800,12 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">simpson</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Function to compute an integral using the simpsons rule</span>
 <span class="sd">    f: function to integrate</span>
 <span class="sd">    a, b: integral limits, b&gt;a</span>
 <span class="sd">    n: Number of intervals to use</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">npoints</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span>
     <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">2</span> != 0: 
         <span class="n">npoints</span> <span class="o">+=</span> <span class="mi">1</span>
@@ -832,26 +832,26 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Check , two limits for two integrals</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2518,</span> in <span class="ni">vectorize.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2518,</span> in <span class="ni">vectorize.__call__</span><span class="nt">(self, *args, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2515</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_init_stage_2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2516</span>     <span class="k">return</span> <span class="bp">self</span>
 <span class="ne">-&gt; </span><span class="mi">2518</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_as_normal</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2511,</span> in <span class="ni">vectorize._call_as_normal</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2511,</span> in <span class="ni">vectorize._call_as_normal</span><span class="nt">(self, *args, **kwargs)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2508</span>     <span class="n">vargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">inds</span><span class="p">]</span>
 <span class="g g-Whitespace">   </span><span class="mi">2509</span>     <span class="n">vargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">kwargs</span><span class="p">[</span><span class="n">_n</span><span class="p">]</span> <span class="k">for</span> <span class="n">_n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">])</span>
 <span class="ne">-&gt; </span><span class="mi">2511</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vectorize_call</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">vargs</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2596,</span> in <span class="ni">vectorize._vectorize_call</span><span class="nt">(self, func, args)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2596,</span> in <span class="ni">vectorize._vectorize_call</span><span class="nt">(self, func, args)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2594</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
 <span class="g g-Whitespace">   </span><span class="mi">2595</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">2596</span>     <span class="n">ufunc</span><span class="p">,</span> <span class="n">otypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ufunc_and_otypes</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2597</span>     <span class="c1"># gh-29196: `dtype=object` should eventually be removed</span>
 <span class="g g-Whitespace">   </span><span class="mi">2598</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2556,</span> in <span class="ni">vectorize._get_ufunc_and_otypes</span><span class="nt">(self, func, args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2552</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;cannot call `vectorize` on size 0 inputs &#39;</span>
-<span class="g g-Whitespace">   </span><span class="mi">2553</span>                      <span class="s1">&#39;unless `otypes` is set&#39;</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2556,</span> in <span class="ni">vectorize._get_ufunc_and_otypes</span><span class="nt">(self, func, args)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2552</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'cannot call `vectorize` on size 0 inputs '</span>
+<span class="g g-Whitespace">   </span><span class="mi">2553</span>                      <span class="s1">'unless `otypes` is set'</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2555</span> <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
 <span class="ne">-&gt; </span><span class="mi">2556</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">2558</span> <span class="c1"># Performance note: profiling indicates that -- for simple</span>
@@ -867,15 +867,15 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">pass</span>
 <span class="ne">---&gt; </span><span class="mi">14</span>     <span class="k">return</span> <span class="n">result</span>
 
-<span class="ne">NameError</span>: name &#39;result&#39; is not defined
+<span class="ne">NameError</span>: name 'result' is not defined
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s plot the same as for the trapezoidal rule</span>
-<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">simpson</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">&quot;Simpson&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let's plot the same as for the trapezoidal rule</span>
+<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">simpson</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">"Simpson"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -909,8 +909,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Indefinite integral</span>
 <span class="n">val</span><span class="p">,</span> <span class="n">abserr</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">Inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">Inf</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;numerical  = </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">abserr</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;analytical = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"numerical  = </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">abserr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"analytical = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -928,7 +928,7 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 
 <span class="n">val</span><span class="p">,</span> <span class="n">abserr</span> <span class="o">=</span> <span class="n">dblquad</span><span class="p">(</span><span class="n">integrand</span><span class="p">,</span> <span class="n">x_lower</span><span class="p">,</span> <span class="n">x_upper</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span> <span class="p">:</span> <span class="n">y_lower</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">y_upper</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">val</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">abserr</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">val</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">abserr</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -941,8 +941,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <section id="eliptic-integral-fo-the-first-kind">
 <h2>Eliptic integral fo the first kind<a class="headerlink" href="#eliptic-integral-fo-the-first-kind" title="Link to this heading">#</a></h2>
 <p>The period of a simple pendulum can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5e98aa7c-e980-48ca-8024-4e585ad8b191">
-<span class="eqno">(5)<a class="headerlink" href="#equation-5e98aa7c-e980-48ca-8024-4e585ad8b191" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b5f014a3-d1b6-40b5-83f1-74a597f4141a">
+<span class="eqno">(5)<a class="headerlink" href="#equation-b5f014a3-d1b6-40b5-83f1-74a597f4141a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 \end{equation}\]</div>
 <p>Plot the period as a function of <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span>. Use, at least, 100 values for <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -968,11 +968,11 @@ K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 <span class="n">t3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
 <span class="n">m</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="n">a2</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">t3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">t3</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
 <span class="n">a3</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">t3</span> <span class="o">-</span> <span class="n">m</span><span class="o">*</span><span class="n">t3</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">t3</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">0.02</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">t3</span><span class="o">.</span><span class="n">size</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="s1">&#39;-o&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="s1">&#39;-s&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t3</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="s1">&#39;-p&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">a1</span><span class="p">,</span> <span class="s1">'-o'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t2</span><span class="p">,</span> <span class="n">a2</span><span class="p">,</span> <span class="s1">'-s'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t3</span><span class="p">,</span> <span class="n">a3</span><span class="p">,</span> <span class="s1">'-p'</span><span class="p">)</span>
 
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;accel.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">'accel.txt'</span><span class="p">,</span> <span class="s1">'a'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">t1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">a1</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
     <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">t2</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">a2</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
     <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">t3</span><span class="p">,</span> <span class="n">a3</span><span class="p">)))</span>
@@ -996,13 +996,13 @@ K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 <section id="difraction-limit-of-a-telescope-newman-5-4">
 <h3>Difraction limit of a telescope (Newman, 5.4)<a class="headerlink" href="#difraction-limit-of-a-telescope-newman-5-4" title="Link to this heading">#</a></h3>
 <p>When light from a distant star passes through the circular aperture of a telescope, you get a difraction pattern which can be described as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8b5152cf-30f8-4da0-a987-6c9782e2225b">
-<span class="eqno">(6)<a class="headerlink" href="#equation-8b5152cf-30f8-4da0-a987-6c9782e2225b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ef9613f9-5d3b-43bb-af4a-153c2e7efc0c">
+<span class="eqno">(6)<a class="headerlink" href="#equation-ef9613f9-5d3b-43bb-af4a-153c2e7efc0c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I(r) = \left(\frac{J_1(kr)}{kr} \right)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> is the distance from the center, <span class="math notranslate nohighlight">\(k=2\pi/\lambda\)</span>, with <span class="math notranslate nohighlight">\(\lambda\)</span> is the wavelenght, and <span class="math notranslate nohighlight">\(J_1(x)\)</span> is a Bessel function. The Bessel functions can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-16681b32-50c0-4993-aec9-890468c23abc">
-<span class="eqno">(7)<a class="headerlink" href="#equation-16681b32-50c0-4993-aec9-890468c23abc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1634ad4e-fb54-48ad-9169-333444e4242e">
+<span class="eqno">(7)<a class="headerlink" href="#equation-1634ad4e-fb54-48ad-9169-333444e4242e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(m\)</span> is a positive integer and <span class="math notranslate nohighlight">\(x \ge 0\)</span>. Of course you can use <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code> to compute the Bessel function, but here you will use the quad routine to create a plot of <span class="math notranslate nohighlight">\(J_0, J_1, J_2\)</span> for <span class="math notranslate nohighlight">\(x \in [0, 20]\)</span>.</p>
@@ -1019,8 +1019,8 @@ J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 <section id="heat-capacity-of-a-solid-newman-5-9">
 <h3>Heat capacity of a solid (Newman, 5.9)<a class="headerlink" href="#heat-capacity-of-a-solid-newman-5-9" title="Link to this heading">#</a></h3>
 <p>Debye’s theory of solids gives the heat capacity, at temperature <span class="math notranslate nohighlight">\(T\)</span>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-be7602a2-5cb6-43c6-ba20-b3bcc05091cb">
-<span class="eqno">(8)<a class="headerlink" href="#equation-be7602a2-5cb6-43c6-ba20-b3bcc05091cb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b1057459-6735-47f9-936f-f6d7fc4789aa">
+<span class="eqno">(8)<a class="headerlink" href="#equation-b1057459-6735-47f9-936f-f6d7fc4789aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \frac{x^4 e^x}{(e^x-1)^2}dx, 
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(V\)</span> is the solid volume, <span class="math notranslate nohighlight">\(\rho\)</span> the atom nuber density, <span class="math notranslate nohighlight">\(k_B\)</span> the Boltzmann’s constant, and <span class="math notranslate nohighlight">\(\theta_D\)</span> is the Debye temperature.</p>
@@ -1049,8 +1049,8 @@ C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \fra
 <section id="distance-covered-by-parachutist-chapra">
 <h3>Distance covered by parachutist (Chapra)<a class="headerlink" href="#distance-covered-by-parachutist-chapra" title="Link to this heading">#</a></h3>
 <p>The vertical velocity of a parachutist in free fall and under linear drag can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9c7d39de-52d7-48f2-bce5-4e5c61e41b4e">
-<span class="eqno">(9)<a class="headerlink" href="#equation-9c7d39de-52d7-48f2-bce5-4e5c61e41b4e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1108368a-0bd4-40a2-a442-bd7ea7e201b5">
+<span class="eqno">(9)<a class="headerlink" href="#equation-1108368a-0bd4-40a2-a442-bd7ea7e201b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t\)</span> is the time, <span class="math notranslate nohighlight">\(g = 9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span> (on earth), <span class="math notranslate nohighlight">\(m\)</span> is the mass in kg, and <span class="math notranslate nohighlight">\(c\)</span> is the linear drag coeffcient, in kg/s . Compute the distance travelled by the parachutist in the first 8 seconds, given <span class="math notranslate nohighlight">\(m=80\)</span> kg and <span class="math notranslate nohighlight">\(c = 10\)</span> kg/s. Plot the distance for several mass values <span class="math notranslate nohighlight">\(m\in [50, 120]\)</span> kg.</p>

@@ -669,11 +669,11 @@
 <span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
 
 <span class="c1"># Bessel function of first kind</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;J_</span><span class="si">%d</span><span class="s2">(</span><span class="si">%f</span><span class="s2">) = </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">jn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"J_</span><span class="si">%d</span><span class="s2">(</span><span class="si">%f</span><span class="s2">) = </span><span class="si">%f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">jn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="c1"># Bessel function of second kind</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;Y_</span><span class="si">%d</span><span class="s2">(</span><span class="si">%f</span><span class="s2">) = </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"Y_</span><span class="si">%d</span><span class="s2">(</span><span class="si">%f</span><span class="s2">) = </span><span class="si">%f</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
@@ -690,7 +690,7 @@ Y_0(1.000000) = 0.088257
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">jn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$J_</span><span class="si">%d</span><span class="s2">(x)$&quot;</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">jn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">"$J_</span><span class="si">%d</span><span class="s2">(x)$"</span> <span class="o">%</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -747,7 +747,7 @@ Y_0(1.000000) = 0.088257
 
 <span class="n">val</span><span class="p">,</span> <span class="n">abserr</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x_lower</span><span class="p">,</span> <span class="n">x_upper</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;integral value =&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">&quot;, absolute error =&quot;</span><span class="p">,</span> <span class="n">abserr</span> <span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"integral value ="</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="s2">", absolute error ="</span><span class="p">,</span> <span class="n">abserr</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -761,9 +761,9 @@ Y_0(1.000000) = 0.088257
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">integrand</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Bessel function of first kind and order n. </span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">return</span> <span class="n">jn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
 
@@ -787,10 +787,10 @@ Y_0(1.000000) = 0.088257
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">val</span><span class="p">,</span> <span class="n">abserr</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;numerical  =&quot;</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">abserr</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"numerical  ="</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">abserr</span><span class="p">)</span>
 
 <span class="n">analytical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;analytical =&quot;</span><span class="p">,</span> <span class="n">analytical</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"analytical ="</span><span class="p">,</span> <span class="n">analytical</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -864,9 +864,9 @@ analytical = 1.7724538509055159
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">dy</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">zeta</span><span class="p">,</span> <span class="n">w0</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    The right-hand side of the damped oscillator ODE</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     
     <span class="n">dx</span> <span class="o">=</span> <span class="n">p</span>
@@ -909,10 +909,10 @@ analytical = 1.7724538509055159
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;undamped&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;under damped&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y3</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;critical damping&quot;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y4</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;over damped&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'k'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"undamped"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y2</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"under damped"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y3</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'b'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">"critical damping"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y4</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'g'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"over damped"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -1056,9 +1056,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ -0.66671361,  -0.4382488 ,   1.36642578],
-       [ -3.04706014,  19.13087642, -10.89044278],
-       [  2.79054915,  -7.25028378,   4.43382138]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 0.33969664, -1.51244691, -0.60758859],
+       [ 0.55369537, -0.20532744,  1.28601622],
+       [ 0.28330588,  2.98660185,  0.29698779]])
 </pre></div>
 </div>
 </div>
@@ -1071,7 +1071,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(7.09024586127786e-16)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(2.8584537409345717e-16)
 </pre></div>
 </div>
 </div>
@@ -1097,7 +1097,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.61461928+0.j,  0.06011391+0.j, -0.0637693 +0.j])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.98655475+0.j,  0.47708153+0.j, -0.19620454+0.j])
 </pre></div>
 </div>
 </div>
@@ -1116,7 +1116,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.61461928+0.j,  0.06011391+0.j, -0.0637693 +0.j])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1.98655475+0.j,  0.47708153+0.j, -0.19620454+0.j])
 </pre></div>
 </div>
 </div>
@@ -1128,9 +1128,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.43727227, -0.22733284,  0.19017753],
-       [-0.47635552, -0.75350834, -0.95886378],
-       [-0.76280953,  0.61688327,  0.21074335]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.66868442, -0.68868958, -0.53140948],
+       [-0.37506997,  0.72466597, -0.14216312],
+       [-0.64201531,  0.02378866,  0.83510096]])
 </pre></div>
 </div>
 </div>
@@ -1145,7 +1145,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.065511365135231e-16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.4193992567155728e-15
 </pre></div>
 </div>
 </div>
@@ -1162,9 +1162,9 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[  1.23707352,   2.88216824,  -2.15395059],
-       [ 43.45015799, -10.95011842, -17.68249188],
-       [-20.61108255,   1.83910454,  11.28594513]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.48188372, -2.53222696,  2.50554071],
+       [-0.89456028,  1.22926352,  0.50765602],
+       [ 2.28314714,  2.34511934, -3.24463987]])
 </pre></div>
 </div>
 </div>
@@ -1177,7 +1177,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.006189516886546236)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-0.1859525776892781)
 </pre></div>
 </div>
 </div>
@@ -1190,7 +1190,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(1.7559689571403385), 2.1430638608011376)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(2.0436278730259048), 2.308304426081594)
 </pre></div>
 </div>
 </div>
@@ -1322,13 +1322,13 @@ analytical = 1.7724538509055159
 <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span>
 <span class="n">x</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span> <span class="c1"># get rid of vertical line when the function flip sign</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">'k'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2532/1499142750.py:4: RuntimeWarning: divide by zero encountered in divide
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2511/1499142750.py:4: RuntimeWarning: divide by zero encountered in divide
   return np.tan(2*np.pi*omega) - omega_c/omega
 </pre></div>
 </div>
@@ -1406,7 +1406,7 @@ analytical = 1.7724538509055159
 <span class="n">linear_interpolation</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">y_meas</span><span class="p">)</span>
 <span class="n">y_interp1</span> <span class="o">=</span> <span class="n">linear_interpolation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
-<span class="n">cubic_interpolation</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">y_meas</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
+<span class="n">cubic_interpolation</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">y_meas</span><span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s1">'cubic'</span><span class="p">)</span>
 <span class="n">y_interp2</span> <span class="o">=</span> <span class="n">cubic_interpolation</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1417,16 +1417,16 @@ analytical = 1.7724538509055159
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">y_meas</span><span class="p">,</span> <span class="s1">&#39;bs&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;noisy data&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_real</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;true function&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_interp1</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;linear interp&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_interp2</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cubic interp&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">y_meas</span><span class="p">,</span> <span class="s1">'bs'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'noisy data'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_real</span><span class="p">,</span> <span class="s1">'k'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'true function'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_interp1</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'linear interp'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y_interp2</span><span class="p">,</span> <span class="s1">'g'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'cubic interp'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/b6149ba02640227ca168cc138bae7bf0b65ab1dd08b4c6b8162a1d86a0dabcb8.png" src="../../_images/b6149ba02640227ca168cc138bae7bf0b65ab1dd08b4c6b8162a1d86a0dabcb8.png" />
+<img alt="../../_images/da10621c82223ec1e3871ac731c1ea4a5b2638631759b9cebf90616335e3d131.png" src="../../_images/da10621c82223ec1e3871ac731c1ea4a5b2638631759b9cebf90616335e3d131.png" />
 </div>
 </div>
 </section>
@@ -1471,7 +1471,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/11eddb3c11718fd0ba9d5d76e5c444b709b84887b1fbe28cd5f6b21b1ffbd0e4.png" src="../../_images/11eddb3c11718fd0ba9d5d76e5c444b709b84887b1fbe28cd5f6b21b1ffbd0e4.png" />
+<img alt="../../_images/d8efd646c3883f83b135f67e2b3b985bddbd915811591202593f40c67872d634.png" src="../../_images/d8efd646c3883f83b135f67e2b3b985bddbd915811591202593f40c67872d634.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1503,7 +1503,7 @@ analytical = 1.7724538509055159
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1786e690d3457b71d954aec155a20780501b457703c55d2e66a88b46c435275f.png" src="../../_images/1786e690d3457b71d954aec155a20780501b457703c55d2e66a88b46c435275f.png" />
+<img alt="../../_images/404067b458e8e356e0bd16dcea52838730c409d82bb3e739d2a4d91871a1802c.png" src="../../_images/404067b458e8e356e0bd16dcea52838730c409d82bb3e739d2a4d91871a1802c.png" />
 </div>
 </div>
 <p>Statistics:</p>
@@ -1538,14 +1538,14 @@ analytical = 1.7724538509055159
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t_statistic</span><span class="p">,</span> <span class="n">p_value</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">ttest_ind</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">),</span> <span class="n">X</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">))</span>
 
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;t-statistic =&quot;</span><span class="p">,</span> <span class="n">t_statistic</span><span class="p">)</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;p-value =&quot;</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"t-statistic ="</span><span class="p">,</span> <span class="n">t_statistic</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">"p-value ="</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t-statistic = 1.3119580087041915
-p-value = 0.18968501673510815
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>t-statistic = 1.4674765828333467
+p-value = 0.14240384460192337
 </pre></div>
 </div>
 </div>
@@ -1559,7 +1559,7 @@ p-value = 0.18968501673510815
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-3.0883822891080084), pvalue=np.float64(0.0020680736381024894), df=np.int64(999))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-3.528687290704595), pvalue=np.float64(0.0004366410570620352), df=np.int64(999))
 </pre></div>
 </div>
 </div>
@@ -1584,7 +1584,7 @@ p-value = 0.18968501673510815
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-0.09376741209771249), pvalue=np.float64(0.925312720986841), df=np.int64(999))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TtestResult(statistic=np.float64(-0.8152332332532638), pvalue=np.float64(0.41513312937118), df=np.int64(999))
 </pre></div>
 </div>
 </div>

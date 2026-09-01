@@ -683,20 +683,20 @@ Applications are numerous:</p>
 <span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">f</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="n">angle</span><span class="o">=</span><span class="n">vp</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="n">vp</span><span class="o">.</span><span class="n">vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
 <span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="n">vp</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.05</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/vpython/vpython.py:3946,</span> in <span class="ni">extrusion.__init__</span><span class="nt">(self, **args)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/vpython/vpython.py:3946,</span> in <span class="ni">extrusion.__init__</span><span class="nt">(self, **args)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3943</span>     <span class="k">if</span> <span class="n">attr</span> <span class="ow">in</span> <span class="n">args</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">attr</span><span class="p">],</span><span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="n">attr</span><span class="p">])</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pathlength</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">3944</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;The &quot;</span><span class="o">+</span><span class="n">attr</span><span class="o">+</span><span class="s2">&quot; list must be the same length as the list of points on the path (&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pathlength</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;).&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3944</span>         <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">"The "</span><span class="o">+</span><span class="n">attr</span><span class="o">+</span><span class="s2">" list must be the same length as the list of points on the path ("</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_pathlength</span><span class="p">)</span><span class="o">+</span><span class="s2">")."</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">3946</span> <span class="nb">super</span><span class="p">(</span><span class="n">extrusion</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">setup</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3948</span> <span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">_compound</span> <span class="o">=</span> <span class="bp">self</span> <span class="c1"># used by event handler to update pos and size</span>
 <span class="g g-Whitespace">   </span><span class="mi">3949</span> <span class="n">_wait</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">canvas</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/vpython/vpython.py:612,</span> in <span class="ni">standardAttributes.setup</span><span class="nt">(self, args)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/vpython/vpython.py:612,</span> in <span class="ni">standardAttributes.setup</span><span class="nt">(self, args)</span>
 <span class="g g-Whitespace">    </span><span class="mi">611</span> <span class="k">def</span><span class="w"> </span><span class="nf">setup</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">args</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">612</span>     <span class="nb">super</span><span class="p">(</span><span class="n">standardAttributes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 <span class="g g-Whitespace">    </span><span class="mi">613</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_constructing</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1">## calls to setters are from constructor</span>
-<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="n">objName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objName</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s1">&#39;_objName&#39;</span><span class="p">]</span>  <span class="c1">## identifies object type</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="n">objName</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_objName</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s1">'_objName'</span><span class="p">]</span>  <span class="c1">## identifies object type</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/vpython/vpython.py:265,</span> in <span class="ni">baseObj.__init__</span><span class="nt">(self, **kwargs)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/vpython/vpython.py:265,</span> in <span class="ni">baseObj.__init__</span><span class="nt">(self, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">262</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">baseObj</span><span class="o">.</span><span class="n">_view_constructed</span> <span class="ow">or</span>
 <span class="g g-Whitespace">    </span><span class="mi">263</span>         <span class="n">baseObj</span><span class="o">.</span><span class="n">_canvas_constructing</span><span class="p">):</span>
 <span class="g g-Whitespace">    </span><span class="mi">264</span>     <span class="k">if</span> <span class="n">_isnotebook</span><span class="p">:</span>
@@ -704,17 +704,17 @@ Applications are numerous:</p>
 <span class="g g-Whitespace">    </span><span class="mi">266</span>     <span class="k">else</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">267</span>         <span class="kn">from</span><span class="w"> </span><span class="nn">.no_notebook</span><span class="w"> </span><span class="kn">import</span> <span class="n">_</span>
 
-<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.15</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.11</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">vpython</span><span class="o">/</span><span class="n">with_notebook</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">71</span>
+<span class="n">File</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">hostedtoolcache</span><span class="o">/</span><span class="n">Python</span><span class="o">/</span><span class="mf">3.11.16</span><span class="o">/</span><span class="n">x64</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.11</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">vpython</span><span class="o">/</span><span class="n">with_notebook</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">71</span>
 <span class="g g-Whitespace">     </span><span class="mi">66</span>         <span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span>             <span class="c1">#logging.info(&quot;PermissionError: Unable to install /vpython_data directory and files for VPython on JupyterLab&quot;)</span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span>             <span class="c1">#logging.info("PermissionError: Unable to install /vpython_data directory and files for VPython on JupyterLab")</span>
 <span class="g g-Whitespace">     </span><span class="mi">68</span>             <span class="k">pass</span>
-<span class="ne">---&gt; </span><span class="mi">71</span> <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;nbextensions&#39;</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">jd</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">notebook</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&lt;=</span> <span class="s1">&#39;6.5.5&#39;</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">71</span> <span class="k">if</span> <span class="p">(</span><span class="s1">'nbextensions'</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">jd</span><span class="p">))</span> <span class="ow">and</span> <span class="p">(</span><span class="n">notebook</span><span class="o">.</span><span class="n">__version__</span> <span class="o">&lt;=</span> <span class="s1">'6.5.5'</span><span class="p">):</span>
 <span class="g g-Whitespace">     </span><span class="mi">72</span>     <span class="n">ldir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">nbdir</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">if</span> <span class="p">(</span><span class="s1">&#39;vpython_data&#39;</span> <span class="ow">in</span> <span class="n">ldir</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">nbdata</span><span class="p">))</span> <span class="o">==</span> <span class="n">datacnt</span> <span class="ow">and</span>
-<span class="g g-Whitespace">     </span><span class="mi">74</span>        <span class="s1">&#39;vpython_libraries&#39;</span> <span class="ow">in</span> <span class="n">ldir</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">nblib</span><span class="p">))</span> <span class="o">==</span> <span class="n">libcnt</span> <span class="ow">and</span>
-<span class="g g-Whitespace">     </span><span class="mi">75</span>         <span class="s1">&#39;vpython_version.txt&#39;</span> <span class="ow">in</span> <span class="n">ldir</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">if</span> <span class="p">(</span><span class="s1">'vpython_data'</span> <span class="ow">in</span> <span class="n">ldir</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">nbdata</span><span class="p">))</span> <span class="o">==</span> <span class="n">datacnt</span> <span class="ow">and</span>
+<span class="g g-Whitespace">     </span><span class="mi">74</span>        <span class="s1">'vpython_libraries'</span> <span class="ow">in</span> <span class="n">ldir</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">nblib</span><span class="p">))</span> <span class="o">==</span> <span class="n">libcnt</span> <span class="ow">and</span>
+<span class="g g-Whitespace">     </span><span class="mi">75</span>         <span class="s1">'vpython_version.txt'</span> <span class="ow">in</span> <span class="n">ldir</span><span class="p">):</span>
 
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;/home/runner/.local/share/jupyter&#39;
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: '/home/runner/.local/share/jupyter'
 </pre></div>
 </div>
 </div>
@@ -759,14 +759,14 @@ m3g)</p>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>  <span class="c1"># primera fila, indice es 0</span>
               <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span> <span class="c1"># Segunda fila, indice es 1</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Matrix : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Matrix : </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
 <span class="c1">#</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Matrix : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[1,0] : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[1][0] : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Matrix : </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"A[1,0] : </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"A[1][0] : </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;A[:,-1] : </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"A[:,-1] : </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -808,9 +808,9 @@ m3g)</p>
               <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">]])</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">588.6</span><span class="p">,</span> <span class="mf">686.7</span><span class="p">,</span> <span class="mf">784.8</span><span class="p">])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># magic</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Solution: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 <span class="c1"># confirm</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Delta:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Delta:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -826,9 +826,9 @@ m3g)</p>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span><span class="n">N</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="c1"># magic</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Solution: </span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">x</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Solution: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">x</span><span class="p">[:</span><span class="mi">10</span><span class="p">])</span>
 <span class="c1"># confirm</span>
-<span class="c1">#print(&quot;Delta:\n&quot;, A.dot(x) - b)</span>
+<span class="c1">#print("Delta:\n", A.dot(x) - b)</span>
 </pre></div>
 </div>
 </div>
@@ -931,9 +931,9 @@ not special. Compute the quantity <code class="docutils literal notranslate"><sp
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">],</span> 
               <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">]])</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># magic</span>
-<span class="c1">#print(&quot;B : \n&quot;, B)</span>
+<span class="c1">#print("B : \n", B)</span>
 <span class="c1"># verify</span>
-<span class="c1">#print(&quot;A A^-1 : \n&quot;, A.dot(B))</span>
+<span class="c1">#print("A A^-1 : \n", A.dot(B))</span>
 </pre></div>
 </div>
 </div>
@@ -946,9 +946,9 @@ not special. Compute the quantity <code class="docutils literal notranslate"><sp
 <span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
 <span class="n">B</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># magic</span>
-<span class="c1">#print(&quot;B : \n&quot;, B)</span>
+<span class="c1">#print("B : \n", B)</span>
 <span class="c1"># verify</span>
-<span class="c1">#print(&quot;A A^-1 : \n&quot;, A.dot(B))</span>
+<span class="c1">#print("A A^-1 : \n", A.dot(B))</span>
 </pre></div>
 </div>
 </div>
@@ -964,8 +964,8 @@ might have a lot of error.</p>
 <blockquote>
 <div><p>Compute the condition number of the following matrix:</p>
 </div></blockquote>
-<div class="amsmath math notranslate nohighlight" id="equation-59af121f-a1eb-4cbd-ab3b-058c30dbe4b0">
-<span class="eqno">(10)<a class="headerlink" href="#equation-59af121f-a1eb-4cbd-ab3b-058c30dbe4b0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-da6471c8-2fd6-48ea-aea5-f13297303622">
+<span class="eqno">(10)<a class="headerlink" href="#equation-da6471c8-2fd6-48ea-aea5-f13297303622" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A = 
 \begin{bmatrix}
 1.001 &amp; 0.001\\
@@ -980,7 +980,7 @@ A =
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">1.001</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">],</span>
                 <span class="p">[</span><span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.999</span><span class="p">]])</span>
 <span class="n">kappa</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">kappa</span><span class="w"> </span><span class="si">= }</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">kappa</span><span class="w"> </span><span class="si">= }</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1054,10 +1054,10 @@ aeigenvalues is hard, and they can also be complex.</p>
 <span class="c1">#A = np.array([[1, 0.], [0., 2.]])</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
 <span class="n">sol</span> <span class="o">=</span> <span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">A</span><span class="p">)</span> <span class="c1"># magic</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eigen-values: &quot;</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Eigen-vectors:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Eigen-values: "</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Eigen-vectors:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="c1"># verify</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Verification: &quot;</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Verification: "</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">])</span> <span class="o">-</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][:,</span> <span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1127,8 +1127,8 @@ aeigenvalues is hard, and they can also be complex.</p>
 <section id="thick-lens-boas-3-15-9">
 <h3>Thick lens (Boas, 3.15.9)<a class="headerlink" href="#thick-lens-boas-3-15-9" title="Link to this heading">#</a></h3>
 <p>The next matrix is used when discussing a thick lens in air</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0c3a5a70-f766-4a45-af35-b210924a0998">
-<span class="eqno">(11)<a class="headerlink" href="#equation-0c3a5a70-f766-4a45-af35-b210924a0998" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7db108a7-d49f-4d68-955b-e4887e001453">
+<span class="eqno">(11)<a class="headerlink" href="#equation-7db108a7-d49f-4d68-955b-e4887e001453" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A = 
 \begin{pmatrix}
 1 &amp; (n-1)/R_2\\

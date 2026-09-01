@@ -625,33 +625,33 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span><span class="p">,</span> <span class="n">parse_qs</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert any YouTube URL to embed format.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Convert any YouTube URL to embed format."""</span>
     <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s2">&quot;youtu.be&quot;</span><span class="p">:</span>
-        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="s2">&quot;shorts&quot;</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
-        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/shorts/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="k">elif</span> <span class="s2">&quot;embed&quot;</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s2">"youtu.be"</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s2">"shorts"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/shorts/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s2">"embed"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">url</span>  <span class="c1"># already embed format, do nothing</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">vid</span> <span class="o">=</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;v&quot;</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;https://www.youtube.com/embed/</span><span class="si">{</span><span class="n">vid</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">if</span> <span class="n">vid</span> <span class="k">else</span> <span class="n">url</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"v"</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"https://www.youtube.com/embed/</span><span class="si">{</span><span class="n">vid</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">vid</span> <span class="k">else</span> <span class="n">url</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;90%&quot;</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="s2">&quot;youtube.com&quot;</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">or</span> <span class="s2">&quot;youtu.be&quot;</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"90%"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">"youtube.com"</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">or</span> <span class="s2">"youtu.be"</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
         <span class="n">url</span> <span class="o">=</span> <span class="n">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
     <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">aspect</span>
-    <span class="n">padding</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">&quot;%&quot;</span><span class="p">))</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">w</span>
-    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">&lt;div style=&quot;display:flex; flex-direction:column; align-items:center; width:100%;&quot;&gt;</span>
-<span class="s1">  &lt;div style=&quot;position:relative; width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; padding-bottom:</span><span class="si">{</span><span class="n">padding</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%; height:0; overflow:hidden;&quot;&gt;</span>
-<span class="s1">    &lt;iframe src=&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">&quot;</span>
-<span class="s1">      style=&quot;position:absolute; top:0; left:0; width:100%; height:100%; border:0;&quot;</span>
-<span class="s1">      allowfullscreen title=&quot;</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">&quot;&gt;</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"%"</span><span class="p">))</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">w</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">&lt;div style="display:flex; flex-direction:column; align-items:center; width:100%;"&gt;</span>
+<span class="s1">  &lt;div style="position:relative; width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; padding-bottom:</span><span class="si">{</span><span class="n">padding</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%; height:0; overflow:hidden;"&gt;</span>
+<span class="s1">    &lt;iframe src="</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">"</span>
+<span class="s1">      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"</span>
+<span class="s1">      allowfullscreen title="</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">"&gt;</span>
 <span class="s1">    &lt;/iframe&gt;</span>
 <span class="s1">  &lt;/div&gt;</span>
-<span class="s1">  </span><span class="si">{</span><span class="s2">&quot;&lt;p style=&#39;font-style:italic; margin-top:0.4em;&#39;&gt;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">&quot;&lt;/p&gt;&quot;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="si">}</span>
-<span class="s1">&lt;/div&gt;&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">"&lt;p style='font-style:italic; margin-top:0.4em;'&gt;"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&lt;/p&gt;"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;'''</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -671,8 +671,8 @@
 <p>Such systems cannot be described by ordinary differential equations (ODEs), because ODEs involve derivatives with respect to a single independent variable.</p>
 <p>Instead, we need <strong>partial differential equations (PDEs)</strong>.</p>
 <p>A PDE relates a function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e835e07-be69-44e4-a18a-890c75fffafb">
-<span class="eqno">(96)<a class="headerlink" href="#equation-3e835e07-be69-44e4-a18a-890c75fffafb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-746f91fb-9928-490b-8972-6e75e7bc0f9f">
+<span class="eqno">(96)<a class="headerlink" href="#equation-746f91fb-9928-490b-8972-6e75e7bc0f9f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,y,z,t)
 \end{equation}\]</div>
 <p>to its partial derivatives with respect to several variables. For nice visualizations check <a class="reference external" href="https://visualpde.com/explore.html">VisualPDE</a>.</p>
@@ -683,7 +683,7 @@ u(x,y,z,t)
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/watch?v=ly4S0oi3Yz8&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://www.youtube.com/watch?v=ly4S0oi3Yz8"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -708,7 +708,7 @@ u(x,y,z,t)
 </summary>
 <div class="cell_input above-output-prompt docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">YouTubeVideo</span>
-<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">&quot;ly4S0oi3Yz8&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">&quot;80%&quot;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">&quot;600&quot;</span><span class="p">,</span> <span class="n">controls</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">YouTubeVideo</span><span class="p">(</span><span class="s2">"ly4S0oi3Yz8"</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"80%"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">"600"</span><span class="p">,</span> <span class="n">controls</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -769,8 +769,8 @@ u(x,y,z,t)
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Laplace Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d2c375d2-195f-4f4f-b89d-b16170242228">
-<span class="eqno">(97)<a class="headerlink" href="#equation-d2c375d2-195f-4f4f-b89d-b16170242228" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-621ac672-740d-4a55-862f-62282a79659d">
+<span class="eqno">(97)<a class="headerlink" href="#equation-621ac672-740d-4a55-862f-62282a79659d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 \phi = 0
 \end{equation}\]</div>
 <p>Describes electrostatic potentials in charge-free regions.</p>
@@ -782,7 +782,7 @@ u(x,y,z,t)
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/shorts/deQAnSDPrSs&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://www.youtube.com/shorts/deQAnSDPrSs"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -802,8 +802,8 @@ u(x,y,z,t)
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Heat Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bd56b936-2255-4757-98ac-f84c3b657727">
-<span class="eqno">(98)<a class="headerlink" href="#equation-bd56b936-2255-4757-98ac-f84c3b657727" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9730c158-9bbd-4362-a11c-9bfce0bd4e5f">
+<span class="eqno">(98)<a class="headerlink" href="#equation-9730c158-9bbd-4362-a11c-9bfce0bd4e5f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial T}{\partial t} = D\nabla^2 T
 \end{equation}\]</div>
 <p>Describes diffusion of heat.</p>
@@ -815,7 +815,7 @@ u(x,y,z,t)
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/sim/?preset=heatEquation1D&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://visualpde.com/sim/?preset=heatEquation1D"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -839,7 +839,7 @@ u(x,y,z,t)
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/embed/uVKMY-WTrVo?si=igW34UBr8oNjdb9N&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://www.youtube.com/embed/uVKMY-WTrVo?si=igW34UBr8oNjdb9N"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -859,8 +859,8 @@ u(x,y,z,t)
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Wave Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-308f60ae-3e6a-4cf9-9060-86d1f677e6e7">
-<span class="eqno">(99)<a class="headerlink" href="#equation-308f60ae-3e6a-4cf9-9060-86d1f677e6e7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-57feb62e-e004-4d31-bdcc-365891e89cd3">
+<span class="eqno">(99)<a class="headerlink" href="#equation-57feb62e-e004-4d31-bdcc-365891e89cd3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2\nabla^2 u
 \end{equation}\]</div>
 <p>Describes vibrations, sound, and electromagnetic waves.</p>
@@ -872,7 +872,7 @@ u(x,y,z,t)
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_all.html&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_all.html"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -896,7 +896,7 @@ u(x,y,z,t)
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/sim/?preset=waveEquation1D&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://visualpde.com/sim/?preset=waveEquation1D"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -920,7 +920,7 @@ u(x,y,z,t)
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/sim/?preset=waveEquation3D&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://visualpde.com/sim/?preset=waveEquation3D"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -942,8 +942,8 @@ u(x,y,z,t)
 <section id="classification-of-pdes">
 <h2>Classification of PDEs<a class="headerlink" href="#classification-of-pdes" title="Link to this heading">#</a></h2>
 <p>All linear second-order PDEs in two variables can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5bdbe488-8bef-4d93-b1bd-710fd3d7738b">
-<span class="eqno">(100)<a class="headerlink" href="#equation-5bdbe488-8bef-4d93-b1bd-710fd3d7738b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-55c94c50-f1a4-4e42-93cd-b83d69d7e913">
+<span class="eqno">(100)<a class="headerlink" href="#equation-55c94c50-f1a4-4e42-93cd-b83d69d7e913" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A \frac{\partial^2 u}{\partial x^2} + B \frac{\partial^2 u}{\partial x \partial y} + C \frac{\partial^2 u}{\partial y^2} + \text{lower order terms} = 0.
 \end{equation}\]</div>
 <p>The sign of the <em>discriminant</em> <span class="math notranslate nohighlight">\(\Delta = B^2 - 4AC\)</span> determines the character of the equation — and completely determines the type of numerical method needed:</p>
@@ -969,8 +969,8 @@ Initial conditions + boundary conditions.</p>
 <section id="why-do-we-need-numerical-methods">
 <h2>Why Do We Need Numerical Methods?<a class="headerlink" href="#why-do-we-need-numerical-methods" title="Link to this heading">#</a></h2>
 <p>Only a limited number of PDEs possess analytical solutions. Even simple geometries may prevent exact solutions. For simple geometries and boundary conditions, exact solutions exist and are taught in mathematical physics courses (separation of variables, Green’s functions, Fourier series…). For example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7b197539-f2a8-42db-bdd9-e697c1c6a88e">
-<span class="eqno">(101)<a class="headerlink" href="#equation-7b197539-f2a8-42db-bdd9-e697c1c6a88e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-32926ed0-8de8-4f44-be82-46afddd8b64a">
+<span class="eqno">(101)<a class="headerlink" href="#equation-32926ed0-8de8-4f44-be82-46afddd8b64a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = 0, \quad V(x,0) = \sin(\pi x), \quad \text{zero on other walls}
 \end{equation}\]</div>
 <p>has the analytical solution <span class="math notranslate nohighlight">\(V(x, y) = \sin(\pi x)\, e^{-\pi y}\)</span>.</p>
@@ -998,12 +998,12 @@ Initial conditions + boundary conditions.</p>
 <h2>The Finite Difference Idea<a class="headerlink" href="#the-finite-difference-idea" title="Link to this heading">#</a></h2>
 <p>All the numerical methods in this chapter share one core idea: replace continuous derivatives by <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">discrete differences</a> on a grid.</p>
 <p>For a function <span class="math notranslate nohighlight">\(u(x)\)</span> sampled at points <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta x\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-33b09859-c190-4146-97e7-3c16dd8def68">
-<span class="eqno">(102)<a class="headerlink" href="#equation-33b09859-c190-4146-97e7-3c16dd8def68" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f65cc32e-5a2c-4920-b42c-a0106b24b2c3">
+<span class="eqno">(102)<a class="headerlink" href="#equation-f65cc32e-5a2c-4920-b42c-a0106b24b2c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial u}{\partial x}\bigg|_i \approx \frac{u_{i+1} - u_{i-1}}{2\Delta x} \qquad (\text{central difference, } O(\Delta x^2))
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-9863a2d4-1784-4836-a4de-da92edee1d12">
-<span class="eqno">(103)<a class="headerlink" href="#equation-9863a2d4-1784-4836-a4de-da92edee1d12" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d15ec1a7-1ec8-4e49-935e-f24c4d40507c">
+<span class="eqno">(103)<a class="headerlink" href="#equation-d15ec1a7-1ec8-4e49-935e-f24c4d40507c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial x^2}\bigg|_i \approx \frac{u_{i+1} - 2u_i + u_{i-1}}{\Delta x^2} \qquad (\text{central second difference, } O(\Delta x^2))
 \end{equation}\]</div>
 <p>Substituting these into a PDE turns it into a system of <strong>algebraic equations</strong> — one per grid point — that a computer can solve.</p>
@@ -1018,30 +1018,30 @@ Initial conditions + boundary conditions.</p>
 <section id="the-first-example-the-poisson-equation">
 <h2>The first example: The Poisson equation<a class="headerlink" href="#the-first-example-the-poisson-equation" title="Link to this heading">#</a></h2>
 <p>The following is an example of an elliptical differential equation, determined by the boundary conditions :</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d0af2e77-72ca-4600-bcd0-5a096899e06e">
-<span class="eqno">(104)<a class="headerlink" href="#equation-d0af2e77-72ca-4600-bcd0-5a096899e06e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f9b860b9-f5ce-4efa-b783-a4406de53d78">
+<span class="eqno">(104)<a class="headerlink" href="#equation-f9b860b9-f5ce-4efa-b783-a4406de53d78" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = \left[ \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2}\right] = -\frac{\rho}{\epsilon_0}
 \end{equation}\]</div>
 <p>In 2D, there are several solutions and the actual one depends on the boundary conditions. For example, for the Laplace equation you have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8bfbe22f-f78c-4db1-9d0f-56067b1ab5eb">
-<span class="eqno">(105)<a class="headerlink" href="#equation-8bfbe22f-f78c-4db1-9d0f-56067b1ab5eb" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-26c3a827-1cd8-4fd6-bbc7-736d620398a6">
+<span class="eqno">(105)<a class="headerlink" href="#equation-26c3a827-1cd8-4fd6-bbc7-736d620398a6" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, y) &amp; = V_0,\\
 V(x, y) &amp; = \frac{1}{2} A (x^2 - y^2) + Bx + Cy + D
 \end{align}\]</div>
 <p>as solutions. We the density <span class="math notranslate nohighlight">\(\rho\)</span> is null, we have the Laplace equation. It appears also when the heat equation stabilizes</p>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> method discretizes the derivatives on a grid. For instance, using the central difference it is possible to rewrite the 2D Poisson equation as (<a class="reference external" href="https://en.wikipedia.org/wiki/Laplace%27s_equation">Laplace equation</a> corresponds to <span class="math notranslate nohighlight">\(\rho = 0\)</span> )</p>
-<div class="amsmath math notranslate nohighlight" id="equation-09cf28eb-6f21-4575-988a-331eb2234eb3">
-<span class="eqno">(106)<a class="headerlink" href="#equation-09cf28eb-6f21-4575-988a-331eb2234eb3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a178f5e0-195b-4529-92b7-936592b59412">
+<span class="eqno">(106)<a class="headerlink" href="#equation-a178f5e0-195b-4529-92b7-936592b59412" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V(x_i + \Delta x, y_j) - 2V(x_i, y_j) + V(x_i - \Delta x, y_j)}{\Delta x^2} +\frac{V(x_i, y_j + \Delta y) - 2V(x_i, y_j) + V(x_i, y_j - \Delta y)}{\Delta y^2} = -\frac{\rho(x_i, y_j)}{\epsilon_0}.
 \end{equation}\]</div>
 <p>which can be rewritten as  (let’s assume <span class="math notranslate nohighlight">\(\Delta x = \Delta y = \Delta\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-79cc3ed6-ce0b-4dc4-a6db-cbd0486769db">
-<span class="eqno">(107)<a class="headerlink" href="#equation-79cc3ed6-ce0b-4dc4-a6db-cbd0486769db" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0b55c8cd-01f7-43bb-9283-18a8e730e380">
+<span class="eqno">(107)<a class="headerlink" href="#equation-0b55c8cd-01f7-43bb-9283-18a8e730e380" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V_{i+1, j} - 2V_{i, j} + V_{i-1, j}}{\Delta^2} + \frac{V_{i,j+1} - 2V_{i, j} + V_{i, j-1}}{\Delta^2} = -\frac{\rho_{i, j}}{\epsilon_0},
 \end{equation}\]</div>
 <p>and, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-81e253d7-69b2-488e-8e9e-9231ab4eee6c">
-<span class="eqno">(108)<a class="headerlink" href="#equation-81e253d7-69b2-488e-8e9e-9231ab4eee6c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-31dcca8f-151c-4547-98e0-5b55ccbde24e">
+<span class="eqno">(108)<a class="headerlink" href="#equation-31dcca8f-151c-4547-98e0-5b55ccbde24e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j}\Delta^2}{\epsilon_0}.
 \end{equation}\]</div>
 <p>This can be seen in two ways: as a matrix equation or as an equation showing that the value at a given position, <span class="math notranslate nohighlight">\(V_{i, j}\)</span>, is kind of an average of the surrounding neighbors and the source term (<a class="reference external" href="https://en.wikipedia.org/wiki/Jacobi_method">Jacobi method</a>), as seen (ref: <a class="reference external" href="https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation">https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation</a>)</p>
@@ -1056,16 +1056,16 @@ V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j
 <section id="relaxation-solution">
 <h2>Relaxation solution<a class="headerlink" href="#relaxation-solution" title="Link to this heading">#</a></h2>
 <p>Let’s solve the Laplace problem (<span class="math notranslate nohighlight">\(\rho = 0\)</span>) using both methods with a simple example. Fix the boundaries as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-22579f75-dd50-4f0f-a9e9-b7c9f81d8e29">
-<span class="eqno">(109)<a class="headerlink" href="#equation-22579f75-dd50-4f0f-a9e9-b7c9f81d8e29" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0eae6368-f488-4596-8a61-43b4c8e15756">
+<span class="eqno">(109)<a class="headerlink" href="#equation-0eae6368-f488-4596-8a61-43b4c8e15756" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, 0) &amp;= \sin(\pi x),\\
 V(x, a) &amp;= 0, \\
 V(0, y) &amp;= 0, \\
 V(a, y) &amp;= 0, \\
 \end{align}\]</div>
 <p>with <span class="math notranslate nohighlight">\(x, y \in [0, 1]\)</span>, and <span class="math notranslate nohighlight">\(a \)</span> any value on the border. These are called <a class="reference external" href="https://en.wikipedia.org/wiki/Dirichlet_boundary_condition">Dirichlet boundary conditions</a> (where you specify the function values at the boundary). Finally, use at least <span class="math notranslate nohighlight">\(N_x = N_y = 25\)</span>, so <span class="math notranslate nohighlight">\(\Delta = 1/25\)</span>, <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta, y_j = y_0 + j\Delta\)</span>. We need to solve the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c315bf56-752d-487e-84f3-31b8621c513e">
-<span class="eqno">(110)<a class="headerlink" href="#equation-c315bf56-752d-487e-84f3-31b8621c513e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9f60cede-3cb6-4bcd-a261-9140a4a5b68d">
+<span class="eqno">(110)<a class="headerlink" href="#equation-9f60cede-3cb6-4bcd-a261-9140a4a5b68d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 \end{equation}\]</div>
 <p>To do so, we apply this relationship to each point in the grid, without overwriting the boundary conditions, and we do that until the values are not changing much. Firs, let’s define the problem conditions (to be changed later)</p>
@@ -1076,7 +1076,7 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <p class="expanded admonition-title">Hide code cell source</p>
 </summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://www.youtube.com/shorts/deQAnSDPrSs&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://www.youtube.com/shorts/deQAnSDPrSs"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1138,7 +1138,7 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">is_boundary</span><span class="p">(</span><span class="n">ix</span><span class="p">,</span> <span class="n">iy</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
-    <span class="s2">&quot;Returns true if a point is a boundary. Assumes square grid&quot;</span>
+    <span class="s2">"Returns true if a point is a boundary. Assumes square grid"</span>
     <span class="k">if</span> <span class="n">ix</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="n">iy</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="k">return</span> <span class="kc">True</span>
     <span class="k">if</span> <span class="n">ix</span> <span class="o">==</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span> <span class="k">return</span> <span class="kc">True</span>
@@ -1161,7 +1161,7 @@ V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="c1">#plt.savefig(&quot;fig/laplace_boundary.png&quot;, dpi=120)</span>
+<span class="c1">#plt.savefig("fig/laplace_boundary.png", dpi=120)</span>
 </pre></div>
 </div>
 </div>
@@ -1208,7 +1208,7 @@ Be careful to not affect the boundaries when updating the matrix</p>
 <span class="n">img</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="c1">#plt.savefig(&quot;fig/laplace_1iter.png&quot;, dpi=120)</span>
+<span class="c1">#plt.savefig("fig/laplace_1iter.png", dpi=120)</span>
 </pre></div>
 </div>
 </div>
@@ -1234,7 +1234,7 @@ Be careful to not affect the boundaries when updating the matrix</p>
         <span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
         <span class="n">iter_method</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
         <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total time iterating: </span><span class="si">{</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Total time iterating: </span><span class="si">{</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="c1">#print(V)</span>
         <span class="c1">#print()</span>
 </pre></div>
@@ -1253,9 +1253,9 @@ Be careful to not affect the boundaries when updating the matrix</p>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Full iteration using only numpy indexing, but implicitly assumes the boundary condition</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">jacobi_np</span><span class="p">(</span><span class="n">matrix</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    This uses numpy notation to perform the vectorized update</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.25</span><span class="o">*</span><span class="p">(</span><span class="n">matrix</span><span class="p">[</span><span class="mi">2</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> 
                                <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">:]</span> <span class="o">+</span> <span class="n">matrix</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
@@ -1269,16 +1269,16 @@ Be careful to not affect the boundaries when updating the matrix</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time iterating: 0.006596088409423828
-Total time iterating: 0.0015246868133544922
-Total time iterating: 0.0006406307220458984
-Total time iterating: 0.0006358623504638672
-Total time iterating: 0.0006339550018310547
-Total time iterating: 0.000637054443359375
-Total time iterating: 0.000637054443359375
-Total time iterating: 0.0006270408630371094
-Total time iterating: 0.0006670951843261719
-Total time iterating: 0.0006353855133056641
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time iterating: 0.006090402603149414
+Total time iterating: 0.001984834671020508
+Total time iterating: 0.0006899833679199219
+Total time iterating: 0.0006854534149169922
+Total time iterating: 0.0006783008575439453
+Total time iterating: 0.0006785392761230469
+Total time iterating: 0.0006699562072753906
+Total time iterating: 0.0006830692291259766
+Total time iterating: 0.0006582736968994141
+Total time iterating: 0.0006780624389648438
 </pre></div>
 </div>
 </div>
@@ -1314,16 +1314,16 @@ Total time iterating: 0.0006353855133056641
         <span class="k">if</span> <span class="n">NDISPLAY</span><span class="o">&gt;</span><span class="mi">0</span> <span class="ow">and</span> <span class="p">(</span><span class="n">step</span><span class="o">%</span><span class="k">NDISPLAY</span> == 0 or step==1):
             <span class="c1"># ax[idisplay].set_title(step)</span>
             <span class="c1"># ax[idisplay].imshow(V)</span>
-            <span class="n">ax</span><span class="p">[</span><span class="n">idisplay</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">,</span> <span class="s1">&#39;box&#39;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">idisplay</span><span class="p">]</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">,</span> <span class="s1">'box'</span><span class="p">)</span>
             <span class="n">ax</span><span class="p">[</span><span class="n">idisplay</span><span class="p">]</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
-            <span class="n">ax</span><span class="p">[</span><span class="n">idisplay</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">idisplay</span><span class="p">]</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+            <span class="n">ax</span><span class="p">[</span><span class="n">idisplay</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"step=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+            <span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="p">[</span><span class="n">idisplay</span><span class="p">]</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'Blues'</span><span class="p">)</span>
             <span class="n">ax</span><span class="p">[</span><span class="n">idisplay</span><span class="p">]</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
             <span class="n">idisplay</span> <span class="o">+=</span> <span class="mi">1</span>
         <span class="n">aux</span><span class="p">[</span><span class="n">step</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">iter_method</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">NDISPLAY</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-        <span class="c1">#fig.savefig(&quot;fig/laplace_relax.png&quot;, dpi=150)</span>
+        <span class="c1">#fig.savefig("fig/laplace_relax.png", dpi=150)</span>
     <span class="k">return</span> <span class="n">aux</span>
 </pre></div>
 </div>
@@ -1341,7 +1341,7 @@ Total time iterating: 0.0006353855133056641
 <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">tmp</span> <span class="o">=</span> <span class="n">solve_system</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">iter_method</span><span class="o">=</span><span class="n">jacobiITER</span><span class="p">,</span> <span class="n">NDISPLAY</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 
-<span class="ne">TypeError</span>: solve_system() got an unexpected keyword argument &#39;NDISPLAY&#39;
+<span class="ne">TypeError</span>: solve_system() got an unexpected keyword argument 'NDISPLAY'
 </pre></div>
 </div>
 </div>
@@ -1368,17 +1368,17 @@ Total time iterating: 0.0006353855133056641
 
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
     <span class="n">mesh</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">frames</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
-    <span class="n">title</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step=1/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"step=1/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
         <span class="n">step</span><span class="p">,</span> <span class="n">V_snap</span> <span class="o">=</span> <span class="n">frames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
         <span class="n">mesh</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">V_snap</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
-        <span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s2">"step=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
         <span class="c1"># contours must be redrawn from scratch each frame</span>
         <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">ax</span><span class="o">.</span><span class="n">collections</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>  <span class="c1"># [0] is the pcolormesh, skip it</span>
             <span class="n">c</span><span class="o">.</span><span class="n">remove</span><span class="p">()</span>
-        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">V_snap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+        <span class="n">CS</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">V_snap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'Blues'</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">clabel</span><span class="p">(</span><span class="n">CS</span><span class="p">,</span> <span class="n">CS</span><span class="o">.</span><span class="n">levels</span><span class="p">,</span> <span class="n">inline</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">mesh</span><span class="p">,</span> <span class="n">title</span>
 
@@ -1415,14 +1415,14 @@ Total time iterating: 0.0006353855133056641
             <span class="n">frames</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">step</span><span class="p">,</span> <span class="n">V</span><span class="o">.</span><span class="n">copy</span><span class="p">()))</span>
 
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">'3d'</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">cla</span><span class="p">()</span>
         <span class="n">step</span><span class="p">,</span> <span class="n">V_snap</span> <span class="o">=</span> <span class="n">frames</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">V_snap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;step=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">&quot;V&quot;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">XX</span><span class="p">,</span> <span class="n">YY</span><span class="p">,</span> <span class="n">V_snap</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'viridis'</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">'none'</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"step=</span><span class="si">{</span><span class="n">step</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">niter</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"X"</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Y"</span><span class="p">);</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s2">"V"</span><span class="p">)</span>
         <span class="n">ax</span><span class="o">.</span><span class="n">view_init</span><span class="p">(</span><span class="n">elev</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">azim</span><span class="o">=-</span><span class="mi">60</span><span class="p">)</span>
 
     <span class="n">ani</span> <span class="o">=</span> <span class="n">animation</span><span class="o">.</span><span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">frames</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1484,11 +1484,11 @@ Total time iterating: 0.0006353855133056641
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span> <span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">solve_system</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">iter_method</span><span class="o">=</span><span class="n">jacobi_diff</span><span class="p">,</span> <span class="n">NDISPLAY</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">N</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">N</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="c1">#plt.savefig(&quot;fig/laplace_relax_2.png&quot;, dpi=120)</span>
+<span class="c1">#plt.savefig("fig/laplace_relax_2.png", dpi=120)</span>
 </pre></div>
 </div>
 </div>
@@ -1585,8 +1585,8 @@ Total time iterating: 0.0006353855133056641
 <section id="exercise-plot-the-electrical-field">
 <h2>Exercise: Plot the electrical field<a class="headerlink" href="#exercise-plot-the-electrical-field" title="Link to this heading">#</a></h2>
 <p>For any of the previous examples, use (for example) a quiver plot to plot the electric field, defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-476bf6a5-4be7-4ea2-b31c-b62ba784e0ad">
-<span class="eqno">(111)<a class="headerlink" href="#equation-476bf6a5-4be7-4ea2-b31c-b62ba784e0ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a98c0105-ccf3-4112-93df-af53a0d683e6">
+<span class="eqno">(111)<a class="headerlink" href="#equation-a98c0105-ccf3-4112-93df-af53a0d683e6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec E = -\vec\nabla V
 \end{equation}\]</div>
 <p>See <a class="reference external" href="https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb">https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb</a></p>
@@ -1637,11 +1637,11 @@ Total time iterating: 0.0006353855133056641
     <span class="nb">print</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
     <span class="n">OMEGA</span><span class="o">=</span><span class="mf">1.9</span>
     <span class="n">diff</span> <span class="o">=</span> <span class="n">solve_system</span><span class="p">(</span><span class="n">N</span><span class="o">=</span><span class="n">N</span><span class="p">,</span> <span class="n">niter</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">iter_method</span><span class="o">=</span><span class="k">lambda</span> <span class="n">m</span><span class="p">:</span> <span class="n">jacobi_sor_opt</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">OMEGA</span><span class="p">))</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">N</span><span class="si">=}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">&quot;log&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">diff</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">N</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;fig/laplace_jacobi_sor.png&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">"fig/laplace_jacobi_sor.png"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

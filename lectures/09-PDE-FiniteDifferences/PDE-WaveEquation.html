@@ -620,8 +620,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-wave-equation">
 <h1>The Wave Equation<a class="headerlink" href="#the-wave-equation" title="Link to this heading">#</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-78476d8c-49ba-427e-9c02-c75744786461">
-<span class="eqno">(120)<a class="headerlink" href="#equation-78476d8c-49ba-427e-9c02-c75744786461" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ecc946ff-c419-4f1d-a606-fcfe6ee46ade">
+<span class="eqno">(120)<a class="headerlink" href="#equation-ecc946ff-c419-4f1d-a606-fcfe6ee46ade" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2 \left[ \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right].
 \end{equation}\]</div>
 <section id="vibrations-and-waves">
@@ -680,7 +680,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import needed utils, like for embeding videos and url</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;utils&#39;</span><span class="p">)))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'..'</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">,</span> <span class="s1">'utils'</span><span class="p">)))</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">embed</span>
 </pre></div>
 </div>
@@ -689,7 +689,7 @@
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">&quot;https://visualpde.com/sim/?preset=waveEquation3D&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://visualpde.com/sim/?preset=waveEquation3D"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -714,24 +714,24 @@
 </figure>
 <p>Consider a string under tension <span class="math notranslate nohighlight">\(T\)</span> with linear mass density <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 <p>Let</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4bb9db29-3c77-4f7d-9d32-0030377e0822">
-<span class="eqno">(121)<a class="headerlink" href="#equation-4bb9db29-3c77-4f7d-9d32-0030377e0822" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7916a493-a0e5-4c0d-bce8-499086c5fad6">
+<span class="eqno">(121)<a class="headerlink" href="#equation-7916a493-a0e5-4c0d-bce8-499086c5fad6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,t)
 \end{equation}\]</div>
 <p>represent the transverse displacement.</p>
 <p>Applying Newton’s second law to a small segment yields</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a543cf54-9973-4ca8-8a8b-0e56b409d32f">
-<span class="eqno">(122)<a class="headerlink" href="#equation-a543cf54-9973-4ca8-8a8b-0e56b409d32f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-803052f5-8229-4701-82ce-32d896da4bc4">
+<span class="eqno">(122)<a class="headerlink" href="#equation-803052f5-8229-4701-82ce-32d896da4bc4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mu \frac{\partial^2 u}{\partial t^2} = T \frac{\partial^2 u}{\partial x^2}.
 \end{equation}\]</div>
 <p>Defining</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b7230599-86a6-428b-9310-16f5c046b761">
-<span class="eqno">(123)<a class="headerlink" href="#equation-b7230599-86a6-428b-9310-16f5c046b761" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c0ae56a0-9462-4b3e-b0fe-d33970c1c0bd">
+<span class="eqno">(123)<a class="headerlink" href="#equation-c0ae56a0-9462-4b3e-b0fe-d33970c1c0bd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 c=\sqrt{\frac{T}{\mu}},
 \end{equation}\]</div>
 <p>we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c50f9103-7231-4ea7-894a-ec2215c2cea7">
-<span class="eqno">(124)<a class="headerlink" href="#equation-c50f9103-7231-4ea7-894a-ec2215c2cea7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-372ef55a-052f-45cc-9fde-3f3f9ad1be8e">
+<span class="eqno">(124)<a class="headerlink" href="#equation-372ef55a-052f-45cc-9fde-3f3f9ad1be8e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}.
 \end{equation}\]</div>
 <p>This is the one-dimensional wave equation.</p>
@@ -755,18 +755,18 @@ u(x, t) = f(x - ct) + g(x + ct)
 <section id="finite-difference-approximation">
 <h2>Finite Difference Approximation<a class="headerlink" href="#finite-difference-approximation" title="Link to this heading">#</a></h2>
 <p>Discretize space:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2d22ec4d-2ce4-49cc-9e69-a17a947ad0f7">
-<span class="eqno">(125)<a class="headerlink" href="#equation-2d22ec4d-2ce4-49cc-9e69-a17a947ad0f7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5830d374-bf57-4e6c-a040-7c13f759277f">
+<span class="eqno">(125)<a class="headerlink" href="#equation-5830d374-bf57-4e6c-a040-7c13f759277f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i=i\Delta x
 \end{equation}\]</div>
 <p>and time:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3dce80a5-0f3f-4432-9585-f9ecc2421118">
-<span class="eqno">(126)<a class="headerlink" href="#equation-3dce80a5-0f3f-4432-9585-f9ecc2421118" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f7c10133-70e2-4640-84b0-31791c502ef8">
+<span class="eqno">(126)<a class="headerlink" href="#equation-f7c10133-70e2-4640-84b0-31791c502ef8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 t_n=n\Delta t.
 \end{equation}\]</div>
 <p>Approximating derivatives,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-732b6e5e-b7f2-4a69-8fb3-63922cee4eb7">
-<span class="eqno">(127)<a class="headerlink" href="#equation-732b6e5e-b7f2-4a69-8fb3-63922cee4eb7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c89d0467-4f72-42d6-8356-a00ae8237780">
+<span class="eqno">(127)<a class="headerlink" href="#equation-c89d0467-4f72-42d6-8356-a00ae8237780" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2}
 \approx
 \frac{
@@ -774,8 +774,8 @@ u_i^{n+1}-2u_i^n+u_i^{n-1}
 }
 {\Delta t^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-bd9d1273-7f88-466a-9f02-beff66fc40dc">
-<span class="eqno">(128)<a class="headerlink" href="#equation-bd9d1273-7f88-466a-9f02-beff66fc40dc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c4dc3d81-bffb-4955-b52e-9e4fcc182906">
+<span class="eqno">(128)<a class="headerlink" href="#equation-c4dc3d81-bffb-4955-b52e-9e4fcc182906" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial x^2}
 \approx
 \frac{
@@ -784,13 +784,13 @@ u_{i+1}^n-2u_i^n+u_{i-1}^n
 {\Delta x^2}.
 \end{equation}\]</div>
 <p>Substitution gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-20b3e94d-8914-4b69-9784-d816c24dd639">
-<span class="eqno">(129)<a class="headerlink" href="#equation-20b3e94d-8914-4b69-9784-d816c24dd639" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7a4fab45-ba07-461d-877b-092ae3a19797">
+<span class="eqno">(129)<a class="headerlink" href="#equation-7a4fab45-ba07-461d-877b-092ae3a19797" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_i^{n+1} = 2u_i^n-u_i^{n-1} + r^2 \left( u_{i+1}^n - 2u_i^n + u_{i-1}^n\right),
 \end{equation}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-400a11c4-e73b-4573-be23-ff38733a2aac">
-<span class="eqno">(130)<a class="headerlink" href="#equation-400a11c4-e73b-4573-be23-ff38733a2aac" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-26b3879b-8c97-4e49-8546-c5c91b3f9686">
+<span class="eqno">(130)<a class="headerlink" href="#equation-26b3879b-8c97-4e49-8546-c5c91b3f9686" title="Permalink to this equation">#</a></span>\[\begin{equation}
 r=\frac{c\Delta t}{\Delta x}.
 \end{equation}\]</div>
 <figure class="align-center">
@@ -817,13 +817,13 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 <section id="von-neumann-analysis">
 <h3>Von Neumann Analysis<a class="headerlink" href="#von-neumann-analysis" title="Link to this heading">#</a></h3>
 <p>Substituting a Fourier mode <span class="math notranslate nohighlight">\(u_i^n = \xi^n e^{ik x_i}\)</span> into the leapfrog scheme and solving for the amplification factor <span class="math notranslate nohighlight">\(\xi = |u_{i+1}/u_{i}|\)</span> gives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5374e0e9-f67e-495d-b321-58be5d1f42ea">
-<span class="eqno">(131)<a class="headerlink" href="#equation-5374e0e9-f67e-495d-b321-58be5d1f42ea" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6e3c535e-d6f0-4b83-8923-08bdadc0cc81">
+<span class="eqno">(131)<a class="headerlink" href="#equation-6e3c535e-d6f0-4b83-8923-08bdadc0cc81" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \xi = 1 - 2r^2\sin^2\left(\frac{k\Delta x}{2}\right) \pm i\cdot 2r\sin\left(\frac{k\Delta x}{2}\right)\sqrt{1 - r^2\sin^2\left(\frac{k\Delta x}{2}\right)}.
 \end{equation}\]</div>
 <p>For stability we need <span class="math notranslate nohighlight">\(|\xi| \le 1\)</span> for all wavenumbers <span class="math notranslate nohighlight">\(k\)</span>. This is satisfied if and only if:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e58b20b7-8ee7-42ac-aa60-b6e362aa11ed">
-<span class="eqno">(132)<a class="headerlink" href="#equation-e58b20b7-8ee7-42ac-aa60-b6e362aa11ed" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b296837e-ed96-498e-b397-a5c9b0aa9dde">
+<span class="eqno">(132)<a class="headerlink" href="#equation-b296837e-ed96-498e-b397-a5c9b0aa9dde" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boxed{r = \frac{c\,\Delta t}{\Delta x} \le 1} \tag{CFL condition}
 \end{equation}\]</div>
 <p>This is the <strong>Courant–Friedrichs–Lewy (CFL) condition</strong>.</p>
@@ -851,7 +851,7 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 <span class="n">NT</span>  <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
 <span class="n">x</span>   <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">NX</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;dx=</span><span class="si">{</span><span class="n">dx</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, dt=</span><span class="si">{</span><span class="n">dt</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, NT=</span><span class="si">{</span><span class="n">NT</span><span class="si">}</span><span class="s2">, CFL r=</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"dx=</span><span class="si">{</span><span class="n">dx</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, dt=</span><span class="si">{</span><span class="n">dt</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, NT=</span><span class="si">{</span><span class="n">NT</span><span class="si">}</span><span class="s2">, CFL r=</span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -865,17 +865,17 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ── Initial conditions ───────────────────────────────────────────────────────</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">initial_displacement</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gaussian pulse centered in the domain.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Gaussian pulse centered in the domain."""</span>
     <span class="n">x0</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">initial_velocity</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zero velocity: pulse starts from rest.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Zero velocity: pulse starts from rest."""</span>
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="c1"># ── Boundary conditions ──────────────────────────────────────────────────────</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">apply_bc</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fixed (Dirichlet) boundary conditions: u=0 at both ends.&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Fixed (Dirichlet) boundary conditions: u=0 at both ends."""</span>
     <span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="o">=</span> <span class="mf">0.0</span>
     <span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
 </pre></div>
@@ -927,16 +927,16 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 
 <span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">t_display</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">axes</span><span class="p">,</span> <span class="n">display_times</span><span class="p">):</span>
     <span class="n">idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">t_display</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t = </span><span class="si">{</span><span class="n">t_display</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s1">'b-'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">'t = </span><span class="si">{</span><span class="n">t_display</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> s'</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;u(x,t)&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'x [m]'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'u(x,t)'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'gray'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
-<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;1D Wave Equation — Gaussian Pulse (r = 0.9)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">'1D Wave Equation — Gaussian Pulse (r = 0.9)'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="c1">#plt.savefig(&#39;fig/wave1d_snapshots.png&#39;, dpi=120)</span>
+<span class="c1">#plt.savefig('fig/wave1d_snapshots.png', dpi=120)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -953,27 +953,27 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ── Animation ─────────────────────────────────────────────────────────────────</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
-<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">line</span><span class="p">,</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sol</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">'b-'</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x [m]&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;u(x,t)&#39;</span><span class="p">)</span>
-<span class="n">title</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'x [m]'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">'u(x,t)'</span><span class="p">)</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
 
 <span class="n">SKIP</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># plot every SKIP steps to speed up animation</span>
 <span class="n">frames</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NT</span><span class="p">,</span> <span class="n">SKIP</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
     <span class="n">line</span><span class="o">.</span><span class="n">set_ydata</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="n">frame</span><span class="p">])</span>
-    <span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;t = </span><span class="si">{</span><span class="n">frame</span><span class="o">*</span><span class="n">dt</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> s&#39;</span><span class="p">)</span>
+    <span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">'t = </span><span class="si">{</span><span class="n">frame</span><span class="o">*</span><span class="n">dt</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> s'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">line</span><span class="p">,</span> <span class="n">title</span>
 
 <span class="n">ani</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="n">frames</span><span class="p">,</span> <span class="n">interval</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="c1">#ani.save(&#39;fig/wave1d.gif&#39;, writer=&#39;pillow&#39;, fps=30)</span>
+<span class="c1">#ani.save('fig/wave1d.gif', writer='pillow', fps=30)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 <span class="c1">#plt.show()</span>
 
-<span class="c1"># To save: ani.save(&#39;wave1d.gif&#39;, writer=&#39;pillow&#39;, fps=30)</span>
+<span class="c1"># To save: ani.save('wave1d.gif', writer='pillow', fps=30)</span>
 </pre></div>
 </div>
 </div>
@@ -1075,8 +1075,8 @@ u_N^{n+1} = u_{N-1}^n
 <p class="admonition-title"><span class="caption-number">Exercise 17 </span> (Sinusoidal excitation)</p>
 <section id="exercise-content">
 <p>Excite the string with</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8fc0aebf-2779-49bf-ad42-58517e686662">
-<span class="eqno">(133)<a class="headerlink" href="#equation-8fc0aebf-2779-49bf-ad42-58517e686662" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-353977dd-7e08-4d70-995e-14dbef7c81f6">
+<span class="eqno">(133)<a class="headerlink" href="#equation-353977dd-7e08-4d70-995e-14dbef7c81f6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,0)=sin(πx)
 \end{equation}\]</div>
 <p>and compare with the analytical solution.</p>
@@ -1124,11 +1124,11 @@ r = \frac{c\,\Delta t}{\Delta} \le \frac{1}{\sqrt{2}} \approx 0.707
     <span class="n">dy</span> <span class="o">=</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="n">NY</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">dt</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="nb">min</span><span class="p">(</span><span class="n">dx</span><span class="p">,</span> <span class="n">dy</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">c</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># 2D CFL</span>
     <span class="n">NT</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">T</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;2D: dx=</span><span class="si">{</span><span class="n">dx</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, dy=</span><span class="si">{</span><span class="n">dy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, dt=</span><span class="si">{</span><span class="n">dt</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">, NT=</span><span class="si">{</span><span class="n">NT</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"2D: dx=</span><span class="si">{</span><span class="n">dx</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, dy=</span><span class="si">{</span><span class="n">dy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">, dt=</span><span class="si">{</span><span class="n">dt</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">, NT=</span><span class="si">{</span><span class="n">NT</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">NX</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">NY</span><span class="p">)</span>
-    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">&#39;ij&#39;</span><span class="p">)</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s1">'ij'</span><span class="p">)</span>
 
     <span class="c1"># Initial condition: circular Gaussian pulse</span>
     <span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.05</span>
@@ -1163,18 +1163,18 @@ r = \frac{c\,\Delta t}{\Delta} \le \frac{1}{\sqrt{2}} \approx 0.707
 
 <span class="c1"># Animate</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">sol2d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">sol2d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">'RdBu'</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
-<span class="n">title</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;t = 0&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_aspect</span><span class="p">(</span><span class="s1">'equal'</span><span class="p">)</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'t = 0'</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">update2d</span><span class="p">(</span><span class="n">frame</span><span class="p">):</span>
     <span class="n">im</span><span class="o">.</span><span class="n">set_array</span><span class="p">(</span><span class="n">sol2d</span><span class="p">[</span><span class="n">frame</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span>
-    <span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Frame </span><span class="si">{</span><span class="n">frame</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">title</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Frame </span><span class="si">{</span><span class="n">frame</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">im</span><span class="p">,</span> <span class="n">title</span>
 
 <span class="n">ani2d</span> <span class="o">=</span> <span class="n">FuncAnimation</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">update2d</span><span class="p">,</span> <span class="n">frames</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sol2d</span><span class="p">),</span> <span class="n">interval</span><span class="o">=</span><span class="mi">80</span><span class="p">,</span> <span class="n">blit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="c1">#ani2d.save(&#39;fig/wave2d.gif&#39;, writer=&#39;pillow&#39;, fps=30)</span>
+<span class="c1">#ani2d.save('fig/wave2d.gif', writer='pillow', fps=30)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
@@ -1235,17 +1235,17 @@ Check <a class="reference external" href="https://www.youtube.com/watch?v=7nG4Y7
     <span class="n">arg</span> <span class="o">=</span> <span class="n">r</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">kDx</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
     <span class="n">arg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># avoid arcsin domain error</span>
     <span class="n">omega_num</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">arcsin</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span> <span class="o">/</span> <span class="n">r</span>  <span class="c1"># normalized by c/dx</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kDx</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">omega_num</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kDx</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">omega_num</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">'r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
 
 <span class="c1"># Exact (non-dispersive)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kDx</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">kDx</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exact&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$k\Delta x / \pi$&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\omega_{\rm num}\Delta x / (\pi c)$&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Numerical Dispersion Relation (Leapfrog)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kDx</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">kDx</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="s1">'k--'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Exact'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$k\Delta x / \pi$'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\omega_{\rm num}\Delta x / (\pi c)$'</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">'Numerical Dispersion Relation (Leapfrog)'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;fig/dispersion.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">'fig/dispersion.png'</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>

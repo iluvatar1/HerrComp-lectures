@@ -651,7 +651,7 @@
 <span class="kt">void</span><span class="w"> </span><span class="nf">check_args</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">4</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">argc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error. Usage: </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; SEED SAMPLES FNAME</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Error. Usage: </span><span class="se">\n</span><span class="s">"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" SEED SAMPLES FNAME</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
 <span class="w">		</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="w">	</span><span class="p">}</span>
 <span class="p">}</span>
@@ -671,7 +671,7 @@
 <section id="buffon-needle-problem">
 <h2>Buffon needle problem<a class="headerlink" href="#buffon-needle-problem" title="Link to this heading">#</a></h2>
 <p>“In probability theory, Buffon’s needle problem is a question first posed in the 18th century by Georges-Louis Leclerc, Comte de Buffon:[1]</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Suppose we have a floor made of parallel strips of wood, each the same width, and we drop a needle onto the floor. What is the probability that the needle will lie across a line between two strips?&quot;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Suppose we have a floor made of parallel strips of wood, each the same width, and we drop a needle onto the floor. What is the probability that the needle will lie across a line between two strips?"
 </pre></div>
 </div>
 <p>From:  <a class="reference external" href="https://en.wikipedia.org/wiki/Buffon%27s_needle_problem?useskin=vector">https://en.wikipedia.org/wiki/Buffon’s_needle_problem?useskin=vector</a></p>
@@ -680,8 +680,8 @@
 </a>
 <p>From: Ward</p>
 <p>The theoretical solution predicts that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1aee6669-05f1-43e2-a63d-b0e666dae61d">
-<span class="eqno">(144)<a class="headerlink" href="#equation-1aee6669-05f1-43e2-a63d-b0e666dae61d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-627f9405-b884-40f8-b4ec-f5f880119fd3">
+<span class="eqno">(144)<a class="headerlink" href="#equation-627f9405-b884-40f8-b4ec-f5f880119fd3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 p = \frac{2}{\pi}\frac{l}{t},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(l\)</span> is the needle lenght and <span class="math notranslate nohighlight">\(t\)</span> the lines separation.</p>
@@ -711,7 +711,7 @@ p = \frac{2}{\pi}\frac{l}{t},
 <span class="kt">void</span><span class="w"> </span><span class="nf">check_args</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">argc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error. Usage: </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; SEED SAMPLES</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Error. Usage: </span><span class="se">\n</span><span class="s">"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" SEED SAMPLES</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
 <span class="w">		</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="w">	</span><span class="p">}</span>
 <span class="p">}</span>
@@ -743,59 +743,59 @@ p = \frac{2}{\pi}\frac{l}{t},
 <section id="integrals-using-monte-carlo-again">
 <h2>Integrals using Monte Carlo (again)<a class="headerlink" href="#integrals-using-monte-carlo-again" title="Link to this heading">#</a></h2>
 <p>Monte Carlo methods are well suited to compute multi-dimensional integrals, like</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a825d13e-058b-4ce5-9612-447752369f42">
-<span class="eqno">(145)<a class="headerlink" href="#equation-a825d13e-058b-4ce5-9612-447752369f42" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fcf8fa47-3af4-498d-b22c-acabb9c23c2a">
+<span class="eqno">(145)<a class="headerlink" href="#equation-fcf8fa47-3af4-498d-b22c-acabb9c23c2a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I = \int dx_1\int dx_2\int dx_3 \ldots \int x_D f(\vec x),
 \end{equation}\]</div>
 <p>where its numerical form can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e83f444c-d3b9-4771-b2b6-0c1ad95bbdb3">
-<span class="eqno">(146)<a class="headerlink" href="#equation-e83f444c-d3b9-4771-b2b6-0c1ad95bbdb3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5e4545b2-c2b9-4e4f-b7af-b2c65dabdc39">
+<span class="eqno">(146)<a class="headerlink" href="#equation-5e4545b2-c2b9-4e4f-b7af-b2c65dabdc39" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I \simeq \sum_{i_1}^n \sum_{i_2}^n \sum_{i_3}^n \ldots \sum_{i_D}^n w_1 w_2 \ldots w_D f(x_1, x_2, x_3, \ldots , x_D).
 \end{equation}\]</div>
 <p>The total number of points needed for this is about <span class="math notranslate nohighlight">\(N = n^D\)</span>. And the error, for a typical quadrature, goes like <span class="math notranslate nohighlight">\(\epsilon_{\text{math}} = (1/n)^p = N^{-p/D}\)</span>. This is impractical. For <span class="math notranslate nohighlight">\(D = 4\)</span>, this makes the Simpson method a first order approximation.</p>
 <p>In Monte Carlo integration, we choose points uniformly in the given region and then compute the integral. The result quality depends on the actual points chosen and its representativity on the function to be integrated. The numerical integral can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-65258b04-c764-4604-869c-23ecbdc14c9e">
-<span class="eqno">(147)<a class="headerlink" href="#equation-65258b04-c764-4604-869c-23ecbdc14c9e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ea3b6ba6-f40e-4760-9466-d34a0d507997">
+<span class="eqno">(147)<a class="headerlink" href="#equation-ea3b6ba6-f40e-4760-9466-d34a0d507997" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_D f dV \simeq V \langle f \rangle \pm\ \sigma, 
 \end{equation}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-278829a2-00d2-4a0c-942b-e570901fa2cc">
-<span class="eqno">(148)<a class="headerlink" href="#equation-278829a2-00d2-4a0c-942b-e570901fa2cc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9ba4a9e2-1b30-41d3-9fe2-ce310ff550ad">
+<span class="eqno">(148)<a class="headerlink" href="#equation-9ba4a9e2-1b30-41d3-9fe2-ce310ff550ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \sigma = V \sqrt{\frac{\langle f^2 \rangle - \langle f \rangle^2}{n}} = \frac{V}{\sqrt{n}} \sigma_f
 \end{equation}\]</div>
 <p>is the standard deviation (<span class="math notranslate nohighlight">\(\sigma^2\)</span> is called the variance). The error decreases as <span class="math notranslate nohighlight">\(n^{-1/2}\)</span> regardless the dimension, which is very advantageous for <span class="math notranslate nohighlight">\(D \ge 4\)</span>.</p>
 <section id="importance-sampling">
 <h3>Importance sampling<a class="headerlink" href="#importance-sampling" title="Link to this heading">#</a></h3>
 <p>For <span class="math notranslate nohighlight">\(n=20\)</span> and  <span class="math notranslate nohighlight">\(D = 20\)</span>, computing the equipartition function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-163ad47f-e72b-42f1-a575-0932a437eb81">
-<span class="eqno">(149)<a class="headerlink" href="#equation-163ad47f-e72b-42f1-a575-0932a437eb81" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8d0c3c6f-0113-414a-acc1-4b2b567cec94">
+<span class="eqno">(149)<a class="headerlink" href="#equation-8d0c3c6f-0113-414a-acc1-4b2b567cec94" title="Permalink to this equation">#</a></span>\[\begin{equation}
 Z = \int \ldots \int d^3 r_1 \ldots d^3 r_N \exp\left[ -\frac{1}{k_B T}E(\vec r_1, \ldots, \vec r_N)\right]
 \end{equation}\]</div>
 <p>requires <span class="math notranslate nohighlight">\(10^{60}\)</span> operations, which, in a petascale supercomputer (more than <span class="math notranslate nohighlight">\(10^{16}\)</span> flops), will take around <span class="math notranslate nohighlight">\(10^{36}\)</span> years. Also, the actual choice of points is important. For instance, to compute points inside an hypersphere in <span class="math notranslate nohighlight">\(D\)</span> dimensions, we sample points uniformly in the hyper cube, and the probability is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a1261f9f-1cfb-4f8e-8f40-35c2cfeb43a5">
-<span class="eqno">(150)<a class="headerlink" href="#equation-a1261f9f-1cfb-4f8e-8f40-35c2cfeb43a5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7b0aa92e-3d72-4942-be44-e816683203dd">
+<span class="eqno">(150)<a class="headerlink" href="#equation-7b0aa92e-3d72-4942-be44-e816683203dd" title="Permalink to this equation">#</a></span>\[\begin{equation}
 P(D) = \frac{2}{\Gamma(D/2)} \left(\frac{\sqrt{\pi}}{2} \right)^D, 
 \end{equation}\]</div>
 <p>which, for <span class="math notranslate nohighlight">\(D = 100\)</span>, is about <span class="math notranslate nohighlight">\(10^{-68}\)</span>, so basically all points are rejected.</p>
 <p>Therefore, it is advisable to have a procedure that allows to select points inside the region where the function is more representative. To do so, we rewritte the integral as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-007769dd-360f-4a02-be72-20658f2cc47e">
-<span class="eqno">(151)<a class="headerlink" href="#equation-007769dd-360f-4a02-be72-20658f2cc47e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c385b2ca-90c7-4ae5-9b1a-7cd323583c09">
+<span class="eqno">(151)<a class="headerlink" href="#equation-c385b2ca-90c7-4ae5-9b1a-7cd323583c09" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int f(\vec x) d\vec x = \int h(\vec x) w(\vec x) d\vec x,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(w(\vec x)\)</span> is a weight function to choose the points, and must be normalized. After that,<span class="math notranslate nohighlight">\(n\)</span> random points are generated according to the weight function, and the integral is simply given as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-59208b4b-4c79-4601-bdaa-d3aa4ea18fbb">
-<span class="eqno">(152)<a class="headerlink" href="#equation-59208b4b-4c79-4601-bdaa-d3aa4ea18fbb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f772c91f-2cfc-4a4b-982c-0e1b1356b9b1">
+<span class="eqno">(152)<a class="headerlink" href="#equation-f772c91f-2cfc-4a4b-982c-0e1b1356b9b1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int d\vec x f(\vec x) \simeq \bar h,
 \end{equation}\]</div>
 <p>with error</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1fdd388a-9a48-41d0-ac7d-d927da378d3f">
-<span class="eqno">(153)<a class="headerlink" href="#equation-1fdd388a-9a48-41d0-ac7d-d927da378d3f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-34dcde00-f573-447d-8c43-0fe6e5962932">
+<span class="eqno">(153)<a class="headerlink" href="#equation-34dcde00-f573-447d-8c43-0fe6e5962932" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \sigma = \sqrt{\frac{\bar{h^2} - (\bar h)^2}{N-1}}.
 \end{equation}\]</div>
 <p>There is some freedom to chose the weight function.  The idea is to focus the variation in the weight function, so to make the <span class="math notranslate nohighlight">\(h\)</span> function as constant as possible.</p>
 <p>Example (Boudreau): Let’s compute the following</p>
-<div class="amsmath math notranslate nohighlight" id="equation-04cec1ca-66ac-43f8-ae8d-5530d07e22df">
-<span class="eqno">(154)<a class="headerlink" href="#equation-04cec1ca-66ac-43f8-ae8d-5530d07e22df" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5419b30b-de23-4ba2-95ec-e57650cf024f">
+<span class="eqno">(154)<a class="headerlink" href="#equation-5419b30b-de23-4ba2-95ec-e57650cf024f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I = \int_0^\infty dx\  x^2 e^{-x},
 \end{equation}\]</div>
 <p>Using three weight functions as follows:</p>
@@ -848,7 +848,7 @@ I = \int_0^\infty dx\  x^2 e^{-x},
 <span class="kt">void</span><span class="w"> </span><span class="nf">check_args</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
 <span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">argc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Error. Usage: </span><span class="se">\n</span><span class="s">&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; SEED SAMPLES</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">;</span>
+<span class="w">		</span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"Error. Usage: </span><span class="se">\n</span><span class="s">"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">" SEED SAMPLES</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
 <span class="w">		</span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
 <span class="w">	</span><span class="p">}</span>
 <span class="p">}</span>
@@ -871,7 +871,7 @@ I = \int_0^\infty dx\  x^2 e^{-x},
 <span class="w">	</span><span class="kt">double</span><span class="w"> </span><span class="n">var</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum_2</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">nsamples</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">mean</span><span class="p">;</span><span class="w"> </span><span class="c1">// compute the variance</span>
 <span class="w">	</span><span class="kt">double</span><span class="w"> </span><span class="n">sigma</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">sqrt</span><span class="p">(</span><span class="n">var</span><span class="o">/</span><span class="p">(</span><span class="n">nsamples</span><span class="mi">-1</span><span class="p">));</span><span class="w"> </span><span class="c1">// compute the standard deviation</span>
 <span class="w">	</span><span class="kt">double</span><span class="w"> </span><span class="n">rel_err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">fabs</span><span class="p">(</span><span class="mf">1.0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">mean</span><span class="o">/</span><span class="mf">2.0</span><span class="p">);</span>
-<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;%20.16e +- %20.16e</span><span class="se">\t</span><span class="s">%20.16e</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="p">,</span><span class="w"> </span><span class="n">rel_err</span><span class="p">);</span>
+<span class="w">	</span><span class="n">std</span><span class="o">::</span><span class="n">printf</span><span class="p">(</span><span class="s">"%20.16e +- %20.16e</span><span class="se">\t</span><span class="s">%20.16e</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">mean</span><span class="p">,</span><span class="w"> </span><span class="n">sigma</span><span class="p">,</span><span class="w"> </span><span class="n">rel_err</span><span class="p">);</span>
 
 <span class="p">}</span>
 

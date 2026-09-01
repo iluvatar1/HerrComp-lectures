@@ -1,20 +1,20 @@
 Traceback (most recent call last):
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 1323, in execute
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/nbclient/client.py", line 1323, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/jupyter_core/utils/__init__.py", line 165, in wrapped
     return loop.run_until_complete(inner)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/asyncio/base_events.py", line 654, in run_until_complete
     return future.result()
            ^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/nbclient/client.py", line 709, in async_execute
     await self.async_execute_cell(
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/nbclient/client.py", line 1062, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+  File "/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
@@ -56,7 +56,7 @@ MovieWriter ffmpeg unavailable; using Pillow instead.
 
 [31m---------------------------------------------------------------------------[39m
 [31mKeyError[39m                                  Traceback (most recent call last)
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2666[39m, in [36mImage.save[39m[34m(self, fp, format, **params)[39m
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/PIL/Image.py:2666[39m, in [36mImage.save[39m[34m(self, fp, format, **params)[39m
 [32m   2665[39m [38;5;28;01mtry[39;00m:
 [32m-> [39m[32m2666[39m     [38;5;28mformat[39m = [30;43mEXTENSION[39;49m[30;43m[[39;49m[30;43mext[39;49m[30;43m][39;49m
 [32m   2667[39m [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m e:
@@ -74,7 +74,7 @@ The above exception was the direct cause of the following exception:
 [32m---> [39m[32m29[39m anim.save([33m"animation.mp4"[39m, fps=[32m20[39m)
 [32m     30[39m plt.close(fig)
 
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:1114[39m, in [36mAnimation.save[39m[34m(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)[39m
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/animation.py:1114[39m, in [36mAnimation.save[39m[34m(self, filename, writer, fps, dpi, codec, bitrate, extra_args, metadata, extra_anim, savefig_kwargs, progress_callback)[39m
 [32m   1109[39m     [38;5;28;01mreturn[39;00m a * np.array([r, g, b]) + [32m1[39m - a
 [32m   1111[39m [38;5;66;03m# canvas._is_saving = True makes the draw_event animation-starting[39;00m
 [32m   1112[39m [38;5;66;03m# callback a no-op; canvas.manager = None prevents resizing the GUI[39;00m
@@ -85,25 +85,25 @@ The above exception was the direct cause of the following exception:
 [32m   1117[39m [30;43m        [39;49m[30;43mfacecolor[39;49m[30;43m [39;49m[30;43m=[39;49m[30;43m [39;49m[30;43msavefig_kwargs[39;49m[30;43m.[39;49m[30;43mget[39;49m[30;43m([39;49m[30;43m'[39;49m[30;43mfacecolor[39;49m[30;43m'[39;49m[30;43m,[39;49m
 [32m   1118[39m [30;43m                                       [39;49m[30;43mmpl[39;49m[30;43m.[39;49m[30;43mrcParams[39;49m[30;43m[[39;49m[30;43m'[39;49m[30;43msavefig.facecolor[39;49m[30;43m'[39;49m[30;43m][39;49m[30;43m)[39;49m
 
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/contextlib.py:144[39m, in [36m_GeneratorContextManager.__exit__[39m[34m(self, typ, value, traceback)[39m
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/contextlib.py:144[39m, in [36m_GeneratorContextManager.__exit__[39m[34m(self, typ, value, traceback)[39m
 [32m    142[39m [38;5;28;01mif[39;00m typ [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
 [32m    143[39m     [38;5;28;01mtry[39;00m:
 [32m--> [39m[32m144[39m         [38;5;28mnext[39m([38;5;28mself[39m.gen)
 [32m    145[39m     [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m:
 [32m    146[39m         [38;5;28;01mreturn[39;00m [38;5;28;01mFalse[39;00m
 
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:228[39m, in [36mAbstractMovieWriter.saving[39m[34m(self, fig, outfile, dpi, *args, **kwargs)[39m
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/animation.py:228[39m, in [36mAbstractMovieWriter.saving[39m[34m(self, fig, outfile, dpi, *args, **kwargs)[39m
 [32m    226[39m     [38;5;28;01myield[39;00m [38;5;28mself[39m
 [32m    227[39m [38;5;28;01mfinally[39;00m:
 [32m--> [39m[32m228[39m     [30;43mself[39;49m[30;43m.[39;49m[30;43mfinish[39;49m[30;43m([39;49m[30;43m)[39;49m
 
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/matplotlib/animation.py:510[39m, in [36mPillowWriter.finish[39m[34m(self)[39m
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/animation.py:510[39m, in [36mPillowWriter.finish[39m[34m(self)[39m
 [32m    509[39m [38;5;28;01mdef[39;00m[38;5;250m [39m[34mfinish[39m([38;5;28mself[39m):
 [32m--> [39m[32m510[39m     [30;43mself[39;49m[30;43m.[39;49m[30;43m_frames[39;49m[30;43m[[39;49m[30;43m0[39;49m[30;43m][39;49m[30;43m.[39;49m[30;43msave[39;49m[30;43m([39;49m
 [32m    511[39m [30;43m        [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43moutfile[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43msave_all[39;49m[30;43m=[39;49m[30;43;01mTrue[39;49;00m[30;43m,[39;49m[30;43m [39;49m[30;43mappend_images[39;49m[30;43m=[39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43m_frames[39;49m[30;43m[[39;49m[30;43m1[39;49m[30;43m:[39;49m[30;43m][39;49m[30;43m,[39;49m
 [32m    512[39m [30;43m        [39;49m[30;43mduration[39;49m[30;43m=[39;49m[30;43mint[39;49m[30;43m([39;49m[30;43m1000[39;49m[30;43m [39;49m[30;43m/[39;49m[30;43m [39;49m[30;43mself[39;49m[30;43m.[39;49m[30;43mfps[39;49m[30;43m)[39;49m[30;43m,[39;49m[30;43m [39;49m[30;43mloop[39;49m[30;43m=[39;49m[30;43m0[39;49m[30;43m)[39;49m
 
-[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/PIL/Image.py:2669[39m, in [36mImage.save[39m[34m(self, fp, format, **params)[39m
+[36mFile [39m[32m/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/PIL/Image.py:2669[39m, in [36mImage.save[39m[34m(self, fp, format, **params)[39m
 [32m   2667[39m     [38;5;28;01mexcept[39;00m [38;5;167;01mKeyError[39;00m [38;5;28;01mas[39;00m e:
 [32m   2668[39m         msg = [33mf[39m[33m"[39m[33munknown file extension: [39m[38;5;132;01m{[39;00mext[38;5;132;01m}[39;00m[33m"[39m
 [32m-> [39m[32m2669[39m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(msg) [38;5;28;01mfrom[39;00m[38;5;250m [39m[34;01me[39;00m
