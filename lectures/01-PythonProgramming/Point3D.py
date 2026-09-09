@@ -8,10 +8,10 @@ class Point3D :
         self.x_ = x # attribute x_
         self.y_ = y # attribute y_
         self.z_ = z # attribute z_
-        
+
     def coordinates(self):
         return self.x_, self.y_, self.z_
-    
+
     def __str__(self):
         """Cast method to convert to string"""
         return (f"Coordinates : ( {self.x_:25.16e}, {self.y_:25.16e}, , {self.z_:25.16e} )")

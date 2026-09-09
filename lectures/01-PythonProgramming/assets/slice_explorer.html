@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>List Slicing Explorer</title>
+<style>
+  :root{
+    --bg:#161b22;
+    --panel:#1e242d;
+    --text:#e6e6df;
+    --dim:#8b93a0;
+    --amber:#e0a458;
+    --teal:#5fb8ab;
+    --rule:#2c3440;
+    --danger:#d97a6c;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:'Courier New',ui-monospace,Consolas,monospace;}
+  .wrap{max-width:760px;margin:0 auto;padding:28px 20px 44px;}
+  h1{font-size:1.15rem;font-weight:600;letter-spacing:.2px;margin:0 0 4px;}
+  .sub{color:var(--dim);font-size:.85rem;margin:0 0 26px;line-height:1.5;}
+  label{display:block;font-size:.78rem;color:var(--dim);margin-bottom:6px;}
+  .row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:6px;}
+  .field{flex:1;min-width:220px;}
+  input[type=text]{
+    width:100%;background:var(--panel);border:1px solid var(--rule);
+    color:var(--text);padding:9px 10px;border-radius:4px;font-family:inherit;
+    font-size:.95rem;
+  }
+  input[type=text]:focus{outline:none;border-color:var(--teal);}
+  .bracket{color:var(--dim);font-size:1rem;padding:0 2px;align-self:center;margin-top:18px;}
+  .presets{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 30px;}
+  .chip{
+    background:transparent;border:1px solid var(--rule);color:var(--dim);
+    padding:4px 10px;border-radius:999px;font-size:.75rem;cursor:pointer;
+    font-family:inherit;
+  }
+  .chip:hover{border-color:var(--teal);color:var(--teal);}
+  .stage{background:var(--panel);border:1px solid var(--rule);border-radius:6px;
+    padding:26px 20px 20px;position:relative;overflow-x:auto;}
+  .idxrow{display:flex;gap:6px;justify-content:center;min-width:min-content;}
+  .cellcol{display:flex;flex-direction:column;align-items:center;min-width:44px;}
+  .posidx{font-size:.68rem;color:var(--dim);height:16px;}
+  .cell{
+    width:44px;height:44px;border:1px solid var(--rule);border-radius:4px;
+    display:flex;align-items:center;justify-content:center;font-size:.85rem;
+    margin:4px 0;background:#12161d;transition:background .15s,border-color .15s,transform .15s;
+    position:relative;
+  }
+  .cell.sel{border-color:var(--amber);background:rgba(224,164,88,.15);color:var(--amber);}
+  .negidx{font-size:.68rem;color:var(--dim);height:16px;}
+  .order{position:absolute;top:-9px;right:-6px;background:var(--teal);color:#0e1319;
+    font-size:.62rem;border-radius:8px;min-width:16px;height:16px;line-height:16px;
+    text-align:center;padding:0 3px;font-weight:700;}
+  .result{margin-top:24px;}
+  .result .label{font-size:.78rem;color:var(--dim);margin-bottom:8px;}
+  .resultbox{background:#12161d;border:1px solid var(--rule);border-radius:4px;
+    padding:12px 14px;font-size:.95rem;min-height:20px;word-break:break-all;}
+  .resultbox.amber{color:var(--amber);}
+  .err{color:var(--danger);font-size:.85rem;margin-top:10px;}
+  .note{color:var(--dim);font-size:.78rem;margin-top:22px;line-height:1.6;border-top:1px dashed var(--rule);padding-top:14px;}
+  code{background:#12161d;padding:1px 5px;border-radius:3px;color:var(--teal);}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>List Slicing Explorer</h1>
+  <p class="sub">Edit the list and the slice, watch which elements <code>xdata[...]</code> actually picks, in what order they come out.</p>
+
+  <div class="row">
+    <div class="field">
+      <label for="listInput">xdata =</label>
+      <input type="text" id="listInput" value="10, 20, 30, 40, 50, 60, 70">
+    </div>
+    <div class="bracket">[</div>
+    <div class="field" style="max-width:200px;">
+      <label for="sliceInput">slice</label>
+      <input type="text" id="sliceInput" value="1:5:2">
+    </div>
+    <div class="bracket">]</div>
+  </div>
+
+  <div class="presets" id="presets"></div>
+
+  <div class="stage">
+    <div class="idxrow" id="posRow"></div>
+    <div class="idxrow" id="cellRow"></div>
+    <div class="idxrow" id="negRow"></div>
+  </div>
+
+  <div id="errBox"></div>
+
+  <div class="result">
+    <div class="label">xdata[<span id="exprEcho">1:5:2</span>] &rarr;</div>
+    <div class="resultbox amber" id="resultBox">[20, 40]</div>
+  </div>
+
+  <p class="note">
+    Positive indices count from the front, negative indices from the back — the same box has both.
+    Numbers above the arrows show the order elements are picked in, which matters once a slice runs backwards (try <code>::-1</code>).
+    A step of <code>0</code> or an out-of-range single index raise real Python errors, shown below the boxes.
+  </p>
+</div>
+
+<script>
+const listEl = document.getElementById('listInput');
+const sliceEl = document.getElementById('sliceInput');
+const posRow = document.getElementById('posRow');
+const cellRow = document.getElementById('cellRow');
+const negRow = document.getElementById('negRow');
+const errBox = document.getElementById('errBox');
+const resultBox = document.getElementById('resultBox');
+const exprEcho = document.getElementById('exprEcho');
+
+const presets = ['0:2','0:3','0:4:1',':4:2','::1','::-1',':-1','3','-1'];
+const presetWrap = document.getElementById('presets');
+presets.forEach(p=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.textContent=p;
+  b.onclick=()=>{ sliceEl.value=p; render(); };
+  presetWrap.appendChild(b);
+});
+
+function parseList(str){
+  return str.split(',').map(s=>s.trim()).filter(s=>s.length>0);
+}
+
+// Mirrors CPython's slice.indices() so behaviour matches real Python exactly.
+function sliceIndices(length, start, stop, step){
+  if(step === null) step = 1;
+  if(step === 0) throw new Error("slice step cannot be zero");
+  let lower, upper;
+  if(step < 0){ lower = -1; upper = length - 1; }
+  else { lower = 0; upper = length; }
+
+  if(start === null) start = (step < 0) ? upper : lower;
+  else start = (start < 0) ? Math.max(start + length, lower) : Math.min(start, upper);
+
+  if(stop === null) stop = (step < 0) ? lower : upper;
+  else stop = (stop < 0) ? Math.max(stop + length, lower) : Math.min(stop, upper);
+
+  return [start, stop, step];
+}
+
+function indicesFromSlice(length, start, stop, step){
+  const [s, e, st] = sliceIndices(length, start, stop, step);
+  const out = [];
+  if(st > 0){ for(let i=s;i<e;i+=st) out.push(i); }
+  else { for(let i=s;i>e;i+=st) out.push(i); }
+  return out;
+}
+
+function render(){
+  errBox.innerHTML = '';
+  const items = parseList(listEl.value);
+  const n = items.length;
+  const expr = sliceEl.value.trim();
+  exprEcho.textContent = expr || '';
+
+  posRow.innerHTML = ''; cellRow.innerHTML=''; negRow.innerHTML='';
+
+  let selectedOrder = []; // list of {index, order}
+  let isError = false, errMsg = '';
+  let singleIndexMode = false, singleIndexVal = null;
+
+  try{
+    if(expr.includes(':')){
+      const parts = expr.split(':');
+      if(parts.length > 3) throw new Error('too many colons');
+      const nums = parts.map(p => p.trim()===''? null : Number(p.trim()));
+      nums.forEach(v=>{ if(v!==null && !Number.isInteger(v)) throw new Error('slice indices must be integers'); });
+      const [start, stop, step] = [nums[0]??null, nums[1]??null, nums[2]??null];
+      const idxs = indicesFromSlice(n, start, stop, step);
+      idxs.forEach((idx,k)=> selectedOrder.push({index:idx, order:k+1}));
+    } else if(expr.length){
+      const v = Number(expr);
+      if(!Number.isInteger(v)) throw new Error('index must be an integer');
+      singleIndexMode = true;
+      let real = v < 0 ? v + n : v;
+      if(real < 0 || real >= n) throw new Error(`IndexError: list index out of range`);
+      singleIndexVal = real;
+      selectedOrder.push({index: real, order: 1});
+    }
+  } catch(e){
+    isError = true; errMsg = e.message;
+  }
+
+  const selMap = {};
+  selectedOrder.forEach(s=> selMap[s.index] = s.order);
+
+  for(let i=0;i<n;i++){
+    const posLbl = document.createElement('div'); posLbl.className='posidx'; posLbl.style.minWidth='44px'; posLbl.textContent = i;
+    posRow.appendChild(posLbl);
+
+    const col = document.createElement('div'); col.className='cellcol';
+    const cell = document.createElement('div'); cell.className='cell';
+    cell.textContent = items[i];
+    if(selMap[i] !== undefined){
+      cell.classList.add('sel');
+      if(selectedOrder.length > 1){
+        const ord = document.createElement('div'); ord.className='order'; ord.textContent = selMap[i];
+        cell.appendChild(ord);
+      }
+    }
+    cellRow.appendChild(cell);
+
+    const negLbl = document.createElement('div'); negLbl.className='negidx'; negLbl.style.minWidth='44px'; negLbl.textContent = i - n;
+    negRow.appendChild(negLbl);
+  }
+
+  if(isError){
+    errBox.innerHTML = `<div class="err">${errMsg}</div>`;
+    resultBox.textContent = '—';
+    return;
+  }
+
+  if(singleIndexMode){
+    resultBox.textContent = items[singleIndexVal];
+  } else {
+    const out = selectedOrder.map(s => items[s.index]);
+    resultBox.textContent = '[' + out.join(', ') + ']';
+  }
+}
+
+listEl.addEventListener('input', render);
+sliceEl.addEventListener('input', render);
+render();
+</script>
+</body>
+</html>

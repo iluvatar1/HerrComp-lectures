@@ -54,3 +54,4 @@ sphinx-proof
 # mshr
 
 numba
+variable-inspector

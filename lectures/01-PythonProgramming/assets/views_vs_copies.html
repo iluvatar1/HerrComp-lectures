@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>NumPy: Views vs. Copies</title>
+<style>
+  :root{
+    --bg:#161b22; --panel:#1e242d; --text:#e6e6df; --dim:#8b93a0;
+    --amber:#e0a458; --teal:#5fb8ab; --rule:#2c3440; --slot:#12161d;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;background:var(--bg);color:var(--text);
+    font-family:'Courier New',ui-monospace,Consolas,monospace;}
+  .wrap{max-width:820px;margin:0 auto;padding:28px 20px 44px;}
+  h1{font-size:1.15rem;font-weight:600;margin:0 0 4px;}
+  .sub{color:var(--dim);font-size:.85rem;margin:0 0 22px;line-height:1.55;}
+  code{background:var(--slot);padding:1px 5px;border-radius:3px;color:var(--teal);}
+
+  .ops{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;}
+  .opbtn{background:var(--panel);border:1px solid var(--rule);color:var(--text);
+    padding:8px 12px;border-radius:6px;font-family:inherit;font-size:.8rem;cursor:pointer;text-align:left;}
+  .opbtn small{display:block;color:var(--dim);font-size:.7rem;margin-top:3px;}
+  .opbtn.active{border-color:var(--teal);background:rgba(95,184,171,.08);}
+
+  .arrBlock{margin-bottom:20px;}
+  .arrLabel{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+  .arrLabel .name{font-size:.85rem;}
+  .badge{font-size:.68rem;padding:2px 9px;border-radius:999px;font-weight:700;letter-spacing:.3px;}
+  .badge.view{background:rgba(95,184,171,.18);color:var(--teal);border:1px solid var(--teal);}
+  .badge.copy{background:rgba(224,164,88,.18);color:var(--amber);border:1px solid var(--amber);}
+
+  .row{display:flex;gap:6px;flex-wrap:wrap;}
+  .cellcol{display:flex;flex-direction:column;align-items:center;min-width:52px;}
+  .idxlbl{font-size:.66rem;color:var(--dim);height:14px;}
+  .cell{width:48px;height:40px;border:1px solid var(--rule);border-radius:4px;
+    display:flex;align-items:center;justify-content:center;font-size:.9rem;
+    background:var(--slot);transition:background .2s,border-color .2s,transform .15s;}
+  .cell.linked{border-color:var(--teal);}
+  .cell.copied{border-color:var(--amber);}
+  .cell.dirty{background:rgba(217,122,108,.22);border-color:#d97a6c;}
+  .addr{font-size:.6rem;color:var(--dim);height:14px;margin-top:2px;}
+
+  .controls{display:flex;gap:10px;align-items:center;margin:18px 0 6px;flex-wrap:wrap;}
+  button.act{background:var(--panel);border:1px solid var(--rule);color:var(--text);
+    padding:8px 14px;border-radius:6px;font-family:inherit;font-size:.8rem;cursor:pointer;}
+  button.act:hover:not(:disabled){border-color:var(--amber);color:var(--amber);}
+  button.act:disabled{opacity:.4;cursor:default;}
+  .verdict{font-size:.85rem;margin-top:14px;padding:10px 12px;border-radius:5px;background:var(--slot);
+    border:1px solid var(--rule);line-height:1.5;min-height:20px;}
+  .verdict.hit{border-color:var(--teal);}
+  .note{color:var(--dim);font-size:.78rem;margin-top:24px;line-height:1.6;
+    border-top:1px dashed var(--rule);padding-top:14px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>NumPy: Views vs. Copies</h1>
+  <p class="sub">Pick how <code>b</code> is derived from <code>a = np.arange(10)</code>, then mutate <code>b[0]</code> and watch whether <code>a</code> changes too.</p>
+
+  <div class="ops" id="ops"></div>
+
+  <div class="arrBlock">
+    <div class="arrLabel"><span class="name">a = np.arange(10)</span></div>
+    <div class="row" id="rowA"></div>
+  </div>
+
+  <div class="arrBlock" id="bBlock" style="display:none;">
+    <div class="arrLabel">
+      <span class="name" id="bExprLabel">b = ...</span>
+      <span class="badge" id="bBadge"></span>
+    </div>
+    <div class="row" id="rowB"></div>
+  </div>
+
+  <div class="controls">
+    <button class="act" id="mutateBtn" disabled>set b[0] = 999</button>
+    <button class="act" id="resetBtn">reset a</button>
+  </div>
+
+  <div class="verdict" id="verdict">Choose an operation above to build <code>b</code>.</div>
+
+  <p class="note">
+    Basic slicing (<code>a[start:stop:step]</code>) always returns a <b style="color:var(--teal)">view</b> — same
+    underlying memory, just a different way of looking at it. Anything that needs to pick
+    non-contiguous or reordered elements — a list/array of indices, or a boolean mask — can't be
+    described as a simple stride, so NumPy has to build a new array: a <b style="color:var(--amber)">copy</b>.
+    That's the rule the lecture's <code>a[[2,3,2,4,2]]</code> and <code>a[mask]</code> examples both follow, even
+    though it's never stated outright there.
+  </p>
+</div>
+
+<script>
+const N = 10;
+const BASE_A = 0xA000;
+const BASE_COPY = 0xF000;
+const rowA = document.getElementById('rowA');
+const rowB = document.getElementById('rowB');
+const bBlock = document.getElementById('bBlock');
+const bBadge = document.getElementById('bBadge');
+const bExprLabel = document.getElementById('bExprLabel');
+const mutateBtn = document.getElementById('mutateBtn');
+const resetBtn = document.getElementById('resetBtn');
+const verdict = document.getElementById('verdict');
+const opsWrap = document.getElementById('ops');
+
+let a = Array.from({length:N}, (_,i)=>i);
+let op = null;   // current operation key
+let bIndices = []; // indices into `a` that b[k] refers to (for view) OR source indices (for copy, at build time)
+let bValues = [];  // for copy: independent storage
+let isView = false;
+let mutated = false;
+
+const ops = [
+  {key:'slice', label:'b = a[2:8:2]', sub:'basic slice', expr:'a[2:8:2]', build: () => {
+      const idx = [2,4,6];
+      return {indices: idx, isView: true};
+    }},
+  {key:'fancy', label:'b = a[[2,3,2,4,2]]', sub:'integer array indexing', expr:'a[[2, 3, 2, 4, 2]]', build: () => {
+      const idx = [2,3,2,4,2];
+      return {indices: idx, isView: false};
+    }},
+  {key:'bool', label:'b = a[a > 4]', sub:'boolean mask', expr:'a[a > 4]', build: () => {
+      const idx = [];
+      a.forEach((v,i)=>{ if(v>4) idx.push(i); });
+      return {indices: idx, isView: false};
+    }},
+  {key:'copy', label:'b = a[2:8:2].copy()', sub:'explicit .copy()', expr:'a[2:8:2].copy()', build: () => {
+      const idx = [2,4,6];
+      return {indices: idx, isView: false};
+    }},
+];
+
+ops.forEach(o=>{
+  const b = document.createElement('button');
+  b.className='opbtn';
+  b.innerHTML = `${o.label}<small>${o.sub}</small>`;
+  b.onclick = ()=> selectOp(o.key);
+  b.dataset.key = o.key;
+  opsWrap.appendChild(b);
+});
+
+function selectOp(key){
+  op = ops.find(o=>o.key===key);
+  const res = op.build();
+  bIndices = res.indices;
+  isView = res.isView;
+  bValues = bIndices.map(i => a[i]);
+  mutated = false;
+
+  [...opsWrap.children].forEach(b => b.classList.toggle('active', b.dataset.key===key));
+  bBlock.style.display = '';
+  bExprLabel.textContent = 'b = ' + op.expr;
+  bBadge.textContent = isView ? 'VIEW — shares memory' : 'COPY — independent memory';
+  bBadge.className = 'badge ' + (isView ? 'view' : 'copy');
+  mutateBtn.disabled = false;
+  verdict.className = 'verdict';
+  verdict.innerHTML = isView
+    ? 'This is a <b style="color:var(--teal)">view</b>. Try mutating <code>b[0]</code> — watch <code>a</code>.'
+    : 'This is a <b style="color:var(--amber)">copy</b>. Try mutating <code>b[0]</code> — <code>a</code> stays put.';
+  render();
+}
+
+function addrFor(i){ return '0x' + (BASE_A + i*8).toString(16).toUpperCase(); }
+function copyAddrFor(k){ return '0x' + (BASE_COPY + k*8).toString(16).toUpperCase(); }
+
+function render(){
+  rowA.innerHTML = '';
+  const linkedSet = new Set(isView ? bIndices : []);
+  a.forEach((v,i)=>{
+    const col = document.createElement('div'); col.className='cellcol';
+    const lbl = document.createElement('div'); lbl.className='idxlbl'; lbl.textContent = i;
+    const cell = document.createElement('div'); cell.className='cell';
+    if(linkedSet.has(i)) cell.classList.add('linked');
+    if(mutated && isView && i === bIndices[0]) cell.classList.add('dirty');
+    cell.textContent = v;
+    const addr = document.createElement('div'); addr.className='addr'; addr.textContent = addrFor(i);
+    col.appendChild(lbl); col.appendChild(cell); col.appendChild(addr);
+    rowA.appendChild(col);
+  });
+
+  if(op){
+    rowB.innerHTML = '';
+    bValues.forEach((v,k)=>{
+      const col = document.createElement('div'); col.className='cellcol';
+      const lbl = document.createElement('div'); lbl.className='idxlbl'; lbl.textContent = k;
+      const cell = document.createElement('div'); cell.className='cell';
+      cell.classList.add(isView ? 'linked' : 'copied');
+      if(mutated && k===0) cell.classList.add('dirty');
+      cell.textContent = v;
+      const addr = document.createElement('div'); addr.className='addr';
+      addr.textContent = isView ? addrFor(bIndices[k]) : copyAddrFor(k);
+      col.appendChild(lbl); col.appendChild(cell); col.appendChild(addr);
+      rowB.appendChild(col);
+    });
+  }
+}
+
+mutateBtn.addEventListener('click', ()=>{
+  if(!op) return;
+  mutated = true;
+  bValues[0] = 999;
+  if(isView){
+    a[bIndices[0]] = 999; // same memory: mutating b's first slot mutates a
+    verdict.classList.add('hit');
+    verdict.innerHTML = `<code>b[0] = 999</code> also changed <code>a[${bIndices[0]}]</code> — same underlying memory.`;
+  } else {
+    verdict.classList.add('hit');
+    verdict.innerHTML = `<code>b[0] = 999</code> left <code>a</code> completely unchanged — separate memory.`;
+  }
+  render();
+});
+
+resetBtn.addEventListener('click', ()=>{
+  a = Array.from({length:N}, (_,i)=>i);
+  mutated = false;
+  if(op){
+    const res = op.build();
+    bIndices = res.indices;
+    bValues = bIndices.map(i => a[i]);
+  }
+  verdict.classList.remove('hit');
+  verdict.textContent = op ? 'Reset. Try mutating b[0] again.' : 'Choose an operation above to build b.';
+  render();
+});
+
+render();
+</script>
+</body>
+</html>

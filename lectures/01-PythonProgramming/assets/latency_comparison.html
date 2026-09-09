@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cache Latency Comparison</title>
+<style>
+  :root{
+    --bg:#0f1115; --panel:#171a21; --line:#262a33;
+    --text:#e8eaed; --muted:#9aa2af;
+    --l1:#ff6b6b; --l2:#ffa94d; --l3:#ffd43b; --ram:#69db7c;
+    --ssd:#4dabf7; --hdd:#748ffc; --netdc:#da77f2; --netxc:#f783ac;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; padding:24px; background:var(--bg); color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  .wrap{max-width:760px; margin:0 auto;}
+  h1{font-size:1.25rem; margin:0 0 4px;}
+  .sub{color:var(--muted); font-size:0.9rem; margin:0 0 20px;}
+  .panel{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:20px;
+  }
+  .controls{display:flex; gap:8px; align-items:center; margin-bottom:16px; flex-wrap:wrap;}
+  .controls button{
+    background:#20242e; color:var(--text); border:1px solid var(--line);
+    border-radius:8px; padding:6px 12px; font-size:0.85rem; cursor:pointer;
+  }
+  .controls button.active{border-color:#69db7c; color:#69db7c;}
+  .controls button:hover{border-color:#555;}
+  .row{
+    display:grid; grid-template-columns:130px 1fr 90px;
+    align-items:center; gap:10px; margin:10px 0; cursor:pointer;
+    padding:4px 6px; border-radius:8px; transition:background .15s;
+  }
+  .row:hover{background:#1d212a;}
+  .label{font-size:0.85rem; color:var(--text); font-weight:500;}
+  .label small{display:block; color:var(--muted); font-weight:400; font-size:0.72rem;}
+  .track{
+    position:relative; height:18px; background:#1c2028; border-radius:5px; overflow:hidden;
+  }
+  .bar{
+    position:absolute; left:0; top:0; height:100%; border-radius:5px;
+    width:0%; transition:width 1s cubic-bezier(.2,.8,.2,1);
+  }
+  .val{font-size:0.8rem; color:var(--muted); text-align:right; font-variant-numeric:tabular-nums;}
+  .pulse{
+    position:absolute; top:50%; left:0; width:10px; height:10px; margin-top:-5px;
+    border-radius:50%; background:#fff; box-shadow:0 0 8px 2px rgba(255,255,255,.8);
+    opacity:0; pointer-events:none;
+  }
+  .race{
+    margin-top:20px; padding-top:16px; border-top:1px solid var(--line);
+    font-size:0.85rem; color:var(--muted);
+  }
+  .race b{color:var(--text);}
+  .credit{
+    margin-top:18px; font-size:0.78rem; color:var(--muted); line-height:1.5;
+  }
+  .credit a{color:#69db7c; text-decoration:none;}
+  .credit a:hover{text-decoration:underline;}
+  .hint{font-size:0.78rem; color:var(--muted); margin-top:2px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>How fast is fast? A cache latency ladder</h1>
+  <p class="sub">Click any row to fire a simulated request and watch it travel. Bars are on a log scale — each tier is roughly 10–1000x slower than the one above it.</p>
+
+  <div class="panel">
+    <div class="controls">
+      <button id="scaleBtn" class="active" data-scale="log">Log scale</button>
+      <button id="scaleBtn2" data-scale="linear">Linear scale</button>
+      <button id="raceBtn">Run relative-speed race</button>
+    </div>
+
+    <div id="rows"></div>
+
+    <div class="race" id="raceOut">
+      Click <b>“Run relative-speed race”</b> to see how many L1 cache hits happen in the time it takes for one round trip across the country.
+    </div>
+
+    <div class="credit">
+      Latency figures and concept adapted from PlanetScale's
+      <a href="https://planetscale.com/blog/caching" target="_blank" rel="noopener">"Caching"</a>
+      article (interactive section:
+      <a href="https://planetscale.com/blog/caching/iframe#latency-comparison" target="_blank" rel="noopener">latency-comparison</a>).
+      This is an independent, simplified reproduction for offline/notebook use — not PlanetScale's original widget.
+    </div>
+  </div>
+</div>
+
+<script>
+// Approximate, illustrative latency figures (nanoseconds), roughly matching
+// well-known "latency numbers every programmer should know" style figures.
+const DATA = [
+  {name:"L1 cache",        note:"CPU core cache",        ns:1,            color:"var(--l1)"},
+  {name:"L2 cache",        note:"CPU core cache",        ns:4,            color:"var(--l2)"},
+  {name:"L3 cache",        note:"shared CPU cache",      ns:20,           color:"var(--l3)"},
+  {name:"RAM",             note:"main memory",           ns:100,          color:"var(--ram)"},
+  {name:"SSD",             note:"random read",           ns:100000,       color:"var(--ssd)"},
+  {name:"HDD",             note:"random seek",           ns:10000000,     color:"var(--hdd)"},
+  {name:"Network (same DC)", note:"round trip",          ns:500000,       color:"var(--netdc)"},
+  {name:"Network (cross-country)", note:"round trip",    ns:40000000,     color:"var(--netxc)"},
+];
+
+const rowsEl = document.getElementById("rows");
+const maxNs = Math.max(...DATA.map(d=>d.ns));
+const minNs = Math.min(...DATA.map(d=>d.ns));
+
+function fmt(ns){
+  if(ns < 1000) return ns + " ns";
+  if(ns < 1e6) return (ns/1000).toFixed(ns<10000?1:0) + " µs";
+  if(ns < 1e9) return (ns/1e6).toFixed(ns<10e6?1:0) + " ms";
+  return (ns/1e9).toFixed(2) + " s";
+}
+
+function widthFor(ns, scale){
+  if(scale === "linear"){
+    return Math.max(2, (ns/maxNs)*100);
+  }
+  // log scale mapped between min and max
+  const logMin = Math.log10(minNs), logMax = Math.log10(maxNs);
+  return Math.max(2, ((Math.log10(ns)-logMin)/(logMax-logMin))*100);
+}
+
+let currentScale = "log";
+
+DATA.forEach((d, i) => {
+  const row = document.createElement("div");
+  row.className = "row";
+  row.dataset.index = i;
+  row.innerHTML = `
+    <div class="label">${d.name}<small>${d.note}</small></div>
+    <div class="track">
+      <div class="bar" id="bar-${i}" style="background:${d.color}"></div>
+      <div class="pulse" id="pulse-${i}"></div>
+    </div>
+    <div class="val" id="val-${i}">${fmt(d.ns)}</div>
+  `;
+  row.addEventListener("click", () => fireRequest(i));
+  rowsEl.appendChild(row);
+});
+
+function render(scale){
+  currentScale = scale;
+  DATA.forEach((d,i)=>{
+    document.getElementById(`bar-${i}`).style.width = widthFor(d.ns, scale) + "%";
+  });
+}
+requestAnimationFrame(()=>render("log"));
+
+document.getElementById("scaleBtn").addEventListener("click", (e)=>{
+  render("log");
+  document.getElementById("scaleBtn").classList.add("active");
+  document.getElementById("scaleBtn2").classList.remove("active");
+});
+document.getElementById("scaleBtn2").addEventListener("click", (e)=>{
+  render("linear");
+  document.getElementById("scaleBtn2").classList.add("active");
+  document.getElementById("scaleBtn").classList.remove("active");
+});
+
+function fireRequest(i){
+  const bar = document.getElementById(`bar-${i}`);
+  const pulse = document.getElementById(`pulse-${i}`);
+  const width = bar.getBoundingClientRect().width;
+
+  // Duration is compressed so it's watchable: fastest tiers finish almost
+  // instantly, slowest take ~1.6s, but relative ordering is preserved on a log curve.
+  const logMin = Math.log10(minNs), logMax = Math.log10(maxNs);
+  const t = (Math.log10(DATA[i].ns)-logMin)/(logMax-logMin); // 0..1
+  const durationMs = 120 + t*1500;
+
+  pulse.style.transition = "none";
+  pulse.style.opacity = "1";
+  pulse.style.left = "0px";
+  // force reflow
+  void pulse.offsetWidth;
+  pulse.style.transition = `left ${durationMs}ms linear, opacity 200ms ease ${durationMs}ms`;
+  pulse.style.left = (width-10) + "px";
+  pulse.style.opacity = "0.001"; // fade handled by transition end via opacity above trick
+  setTimeout(()=>{ pulse.style.opacity = "0"; }, durationMs+50);
+}
+
+document.getElementById("raceBtn").addEventListener("click", ()=>{
+  const l1 = DATA[0].ns;
+  const crossCountry = DATA[7].ns;
+  const hits = Math.round(crossCountry / l1).toLocaleString();
+  document.getElementById("raceOut").innerHTML =
+    `In the time it takes for <b>one</b> cross-country network round trip, ` +
+    `an L1 cache could theoretically be hit about <b>${hits}</b> times. ` +
+    `That's the whole point of caching: keep the hottest data as physically ` +
+    `and logically close to the CPU as possible.`;
+
+  // little visual flourish: fire all rows in sequence
+  DATA.forEach((_, i) => setTimeout(()=>fireRequest(i), i*120));
+});
+</script>
+</body>
+</html>
