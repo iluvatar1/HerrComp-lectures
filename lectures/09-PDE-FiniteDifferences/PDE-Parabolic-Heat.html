@@ -591,8 +591,8 @@
   <section class="tex2jax_ignore mathjax_ignore" id="partial-differential-equations-the-parabolic-heat-equation">
 <h1>Partial differential equations: The (parabolic) heat equation<a class="headerlink" href="#partial-differential-equations-the-parabolic-heat-equation" title="Link to this heading">#</a></h1>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_equation">heat equation</a> is the typical example of a parabolic partial differential equation. Here we have the time and we are looking for an actual time evolution. It can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c689be5b-d266-466c-9264-06198793e0bc">
-<span class="eqno">(112)<a class="headerlink" href="#equation-c689be5b-d266-466c-9264-06198793e0bc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8ea2cb80-0e89-463f-a7ce-d66f3b46b707">
+<span class="eqno">(112)<a class="headerlink" href="#equation-8ea2cb80-0e89-463f-a7ce-d66f3b46b707" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial u}{\partial t} = \alpha \nabla^2 u,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(u\)</span> represents the temperature, or the concentration (diffusion problem) and so on. The coefficient <span class="math notranslate nohighlight">\(\alpha\)</span> takes into account the thermal conductivity, specific heat, and density of the material.</p>
@@ -645,14 +645,14 @@
 <section id="the-explicit-method-forward-time-centered-space">
 <h2>The explicit method: Forward time centered space<a class="headerlink" href="#the-explicit-method-forward-time-centered-space" title="Link to this heading">#</a></h2>
 <p>As is usual in finite differences, we discretize both the spatial (up to second order) and the time (linear order) derivatives to get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-10c5dd2d-21de-4ee0-bf5b-d65707125759">
-<span class="eqno">(113)<a class="headerlink" href="#equation-10c5dd2d-21de-4ee0-bf5b-d65707125759" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bc162fbc-0aaa-40eb-ad84-ef25f405543d">
+<span class="eqno">(113)<a class="headerlink" href="#equation-bc162fbc-0aaa-40eb-ad84-ef25f405543d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{u^{n+1}_i - u^n_i}{\Delta t} = \alpha \frac{u_{i+1}^n - 2u_i^n + u_{i-1}^n}{\Delta x^2}, 
 \end{equation}\]</div>
 <p>where the superscript corresponds to a step in time, while the subscript corresponds to step in space (we are here solving a one-dimensional equation). This is the so called <a class="reference external" href="https://en.wikipedia.org/wiki/FTCS_scheme">FTCS - Forward Time Centered Space</a> method, which is an <a class="reference external" href="https://en.wikipedia.org/wiki/Explicit_and_implicit_methods">explicit method</a> which allows to compute the next (in time) value in terms of the previous one.</p>
 <p>Reorganizing terms</p>
-<div class="amsmath math notranslate nohighlight" id="equation-28f62986-60b2-42ce-a750-4b5ca40a9721">
-<span class="eqno">(114)<a class="headerlink" href="#equation-28f62986-60b2-42ce-a750-4b5ca40a9721" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7559d7f4-0252-404b-b926-26d730af210c">
+<span class="eqno">(114)<a class="headerlink" href="#equation-7559d7f4-0252-404b-b926-26d730af210c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_{i}^{n+1} = u_{i}^{n}+\frac{\alpha\Delta t}{\Delta x^2}(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}) = u_{i}^{n}+\lambda(u_{i+1}^{n}-2u_{i}^{n}+u_{i-1}^{n}),
 \end{equation}\]</div>
 <p>which can be visualized as</p>
@@ -668,13 +668,13 @@ The explicit ftcs method is <span class="math notranslate nohighlight">\(O(N)\)<
 <section id="numerical-stability">
 <h3>Numerical stability<a class="headerlink" href="#numerical-stability" title="Link to this heading">#</a></h3>
 <p>By using the <a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann_stability_analysis">von Neumann stability analysis</a> it is possible to show that the solution is stable (errors are not amplified) only if</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8d9eee23-064a-4cbe-bf20-6f8b5cc22e05">
-<span class="eqno">(115)<a class="headerlink" href="#equation-8d9eee23-064a-4cbe-bf20-6f8b5cc22e05" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-611db17d-cea9-450c-85ae-33dcbfce4b78">
+<span class="eqno">(115)<a class="headerlink" href="#equation-611db17d-cea9-450c-85ae-33dcbfce4b78" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2}
 \end{equation}\]</div>
 <p>or, in 2D with different spacing</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cc0901e5-277f-401d-bc28-7e9ef682f218">
-<span class="eqno">(116)<a class="headerlink" href="#equation-cc0901e5-277f-401d-bc28-7e9ef682f218" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1d22a05f-f157-4e1c-bd09-f76674d4df5a">
+<span class="eqno">(116)<a class="headerlink" href="#equation-1d22a05f-f157-4e1c-bd09-f76674d4df5a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lambda = \frac{\alpha \Delta t}{\Delta x^2} \le \frac{1}{2(1 + \frac{\Delta x^2}{\Delta y^2})}.
 \end{equation}\]</div>
 <p>This is very important: the discretization cannot be changed arbitrarily, otherwise you will have instabilities.</p>
@@ -961,63 +961,47 @@ The explicit ftcs method is <span class="math notranslate nohighlight">\(O(N)\)<
 <span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="k">finally</span><span class="p">:</span>
 <span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/axis.py:1481,</span> in <span class="ni">Axis.draw</span><span class="nt">(self, renderer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1478</span> <span class="n">tlb1</span><span class="p">,</span> <span class="n">tlb2</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ticklabel_bboxes</span><span class="p">(</span><span class="n">ticks_to_draw</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1480</span> <span class="k">for</span> <span class="n">tick</span> <span class="ow">in</span> <span class="n">ticks_to_draw</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1481</span>     <span class="n">tick</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1483</span> <span class="c1"># Shift label away from axes to avoid overlapping ticklabels.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1484</span> <span class="bp">self</span><span class="o">.</span><span class="n">_update_label_position</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/text.py:853,</span> in <span class="ni">Text.draw</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">849</span>     <span class="k">return</span>
+<span class="g g-Whitespace">    </span><span class="mi">851</span> <span class="n">renderer</span><span class="o">.</span><span class="n">open_group</span><span class="p">(</span><span class="s1">'text'</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_gid</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">853</span> <span class="n">bbox</span><span class="p">,</span> <span class="n">info</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_layout</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">854</span> <span class="n">trans</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">856</span> <span class="c1"># don't use self.get_position here, which refers to text</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span> <span class="c1"># position in Text:</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/artist.py:71,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">69</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">71</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/text.py:479,</span> in <span class="ni">Text._get_layout</span><span class="nt">(self, renderer)</span>
+<span class="g g-Whitespace">    </span><span class="mi">477</span> <span class="n">clean_line</span><span class="p">,</span> <span class="n">ismath</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_preprocess_math</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">478</span> <span class="k">if</span> <span class="n">clean_line</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">479</span>     <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="n">_get_text_metrics_with_cache</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">480</span>         <span class="n">renderer</span><span class="p">,</span> <span class="n">clean_line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fontproperties</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">481</span>         <span class="n">ismath</span><span class="o">=</span><span class="n">ismath</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_figure</span><span class="p">(</span><span class="n">root</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">dpi</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span>     <span class="n">w</span> <span class="o">=</span> <span class="n">h</span> <span class="o">=</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/axis.py:294,</span> in <span class="ni">Tick.draw</span><span class="nt">(self, renderer)</span>
-<span class="g g-Whitespace">    </span><span class="mi">291</span> <span class="n">renderer</span><span class="o">.</span><span class="n">open_group</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">gid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">get_gid</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">292</span> <span class="k">for</span> <span class="n">artist</span> <span class="ow">in</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">gridline</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tick1line</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">tick2line</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">293</span>                <span class="bp">self</span><span class="o">.</span><span class="n">label1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">label2</span><span class="p">]:</span>
-<span class="ne">--&gt; </span><span class="mi">294</span>     <span class="n">artist</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">295</span> <span class="n">renderer</span><span class="o">.</span><span class="n">close_group</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">296</span> <span class="bp">self</span><span class="o">.</span><span class="n">stale</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/text.py:59,</span> in <span class="ni">_get_text_metrics_with_cache</span><span class="nt">(renderer, text, fontprop, ismath, dpi)</span>
+<span class="g g-Whitespace">     </span><span class="mi">52</span> <span class="n">get_text_metrics</span> <span class="o">=</span> <span class="n">_get_text_metrics_function</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">53</span> <span class="c1"># call the function to compute the metrics and return</span>
+<span class="g g-Whitespace">     </span><span class="mi">54</span> <span class="c1">#</span>
+<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="c1"># We pass a copy of the fontprop because FontProperties is both mutable and</span>
+<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="c1"># has a `__hash__` that depends on that mutable state.  This is not ideal</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="c1"># as it means the hash of an object is not stable over time which leads to</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="c1"># very confusing behavior when used as keys in dictionaries or hashes.</span>
+<span class="ne">---&gt; </span><span class="mi">59</span> <span class="k">return</span> <span class="n">get_text_metrics</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">fontprop</span><span class="o">.</span><span class="n">copy</span><span class="p">(),</span> <span class="n">ismath</span><span class="p">,</span> <span class="n">dpi</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/artist.py:71,</span> in <span class="ni">allow_rasterization.&lt;locals&gt;.draw_wrapper</span><span class="nt">(artist, renderer)</span>
-<span class="g g-Whitespace">     </span><span class="mi">68</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">69</span>         <span class="n">renderer</span><span class="o">.</span><span class="n">start_filter</span><span class="p">()</span>
-<span class="ne">---&gt; </span><span class="mi">71</span>     <span class="k">return</span> <span class="n">draw</span><span class="p">(</span><span class="n">artist</span><span class="p">,</span> <span class="n">renderer</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span> <span class="k">finally</span><span class="p">:</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span>     <span class="k">if</span> <span class="n">artist</span><span class="o">.</span><span class="n">get_agg_filter</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/text.py:125,</span> in <span class="ni">_get_text_metrics_function.&lt;locals&gt;._text_metrics</span><span class="nt">(text, fontprop, ismath, dpi)</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>         <span class="s2">"Trying to get text metrics for a renderer that no longer exists.  "</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>         <span class="s2">"This should never happen and is evidence of a bug elsewhere."</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="c1"># do the actual method call we need and return the result</span>
+<span class="ne">--&gt; </span><span class="mi">125</span> <span class="k">return</span> <span class="n">local_renderer</span><span class="o">.</span><span class="n">get_text_width_height_descent</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">fontprop</span><span class="p">,</span> <span class="n">ismath</span><span class="p">)</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/lines.py:762,</span> in <span class="ni">Line2D.draw</span><span class="nt">(self, renderer)</span>
-<span class="g g-Whitespace">    </span><span class="mi">759</span>     <span class="k">return</span>
-<span class="g g-Whitespace">    </span><span class="mi">761</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_invalidy</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">_invalidx</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">762</span>     <span class="bp">self</span><span class="o">.</span><span class="n">recache</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">763</span> <span class="bp">self</span><span class="o">.</span><span class="n">ind_offset</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Needed for contains() method.</span>
-<span class="g g-Whitespace">    </span><span class="mi">764</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subslice</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">:</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/lines.py:691,</span> in <span class="ni">Line2D.recache</span><span class="nt">(self, always)</span>
-<span class="g g-Whitespace">    </span><span class="mi">688</span> <span class="bp">self</span><span class="o">.</span><span class="n">_y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_xy</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">690</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subslice</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="ne">--&gt; </span><span class="mi">691</span> <span class="k">if</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">axes</span>
-<span class="g g-Whitespace">    </span><span class="mi">692</span>         <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_subslice_optim_min_size</span>
-<span class="g g-Whitespace">    </span><span class="mi">693</span>         <span class="ow">and</span> <span class="n">_path</span><span class="o">.</span><span class="n">is_sorted_and_has_non_nan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">694</span>         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s1">'rectilinear'</span>
-<span class="g g-Whitespace">    </span><span class="mi">695</span>         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">get_xscale</span><span class="p">()</span> <span class="o">==</span> <span class="s1">'linear'</span>
-<span class="g g-Whitespace">    </span><span class="mi">696</span>         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">_markevery</span> <span class="ow">is</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">697</span>         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clip_on</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">698</span>         <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_transform</span><span class="p">()</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">transData</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">699</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_subslice</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="n">nanmask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/artist.py:301,</span> in <span class="ni">Artist.axes</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">298</span>         <span class="k">return</span> <span class="n">y</span>
-<span class="g g-Whitespace">    </span><span class="mi">299</span>     <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">convert_units</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">301</span> <span class="nd">@property</span>
-<span class="g g-Whitespace">    </span><span class="mi">302</span> <span class="k">def</span><span class="w"> </span><span class="nf">axes</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">303</span><span class="w">     </span><span class="sd">"""The `~.axes.Axes` instance the artist resides in, or *None*."""</span>
-<span class="g g-Whitespace">    </span><span class="mi">304</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_axes</span>
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/matplotlib/backends/backend_agg.py:263,</span> in <span class="ni">RendererAgg.get_text_width_height_descent</span><span class="nt">(self, s, prop, ismath)</span>
+<span class="g g-Whitespace">    </span><span class="mi">260</span>     <span class="k">return</span> <span class="n">parse</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">parse</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">parse</span><span class="o">.</span><span class="n">depth</span>
+<span class="g g-Whitespace">    </span><span class="mi">262</span> <span class="n">font</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_font</span><span class="p">(</span><span class="n">prop</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">263</span> <span class="n">font</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">get_hinting_flag</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">264</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">get_width_height</span><span class="p">()</span>  <span class="c1"># width and height of unrotated string</span>
+<span class="g g-Whitespace">    </span><span class="mi">265</span> <span class="n">d</span> <span class="o">=</span> <span class="n">font</span><span class="o">.</span><span class="n">get_descent</span><span class="p">()</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -1047,8 +1031,8 @@ The explicit ftcs method is <span class="math notranslate nohighlight">\(O(N)\)<
 <section id="a-note-on-derivative-boundary-conditions">
 <h3>A note on derivative boundary conditions<a class="headerlink" href="#a-note-on-derivative-boundary-conditions" title="Link to this heading">#</a></h3>
 <p>In case you need to fix the derivative a the boundary, let’s say an isolated wall on the left, where <span class="math notranslate nohighlight">\(\partial u / \partial x = c_1\)</span>, then you could introduce that as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8bb18d02-382e-433d-bacf-d386a6c7437c">
-<span class="eqno">(117)<a class="headerlink" href="#equation-8bb18d02-382e-433d-bacf-d386a6c7437c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c3d66640-e4c7-45e8-9fef-0c2a762c8c92">
+<span class="eqno">(117)<a class="headerlink" href="#equation-c3d66640-e4c7-45e8-9fef-0c2a762c8c92" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_0^{n+1} = u_0^n + \lambda(u_1^n - 2u_0^n + u_{-1}^n),
 \end{equation}\]</div>
 <p>where there is a new imaginary point at <span class="math notranslate nohighlight">\(i = -1\)</span>. But from the derivative condition you can get its value, since <span class="math notranslate nohighlight">\((u_0 - u_{-1})/\Delta x \simeq \partial u/\partial x\)</span>.</p>
@@ -1167,13 +1151,13 @@ They can be <span class="math notranslate nohighlight">\(O(N^3)\)</span>, or <sp
 <section id="parabolic-equations-in-two-dimensions">
 <h2>Parabolic equations in two dimensions<a class="headerlink" href="#parabolic-equations-in-two-dimensions" title="Link to this heading">#</a></h2>
 <p>In this case you could be solving problems like</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f87bec07-7173-43ce-bdbc-ef4aadb321e6">
-<span class="eqno">(118)<a class="headerlink" href="#equation-f87bec07-7173-43ce-bdbc-ef4aadb321e6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d6347297-4444-459b-9c91-342c46aebff0">
+<span class="eqno">(118)<a class="headerlink" href="#equation-d6347297-4444-459b-9c91-342c46aebff0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial T}{\partial t} = \alpha \left( \frac{\partial^2T}{\partial x^2} + \frac{\partial^2 T}{\partial y^2}\right).
 \end{equation}\]</div>
 <p>In this case, stability analysis implies that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-81cb3b74-5edb-4ac1-a37b-0ea9c3ecb03f">
-<span class="eqno">(119)<a class="headerlink" href="#equation-81cb3b74-5edb-4ac1-a37b-0ea9c3ecb03f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-877a7fbf-4b5b-4ad1-b11c-61001ccfc674">
+<span class="eqno">(119)<a class="headerlink" href="#equation-877a7fbf-4b5b-4ad1-b11c-61001ccfc674" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \Delta t \le \frac{1}{8} \frac{\Delta x^2 + \Delta y^2}{\alpha}.
 \end{equation}\]</div>
 <p>As with the previous 1D case, implicit schemes improve the stability , but the matrix systems are no longer tri-diagonal and therefore the matrix storage and computational times increase a lot.</p>

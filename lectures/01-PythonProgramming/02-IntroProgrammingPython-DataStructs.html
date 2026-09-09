@@ -567,13 +567,23 @@
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">Slicing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing-vs-copying">Aliasing vs. copying</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics">Other topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-with-enumerate-and-zip">Looping with <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> and <code class="docutils literal notranslate"><span class="pre">zip()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-comprehensions">Dictionary comprehensions</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing-bug-hunt">Aliasing bug hunt</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorted-dictionary">Sorted dictionary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copying-a-dictionary">Copying a dictionary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial">Polynomial</a></li>
@@ -596,9 +606,145 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="basic-data-structures">
 <h1>Basic data structures<a class="headerlink" href="#basic-data-structures" title="Link to this heading">#</a></h1>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RUN ME FOR EMBEDING VIDEOS AND URLS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span><span class="p">,</span> <span class="n">parse_qs</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Convert any YouTube URL to embed format."""</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s2">"youtu.be"</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s2">"shorts"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/shorts/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s2">"embed"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">url</span>  <span class="c1"># already embed format, do nothing</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"v"</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"https://www.youtube.com/embed/</span><span class="si">{</span><span class="n">vid</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">vid</span> <span class="k">else</span> <span class="n">url</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"90%"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">"youtube.com"</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">or</span> <span class="s2">"youtu.be"</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">aspect</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"%"</span><span class="p">))</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">w</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">&lt;div style="display:flex; flex-direction:column; align-items:center; width:100%;"&gt;</span>
+<span class="s1">  &lt;div style="position:relative; width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; padding-bottom:</span><span class="si">{</span><span class="n">padding</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%; height:0; overflow:hidden;"&gt;</span>
+<span class="s1">    &lt;iframe src="</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">"</span>
+<span class="s1">      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"</span>
+<span class="s1">      allowfullscreen title="</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">"&gt;</span>
+<span class="s1">    &lt;/iframe&gt;</span>
+<span class="s1">  &lt;/div&gt;</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">"&lt;p style='font-style:italic; margin-top:0.4em;'&gt;"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&lt;/p&gt;"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;'''</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">embed_html_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">"800px"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Embed a local standalone HTML file directly into the notebook output</span>
+<span class="sd">    (no external file dependency at build/render time)."""</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">b64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">html_content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"ascii"</span><span class="p">)</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"data:text/html;base64,</span><span class="si">{</span><span class="n">b64</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">&lt;div style="display:flex; flex-direction:column; align-items:center; width:100%;"&gt;</span>
+<span class="s1">  &lt;iframe src="</span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s1">"</span>
+<span class="s1">    style="width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; height:</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1">; border:0;"</span>
+<span class="s1">    allowfullscreen title="</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">"&gt;</span>
+<span class="s1">  &lt;/iframe&gt;</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">"&lt;p style='font-style:italic; margin-top:0.4em;'&gt;"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&lt;/p&gt;"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;'''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <section id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Link to this heading">#</a></h2>
 <p>Lists are heterogeneous and dynamic arrays which allows to group data which are not necessarily of the same type. Lists are very easy to use but, be careful, they are not the fastest struct you can use for numerical computations.</p>
+<section id="performance">
+<h3>Performance<a class="headerlink" href="#performance" title="Link to this heading">#</a></h3>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://benjdd.com/languages2/"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <div style="position:relative; width:90%; padding-bottom:90.00%; height:0; overflow:hidden;">
+    <iframe src="https://benjdd.com/languages2/"
+      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+      allowfullscreen title="">
+    </iframe>
+  </div>
+  
+</div></div></div>
+</div>
+<p>For more info about caching, see <a class="reference external" href="https://planetscale.com/blog/caching/">https://planetscale.com/blog/caching/</a></p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed_html_file</span><span class="p">(</span><span class="s2">"assets/latency_comparison.html"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <iframe src="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPHRpdGxlPkNhY2hlIExhdGVuY3kgQ29tcGFyaXNvbjwvdGl0bGU+CjxzdHlsZT4KICA6cm9vdHsKICAgIC0tYmc6IzBmMTExNTsgLS1wYW5lbDojMTcxYTIxOyAtLWxpbmU6IzI2MmEzMzsKICAgIC0tdGV4dDojZThlYWVkOyAtLW11dGVkOiM5YWEyYWY7CiAgICAtLWwxOiNmZjZiNmI7IC0tbDI6I2ZmYTk0ZDsgLS1sMzojZmZkNDNiOyAtLXJhbTojNjlkYjdjOwogICAgLS1zc2Q6IzRkYWJmNzsgLS1oZGQ6Izc0OGZmYzsgLS1uZXRkYzojZGE3N2YyOyAtLW5ldHhjOiNmNzgzYWM7CiAgfQogICp7Ym94LXNpemluZzpib3JkZXItYm94O30KICBib2R5ewogICAgbWFyZ2luOjA7IHBhZGRpbmc6MjRweDsgYmFja2dyb3VuZDp2YXIoLS1iZyk7IGNvbG9yOnZhcigtLXRleHQpOwogICAgZm9udC1mYW1pbHk6LWFwcGxlLXN5c3RlbSxCbGlua01hY1N5c3RlbUZvbnQsIlNlZ29lIFVJIixSb2JvdG8sSGVsdmV0aWNhLEFyaWFsLHNhbnMtc2VyaWY7CiAgfQogIC53cmFwe21heC13aWR0aDo3NjBweDsgbWFyZ2luOjAgYXV0bzt9CiAgaDF7Zm9udC1zaXplOjEuMjVyZW07IG1hcmdpbjowIDAgNHB4O30KICAuc3Vie2NvbG9yOnZhcigtLW11dGVkKTsgZm9udC1zaXplOjAuOXJlbTsgbWFyZ2luOjAgMCAyMHB4O30KICAucGFuZWx7CiAgICBiYWNrZ3JvdW5kOnZhcigtLXBhbmVsKTsgYm9yZGVyOjFweCBzb2xpZCB2YXIoLS1saW5lKTsgYm9yZGVyLXJhZGl1czoxMnB4OwogICAgcGFkZGluZzoyMHB4OwogIH0KICAuY29udHJvbHN7ZGlzcGxheTpmbGV4OyBnYXA6OHB4OyBhbGlnbi1pdGVtczpjZW50ZXI7IG1hcmdpbi1ib3R0b206MTZweDsgZmxleC13cmFwOndyYXA7fQogIC5jb250cm9scyBidXR0b257CiAgICBiYWNrZ3JvdW5kOiMyMDI0MmU7IGNvbG9yOnZhcigtLXRleHQpOyBib3JkZXI6MXB4IHNvbGlkIHZhcigtLWxpbmUpOwogICAgYm9yZGVyLXJhZGl1czo4cHg7IHBhZGRpbmc6NnB4IDEycHg7IGZvbnQtc2l6ZTowLjg1cmVtOyBjdXJzb3I6cG9pbnRlcjsKICB9CiAgLmNvbnRyb2xzIGJ1dHRvbi5hY3RpdmV7Ym9yZGVyLWNvbG9yOiM2OWRiN2M7IGNvbG9yOiM2OWRiN2M7fQogIC5jb250cm9scyBidXR0b246aG92ZXJ7Ym9yZGVyLWNvbG9yOiM1NTU7fQogIC5yb3d7CiAgICBkaXNwbGF5OmdyaWQ7IGdyaWQtdGVtcGxhdGUtY29sdW1uczoxMzBweCAxZnIgOTBweDsKICAgIGFsaWduLWl0ZW1zOmNlbnRlcjsgZ2FwOjEwcHg7IG1hcmdpbjoxMHB4IDA7IGN1cnNvcjpwb2ludGVyOwogICAgcGFkZGluZzo0cHggNnB4OyBib3JkZXItcmFkaXVzOjhweDsgdHJhbnNpdGlvbjpiYWNrZ3JvdW5kIC4xNXM7CiAgfQogIC5yb3c6aG92ZXJ7YmFja2dyb3VuZDojMWQyMTJhO30KICAubGFiZWx7Zm9udC1zaXplOjAuODVyZW07IGNvbG9yOnZhcigtLXRleHQpOyBmb250LXdlaWdodDo1MDA7fQogIC5sYWJlbCBzbWFsbHtkaXNwbGF5OmJsb2NrOyBjb2xvcjp2YXIoLS1tdXRlZCk7IGZvbnQtd2VpZ2h0OjQwMDsgZm9udC1zaXplOjAuNzJyZW07fQogIC50cmFja3sKICAgIHBvc2l0aW9uOnJlbGF0aXZlOyBoZWlnaHQ6MThweDsgYmFja2dyb3VuZDojMWMyMDI4OyBib3JkZXItcmFkaXVzOjVweDsgb3ZlcmZsb3c6aGlkZGVuOwogIH0KICAuYmFyewogICAgcG9zaXRpb246YWJzb2x1dGU7IGxlZnQ6MDsgdG9wOjA7IGhlaWdodDoxMDAlOyBib3JkZXItcmFkaXVzOjVweDsKICAgIHdpZHRoOjAlOyB0cmFuc2l0aW9uOndpZHRoIDFzIGN1YmljLWJlemllciguMiwuOCwuMiwxKTsKICB9CiAgLnZhbHtmb250LXNpemU6MC44cmVtOyBjb2xvcjp2YXIoLS1tdXRlZCk7IHRleHQtYWxpZ246cmlnaHQ7IGZvbnQtdmFyaWFudC1udW1lcmljOnRhYnVsYXItbnVtczt9CiAgLnB1bHNlewogICAgcG9zaXRpb246YWJzb2x1dGU7IHRvcDo1MCU7IGxlZnQ6MDsgd2lkdGg6MTBweDsgaGVpZ2h0OjEwcHg7IG1hcmdpbi10b3A6LTVweDsKICAgIGJvcmRlci1yYWRpdXM6NTAlOyBiYWNrZ3JvdW5kOiNmZmY7IGJveC1zaGFkb3c6MCAwIDhweCAycHggcmdiYSgyNTUsMjU1LDI1NSwuOCk7CiAgICBvcGFjaXR5OjA7IHBvaW50ZXItZXZlbnRzOm5vbmU7CiAgfQogIC5yYWNlewogICAgbWFyZ2luLXRvcDoyMHB4OyBwYWRkaW5nLXRvcDoxNnB4OyBib3JkZXItdG9wOjFweCBzb2xpZCB2YXIoLS1saW5lKTsKICAgIGZvbnQtc2l6ZTowLjg1cmVtOyBjb2xvcjp2YXIoLS1tdXRlZCk7CiAgfQogIC5yYWNlIGJ7Y29sb3I6dmFyKC0tdGV4dCk7fQogIC5jcmVkaXR7CiAgICBtYXJnaW4tdG9wOjE4cHg7IGZvbnQtc2l6ZTowLjc4cmVtOyBjb2xvcjp2YXIoLS1tdXRlZCk7IGxpbmUtaGVpZ2h0OjEuNTsKICB9CiAgLmNyZWRpdCBhe2NvbG9yOiM2OWRiN2M7IHRleHQtZGVjb3JhdGlvbjpub25lO30KICAuY3JlZGl0IGE6aG92ZXJ7dGV4dC1kZWNvcmF0aW9uOnVuZGVybGluZTt9CiAgLmhpbnR7Zm9udC1zaXplOjAuNzhyZW07IGNvbG9yOnZhcigtLW11dGVkKTsgbWFyZ2luLXRvcDoycHg7fQo8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5Pgo8ZGl2IGNsYXNzPSJ3cmFwIj4KICA8aDE+SG93IGZhc3QgaXMgZmFzdD8gQSBjYWNoZSBsYXRlbmN5IGxhZGRlcjwvaDE+CiAgPHAgY2xhc3M9InN1YiI+Q2xpY2sgYW55IHJvdyB0byBmaXJlIGEgc2ltdWxhdGVkIHJlcXVlc3QgYW5kIHdhdGNoIGl0IHRyYXZlbC4gQmFycyBhcmUgb24gYSBsb2cgc2NhbGUg4oCUIGVhY2ggdGllciBpcyByb3VnaGx5IDEw4oCTMTAwMHggc2xvd2VyIHRoYW4gdGhlIG9uZSBhYm92ZSBpdC48L3A+CgogIDxkaXYgY2xhc3M9InBhbmVsIj4KICAgIDxkaXYgY2xhc3M9ImNvbnRyb2xzIj4KICAgICAgPGJ1dHRvbiBpZD0ic2NhbGVCdG4iIGNsYXNzPSJhY3RpdmUiIGRhdGEtc2NhbGU9ImxvZyI+TG9nIHNjYWxlPC9idXR0b24+CiAgICAgIDxidXR0b24gaWQ9InNjYWxlQnRuMiIgZGF0YS1zY2FsZT0ibGluZWFyIj5MaW5lYXIgc2NhbGU8L2J1dHRvbj4KICAgICAgPGJ1dHRvbiBpZD0icmFjZUJ0biI+UnVuIHJlbGF0aXZlLXNwZWVkIHJhY2U8L2J1dHRvbj4KICAgIDwvZGl2PgoKICAgIDxkaXYgaWQ9InJvd3MiPjwvZGl2PgoKICAgIDxkaXYgY2xhc3M9InJhY2UiIGlkPSJyYWNlT3V0Ij4KICAgICAgQ2xpY2sgPGI+4oCcUnVuIHJlbGF0aXZlLXNwZWVkIHJhY2XigJ08L2I+IHRvIHNlZSBob3cgbWFueSBMMSBjYWNoZSBoaXRzIGhhcHBlbiBpbiB0aGUgdGltZSBpdCB0YWtlcyBmb3Igb25lIHJvdW5kIHRyaXAgYWNyb3NzIHRoZSBjb3VudHJ5LgogICAgPC9kaXY+CgogICAgPGRpdiBjbGFzcz0iY3JlZGl0Ij4KICAgICAgTGF0ZW5jeSBmaWd1cmVzIGFuZCBjb25jZXB0IGFkYXB0ZWQgZnJvbSBQbGFuZXRTY2FsZSdzCiAgICAgIDxhIGhyZWY9Imh0dHBzOi8vcGxhbmV0c2NhbGUuY29tL2Jsb2cvY2FjaGluZyIgdGFyZ2V0PSJfYmxhbmsiIHJlbD0ibm9vcGVuZXIiPiJDYWNoaW5nIjwvYT4KICAgICAgYXJ0aWNsZSAoaW50ZXJhY3RpdmUgc2VjdGlvbjoKICAgICAgPGEgaHJlZj0iaHR0cHM6Ly9wbGFuZXRzY2FsZS5jb20vYmxvZy9jYWNoaW5nL2lmcmFtZSNsYXRlbmN5LWNvbXBhcmlzb24iIHRhcmdldD0iX2JsYW5rIiByZWw9Im5vb3BlbmVyIj5sYXRlbmN5LWNvbXBhcmlzb248L2E+KS4KICAgICAgVGhpcyBpcyBhbiBpbmRlcGVuZGVudCwgc2ltcGxpZmllZCByZXByb2R1Y3Rpb24gZm9yIG9mZmxpbmUvbm90ZWJvb2sgdXNlIOKAlCBub3QgUGxhbmV0U2NhbGUncyBvcmlnaW5hbCB3aWRnZXQuCiAgICA8L2Rpdj4KICA8L2Rpdj4KPC9kaXY+Cgo8c2NyaXB0PgovLyBBcHByb3hpbWF0ZSwgaWxsdXN0cmF0aXZlIGxhdGVuY3kgZmlndXJlcyAobmFub3NlY29uZHMpLCByb3VnaGx5IG1hdGNoaW5nCi8vIHdlbGwta25vd24gImxhdGVuY3kgbnVtYmVycyBldmVyeSBwcm9ncmFtbWVyIHNob3VsZCBrbm93IiBzdHlsZSBmaWd1cmVzLgpjb25zdCBEQVRBID0gWwogIHtuYW1lOiJMMSBjYWNoZSIsICAgICAgICBub3RlOiJDUFUgY29yZSBjYWNoZSIsICAgICAgICBuczoxLCAgICAgICAgICAgIGNvbG9yOiJ2YXIoLS1sMSkifSwKICB7bmFtZToiTDIgY2FjaGUiLCAgICAgICAgbm90ZToiQ1BVIGNvcmUgY2FjaGUiLCAgICAgICAgbnM6NCwgICAgICAgICAgICBjb2xvcjoidmFyKC0tbDIpIn0sCiAge25hbWU6IkwzIGNhY2hlIiwgICAgICAgIG5vdGU6InNoYXJlZCBDUFUgY2FjaGUiLCAgICAgIG5zOjIwLCAgICAgICAgICAgY29sb3I6InZhcigtLWwzKSJ9LAogIHtuYW1lOiJSQU0iLCAgICAgICAgICAgICBub3RlOiJtYWluIG1lbW9yeSIsICAgICAgICAgICBuczoxMDAsICAgICAgICAgIGNvbG9yOiJ2YXIoLS1yYW0pIn0sCiAge25hbWU6IlNTRCIsICAgICAgICAgICAgIG5vdGU6InJhbmRvbSByZWFkIiwgICAgICAgICAgIG5zOjEwMDAwMCwgICAgICAgY29sb3I6InZhcigtLXNzZCkifSwKICB7bmFtZToiSEREIiwgICAgICAgICAgICAgbm90ZToicmFuZG9tIHNlZWsiLCAgICAgICAgICAgbnM6MTAwMDAwMDAsICAgICBjb2xvcjoidmFyKC0taGRkKSJ9LAogIHtuYW1lOiJOZXR3b3JrIChzYW1lIERDKSIsIG5vdGU6InJvdW5kIHRyaXAiLCAgICAgICAgICBuczo1MDAwMDAsICAgICAgIGNvbG9yOiJ2YXIoLS1uZXRkYykifSwKICB7bmFtZToiTmV0d29yayAoY3Jvc3MtY291bnRyeSkiLCBub3RlOiJyb3VuZCB0cmlwIiwgICAgbnM6NDAwMDAwMDAsICAgICBjb2xvcjoidmFyKC0tbmV0eGMpIn0sCl07Cgpjb25zdCByb3dzRWwgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgicm93cyIpOwpjb25zdCBtYXhOcyA9IE1hdGgubWF4KC4uLkRBVEEubWFwKGQ9PmQubnMpKTsKY29uc3QgbWluTnMgPSBNYXRoLm1pbiguLi5EQVRBLm1hcChkPT5kLm5zKSk7CgpmdW5jdGlvbiBmbXQobnMpewogIGlmKG5zIDwgMTAwMCkgcmV0dXJuIG5zICsgIiBucyI7CiAgaWYobnMgPCAxZTYpIHJldHVybiAobnMvMTAwMCkudG9GaXhlZChuczwxMDAwMD8xOjApICsgIiDCtXMiOwogIGlmKG5zIDwgMWU5KSByZXR1cm4gKG5zLzFlNikudG9GaXhlZChuczwxMGU2PzE6MCkgKyAiIG1zIjsKICByZXR1cm4gKG5zLzFlOSkudG9GaXhlZCgyKSArICIgcyI7Cn0KCmZ1bmN0aW9uIHdpZHRoRm9yKG5zLCBzY2FsZSl7CiAgaWYoc2NhbGUgPT09ICJsaW5lYXIiKXsKICAgIHJldHVybiBNYXRoLm1heCgyLCAobnMvbWF4TnMpKjEwMCk7CiAgfQogIC8vIGxvZyBzY2FsZSBtYXBwZWQgYmV0d2VlbiBtaW4gYW5kIG1heAogIGNvbnN0IGxvZ01pbiA9IE1hdGgubG9nMTAobWluTnMpLCBsb2dNYXggPSBNYXRoLmxvZzEwKG1heE5zKTsKICByZXR1cm4gTWF0aC5tYXgoMiwgKChNYXRoLmxvZzEwKG5zKS1sb2dNaW4pLyhsb2dNYXgtbG9nTWluKSkqMTAwKTsKfQoKbGV0IGN1cnJlbnRTY2FsZSA9ICJsb2ciOwoKREFUQS5mb3JFYWNoKChkLCBpKSA9PiB7CiAgY29uc3Qgcm93ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgiZGl2Iik7CiAgcm93LmNsYXNzTmFtZSA9ICJyb3ciOwogIHJvdy5kYXRhc2V0LmluZGV4ID0gaTsKICByb3cuaW5uZXJIVE1MID0gYAogICAgPGRpdiBjbGFzcz0ibGFiZWwiPiR7ZC5uYW1lfTxzbWFsbD4ke2Qubm90ZX08L3NtYWxsPjwvZGl2PgogICAgPGRpdiBjbGFzcz0idHJhY2siPgogICAgICA8ZGl2IGNsYXNzPSJiYXIiIGlkPSJiYXItJHtpfSIgc3R5bGU9ImJhY2tncm91bmQ6JHtkLmNvbG9yfSI+PC9kaXY+CiAgICAgIDxkaXYgY2xhc3M9InB1bHNlIiBpZD0icHVsc2UtJHtpfSI+PC9kaXY+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9InZhbCIgaWQ9InZhbC0ke2l9Ij4ke2ZtdChkLm5zKX08L2Rpdj4KICBgOwogIHJvdy5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsICgpID0+IGZpcmVSZXF1ZXN0KGkpKTsKICByb3dzRWwuYXBwZW5kQ2hpbGQocm93KTsKfSk7CgpmdW5jdGlvbiByZW5kZXIoc2NhbGUpewogIGN1cnJlbnRTY2FsZSA9IHNjYWxlOwogIERBVEEuZm9yRWFjaCgoZCxpKT0+ewogICAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoYGJhci0ke2l9YCkuc3R5bGUud2lkdGggPSB3aWR0aEZvcihkLm5zLCBzY2FsZSkgKyAiJSI7CiAgfSk7Cn0KcmVxdWVzdEFuaW1hdGlvbkZyYW1lKCgpPT5yZW5kZXIoImxvZyIpKTsKCmRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJzY2FsZUJ0biIpLmFkZEV2ZW50TGlzdGVuZXIoImNsaWNrIiwgKGUpPT57CiAgcmVuZGVyKCJsb2ciKTsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2NhbGVCdG4iKS5jbGFzc0xpc3QuYWRkKCJhY3RpdmUiKTsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2NhbGVCdG4yIikuY2xhc3NMaXN0LnJlbW92ZSgiYWN0aXZlIik7Cn0pOwpkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2NhbGVCdG4yIikuYWRkRXZlbnRMaXN0ZW5lcigiY2xpY2siLCAoZSk9PnsKICByZW5kZXIoImxpbmVhciIpOwogIGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCJzY2FsZUJ0bjIiKS5jbGFzc0xpc3QuYWRkKCJhY3RpdmUiKTsKICBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgic2NhbGVCdG4iKS5jbGFzc0xpc3QucmVtb3ZlKCJhY3RpdmUiKTsKfSk7CgpmdW5jdGlvbiBmaXJlUmVxdWVzdChpKXsKICBjb25zdCBiYXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChgYmFyLSR7aX1gKTsKICBjb25zdCBwdWxzZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKGBwdWxzZS0ke2l9YCk7CiAgY29uc3Qgd2lkdGggPSBiYXIuZ2V0Qm91bmRpbmdDbGllbnRSZWN0KCkud2lkdGg7CgogIC8vIER1cmF0aW9uIGlzIGNvbXByZXNzZWQgc28gaXQncyB3YXRjaGFibGU6IGZhc3Rlc3QgdGllcnMgZmluaXNoIGFsbW9zdAogIC8vIGluc3RhbnRseSwgc2xvd2VzdCB0YWtlIH4xLjZzLCBidXQgcmVsYXRpdmUgb3JkZXJpbmcgaXMgcHJlc2VydmVkIG9uIGEgbG9nIGN1cnZlLgogIGNvbnN0IGxvZ01pbiA9IE1hdGgubG9nMTAobWluTnMpLCBsb2dNYXggPSBNYXRoLmxvZzEwKG1heE5zKTsKICBjb25zdCB0ID0gKE1hdGgubG9nMTAoREFUQVtpXS5ucyktbG9nTWluKS8obG9nTWF4LWxvZ01pbik7IC8vIDAuLjEKICBjb25zdCBkdXJhdGlvbk1zID0gMTIwICsgdCoxNTAwOwoKICBwdWxzZS5zdHlsZS50cmFuc2l0aW9uID0gIm5vbmUiOwogIHB1bHNlLnN0eWxlLm9wYWNpdHkgPSAiMSI7CiAgcHVsc2Uuc3R5bGUubGVmdCA9ICIwcHgiOwogIC8vIGZvcmNlIHJlZmxvdwogIHZvaWQgcHVsc2Uub2Zmc2V0V2lkdGg7CiAgcHVsc2Uuc3R5bGUudHJhbnNpdGlvbiA9IGBsZWZ0ICR7ZHVyYXRpb25Nc31tcyBsaW5lYXIsIG9wYWNpdHkgMjAwbXMgZWFzZSAke2R1cmF0aW9uTXN9bXNgOwogIHB1bHNlLnN0eWxlLmxlZnQgPSAod2lkdGgtMTApICsgInB4IjsKICBwdWxzZS5zdHlsZS5vcGFjaXR5ID0gIjAuMDAxIjsgLy8gZmFkZSBoYW5kbGVkIGJ5IHRyYW5zaXRpb24gZW5kIHZpYSBvcGFjaXR5IGFib3ZlIHRyaWNrCiAgc2V0VGltZW91dCgoKT0+eyBwdWxzZS5zdHlsZS5vcGFjaXR5ID0gIjAiOyB9LCBkdXJhdGlvbk1zKzUwKTsKfQoKZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInJhY2VCdG4iKS5hZGRFdmVudExpc3RlbmVyKCJjbGljayIsICgpPT57CiAgY29uc3QgbDEgPSBEQVRBWzBdLm5zOwogIGNvbnN0IGNyb3NzQ291bnRyeSA9IERBVEFbN10ubnM7CiAgY29uc3QgaGl0cyA9IE1hdGgucm91bmQoY3Jvc3NDb3VudHJ5IC8gbDEpLnRvTG9jYWxlU3RyaW5nKCk7CiAgZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoInJhY2VPdXQiKS5pbm5lckhUTUwgPQogICAgYEluIHRoZSB0aW1lIGl0IHRha2VzIGZvciA8Yj5vbmU8L2I+IGNyb3NzLWNvdW50cnkgbmV0d29yayByb3VuZCB0cmlwLCBgICsKICAgIGBhbiBMMSBjYWNoZSBjb3VsZCB0aGVvcmV0aWNhbGx5IGJlIGhpdCBhYm91dCA8Yj4ke2hpdHN9PC9iPiB0aW1lcy4gYCArCiAgICBgVGhhdCdzIHRoZSB3aG9sZSBwb2ludCBvZiBjYWNoaW5nOiBrZWVwIHRoZSBob3R0ZXN0IGRhdGEgYXMgcGh5c2ljYWxseSBgICsKICAgIGBhbmQgbG9naWNhbGx5IGNsb3NlIHRvIHRoZSBDUFUgYXMgcG9zc2libGUuYDsKCiAgLy8gbGl0dGxlIHZpc3VhbCBmbG91cmlzaDogZmlyZSBhbGwgcm93cyBpbiBzZXF1ZW5jZQogIERBVEEuZm9yRWFjaCgoXywgaSkgPT4gc2V0VGltZW91dCgoKT0+ZmlyZVJlcXVlc3QoaSksIGkqMTIwKSk7Cn0pOwo8L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+Cg=="
+    style="width:100%; height:800px; border:0;"
+    allowfullscreen title="">
+  </iframe>
+  
+</div></div></div>
+</div>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed_html_file</span><span class="p">(</span><span class="s2">"assets/list_vs_array.html"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">"1000px"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <iframe src="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPHRpdGxlPkxpc3RzIHZzLiBOdW1QeSBBcnJheXM6IE1lbW9yeSAmYW1wOyBTcGVlZDwvdGl0bGU+CjxzdHlsZT4KICA6cm9vdHsKICAgIC0tYmc6IzE2MWIyMjsgLS1wYW5lbDojMWUyNDJkOyAtLXRleHQ6I2U2ZTZkZjsgLS1kaW06IzhiOTNhMDsKICAgIC0tYW1iZXI6I2UwYTQ1ODsgLS10ZWFsOiM1ZmI4YWI7IC0tcnVsZTojMmMzNDQwOyAtLXNsb3Q6IzEyMTYxZDsKICB9CiAgKntib3gtc2l6aW5nOmJvcmRlci1ib3g7fQogIGh0bWwsYm9keXttYXJnaW46MDtiYWNrZ3JvdW5kOnZhcigtLWJnKTtjb2xvcjp2YXIoLS10ZXh0KTsKICAgIGZvbnQtZmFtaWx5OidDb3VyaWVyIE5ldycsdWktbW9ub3NwYWNlLENvbnNvbGFzLG1vbm9zcGFjZTt9CiAgLndyYXB7bWF4LXdpZHRoOjgyMHB4O21hcmdpbjowIGF1dG87cGFkZGluZzoyOHB4IDIwcHggNDRweDt9CiAgaDF7Zm9udC1zaXplOjEuMTVyZW07Zm9udC13ZWlnaHQ6NjAwO21hcmdpbjowIDAgNHB4O30KICBoMntmb250LXNpemU6LjgycmVtO2NvbG9yOnZhcigtLWRpbSk7Zm9udC13ZWlnaHQ6NjAwO2xldHRlci1zcGFjaW5nOi4zcHg7CiAgICAgbWFyZ2luOjM0cHggMCAxNHB4O3RleHQtdHJhbnNmb3JtOm5vbmU7fQogIC5zdWJ7Y29sb3I6dmFyKC0tZGltKTtmb250LXNpemU6Ljg1cmVtO21hcmdpbjowIDAgMjJweDtsaW5lLWhlaWdodDoxLjU1O30KICBjb2Rle2JhY2tncm91bmQ6dmFyKC0tc2xvdCk7cGFkZGluZzoxcHggNXB4O2JvcmRlci1yYWRpdXM6M3B4O2NvbG9yOnZhcigtLXRlYWwpO30KCiAgLm1lbVBhbmVsc3tkaXNwbGF5OmZsZXg7Z2FwOjE2cHg7ZmxleC13cmFwOndyYXA7fQogIC5tZW1DYXJke2ZsZXg6MTttaW4td2lkdGg6MzIwcHg7YmFja2dyb3VuZDp2YXIoLS1wYW5lbCk7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1ydWxlKTsKICAgIGJvcmRlci1yYWRpdXM6NnB4O3BhZGRpbmc6MTZweCAxNnB4IDE4cHg7fQogIC5tZW1DYXJkIGgze2ZvbnQtc2l6ZTouODVyZW07bWFyZ2luOjAgMCA0cHg7Y29sb3I6dmFyKC0tdGV4dCk7fQogIC5tZW1DYXJkIC50YWd7Zm9udC1zaXplOi43MnJlbTtjb2xvcjp2YXIoLS1kaW0pO21hcmdpbi1ib3R0b206MTRweDt9CiAgLmxpc3RSb3d7ZGlzcGxheTpmbGV4O2dhcDo4cHg7ZmxleC13cmFwOndyYXA7bWFyZ2luLWJvdHRvbToxMHB4O30KICAucHRye3dpZHRoOjM4cHg7aGVpZ2h0OjMwcHg7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1ydWxlKTtib3JkZXItcmFkaXVzOjRweDsKICAgIGJhY2tncm91bmQ6dmFyKC0tc2xvdCk7ZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtqdXN0aWZ5LWNvbnRlbnQ6Y2VudGVyOwogICAgZm9udC1zaXplOi43cmVtO2NvbG9yOnZhcigtLWRpbSk7cG9zaXRpb246cmVsYXRpdmU7fQogIC5hcnJvd0Rvd257dGV4dC1hbGlnbjpjZW50ZXI7Y29sb3I6dmFyKC0tcnVsZSk7Zm9udC1zaXplOi45cmVtO21hcmdpbjoycHggMDt9CiAgLm9ianN7ZGlzcGxheTpmbGV4O2dhcDo4cHg7ZmxleC13cmFwOndyYXA7fQogIC5vYmp7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1hbWJlcik7Ym9yZGVyLXJhZGl1czo1cHg7cGFkZGluZzo1cHggN3B4O2JhY2tncm91bmQ6cmdiYSgyMjQsMTY0LDg4LC4xMCk7CiAgICBmb250LXNpemU6LjY4cmVtO2xpbmUtaGVpZ2h0OjEuNTttaW4td2lkdGg6NTZweDt0ZXh0LWFsaWduOmNlbnRlcjt9CiAgLm9iaiBie2Rpc3BsYXk6YmxvY2s7Y29sb3I6dmFyKC0tYW1iZXIpO2ZvbnQtc2l6ZTouNzhyZW07fQogIC5ibG9ja1Jvd3tkaXNwbGF5OmZsZXg7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS10ZWFsKTtib3JkZXItcmFkaXVzOjVweDtvdmVyZmxvdzpoaWRkZW47bWFyZ2luLXRvcDo2cHg7fQogIC5ibG9ja0NlbGx7ZmxleDoxO3BhZGRpbmc6MTBweCA0cHg7dGV4dC1hbGlnbjpjZW50ZXI7Zm9udC1zaXplOi43OHJlbTsKICAgIGJhY2tncm91bmQ6cmdiYSg5NSwxODQsMTcxLC4xMCk7Ym9yZGVyLXJpZ2h0OjFweCBkYXNoZWQgcmdiYSg5NSwxODQsMTcxLC4zNSk7fQogIC5ibG9ja0NlbGw6bGFzdC1jaGlsZHtib3JkZXItcmlnaHQ6bm9uZTt9CiAgLmJsb2NrTGFiZWx7Zm9udC1zaXplOi42OHJlbTtjb2xvcjp2YXIoLS1kaW0pO21hcmdpbi10b3A6OHB4O30KCiAgLmJlbmNoQ2FyZHtiYWNrZ3JvdW5kOnZhcigtLXBhbmVsKTtib3JkZXI6MXB4IHNvbGlkIHZhcigtLXJ1bGUpO2JvcmRlci1yYWRpdXM6NnB4O3BhZGRpbmc6MThweCAxOHB4IDE0cHg7fQogIC5zbGlkZXJSb3d7ZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtnYXA6MTRweDttYXJnaW4tYm90dG9tOjZweDt9CiAgLnNsaWRlclJvdyBsYWJlbHtmb250LXNpemU6Ljc4cmVtO2NvbG9yOnZhcigtLWRpbSk7d2hpdGUtc3BhY2U6bm93cmFwO30KICBpbnB1dFt0eXBlPXJhbmdlXXtmbGV4OjE7YWNjZW50LWNvbG9yOnZhcigtLXRlYWwpO30KICAubnZhbHtmb250LXNpemU6Ljg1cmVtO2NvbG9yOnZhcigtLWFtYmVyKTttaW4td2lkdGg6OTBweDt0ZXh0LWFsaWduOnJpZ2h0O30KICBjYW52YXN7d2lkdGg6MTAwJTtoZWlnaHQ6MjIwcHg7ZGlzcGxheTpibG9jazttYXJnaW4tdG9wOjEwcHg7fQogIC5sZWdlbmR7ZGlzcGxheTpmbGV4O2dhcDoxOHB4O2ZvbnQtc2l6ZTouNzJyZW07Y29sb3I6dmFyKC0tZGltKTttYXJnaW4tdG9wOjZweDtmbGV4LXdyYXA6d3JhcDt9CiAgLmxlZ2VuZCBzcGFue2Rpc3BsYXk6aW5saW5lLWZsZXg7YWxpZ24taXRlbXM6Y2VudGVyO2dhcDo2cHg7fQogIC5zd3t3aWR0aDoxMHB4O2hlaWdodDoxMHB4O2JvcmRlci1yYWRpdXM6MnB4O2Rpc3BsYXk6aW5saW5lLWJsb2NrO30KICAubm90ZXtjb2xvcjp2YXIoLS1kaW0pO2ZvbnQtc2l6ZTouNzhyZW07bWFyZ2luLXRvcDoyMnB4O2xpbmUtaGVpZ2h0OjEuNjsKICAgIGJvcmRlci10b3A6MXB4IGRhc2hlZCB2YXIoLS1ydWxlKTtwYWRkaW5nLXRvcDoxNHB4O30KPC9zdHlsZT4KPC9oZWFkPgo8Ym9keT4KPGRpdiBjbGFzcz0id3JhcCI+CiAgPGgxPkxpc3RzIHZzLiBOdW1QeSBBcnJheXM6IE1lbW9yeSAmYW1wOyBTcGVlZDwvaDE+CiAgPHAgY2xhc3M9InN1YiI+VHdvIGNvc3RzIG9mIGEgcGxhaW4gUHl0aG9uIGxpc3QgZm9yIG51bWVyaWNhbCB3b3JrOiB3aGF0IGl0IHN0b3JlcywgYW5kIGhvdyBpdCdzIGxhaWQgb3V0IGluIG1lbW9yeS4gVGhpcyBpcyB0aGUgc2FtZSBpZGVhIGJlaGluZCA8Y29kZT5pZChhWzBdKTwvY29kZT4sIDxjb2RlPmlkKGFbMV0pPC9jb2RlPi4uLiBmcm9tIHRoZSBsZWN0dXJlIOKAlCBqdXN0IGRyYXduIG91dC48L3A+CgogIDxkaXYgY2xhc3M9Im1lbVBhbmVscyI+CiAgICA8ZGl2IGNsYXNzPSJtZW1DYXJkIj4KICAgICAgPGgzPmEgPSBbMiwgMywgNF0gIDxzcGFuIHN0eWxlPSJjb2xvcjp2YXIoLS1kaW0pO2ZvbnQtd2VpZ2h0OjQwMDsiPihQeXRob24gbGlzdCk8L3NwYW4+PC9oMz4KICAgICAgPGRpdiBjbGFzcz0idGFnIj5vbmUgYXJyYXkgb2YgcG9pbnRlcnMsIGVsZW1lbnRzIHNjYXR0ZXJlZCBhbnl3aGVyZSBpbiBtZW1vcnk8L2Rpdj4KICAgICAgPGRpdiBjbGFzcz0ibGlzdFJvdyI+CiAgICAgICAgPGRpdiBjbGFzcz0icHRyIj4wPC9kaXY+PGRpdiBjbGFzcz0icHRyIj4xPC9kaXY+PGRpdiBjbGFzcz0icHRyIj4yPC9kaXY+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJhcnJvd0Rvd24iPiYjODU5NTsmbmJzcDsmbmJzcDsmbmJzcDsmbmJzcDsmIzg1OTU7Jm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7JiM4NTk1OzwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJvYmpzIj4KICAgICAgICA8ZGl2IGNsYXNzPSJvYmoiPjxiPjI8L2I+UHlPYmplY3Q8YnI+dHlwZSArIHJlZmNvdW50PC9kaXY+CiAgICAgICAgPGRpdiBjbGFzcz0ib2JqIj48Yj4zPC9iPlB5T2JqZWN0PGJyPnR5cGUgKyByZWZjb3VudDwvZGl2PgogICAgICAgIDxkaXYgY2xhc3M9Im9iaiI+PGI+NDwvYj5QeU9iamVjdDxicj50eXBlICsgcmVmY291bnQ8L2Rpdj4KICAgICAgPC9kaXY+CiAgICA8L2Rpdj4KCiAgICA8ZGl2IGNsYXNzPSJtZW1DYXJkIj4KICAgICAgPGgzPmEgPSBucC5hcnJheShbMiwgMywgNF0pICA8c3BhbiBzdHlsZT0iY29sb3I6dmFyKC0tZGltKTtmb250LXdlaWdodDo0MDA7Ij4oTnVtUHkgYXJyYXkpPC9zcGFuPjwvaDM+CiAgICAgIDxkaXYgY2xhc3M9InRhZyI+b25lIGNvbnRpZ3VvdXMgYmxvY2ssIGZpeGVkIGR0eXBlLCBubyBwZXItZWxlbWVudCBvdmVyaGVhZDwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJibG9ja1JvdyI+CiAgICAgICAgPGRpdiBjbGFzcz0iYmxvY2tDZWxsIj4yPC9kaXY+PGRpdiBjbGFzcz0iYmxvY2tDZWxsIj4zPC9kaXY+PGRpdiBjbGFzcz0iYmxvY2tDZWxsIj40PC9kaXY+CiAgICAgIDwvZGl2PgogICAgICA8ZGl2IGNsYXNzPSJibG9ja0xhYmVsIj5pbnQ2NCAmbWlkZG90OyA4IGJ5dGVzIGVhY2ggJm1pZGRvdDsgcGFja2VkIGJhY2stdG8tYmFjazwvZGl2PgogICAgPC9kaXY+CiAgPC9kaXY+CgogIDxoMj5UcnkgaXQg4oCUIHN1bW1pbmcgTiBudW1iZXJzPC9oMj4KICA8ZGl2IGNsYXNzPSJiZW5jaENhcmQiPgogICAgPGRpdiBjbGFzcz0ic2xpZGVyUm93Ij4KICAgICAgPGxhYmVsIGZvcj0iblNsaWRlciI+TjwvbGFiZWw+CiAgICAgIDxpbnB1dCB0eXBlPSJyYW5nZSIgaWQ9Im5TbGlkZXIiIG1pbj0iMiIgbWF4PSI3IiBzdGVwPSIwLjAyIiB2YWx1ZT0iNCI+CiAgICAgIDxkaXYgY2xhc3M9Im52YWwiIGlkPSJuVmFsIj4xMCwwMDA8L2Rpdj4KICAgIDwvZGl2PgogICAgPGNhbnZhcyBpZD0iY2hhcnQiIHdpZHRoPSI3NjAiIGhlaWdodD0iMjIwIj48L2NhbnZhcz4KICAgIDxkaXYgY2xhc3M9ImxlZ2VuZCI+CiAgICAgIDxzcGFuPjxpIGNsYXNzPSJzdyIgc3R5bGU9ImJhY2tncm91bmQ6I2Q5N2E2YyI+PC9pPmZvci1sb29wIHN1bTwvc3Bhbj4KICAgICAgPHNwYW4+PGkgY2xhc3M9InN3IiBzdHlsZT0iYmFja2dyb3VuZDp2YXIoLS1hbWJlcikiPjwvaT5idWlsdC1pbiBzdW0obGlzdCk8L3NwYW4+CiAgICAgIDxzcGFuPjxpIGNsYXNzPSJzdyIgc3R5bGU9ImJhY2tncm91bmQ6dmFyKC0tdGVhbCkiPjwvaT5udW1weSBhcnJheS5zdW0oKTwvc3Bhbj4KICAgIDwvZGl2PgogIDwvZGl2PgoKICA8cCBjbGFzcz0ibm90ZSI+CiAgICBUaGUgYmFycyBhcmUgYW4gaWxsdXN0cmF0aXZlIG1vZGVsIChvcmRlciBvZiBtYWduaXR1ZGUsIG5vdCBhIHJlYWwgbWVhc3VyZW1lbnQpIHNvIHRoZSBzaGFwZSBvZiB0aGUgZ2FwIHNob3dzIHVwIGV2ZW4gd2l0aG91dCBydW5uaW5nIGFueXRoaW5nLgogICAgVGhlIHJlYWwgbnVtYmVycyBkZXBlbmQgb24geW91ciBtYWNoaW5lIOKAlCBtZWFzdXJlIHRoZW0geW91cnNlbGYgaW4gYSBub3RlYm9vayBjZWxsOjxicj4KICAgIDxjb2RlPiV0aW1laXQgc3VtKHgpPC9jb2RlPiAmbmJzcDt2cyZuYnNwOyA8Y29kZT4ldGltZWl0IHN1bShhKSBmb3IgYSBsb29wPC9jb2RlPiAmbmJzcDt2cyZuYnNwOyA8Y29kZT4ldGltZWl0IGFyci5zdW0oKTwvY29kZT4uPGJyPgogICAgTm90aWNlIHRoZSBudW1weSBiYXIgYmFyZWx5IGdyb3dzIHdpdGggTiBhdCBmaXJzdCDigJQgdGhhdCdzIGZpeGVkIGNhbGwgb3ZlcmhlYWQg4oCUIHRoZW4gY2F0Y2hlcyB1cCBvbmNlIE4gaXMgbGFyZ2UgZW5vdWdoIHRoYXQgdGhlIGFjdHVhbCBhcml0aG1ldGljIGRvbWluYXRlcy4KICA8L3A+CjwvZGl2PgoKPHNjcmlwdD4KY29uc3Qgc2xpZGVyID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ25TbGlkZXInKTsKY29uc3QgblZhbEVsID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ25WYWwnKTsKY29uc3QgY2FudmFzID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ2NoYXJ0Jyk7CmNvbnN0IGN0eCA9IGNhbnZhcy5nZXRDb250ZXh0KCcyZCcpOwoKZnVuY3Rpb24gZm10TihuKXsKICBpZihuPj0xZTYpIHJldHVybiAobi8xZTYpLnRvRml4ZWQobj49MWU3PzA6MSkrJ00nOwogIGlmKG4+PTFlMykgcmV0dXJuIChuLzFlMykudG9GaXhlZChuPj0xZTQ/MDoxKSsnayc7CiAgcmV0dXJuIE1hdGgucm91bmQobikudG9TdHJpbmcoKTsKfQpmdW5jdGlvbiBmbXRUaW1lKHMpewogIGlmKHMgPCAxZS02KSByZXR1cm4gKHMqMWU5KS50b0ZpeGVkKDApKycgbnMnOwogIGlmKHMgPCAxZS0zKSByZXR1cm4gKHMqMWU2KS50b0ZpeGVkKDEpKycgXHUwMGI1cyc7CiAgaWYocyA8IDEpIHJldHVybiAocyoxZTMpLnRvRml4ZWQoMikrJyBtcyc7CiAgcmV0dXJuIHMudG9GaXhlZCgyKSsnIHMnOwp9CgovLyBJbGx1c3RyYXRpdmUgcGVyLWVsZW1lbnQgKyBmaXhlZC1vdmVyaGVhZCBtb2RlbCwgb3JkZXIgb2YgbWFnbml0dWRlIG9ubHkuCmZ1bmN0aW9uIHRpbWVzKE4pewogIGNvbnN0IGxvb3AgID0gNi4wZS04ICogTiArIDNlLTc7CiAgY29uc3QgYnN1bSAgPSAzLjBlLTggKiBOICsgMmUtNzsKICBjb25zdCBudW1weSA9IDEuMmUtOSAqIE4gKyA0ZS02OwogIHJldHVybiB7bG9vcCwgYnN1bSwgbnVtcHl9Owp9CgpmdW5jdGlvbiBkcmF3KCl7CiAgY29uc3QgTiA9IE1hdGgucm91bmQoTWF0aC5wb3coMTAsIHBhcnNlRmxvYXQoc2xpZGVyLnZhbHVlKSkpOwogIG5WYWxFbC50ZXh0Q29udGVudCA9IGZtdE4oTik7CiAgY29uc3QgdCA9IHRpbWVzKE4pOwogIGNvbnN0IHZhbHMgPSBbdC5sb29wLCB0LmJzdW0sIHQubnVtcHldOwogIGNvbnN0IGNvbG9ycyA9IFsnI2Q5N2E2YycsICcjZTBhNDU4JywgJyM1ZmI4YWInXTsKICBjb25zdCBsYWJlbHMgPSBbJ2xvb3AnLCAnc3VtKCknLCAnbnVtcHknXTsKCiAgY29uc3QgVyA9IGNhbnZhcy53aWR0aCwgSCA9IGNhbnZhcy5oZWlnaHQ7CiAgY3R4LmNsZWFyUmVjdCgwLDAsVyxIKTsKCiAgY29uc3QgbWF4ViA9IE1hdGgubWF4KC4uLnZhbHMpOwogIGNvbnN0IG1pbkxvZyA9IE1hdGgubG9nMTAoTWF0aC5taW4oLi4udmFscykgKiAwLjUpOwogIGNvbnN0IG1heExvZyA9IE1hdGgubG9nMTAobWF4ViAqIDEuMyk7CiAgY29uc3QgcGxvdFRvcCA9IDIwLCBwbG90Qm90dG9tID0gSCAtIDM0LCBwbG90TGVmdCA9IDYwLCBwbG90UmlnaHQgPSBXIC0gMjA7CiAgY29uc3QgcGxvdEggPSBwbG90Qm90dG9tIC0gcGxvdFRvcDsKICBjb25zdCBwbG90VyA9IHBsb3RSaWdodCAtIHBsb3RMZWZ0OwoKICAvLyBncmlkbGluZXMKICBjdHguc3Ryb2tlU3R5bGUgPSAnIzJjMzQ0MCc7IGN0eC5maWxsU3R5bGUgPSAnIzhiOTNhMCc7CiAgY3R4LmZvbnQgPSAnMTFweCBtb25vc3BhY2UnOyBjdHgudGV4dEFsaWduPSdyaWdodCc7IGN0eC50ZXh0QmFzZWxpbmU9J21pZGRsZSc7CiAgZm9yKGxldCBnPTA7IGc8PTQ7IGcrKyl7CiAgICBjb25zdCB5ID0gcGxvdFRvcCArIHBsb3RIKmcvNDsKICAgIGNvbnN0IGxvZ3YgPSBtYXhMb2cgLSAobWF4TG9nLW1pbkxvZykqZy80OwogICAgY3R4LmJlZ2luUGF0aCgpOyBjdHgubW92ZVRvKHBsb3RMZWZ0LCB5KTsgY3R4LmxpbmVUbyhwbG90UmlnaHQsIHkpOyBjdHguc3Ryb2tlKCk7CiAgICBjdHguZmlsbFRleHQoZm10VGltZShNYXRoLnBvdygxMCwgbG9ndikpLCBwbG90TGVmdC04LCB5KTsKICB9CgogIGNvbnN0IGJhclcgPSBwbG90VyAvIHZhbHMubGVuZ3RoICogMC40NTsKICB2YWxzLmZvckVhY2goKHYsaSk9PnsKICAgIGNvbnN0IGN4ID0gcGxvdExlZnQgKyBwbG90VyooaSswLjUpL3ZhbHMubGVuZ3RoOwogICAgY29uc3QgbG9ndiA9IE1hdGgubG9nMTAodik7CiAgICBjb25zdCBmcmFjID0gKG1heExvZyAtIGxvZ3YpIC8gKG1heExvZyAtIG1pbkxvZyk7CiAgICBjb25zdCB5ID0gcGxvdFRvcCArIHBsb3RIKmZyYWM7CiAgICBjdHguZmlsbFN0eWxlID0gY29sb3JzW2ldOwogICAgY3R4LmZpbGxSZWN0KGN4LWJhclcvMiwgeSwgYmFyVywgcGxvdEJvdHRvbS15KTsKICAgIGN0eC50ZXh0QWxpZ249J2NlbnRlcic7IGN0eC50ZXh0QmFzZWxpbmU9J2JvdHRvbSc7CiAgICBjdHguZmlsbFN0eWxlID0gJyNlNmU2ZGYnOwogICAgY3R4LmZpbGxUZXh0KGZtdFRpbWUodiksIGN4LCB5LTYpOwogICAgY3R4LmZpbGxTdHlsZSA9ICcjOGI5M2EwJzsgY3R4LnRleHRCYXNlbGluZT0ndG9wJzsKICAgIGN0eC5maWxsVGV4dChsYWJlbHNbaV0sIGN4LCBwbG90Qm90dG9tKzgpOwogIH0pOwp9CgpzbGlkZXIuYWRkRXZlbnRMaXN0ZW5lcignaW5wdXQnLCBkcmF3KTsKZHJhdygpOwo8L3NjcmlwdD4KPC9ib2R5Pgo8L2h0bWw+Cg=="
+    style="width:100%; height:1000px; border:0;"
+    allowfullscreen title="">
+  </iframe>
+  
+</div></div></div>
+</div>
+</section>
+<section id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h3>
 <p>A list is declared using the <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code> characters, and its elements are separated by <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p>
 <p><strong>NOTE</strong>: Lists are NOT recommended for numerical work, it is better to use numpy arrays.</p>
 <p>See: <a class="reference external" href="https://quickref.me/python#python-lists">https://quickref.me/python#python-lists</a></p>
@@ -637,6 +783,25 @@ l
 </div>
 </div>
 </div>
+</section>
+<section id="slicing">
+<h3>Slicing<a class="headerlink" href="#slicing" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed_html_file</span><span class="p">(</span><span class="s2">"assets/slice_explorer.html"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <iframe src="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPHRpdGxlPkxpc3QgU2xpY2luZyBFeHBsb3JlcjwvdGl0bGU+CjxzdHlsZT4KICA6cm9vdHsKICAgIC0tYmc6IzE2MWIyMjsKICAgIC0tcGFuZWw6IzFlMjQyZDsKICAgIC0tdGV4dDojZTZlNmRmOwogICAgLS1kaW06IzhiOTNhMDsKICAgIC0tYW1iZXI6I2UwYTQ1ODsKICAgIC0tdGVhbDojNWZiOGFiOwogICAgLS1ydWxlOiMyYzM0NDA7CiAgICAtLWRhbmdlcjojZDk3YTZjOwogIH0KICAqe2JveC1zaXppbmc6Ym9yZGVyLWJveDt9CiAgaHRtbCxib2R5e21hcmdpbjowO3BhZGRpbmc6MDtiYWNrZ3JvdW5kOnZhcigtLWJnKTtjb2xvcjp2YXIoLS10ZXh0KTsKICAgIGZvbnQtZmFtaWx5OidDb3VyaWVyIE5ldycsdWktbW9ub3NwYWNlLENvbnNvbGFzLG1vbm9zcGFjZTt9CiAgLndyYXB7bWF4LXdpZHRoOjc2MHB4O21hcmdpbjowIGF1dG87cGFkZGluZzoyOHB4IDIwcHggNDRweDt9CiAgaDF7Zm9udC1zaXplOjEuMTVyZW07Zm9udC13ZWlnaHQ6NjAwO2xldHRlci1zcGFjaW5nOi4ycHg7bWFyZ2luOjAgMCA0cHg7fQogIC5zdWJ7Y29sb3I6dmFyKC0tZGltKTtmb250LXNpemU6Ljg1cmVtO21hcmdpbjowIDAgMjZweDtsaW5lLWhlaWdodDoxLjU7fQogIGxhYmVse2Rpc3BsYXk6YmxvY2s7Zm9udC1zaXplOi43OHJlbTtjb2xvcjp2YXIoLS1kaW0pO21hcmdpbi1ib3R0b206NnB4O30KICAucm93e2Rpc3BsYXk6ZmxleDtnYXA6MTRweDtmbGV4LXdyYXA6d3JhcDttYXJnaW4tYm90dG9tOjZweDt9CiAgLmZpZWxke2ZsZXg6MTttaW4td2lkdGg6MjIwcHg7fQogIGlucHV0W3R5cGU9dGV4dF17CiAgICB3aWR0aDoxMDAlO2JhY2tncm91bmQ6dmFyKC0tcGFuZWwpO2JvcmRlcjoxcHggc29saWQgdmFyKC0tcnVsZSk7CiAgICBjb2xvcjp2YXIoLS10ZXh0KTtwYWRkaW5nOjlweCAxMHB4O2JvcmRlci1yYWRpdXM6NHB4O2ZvbnQtZmFtaWx5OmluaGVyaXQ7CiAgICBmb250LXNpemU6Ljk1cmVtOwogIH0KICBpbnB1dFt0eXBlPXRleHRdOmZvY3Vze291dGxpbmU6bm9uZTtib3JkZXItY29sb3I6dmFyKC0tdGVhbCk7fQogIC5icmFja2V0e2NvbG9yOnZhcigtLWRpbSk7Zm9udC1zaXplOjFyZW07cGFkZGluZzowIDJweDthbGlnbi1zZWxmOmNlbnRlcjttYXJnaW4tdG9wOjE4cHg7fQogIC5wcmVzZXRze2Rpc3BsYXk6ZmxleDtmbGV4LXdyYXA6d3JhcDtnYXA6NnB4O21hcmdpbjoxNHB4IDAgMzBweDt9CiAgLmNoaXB7CiAgICBiYWNrZ3JvdW5kOnRyYW5zcGFyZW50O2JvcmRlcjoxcHggc29saWQgdmFyKC0tcnVsZSk7Y29sb3I6dmFyKC0tZGltKTsKICAgIHBhZGRpbmc6NHB4IDEwcHg7Ym9yZGVyLXJhZGl1czo5OTlweDtmb250LXNpemU6Ljc1cmVtO2N1cnNvcjpwb2ludGVyOwogICAgZm9udC1mYW1pbHk6aW5oZXJpdDsKICB9CiAgLmNoaXA6aG92ZXJ7Ym9yZGVyLWNvbG9yOnZhcigtLXRlYWwpO2NvbG9yOnZhcigtLXRlYWwpO30KICAuc3RhZ2V7YmFja2dyb3VuZDp2YXIoLS1wYW5lbCk7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1ydWxlKTtib3JkZXItcmFkaXVzOjZweDsKICAgIHBhZGRpbmc6MjZweCAyMHB4IDIwcHg7cG9zaXRpb246cmVsYXRpdmU7b3ZlcmZsb3cteDphdXRvO30KICAuaWR4cm93e2Rpc3BsYXk6ZmxleDtnYXA6NnB4O2p1c3RpZnktY29udGVudDpjZW50ZXI7bWluLXdpZHRoOm1pbi1jb250ZW50O30KICAuY2VsbGNvbHtkaXNwbGF5OmZsZXg7ZmxleC1kaXJlY3Rpb246Y29sdW1uO2FsaWduLWl0ZW1zOmNlbnRlcjttaW4td2lkdGg6NDRweDt9CiAgLnBvc2lkeHtmb250LXNpemU6LjY4cmVtO2NvbG9yOnZhcigtLWRpbSk7aGVpZ2h0OjE2cHg7fQogIC5jZWxsewogICAgd2lkdGg6NDRweDtoZWlnaHQ6NDRweDtib3JkZXI6MXB4IHNvbGlkIHZhcigtLXJ1bGUpO2JvcmRlci1yYWRpdXM6NHB4OwogICAgZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtqdXN0aWZ5LWNvbnRlbnQ6Y2VudGVyO2ZvbnQtc2l6ZTouODVyZW07CiAgICBtYXJnaW46NHB4IDA7YmFja2dyb3VuZDojMTIxNjFkO3RyYW5zaXRpb246YmFja2dyb3VuZCAuMTVzLGJvcmRlci1jb2xvciAuMTVzLHRyYW5zZm9ybSAuMTVzOwogICAgcG9zaXRpb246cmVsYXRpdmU7CiAgfQogIC5jZWxsLnNlbHtib3JkZXItY29sb3I6dmFyKC0tYW1iZXIpO2JhY2tncm91bmQ6cmdiYSgyMjQsMTY0LDg4LC4xNSk7Y29sb3I6dmFyKC0tYW1iZXIpO30KICAubmVnaWR4e2ZvbnQtc2l6ZTouNjhyZW07Y29sb3I6dmFyKC0tZGltKTtoZWlnaHQ6MTZweDt9CiAgLm9yZGVye3Bvc2l0aW9uOmFic29sdXRlO3RvcDotOXB4O3JpZ2h0Oi02cHg7YmFja2dyb3VuZDp2YXIoLS10ZWFsKTtjb2xvcjojMGUxMzE5OwogICAgZm9udC1zaXplOi42MnJlbTtib3JkZXItcmFkaXVzOjhweDttaW4td2lkdGg6MTZweDtoZWlnaHQ6MTZweDtsaW5lLWhlaWdodDoxNnB4OwogICAgdGV4dC1hbGlnbjpjZW50ZXI7cGFkZGluZzowIDNweDtmb250LXdlaWdodDo3MDA7fQogIC5yZXN1bHR7bWFyZ2luLXRvcDoyNHB4O30KICAucmVzdWx0IC5sYWJlbHtmb250LXNpemU6Ljc4cmVtO2NvbG9yOnZhcigtLWRpbSk7bWFyZ2luLWJvdHRvbTo4cHg7fQogIC5yZXN1bHRib3h7YmFja2dyb3VuZDojMTIxNjFkO2JvcmRlcjoxcHggc29saWQgdmFyKC0tcnVsZSk7Ym9yZGVyLXJhZGl1czo0cHg7CiAgICBwYWRkaW5nOjEycHggMTRweDtmb250LXNpemU6Ljk1cmVtO21pbi1oZWlnaHQ6MjBweDt3b3JkLWJyZWFrOmJyZWFrLWFsbDt9CiAgLnJlc3VsdGJveC5hbWJlcntjb2xvcjp2YXIoLS1hbWJlcik7fQogIC5lcnJ7Y29sb3I6dmFyKC0tZGFuZ2VyKTtmb250LXNpemU6Ljg1cmVtO21hcmdpbi10b3A6MTBweDt9CiAgLm5vdGV7Y29sb3I6dmFyKC0tZGltKTtmb250LXNpemU6Ljc4cmVtO21hcmdpbi10b3A6MjJweDtsaW5lLWhlaWdodDoxLjY7Ym9yZGVyLXRvcDoxcHggZGFzaGVkIHZhcigtLXJ1bGUpO3BhZGRpbmctdG9wOjE0cHg7fQogIGNvZGV7YmFja2dyb3VuZDojMTIxNjFkO3BhZGRpbmc6MXB4IDVweDtib3JkZXItcmFkaXVzOjNweDtjb2xvcjp2YXIoLS10ZWFsKTt9Cjwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgY2xhc3M9IndyYXAiPgogIDxoMT5MaXN0IFNsaWNpbmcgRXhwbG9yZXI8L2gxPgogIDxwIGNsYXNzPSJzdWIiPkVkaXQgdGhlIGxpc3QgYW5kIHRoZSBzbGljZSwgd2F0Y2ggd2hpY2ggZWxlbWVudHMgPGNvZGU+eGRhdGFbLi4uXTwvY29kZT4gYWN0dWFsbHkgcGlja3MsIGluIHdoYXQgb3JkZXIgdGhleSBjb21lIG91dC48L3A+CgogIDxkaXYgY2xhc3M9InJvdyI+CiAgICA8ZGl2IGNsYXNzPSJmaWVsZCI+CiAgICAgIDxsYWJlbCBmb3I9Imxpc3RJbnB1dCI+eGRhdGEgPTwvbGFiZWw+CiAgICAgIDxpbnB1dCB0eXBlPSJ0ZXh0IiBpZD0ibGlzdElucHV0IiB2YWx1ZT0iMTAsIDIwLCAzMCwgNDAsIDUwLCA2MCwgNzAiPgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJicmFja2V0Ij5bPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJmaWVsZCIgc3R5bGU9Im1heC13aWR0aDoyMDBweDsiPgogICAgICA8bGFiZWwgZm9yPSJzbGljZUlucHV0Ij5zbGljZTwvbGFiZWw+CiAgICAgIDxpbnB1dCB0eXBlPSJ0ZXh0IiBpZD0ic2xpY2VJbnB1dCIgdmFsdWU9IjE6NToyIj4KICAgIDwvZGl2PgogICAgPGRpdiBjbGFzcz0iYnJhY2tldCI+XTwvZGl2PgogIDwvZGl2PgoKICA8ZGl2IGNsYXNzPSJwcmVzZXRzIiBpZD0icHJlc2V0cyI+PC9kaXY+CgogIDxkaXYgY2xhc3M9InN0YWdlIj4KICAgIDxkaXYgY2xhc3M9ImlkeHJvdyIgaWQ9InBvc1JvdyI+PC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJpZHhyb3ciIGlkPSJjZWxsUm93Ij48L2Rpdj4KICAgIDxkaXYgY2xhc3M9ImlkeHJvdyIgaWQ9Im5lZ1JvdyI+PC9kaXY+CiAgPC9kaXY+CgogIDxkaXYgaWQ9ImVyckJveCI+PC9kaXY+CgogIDxkaXYgY2xhc3M9InJlc3VsdCI+CiAgICA8ZGl2IGNsYXNzPSJsYWJlbCI+eGRhdGFbPHNwYW4gaWQ9ImV4cHJFY2hvIj4xOjU6Mjwvc3Bhbj5dICZyYXJyOzwvZGl2PgogICAgPGRpdiBjbGFzcz0icmVzdWx0Ym94IGFtYmVyIiBpZD0icmVzdWx0Qm94Ij5bMjAsIDQwXTwvZGl2PgogIDwvZGl2PgoKICA8cCBjbGFzcz0ibm90ZSI+CiAgICBQb3NpdGl2ZSBpbmRpY2VzIGNvdW50IGZyb20gdGhlIGZyb250LCBuZWdhdGl2ZSBpbmRpY2VzIGZyb20gdGhlIGJhY2sg4oCUIHRoZSBzYW1lIGJveCBoYXMgYm90aC4KICAgIE51bWJlcnMgYWJvdmUgdGhlIGFycm93cyBzaG93IHRoZSBvcmRlciBlbGVtZW50cyBhcmUgcGlja2VkIGluLCB3aGljaCBtYXR0ZXJzIG9uY2UgYSBzbGljZSBydW5zIGJhY2t3YXJkcyAodHJ5IDxjb2RlPjo6LTE8L2NvZGU+KS4KICAgIEEgc3RlcCBvZiA8Y29kZT4wPC9jb2RlPiBvciBhbiBvdXQtb2YtcmFuZ2Ugc2luZ2xlIGluZGV4IHJhaXNlIHJlYWwgUHl0aG9uIGVycm9ycywgc2hvd24gYmVsb3cgdGhlIGJveGVzLgogIDwvcD4KPC9kaXY+Cgo8c2NyaXB0Pgpjb25zdCBsaXN0RWwgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbGlzdElucHV0Jyk7CmNvbnN0IHNsaWNlRWwgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc2xpY2VJbnB1dCcpOwpjb25zdCBwb3NSb3cgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncG9zUm93Jyk7CmNvbnN0IGNlbGxSb3cgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnY2VsbFJvdycpOwpjb25zdCBuZWdSb3cgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnbmVnUm93Jyk7CmNvbnN0IGVyckJveCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdlcnJCb3gnKTsKY29uc3QgcmVzdWx0Qm94ID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3Jlc3VsdEJveCcpOwpjb25zdCBleHByRWNobyA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdleHByRWNobycpOwoKY29uc3QgcHJlc2V0cyA9IFsnMDoyJywnMDozJywnMDo0OjEnLCc6NDoyJywnOjoxJywnOjotMScsJzotMScsJzMnLCctMSddOwpjb25zdCBwcmVzZXRXcmFwID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3ByZXNldHMnKTsKcHJlc2V0cy5mb3JFYWNoKHA9PnsKICBjb25zdCBiPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2J1dHRvbicpOwogIGIuY2xhc3NOYW1lPSdjaGlwJzsgYi50ZXh0Q29udGVudD1wOwogIGIub25jbGljaz0oKT0+eyBzbGljZUVsLnZhbHVlPXA7IHJlbmRlcigpOyB9OwogIHByZXNldFdyYXAuYXBwZW5kQ2hpbGQoYik7Cn0pOwoKZnVuY3Rpb24gcGFyc2VMaXN0KHN0cil7CiAgcmV0dXJuIHN0ci5zcGxpdCgnLCcpLm1hcChzPT5zLnRyaW0oKSkuZmlsdGVyKHM9PnMubGVuZ3RoPjApOwp9CgovLyBNaXJyb3JzIENQeXRob24ncyBzbGljZS5pbmRpY2VzKCkgc28gYmVoYXZpb3VyIG1hdGNoZXMgcmVhbCBQeXRob24gZXhhY3RseS4KZnVuY3Rpb24gc2xpY2VJbmRpY2VzKGxlbmd0aCwgc3RhcnQsIHN0b3AsIHN0ZXApewogIGlmKHN0ZXAgPT09IG51bGwpIHN0ZXAgPSAxOwogIGlmKHN0ZXAgPT09IDApIHRocm93IG5ldyBFcnJvcigic2xpY2Ugc3RlcCBjYW5ub3QgYmUgemVybyIpOwogIGxldCBsb3dlciwgdXBwZXI7CiAgaWYoc3RlcCA8IDApeyBsb3dlciA9IC0xOyB1cHBlciA9IGxlbmd0aCAtIDE7IH0KICBlbHNlIHsgbG93ZXIgPSAwOyB1cHBlciA9IGxlbmd0aDsgfQoKICBpZihzdGFydCA9PT0gbnVsbCkgc3RhcnQgPSAoc3RlcCA8IDApID8gdXBwZXIgOiBsb3dlcjsKICBlbHNlIHN0YXJ0ID0gKHN0YXJ0IDwgMCkgPyBNYXRoLm1heChzdGFydCArIGxlbmd0aCwgbG93ZXIpIDogTWF0aC5taW4oc3RhcnQsIHVwcGVyKTsKCiAgaWYoc3RvcCA9PT0gbnVsbCkgc3RvcCA9IChzdGVwIDwgMCkgPyBsb3dlciA6IHVwcGVyOwogIGVsc2Ugc3RvcCA9IChzdG9wIDwgMCkgPyBNYXRoLm1heChzdG9wICsgbGVuZ3RoLCBsb3dlcikgOiBNYXRoLm1pbihzdG9wLCB1cHBlcik7CgogIHJldHVybiBbc3RhcnQsIHN0b3AsIHN0ZXBdOwp9CgpmdW5jdGlvbiBpbmRpY2VzRnJvbVNsaWNlKGxlbmd0aCwgc3RhcnQsIHN0b3AsIHN0ZXApewogIGNvbnN0IFtzLCBlLCBzdF0gPSBzbGljZUluZGljZXMobGVuZ3RoLCBzdGFydCwgc3RvcCwgc3RlcCk7CiAgY29uc3Qgb3V0ID0gW107CiAgaWYoc3QgPiAwKXsgZm9yKGxldCBpPXM7aTxlO2krPXN0KSBvdXQucHVzaChpKTsgfQogIGVsc2UgeyBmb3IobGV0IGk9cztpPmU7aSs9c3QpIG91dC5wdXNoKGkpOyB9CiAgcmV0dXJuIG91dDsKfQoKZnVuY3Rpb24gcmVuZGVyKCl7CiAgZXJyQm94LmlubmVySFRNTCA9ICcnOwogIGNvbnN0IGl0ZW1zID0gcGFyc2VMaXN0KGxpc3RFbC52YWx1ZSk7CiAgY29uc3QgbiA9IGl0ZW1zLmxlbmd0aDsKICBjb25zdCBleHByID0gc2xpY2VFbC52YWx1ZS50cmltKCk7CiAgZXhwckVjaG8udGV4dENvbnRlbnQgPSBleHByIHx8ICcnOwoKICBwb3NSb3cuaW5uZXJIVE1MID0gJyc7IGNlbGxSb3cuaW5uZXJIVE1MPScnOyBuZWdSb3cuaW5uZXJIVE1MPScnOwoKICBsZXQgc2VsZWN0ZWRPcmRlciA9IFtdOyAvLyBsaXN0IG9mIHtpbmRleCwgb3JkZXJ9CiAgbGV0IGlzRXJyb3IgPSBmYWxzZSwgZXJyTXNnID0gJyc7CiAgbGV0IHNpbmdsZUluZGV4TW9kZSA9IGZhbHNlLCBzaW5nbGVJbmRleFZhbCA9IG51bGw7CgogIHRyeXsKICAgIGlmKGV4cHIuaW5jbHVkZXMoJzonKSl7CiAgICAgIGNvbnN0IHBhcnRzID0gZXhwci5zcGxpdCgnOicpOwogICAgICBpZihwYXJ0cy5sZW5ndGggPiAzKSB0aHJvdyBuZXcgRXJyb3IoJ3RvbyBtYW55IGNvbG9ucycpOwogICAgICBjb25zdCBudW1zID0gcGFydHMubWFwKHAgPT4gcC50cmltKCk9PT0nJz8gbnVsbCA6IE51bWJlcihwLnRyaW0oKSkpOwogICAgICBudW1zLmZvckVhY2godj0+eyBpZih2IT09bnVsbCAmJiAhTnVtYmVyLmlzSW50ZWdlcih2KSkgdGhyb3cgbmV3IEVycm9yKCdzbGljZSBpbmRpY2VzIG11c3QgYmUgaW50ZWdlcnMnKTsgfSk7CiAgICAgIGNvbnN0IFtzdGFydCwgc3RvcCwgc3RlcF0gPSBbbnVtc1swXT8/bnVsbCwgbnVtc1sxXT8/bnVsbCwgbnVtc1syXT8/bnVsbF07CiAgICAgIGNvbnN0IGlkeHMgPSBpbmRpY2VzRnJvbVNsaWNlKG4sIHN0YXJ0LCBzdG9wLCBzdGVwKTsKICAgICAgaWR4cy5mb3JFYWNoKChpZHgsayk9PiBzZWxlY3RlZE9yZGVyLnB1c2goe2luZGV4OmlkeCwgb3JkZXI6aysxfSkpOwogICAgfSBlbHNlIGlmKGV4cHIubGVuZ3RoKXsKICAgICAgY29uc3QgdiA9IE51bWJlcihleHByKTsKICAgICAgaWYoIU51bWJlci5pc0ludGVnZXIodikpIHRocm93IG5ldyBFcnJvcignaW5kZXggbXVzdCBiZSBhbiBpbnRlZ2VyJyk7CiAgICAgIHNpbmdsZUluZGV4TW9kZSA9IHRydWU7CiAgICAgIGxldCByZWFsID0gdiA8IDAgPyB2ICsgbiA6IHY7CiAgICAgIGlmKHJlYWwgPCAwIHx8IHJlYWwgPj0gbikgdGhyb3cgbmV3IEVycm9yKGBJbmRleEVycm9yOiBsaXN0IGluZGV4IG91dCBvZiByYW5nZWApOwogICAgICBzaW5nbGVJbmRleFZhbCA9IHJlYWw7CiAgICAgIHNlbGVjdGVkT3JkZXIucHVzaCh7aW5kZXg6IHJlYWwsIG9yZGVyOiAxfSk7CiAgICB9CiAgfSBjYXRjaChlKXsKICAgIGlzRXJyb3IgPSB0cnVlOyBlcnJNc2cgPSBlLm1lc3NhZ2U7CiAgfQoKICBjb25zdCBzZWxNYXAgPSB7fTsKICBzZWxlY3RlZE9yZGVyLmZvckVhY2gocz0+IHNlbE1hcFtzLmluZGV4XSA9IHMub3JkZXIpOwoKICBmb3IobGV0IGk9MDtpPG47aSsrKXsKICAgIGNvbnN0IHBvc0xibCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpOyBwb3NMYmwuY2xhc3NOYW1lPSdwb3NpZHgnOyBwb3NMYmwuc3R5bGUubWluV2lkdGg9JzQ0cHgnOyBwb3NMYmwudGV4dENvbnRlbnQgPSBpOwogICAgcG9zUm93LmFwcGVuZENoaWxkKHBvc0xibCk7CgogICAgY29uc3QgY29sID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7IGNvbC5jbGFzc05hbWU9J2NlbGxjb2wnOwogICAgY29uc3QgY2VsbCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpOyBjZWxsLmNsYXNzTmFtZT0nY2VsbCc7CiAgICBjZWxsLnRleHRDb250ZW50ID0gaXRlbXNbaV07CiAgICBpZihzZWxNYXBbaV0gIT09IHVuZGVmaW5lZCl7CiAgICAgIGNlbGwuY2xhc3NMaXN0LmFkZCgnc2VsJyk7CiAgICAgIGlmKHNlbGVjdGVkT3JkZXIubGVuZ3RoID4gMSl7CiAgICAgICAgY29uc3Qgb3JkID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7IG9yZC5jbGFzc05hbWU9J29yZGVyJzsgb3JkLnRleHRDb250ZW50ID0gc2VsTWFwW2ldOwogICAgICAgIGNlbGwuYXBwZW5kQ2hpbGQob3JkKTsKICAgICAgfQogICAgfQogICAgY2VsbFJvdy5hcHBlbmRDaGlsZChjZWxsKTsKCiAgICBjb25zdCBuZWdMYmwgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsgbmVnTGJsLmNsYXNzTmFtZT0nbmVnaWR4JzsgbmVnTGJsLnN0eWxlLm1pbldpZHRoPSc0NHB4JzsgbmVnTGJsLnRleHRDb250ZW50ID0gaSAtIG47CiAgICBuZWdSb3cuYXBwZW5kQ2hpbGQobmVnTGJsKTsKICB9CgogIGlmKGlzRXJyb3IpewogICAgZXJyQm94LmlubmVySFRNTCA9IGA8ZGl2IGNsYXNzPSJlcnIiPiR7ZXJyTXNnfTwvZGl2PmA7CiAgICByZXN1bHRCb3gudGV4dENvbnRlbnQgPSAn4oCUJzsKICAgIHJldHVybjsKICB9CgogIGlmKHNpbmdsZUluZGV4TW9kZSl7CiAgICByZXN1bHRCb3gudGV4dENvbnRlbnQgPSBpdGVtc1tzaW5nbGVJbmRleFZhbF07CiAgfSBlbHNlIHsKICAgIGNvbnN0IG91dCA9IHNlbGVjdGVkT3JkZXIubWFwKHMgPT4gaXRlbXNbcy5pbmRleF0pOwogICAgcmVzdWx0Qm94LnRleHRDb250ZW50ID0gJ1snICsgb3V0LmpvaW4oJywgJykgKyAnXSc7CiAgfQp9CgpsaXN0RWwuYWRkRXZlbnRMaXN0ZW5lcignaW5wdXQnLCByZW5kZXIpOwpzbGljZUVsLmFkZEV2ZW50TGlzdGVuZXIoJ2lucHV0JywgcmVuZGVyKTsKcmVuZGVyKCk7Cjwvc2NyaXB0Pgo8L2JvZHk+CjwvaHRtbD4K"
+    style="width:100%; height:800px; border:0;"
+    allowfullscreen title="">
+  </iframe>
+  
+</div></div></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Slicing operations [start=0, end, increment]</span>
@@ -662,6 +827,42 @@ l
 </div>
 </div>
 </div>
+</section>
+<section id="aliasing-vs-copying">
+<h3>Aliasing vs. copying<a class="headerlink" href="#aliasing-vs-copying" title="Link to this heading">#</a></h3>
+<p>A list variable does not hold the data itself — it holds a <em>reference</em> to it. Assigning
+<code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a</span></code> gives you a second name for the <em>same</em> list; it does not create a new one. This
+matters a lot once you start passing lists of positions, velocities, etc. into functions.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span>          <span class="c1"># b is just another name for a's list</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>       <span class="c1"># a changed too!</span>
+</pre></div>
+</div>
+<p>To get an independent list, use <code class="docutils literal notranslate"><span class="pre">.copy()</span></code> (a <em>shallow</em> copy) or, if the list contains
+other mutable objects (e.g. a list of lists), <code class="docutils literal notranslate"><span class="pre">copy.deepcopy()</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>          <span class="c1"># independent top-level copy</span>
+<span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">99</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>            <span class="c1"># a is untouched</span>
+
+<span class="n">nested</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>
+<span class="n">shallow</span> <span class="o">=</span> <span class="n">nested</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">shallow</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nested</span><span class="p">)</span>           <span class="c1"># inner list is SHARED — this still changes nested!</span>
+
+<span class="n">deep</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">nested</span><span class="p">)</span>
+<span class="n">deep</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nested</span><span class="p">)</span>            <span class="c1"># untouched this time</span>
+</pre></div>
+</div>
+<p><strong>Rule of thumb:</strong> if a function receives a list and modifies it in place, that change is
+visible to the caller. If you don’t want that, copy first — or better, have the function
+return a new list instead of mutating its argument.</p>
+</section>
+<section id="other-topics">
+<h3>Other topics<a class="headerlink" href="#other-topics" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># From other lists</span>
@@ -689,7 +890,7 @@ l
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140060937921256, 140060937921288, 140060937921320, 140060937922952
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>140067592184552, 140067592184584, 140067592184616, 140067592186248
 </pre></div>
 </div>
 </div>
@@ -726,8 +927,165 @@ l
 </div>
 </div>
 </div>
+</section>
+<section id="looping-with-enumerate-and-zip">
+<h3>Looping with <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> and <code class="docutils literal notranslate"><span class="pre">zip()</span></code><a class="headerlink" href="#looping-with-enumerate-and-zip" title="Link to this heading">#</a></h3>
+<p>Two patterns you’ll use constantly once you start writing simulations: <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> gives
+you the index <em>and</em> the value together, and <code class="docutils literal notranslate"><span class="pre">zip()</span></code> lets you walk through several lists in
+lockstep — e.g. a particle’s position and velocity at the same timestep.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">positions</span>  <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">]</span>
+<span class="n">velocities</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+
+<span class="c1"># enumerate: index + value, no manual counter needed</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">positions</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"particle </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: x = </span><span class="si">{</span><span class="n">x</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>particle 0: x = 0.0
+particle 1: x = 1.2
+particle 2: x = 2.5
+particle 3: x = 3.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># zip: walk two (or more) lists together</span>
+<span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">velocities</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"x = </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">, v = </span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x =  0.00, v =  0.50
+x =  1.20, v =  0.40
+x =  2.50, v = -0.20
+x =  3.10, v =  0.10
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># combine both: update each position by one Euler step, keeping track of which particle it is</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">new_positions</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">positions</span><span class="p">,</span> <span class="n">velocities</span><span class="p">)):</span>
+    <span class="n">x_new</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">v</span> <span class="o">*</span> <span class="n">dt</span>
+    <span class="n">new_positions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">x_new</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"particle </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">x</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">x_new</span><span class="si">:</span><span class="s2">5.2f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">new_positions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>particle 0:  0.00 -&gt;  0.05
+particle 1:  1.20 -&gt;  1.24
+particle 2:  2.50 -&gt;  2.48
+particle 3:  3.10 -&gt;  3.11
+[0.05, 1.24, 2.48, 3.11]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="exercises">
 <h3>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h3>
+<p><em>Aliasing bug hunt</em></p>
+<p>The function below is supposed to return a <strong>new</strong> list
+with every element doubled, leaving the original untouched. Predict what <code class="docutils literal notranslate"><span class="pre">original</span></code> and
+<code class="docutils literal notranslate"><span class="pre">result</span></code> will print <strong>before</strong> running the cell — then run it, see if you were right, and
+fix the function so it no longer modifies its argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">double_in_place</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="n">original</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">double_in_place</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"original:"</span><span class="p">,</span> <span class="n">original</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"result:  "</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># YOUR FIX HERE: rewrite double_in_place so `original` is left unchanged</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>original: [2, 4, 6]
+result:   [2, 4, 6]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> <em>Debug the AI’s code.</em> The snippet below claims to return the prime factors
+of <code class="docutils literal notranslate"><span class="pre">n</span></code>, and was pasted in from an AI assistant without checking it carefully. Find the bug,
+explain in one sentence what goes wrong and why it still often “looks like it works,” and
+fix it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">primefactors_buggy</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    From an AI assistant — has not been checked.</span>
+<span class="sd">    """</span>
+    <span class="n">factors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">divisor</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="n">divisor</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">divisor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">factors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">divisor</span><span class="p">)</span>
+            <span class="n">n</span> <span class="o">/=</span> <span class="n">divisor</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">divisor</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">factors</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">primefactors_buggy</span><span class="p">(</span><span class="mi">360</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">360</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># look at this closely — what type is `n` after the first division?</span>
+
+<span class="c1"># YOUR FIX HERE</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">primefactors</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2, 2, 2, 3, 3, 5]
+&lt;class 'float'&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> <em>Prove the claim.</em> The lecture states lists are “not the fastest struct… for
+numerical computations.” Prove it. Build a large list <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">list(range(N))</span></code> and an equivalent
+<code class="docutils literal notranslate"><span class="pre">numpy</span></code> array <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">np.array(x)</span></code> for <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">1_000_000</span></code>, then use <code class="docutils literal notranslate"><span class="pre">%timeit</span></code> to compare:</p>
+<ol class="arabic simple">
+<li><p>summing <code class="docutils literal notranslate"><span class="pre">x</span></code> with an explicit <code class="docutils literal notranslate"><span class="pre">for</span></code> loop and a running total,</p></li>
+<li><p>summing <code class="docutils literal notranslate"><span class="pre">x</span></code> with the builtin <code class="docutils literal notranslate"><span class="pre">sum(x)</span></code>,</p></li>
+<li><p>summing <code class="docutils literal notranslate"><span class="pre">a</span></code> with <code class="docutils literal notranslate"><span class="pre">a.sum()</span></code>.</p></li>
+</ol>
+<p>Report the three timings and, by trying a few different values of <code class="docutils literal notranslate"><span class="pre">N</span></code>, estimate roughly
+where <code class="docutils literal notranslate"><span class="pre">a.sum()</span></code> stops being dominated by fixed overhead and starts actually winning on the
+arithmetic itself.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1_000_000</span>
+<span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># YOUR CODE HERE — use %timeit on each of the three approaches</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="alert alert-block alert-info">
 <b>Exercise:</b> Write a function that receives a list and prints it in reverse order every 2 elements
 </div><div class="cell docutils container">
@@ -766,7 +1124,7 @@ l
 <span class="c1">#     while divisor &lt;= n:</span>
 <span class="c1">#         if n % divisor == 0:</span>
 <span class="c1">#             factors.append(divisor)</span>
-<span class="c1">#             n /= divisor</span>
+<span class="c1">#             n //= divisor</span>
 <span class="c1">#         else:</span>
 <span class="c1">#             divisor += 1</span>
 <span class="c1">#     return factors</span>
@@ -816,7 +1174,7 @@ None
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
     <span class="k">pass</span>
     <span class="o">^</span>
 <span class="ne">IndentationError</span>: expected an indented block after function definition on line 3
@@ -897,15 +1255,34 @@ None
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
-<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">"800"</span> <span class="na">height</span><span class="o">=</span><span class="s">"500"</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">"0"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://pythontutor.com/iframe-embed.html#code=class%20Point2D%20%3A%0A%20%20%20%20%22%22%22This%20is%20a%20doctring.%20This%20allows%20to%20embed%20documentation%20inside%20the%20class%20definition.%0A%20%20%20%20You%20can%20split%20it%20%0A%20%20%20%20across%20several%20lines.%0A%20%20%20%20%22%22%22%0A%20%20%20%20def%20__init__%28self,%20x%20%3D%200,%20y%20%3D%200%29%3A%20%0A%20%20%20%20%20%20%20%20%22%22%22%20This%20is%20the%20constructor%22%22%22%0A%20%20%20%20%20%20%20%20self.x_%20%3D%20x%20%23%20attribute%20x_%0A%20%20%20%20%20%20%20%20self.y_%20%3D%20y%20%23%20attribute%20y_%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20def%20coordinates%28self%29%3A%0A%20%20%20%20%20%20%20%20return%20self.x_,%20self.y_%0A%20%20%20%20%0A%20%20%20%20def%20__str__%28self%29%3A%0A%20%20%20%20%20%20%20%20%22%22%22Cast%20method%20to%20convert%20to%20string%22%22%22%0A%20%20%20%20%20%20%20%20return%20%28f%22Coordinates%20%3A%20%28%20%7Bself.x_%3A25.16e%7D,%20%7Bself.y_%3A25.16e%7D%20%29%22%29%0A%20%20%20%20%20%20%20%20%0A%0Ap1%20%3D%20Point2D%28%29%20%23%20constructs%20a%20point%20with%20default%20internal%20attributes%0Aprint%20%28p1%29%20%23%20Uses%20the%20str%20cast%20method%0A%0Ap2%20%3D%20Point2D%282,%20-3%29%0Aprint%20%28p2%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;cumulative=false&amp;curInstr=0&amp;heapPrimitives=nevernest&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false"</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://pythontutor.com/visualize.html#code=class%20Point2D</span><span class="si">%20%</span><span class="s2">3A%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%22%</span><span class="s2">22%22This</span><span class="si">%20i</span><span class="s2">s</span><span class="si">%20a%20d</span><span class="s2">octring.%20This</span><span class="si">%20a</span><span class="s2">llows%20to</span><span class="si">%20e</span><span class="s2">mbed</span><span class="si">%20d</span><span class="s2">ocumentation</span><span class="si">%20i</span><span class="s2">nside%20the</span><span class="si">%20c</span><span class="s2">lass</span><span class="si">%20d</span><span class="s2">efinition.%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20You</span><span class="si">%20c</span><span class="s2">an</span><span class="si">%20s</span><span class="s2">plit</span><span class="si">%20i</span><span class="s2">t</span><span class="si">%20%</span><span class="s2">0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20across</span><span class="si">%20s</span><span class="s2">everal</span><span class="si">%20li</span><span class="s2">nes.%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%22%</span><span class="s2">22</span><span class="si">%22%</span><span class="s2">0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20def%20__init__</span><span class="si">%28s</span><span class="s2">elf,</span><span class="si">%20x%20%</span><span class="s2">3D%200,%20y</span><span class="si">%20%</span><span class="s2">3D</span><span class="si">%200%</span><span class="s2">29%3A</span><span class="si">%20%</span><span class="s2">0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%22%</span><span class="s2">22</span><span class="si">%22%</span><span class="s2">20This</span><span class="si">%20i</span><span class="s2">s%20the</span><span class="si">%20c</span><span class="s2">onstructor</span><span class="si">%22%</span><span class="s2">22</span><span class="si">%22%</span><span class="s2">0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20self.x_</span><span class="si">%20%</span><span class="s2">3D</span><span class="si">%20x%20%</span><span class="s2">23</span><span class="si">%20a</span><span class="s2">ttribute</span><span class="si">%20x</span><span class="s2">_%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20self.y_</span><span class="si">%20%</span><span class="s2">3D%20y</span><span class="si">%20%</span><span class="s2">23</span><span class="si">%20a</span><span class="s2">ttribute%20y_%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20def</span><span class="si">%20c</span><span class="s2">oordinates</span><span class="si">%28s</span><span class="s2">elf</span><span class="si">%29%</span><span class="s2">3A%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20return</span><span class="si">%20s</span><span class="s2">elf.x_,</span><span class="si">%20s</span><span class="s2">elf.y_%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20def%20__str__</span><span class="si">%28s</span><span class="s2">elf</span><span class="si">%29%</span><span class="s2">3A%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%22%</span><span class="s2">22%22Cast%20method%20to</span><span class="si">%20c</span><span class="s2">onvert%20to</span><span class="si">%20s</span><span class="s2">tring</span><span class="si">%22%</span><span class="s2">22</span><span class="si">%22%</span><span class="s2">0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20return</span><span class="si">%20%</span><span class="s2">28f%22Coordinates</span><span class="si">%20%</span><span class="s2">3A</span><span class="si">%20%</span><span class="s2">28</span><span class="si">%20%</span><span class="s2">7Bself.x_%3A25.16e%7D,</span><span class="si">%20%</span><span class="s2">7Bself.y_%3A25.16e%7D</span><span class="si">%20%</span><span class="s2">29</span><span class="si">%22%</span><span class="s2">29%0A</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20%0A%0Ap1</span><span class="si">%20%</span><span class="s2">3D%20Point2D</span><span class="si">%28%</span><span class="s2">29</span><span class="si">%20%</span><span class="s2">23</span><span class="si">%20c</span><span class="s2">onstructs</span><span class="si">%20a</span><span class="s2">%20point%20with</span><span class="si">%20d</span><span class="s2">efault</span><span class="si">%20i</span><span class="s2">nternal</span><span class="si">%20a</span><span class="s2">ttributes%0Aprint</span><span class="si">%20%</span><span class="s2">28p1</span><span class="si">%29%</span><span class="s2">20</span><span class="si">%23%</span><span class="s2">20Uses%20the</span><span class="si">%20s</span><span class="s2">tr</span><span class="si">%20c</span><span class="s2">ast%20method%0A%0Ap2</span><span class="si">%20%</span><span class="s2">3D%20Point2D%282,%20-3</span><span class="si">%29%</span><span class="s2">0Aprint</span><span class="si">%20%</span><span class="s2">28p2%29&amp;curInstr=0&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
+</details>
 </div>
 <p>You can save the class to a file, and then later import it for re-use (you can import any python code)</p>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%html</span>
+<span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">width</span><span class="o">=</span><span class="s">"800"</span> <span class="na">height</span><span class="o">=</span><span class="s">"500"</span> <span class="na">frameborder</span><span class="o">=</span><span class="s">"0"</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://pythontutor.com/iframe-embed.html#code=class%20Point2D%20%3A%0A%20%20%20%20%22%22%22This%20is%20a%20doctring.%20This%20allows%20to%20embed%20documentation%20inside%20the%20class%20definition.%0A%20%20%20%20You%20can%20split%20it%20%0A%20%20%20%20across%20several%20lines.%0A%20%20%20%20%22%22%22%0A%20%20%20%20def%20__init__%28self,%20x%20%3D%200,%20y%20%3D%200%29%3A%20%0A%20%20%20%20%20%20%20%20%22%22%22%20This%20is%20the%20constructor%22%22%22%0A%20%20%20%20%20%20%20%20self.x_%20%3D%20x%20%23%20attribute%20x_%0A%20%20%20%20%20%20%20%20self.y_%20%3D%20y%20%23%20attribute%20y_%0A%20%20%20%20%20%20%20%20%0A%20%20%20%20def%20coordinates%28self%29%3A%0A%20%20%20%20%20%20%20%20return%20self.x_,%20self.y_%0A%20%20%20%20%0A%20%20%20%20def%20__str__%28self%29%3A%0A%20%20%20%20%20%20%20%20%22%22%22Cast%20method%20to%20convert%20to%20string%22%22%22%0A%20%20%20%20%20%20%20%20return%20%28f%22Coordinates%20%3A%20%28%20%7Bself.x_%3A25.16e%7D,%20%7Bself.y_%3A25.16e%7D%20%29%22%29%0A%20%20%20%20%20%20%20%20%0A%0Ap1%20%3D%20Point2D%28%29%20%23%20constructs%20a%20point%20with%20default%20internal%20attributes%0Aprint%20%28p1%29%20%23%20Uses%20the%20str%20cast%20method%0A%0Ap2%20%3D%20Point2D%282,%20-3%29%0Aprint%20%28p2%29&amp;codeDivHeight=400&amp;codeDivWidth=350&amp;curInstr=0&amp;origin=opt-frontend.js&amp;py=3"</span><span class="p">&gt;</span> <span class="p">&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%file</span> Point3D.py 
@@ -982,6 +1359,13 @@ None
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed</span><span class="p">(</span><span class="s2">"https://pythontutor.com/visualize.html#code=</span><span class="si">%23%</span><span class="s2">20creates</span><span class="si">%20a%20d</span><span class="s2">ictionary%20with</span><span class="si">%20s</span><span class="s2">everal%20key%3Avalue%20pairs.%20Keys</span><span class="si">%20a</span><span class="s2">re</span><span class="si">%20s</span><span class="s2">trings%0Atel</span><span class="si">%20%</span><span class="s2">3D</span><span class="si">%20%</span><span class="s2">7B'jack'%3A%204098,%20'sape'%3A</span><span class="si">%204139%</span><span class="s2">7D</span><span class="si">%20%</span><span class="s2">20%0Aprint</span><span class="si">%20%</span><span class="s2">28tel</span><span class="si">%29%</span><span class="s2">0A</span><span class="si">%23%</span><span class="s2">20acces</span><span class="si">%20%</span><span class="s2">20by%20key.%20If%20key</span><span class="si">%20d</span><span class="s2">oes%20not</span><span class="si">%20e</span><span class="s2">xists,</span><span class="si">%20c</span><span class="s2">reates</span><span class="si">%20a</span><span class="s2">%20new</span><span class="si">%20e</span><span class="s2">ntry%0Atel%5B'guido'%5D</span><span class="si">%20%</span><span class="s2">3D</span><span class="si">%204127%</span><span class="s2">20%0Aprint</span><span class="si">%20%</span><span class="s2">28tel</span><span class="si">%29%</span><span class="s2">0A</span><span class="si">%23%</span><span class="s2">20Access%20by%20key%0Aprint</span><span class="si">%20%</span><span class="s2">28tel%5B'jack'%5D</span><span class="si">%29%</span><span class="s2">0A</span><span class="si">%23%</span><span class="s2">20Delete%20by%20key%0Adel%20tel%5B'sape'%5D</span><span class="si">%20%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20%0Aprint</span><span class="si">%20%</span><span class="s2">28tel</span><span class="si">%29%</span><span class="s2">0A</span><span class="si">%23%</span><span class="s2">20key</span><span class="si">%20a%20li</span><span class="s2">st</span><span class="si">%20o</span><span class="s2">f%20the%20keys%0Aprint%28tel.keys</span><span class="si">%28%</span><span class="s2">29</span><span class="si">%29%</span><span class="s2">20</span><span class="si">%20%</span><span class="s2">20%0A</span><span class="si">%23%</span><span class="s2">20list</span><span class="si">%20o</span><span class="s2">f%20values%0Aprint%28tel.values</span><span class="si">%28%</span><span class="s2">29</span><span class="si">%29%</span><span class="s2">0A</span><span class="si">%23%</span><span class="s2">20keys</span><span class="si">%20a</span><span class="s2">nd%20values%0Aprint%28tel.items</span><span class="si">%28%</span><span class="s2">29%29&amp;curInstr=0&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">tel</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">key</span><span class="si">=}</span><span class="s2">, </span><span class="si">{</span><span class="n">val</span><span class="si">=}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
@@ -995,10 +1379,67 @@ None
 </div>
 </div>
 </div>
+<section id="dictionary-comprehensions">
+<h3>Dictionary comprehensions<a class="headerlink" href="#dictionary-comprehensions" title="Link to this heading">#</a></h3>
+<p>Just like list comprehensions build a list in one line, dictionary comprehensions build a
+dictionary in one line: <code class="docutils literal notranslate"><span class="pre">{key_expr:</span> <span class="pre">value_expr</span> <span class="pre">for</span> <span class="pre">item</span> <span class="pre">in</span> <span class="pre">iterable}</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># squares of 0..9, keyed by the number itself</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="p">{</span><span class="n">n</span><span class="p">:</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">squares</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># transform an existing dictionary: convert values, keep the keys</span>
+<span class="n">tel</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'jack'</span><span class="p">:</span> <span class="mi">4098</span><span class="p">,</span> <span class="s1">'sape'</span><span class="p">:</span> <span class="mi">4139</span><span class="p">,</span> <span class="s1">'guido'</span><span class="p">:</span> <span class="mi">4127</span><span class="p">}</span>
+<span class="n">tel_str</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="sa">f</span><span class="s2">"+57-</span><span class="si">{</span><span class="n">number</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">tel</span><span class="o">.</span><span class="n">items</span><span class="p">()}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tel_str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># with a filter condition</span>
+<span class="n">tel_area_41</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">number</span> <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">number</span> <span class="ow">in</span> <span class="n">tel</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="nb">str</span><span class="p">(</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'41'</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tel_area_41</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="id1">
 <h2>Exercises<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
 <p>Some based on  “A Primer on Scientific Programming with Python”, Lantangen, Springer</p>
+<section id="aliasing-bug-hunt">
+<h3>Aliasing bug hunt<a class="headerlink" href="#aliasing-bug-hunt" title="Link to this heading">#</a></h3>
+<p>The function below is supposed to return a <strong>new</strong> list
+with every element doubled, leaving the original untouched. Predict what <code class="docutils literal notranslate"><span class="pre">original</span></code> and
+<code class="docutils literal notranslate"><span class="pre">result</span></code> will print <strong>before</strong> running the cell — then run it, see if you were right, and
+fix the function so it no longer modifies its argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">double_in_place</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)):</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="n">original</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">double_in_place</span><span class="p">(</span><span class="n">original</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"original:"</span><span class="p">,</span> <span class="n">original</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"result:  "</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+
+<span class="c1"># YOUR FIX HERE: rewrite double_in_place so `original` is left unchanged</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="sorted-dictionary">
 <h3>Sorted dictionary<a class="headerlink" href="#sorted-dictionary" title="Link to this heading">#</a></h3>
 <p>Write a program which prints a sorted key list of a given dictionary. (<em>hint</em>: Check the <code class="docutils literal notranslate"><span class="pre">sorted</span></code> function, or try to sort the <code class="docutils literal notranslate"><span class="pre">keys()</span></code> function output)</p>
@@ -1051,11 +1492,11 @@ E : ==
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mydict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'A'</span><span class="p">:</span><span class="mi">8</span><span class="p">,</span> <span class="s1">'B'</span><span class="p">:</span><span class="mi">12</span><span class="p">,</span> <span class="s1">'C'</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">'D'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'E'</span><span class="p">:</span><span class="mi">2</span><span class="p">}</span>
 
 <span class="c1"># YOUR CODE HERE</span>
 <span class="k">pass</span>
-<span class="n">print_histo</span><span class="p">(</span><span class="nb">dict</span><span class="p">)</span>
+<span class="n">print_histo</span><span class="p">(</span><span class="n">mydict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1068,6 +1509,24 @@ E : ==
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
 <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise:</strong> <em>Counter refactor.</em> You already wrote a program that counts word occurrences
+in a text using a plain dictionary. Rewrite it using <code class="docutils literal notranslate"><span class="pre">collections.Counter</span></code>, then use
+<code class="docutils literal notranslate"><span class="pre">.most_common(5)</span></code> to print the 5 most frequent words. Compare how many lines each version
+took.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">"""the quick brown fox jumps over the lazy dog</span>
+<span class="s2">the dog barks at the fox"""</span>
+
+<span class="c1"># YOUR CODE HERE</span>
+<span class="c1"># counts = Counter(...)</span>
+<span class="c1"># print(counts.most_common(5))</span>
 </pre></div>
 </div>
 </div>
@@ -1167,13 +1626,23 @@ E : ==
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lists">Lists</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#performance">Performance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slicing">Slicing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing-vs-copying">Aliasing vs. copying</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-topics">Other topics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#looping-with-enumerate-and-zip">Looping with <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> and <code class="docutils literal notranslate"><span class="pre">zip()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tuples">Tuples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classes">Classes</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionaries">Dictionaries</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary-comprehensions">Dictionary comprehensions</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aliasing-bug-hunt">Aliasing bug hunt</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sorted-dictionary">Sorted dictionary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#copying-a-dictionary">Copying a dictionary</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#polynomial">Polynomial</a></li>

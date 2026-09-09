@@ -26,7 +26,7 @@ pass
 ------------------
 
 
-  [36mCell[39m[36m [39m[32mIn[12][39m[32m, line 5[39m
+  [36mCell[39m[36m [39m[32mIn[23][39m[32m, line 5[39m
 [31m    [39m[31mpass[39m
     ^
 [31mIndentationError[39m[31m:[39m expected an indented block after function definition on line 3

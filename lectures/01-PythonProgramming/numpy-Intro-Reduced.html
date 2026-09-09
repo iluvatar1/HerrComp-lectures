@@ -566,6 +566,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-numpy">Basic numpy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-ways-to-create-arrays">Alternative ways to create arrays</a></li>
 </ul>
@@ -576,7 +577,12 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-operations-or-vector-computing">Numerical operations (or vector computing)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axis">Axis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication-with">Matrix multiplication with @</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape-and-t">reshape and .T</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-view">Predict the view</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-reduction">Axis reduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-file">Reading a file</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-file-with-comments">Reading file with comments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-loadtxt">Using loadtxt</a></li>
@@ -597,7 +603,73 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="python-arrays-numpy">
 <h1>Python arrays : Numpy<a class="headerlink" href="#python-arrays-numpy" title="Link to this heading">#</a></h1>
-<p><strong>REF:</strong> Scipy tutorial and A primer of Scientific Programming with Python.</p>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RUN ME FOR EMBEDING VIDEOS AND URLS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span><span class="p">,</span> <span class="n">parse_qs</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Convert any YouTube URL to embed format."""</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s2">"youtu.be"</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s2">"shorts"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/shorts/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s2">"embed"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">url</span>  <span class="c1"># already embed format, do nothing</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"v"</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"https://www.youtube.com/embed/</span><span class="si">{</span><span class="n">vid</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">vid</span> <span class="k">else</span> <span class="n">url</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"90%"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">"youtube.com"</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">or</span> <span class="s2">"youtu.be"</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">aspect</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"%"</span><span class="p">))</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">w</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">&lt;div style="display:flex; flex-direction:column; align-items:center; width:100%;"&gt;</span>
+<span class="s1">  &lt;div style="position:relative; width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; padding-bottom:</span><span class="si">{</span><span class="n">padding</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%; height:0; overflow:hidden;"&gt;</span>
+<span class="s1">    &lt;iframe src="</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">"</span>
+<span class="s1">      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"</span>
+<span class="s1">      allowfullscreen title="</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">"&gt;</span>
+<span class="s1">    &lt;/iframe&gt;</span>
+<span class="s1">  &lt;/div&gt;</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">"&lt;p style='font-style:italic; margin-top:0.4em;'&gt;"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&lt;/p&gt;"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;'''</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">embed_html_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">"800px"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Embed a local standalone HTML file directly into the notebook output</span>
+<span class="sd">    (no external file dependency at build/render time)."""</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">b64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">html_content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"ascii"</span><span class="p">)</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"data:text/html;base64,</span><span class="si">{</span><span class="n">b64</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">&lt;div style="display:flex; flex-direction:column; align-items:center; width:100%;"&gt;</span>
+<span class="s1">  &lt;iframe src="</span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s1">"</span>
+<span class="s1">    style="width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; height:</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1">; border:0;"</span>
+<span class="s1">    allowfullscreen title="</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">"&gt;</span>
+<span class="s1">  &lt;/iframe&gt;</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">"&lt;p style='font-style:italic; margin-top:0.4em;'&gt;"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&lt;/p&gt;"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;'''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
+<p><strong>REF:</strong> Scipy tutorial and A primer of Scientific Programming with Python, Lantangen.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jalammar.github.io/visual-numpy/">https://jalammar.github.io/visual-numpy/</a></p></li>
+<li><p><a class="reference external" href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d</a></p></li>
+</ul>
 <p>The numerical python package, <code class="docutils literal notranslate"><span class="pre">numpy</span></code>, allows for easy and efficient manipulation of vectorial data. In this context, it is important to remark some of the so-called <code class="docutils literal notranslate"><span class="pre">vectorial</span></code> computation. Let’s give an example. Imagine a two dimensional vector <span class="math notranslate nohighlight">\(a\)</span>. How would you represent it using python? You coul use either a list, a tuple, etc:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">a1</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]</span>
     <span class="n">a2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -614,28 +686,71 @@ u = sin(v)
 ? in the context of vectorial computing, it would mean to apply the function <code class="docutils literal notranslate"><span class="pre">sin</span></code> to every component of the vector <code class="docutils literal notranslate"><span class="pre">v</span></code>, therefore <span class="math notranslate nohighlight">\(u_i = \sin(v_i)\)</span>. In general, given a function <span class="math notranslate nohighlight">\(f\)</span>, the expression <span class="math notranslate nohighlight">\(u = f(v)\)</span> means <span class="math notranslate nohighlight">\(u_i = f(v_i)\)</span>. Numpy allows for this kind of computing. What would be the meaning of
 u = v^2*cos(v)*e^v + 2
 ?</p>
-<p>REFS:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://jalammar.github.io/visual-numpy/">https://jalammar.github.io/visual-numpy/</a></p></li>
-<li><p><a class="reference external" href="https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d">https://betterprogramming.pub/numpy-illustrated-the-visual-guide-to-numpy-3b1d4976de1d</a></p></li>
-</ul>
+<p>Let’s actually compute it. Vectorial computing means: apply the whole expression element-by-element, with no explicit loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">v</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+
+<span class="c1"># compare: what would this look like with a plain Python list?</span>
+<span class="c1"># you'd need a loop or a list comprehension, elementwise, by hand:</span>
+<span class="n">u_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">2</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">u_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[  2.           2.36172226   3.46869394   2.71329982 -10.29972928]
+[np.float64(2.0), np.float64(2.3617222591460423), np.float64(3.468693939915885), np.float64(2.713299823055998), np.float64(-10.299729282557436)]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="broadcasting">
+<h2>Broadcasting<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h2>
+<div class="cell tag_hide-input docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed_html_file</span><span class="p">(</span><span class="s2">"assets/broadcasting_visualizer.html"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <iframe src="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPHRpdGxlPk51bVB5IEJyb2FkY2FzdGluZyBWaXN1YWxpemVyPC90aXRsZT4KPHN0eWxlPgogIDpyb290ewogICAgLS1iZzojMTYxYjIyOyAtLXBhbmVsOiMxZTI0MmQ7IC0tdGV4dDojZTZlNmRmOyAtLWRpbTojOGI5M2EwOwogICAgLS1hbWJlcjojZTBhNDU4OyAtLXRlYWw6IzVmYjhhYjsgLS1ydWxlOiMyYzM0NDA7IC0tc2xvdDojMTIxNjFkOyAtLWRhbmdlcjojZDk3YTZjOwogIH0KICAqe2JveC1zaXppbmc6Ym9yZGVyLWJveDt9CiAgaHRtbCxib2R5e21hcmdpbjowO2JhY2tncm91bmQ6dmFyKC0tYmcpO2NvbG9yOnZhcigtLXRleHQpOwogICAgZm9udC1mYW1pbHk6J0NvdXJpZXIgTmV3Jyx1aS1tb25vc3BhY2UsQ29uc29sYXMsbW9ub3NwYWNlO30KICAud3JhcHttYXgtd2lkdGg6ODIwcHg7bWFyZ2luOjAgYXV0bztwYWRkaW5nOjI4cHggMjBweCA0NHB4O30KICBoMXtmb250LXNpemU6MS4xNXJlbTtmb250LXdlaWdodDo2MDA7bWFyZ2luOjAgMCA0cHg7fQogIC5zdWJ7Y29sb3I6dmFyKC0tZGltKTtmb250LXNpemU6Ljg1cmVtO21hcmdpbjowIDAgMjJweDtsaW5lLWhlaWdodDoxLjU1O30KICBjb2Rle2JhY2tncm91bmQ6dmFyKC0tc2xvdCk7cGFkZGluZzoxcHggNXB4O2JvcmRlci1yYWRpdXM6M3B4O2NvbG9yOnZhcigtLXRlYWwpO30KCiAgLnJvd3tkaXNwbGF5OmZsZXg7Z2FwOjE0cHg7ZmxleC13cmFwOndyYXA7bWFyZ2luLWJvdHRvbTo4cHg7fQogIC5maWVsZHtmbGV4OjE7bWluLXdpZHRoOjE2MHB4O30KICBsYWJlbHtkaXNwbGF5OmJsb2NrO2ZvbnQtc2l6ZTouNzVyZW07Y29sb3I6dmFyKC0tZGltKTttYXJnaW4tYm90dG9tOjZweDt9CiAgaW5wdXRbdHlwZT10ZXh0XXt3aWR0aDoxMDAlO2JhY2tncm91bmQ6dmFyKC0tcGFuZWwpO2JvcmRlcjoxcHggc29saWQgdmFyKC0tcnVsZSk7CiAgICBjb2xvcjp2YXIoLS10ZXh0KTtwYWRkaW5nOjhweCAxMHB4O2JvcmRlci1yYWRpdXM6NHB4O2ZvbnQtZmFtaWx5OmluaGVyaXQ7Zm9udC1zaXplOi45cmVtO30KICBpbnB1dFt0eXBlPXRleHRdOmZvY3Vze291dGxpbmU6bm9uZTtib3JkZXItY29sb3I6dmFyKC0tdGVhbCk7fQogIC5wbHVze2FsaWduLXNlbGY6Y2VudGVyO21hcmdpbi10b3A6MThweDtjb2xvcjp2YXIoLS1kaW0pO30KCiAgLnByZXNldHN7ZGlzcGxheTpmbGV4O2ZsZXgtd3JhcDp3cmFwO2dhcDo2cHg7bWFyZ2luOjE0cHggMCAyNnB4O30KICAuY2hpcHtiYWNrZ3JvdW5kOnRyYW5zcGFyZW50O2JvcmRlcjoxcHggc29saWQgdmFyKC0tcnVsZSk7Y29sb3I6dmFyKC0tZGltKTsKICAgIHBhZGRpbmc6NHB4IDEwcHg7Ym9yZGVyLXJhZGl1czo5OTlweDtmb250LXNpemU6LjcycmVtO2N1cnNvcjpwb2ludGVyO2ZvbnQtZmFtaWx5OmluaGVyaXQ7fQogIC5jaGlwOmhvdmVye2JvcmRlci1jb2xvcjp2YXIoLS10ZWFsKTtjb2xvcjp2YXIoLS10ZWFsKTt9CgogIC5zdGFnZXtkaXNwbGF5OmZsZXg7Z2FwOjI2cHg7ZmxleC13cmFwOndyYXA7YWxpZ24taXRlbXM6ZmxleC1zdGFydDt9CiAgLmdyaWRDYXJke2JhY2tncm91bmQ6dmFyKC0tcGFuZWwpO2JvcmRlcjoxcHggc29saWQgdmFyKC0tcnVsZSk7Ym9yZGVyLXJhZGl1czo2cHg7cGFkZGluZzoxNHB4O30KICAuZ3JpZENhcmQgaDN7Zm9udC1zaXplOi43OHJlbTttYXJnaW46MCAwIDNweDtmb250LXdlaWdodDo2MDA7fQogIC5ncmlkQ2FyZCAuc2hwe2ZvbnQtc2l6ZTouNzJyZW07Y29sb3I6dmFyKC0tZGltKTttYXJnaW4tYm90dG9tOjEwcHg7fQogIC5ncmlke2Rpc3BsYXk6Z3JpZDtnYXA6M3B4O30KICAuZ2NlbGx7d2lkdGg6MjZweDtoZWlnaHQ6MjZweDtib3JkZXItcmFkaXVzOjNweDtiYWNrZ3JvdW5kOnZhcigtLXNsb3QpO2JvcmRlcjoxcHggc29saWQgdmFyKC0tcnVsZSk7fQogIC5nY2VsbC5Be2JhY2tncm91bmQ6cmdiYSg5NSwxODQsMTcxLC4yOCk7Ym9yZGVyLWNvbG9yOnZhcigtLXRlYWwpO30KICAuZ2NlbGwuQntiYWNrZ3JvdW5kOnJnYmEoMjI0LDE2NCw4OCwuMjgpO2JvcmRlci1jb2xvcjp2YXIoLS1hbWJlcik7fQogIC5nY2VsbC5Se2JhY2tncm91bmQ6cmdiYSgyMzAsMjMwLDIyMywuMTQpO2JvcmRlci1jb2xvcjojNGE1MzY0O30KICAuZ2NlbGwuc3RyZXRjaHtiYWNrZ3JvdW5kLWltYWdlOnJlcGVhdGluZy1saW5lYXItZ3JhZGllbnQoNDVkZWcsIHJnYmEoMjU1LDI1NSwyNTUsLjA4KSAwIDRweCwgdHJhbnNwYXJlbnQgNHB4IDhweCk7fQogIC5jbGlwbm90ZXtmb250LXNpemU6LjY2cmVtO2NvbG9yOnZhcigtLWRpbSk7bWFyZ2luLXRvcDo4cHg7fQoKICAuZXJyYm94e2JhY2tncm91bmQ6cmdiYSgyMTcsMTIyLDEwOCwuMTIpO2JvcmRlcjoxcHggc29saWQgdmFyKC0tZGFuZ2VyKTtjb2xvcjp2YXIoLS1kYW5nZXIpOwogICAgYm9yZGVyLXJhZGl1czo2cHg7cGFkZGluZzoxMnB4IDE0cHg7Zm9udC1zaXplOi44NXJlbTttYXJnaW4tdG9wOjZweDt9CiAgLm9rYm94e2JhY2tncm91bmQ6cmdiYSg5NSwxODQsMTcxLC4xMCk7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS10ZWFsKTtjb2xvcjp2YXIoLS10ZWFsKTsKICAgIGJvcmRlci1yYWRpdXM6NnB4O3BhZGRpbmc6MTJweCAxNHB4O2ZvbnQtc2l6ZTouODVyZW07bWFyZ2luLXRvcDo2cHg7fQogIC5ub3Rle2NvbG9yOnZhcigtLWRpbSk7Zm9udC1zaXplOi43OHJlbTttYXJnaW4tdG9wOjI0cHg7bGluZS1oZWlnaHQ6MS42OwogICAgYm9yZGVyLXRvcDoxcHggZGFzaGVkIHZhcigtLXJ1bGUpO3BhZGRpbmctdG9wOjE0cHg7fQo8L3N0eWxlPgo8L2hlYWQ+Cjxib2R5Pgo8ZGl2IGNsYXNzPSJ3cmFwIj4KICA8aDE+TnVtUHkgQnJvYWRjYXN0aW5nIFZpc3VhbGl6ZXI8L2gxPgogIDxwIGNsYXNzPSJzdWIiPkVudGVyIHR3byBzaGFwZXMgYXMgTnVtUHkgd291bGQgcmVwb3J0IHRoZW0gKGUuZy4gPGNvZGU+Myw0PC9jb2RlPiBvciA8Y29kZT40LDwvY29kZT4pIGFuZCBzZWUgd2hpY2ggZGltZW5zaW9ucyBnZXQgc3RyZXRjaGVkIHRvIG1ha2UgdGhlIG9wZXJhdGlvbiB3b3JrLjwvcD4KCiAgPGRpdiBjbGFzcz0icm93Ij4KICAgIDxkaXYgY2xhc3M9ImZpZWxkIj4KICAgICAgPGxhYmVsIGZvcj0ic2hhcGVBIj5zaGFwZSBvZiBhPC9sYWJlbD4KICAgICAgPGlucHV0IHR5cGU9InRleHQiIGlkPSJzaGFwZUEiIHZhbHVlPSIzLDQiPgogICAgPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJwbHVzIj4rPC9kaXY+CiAgICA8ZGl2IGNsYXNzPSJmaWVsZCI+CiAgICAgIDxsYWJlbCBmb3I9InNoYXBlQiI+c2hhcGUgb2YgYjwvbGFiZWw+CiAgICAgIDxpbnB1dCB0eXBlPSJ0ZXh0IiBpZD0ic2hhcGVCIiB2YWx1ZT0iNCI+CiAgICA8L2Rpdj4KICA8L2Rpdj4KCiAgPGRpdiBjbGFzcz0icHJlc2V0cyIgaWQ9InByZXNldHMiPjwvZGl2PgoKICA8ZGl2IGNsYXNzPSJzdGFnZSIgaWQ9InN0YWdlIj48L2Rpdj4KICA8ZGl2IGlkPSJ2ZXJkaWN0Ij48L2Rpdj4KCiAgPHAgY2xhc3M9Im5vdGUiPgogICAgUnVsZTogYWxpZ24gdGhlIHR3byBzaGFwZXMgZnJvbSB0aGUgPGI+cmlnaHQ8L2I+LiBUd28gZGltZW5zaW9ucyBhcmUgY29tcGF0aWJsZSBpZiB0aGV5J3JlCiAgICBlcXVhbCwgb3IgaWYgZWl0aGVyIG9uZSBpcyA8Y29kZT4xPC9jb2RlPiAoaXQgZ2V0cyBzdHJldGNoZWQvcmVwZWF0ZWQgdG8gbWF0Y2gpIOKAlCBhIG1pc3NpbmcKICAgIGRpbWVuc2lvbiBvbiB0aGUgc2hvcnRlciBzaGFwZSBjb3VudHMgYXMgYSA8Y29kZT4xPC9jb2RlPi4gSWYgYW55IGFsaWduZWQgcGFpciBpcyBuZWl0aGVyCiAgICBlcXVhbCBub3IgPGNvZGU+MTwvY29kZT4sIE51bVB5IHJhaXNlcyBleGFjdGx5IHRoZSBlcnJvciBzaG93biBhYm92ZS4KICAgIFRyeSA8Y29kZT4zLDQ8L2NvZGU+ICsgPGNvZGU+Myw8L2NvZGU+IHRvIHNlZSB0aGF0IGZhaWx1cmUg4oCUIGl0J3Mgb25lIGRpbWVuc2lvbiBzaG9ydCBvZiB0aGUKICAgIDxjb2RlPjMsMTwvY29kZT4gY2FzZSB0aGF0IDxpPmRvZXM8L2k+IHdvcmsuCiAgPC9wPgo8L2Rpdj4KCjxzY3JpcHQ+CmNvbnN0IHNoYXBlQUVsID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3NoYXBlQScpOwpjb25zdCBzaGFwZUJFbCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdzaGFwZUInKTsKY29uc3Qgc3RhZ2UgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnc3RhZ2UnKTsKY29uc3QgdmVyZGljdEVsID0gZG9jdW1lbnQuZ2V0RWxlbWVudEJ5SWQoJ3ZlcmRpY3QnKTsKY29uc3QgcHJlc2V0c1dyYXAgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncHJlc2V0cycpOwoKY29uc3QgcHJlc2V0cyA9IFsKICBbJzMsNCcsJzQnXSwgWyczLDEnLCcxLDQnXSwgWyczLDQnLCczLDEnXSwgWyc1JywnMSddLCBbJzMsNCcsJzMnXQpdOwpwcmVzZXRzLmZvckVhY2goKFthLGJdKT0+ewogIGNvbnN0IGNoaXAgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdidXR0b24nKTsKICBjaGlwLmNsYXNzTmFtZT0nY2hpcCc7IGNoaXAudGV4dENvbnRlbnQgPSBgKCR7YX0pICsgKCR7Yn0pYDsKICBjaGlwLm9uY2xpY2sgPSAoKT0+eyBzaGFwZUFFbC52YWx1ZT1hOyBzaGFwZUJFbC52YWx1ZT1iOyByZW5kZXIoKTsgfTsKICBwcmVzZXRzV3JhcC5hcHBlbmRDaGlsZChjaGlwKTsKfSk7CgpmdW5jdGlvbiBwYXJzZVNoYXBlKHMpewogIHMgPSBzLnRyaW0oKTsKICBpZihzPT09JycpIHJldHVybiBbXTsKICByZXR1cm4gcy5zcGxpdCgnLCcpLm1hcCh4PT54LnRyaW0oKSkuZmlsdGVyKHg9PngubGVuZ3RoPjApLm1hcChOdW1iZXIpOwp9CgpmdW5jdGlvbiBwYWRUbyhzaGFwZSwgbGVuKXsKICByZXR1cm4gQXJyYXkobGVuIC0gc2hhcGUubGVuZ3RoKS5maWxsKDEpLmNvbmNhdChzaGFwZSk7Cn0KCmZ1bmN0aW9uIGJyb2FkY2FzdChhLCBiKXsKICBjb25zdCBsZW4gPSBNYXRoLm1heChhLmxlbmd0aCwgYi5sZW5ndGgsIDEpOwogIGNvbnN0IHBhID0gcGFkVG8oYSwgbGVuKSwgcGIgPSBwYWRUbyhiLCBsZW4pOwogIGNvbnN0IHJlc3VsdCA9IFtdLCBzdHJldGNoQSA9IFtdLCBzdHJldGNoQiA9IFtdOwogIGZvcihsZXQgaT0wO2k8bGVuO2krKyl7CiAgICBjb25zdCBkYSA9IHBhW2ldLCBkYiA9IHBiW2ldOwogICAgaWYoZGEgPT09IGRiKXsgcmVzdWx0LnB1c2goZGEpOyBzdHJldGNoQS5wdXNoKGZhbHNlKTsgc3RyZXRjaEIucHVzaChmYWxzZSk7IH0KICAgIGVsc2UgaWYoZGEgPT09IDEpeyByZXN1bHQucHVzaChkYik7IHN0cmV0Y2hBLnB1c2godHJ1ZSk7IHN0cmV0Y2hCLnB1c2goZmFsc2UpOyB9CiAgICBlbHNlIGlmKGRiID09PSAxKXsgcmVzdWx0LnB1c2goZGEpOyBzdHJldGNoQS5wdXNoKGZhbHNlKTsgc3RyZXRjaEIucHVzaCh0cnVlKTsgfQogICAgZWxzZSByZXR1cm4ge2Vycm9yOnRydWUsIGRpbUluZGV4OmksIHBhLCBwYn07CiAgfQogIHJldHVybiB7ZXJyb3I6ZmFsc2UsIHJlc3VsdCwgcGEsIHBiLCBzdHJldGNoQSwgc3RyZXRjaEJ9Owp9CgovLyB0YWtlIHRoZSBsYXN0IHR3byBlbnRyaWVzIG9mIGEgc2hhcGUvZmxhZ3MgYXJyYXksIHBhZGRpbmcgb24gdGhlIGxlZnQgd2l0aCAoMSxmYWxzZSkgaWYgc2hvcnRlcgpmdW5jdGlvbiBsYXN0MihhcnIsIGZpbGwpewogIGlmKGFyci5sZW5ndGggPj0gMikgcmV0dXJuIGFyci5zbGljZSgtMik7CiAgcmV0dXJuIEFycmF5KDItYXJyLmxlbmd0aCkuZmlsbChmaWxsKS5jb25jYXQoYXJyKTsKfQoKZnVuY3Rpb24gcmVuZGVyR3JpZChjb250YWluZXIsIHRpdGxlLCBzaGFwZUxhYmVsLCByb3dzLCBjb2xzLCBzdHJldGNoUm93LCBzdHJldGNoQ29sLCBjbHMpewogIGNvbnN0IGNhcmQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsKICBjYXJkLmNsYXNzTmFtZSA9ICdncmlkQ2FyZCc7CiAgY29uc3QgaCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2gzJyk7IGgudGV4dENvbnRlbnQgPSB0aXRsZTsKICBjb25zdCBzaHAgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsgc2hwLmNsYXNzTmFtZT0nc2hwJzsgc2hwLnRleHRDb250ZW50ID0gYHNoYXBlICgke3NoYXBlTGFiZWx9KWA7CiAgY2FyZC5hcHBlbmRDaGlsZChoKTsgY2FyZC5hcHBlbmRDaGlsZChzaHApOwoKICBjb25zdCBDQVAgPSA2OwogIGNvbnN0IHNob3dSb3dzID0gTWF0aC5taW4ocm93cywgQ0FQKTsKICBjb25zdCBzaG93Q29scyA9IE1hdGgubWluKGNvbHMsIENBUCk7CgogIGNvbnN0IGdyaWQgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsKICBncmlkLmNsYXNzTmFtZSA9ICdncmlkJzsKICBncmlkLnN0eWxlLmdyaWRUZW1wbGF0ZUNvbHVtbnMgPSBgcmVwZWF0KCR7c2hvd0NvbHN9LCAyNnB4KWA7CiAgZm9yKGxldCByPTA7cjxzaG93Um93cztyKyspewogICAgZm9yKGxldCBjPTA7YzxzaG93Q29scztjKyspewogICAgICBjb25zdCBjZWxsID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7CiAgICAgIGNlbGwuY2xhc3NOYW1lID0gYGdjZWxsICR7Y2xzfWA7CiAgICAgIGlmKHN0cmV0Y2hSb3cgfHwgc3RyZXRjaENvbCkgY2VsbC5jbGFzc0xpc3QuYWRkKCdzdHJldGNoJyk7CiAgICAgIGdyaWQuYXBwZW5kQ2hpbGQoY2VsbCk7CiAgICB9CiAgfQogIGNhcmQuYXBwZW5kQ2hpbGQoZ3JpZCk7CiAgaWYocm93cz5DQVAgfHwgY29scz5DQVApewogICAgY29uc3QgY24gPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsgY24uY2xhc3NOYW1lPSdjbGlwbm90ZSc7CiAgICBjbi50ZXh0Q29udGVudCA9IGBzaG93aW5nICR7c2hvd1Jvd3N9w5cke3Nob3dDb2xzfSBvZiAke3Jvd3N9w5cke2NvbHN9YDsKICAgIGNhcmQuYXBwZW5kQ2hpbGQoY24pOwogIH0KICBjb250YWluZXIuYXBwZW5kQ2hpbGQoY2FyZCk7Cn0KCmZ1bmN0aW9uIHJlbmRlcigpewogIHN0YWdlLmlubmVySFRNTCA9ICcnOwogIHZlcmRpY3RFbC5pbm5lckhUTUwgPSAnJzsKICBjb25zdCBhID0gcGFyc2VTaGFwZShzaGFwZUFFbC52YWx1ZSk7CiAgY29uc3QgYiA9IHBhcnNlU2hhcGUoc2hhcGVCRWwudmFsdWUpOwogIGNvbnN0IGJjID0gYnJvYWRjYXN0KGEsIGIpOwoKICBpZihiYy5lcnJvcil7CiAgICBjb25zdCBhU3RyID0gYS5qb2luKCcsJykgfHwgJygpJzsKICAgIGNvbnN0IGJTdHIgPSBiLmpvaW4oJywnKSB8fCAnKCknOwogICAgdmVyZGljdEVsLmlubmVySFRNTCA9IGA8ZGl2IGNsYXNzPSJlcnJib3giPlZhbHVlRXJyb3I6IG9wZXJhbmRzIGNvdWxkIG5vdCBiZSBicm9hZGNhc3QgdG9nZXRoZXIgd2l0aCBzaGFwZXMgKCR7YVN0cn0pICgke2JTdHJ9KSA8L2Rpdj5gOwogICAgLy8gc3RpbGwgc2hvdyB0aGUgcmF3ICh1bnBhZGRlZC1mb3ItY29tcGF0KSBncmlkcyBzbyB0aGUgbWlzbWF0Y2ggaXMgdmlzaWJsZQogICAgY29uc3QgW3JhLCBjYV0gPSBsYXN0MihhLmxlbmd0aD9hOlsxXSwgMSk7CiAgICBjb25zdCBbcmIsIGNiXSA9IGxhc3QyKGIubGVuZ3RoP2I6WzFdLCAxKTsKICAgIHJlbmRlckdyaWQoc3RhZ2UsICdhJywgYVN0ciwgcmEsIGNhLCBmYWxzZSwgZmFsc2UsICdBJyk7CiAgICByZW5kZXJHcmlkKHN0YWdlLCAnYicsIGJTdHIsIHJiLCBjYiwgZmFsc2UsIGZhbHNlLCAnQicpOwogICAgcmV0dXJuOwogIH0KCiAgY29uc3QgW3Jvd3NBLCBjb2xzQV0gPSBsYXN0MihiYy5wYSwgMSk7CiAgY29uc3QgW3Jvd3NCLCBjb2xzQl0gPSBsYXN0MihiYy5wYiwgMSk7CiAgY29uc3QgW3Jvd3NSLCBjb2xzUl0gPSBsYXN0MihiYy5yZXN1bHQsIDEpOwogIGNvbnN0IFtzdHJBX3Jvdywgc3RyQV9jb2xdID0gbGFzdDIoYmMuc3RyZXRjaEEsIGZhbHNlKTsKICBjb25zdCBbc3RyQl9yb3csIHN0ckJfY29sXSA9IGxhc3QyKGJjLnN0cmV0Y2hCLCBmYWxzZSk7CgogIHJlbmRlckdyaWQoc3RhZ2UsICdhJywgYS5qb2luKCcsJyl8fCcoKScsIHJvd3NBLCBjb2xzQSwgc3RyQV9yb3csIHN0ckFfY29sLCAnQScpOwogIHJlbmRlckdyaWQoc3RhZ2UsICdiJywgYi5qb2luKCcsJyl8fCcoKScsIHJvd3NCLCBjb2xzQiwgc3RyQl9yb3csIHN0ckJfY29sLCAnQicpOwogIHJlbmRlckdyaWQoc3RhZ2UsICdyZXN1bHQnLCBiYy5yZXN1bHQuam9pbignLCcpLCByb3dzUiwgY29sc1IsIGZhbHNlLCBmYWxzZSwgJ1InKTsKCiAgY29uc3Qgbm90ZSA9IGJjLnN0cmV0Y2hBLnNvbWUoQm9vbGVhbikgfHwgYmMuc3RyZXRjaEIuc29tZShCb29sZWFuKQogICAgPyAndGhlIGhhdGNoZWQgY2VsbHMgbWFyayBhIGRpbWVuc2lvbiB0aGF0IGdvdCBzdHJldGNoZWQgKHJlcGVhdGVkKSB0byBsaW5lIHVwIHdpdGggdGhlIG90aGVyIGFycmF5JwogICAgOiAnc2hhcGVzIGFscmVhZHkgbWF0Y2hlZCDigJQgbm8gc3RyZXRjaGluZyBuZWVkZWQnOwogIHZlcmRpY3RFbC5pbm5lckhUTUwgPSBgPGRpdiBjbGFzcz0ib2tib3giPlJlc3VsdCBzaGFwZTogKCR7YmMucmVzdWx0LmpvaW4oJywgJyl9KSDigJQgJHtub3RlfS48L2Rpdj5gOwp9CgpzaGFwZUFFbC5hZGRFdmVudExpc3RlbmVyKCdpbnB1dCcsIHJlbmRlcik7CnNoYXBlQkVsLmFkZEV2ZW50TGlzdGVuZXIoJ2lucHV0JywgcmVuZGVyKTsKcmVuZGVyKCk7Cjwvc2NyaXB0Pgo8L2JvZHk+CjwvaHRtbD4K"
+    style="width:100%; height:800px; border:0;"
+    allowfullscreen title="">
+  </iframe>
+  
+</div></div></div>
+</div>
+</section>
 <section id="basic-numpy">
 <h2>Basic numpy<a class="headerlink" href="#basic-numpy" title="Link to this heading">#</a></h2>
 <p>Try the following code snippet:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['0' '1.0' '3' '5']
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0. 1. 3. 5.]
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype('&lt;U32')
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype('float64')
 </pre></div>
 </div>
 </div>
@@ -650,7 +765,7 @@ u = v^2*cos(v)*e^v + 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>430 μs ± 656 ns per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>493 μs ± 33.3 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -663,12 +778,35 @@ u = v^2*cos(v)*e^v + 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.6 μs ± 15.3 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.45 μs ± 7.93 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
 </div>
 <p>You can extract some info like the shape and the dimension as</p>
+<p>Notice that numpy arrays are homogeneous</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">'3'</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">dtype</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>['0' '1.0' '3' '5']
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype('&lt;U32')
+</pre></div>
+</div>
+</div>
+</div>
+<p>Why did every element become a string? NumPy arrays are <strong>homogeneous</strong> — every element
+must share one dtype. When you mix types, NumPy picks the “widest” common type that can
+represent all of them: int → float → string, in that order. A string beats everything,
+since any number can be written as a string but not every string can be parsed as a number.</p>
+<p>You can also access more info about arrays</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">ndim</span>
@@ -688,7 +826,7 @@ u = v^2*cos(v)*e^v + 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(10000,)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4,)
 </pre></div>
 </div>
 </div>
@@ -700,7 +838,7 @@ u = v^2*cos(v)*e^v + 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype('int64')
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dtype('&lt;U32')
 </pre></div>
 </div>
 </div>
@@ -741,20 +879,44 @@ b = np.arange(1, 9, 2)
 </div>
 </div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.data</span></code> attribute doesn’t print a readable address — it just gives you a <code class="docutils literal notranslate"><span class="pre">memory</span></code>
+object. What we actually want to see is the same idea from the lists lecture (<code class="docutils literal notranslate"><span class="pre">id(a[i])</span></code>
+scattered all over the place), but for a numpy array: a <strong>constant stride</strong> between
+consecutive elements, because they sit back-to-back in one block.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check the memory address</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="n">addr</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">__array_interface__</span><span class="p">[</span><span class="s1">'data'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>   <span class="c1"># address of the start of the buffer</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"start address:"</span><span class="p">,</span> <span class="nb">hex</span><span class="p">(</span><span class="n">addr</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"itemsize (bytes):"</span><span class="p">,</span> <span class="n">a</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"address of element i, for i in 0..4:"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"  a[</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">]: </span><span class="si">{</span><span class="nb">hex</span><span class="p">(</span><span class="n">addr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">a</span><span class="o">.</span><span class="n">itemsize</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+
+<span class="c1"># contrast with a plain list, where consecutive elements can be anywhere</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">a</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">list element ids (no fixed spacing):"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">([</span><span class="nb">id</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;memory at 0x7f3d1c579580&gt; &lt;memory at 0x7f3d1c57a020&gt; &lt;memory at 0x7f3d1c579f80&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>start address: 0x56282b816ed0
+itemsize (bytes): 8
+address of element i, for i in 0..4:
+  a[0]: 0x56282b816ed0
+  a[1]: 0x56282b816ed8
+  a[2]: 0x56282b816ee0
+  a[3]: 0x56282b816ee8
+  a[4]: 0x56282b816ef0
+
+list element ids (no fixed spacing):
+[140163239666160, 140163239665616, 140163239665584, 140163239665456, 140163239665488]
 </pre></div>
 </div>
 </div>
 </div>
-<p>Check the documentation.</p>
 <p>You can also create several other types of useful arrays like</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -779,7 +941,7 @@ b = np.arange(1, 9, 2)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.50308412 0.0154816  0.7237045  0.70191254]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.68550698 0.92103248 0.29525534 0.03423645]
 </pre></div>
 </div>
 </div>
@@ -788,7 +950,8 @@ b = np.arange(1, 9, 2)
 </section>
 <section id="indexing-and-slicing">
 <h2>Indexing and slicing<a class="headerlink" href="#indexing-and-slicing" title="Link to this heading">#</a></h2>
-<p>Numpy allows for powerfull and efficient access to internal members of arrays</p>
+<p>Numpy allows for powerfull and efficient access to internal members of arrays. The diagram below shows the general idea; here it is in code, on a 2D array. The syntax is
+<code class="docutils literal notranslate"><span class="pre">a[rows,</span> <span class="pre">cols]</span></code> — a comma inside the brackets, not a chain of separate <code class="docutils literal notranslate"><span class="pre">[]</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.core.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span> 
@@ -800,13 +963,43 @@ b = np.arange(1, 9, 2)
 <img alt="../../_images/c01ea71d0eac220fc517d22cf8b21095d9d4ae290f89a3a7ca49b087f1f2f0de.png" src="../../_images/c01ea71d0eac220fc517d22cf8b21095d9d4ae290f89a3a7ca49b087f1f2f0de.png" />
 </div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>       <span class="c1"># single element, row 1, col 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">:])</span>       <span class="c1"># whole row 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>       <span class="c1"># whole column 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="p">:</span><span class="mi">2</span><span class="p">])</span>    <span class="c1"># rows 1-2, first two columns</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">[::</span><span class="mi">2</span><span class="p">,</span> <span class="p">::</span><span class="mi">2</span><span class="p">])</span>   <span class="c1"># every other row, every other column</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 1  2  3  4  5]
+ [ 6  7  8  9 10]
+ [11 12 13 14 15]
+ [16 17 18 19 20]]
+8
+[ 6  7  8  9 10]
+[ 3  8 13 18]
+[[ 6  7]
+ [11 12]]
+[[ 1  3  5]
+ [11 13 15]]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="copies-and-views">
 <h2>Copies and Views<a class="headerlink" href="#copies-and-views" title="Link to this heading">#</a></h2>
 <p>A slicing operation creates a <strong>view</strong> of the original array, not a copy (in contrast, an slice of a list creates a new list). A modification of a view, modifies the original array:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[::</span><span class="mi">2</span><span class="p">]</span>
 <span class="nb">print</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -841,6 +1034,41 @@ b = np.arange(1, 9, 2)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0 1 2 3 4 5 6 7 8 9]
 [0 1 2 3 4 5 6 7 8 9]
 [12  2  4  6  8]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice something different from the slicing examples above: modifying the result here does
+<strong>not</strong> affect <code class="docutils literal notranslate"><span class="pre">a</span></code>. Basic slicing (<code class="docutils literal notranslate"><span class="pre">a[start:stop:step]</span></code>) always returns a <strong>view</strong> — it can
+be described as one starting address plus a fixed stride, so NumPy just points at the same
+memory. Integer-array indexing and boolean masks pick arbitrary, non-contiguous elements —
+that can’t be expressed as a stride, so NumPy has no choice but to build a brand-new array.
+That new array is a <strong>copy</strong>, completely independent of <code class="docutils literal notranslate"><span class="pre">a</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="n">view</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>          <span class="c1"># basic slice -&gt; view</span>
+<span class="n">view</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"after modifying a slice:   "</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>     <span class="c1"># a changed</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># reset</span>
+<span class="n">fancy</span> <span class="o">=</span> <span class="n">a</span><span class="p">[[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]]</span>    <span class="c1"># integer array indexing -&gt; copy</span>
+<span class="n">fancy</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"after modifying fancy idx:"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>      <span class="c1"># a did NOT change</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># reset</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">a</span> <span class="o">&gt;=</span> <span class="mi">50</span>
+<span class="n">boolsel</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>       <span class="c1"># boolean mask -&gt; copy</span>
+<span class="n">boolsel</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"after modifying bool sel: "</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>      <span class="c1"># a did NOT change</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>after modifying a slice:    [ 0 10 -1 30 40 50 60 70 80 90]
+after modifying fancy idx: [ 0 10 20 30 40 50 60 70 80 90]
+after modifying bool sel:  [ 0 10 20 30 40 50 60 70 80 90]
 </pre></div>
 </div>
 </div>
@@ -916,6 +1144,11 @@ b = np.arange(1, 9, 2)
 </div>
 </div>
 </div>
+<p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">1</span></code> above is actually <strong>broadcasting</strong> in its simplest form: NumPy “stretches” the
+scalar <code class="docutils literal notranslate"><span class="pre">1</span></code> to match every element of <code class="docutils literal notranslate"><span class="pre">a</span></code>. The same rule works in more dimensions: a
+<code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">1)</span></code> column and a <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">4)</span></code> row can be added directly — NumPy stretches each one across
+the missing dimension until both are <code class="docutils literal notranslate"><span class="pre">(3,</span> <span class="pre">4)</span></code>, without either array actually being copied
+that many times in memory.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
@@ -932,9 +1165,177 @@ b = np.arange(1, 9, 2)
 </div>
 </div>
 <p>Take into account that array multiplication should be done through function <code class="docutils literal notranslate"><span class="pre">np.dot</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">embed_html_file</span><span class="p">(</span><span class="s2">"assets/views_vs_copies.html"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html">
+<div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+  <iframe src="data:text/html;base64,PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9ImVuIj4KPGhlYWQ+CjxtZXRhIGNoYXJzZXQ9IlVURi04Ij4KPHRpdGxlPk51bVB5OiBWaWV3cyB2cy4gQ29waWVzPC90aXRsZT4KPHN0eWxlPgogIDpyb290ewogICAgLS1iZzojMTYxYjIyOyAtLXBhbmVsOiMxZTI0MmQ7IC0tdGV4dDojZTZlNmRmOyAtLWRpbTojOGI5M2EwOwogICAgLS1hbWJlcjojZTBhNDU4OyAtLXRlYWw6IzVmYjhhYjsgLS1ydWxlOiMyYzM0NDA7IC0tc2xvdDojMTIxNjFkOwogIH0KICAqe2JveC1zaXppbmc6Ym9yZGVyLWJveDt9CiAgaHRtbCxib2R5e21hcmdpbjowO2JhY2tncm91bmQ6dmFyKC0tYmcpO2NvbG9yOnZhcigtLXRleHQpOwogICAgZm9udC1mYW1pbHk6J0NvdXJpZXIgTmV3Jyx1aS1tb25vc3BhY2UsQ29uc29sYXMsbW9ub3NwYWNlO30KICAud3JhcHttYXgtd2lkdGg6ODIwcHg7bWFyZ2luOjAgYXV0bztwYWRkaW5nOjI4cHggMjBweCA0NHB4O30KICBoMXtmb250LXNpemU6MS4xNXJlbTtmb250LXdlaWdodDo2MDA7bWFyZ2luOjAgMCA0cHg7fQogIC5zdWJ7Y29sb3I6dmFyKC0tZGltKTtmb250LXNpemU6Ljg1cmVtO21hcmdpbjowIDAgMjJweDtsaW5lLWhlaWdodDoxLjU1O30KICBjb2Rle2JhY2tncm91bmQ6dmFyKC0tc2xvdCk7cGFkZGluZzoxcHggNXB4O2JvcmRlci1yYWRpdXM6M3B4O2NvbG9yOnZhcigtLXRlYWwpO30KCiAgLm9wc3tkaXNwbGF5OmZsZXg7ZmxleC13cmFwOndyYXA7Z2FwOjhweDttYXJnaW4tYm90dG9tOjIycHg7fQogIC5vcGJ0bntiYWNrZ3JvdW5kOnZhcigtLXBhbmVsKTtib3JkZXI6MXB4IHNvbGlkIHZhcigtLXJ1bGUpO2NvbG9yOnZhcigtLXRleHQpOwogICAgcGFkZGluZzo4cHggMTJweDtib3JkZXItcmFkaXVzOjZweDtmb250LWZhbWlseTppbmhlcml0O2ZvbnQtc2l6ZTouOHJlbTtjdXJzb3I6cG9pbnRlcjt0ZXh0LWFsaWduOmxlZnQ7fQogIC5vcGJ0biBzbWFsbHtkaXNwbGF5OmJsb2NrO2NvbG9yOnZhcigtLWRpbSk7Zm9udC1zaXplOi43cmVtO21hcmdpbi10b3A6M3B4O30KICAub3BidG4uYWN0aXZle2JvcmRlci1jb2xvcjp2YXIoLS10ZWFsKTtiYWNrZ3JvdW5kOnJnYmEoOTUsMTg0LDE3MSwuMDgpO30KCiAgLmFyckJsb2Nre21hcmdpbi1ib3R0b206MjBweDt9CiAgLmFyckxhYmVse2Rpc3BsYXk6ZmxleDthbGlnbi1pdGVtczpjZW50ZXI7Z2FwOjEwcHg7bWFyZ2luLWJvdHRvbTo4cHg7fQogIC5hcnJMYWJlbCAubmFtZXtmb250LXNpemU6Ljg1cmVtO30KICAuYmFkZ2V7Zm9udC1zaXplOi42OHJlbTtwYWRkaW5nOjJweCA5cHg7Ym9yZGVyLXJhZGl1czo5OTlweDtmb250LXdlaWdodDo3MDA7bGV0dGVyLXNwYWNpbmc6LjNweDt9CiAgLmJhZGdlLnZpZXd7YmFja2dyb3VuZDpyZ2JhKDk1LDE4NCwxNzEsLjE4KTtjb2xvcjp2YXIoLS10ZWFsKTtib3JkZXI6MXB4IHNvbGlkIHZhcigtLXRlYWwpO30KICAuYmFkZ2UuY29weXtiYWNrZ3JvdW5kOnJnYmEoMjI0LDE2NCw4OCwuMTgpO2NvbG9yOnZhcigtLWFtYmVyKTtib3JkZXI6MXB4IHNvbGlkIHZhcigtLWFtYmVyKTt9CgogIC5yb3d7ZGlzcGxheTpmbGV4O2dhcDo2cHg7ZmxleC13cmFwOndyYXA7fQogIC5jZWxsY29se2Rpc3BsYXk6ZmxleDtmbGV4LWRpcmVjdGlvbjpjb2x1bW47YWxpZ24taXRlbXM6Y2VudGVyO21pbi13aWR0aDo1MnB4O30KICAuaWR4bGJse2ZvbnQtc2l6ZTouNjZyZW07Y29sb3I6dmFyKC0tZGltKTtoZWlnaHQ6MTRweDt9CiAgLmNlbGx7d2lkdGg6NDhweDtoZWlnaHQ6NDBweDtib3JkZXI6MXB4IHNvbGlkIHZhcigtLXJ1bGUpO2JvcmRlci1yYWRpdXM6NHB4OwogICAgZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmNlbnRlcjtqdXN0aWZ5LWNvbnRlbnQ6Y2VudGVyO2ZvbnQtc2l6ZTouOXJlbTsKICAgIGJhY2tncm91bmQ6dmFyKC0tc2xvdCk7dHJhbnNpdGlvbjpiYWNrZ3JvdW5kIC4ycyxib3JkZXItY29sb3IgLjJzLHRyYW5zZm9ybSAuMTVzO30KICAuY2VsbC5saW5rZWR7Ym9yZGVyLWNvbG9yOnZhcigtLXRlYWwpO30KICAuY2VsbC5jb3BpZWR7Ym9yZGVyLWNvbG9yOnZhcigtLWFtYmVyKTt9CiAgLmNlbGwuZGlydHl7YmFja2dyb3VuZDpyZ2JhKDIxNywxMjIsMTA4LC4yMik7Ym9yZGVyLWNvbG9yOiNkOTdhNmM7fQogIC5hZGRye2ZvbnQtc2l6ZTouNnJlbTtjb2xvcjp2YXIoLS1kaW0pO2hlaWdodDoxNHB4O21hcmdpbi10b3A6MnB4O30KCiAgLmNvbnRyb2xze2Rpc3BsYXk6ZmxleDtnYXA6MTBweDthbGlnbi1pdGVtczpjZW50ZXI7bWFyZ2luOjE4cHggMCA2cHg7ZmxleC13cmFwOndyYXA7fQogIGJ1dHRvbi5hY3R7YmFja2dyb3VuZDp2YXIoLS1wYW5lbCk7Ym9yZGVyOjFweCBzb2xpZCB2YXIoLS1ydWxlKTtjb2xvcjp2YXIoLS10ZXh0KTsKICAgIHBhZGRpbmc6OHB4IDE0cHg7Ym9yZGVyLXJhZGl1czo2cHg7Zm9udC1mYW1pbHk6aW5oZXJpdDtmb250LXNpemU6LjhyZW07Y3Vyc29yOnBvaW50ZXI7fQogIGJ1dHRvbi5hY3Q6aG92ZXI6bm90KDpkaXNhYmxlZCl7Ym9yZGVyLWNvbG9yOnZhcigtLWFtYmVyKTtjb2xvcjp2YXIoLS1hbWJlcik7fQogIGJ1dHRvbi5hY3Q6ZGlzYWJsZWR7b3BhY2l0eTouNDtjdXJzb3I6ZGVmYXVsdDt9CiAgLnZlcmRpY3R7Zm9udC1zaXplOi44NXJlbTttYXJnaW4tdG9wOjE0cHg7cGFkZGluZzoxMHB4IDEycHg7Ym9yZGVyLXJhZGl1czo1cHg7YmFja2dyb3VuZDp2YXIoLS1zbG90KTsKICAgIGJvcmRlcjoxcHggc29saWQgdmFyKC0tcnVsZSk7bGluZS1oZWlnaHQ6MS41O21pbi1oZWlnaHQ6MjBweDt9CiAgLnZlcmRpY3QuaGl0e2JvcmRlci1jb2xvcjp2YXIoLS10ZWFsKTt9CiAgLm5vdGV7Y29sb3I6dmFyKC0tZGltKTtmb250LXNpemU6Ljc4cmVtO21hcmdpbi10b3A6MjRweDtsaW5lLWhlaWdodDoxLjY7CiAgICBib3JkZXItdG9wOjFweCBkYXNoZWQgdmFyKC0tcnVsZSk7cGFkZGluZy10b3A6MTRweDt9Cjwvc3R5bGU+CjwvaGVhZD4KPGJvZHk+CjxkaXYgY2xhc3M9IndyYXAiPgogIDxoMT5OdW1QeTogVmlld3MgdnMuIENvcGllczwvaDE+CiAgPHAgY2xhc3M9InN1YiI+UGljayBob3cgPGNvZGU+YjwvY29kZT4gaXMgZGVyaXZlZCBmcm9tIDxjb2RlPmEgPSBucC5hcmFuZ2UoMTApPC9jb2RlPiwgdGhlbiBtdXRhdGUgPGNvZGU+YlswXTwvY29kZT4gYW5kIHdhdGNoIHdoZXRoZXIgPGNvZGU+YTwvY29kZT4gY2hhbmdlcyB0b28uPC9wPgoKICA8ZGl2IGNsYXNzPSJvcHMiIGlkPSJvcHMiPjwvZGl2PgoKICA8ZGl2IGNsYXNzPSJhcnJCbG9jayI+CiAgICA8ZGl2IGNsYXNzPSJhcnJMYWJlbCI+PHNwYW4gY2xhc3M9Im5hbWUiPmEgPSBucC5hcmFuZ2UoMTApPC9zcGFuPjwvZGl2PgogICAgPGRpdiBjbGFzcz0icm93IiBpZD0icm93QSI+PC9kaXY+CiAgPC9kaXY+CgogIDxkaXYgY2xhc3M9ImFyckJsb2NrIiBpZD0iYkJsb2NrIiBzdHlsZT0iZGlzcGxheTpub25lOyI+CiAgICA8ZGl2IGNsYXNzPSJhcnJMYWJlbCI+CiAgICAgIDxzcGFuIGNsYXNzPSJuYW1lIiBpZD0iYkV4cHJMYWJlbCI+YiA9IC4uLjwvc3Bhbj4KICAgICAgPHNwYW4gY2xhc3M9ImJhZGdlIiBpZD0iYkJhZGdlIj48L3NwYW4+CiAgICA8L2Rpdj4KICAgIDxkaXYgY2xhc3M9InJvdyIgaWQ9InJvd0IiPjwvZGl2PgogIDwvZGl2PgoKICA8ZGl2IGNsYXNzPSJjb250cm9scyI+CiAgICA8YnV0dG9uIGNsYXNzPSJhY3QiIGlkPSJtdXRhdGVCdG4iIGRpc2FibGVkPnNldCBiWzBdID0gOTk5PC9idXR0b24+CiAgICA8YnV0dG9uIGNsYXNzPSJhY3QiIGlkPSJyZXNldEJ0biI+cmVzZXQgYTwvYnV0dG9uPgogIDwvZGl2PgoKICA8ZGl2IGNsYXNzPSJ2ZXJkaWN0IiBpZD0idmVyZGljdCI+Q2hvb3NlIGFuIG9wZXJhdGlvbiBhYm92ZSB0byBidWlsZCA8Y29kZT5iPC9jb2RlPi48L2Rpdj4KCiAgPHAgY2xhc3M9Im5vdGUiPgogICAgQmFzaWMgc2xpY2luZyAoPGNvZGU+YVtzdGFydDpzdG9wOnN0ZXBdPC9jb2RlPikgYWx3YXlzIHJldHVybnMgYSA8YiBzdHlsZT0iY29sb3I6dmFyKC0tdGVhbCkiPnZpZXc8L2I+IOKAlCBzYW1lCiAgICB1bmRlcmx5aW5nIG1lbW9yeSwganVzdCBhIGRpZmZlcmVudCB3YXkgb2YgbG9va2luZyBhdCBpdC4gQW55dGhpbmcgdGhhdCBuZWVkcyB0byBwaWNrCiAgICBub24tY29udGlndW91cyBvciByZW9yZGVyZWQgZWxlbWVudHMg4oCUIGEgbGlzdC9hcnJheSBvZiBpbmRpY2VzLCBvciBhIGJvb2xlYW4gbWFzayDigJQgY2FuJ3QgYmUKICAgIGRlc2NyaWJlZCBhcyBhIHNpbXBsZSBzdHJpZGUsIHNvIE51bVB5IGhhcyB0byBidWlsZCBhIG5ldyBhcnJheTogYSA8YiBzdHlsZT0iY29sb3I6dmFyKC0tYW1iZXIpIj5jb3B5PC9iPi4KICAgIFRoYXQncyB0aGUgcnVsZSB0aGUgbGVjdHVyZSdzIDxjb2RlPmFbWzIsMywyLDQsMl1dPC9jb2RlPiBhbmQgPGNvZGU+YVttYXNrXTwvY29kZT4gZXhhbXBsZXMgYm90aCBmb2xsb3csIGV2ZW4KICAgIHRob3VnaCBpdCdzIG5ldmVyIHN0YXRlZCBvdXRyaWdodCB0aGVyZS4KICA8L3A+CjwvZGl2PgoKPHNjcmlwdD4KY29uc3QgTiA9IDEwOwpjb25zdCBCQVNFX0EgPSAweEEwMDA7CmNvbnN0IEJBU0VfQ09QWSA9IDB4RjAwMDsKY29uc3Qgcm93QSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdyb3dBJyk7CmNvbnN0IHJvd0IgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncm93QicpOwpjb25zdCBiQmxvY2sgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnYkJsb2NrJyk7CmNvbnN0IGJCYWRnZSA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdiQmFkZ2UnKTsKY29uc3QgYkV4cHJMYWJlbCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdiRXhwckxhYmVsJyk7CmNvbnN0IG11dGF0ZUJ0biA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCdtdXRhdGVCdG4nKTsKY29uc3QgcmVzZXRCdG4gPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgncmVzZXRCdG4nKTsKY29uc3QgdmVyZGljdCA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKCd2ZXJkaWN0Jyk7CmNvbnN0IG9wc1dyYXAgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZCgnb3BzJyk7CgpsZXQgYSA9IEFycmF5LmZyb20oe2xlbmd0aDpOfSwgKF8saSk9PmkpOwpsZXQgb3AgPSBudWxsOyAgIC8vIGN1cnJlbnQgb3BlcmF0aW9uIGtleQpsZXQgYkluZGljZXMgPSBbXTsgLy8gaW5kaWNlcyBpbnRvIGBhYCB0aGF0IGJba10gcmVmZXJzIHRvIChmb3IgdmlldykgT1Igc291cmNlIGluZGljZXMgKGZvciBjb3B5LCBhdCBidWlsZCB0aW1lKQpsZXQgYlZhbHVlcyA9IFtdOyAgLy8gZm9yIGNvcHk6IGluZGVwZW5kZW50IHN0b3JhZ2UKbGV0IGlzVmlldyA9IGZhbHNlOwpsZXQgbXV0YXRlZCA9IGZhbHNlOwoKY29uc3Qgb3BzID0gWwogIHtrZXk6J3NsaWNlJywgbGFiZWw6J2IgPSBhWzI6ODoyXScsIHN1YjonYmFzaWMgc2xpY2UnLCBleHByOidhWzI6ODoyXScsIGJ1aWxkOiAoKSA9PiB7CiAgICAgIGNvbnN0IGlkeCA9IFsyLDQsNl07CiAgICAgIHJldHVybiB7aW5kaWNlczogaWR4LCBpc1ZpZXc6IHRydWV9OwogICAgfX0sCiAge2tleTonZmFuY3knLCBsYWJlbDonYiA9IGFbWzIsMywyLDQsMl1dJywgc3ViOidpbnRlZ2VyIGFycmF5IGluZGV4aW5nJywgZXhwcjonYVtbMiwgMywgMiwgNCwgMl1dJywgYnVpbGQ6ICgpID0+IHsKICAgICAgY29uc3QgaWR4ID0gWzIsMywyLDQsMl07CiAgICAgIHJldHVybiB7aW5kaWNlczogaWR4LCBpc1ZpZXc6IGZhbHNlfTsKICAgIH19LAogIHtrZXk6J2Jvb2wnLCBsYWJlbDonYiA9IGFbYSA+IDRdJywgc3ViOidib29sZWFuIG1hc2snLCBleHByOidhW2EgPiA0XScsIGJ1aWxkOiAoKSA9PiB7CiAgICAgIGNvbnN0IGlkeCA9IFtdOwogICAgICBhLmZvckVhY2goKHYsaSk9PnsgaWYodj40KSBpZHgucHVzaChpKTsgfSk7CiAgICAgIHJldHVybiB7aW5kaWNlczogaWR4LCBpc1ZpZXc6IGZhbHNlfTsKICAgIH19LAogIHtrZXk6J2NvcHknLCBsYWJlbDonYiA9IGFbMjo4OjJdLmNvcHkoKScsIHN1YjonZXhwbGljaXQgLmNvcHkoKScsIGV4cHI6J2FbMjo4OjJdLmNvcHkoKScsIGJ1aWxkOiAoKSA9PiB7CiAgICAgIGNvbnN0IGlkeCA9IFsyLDQsNl07CiAgICAgIHJldHVybiB7aW5kaWNlczogaWR4LCBpc1ZpZXc6IGZhbHNlfTsKICAgIH19LApdOwoKb3BzLmZvckVhY2gobz0+ewogIGNvbnN0IGIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdidXR0b24nKTsKICBiLmNsYXNzTmFtZT0nb3BidG4nOwogIGIuaW5uZXJIVE1MID0gYCR7by5sYWJlbH08c21hbGw+JHtvLnN1Yn08L3NtYWxsPmA7CiAgYi5vbmNsaWNrID0gKCk9PiBzZWxlY3RPcChvLmtleSk7CiAgYi5kYXRhc2V0LmtleSA9IG8ua2V5OwogIG9wc1dyYXAuYXBwZW5kQ2hpbGQoYik7Cn0pOwoKZnVuY3Rpb24gc2VsZWN0T3Aoa2V5KXsKICBvcCA9IG9wcy5maW5kKG89Pm8ua2V5PT09a2V5KTsKICBjb25zdCByZXMgPSBvcC5idWlsZCgpOwogIGJJbmRpY2VzID0gcmVzLmluZGljZXM7CiAgaXNWaWV3ID0gcmVzLmlzVmlldzsKICBiVmFsdWVzID0gYkluZGljZXMubWFwKGkgPT4gYVtpXSk7CiAgbXV0YXRlZCA9IGZhbHNlOwoKICBbLi4ub3BzV3JhcC5jaGlsZHJlbl0uZm9yRWFjaChiID0+IGIuY2xhc3NMaXN0LnRvZ2dsZSgnYWN0aXZlJywgYi5kYXRhc2V0LmtleT09PWtleSkpOwogIGJCbG9jay5zdHlsZS5kaXNwbGF5ID0gJyc7CiAgYkV4cHJMYWJlbC50ZXh0Q29udGVudCA9ICdiID0gJyArIG9wLmV4cHI7CiAgYkJhZGdlLnRleHRDb250ZW50ID0gaXNWaWV3ID8gJ1ZJRVcg4oCUIHNoYXJlcyBtZW1vcnknIDogJ0NPUFkg4oCUIGluZGVwZW5kZW50IG1lbW9yeSc7CiAgYkJhZGdlLmNsYXNzTmFtZSA9ICdiYWRnZSAnICsgKGlzVmlldyA/ICd2aWV3JyA6ICdjb3B5Jyk7CiAgbXV0YXRlQnRuLmRpc2FibGVkID0gZmFsc2U7CiAgdmVyZGljdC5jbGFzc05hbWUgPSAndmVyZGljdCc7CiAgdmVyZGljdC5pbm5lckhUTUwgPSBpc1ZpZXcKICAgID8gJ1RoaXMgaXMgYSA8YiBzdHlsZT0iY29sb3I6dmFyKC0tdGVhbCkiPnZpZXc8L2I+LiBUcnkgbXV0YXRpbmcgPGNvZGU+YlswXTwvY29kZT4g4oCUIHdhdGNoIDxjb2RlPmE8L2NvZGU+LicKICAgIDogJ1RoaXMgaXMgYSA8YiBzdHlsZT0iY29sb3I6dmFyKC0tYW1iZXIpIj5jb3B5PC9iPi4gVHJ5IG11dGF0aW5nIDxjb2RlPmJbMF08L2NvZGU+IOKAlCA8Y29kZT5hPC9jb2RlPiBzdGF5cyBwdXQuJzsKICByZW5kZXIoKTsKfQoKZnVuY3Rpb24gYWRkckZvcihpKXsgcmV0dXJuICcweCcgKyAoQkFTRV9BICsgaSo4KS50b1N0cmluZygxNikudG9VcHBlckNhc2UoKTsgfQpmdW5jdGlvbiBjb3B5QWRkckZvcihrKXsgcmV0dXJuICcweCcgKyAoQkFTRV9DT1BZICsgayo4KS50b1N0cmluZygxNikudG9VcHBlckNhc2UoKTsgfQoKZnVuY3Rpb24gcmVuZGVyKCl7CiAgcm93QS5pbm5lckhUTUwgPSAnJzsKICBjb25zdCBsaW5rZWRTZXQgPSBuZXcgU2V0KGlzVmlldyA/IGJJbmRpY2VzIDogW10pOwogIGEuZm9yRWFjaCgodixpKT0+ewogICAgY29uc3QgY29sID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7IGNvbC5jbGFzc05hbWU9J2NlbGxjb2wnOwogICAgY29uc3QgbGJsID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7IGxibC5jbGFzc05hbWU9J2lkeGxibCc7IGxibC50ZXh0Q29udGVudCA9IGk7CiAgICBjb25zdCBjZWxsID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7IGNlbGwuY2xhc3NOYW1lPSdjZWxsJzsKICAgIGlmKGxpbmtlZFNldC5oYXMoaSkpIGNlbGwuY2xhc3NMaXN0LmFkZCgnbGlua2VkJyk7CiAgICBpZihtdXRhdGVkICYmIGlzVmlldyAmJiBpID09PSBiSW5kaWNlc1swXSkgY2VsbC5jbGFzc0xpc3QuYWRkKCdkaXJ0eScpOwogICAgY2VsbC50ZXh0Q29udGVudCA9IHY7CiAgICBjb25zdCBhZGRyID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7IGFkZHIuY2xhc3NOYW1lPSdhZGRyJzsgYWRkci50ZXh0Q29udGVudCA9IGFkZHJGb3IoaSk7CiAgICBjb2wuYXBwZW5kQ2hpbGQobGJsKTsgY29sLmFwcGVuZENoaWxkKGNlbGwpOyBjb2wuYXBwZW5kQ2hpbGQoYWRkcik7CiAgICByb3dBLmFwcGVuZENoaWxkKGNvbCk7CiAgfSk7CgogIGlmKG9wKXsKICAgIHJvd0IuaW5uZXJIVE1MID0gJyc7CiAgICBiVmFsdWVzLmZvckVhY2goKHYsayk9PnsKICAgICAgY29uc3QgY29sID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudCgnZGl2Jyk7IGNvbC5jbGFzc05hbWU9J2NlbGxjb2wnOwogICAgICBjb25zdCBsYmwgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCdkaXYnKTsgbGJsLmNsYXNzTmFtZT0naWR4bGJsJzsgbGJsLnRleHRDb250ZW50ID0gazsKICAgICAgY29uc3QgY2VsbCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpOyBjZWxsLmNsYXNzTmFtZT0nY2VsbCc7CiAgICAgIGNlbGwuY2xhc3NMaXN0LmFkZChpc1ZpZXcgPyAnbGlua2VkJyA6ICdjb3BpZWQnKTsKICAgICAgaWYobXV0YXRlZCAmJiBrPT09MCkgY2VsbC5jbGFzc0xpc3QuYWRkKCdkaXJ0eScpOwogICAgICBjZWxsLnRleHRDb250ZW50ID0gdjsKICAgICAgY29uc3QgYWRkciA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpOyBhZGRyLmNsYXNzTmFtZT0nYWRkcic7CiAgICAgIGFkZHIudGV4dENvbnRlbnQgPSBpc1ZpZXcgPyBhZGRyRm9yKGJJbmRpY2VzW2tdKSA6IGNvcHlBZGRyRm9yKGspOwogICAgICBjb2wuYXBwZW5kQ2hpbGQobGJsKTsgY29sLmFwcGVuZENoaWxkKGNlbGwpOyBjb2wuYXBwZW5kQ2hpbGQoYWRkcik7CiAgICAgIHJvd0IuYXBwZW5kQ2hpbGQoY29sKTsKICAgIH0pOwogIH0KfQoKbXV0YXRlQnRuLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgKCk9PnsKICBpZighb3ApIHJldHVybjsKICBtdXRhdGVkID0gdHJ1ZTsKICBiVmFsdWVzWzBdID0gOTk5OwogIGlmKGlzVmlldyl7CiAgICBhW2JJbmRpY2VzWzBdXSA9IDk5OTsgLy8gc2FtZSBtZW1vcnk6IG11dGF0aW5nIGIncyBmaXJzdCBzbG90IG11dGF0ZXMgYQogICAgdmVyZGljdC5jbGFzc0xpc3QuYWRkKCdoaXQnKTsKICAgIHZlcmRpY3QuaW5uZXJIVE1MID0gYDxjb2RlPmJbMF0gPSA5OTk8L2NvZGU+IGFsc28gY2hhbmdlZCA8Y29kZT5hWyR7YkluZGljZXNbMF19XTwvY29kZT4g4oCUIHNhbWUgdW5kZXJseWluZyBtZW1vcnkuYDsKICB9IGVsc2UgewogICAgdmVyZGljdC5jbGFzc0xpc3QuYWRkKCdoaXQnKTsKICAgIHZlcmRpY3QuaW5uZXJIVE1MID0gYDxjb2RlPmJbMF0gPSA5OTk8L2NvZGU+IGxlZnQgPGNvZGU+YTwvY29kZT4gY29tcGxldGVseSB1bmNoYW5nZWQg4oCUIHNlcGFyYXRlIG1lbW9yeS5gOwogIH0KICByZW5kZXIoKTsKfSk7CgpyZXNldEJ0bi5hZGRFdmVudExpc3RlbmVyKCdjbGljaycsICgpPT57CiAgYSA9IEFycmF5LmZyb20oe2xlbmd0aDpOfSwgKF8saSk9PmkpOwogIG11dGF0ZWQgPSBmYWxzZTsKICBpZihvcCl7CiAgICBjb25zdCByZXMgPSBvcC5idWlsZCgpOwogICAgYkluZGljZXMgPSByZXMuaW5kaWNlczsKICAgIGJWYWx1ZXMgPSBiSW5kaWNlcy5tYXAoaSA9PiBhW2ldKTsKICB9CiAgdmVyZGljdC5jbGFzc0xpc3QucmVtb3ZlKCdoaXQnKTsKICB2ZXJkaWN0LnRleHRDb250ZW50ID0gb3AgPyAnUmVzZXQuIFRyeSBtdXRhdGluZyBiWzBdIGFnYWluLicgOiAnQ2hvb3NlIGFuIG9wZXJhdGlvbiBhYm92ZSB0byBidWlsZCBiLic7CiAgcmVuZGVyKCk7Cn0pOwoKcmVuZGVyKCk7Cjwvc2NyaXB0Pgo8L2JvZHk+CjwvaHRtbD4K"
+    style="width:100%; height:800px; border:0;"
+    allowfullscreen title="">
+  </iframe>
+  
+</div></div></div>
+</div>
+</section>
+<section id="axis">
+<h2>Axis<a class="headerlink" href="#axis" title="Link to this heading">#</a></h2>
+<p>Functions like <code class="docutils literal notranslate"><span class="pre">sum</span></code>, <code class="docutils literal notranslate"><span class="pre">mean</span></code>, <code class="docutils literal notranslate"><span class="pre">max</span></code>, <code class="docutils literal notranslate"><span class="pre">min</span></code> reduce an array down — and on a 2D array, you
+choose <em>which</em> dimension gets collapsed with <code class="docutils literal notranslate"><span class="pre">axis</span></code>. <code class="docutils literal notranslate"><span class="pre">axis=0</span></code> collapses rows (one result
+per column); <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> collapses columns (one result per row). With no <code class="docutils literal notranslate"><span class="pre">axis</span></code>, everything
+collapses to a single number.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5 particles, each with (x, y, z) position</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>
+    <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span>
+<span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"shape:"</span><span class="p">,</span> <span class="n">positions</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"overall mean (all values):     "</span><span class="p">,</span> <span class="n">positions</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"mean per coordinate (axis=0):  "</span><span class="p">,</span> <span class="n">positions</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>   <span class="c1"># one value per column</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"mean position per particle (axis=1):"</span><span class="p">,</span> <span class="n">positions</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>  <span class="c1"># one value per row</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>shape: (5, 3)
+overall mean (all values):      1.1333333333333333
+mean per coordinate (axis=0):   [1.  1.4 1. ]
+mean position per particle (axis=1): [1.16666667 0.83333333 2.         1.         0.66666667]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="matrix-multiplication-with">
+<h2>Matrix multiplication with &#64;<a class="headerlink" href="#matrix-multiplication-with" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">*</span></code> between two arrays is always elementwise. For actual matrix multiplication, use <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>
+(or <code class="docutils literal notranslate"><span class="pre">np.dot</span></code>, which <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> calls under the hood — <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> is the modern, readable spelling).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">],</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">]])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"elementwise A * B:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span> <span class="o">*</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"matrix product A @ B:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span> <span class="o">@</span> <span class="n">B</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"same thing via np.dot:</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">B</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>elementwise A * B:
+ [[ 5 12]
+ [21 32]]
+matrix product A @ B:
+ [[19 22]
+ [43 50]]
+same thing via np.dot:
+ [[19 22]
+ [43 50]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="reshape-and-t">
+<h2>reshape and .T<a class="headerlink" href="#reshape-and-t" title="Link to this heading">#</a></h2>
+<p>Two shape operations you’ll use constantly once data comes in flat (from a file, say) but
+needs to be treated as a grid: <code class="docutils literal notranslate"><span class="pre">reshape</span></code> changes how the same data is viewed, and <code class="docutils literal notranslate"><span class="pre">.T</span></code>
+transposes it. Both return views when possible, not copies.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">flat</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>          <span class="c1"># transpose: shape becomes (4, 3)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">T</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="n">grid</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">flat</span><span class="p">)</span>             <span class="c1"># reshape returned a view -&gt; the original changed too</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0  1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]]
+[[ 0  4  8]
+ [ 1  5  9]
+ [ 2  6 10]
+ [ 3  7 11]]
+(4, 3)
+[-1  1  2  3  4  5  6  7  8  9 10 11]
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
+<section id="predict-the-view">
+<h3>Predict the view<a class="headerlink" href="#predict-the-view" title="Link to this heading">#</a></h3>
+<p>Given the code below, write down what you think <code class="docutils literal notranslate"><span class="pre">a</span></code> will print <strong>before</strong> running it.
+Then explain in one sentence why <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">a[:,</span> <span class="pre">[1]]</span></code> (indexing the column with a list instead
+of a plain integer) would behave differently.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">b</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="c1"># YOUR EXPLANATION HERE (as a comment or markdown)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[ 0 -1  2  3]
+ [ 4  5  6  7]
+ [ 8  9 10 11]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="axis-reduction">
+<h3>Axis reduction<a class="headerlink" href="#axis-reduction" title="Link to this heading">#</a></h3>
+<p>Using the 5-particle <code class="docutils literal notranslate"><span class="pre">positions</span></code> array style from the lecture (5 rows, 3 columns for
+x, y, z), compute:</p>
+<ol class="arabic simple">
+<li><p>the mean position of each individual particle,</p></li>
+<li><p>the mean position across all particles, for each coordinate separately.</p></li>
+</ol>
+<p>State which <code class="docutils literal notranslate"><span class="pre">axis</span></code> value you used for each, and why.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># YOUR CODE HERE</span>
+<span class="n">mean_per_particle</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">mean_per_coordinate</span> <span class="o">=</span> <span class="kc">None</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_per_particle</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mean_per_coordinate</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>None
+None
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 <section id="reading-a-file">
 <h3>Reading a file<a class="headerlink" href="#reading-a-file" title="Link to this heading">#</a></h3>
 <p>Create a <em>Reading a two column file</em>: Make a program who reads a two column file and stores the first column in a list called <code class="docutils literal notranslate"><span class="pre">x</span></code> and the second one in a list called <code class="docutils literal notranslate"><span class="pre">y</span></code>. Then convert the list to arrays and plot them. Test it with some example file.</p>
@@ -1070,6 +1471,7 @@ b = np.arange(1, 9, 2)
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-numpy">Basic numpy</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-ways-to-create-arrays">Alternative ways to create arrays</a></li>
 </ul>
@@ -1080,7 +1482,12 @@ b = np.arange(1, 9, 2)
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-operations-or-vector-computing">Numerical operations (or vector computing)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axis">Axis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-multiplication-with">Matrix multiplication with @</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reshape-and-t">reshape and .T</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#predict-the-view">Predict the view</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#axis-reduction">Axis reduction</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-a-file">Reading a file</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-file-with-comments">Reading file with comments</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-loadtxt">Using loadtxt</a></li>
