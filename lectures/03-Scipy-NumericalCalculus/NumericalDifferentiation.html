@@ -577,6 +577,30 @@
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracker-data">Tracker data</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecto-con-dato-reales">Proyecto con dato reales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrucciones-generales">Instrucciones Generales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reglas-obligatorias-de-implementacion">Reglas Obligatorias de Implementación:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opcion-a-cinematica-de-un-proyectil-con-tracker-y-calculo-numerico">OPCIÓN A: Cinemática de un Proyectil con Tracker y Cálculo Numérico</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo">Objetivo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#captura-de-datos-experimentales">1. Captura de Datos Experimentales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diferenciacion-numerica-y-estimacion-de-g">2. Diferenciación Numérica y Estimación de <span class="math notranslate nohighlight">\(g\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion-numerica-reconstruccion-de-la-trayectoria">3. Integración Numérica (Reconstrucción de la Trayectoria)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-discusion-en-el-informe">4. Preguntas de Discusión en el Informe</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opcion-b-la-dualidad-diferenciacionintegracion-sensores-phyphox">OPCIÓN B: La Dualidad Diferenciación–Integración (Sensores Phyphox)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Objetivo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#captura-de-datos-con-phyphox">1. Captura de Datos con Phyphox</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calibracion-del-sesgo-offset-y-ruido-instrumental">2. Calibración del Sesgo (Offset) y Ruido Instrumental</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion-numerica-de-aceleracion-a-posicion">3. Integración Numérica: De Aceleración a Posición</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-reversibilidad-diferenciando-la-posicion-numerica">4. Prueba de Reversibilidad: Diferenciando la Posición Numérica</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estudio-del-efecto-del-paso-temporal-h-submuestreo">5. Estudio del Efecto del Paso Temporal <span class="math notranslate nohighlight">\(h\)</span> (Submuestreo)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-discusion">6. Preguntas de Discusión</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion">Evaluación</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -606,8 +630,8 @@
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 Definition</div>
-<div class="amsmath math notranslate nohighlight" id="equation-069e4a46-bc5a-42bc-a34c-1ecc2cee2449">
-<span class="eqno">(3)<a class="headerlink" href="#equation-069e4a46-bc5a-42bc-a34c-1ecc2cee2449" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7b0ecbd8-9504-441b-a4e5-18f0080d86a4">
+<span class="eqno">(3)<a class="headerlink" href="#equation-7b0ecbd8-9504-441b-a4e5-18f0080d86a4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f'(x) \simeq \frac{f(x+h) - f(x)}{h} + O(h)
 \end{equation}\]</div>
 </div>
@@ -630,18 +654,18 @@ Graphical interpretation</div>
 <section id="a-better-estimation-central-difference">
 <h2>A better estimation: Central difference<a class="headerlink" href="#a-better-estimation-central-difference" title="Link to this heading">#</a></h2>
 <p>If you compute a forward (<span class="math notranslate nohighlight">\(+h\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-86448fa5-7577-4f43-9e82-c0ace1e45e7e">
-<span class="eqno">(4)<a class="headerlink" href="#equation-86448fa5-7577-4f43-9e82-c0ace1e45e7e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a60b0deb-d651-492d-af87-0b6362b47b3e">
+<span class="eqno">(4)<a class="headerlink" href="#equation-a60b0deb-d651-492d-af87-0b6362b47b3e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x+h) = f(x) + f'(x) h + f''(x) h^2/2 + f'''(x) h^3/6 + O(h^4) + O(h^5),
 \end{equation}\]</div>
 <p>and a backward (<span class="math notranslate nohighlight">\(-h\)</span>) Taylor expansion,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de5cb48d-d090-482e-af04-077716ef6fe0">
-<span class="eqno">(5)<a class="headerlink" href="#equation-de5cb48d-d090-482e-af04-077716ef6fe0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1a1a5c48-7550-4c77-9fc1-29d43588f086">
+<span class="eqno">(5)<a class="headerlink" href="#equation-1a1a5c48-7550-4c77-9fc1-29d43588f086" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x-h) = f(x) - f'(x) h + f''(x) h^2/2 - f'''(x) h^3/6 + O(h^4) - O(h^5),
 \end{equation}\]</div>
 <p>and then you subtract the second from the first (notice that adding then allows you to compute the second order derivative), you get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b4024195-0075-4b30-a9fc-01b51efeb545">
-<span class="eqno">(6)<a class="headerlink" href="#equation-b4024195-0075-4b30-a9fc-01b51efeb545" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-72c0b6f6-ce19-421d-aee9-a1c003905a39">
+<span class="eqno">(6)<a class="headerlink" href="#equation-72c0b6f6-ce19-421d-aee9-a1c003905a39" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f'(x) \simeq \frac{f(x+h) - f(x-h)}{2h} + O(h^2)
 \end{equation}\]</div>
 <p>which is called the central difference. The order is improved and this version is better than the simple forward difference. See: <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">https://en.wikipedia.org/wiki/Finite_difference</a></p>
@@ -670,8 +694,8 @@ Dependence on <span class="math notranslate nohighlight">\(h\)</span></div>
 </div>
 </div>
 <p>By using <a class="reference external" href="https://en.wikipedia.org/wiki/Richardson_extrapolation">Richardson extrapolation</a>, you can improve even more the central difference estimation,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4551276a-afa7-45ee-b640-4f61a4945a88">
-<span class="eqno">(7)<a class="headerlink" href="#equation-4551276a-afa7-45ee-b640-4f61a4945a88" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ace937a5-65ee-494e-9c33-006a663d87e8">
+<span class="eqno">(7)<a class="headerlink" href="#equation-ace937a5-65ee-494e-9c33-006a663d87e8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f'(x) = \phi\left(\frac{h}{2}\right) + \frac{1}{3}\left[\phi\left(\frac{h}{2} \right) - \phi(h) \right] + O(h^4),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\phi(h)\)</span> is the derivative estimation from the central difference with a given <span class="math notranslate nohighlight">\(h\)</span> value.</p>
@@ -707,8 +731,8 @@ f'(x) = \phi\left(\frac{h}{2}\right) + \frac{1}{3}\left[\phi\left(\frac{h}{2} \r
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     success: True
       status: 0
-          df: 4.999999999999993
-       error: 3.552713678800501e-15
+          df: 4.999999999999994
+       error: 8.881784197001252e-16
          nit: 2
         nfev: 11
            x: 1.0
@@ -825,6 +849,183 @@ How is the order of the approximation?</p>
 <p>YOUR ANSWER HERE</p>
 </section>
 </section>
+<section id="proyecto-con-dato-reales">
+<h2>Proyecto con dato reales<a class="headerlink" href="#proyecto-con-dato-reales" title="Link to this heading">#</a></h2>
+<p><strong>Modalidad:</strong> Trabajo grupal (2 a 3 estudiantes)</p>
+<p><strong>Formato de entrega:</strong> Archivo comprimido (<code class="docutils literal notranslate"><span class="pre">.zip</span></code>) con Notebook de Jupyter (<code class="docutils literal notranslate"><span class="pre">.ipynb</span></code>) y archivos crudos de datos/video.</p>
+<p>Cada grupo debe entregar una carpeta comprimida con la siguiente estructura:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Grupo_XX_TallerNumerico/
+│
+├── Taller_Numerico.ipynb       # Jupyter Notebook apellidos y nombres de los integrantes, código, gráficas explicativas y markdown. Debe poder ejecutarse.
+├── datos/
+│   ├── video_original.mp4      # Video utilizado para Tracker (Opcion 1)
+│   ├── datos_tracker.csv       # Datos exportados de Tracker (opcion 1)
+│   └── datos_phyphox.csv       # (Solo para Opción B) Datos crudos del acelerómetro
+</pre></div>
+</div>
+<p>Solamente entrega una persona por grupo.</p>
+<section id="instrucciones-generales">
+<h3>Instrucciones Generales<a class="headerlink" href="#instrucciones-generales" title="Link to this heading">#</a></h3>
+<p>Para este taller, cada grupo debe <strong>elegir UNA (1) de las dos opciones</strong> presentadas a continuación. Ambas opciones exploran cómo los métodos de cálculo numérico (diferenciación finita e integración numérica) se comportan frente a señales y datos del mundo real con ruido de medición y errores de discretización.</p>
+</section>
+<section id="reglas-obligatorias-de-implementacion">
+<h3>Reglas Obligatorias de Implementación:<a class="headerlink" href="#reglas-obligatorias-de-implementacion" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Algoritmos propios:</strong> Deben escribir sus propias funciones vectorizadas con <code class="docutils literal notranslate"><span class="pre">numpy</span></code> para los esquemas de diferenciación e integración solicitados antes de usar cualquier función de biblioteca (como <code class="docutils literal notranslate"><span class="pre">np.gradient</span></code>, <code class="docutils literal notranslate"><span class="pre">scipy.integrate.trapezoid</span></code>, etc.).</p></li>
+<li><p><strong>Uso de librerías para validación:</strong> Solo después de implementar sus métodos pueden comparar contra las funciones de <code class="docutils literal notranslate"><span class="pre">scipy</span></code> o <code class="docutils literal notranslate"><span class="pre">numpy</span></code>.</p></li>
+<li><p><strong>Autenticidad de datos:</strong> Todo grupo debe adjuntar su video original (<code class="docutils literal notranslate"><span class="pre">.mp4</span></code>), el archivo de calibración/seguimiento (<code class="docutils literal notranslate"><span class="pre">.trk</span></code> o exportado de Tracker) y/o el archivo <code class="docutils literal notranslate"><span class="pre">.csv</span></code> exportado de los sensores.</p></li>
+</ol>
+</section>
+<hr class="docutils" />
+<section id="opcion-a-cinematica-de-un-proyectil-con-tracker-y-calculo-numerico">
+<h3>OPCIÓN A: Cinemática de un Proyectil con Tracker y Cálculo Numérico<a class="headerlink" href="#opcion-a-cinematica-de-un-proyectil-con-tracker-y-calculo-numerico" title="Link to this heading">#</a></h3>
+<section id="objetivo">
+<h4>Objetivo<a class="headerlink" href="#objetivo" title="Link to this heading">#</a></h4>
+<p>Analizar la cinemática en dos dimensiones de un movimiento parabólico a partir de un video real, implementando diferentes esquemas de diferencias finitas para estimar velocidades y aceleraciones, y aplicando cuadratura numérica para reconstruir la trayectoria.</p>
+</section>
+<section id="captura-de-datos-experimentales">
+<h4>1. Captura de Datos Experimentales<a class="headerlink" href="#captura-de-datos-experimentales" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Graben un video nítido de un objeto (pelota, esfera pequeña) en movimiento parabólico con fondo contrastado y una referencia de escala conocida (regla, cinta métrica).</p></li>
+<li><p>Usen el software <strong>Tracker</strong> (<a class="reference external" href="https://physlets.org/tracker/">physlets.org/tracker</a>) para extraer la tabla de datos: tiempo <span class="math notranslate nohighlight">\(t\)</span>, posición horizontal <span class="math notranslate nohighlight">\(x(t)\)</span> y vertical <span class="math notranslate nohighlight">\(y(t)\)</span>.</p></li>
+<li><p>Exporten también las velocidades y aceleraciones estimadas internamente por Tracker para utilizarlas como referencia comparativa.</p></li>
+</ul>
+</section>
+<section id="diferenciacion-numerica-y-estimacion-de-g">
+<h4>2. Diferenciación Numérica y Estimación de <span class="math notranslate nohighlight">\(g\)</span><a class="headerlink" href="#diferenciacion-numerica-y-estimacion-de-g" title="Link to this heading">#</a></h4>
+<p>Implementen en Python sus propias funciones para calcular la primera y segunda derivada numérica respecto al tiempo:</p>
+<ol class="arabic simple">
+<li><p><strong>Diferencias hacia adelante (Forward):</strong> <span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span></p></li>
+<li><p><strong>Diferencias hacia atrás (Backward):</strong> <span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span></p></li>
+<li><p><strong>Diferencias centrales de 2 puntos:</strong> <span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span></p></li>
+<li><p><strong>Diferencias centrales de orden superior (4 puntos):</strong> <span class="math notranslate nohighlight">\(\mathcal{O}(h^4)\)</span></p></li>
+</ol>
+<p><strong>Análisis requerido:</strong></p>
+<ul class="simple">
+<li><p>Calculen <span class="math notranslate nohighlight">\(v_x(t)\)</span>, <span class="math notranslate nohighlight">\(v_y(t)\)</span>, <span class="math notranslate nohighlight">\(a_x(t)\)</span> y <span class="math notranslate nohighlight">\(a_y(t)\)</span> usando cada uno de los esquemas.</p></li>
+<li><p>Grafiquen en subplots comparativos: posición vs. tiempo, velocidad vs. tiempo y aceleración vs. tiempo para los distintos esquemas y compárenlos contra los datos directos de Tracker.</p></li>
+<li><p>Estimen el valor experimental de la gravedad <span class="math notranslate nohighlight">\(g_{\text{exp}} \pm \sigma_g\)</span> promediando la aceleración vertical en el tramo de vuelo libre.</p></li>
+</ul>
+</section>
+<section id="integracion-numerica-reconstruccion-de-la-trayectoria">
+<h4>3. Integración Numérica (Reconstrucción de la Trayectoria)<a class="headerlink" href="#integracion-numerica-reconstruccion-de-la-trayectoria" title="Link to this heading">#</a></h4>
+<p>Implementen sus propias funciones de:</p>
+<ol class="arabic simple">
+<li><p><strong>Regla del Trapecio Compuesta.</strong></p></li>
+<li><p><strong>Regla de Simpson 1/3 Compuesta</strong> (manejando adecuadamente el número par/impar de subintervalos).</p></li>
+</ol>
+<p><strong>Análisis requerido:</strong></p>
+<ul class="simple">
+<li><p>Tomen las velocidades calculadas numéricamente <span class="math notranslate nohighlight">\(v_x(t)\)</span> y <span class="math notranslate nohighlight">\(v_y(t)\)</span>, junto con la condición inicial real <span class="math notranslate nohighlight">\((x_0, y_0)\)</span>, e integren numéricamente para reconstruir la posición <span class="math notranslate nohighlight">\(x_{\text{rec}}(t)\)</span> y <span class="math notranslate nohighlight">\(y_{\text{rec}}(t)\)</span>.</p></li>
+<li><p>Grafiquen la trayectoria original vs. la trayectoria reconstruida.</p></li>
+<li><p>Calculen el error absoluto y relativo en cada paso temporal: <span class="math notranslate nohighlight">\(E(t) = |y(t) - y_{\text{rec}}(t)|\)</span>.</p></li>
+</ul>
+</section>
+<section id="preguntas-de-discusion-en-el-informe">
+<h4>4. Preguntas de Discusión en el Informe<a class="headerlink" href="#preguntas-de-discusion-en-el-informe" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>¿Por qué la gráfica de aceleración obtenida mediante diferenciación numérica se ve mucho más ruidosa e irregular que la gráfica de posición original? Expliquen el fenómeno de <strong>amplificación de ruido</strong> en la derivada numérica.</p></li>
+<li><p>¿Qué ocurre en los extremos del intervalo temporal (<span class="math notranslate nohighlight">\(t=0\)</span> y <span class="math notranslate nohighlight">\(t=t_f\)</span>) con los esquemas centrales y cómo los manejaron en su código?</p></li>
+<li><p>¿Cuál de los métodos de integración (Trapecio vs. Simpson) acumuló menor error respecto a la posición real? ¿La integración suavizó o empeoró el ruido de la velocidad?</p></li>
+<li><p>¿Por qué la integración numérica actúa como un filtro suavizador (filtro pasa-bajas) mientras que la diferenciación numérica actúa como un amplificador de ruido (filtro pasa-altas)?</p></li>
+<li><p>Si compara con los datos de <span class="math notranslate nohighlight">\(v\)</span> y <span class="math notranslate nohighlight">\(a\)</span> en cada dimensión que obtiene por tracker, observa el mismo ruido? qué algoritmo puede estar usando tracker?</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="opcion-b-la-dualidad-diferenciacionintegracion-sensores-phyphox">
+<h3>OPCIÓN B: La Dualidad Diferenciación–Integración (Sensores Phyphox)<a class="headerlink" href="#opcion-b-la-dualidad-diferenciacionintegracion-sensores-phyphox" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h4>Objetivo<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>Resolver el problema clásico de la <strong>navegación inercial</strong>: determinar la velocidad y el desplazamiento de un cuerpo integrando la señal de aceleración de un teléfono inteligente (<a class="reference external" href="https://phyphox.org/">Phyphox</a>), analizando el impacto de la calibración del sesgo (<em>offset/drift</em>), la convergencia de los métodos de cuadratura y la reversibilidad mediante diferenciación numérica.</p>
+</section>
+<section id="captura-de-datos-con-phyphox">
+<h4>1. Captura de Datos con Phyphox<a class="headerlink" href="#captura-de-datos-con-phyphox" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Abran la app <strong>Phyphox</strong> y seleccionen el módulo <strong>Aceleración lineal</strong> (que descuenta automáticamente la gravedad) a una frecuencia de muestreo de <span class="math notranslate nohighlight">\(50\text{–}100\text{ Hz}\)</span>.</p></li>
+<li><p>Diseñen un movimiento unidimensional (1D) donde la <strong>distancia total recorrida <span class="math notranslate nohighlight">\(d_{\text{real}}\)</span> sea conocida y medida con una cinta métrica / regla</strong>:</p>
+<ul>
+<li><p><em>Opción recomendada 1:</em> Deslizar el teléfono sobre una mesa/piso recto a lo largo de una distancia fija (ej. <span class="math notranslate nohighlight">\(1.50\text{ m}\)</span> o <span class="math notranslate nohighlight">\(2.00\text{ m}\)</span>), partiendo del reposo y terminando en reposo.</p></li>
+<li><p><em>Opción recomendada 2:</em> Un viaje en ascensor entre pisos con altura conocida (ej. medir la altura de un escalón <span class="math notranslate nohighlight">\(\times\)</span> número de escalones para conocer la altura total entre pisos).</p></li>
+</ul>
+</li>
+<li><p><strong>Protocolo de grabación:</strong> Dejar el teléfono completamente quieto en reposo durante <strong><span class="math notranslate nohighlight">\(3\text{ a }5\text{ segundos}\)</span> antes de iniciar el movimiento</strong>, y otros <strong><span class="math notranslate nohighlight">\(3\text{ a }5\text{ segundos}\)</span> en reposo al finalizar</strong>.</p></li>
+<li><p>Exporten el archivo en formato <code class="docutils literal notranslate"><span class="pre">.csv</span></code> (debe contener columnas de tiempo <span class="math notranslate nohighlight">\(t\)</span> y aceleración en el eje del movimiento <span class="math notranslate nohighlight">\(a(t)\)</span>).</p></li>
+</ul>
+</section>
+<section id="calibracion-del-sesgo-offset-y-ruido-instrumental">
+<h4>2. Calibración del Sesgo (Offset) y Ruido Instrumental<a class="headerlink" href="#calibracion-del-sesgo-offset-y-ruido-instrumental" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>En Python, tomen el intervalo inicial de reposo (<span class="math notranslate nohighlight">\(t \in [0, t_{\text{inicio}}]\)</span>) y calculen la media del sesgo <span class="math notranslate nohighlight">\(\mu_{\text{bias}}\)</span> y la desviación estándar del ruido <span class="math notranslate nohighlight">\(\sigma_{\text{ruido}}\)</span>.</p></li>
+<li><p>Creen dos versiones de la señal de aceleración:</p>
+<ol class="arabic simple">
+<li><p>Señal sin calibrar: <span class="math notranslate nohighlight">\(a_{\text{raw}}(t)\)</span></p></li>
+<li><p>Señal calibrada: <span class="math notranslate nohighlight">\(a_{\text{cal}}(t) = a_{\text{raw}}(t) - \mu_{\text{bias}}\)</span></p></li>
+</ol>
+</li>
+<li><p>Demuestren analíticamente en el texto del informe por qué un sesgo constante <span class="math notranslate nohighlight">\(\mu_{\text{bias}}\)</span> en la aceleración genera un error que crece de forma cuadrática en la posición: <span class="math notranslate nohighlight">\(\Delta x(t) = \frac{1}{2} \mu_{\text{bias}} t^2\)</span>.</p></li>
+</ul>
+</section>
+<section id="integracion-numerica-de-aceleracion-a-posicion">
+<h4>3. Integración Numérica: De Aceleración a Posición<a class="headerlink" href="#integracion-numerica-de-aceleracion-a-posicion" title="Link to this heading">#</a></h4>
+<p>Implementen sus propias funciones vectorizadas de:</p>
+<ol class="arabic simple">
+<li><p><strong>Regla del Trapecio Compuesta Acumulada.</strong></p></li>
+<li><p><strong>Regla de Simpson 1/3 Compuesta Acumulada.</strong></p></li>
+</ol>
+<p><strong>Análisis requerido:</strong></p>
+<ul class="simple">
+<li><p>Integren <span class="math notranslate nohighlight">\(a_{\text{cal}}(t)\)</span> para obtener la velocidad <span class="math notranslate nohighlight">\(v(t)\)</span>, asumiendo <span class="math notranslate nohighlight">\(v(0) = 0\)</span>. Verifiquen si al final del movimiento la velocidad regresa a cero.</p></li>
+<li><p>Integren <span class="math notranslate nohighlight">\(v(t)\)</span> para obtener la posición <span class="math notranslate nohighlight">\(x(t)\)</span>, asumiendo <span class="math notranslate nohighlight">\(x(0) = 0\)</span>.</p></li>
+<li><p>Grafiquen en tres subplots apilados: <span class="math notranslate nohighlight">\(a(t)\)</span>, <span class="math notranslate nohighlight">\(v(t)\)</span> y <span class="math notranslate nohighlight">\(x(t)\)</span>.</p></li>
+<li><p>Comparen la posición final calculada <span class="math notranslate nohighlight">\(x(t_{\text{final}})\)</span> contra la distancia real medida <span class="math notranslate nohighlight">\(d_{\text{real}}\)</span> y calculen el error porcentual para Trapecio y para Simpson:
+$<span class="math notranslate nohighlight">\(\text{Error } \% = \left| \frac{x(t_{\text{final}}) - d_{\text{real}}}{d_{\text{real}}} \right| \times 100\)</span>$</p></li>
+<li><p>Muestren en una gráfica comparativa qué ocurre con la posición <span class="math notranslate nohighlight">\(x(t)\)</span> si se integra la señal <strong>sin calibrar</strong> <span class="math notranslate nohighlight">\(a_{\text{raw}}(t)\)</span> (evidencia de la deriva cuadrática).</p></li>
+</ul>
+</section>
+<section id="prueba-de-reversibilidad-diferenciando-la-posicion-numerica">
+<h4>4. Prueba de Reversibilidad: Diferenciando la Posición Numérica<a class="headerlink" href="#prueba-de-reversibilidad-diferenciando-la-posicion-numerica" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>Tomen la curva de posición integrada <span class="math notranslate nohighlight">\(x(t)\)</span> y derívenla numéricamente para intentar recuperar la velocidad y la aceleración utilizando:</p>
+<ol class="arabic simple">
+<li><p>Diferencias hacia adelante (<span class="math notranslate nohighlight">\(\mathcal{O}(h)\)</span>)</p></li>
+<li><p>Diferencias centrales de 2 puntos (<span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span>)</p></li>
+<li><p>Diferencias centrales de 4 puntos (<span class="math notranslate nohighlight">\(\mathcal{O}(h^4)\)</span>)</p></li>
+</ol>
+</li>
+<li><p>Grafiquen la aceleración recuperada por diferenciación superpuesta con la señal original del acelerómetro <span class="math notranslate nohighlight">\(a_{\text{cal}}(t)\)</span>. ¿Qué diferencias observan en términos de suavidad y ruido?</p></li>
+</ul>
+</section>
+<section id="estudio-del-efecto-del-paso-temporal-h-submuestreo">
+<h4>5. Estudio del Efecto del Paso Temporal <span class="math notranslate nohighlight">\(h\)</span> (Submuestreo)<a class="headerlink" href="#estudio-del-efecto-del-paso-temporal-h-submuestreo" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>La frecuencia original del sensor ofrece un paso temporal pequeño <span class="math notranslate nohighlight">\(h_0 = \Delta t\)</span>.</p></li>
+<li><p>Generen señales submuestreadas tomando 1 de cada <span class="math notranslate nohighlight">\(k\)</span> puntos (<code class="docutils literal notranslate"><span class="pre">datos[::k]</span></code> con <span class="math notranslate nohighlight">\(k = 2, 4, 8, 16, 32\)</span>).</p></li>
+<li><p>Para cada paso <span class="math notranslate nohighlight">\(h_k = k \cdot h_0\)</span>, calculen la distancia final <span class="math notranslate nohighlight">\(x(t_{\text{final}})\)</span> con Trapecio y Simpson.</p></li>
+<li><p>Grafiquen el error absoluto de la distancia final vs. el paso temporal <span class="math notranslate nohighlight">\(h\)</span> en escala logarítmica (<span class="math notranslate nohighlight">\(\log(E)\)</span> vs. <span class="math notranslate nohighlight">\(\log(h)\)</span>) y discutan si se cumple el orden teórico de convergencia de cada método (<span class="math notranslate nohighlight">\(\mathcal{O}(h^2)\)</span> para Trapecio vs. <span class="math notranslate nohighlight">\(\mathcal{O}(h^4)\)</span> para Simpson).</p></li>
+</ul>
+</section>
+<section id="preguntas-de-discusion">
+<h4>6. Preguntas de Discusión<a class="headerlink" href="#preguntas-de-discusion" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>¿Por qué la integración numérica actúa como un filtro suavizador (filtro pasa-bajas) mientras que la diferenciación numérica actúa como un amplificador de ruido (filtro pasa-altas)?</p></li>
+<li><p>Si un acelerómetro comercial tiene un error de cero de apenas <span class="math notranslate nohighlight">\(0.05\,\text{m/s}^2\)</span>, ¿cuál sería el error en la posición estimada tras un viaje de 10 minutos si no se aplican correcciones?</p></li>
+<li><p>¿Qué diferencias observaron entre la Regla del Trapecio y la Regla de Simpson al variar el tamaño de paso <span class="math notranslate nohighlight">\(h\)</span>?</p></li>
+</ol>
+</section>
+</section>
+<hr class="docutils" />
+<section id="evaluacion">
+<h3>Evaluación<a class="headerlink" href="#evaluacion" title="Link to this heading">#</a></h3>
+<p>Estos son los aspectos que se tendrán en cuenta en la evaluación:</p>
+<ul class="simple">
+<li><p>Algoritmos Propios: Correcta implementación vectorizada en NumPy de las fórmulas de diferencias finitas e integración (Trapecio / Simpson).</p></li>
+<li><p>Adquisición y Procesamiento de Datos: Calidad del experimento, calibración de unidades, sincronización temporal y reproducibilidad.</p></li>
+<li><p>Visualización y Comparaciones: Gráficas claras con leyendas, unidades físicas en los ejes, manejo de subplots y superposición de métodos.</p></li>
+<li><p>Análisis Físico y Preguntas Conceptuales: Profundidad en la discusión sobre propagación del error, amplificación del ruido en la diferenciación y deriva en la integración.</p></li>
+</ul>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -902,6 +1103,30 @@ How is the order of the approximation?</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-from-taylor-series">Error from Taylor series</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lanczos-method">Lanczos Method</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tracker-data">Tracker data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#proyecto-con-dato-reales">Proyecto con dato reales</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#instrucciones-generales">Instrucciones Generales</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reglas-obligatorias-de-implementacion">Reglas Obligatorias de Implementación:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opcion-a-cinematica-de-un-proyectil-con-tracker-y-calculo-numerico">OPCIÓN A: Cinemática de un Proyectil con Tracker y Cálculo Numérico</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#objetivo">Objetivo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#captura-de-datos-experimentales">1. Captura de Datos Experimentales</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#diferenciacion-numerica-y-estimacion-de-g">2. Diferenciación Numérica y Estimación de <span class="math notranslate nohighlight">\(g\)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion-numerica-reconstruccion-de-la-trayectoria">3. Integración Numérica (Reconstrucción de la Trayectoria)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-discusion-en-el-informe">4. Preguntas de Discusión en el Informe</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#opcion-b-la-dualidad-diferenciacionintegracion-sensores-phyphox">OPCIÓN B: La Dualidad Diferenciación–Integración (Sensores Phyphox)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Objetivo</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#captura-de-datos-con-phyphox">1. Captura de Datos con Phyphox</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calibracion-del-sesgo-offset-y-ruido-instrumental">2. Calibración del Sesgo (Offset) y Ruido Instrumental</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#integracion-numerica-de-aceleracion-a-posicion">3. Integración Numérica: De Aceleración a Posición</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prueba-de-reversibilidad-diferenciando-la-posicion-numerica">4. Prueba de Reversibilidad: Diferenciando la Posición Numérica</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#estudio-del-efecto-del-paso-temporal-h-submuestreo">5. Estudio del Efecto del Paso Temporal <span class="math notranslate nohighlight">\(h\)</span> (Submuestreo)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#preguntas-de-discusion">6. Preguntas de Discusión</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluacion">Evaluación</a></li>
 </ul>
 </li>
 </ul>
