@@ -18,51 +18,24 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# %%writefile plot_derivs.py
-
-import numpy as np
-import matplotlib.pyplot as plt
-from scipy.misc import derivative as spderiv
-
-def forward(f, x, h):
-    return (f(x+h)-f(x))/h
-
-def central(f, x, h):
-    return (f(x+h/2)-f(x-h/2))/h
-
-def central_richardson(f, x, h):
-    # YOUR CODE HERE
-    pass
-
-def compare_derivatives():    
-    fig, ax = plt.subplots()
-    h = np.power(10.0, np.arange(-18, 0, +1))
-    x = np.pi/3
-    # YOUR CODE HERE
-    pass
-    
-
 compare_derivatives()
-
-
 ------------------
 
------ stderr -----
-/tmp/ipykernel_2714/1050150463.py:5: DeprecationWarning: scipy.misc is deprecated and will be removed in 2.0.0
-  from scipy.misc import derivative as spderiv
-------------------
 
 [31m---------------------------------------------------------------------------[39m
-[31mImportError[39m                               Traceback (most recent call last)
-[36mCell[39m[36m [39m[32mIn[1][39m[32m, line 5[39m
-[32m      1[39m [38;5;66;03m# %%writefile plot_derivs.py[39;00m
-[32m      2[39m 
-[32m      3[39m [38;5;28;01mimport[39;00m numpy [38;5;28;01mas[39;00m np
-[32m      4[39m [38;5;28;01mimport[39;00m matplotlib.pyplot [38;5;28;01mas[39;00m plt
-[32m----> [39m[32m5[39m [38;5;28;01mfrom[39;00m scipy.misc [38;5;28;01mimport[39;00m derivative [38;5;28;01mas[39;00m spderiv
-[32m      6[39m 
-[32m      7[39m [38;5;28;01mdef[39;00m forward(f, x, h):
-[32m      8[39m     [38;5;28;01mreturn[39;00m (f(x+h)-f(x))/h
+[31mTypeError[39m                                 Traceback (most recent call last)
+[36mCell[39m[36m [39m[32mIn[3][39m[32m, line 1[39m
+[32m----> [39m[32m1[39m compare_derivatives()
 
-[31mImportError[39m: cannot import name 'derivative' from 'scipy.misc' (/opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/scipy/misc/__init__.py)
+[36mCell[39m[36m [39m[32mIn[2][39m[32m, line 35[39m, in [36mcompare_derivatives[39m[34m()[39m
+[32m     31[39m             result = result.df
+[32m     32[39m         [38;5;28;01melse[39;00m:
+[32m     33[39m             result = alg(fun, x, h)
+[32m     34[39m 
+[32m---> [39m[32m35[39m         diff = np.abs([32m1[39m - result/deriv_exact(x))
+[32m     36[39m         ax.loglog(h, diff, [33m'-o'[39m, label=algname)
+[32m     37[39m     ax.set_xlabel([33mrf"$h$"[39m, fontsize=[32m20[39m)
+[32m     38[39m     ax.set_ylabel([33mrf"$\Delta$"[39m, fontsize=[32m20[39m)
+
+[31mTypeError[39m: unsupported operand type(s) for /: 'NoneType' and 'float'
 

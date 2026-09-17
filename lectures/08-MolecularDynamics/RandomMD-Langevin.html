@@ -699,8 +699,8 @@ collisions with surrounding molecules.</p>
 <li><p><span class="math notranslate nohighlight">\(-\gamma v\)</span>: <strong>Friction/Drag force</strong> (dissipation).</p></li>
 <li><p><span class="math notranslate nohighlight">\(\sqrt{2 \gamma k_B T}\hspace{0.5em}\eta(t)\)</span>: <strong>Stochastic force</strong> (fluctuation), where <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise, which has the following properties:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-32124403-d6df-417e-932c-29fe54b1cb47">
-<span class="eqno">(62)<a class="headerlink" href="#equation-32124403-d6df-417e-932c-29fe54b1cb47" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0ebc71ae-04a3-4f9d-83a2-62284d5bb618">
+<span class="eqno">(67)<a class="headerlink" href="#equation-0ebc71ae-04a3-4f9d-83a2-62284d5bb618" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle \eta(t) \rangle &amp;= 0,\\
 \langle \eta(t) \eta(t') \rangle &amp;= \delta(t-t').
 \end{align}\]</div>
@@ -724,24 +724,24 @@ collisions with surrounding molecules.</p>
 <section id="the-langevin-equation-definition">
 <h3>The Langevin Equation Definition<a class="headerlink" href="#the-langevin-equation-definition" title="Link to this heading">#</a></h3>
 <p>For a free particle of mass <span class="math notranslate nohighlight">\(m\)</span>, the equation of motion is:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aab9bd95-4538-47e3-93f5-b833a36f8354">
-<span class="eqno">(63)<a class="headerlink" href="#equation-aab9bd95-4538-47e3-93f5-b833a36f8354" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-432a1935-a3ae-49ff-bfee-ba70ff43330d">
+<span class="eqno">(68)<a class="headerlink" href="#equation-432a1935-a3ae-49ff-bfee-ba70ff43330d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 m \dot{v}(t) = -m \gamma v(t) + \eta(t)
 \end{equation}\]</div>
 <p>Dividing the entire equation by <span class="math notranslate nohighlight">\(m\)</span>, we eliminate the need for extra constants:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e898cb32-0c2e-4110-b371-294d4c9cc2c2">
-<span class="eqno">(64)<a class="headerlink" href="#equation-e898cb32-0c2e-4110-b371-294d4c9cc2c2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4dac5237-5cc1-4635-a249-b16675bca52d">
+<span class="eqno">(69)<a class="headerlink" href="#equation-4dac5237-5cc1-4635-a249-b16675bca52d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \dot{v}(t) + \gamma v(t) = \frac{\eta(t)}{m}
 \end{equation}\]</div>
 <p>The random force <span class="math notranslate nohighlight">\(\eta(t)\)</span> is Gaussian white noise. The Fluctuation-Dissipation Theorem dictates the following properties:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a53361ff-ba55-46c3-89e9-5e06c5688087">
-<span class="eqno">(65)<a class="headerlink" href="#equation-a53361ff-ba55-46c3-89e9-5e06c5688087" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-04072031-f59c-48c0-a285-bd41e7839786">
+<span class="eqno">(70)<a class="headerlink" href="#equation-04072031-f59c-48c0-a285-bd41e7839786" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle \eta(t) \rangle &amp;= 0,\\
 \langle \eta(t) \eta(t') \rangle &amp;= 2 m \gamma k_B T \delta(t - t')
 \end{align}\]</div>
 <p>For the scaled noise term <span class="math notranslate nohighlight">\(A(t) = \frac{\eta(t)}{m}\)</span>, the autocorrelation simplifies to:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-621ae2b6-9966-4755-b64a-0a220992f27c">
-<span class="eqno">(66)<a class="headerlink" href="#equation-621ae2b6-9966-4755-b64a-0a220992f27c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-8fb17ff1-135b-4073-8825-2051027e3147">
+<span class="eqno">(71)<a class="headerlink" href="#equation-8fb17ff1-135b-4073-8825-2051027e3147" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle A(t) A(t') \rangle = \frac{2 \gamma k_B T}{m} \delta(t - t').
 \end{equation}\]</div>
 </section>
@@ -749,36 +749,36 @@ m \dot{v}(t) = -m \gamma v(t) + \eta(t)
 <section id="solution-for-velocity-v-t">
 <h3>Solution for Velocity <span class="math notranslate nohighlight">\(v(t)\)</span><a class="headerlink" href="#solution-for-velocity-v-t" title="Link to this heading">#</a></h3>
 <p>We start with the first-order linear differential equation:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6343f403-5c3c-432a-925d-33b734de77aa">
-<span class="eqno">(67)<a class="headerlink" href="#equation-6343f403-5c3c-432a-925d-33b734de77aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c8fd5787-f8c9-4bf5-ad45-e8dea5322839">
+<span class="eqno">(72)<a class="headerlink" href="#equation-c8fd5787-f8c9-4bf5-ad45-e8dea5322839" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \dot{v}(t) + \gamma v(t) = A(t).
 \end{equation}\]</div>
 <p>Multiply by the integrating factor <span class="math notranslate nohighlight">\(e^{\gamma t}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bdcce118-719e-4fc8-9fda-878c25781089">
-<span class="eqno">(68)<a class="headerlink" href="#equation-bdcce118-719e-4fc8-9fda-878c25781089" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fca2c35c-9c4c-4298-b4cc-cb0647bdc068">
+<span class="eqno">(73)<a class="headerlink" href="#equation-fca2c35c-9c4c-4298-b4cc-cb0647bdc068" title="Permalink to this equation">#</a></span>\[\begin{equation}
 e^{\gamma t} \dot{v}(t) + \gamma e^{\gamma t} v(t) = e^{\gamma t} A(t).
 \end{equation}\]</div>
 <p>By the product rule, the left side is the exact derivative of <span class="math notranslate nohighlight">\(v(t)e^{\gamma t}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5040e950-5ab4-42bc-9b1d-53b753b9430d">
-<span class="eqno">(69)<a class="headerlink" href="#equation-5040e950-5ab4-42bc-9b1d-53b753b9430d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-88ae662a-d008-44a0-9291-0242b347c937">
+<span class="eqno">(74)<a class="headerlink" href="#equation-88ae662a-d008-44a0-9291-0242b347c937" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d}{dt} \left[ v(t) e^{\gamma t} \right] = e^{\gamma t} A(t).
 \end{equation}\]</div>
 <p>Integrate both sides with respect to time from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(t\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3a7a0b02-dc62-4193-8cdf-eccf1cab6b73">
-<span class="eqno">(70)<a class="headerlink" href="#equation-3a7a0b02-dc62-4193-8cdf-eccf1cab6b73" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c82f837d-0e6a-4c45-b36f-9fa248b1fff8">
+<span class="eqno">(75)<a class="headerlink" href="#equation-c82f837d-0e6a-4c45-b36f-9fa248b1fff8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v(t) e^{\gamma t} - v(0) = \int_0^t e^{\gamma t'} A(t') dt'.
 \end{equation}\]</div>
 <p>Isolating <span class="math notranslate nohighlight">\(v(t)\)</span>, we obtain the <strong>exact solution for the velocity</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-365a40f9-eda6-4ab3-99fd-f8a5d80c9fd9">
-<span class="eqno">(71)<a class="headerlink" href="#equation-365a40f9-eda6-4ab3-99fd-f8a5d80c9fd9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b632038e-f957-4810-a23d-b719a94ec5b5">
+<span class="eqno">(76)<a class="headerlink" href="#equation-b632038e-f957-4810-a23d-b719a94ec5b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v(t) = v_0 e^{-\gamma t} + \int_0^t e^{-\gamma (t - t')} A(t') dt'.
 \end{equation}\]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Ensemble average and integral elimination :
 By taking the ensemble average we eliminate the integral due to the noise properties. In this case, we will have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f7494a86-cb74-4cd2-a2a1-adcab4211307">
-<span class="eqno">(72)<a class="headerlink" href="#equation-f7494a86-cb74-4cd2-a2a1-adcab4211307" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e31c3feb-1f17-4781-8390-4fda68ae6592">
+<span class="eqno">(77)<a class="headerlink" href="#equation-e31c3feb-1f17-4781-8390-4fda68ae6592" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle v(t) \rangle = \langle v_0 \rangle e^{-\gamma t}.
 \end{equation}\]</div>
 </div>
@@ -787,49 +787,49 @@ By taking the ensemble average we eliminate the integral due to the noise proper
 <section id="solution-for-mean-squared-displacement-langle-x-2-t-rangle">
 <h3>Solution for Mean Squared Displacement <span class="math notranslate nohighlight">\(\langle x^2(t) \rangle\)</span><a class="headerlink" href="#solution-for-mean-squared-displacement-langle-x-2-t-rangle" title="Link to this heading">#</a></h3>
 <p>We use Langevin’s trick to solve directly for the variance. Start with the equation of motion in terms of position <span class="math notranslate nohighlight">\(x\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ee7cf026-fb15-4650-89d2-5bfba0cb7769">
-<span class="eqno">(73)<a class="headerlink" href="#equation-ee7cf026-fb15-4650-89d2-5bfba0cb7769" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a3ff2291-8301-41ce-bb9a-852b52d9c5c9">
+<span class="eqno">(78)<a class="headerlink" href="#equation-a3ff2291-8301-41ce-bb9a-852b52d9c5c9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 m \ddot{x} = -m \gamma \dot{x} + \eta(t).
 \end{equation}\]</div>
 <p>Multiply the entire equation by <span class="math notranslate nohighlight">\(x\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ebe5c367-2eb5-4566-9397-55594ddd4525">
-<span class="eqno">(74)<a class="headerlink" href="#equation-ebe5c367-2eb5-4566-9397-55594ddd4525" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7ddef8a8-2ba3-4841-a7c3-37179b3fe20e">
+<span class="eqno">(79)<a class="headerlink" href="#equation-7ddef8a8-2ba3-4841-a7c3-37179b3fe20e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 m x \ddot{x} = -m \gamma x \dot{x} + x \eta(t).
 \end{equation}\]</div>
 <p>Substitute the chain rule identities <span class="math notranslate nohighlight">\(x \dot{x} = \frac{1}{2} \frac{d}{dt}(x^2)\)</span> and <span class="math notranslate nohighlight">\(x \ddot{x} = \frac{1}{2} \frac{d^2}{dt^2}(x^2) - \dot{x}^2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ee58bc71-e50a-4723-8c21-5a5a2f050403">
-<span class="eqno">(75)<a class="headerlink" href="#equation-ee58bc71-e50a-4723-8c21-5a5a2f050403" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-85649453-704c-4b0b-8e46-933402cc8b75">
+<span class="eqno">(80)<a class="headerlink" href="#equation-85649453-704c-4b0b-8e46-933402cc8b75" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{m}{2} \frac{d^2}{dt^2}(x^2) - m \dot{x}^2 = -\frac{m \gamma}{2} \frac{d}{dt}(x^2) + x \eta(t).
 \end{equation}\]</div>
 <p>Take the ensemble average <span class="math notranslate nohighlight">\(\langle ... \rangle\)</span>. The noise and position are uncorrelated (<span class="math notranslate nohighlight">\(\langle x \eta(t) \rangle = 0\)</span>), and by the equipartition theorem, the average kinetic energy is <span class="math notranslate nohighlight">\(\langle m \dot{x}^2 \rangle = k_B T\)</span> in one dimension):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e25571d4-27ba-4e13-9dea-bf594332421b">
-<span class="eqno">(76)<a class="headerlink" href="#equation-e25571d4-27ba-4e13-9dea-bf594332421b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9b16e386-5bcc-4926-bbd7-f742adebac9d">
+<span class="eqno">(81)<a class="headerlink" href="#equation-9b16e386-5bcc-4926-bbd7-f742adebac9d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{m}{2} \frac{d^2}{dt^2}\langle x^2 \rangle - k_B T = -\frac{m \gamma}{2} \frac{d}{dt}\langle x^2 \rangle.
 \end{equation}\]</div>
 <p>Divide by <span class="math notranslate nohighlight">\(m/2\)</span> to clean up the equation, and let <span class="math notranslate nohighlight">\(u(t) = \frac{d}{dt}\langle x^2 \rangle\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b3a748f1-de3c-4e76-91a5-1aeeda9ae4a1">
-<span class="eqno">(77)<a class="headerlink" href="#equation-b3a748f1-de3c-4e76-91a5-1aeeda9ae4a1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2b3c3c3c-2f40-436b-bec7-505d3d2c71b1">
+<span class="eqno">(82)<a class="headerlink" href="#equation-2b3c3c3c-2f40-436b-bec7-505d3d2c71b1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \dot{u}(t) + \gamma u(t) = \frac{2 k_B T}{m}.
 \end{equation}\]</div>
 <p>Multiply by the integrating factor <span class="math notranslate nohighlight">\(e^{\gamma t}\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a4cf2b92-9e63-4b64-9a2b-db45d27afb09">
-<span class="eqno">(78)<a class="headerlink" href="#equation-a4cf2b92-9e63-4b64-9a2b-db45d27afb09" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7b756761-c7f4-4de2-974c-0cd49016928f">
+<span class="eqno">(83)<a class="headerlink" href="#equation-7b756761-c7f4-4de2-974c-0cd49016928f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d}{dt} \left[ u(t) e^{\gamma t} \right] = \frac{2 k_B T}{m} e^{\gamma t}.
 \end{equation}\]</div>
 <p>Integrate from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(t\)</span>. Assuming the particle starts at the origin, the initial variance expansion rate is <span class="math notranslate nohighlight">\(u(0) = 0\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-39bdb5d9-5d79-414c-8e19-6a1276a9c181">
-<span class="eqno">(79)<a class="headerlink" href="#equation-39bdb5d9-5d79-414c-8e19-6a1276a9c181" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7c1fa304-86c5-4e6b-b132-b787f866004b">
+<span class="eqno">(84)<a class="headerlink" href="#equation-7c1fa304-86c5-4e6b-b132-b787f866004b" title="Permalink to this equation">#</a></span>\[\begin{align}
 u(t) e^{\gamma t} &amp;= \frac{2 k_B T}{m \gamma} \left( e^{\gamma t} - 1 \right)\\
 u(t) &amp;= \frac{2 k_B T}{m \gamma} \left( 1 - e^{-\gamma t} \right).
 \end{align}\]</div>
 <p>Finally, integrate <span class="math notranslate nohighlight">\(u(t) = \frac{d}{dt}\langle x^2 \rangle\)</span> from <span class="math notranslate nohighlight">\(0\)</span> to <span class="math notranslate nohighlight">\(t\)</span> to find the MSD:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-849b7846-f814-4341-a121-178b1f26e271">
-<span class="eqno">(80)<a class="headerlink" href="#equation-849b7846-f814-4341-a121-178b1f26e271" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e15cf9e5-22a1-4e9c-87fa-eaa4300612bc">
+<span class="eqno">(85)<a class="headerlink" href="#equation-e15cf9e5-22a1-4e9c-87fa-eaa4300612bc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle x^2(t) \rangle = \int_0^t \frac{2 k_B T}{m \gamma} \left( 1 - e^{-\gamma t'} \right) dt'.
 \end{equation}\]</div>
 <p>This yields the <strong>exact solution for the Mean Squared Displacement</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-88d361c6-c36c-4f7f-ac01-a33602cc7172">
-<span class="eqno">(81)<a class="headerlink" href="#equation-88d361c6-c36c-4f7f-ac01-a33602cc7172" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1bc02498-c39d-4db8-a710-c039d4500812">
+<span class="eqno">(86)<a class="headerlink" href="#equation-1bc02498-c39d-4db8-a710-c039d4500812" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle x^2(t) \rangle = \frac{2 k_B T}{m \gamma} \left[ t - \frac{1}{\gamma} \left( 1 - e^{-\gamma t} \right) \right].
 \end{equation}\]</div>
 </section>
@@ -839,16 +839,16 @@ u(t) &amp;= \frac{2 k_B T}{m \gamma} \left( 1 - e^{-\gamma t} \right).
 <p>We can Taylor expand the exact MSD solution to show the transition between regimes:</p>
 <p><strong>1. Short Times (<span class="math notranslate nohighlight">\(t \ll 1/\gamma\)</span>): The Ballistic Regime</strong>
 Using the expansion <span class="math notranslate nohighlight">\(e^{-\gamma t} \approx 1 - \gamma t + \frac{1}{2}\gamma^2 t^2\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-14497c83-4b3d-4733-9b09-24e914476a15">
-<span class="eqno">(82)<a class="headerlink" href="#equation-14497c83-4b3d-4733-9b09-24e914476a15" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-c6d85015-f119-466c-9682-356b59224efc">
+<span class="eqno">(87)<a class="headerlink" href="#equation-c6d85015-f119-466c-9682-356b59224efc" title="Permalink to this equation">#</a></span>\[\begin{align}
 \langle x^2(t) \rangle &amp;\approx \frac{2 k_B T}{m \gamma} \left[ t - \frac{1}{\gamma} \left( 1 - \left( 1 - \gamma t + \frac{1}{2}\gamma^2 t^2 \right) \right) \right]\\
 \langle x^2(t) \rangle &amp;\approx \frac{k_B T}{m} t^2.
 \end{align}\]</div>
 <p><em>(The particle moves with thermal velocity before friction takes effect).</em></p>
 <p><strong>2. Long Times (<span class="math notranslate nohighlight">\(t \gg 1/\gamma\)</span>): The Diffusive Regime</strong>
 The exponential term <span class="math notranslate nohighlight">\(e^{-\gamma t}\)</span> rapidly decays to zero, leaving:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1de5a724-5d06-4ae5-9260-4625adcd7c23">
-<span class="eqno">(83)<a class="headerlink" href="#equation-1de5a724-5d06-4ae5-9260-4625adcd7c23" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0d0191d8-fb70-4377-a14a-4a02dd59fb44">
+<span class="eqno">(88)<a class="headerlink" href="#equation-0d0191d8-fb70-4377-a14a-4a02dd59fb44" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle x^2(t) \rangle \approx \frac{2 k_B T}{m \gamma} t = 2 D t.
 \end{equation}\]</div>
 <p>Where the Einstein diffusion coefficient is <span class="math notranslate nohighlight">\(D = \frac{k_B T}{m \gamma}\)</span>.
@@ -858,28 +858,28 @@ The exponential term <span class="math notranslate nohighlight">\(e^{-\gamma t}\
 <h3>Velocity Fluctuations and the Role of Noise<a class="headerlink" href="#velocity-fluctuations-and-the-role-of-noise" title="Link to this heading">#</a></h3>
 <p>While the average velocity of the particle decays to zero (<span class="math notranslate nohighlight">\(\langle v(t) \rangle = v_0 e^{-\gamma t}\)</span>), the <em>fluctuations</em> around this average do not. These fluctuations are driven entirely by the random thermal noise.</p>
 <p>To find the velocity variance, we square our exact solution for <span class="math notranslate nohighlight">\(v(t)\)</span> and take the ensemble average:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8228c223-3129-4a09-9989-91a40e3713a3">
-<span class="eqno">(84)<a class="headerlink" href="#equation-8228c223-3129-4a09-9989-91a40e3713a3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f165f6dc-60d2-4467-9ca3-d6e20408ec9e">
+<span class="eqno">(89)<a class="headerlink" href="#equation-f165f6dc-60d2-4467-9ca3-d6e20408ec9e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle v^2(t) \rangle = \left\langle \left( v_0 e^{-\gamma t} + \int_0^t e^{-\gamma (t - t')} A(t') dt' \right)^2 \right\rangle.
 \end{equation}\]</div>
 <p>Expanding this, the cross-term vanishes because the noise has zero mean (<span class="math notranslate nohighlight">\(\langle A(t') \rangle = 0\)</span>):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-04e28a2c-fa3d-4878-a6ca-f67fd1592c08">
-<span class="eqno">(85)<a class="headerlink" href="#equation-04e28a2c-fa3d-4878-a6ca-f67fd1592c08" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0d199620-47e9-4016-a253-8347e728b616">
+<span class="eqno">(90)<a class="headerlink" href="#equation-0d199620-47e9-4016-a253-8347e728b616" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle v^2(t) \rangle = v_0^2 e^{-2\gamma t} + \int_0^t \int_0^t e^{-\gamma (t - t')} e^{-\gamma (t - t'')} \langle A(t') A(t'') \rangle dt' dt''.
 \end{equation}\]</div>
 <p>Now, we substitute the noise autocorrelation <span class="math notranslate nohighlight">\(\langle A(t') A(t'') \rangle = \frac{2 \gamma k_B T}{m} \delta(t' - t'')\)</span>. The Dirac delta function collapses the double integral into a single one (evaluating <span class="math notranslate nohighlight">\(t''\)</span> at <span class="math notranslate nohighlight">\(t'\)</span>):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e919cecb-5515-4740-9daf-d4e21119bc71">
-<span class="eqno">(86)<a class="headerlink" href="#equation-e919cecb-5515-4740-9daf-d4e21119bc71" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9fdb3584-7785-4ff2-a3e0-44e9d6628c82">
+<span class="eqno">(91)<a class="headerlink" href="#equation-9fdb3584-7785-4ff2-a3e0-44e9d6628c82" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle v^2(t) \rangle = v_0^2 e^{-2\gamma t} + \frac{2 \gamma k_B T}{m} \int_0^t e^{-2\gamma (t - t')} dt'.
 \end{equation}\]</div>
 <p>Evaluating the integral:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-80911915-b8e6-4788-9e9f-372aa64afe9d">
-<span class="eqno">(87)<a class="headerlink" href="#equation-80911915-b8e6-4788-9e9f-372aa64afe9d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e624ed94-4f92-4565-84c7-ac9543d08f8d">
+<span class="eqno">(92)<a class="headerlink" href="#equation-e624ed94-4f92-4565-84c7-ac9543d08f8d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_0^t e^{-2\gamma (t - t')} dt' = e^{-2\gamma t} \left[ \frac{e^{2\gamma t'}}{2\gamma} \right]_0^t = \frac{1 - e^{-2\gamma t}}{2\gamma}.
 \end{equation}\]</div>
 <p>Substituting this back yields the exact expression for the velocity variance:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-da897ee2-29db-4a10-9539-3b0591bb32e3">
-<span class="eqno">(88)<a class="headerlink" href="#equation-da897ee2-29db-4a10-9539-3b0591bb32e3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d8045624-8cf6-487c-98e8-277a03d54dba">
+<span class="eqno">(93)<a class="headerlink" href="#equation-d8045624-8cf6-487c-98e8-277a03d54dba" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle v^2(t) \rangle = v_0^2 e^{-2\gamma t} + \frac{k_B T}{m} \left( 1 - e^{-2\gamma t} \right).
 \end{equation}\]</div>
 <p><strong>Physical Interpretation (The Fluctuation-Dissipation Balance):</strong>
@@ -889,8 +889,8 @@ This equation illustrates the competing physical forces:</p>
 <li><p><strong>Fluctuation (Noise):</strong> The second term shows the random kicks of the fluid pumping energy <em>back</em> into the particle.</p></li>
 </ol>
 <p>As <span class="math notranslate nohighlight">\(t \to \infty\)</span>, the transient terms decay and the system reaches thermal equilibrium. The variance perfectly settles at:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c5f59a6e-1a67-446c-900e-cf58d62f2a0a">
-<span class="eqno">(89)<a class="headerlink" href="#equation-c5f59a6e-1a67-446c-900e-cf58d62f2a0a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-33fce51e-5acc-4f23-a7d1-e7b9b1f92f44">
+<span class="eqno">(94)<a class="headerlink" href="#equation-33fce51e-5acc-4f23-a7d1-e7b9b1f92f44" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lim_{t \to \infty} \langle v^2(t) \rangle = \frac{k_B T}{m}.
 \end{equation}\]</div>
 <p>This recovers the <strong>Equipartition Theorem</strong> (<span class="math notranslate nohighlight">\(\frac{1}{2}m\langle v^2 \rangle = \frac{1}{2}k_B T\)</span>). The fact that the <span class="math notranslate nohighlight">\(\gamma\)</span> terms perfectly canceled out to leave exactly <span class="math notranslate nohighlight">\(k_B T/m\)</span> is not a coincidence; it is the direct result of defining the noise variance as <span class="math notranslate nohighlight">\(2m\gamma k_B T\)</span>. This proves that to maintain equilibrium, the amplitude of the noise (fluctuations) and the strength of the drag (dissipation) must be intrinsically linked.</p>
@@ -905,8 +905,8 @@ This equation illustrates the competing physical forces:</p>
 Instead of solving for <span class="math notranslate nohighlight">\(x(t)\)</span> and <span class="math notranslate nohighlight">\(v(t)\)</span> directly, we can derive a deterministic Partial Differential Equation (PDE) for the probability density function <span class="math notranslate nohighlight">\(P(x, v, t)\)</span>. This function describes the probability of finding a particle at position <span class="math notranslate nohighlight">\(x\)</span> with velocity <span class="math notranslate nohighlight">\(v\)</span> at time <span class="math notranslate nohighlight">\(t\)</span>.
 For the Langevin equation, the corresponding Fokker-Planck equation (often called the <strong>Klein-Kramers equation</strong>) is:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-801be99f-adc2-48c3-8202-1233945cf03e">
-<span class="eqno">(90)<a class="headerlink" href="#equation-801be99f-adc2-48c3-8202-1233945cf03e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fc263cb1-b4c5-40b9-93b5-80ec315d3140">
+<span class="eqno">(95)<a class="headerlink" href="#equation-fc263cb1-b4c5-40b9-93b5-80ec315d3140" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial P}{\partial t} = -v \frac{\partial P}{\partial x} + \frac{\partial}{\partial v} \left( \gamma v P + \frac{F_{ext}(x)}{m} P \right) + \frac{\gamma k_B T}{m} \frac{\partial^2 P}{\partial v^2}
 \end{equation}\]</div>
 <p>Here, the noise translates into a “diffusion” term in velocity space (<span class="math notranslate nohighlight">\(\dfrac{\partial^2 P}{\partial v^2}\)</span>), while the deterministic forces map to drift terms.</p>
@@ -914,8 +914,8 @@ For the Langevin equation, the corresponding Fokker-Planck equation (often calle
 <li><p><strong>The Overdamped Limit (Smoluchowski Equation):</strong>
 If the friction is very high (<span class="math notranslate nohighlight">\(\gamma \to \infty\)</span>) or the mass is very small (like biological macromolecules in water), the particle’s momentum relaxes almost instantaneously. The velocity is essentially slaved to the forces, and inertia (<span class="math notranslate nohighlight">\(m\dot{v}\)</span>) can be neglected. By adiabatically eliminating the velocity from the Kramers equation, we obtain the <strong>Smoluchowski equation</strong>, which operates purely in position space:</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-4e7dc758-b8e8-4afb-977a-cf3a94ff515a">
-<span class="eqno">(91)<a class="headerlink" href="#equation-4e7dc758-b8e8-4afb-977a-cf3a94ff515a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-48409444-641f-49e4-871a-4c462542d586">
+<span class="eqno">(96)<a class="headerlink" href="#equation-48409444-641f-49e4-871a-4c462542d586" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial P(x,t)}{\partial t} = \frac{\partial}{\partial x} \left( \frac{-F_{ext}(x)}{m\gamma} P(x,t) + D \frac{\partial P(x,t)}{\partial x} \right)
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(D = \dfrac{k_B T}{m\gamma}\)</span>.</p>
@@ -979,8 +979,8 @@ If the friction is very high (<span class="math notranslate nohighlight">\(\gamm
 <section id="a-the-baseline-euler-maruyama">
 <h3>A. The Baseline: Euler-Maruyama<a class="headerlink" href="#a-the-baseline-euler-maruyama" title="Link to this heading">#</a></h3>
 <p>This is the stochastic version of the Forward Euler method:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f1ab7025-0878-408c-88bf-e4a80ef6f1d2">
-<span class="eqno">(92)<a class="headerlink" href="#equation-f1ab7025-0878-408c-88bf-e4a80ef6f1d2" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-dca1039e-5dbe-4dfa-aa09-4faabe20a6bd">
+<span class="eqno">(97)<a class="headerlink" href="#equation-dca1039e-5dbe-4dfa-aa09-4faabe20a6bd" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1} &amp;= v_n + \frac{F_n}{m}\Delta t - \frac{\gamma}{m} v_n \Delta t + \sqrt{\frac{2\gamma k_B T \Delta t}{m^2}} R_n,\\
 x_{n+1} &amp;= x_n + v_n \Delta t,
 \end{align}\]</div>
@@ -1174,8 +1174,8 @@ It defines a discrete-time engine where the friction and noise are analytically 
 <section id="the-equipartition-theorem">
 <h3>The Equipartition Theorem<a class="headerlink" href="#the-equipartition-theorem" title="Link to this heading">#</a></h3>
 <p>A key “calibration” test is to check if the simulation respects the <strong>Equipartition Theorem</strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-13d27e72-88fa-4673-af2e-9738bf8ae6dd">
-<span class="eqno">(93)<a class="headerlink" href="#equation-13d27e72-88fa-4673-af2e-9738bf8ae6dd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d61c05c9-7a63-4764-9073-8965df2d00c3">
+<span class="eqno">(98)<a class="headerlink" href="#equation-d61c05c9-7a63-4764-9073-8965df2d00c3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \langle \frac{1}{2} m v^2 \rangle = \frac{1}{2} k_B T
 \end{equation}\]</div>
 <p>(in 1D).</p>
@@ -1297,8 +1297,8 @@ Do this for both integration schemes.</p></li>
 <section id="bbk-integrator-brungerbrookskarplus">
 <h3>BBK Integrator (Brünger–Brooks–Karplus)<a class="headerlink" href="#bbk-integrator-brungerbrookskarplus" title="Link to this heading">#</a></h3>
 <p>Implement and test the BBK integrator</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b395d887-39fb-4413-a66b-2e3b119bbe13">
-<span class="eqno">(94)<a class="headerlink" href="#equation-b395d887-39fb-4413-a66b-2e3b119bbe13" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2be2fa4d-fdb5-4545-9bb7-3c8df985ee29">
+<span class="eqno">(99)<a class="headerlink" href="#equation-2be2fa4d-fdb5-4545-9bb7-3c8df985ee29" title="Permalink to this equation">#</a></span>\[\begin{align}
 v_{n+1/2} &amp;= \frac{(1 - \gamma\Delta t / 2)v_n + \frac{\Delta t}{2m}F_n + R_n}{1 + \gamma\Delta t / 2},\\
 x_{n+1} &amp;= x_n + v_{n+1/2}\Delta t .
 \end{align}\]</div>
@@ -1343,8 +1343,8 @@ Use the following potential: $<span class="math notranslate nohighlight">\(U(x) 
 <section id="time-correlation-function">
 <h3>Time correlation Function<a class="headerlink" href="#time-correlation-function" title="Link to this heading">#</a></h3>
 <p>Compute</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d961791e-14d3-423d-92c3-e6f979fd06bb">
-<span class="eqno">(95)<a class="headerlink" href="#equation-d961791e-14d3-423d-92c3-e6f979fd06bb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-80e8fe0a-8c15-4d06-964f-2f767b5e4ed1">
+<span class="eqno">(100)<a class="headerlink" href="#equation-80e8fe0a-8c15-4d06-964f-2f767b5e4ed1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C_v(t) = \langle v(0) v(t) \rangle,
 \end{equation}\]</div>
 <p>and check if it decays exponentially, and the relationship with the exponential constant and the physicl parameters.</p>
