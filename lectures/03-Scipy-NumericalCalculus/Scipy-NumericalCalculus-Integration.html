@@ -580,6 +580,7 @@
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-integration">Monte Carlo integration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliptic-integral-fo-the-first-kind">Eliptic integral fo the first kind</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-tabular-data">Integrating tabular data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difraction-limit-of-a-telescope-newman-5-4">Difraction limit of a telescope (Newman, 5.4)</a></li>
@@ -608,6 +609,68 @@
 <li><p>Computational Physics; Landau, Paez, Bordeianu</p></li>
 <li><p>Heath, scientific computing</p></li>
 </ul>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># RUN ME FOR EMBEDING VIDEOS AND URLS</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span><span class="p">,</span> <span class="n">parse_qs</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Convert any YouTube URL to embed format."""</span>
+    <span class="n">parsed</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">parsed</span><span class="o">.</span><span class="n">netloc</span> <span class="o">==</span> <span class="s2">"youtu.be"</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s2">"shorts"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/shorts/"</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">elif</span> <span class="s2">"embed"</span> <span class="ow">in</span> <span class="n">parsed</span><span class="o">.</span><span class="n">path</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">url</span>  <span class="c1"># already embed format, do nothing</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">vid</span> <span class="o">=</span> <span class="n">parse_qs</span><span class="p">(</span><span class="n">parsed</span><span class="o">.</span><span class="n">query</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"v"</span><span class="p">,</span> <span class="p">[</span><span class="kc">None</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"https://www.youtube.com/embed/</span><span class="si">{</span><span class="n">vid</span><span class="si">}</span><span class="s2">"</span> <span class="k">if</span> <span class="n">vid</span> <span class="k">else</span> <span class="n">url</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">embed</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"90%"</span><span class="p">,</span> <span class="n">aspect</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">9</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="s2">"youtube.com"</span> <span class="ow">in</span> <span class="n">url</span> <span class="ow">or</span> <span class="s2">"youtu.be"</span> <span class="ow">in</span> <span class="n">url</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="n">youtube_embed_url</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">aspect</span>
+    <span class="n">padding</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">width</span><span class="o">.</span><span class="n">strip</span><span class="p">(</span><span class="s2">"%"</span><span class="p">))</span> <span class="o">*</span> <span class="n">h</span> <span class="o">/</span> <span class="n">w</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">&lt;div style="display:flex; flex-direction:column; align-items:center; width:100%;"&gt;</span>
+<span class="s1">  &lt;div style="position:relative; width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; padding-bottom:</span><span class="si">{</span><span class="n">padding</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">%; height:0; overflow:hidden;"&gt;</span>
+<span class="s1">    &lt;iframe src="</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s1">"</span>
+<span class="s1">      style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"</span>
+<span class="s1">      allowfullscreen title="</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">"&gt;</span>
+<span class="s1">    &lt;/iframe&gt;</span>
+<span class="s1">  &lt;/div&gt;</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">"&lt;p style='font-style:italic; margin-top:0.4em;'&gt;"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&lt;/p&gt;"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;'''</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">base64</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">embed_html_file</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">caption</span><span class="o">=</span><span class="s2">""</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="s2">"100%"</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s2">"800px"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Embed a local standalone HTML file directly into the notebook output</span>
+<span class="sd">    (no external file dependency at build/render time)."""</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">"utf-8"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="n">html_content</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="n">b64</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">b64encode</span><span class="p">(</span><span class="n">html_content</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">"utf-8"</span><span class="p">))</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">"ascii"</span><span class="p">)</span>
+    <span class="n">src</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"data:text/html;base64,</span><span class="si">{</span><span class="n">b64</span><span class="si">}</span><span class="s2">"</span>
+    <span class="k">return</span> <span class="n">HTML</span><span class="p">(</span><span class="sa">f</span><span class="s1">'''</span>
+<span class="s1">&lt;div style="display:flex; flex-direction:column; align-items:center; width:100%;"&gt;</span>
+<span class="s1">  &lt;iframe src="</span><span class="si">{</span><span class="n">src</span><span class="si">}</span><span class="s1">"</span>
+<span class="s1">    style="width:</span><span class="si">{</span><span class="n">width</span><span class="si">}</span><span class="s1">; height:</span><span class="si">{</span><span class="n">height</span><span class="si">}</span><span class="s1">; border:0;"</span>
+<span class="s1">    allowfullscreen title="</span><span class="si">{</span><span class="n">caption</span><span class="si">}</span><span class="s1">"&gt;</span>
+<span class="s1">  &lt;/iframe&gt;</span>
+<span class="s1">  </span><span class="si">{</span><span class="s2">"&lt;p style='font-style:italic; margin-top:0.4em;'&gt;"</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s2">"&lt;/p&gt;"</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">caption</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s2">""</span><span class="si">}</span>
+<span class="s1">&lt;/div&gt;'''</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</details>
+</div>
 <section id="introduction-to-scipy">
 <h2>Introduction to scipy<a class="headerlink" href="#introduction-to-scipy" title="Link to this heading">#</a></h2>
 <p>The SciPy framework builds on top of the low-level NumPy framework for multidimensional arrays, and provides a large number of higher-level scientific algorithms. Some of the topics that SciPy covers are:</p>
@@ -682,8 +745,6 @@ where \)</span>x_k = x_0 + k \Delta x<span class="math notranslate nohighlight">
     <span class="n">xk</span><span class="p">,</span> <span class="n">dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">npoints</span><span class="p">,</span> <span class="n">retstep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">dx</span><span class="o">*</span><span class="p">(</span><span class="mf">0.5</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="n">f</span><span class="p">(</span><span class="n">xk</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
     <span class="k">return</span> <span class="n">result</span>
-
-<span class="n">trapezoid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">)</span> <span class="c1"># magic to allow to receive vectorized limits</span>
 </pre></div>
 </div>
 </div>
@@ -693,7 +754,6 @@ where \)</span>x_k = x_0 + k \Delta x<span class="math notranslate nohighlight">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10000000</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Check , two limits for two integrals</span>
 </pre></div>
 </div>
 </div>
@@ -701,7 +761,25 @@ where \)</span>x_k = x_0 + k \Delta x<span class="math notranslate nohighlight">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.3350000000000001
 0.33333349999999995
 0.333333333333335
-[0.335 0.   ]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trapezoid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">)</span> <span class="c1"># magic to allow to receive vectorized limits</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Check , two limits for two integrals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.335 0.   ]
 </pre></div>
 </div>
 </div>
@@ -738,8 +816,9 @@ Python lambdas are little, anonymous functions, subject to a more restrictive bu
 </section>
 <section id="exercise">
 <h3><strong>Exercise</strong><a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
-<div class="amsmath math notranslate nohighlight" id="equation-c2568a98-4f95-4ce6-8cb6-a018b80a6ea1">
-<span class="eqno">(8)<a class="headerlink" href="#equation-c2568a98-4f95-4ce6-8cb6-a018b80a6ea1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<p>Compute the following function as function of <span class="math notranslate nohighlight">\(x\)</span>, but explore the relative error (compared with the err function) for different number of bins. In the example, notice that <span class="math notranslate nohighlight">\(\Delta x\)</span> represents the partitions for <span class="math notranslate nohighlight">\(f(x)\)</span>, which is different from the partition used to compute the integral</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bbd4dc21-4dc4-4107-ac3a-e366af202134">
+<span class="eqno">(8)<a class="headerlink" href="#equation-bbd4dc21-4dc4-4107-ac3a-e366af202134" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(x \in [0, 10]\)</span>, <span class="math notranslate nohighlight">\(\Delta x = 0.1\)</span></p>
@@ -754,10 +833,17 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">compute_integral_plot</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">nbins_integral</span><span class="p">,</span> <span class="n">algname</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">compute_integral_plot</span><span class="p">(</span><span class="n">alg</span><span class="p">,</span> <span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">,</span> <span class="n">deltax</span><span class="p">,</span> <span class="n">algname</span><span class="p">):</span>
     <span class="o">%</span><span class="k">matplotlib</span> inline
-    <span class="c1"># YOUR CODE HERE</span>
-    <span class="k">pass</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">nbins</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]:</span>
+        <span class="c1"># YOUR CODE HERE</span>
+        <span class="k">pass</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">algname</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s2">"log"</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"x"</span><span class="p">)</span>
     
 </pre></div>
 </div>
@@ -767,9 +853,16 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#print(trapezoid(lambda x: 2*np.exp(-x*x)/np.sqrt(np.pi), 0, 5, 100))</span>
 <span class="c1">#print(trapezoid(fun, 0, 5, 100))</span>
-<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">"Trapezoid"</span><span class="p">)</span>
+<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">trapezoid</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">"Trapezoid"</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2673/3900205924.py:16: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  ax.legend()
+</pre></div>
+</div>
+<img alt="../../_images/6011fc211c603410f2944d5406369edc9289165c956e0162660efd7711801d08.png" src="../../_images/6011fc211c603410f2944d5406369edc9289165c956e0162660efd7711801d08.png" />
 </div>
 </div>
 </section>
@@ -778,8 +871,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <p>In this case, the method uses three discrete points and approximate the function as a parabola (second order polynomial), to improve the numerical integral computation. See: <a class="reference external" href="https://en.wikipedia.org/wiki/Simpson%27s_rule">https://en.wikipedia.org/wiki/Simpson’s_rule</a></p>
 <div class="pst-scrollable-table-container"><table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p><a class="reference internal" href="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/440px-Simpsons_method_illustration.svg.png"><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/440px-Simpsons_method_illustration.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/440px-Simpsons_method_illustration.svg.png" style="width: 300px;" /></a></p></th>
-<th class="head"><p><img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Simpsonsrule2.gif/440px-Simpsonsrule2.gif" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Simpsonsrule2.gif/440px-Simpsonsrule2.gif" /></p></th>
+<tr class="row-odd"><th class="head"><p><a class="reference internal" href="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/500px-Simpsons_method_illustration.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail"><img alt="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/500px-Simpsons_method_illustration.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ca/Simpsons_method_illustration.svg/500px-Simpsons_method_illustration.svg.png?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail" style="width: 300px;" /></a></p></th>
+<th class="head"><p><img alt="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Simpsonsrule2.gif/500px-Simpsonsrule2.gif?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail" src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/67/Simpsonsrule2.gif/500px-Simpsonsrule2.gif?utm_source=en.wikipedia.org&amp;utm_campaign=parser&amp;utm_content=thumbnail" /></p></th>
 </tr>
 </thead>
 <tbody>
@@ -790,8 +883,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </table>
 </div>
 <p>Now you compute the integral as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d76f7890-f2e4-4c29-95c8-00edb94cdafd">
-<span class="eqno">(9)<a class="headerlink" href="#equation-d76f7890-f2e4-4c29-95c8-00edb94cdafd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-321e8e5d-16b5-497c-9cd0-3118ae22d963">
+<span class="eqno">(9)<a class="headerlink" href="#equation-321e8e5d-16b5-497c-9cd0-3118ae22d963" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_a^b f(x) dx \simeq \frac{\Delta x}{3}\left( f(x_0) + 4 \sum_{k=1}^{N/2} f(x_{2k-1}) + 2\sum_{k=1}^{N/2-1} f(x_{2k}) + f(x_N)\right) + O(N^{-3}).
 \end{equation}\]</div>
 <p>Notice that <span class="math notranslate nohighlight">\(N\)</span> must be even.</p>
@@ -812,8 +905,6 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
     <span class="c1"># YOUR CODE HERE</span>
     <span class="k">pass</span>
     <span class="k">return</span> <span class="n">result</span>
-
-<span class="n">simpson</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">simpson</span><span class="p">)</span> <span class="c1"># magic to allow to receive vectorized limits</span>
 </pre></div>
 </div>
 </div>
@@ -821,46 +912,16 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Check , two limits for two integrals</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Check , two limits for two integrals</span>
 
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2518,</span> in <span class="ni">vectorize.__call__</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2515</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_init_stage_2</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2516</span>     <span class="k">return</span> <span class="bp">self</span>
-<span class="ne">-&gt; </span><span class="mi">2518</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_as_normal</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2511,</span> in <span class="ni">vectorize._call_as_normal</span><span class="nt">(self, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2508</span>     <span class="n">vargs</span> <span class="o">=</span> <span class="p">[</span><span class="n">args</span><span class="p">[</span><span class="n">_i</span><span class="p">]</span> <span class="k">for</span> <span class="n">_i</span> <span class="ow">in</span> <span class="n">inds</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">2509</span>     <span class="n">vargs</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">kwargs</span><span class="p">[</span><span class="n">_n</span><span class="p">]</span> <span class="k">for</span> <span class="n">_n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">])</span>
-<span class="ne">-&gt; </span><span class="mi">2511</span> <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_vectorize_call</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">vargs</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2596,</span> in <span class="ni">vectorize._vectorize_call</span><span class="nt">(self, func, args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2594</span>     <span class="n">res</span> <span class="o">=</span> <span class="n">func</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">2595</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">2596</span>     <span class="n">ufunc</span><span class="p">,</span> <span class="n">otypes</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_ufunc_and_otypes</span><span class="p">(</span><span class="n">func</span><span class="o">=</span><span class="n">func</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2597</span>     <span class="c1"># gh-29196: `dtype=object` should eventually be removed</span>
-<span class="g g-Whitespace">   </span><span class="mi">2598</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="n">asanyarray</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.16/x64/lib/python3.11/site-packages/numpy/lib/_function_base_impl.py:2556,</span> in <span class="ni">vectorize._get_ufunc_and_otypes</span><span class="nt">(self, func, args)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2552</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">'cannot call `vectorize` on size 0 inputs '</span>
-<span class="g g-Whitespace">   </span><span class="mi">2553</span>                      <span class="s1">'unless `otypes` is set'</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2555</span> <span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">arg</span><span class="o">.</span><span class="n">flat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">]</span>
-<span class="ne">-&gt; </span><span class="mi">2556</span> <span class="n">outputs</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">inputs</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2558</span> <span class="c1"># Performance note: profiling indicates that -- for simple</span>
-<span class="g g-Whitespace">   </span><span class="mi">2559</span> <span class="c1"># functions at least -- this wrapping can almost double the</span>
-<span class="g g-Whitespace">   </span><span class="mi">2560</span> <span class="c1"># execution time.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2561</span> <span class="c1"># Hence we make it optional.</span>
-<span class="g g-Whitespace">   </span><span class="mi">2562</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
-
-<span class="nn">Cell In[7], line 14,</span> in <span class="ni">simpson</span><span class="nt">(f, a, b, n)</span>
+<span class="nn">Cell In[10], line 14,</span> in <span class="ni">simpson</span><span class="nt">(f, a, b, n)</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">if</span> <span class="n">n</span><span class="o">%</span><span class="k">2</span> != 0:
 <span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="n">npoints</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="c1"># YOUR CODE HERE</span>
@@ -874,8 +935,16 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">simpson</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vectorize</span><span class="p">(</span><span class="n">simpson</span><span class="p">)</span> <span class="c1"># magic to allow to receive vectorized limits</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">simpson</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">square</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Check , two limits for two integrals</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let's plot the same as for the trapezoidal rule</span>
-<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">simpson</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="s2">"Simpson"</span><span class="p">)</span>
+<span class="n">compute_integral_plot</span><span class="p">(</span><span class="n">simpson</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="s2">"Simpson"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -908,7 +977,7 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Indefinite integral</span>
-<span class="n">val</span><span class="p">,</span> <span class="n">abserr</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">Inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">Inf</span><span class="p">)</span>
+<span class="n">val</span><span class="p">,</span> <span class="n">abserr</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"numerical  = </span><span class="si">{</span><span class="n">val</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">abserr</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"analytical = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
@@ -938,11 +1007,15 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <section id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 </section>
+<section id="monte-carlo-integration">
+<h2>Monte Carlo integration<a class="headerlink" href="#monte-carlo-integration" title="Link to this heading">#</a></h2>
+<p>Compute pi using MonteCarlo: Throw random points into the unit square, and count how many are inside the unit crcle. The ratio allows to compute <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+</section>
 <section id="eliptic-integral-fo-the-first-kind">
 <h2>Eliptic integral fo the first kind<a class="headerlink" href="#eliptic-integral-fo-the-first-kind" title="Link to this heading">#</a></h2>
 <p>The period of a simple pendulum can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-773c7eba-4fc3-4236-bd16-f8afe4c1110a">
-<span class="eqno">(10)<a class="headerlink" href="#equation-773c7eba-4fc3-4236-bd16-f8afe4c1110a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7a69acb3-9321-4769-844f-63854d752b72">
+<span class="eqno">(10)<a class="headerlink" href="#equation-7a69acb3-9321-4769-844f-63854d752b72" title="Permalink to this equation">#</a></span>\[\begin{equation}
 K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 \end{equation}\]</div>
 <p>Plot the period as a function of <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span>. Use, at least, 100 values for <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -996,13 +1069,13 @@ K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 <section id="difraction-limit-of-a-telescope-newman-5-4">
 <h3>Difraction limit of a telescope (Newman, 5.4)<a class="headerlink" href="#difraction-limit-of-a-telescope-newman-5-4" title="Link to this heading">#</a></h3>
 <p>When light from a distant star passes through the circular aperture of a telescope, you get a difraction pattern which can be described as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dd02ca2e-4c94-4aa3-b231-dd4b5fa7bc54">
-<span class="eqno">(11)<a class="headerlink" href="#equation-dd02ca2e-4c94-4aa3-b231-dd4b5fa7bc54" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-eb8c4460-9393-4385-a2d1-4e7c3a0eebb6">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eb8c4460-9393-4385-a2d1-4e7c3a0eebb6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I(r) = \left(\frac{J_1(kr)}{kr} \right)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> is the distance from the center, <span class="math notranslate nohighlight">\(k=2\pi/\lambda\)</span>, with <span class="math notranslate nohighlight">\(\lambda\)</span> is the wavelenght, and <span class="math notranslate nohighlight">\(J_1(x)\)</span> is a Bessel function. The Bessel functions can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-49b009b0-2fd6-4e25-bb16-d3bd298a1763">
-<span class="eqno">(12)<a class="headerlink" href="#equation-49b009b0-2fd6-4e25-bb16-d3bd298a1763" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3b2bfb2b-56a7-44a1-bcbc-f09b075aeb17">
+<span class="eqno">(12)<a class="headerlink" href="#equation-3b2bfb2b-56a7-44a1-bcbc-f09b075aeb17" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(m\)</span> is a positive integer and <span class="math notranslate nohighlight">\(x \ge 0\)</span>. Of course you can use <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code> to compute the Bessel function, but here you will use the quad routine to create a plot of <span class="math notranslate nohighlight">\(J_0, J_1, J_2\)</span> for <span class="math notranslate nohighlight">\(x \in [0, 20]\)</span>.</p>
@@ -1019,8 +1092,8 @@ J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 <section id="heat-capacity-of-a-solid-newman-5-9">
 <h3>Heat capacity of a solid (Newman, 5.9)<a class="headerlink" href="#heat-capacity-of-a-solid-newman-5-9" title="Link to this heading">#</a></h3>
 <p>Debye’s theory of solids gives the heat capacity, at temperature <span class="math notranslate nohighlight">\(T\)</span>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7428ce8a-5e03-4124-9dec-ebab7f85ee1e">
-<span class="eqno">(13)<a class="headerlink" href="#equation-7428ce8a-5e03-4124-9dec-ebab7f85ee1e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-71b80db3-8d77-4215-8e1e-61e7e7b9973d">
+<span class="eqno">(13)<a class="headerlink" href="#equation-71b80db3-8d77-4215-8e1e-61e7e7b9973d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \frac{x^4 e^x}{(e^x-1)^2}dx, 
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(V\)</span> is the solid volume, <span class="math notranslate nohighlight">\(\rho\)</span> the atom nuber density, <span class="math notranslate nohighlight">\(k_B\)</span> the Boltzmann’s constant, and <span class="math notranslate nohighlight">\(\theta_D\)</span> is the Debye temperature.</p>
@@ -1049,8 +1122,8 @@ C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \fra
 <section id="distance-covered-by-parachutist-chapra">
 <h3>Distance covered by parachutist (Chapra)<a class="headerlink" href="#distance-covered-by-parachutist-chapra" title="Link to this heading">#</a></h3>
 <p>The vertical velocity of a parachutist in free fall and under linear drag can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eada4dd4-dd22-4004-b61b-84f48c8e6955">
-<span class="eqno">(14)<a class="headerlink" href="#equation-eada4dd4-dd22-4004-b61b-84f48c8e6955" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-14bc91de-f39d-4588-b481-00b7ce1d5a0f">
+<span class="eqno">(14)<a class="headerlink" href="#equation-14bc91de-f39d-4588-b481-00b7ce1d5a0f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t\)</span> is the time, <span class="math notranslate nohighlight">\(g = 9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span> (on earth), <span class="math notranslate nohighlight">\(m\)</span> is the mass in kg, and <span class="math notranslate nohighlight">\(c\)</span> is the linear drag coeffcient, in kg/s . Compute the distance travelled by the parachutist in the first 8 seconds, given <span class="math notranslate nohighlight">\(m=80\)</span> kg and <span class="math notranslate nohighlight">\(c = 10\)</span> kg/s. Plot the distance for several mass values <span class="math notranslate nohighlight">\(m\in [50, 120]\)</span> kg.</p>
@@ -1146,6 +1219,7 @@ v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-integration">Monte Carlo integration</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#eliptic-integral-fo-the-first-kind">Eliptic integral fo the first kind</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#integrating-tabular-data">Integrating tabular data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#difraction-limit-of-a-telescope-newman-5-4">Difraction limit of a telescope (Newman, 5.4)</a></li>
