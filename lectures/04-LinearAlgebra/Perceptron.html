@@ -611,8 +611,8 @@
 <p>To understand better the training, let’s show explicitly the weights
 <img alt="weightds" src="../../_images/weights.png" /></p>
 <p>Here <span class="math notranslate nohighlight">\(\phi\)</span> is called the activation function, and there are several proposals to it. We will use a sigmoid function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f49f5e89-d77f-4515-aa25-c86566bb76ab">
-<span class="eqno">(17)<a class="headerlink" href="#equation-f49f5e89-d77f-4515-aa25-c86566bb76ab" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-16584581-2ba3-47da-aa91-f59b8ca5ceb5">
+<span class="eqno">(17)<a class="headerlink" href="#equation-16584581-2ba3-47da-aa91-f59b8ca5ceb5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x) = \dfrac{1}{1+\exp(-x)},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x = \sum x_i w_i\)</span>.</p>
@@ -753,6 +753,10 @@ Results after one step training:
 <li><p>According to the error, adjust the weights</p></li>
 <li><p>Repeat this many times, hopefully getting convergence , and also being able to apply our nn to new cases not used already.</p></li>
 </ul>
+<div class="amsmath math notranslate nohighlight" id="equation-8db3ea98-1946-44fe-8ae1-77c39edfc13e">
+<span class="eqno">(18)<a class="headerlink" href="#equation-8db3ea98-1946-44fe-8ae1-77c39edfc13e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\omega ' = \omega - \alpha \frac{\partial \mathcal{L}}{\partial \omega}
+\end{equation}\]</div>
 <p>But how to adjust the weights? There are several techniques based on the actual error <span class="math notranslate nohighlight">\(\Delta\)</span>. Here we will use error weighted derivative. Given the form of the sigmoid function, this increases the adjust if the derivative is larger, and viceversa. It can be expressed as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -783,7 +787,7 @@ Results after one step training:
         <span class="n">errors</span> <span class="o">=</span> <span class="n">training_outputs</span> <span class="o">-</span> <span class="n">outputs</span>
         <span class="n">deltaw</span> <span class="o">=</span> <span class="n">errors</span><span class="o">*</span><span class="n">sigmoid_prime</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
         <span class="n">deltaw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">input_layer</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">deltaw</span><span class="p">)</span>
-        <span class="n">w</span> <span class="o">+=</span> <span class="n">deltaw</span>
+        <span class="n">w</span> <span class="o">+=</span> <span class="n">deltaw</span> <span class="c1"># alpha = 1</span>
         <span class="c1"># Save errors for plotting later</span>
         <span class="n">errors_data</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">errors</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,))</span>
     <span class="k">return</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">w</span>
@@ -803,7 +807,7 @@ Results after one step training:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NITER</span> <span class="o">=</span> <span class="mi">50000</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NITER</span> <span class="o">=</span> <span class="mi">500000</span>
 <span class="n">errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">NITER</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">outputs</span><span class="p">,</span> <span class="n">weights</span> <span class="o">=</span> <span class="n">train_nn</span><span class="p">(</span><span class="n">inputs_t</span><span class="p">,</span> <span class="n">outputs_t</span><span class="p">,</span> <span class="n">weights</span><span class="p">,</span> <span class="n">NITER</span><span class="p">,</span> <span class="n">errors</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Training outputs:"</span><span class="p">)</span>
@@ -821,20 +825,21 @@ Results after one step training:
  [1]
  [0]]
 Results after training:
-[[0.0042779 ]
- [0.99650925]
- [0.99715469]
- [0.00348742]]
-[[11.30926129]
- [-0.20509237]
- [-5.45001623]]
+[[0.00134514]
+ [0.99890191]
+ [0.99910391]
+ [0.00109775]]
+[[13.62648646]
+ [-0.20348866]
+ [-6.60991108]]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">NITER</span><span class="p">),</span> <span class="n">errors</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">"Epoch"</span><span class="p">)</span>
 <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">"Errors"</span><span class="p">)</span>
@@ -847,7 +852,7 @@ Results after training:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0, 'Epoch')
 </pre></div>
 </div>
-<img alt="../../_images/d67df3d629ea078513071d02fb99acfa68f09f3ac0c4d7bed8dbb251f0f1dedb.png" src="../../_images/d67df3d629ea078513071d02fb99acfa68f09f3ac0c4d7bed8dbb251f0f1dedb.png" />
+<img alt="../../_images/191875deaabbe09cdb9789553f257bf5baaeb412d843b2f9e8d40bc6269a3d5f.png" src="../../_images/191875deaabbe09cdb9789553f257bf5baaeb412d843b2f9e8d40bc6269a3d5f.png" />
 </div>
 </div>
 <p>It seems that our network is very well trained, But how does it perform with a new input? let’s check with <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">0,</span> <span class="pre">0]</span></code></p>
@@ -864,7 +869,7 @@ Results after training:
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999877412862083
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9999987919313934
 </pre></div>
 </div>
 </div>
