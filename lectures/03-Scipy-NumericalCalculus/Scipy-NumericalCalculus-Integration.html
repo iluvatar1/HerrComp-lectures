@@ -817,8 +817,8 @@ Python lambdas are little, anonymous functions, subject to a more restrictive bu
 <section id="exercise">
 <h3><strong>Exercise</strong><a class="headerlink" href="#exercise" title="Link to this heading">#</a></h3>
 <p>Compute the following function as function of <span class="math notranslate nohighlight">\(x\)</span>, but explore the relative error (compared with the err function) for different number of bins. In the example, notice that <span class="math notranslate nohighlight">\(\Delta x\)</span> represents the partitions for <span class="math notranslate nohighlight">\(f(x)\)</span>, which is different from the partition used to compute the integral</p>
-<div class="amsmath math notranslate nohighlight" id="equation-df481f51-c27c-41dc-bd88-2091a1a5dc5a">
-<span class="eqno">(8)<a class="headerlink" href="#equation-df481f51-c27c-41dc-bd88-2091a1a5dc5a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d3b5a127-82f7-45b1-b1c2-c1cb5f2db886">
+<span class="eqno">(8)<a class="headerlink" href="#equation-d3b5a127-82f7-45b1-b1c2-c1cb5f2db886" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 \end{equation}\]</div>
 <p><span class="math notranslate nohighlight">\(x \in [0, 10]\)</span>, <span class="math notranslate nohighlight">\(\Delta x = 0.1\)</span></p>
@@ -858,7 +858,7 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2809/3900205924.py:16: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2765/3900205924.py:16: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
   ax.legend()
 </pre></div>
 </div>
@@ -883,8 +883,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 </table>
 </div>
 <p>Now you compute the integral as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c83adc10-3bb9-4e9a-8266-3a1caca6d9b0">
-<span class="eqno">(9)<a class="headerlink" href="#equation-c83adc10-3bb9-4e9a-8266-3a1caca6d9b0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e289d004-9ec5-445d-af8e-c2b6b7aca29e">
+<span class="eqno">(9)<a class="headerlink" href="#equation-e289d004-9ec5-445d-af8e-c2b6b7aca29e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \int_a^b f(x) dx \simeq \frac{\Delta x}{3}\left( f(x_0) + 4 \sum_{k=1}^{N/2} f(x_{2k-1}) + 2\sum_{k=1}^{N/2-1} f(x_{2k}) + f(x_N)\right) + O(N^{-3}).
 \end{equation}\]</div>
 <p>Notice that <span class="math notranslate nohighlight">\(N\)</span> must be even.</p>
@@ -1014,8 +1014,8 @@ f(x) = \frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2} dt
 <section id="eliptic-integral-fo-the-first-kind">
 <h2>Eliptic integral fo the first kind<a class="headerlink" href="#eliptic-integral-fo-the-first-kind" title="Link to this heading">#</a></h2>
 <p>The period of a simple pendulum can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-48514fa9-b082-4d08-90ee-61e1ad459731">
-<span class="eqno">(10)<a class="headerlink" href="#equation-48514fa9-b082-4d08-90ee-61e1ad459731" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b77c2f7d-b1ab-419f-9646-a4dcc7a7cc68">
+<span class="eqno">(10)<a class="headerlink" href="#equation-b77c2f7d-b1ab-419f-9646-a4dcc7a7cc68" title="Permalink to this equation">#</a></span>\[\begin{equation}
 K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 \end{equation}\]</div>
 <p>Plot the period as a function of <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span>. Use, at least, 100 values for <span class="math notranslate nohighlight">\(x\)</span>.</p>
@@ -1069,13 +1069,13 @@ K(x) = \int_0^{\pi/2} \frac{d\theta}{\sqrt{1-x^2\sin^2\theta}}.
 <section id="difraction-limit-of-a-telescope-newman-5-4">
 <h3>Difraction limit of a telescope (Newman, 5.4)<a class="headerlink" href="#difraction-limit-of-a-telescope-newman-5-4" title="Link to this heading">#</a></h3>
 <p>When light from a distant star passes through the circular aperture of a telescope, you get a difraction pattern which can be described as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5df97816-2e95-4a02-bb3a-a969854443ec">
-<span class="eqno">(11)<a class="headerlink" href="#equation-5df97816-2e95-4a02-bb3a-a969854443ec" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-aef12d57-c8c4-444c-b62e-525d6b6cd669">
+<span class="eqno">(11)<a class="headerlink" href="#equation-aef12d57-c8c4-444c-b62e-525d6b6cd669" title="Permalink to this equation">#</a></span>\[\begin{equation}
 I(r) = \left(\frac{J_1(kr)}{kr} \right)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> is the distance from the center, <span class="math notranslate nohighlight">\(k=2\pi/\lambda\)</span>, with <span class="math notranslate nohighlight">\(\lambda\)</span> is the wavelenght, and <span class="math notranslate nohighlight">\(J_1(x)\)</span> is a Bessel function. The Bessel functions can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-15b09f8e-11f9-497e-8d18-d5a4b2b56c89">
-<span class="eqno">(12)<a class="headerlink" href="#equation-15b09f8e-11f9-497e-8d18-d5a4b2b56c89" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-901aa18c-c426-4a6a-a7cb-8822cfece9d0">
+<span class="eqno">(12)<a class="headerlink" href="#equation-901aa18c-c426-4a6a-a7cb-8822cfece9d0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(m\)</span> is a positive integer and <span class="math notranslate nohighlight">\(x \ge 0\)</span>. Of course you can use <code class="docutils literal notranslate"><span class="pre">scipy.special</span></code> to compute the Bessel function, but here you will use the quad routine to create a plot of <span class="math notranslate nohighlight">\(J_0, J_1, J_2\)</span> for <span class="math notranslate nohighlight">\(x \in [0, 20]\)</span>.</p>
@@ -1092,8 +1092,8 @@ J_m(x) = \frac{1}{\pi} \int_0^\pi \cos(m\theta - x\sin\theta) d\theta,
 <section id="heat-capacity-of-a-solid-newman-5-9">
 <h3>Heat capacity of a solid (Newman, 5.9)<a class="headerlink" href="#heat-capacity-of-a-solid-newman-5-9" title="Link to this heading">#</a></h3>
 <p>Debye’s theory of solids gives the heat capacity, at temperature <span class="math notranslate nohighlight">\(T\)</span>, as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-509bf4d3-ea38-439b-ac39-47238425d639">
-<span class="eqno">(13)<a class="headerlink" href="#equation-509bf4d3-ea38-439b-ac39-47238425d639" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-77982b3c-ef29-4ca7-bf36-7cb5a5f1de0a">
+<span class="eqno">(13)<a class="headerlink" href="#equation-77982b3c-ef29-4ca7-bf36-7cb5a5f1de0a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \frac{x^4 e^x}{(e^x-1)^2}dx, 
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(V\)</span> is the solid volume, <span class="math notranslate nohighlight">\(\rho\)</span> the atom nuber density, <span class="math notranslate nohighlight">\(k_B\)</span> the Boltzmann’s constant, and <span class="math notranslate nohighlight">\(\theta_D\)</span> is the Debye temperature.</p>
@@ -1122,8 +1122,8 @@ C_V(T) = 9 V\rho k_B \left(\frac{T}{\theta_0} \right)^3 \int_0^{\theta_D/T} \fra
 <section id="distance-covered-by-parachutist-chapra">
 <h3>Distance covered by parachutist (Chapra)<a class="headerlink" href="#distance-covered-by-parachutist-chapra" title="Link to this heading">#</a></h3>
 <p>The vertical velocity of a parachutist in free fall and under linear drag can be computed as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f2e09aaa-ef40-4b17-882d-48f620c300d3">
-<span class="eqno">(14)<a class="headerlink" href="#equation-f2e09aaa-ef40-4b17-882d-48f620c300d3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1f6a91c8-cbdf-4b6a-b296-8a5a352852ad">
+<span class="eqno">(14)<a class="headerlink" href="#equation-1f6a91c8-cbdf-4b6a-b296-8a5a352852ad" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v(t) = \frac{gm}{c}(1- e^{-(c/m)t}),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(t\)</span> is the time, <span class="math notranslate nohighlight">\(g = 9.81\)</span> m/s<span class="math notranslate nohighlight">\(^2\)</span> (on earth), <span class="math notranslate nohighlight">\(m\)</span> is the mass in kg, and <span class="math notranslate nohighlight">\(c\)</span> is the linear drag coeffcient, in kg/s . Compute the distance travelled by the parachutist in the first 8 seconds, given <span class="math notranslate nohighlight">\(m=80\)</span> kg and <span class="math notranslate nohighlight">\(c = 10\)</span> kg/s. Plot the distance for several mass values <span class="math notranslate nohighlight">\(m\in [50, 120]\)</span> kg.</p>
