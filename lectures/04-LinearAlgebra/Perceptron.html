@@ -278,7 +278,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-NonLinear-Chaos/NonLinear-Chaos.html">Non-linear dynamics and chaos</a></li>
 
 </ul>
@@ -611,8 +610,8 @@
 <p>To understand better the training, let’s show explicitly the weights
 <img alt="weightds" src="../../_images/weights.png" /></p>
 <p>Here <span class="math notranslate nohighlight">\(\phi\)</span> is called the activation function, and there are several proposals to it. We will use a sigmoid function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3962fa7b-8422-46a8-94fc-f9899cfec1a4">
-<span class="eqno">(17)<a class="headerlink" href="#equation-3962fa7b-8422-46a8-94fc-f9899cfec1a4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cc9d1a6d-85d8-48ac-bea1-17088e8dc95d">
+<span class="eqno">(17)<a class="headerlink" href="#equation-cc9d1a6d-85d8-48ac-bea1-17088e8dc95d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x) = \dfrac{1}{1+\exp(-x)},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x = \sum x_i w_i\)</span>.</p>
@@ -753,8 +752,8 @@ Results after one step training:
 <li><p>According to the error, adjust the weights</p></li>
 <li><p>Repeat this many times, hopefully getting convergence , and also being able to apply our nn to new cases not used already.</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-0b990919-40bc-46ce-9b03-00c3c4b82ddb">
-<span class="eqno">(18)<a class="headerlink" href="#equation-0b990919-40bc-46ce-9b03-00c3c4b82ddb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b7224d42-c706-403f-8229-f3d93a14d3be">
+<span class="eqno">(18)<a class="headerlink" href="#equation-b7224d42-c706-403f-8229-f3d93a14d3be" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \omega ' = \omega - \alpha \frac{\partial \mathcal{L}}{\partial \omega}
 \end{equation}\]</div>
 <p>But how to adjust the weights? There are several techniques based on the actual error <span class="math notranslate nohighlight">\(\Delta\)</span>. Here we will use error weighted derivative. Given the form of the sigmoid function, this increases the adjust if the derivative is larger, and viceversa. It can be expressed as</p>

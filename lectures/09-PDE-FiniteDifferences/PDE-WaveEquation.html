@@ -278,7 +278,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-NonLinear-Chaos/NonLinear-Chaos.html">Non-linear dynamics and chaos</a></li>
 
 </ul>
@@ -620,8 +619,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="the-wave-equation">
 <h1>The Wave Equation<a class="headerlink" href="#the-wave-equation" title="Link to this heading">#</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-336433ac-f842-437f-9ad7-14fbc2c50538">
-<span class="eqno">(143)<a class="headerlink" href="#equation-336433ac-f842-437f-9ad7-14fbc2c50538" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-910ad3fd-ff2f-45b0-ab67-79d49952b177">
+<span class="eqno">(121)<a class="headerlink" href="#equation-910ad3fd-ff2f-45b0-ab67-79d49952b177" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2 \left[ \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2}\right].
 \end{equation}\]</div>
 <section id="vibrations-and-waves">
@@ -714,24 +713,24 @@
 </figure>
 <p>Consider a string under tension <span class="math notranslate nohighlight">\(T\)</span> with linear mass density <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
 <p>Let</p>
-<div class="amsmath math notranslate nohighlight" id="equation-64966f74-7de2-4bc8-8b14-e33248f3d2bd">
-<span class="eqno">(144)<a class="headerlink" href="#equation-64966f74-7de2-4bc8-8b14-e33248f3d2bd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cbe70960-6eaa-45cd-b252-f1113798a56d">
+<span class="eqno">(122)<a class="headerlink" href="#equation-cbe70960-6eaa-45cd-b252-f1113798a56d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,t)
 \end{equation}\]</div>
 <p>represent the transverse displacement.</p>
 <p>Applying Newton’s second law to a small segment yields</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1a4fc2a2-4931-4b97-878b-99f91c04a954">
-<span class="eqno">(145)<a class="headerlink" href="#equation-1a4fc2a2-4931-4b97-878b-99f91c04a954" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0ea810cb-1a32-4f1a-aab0-452e6b2c724e">
+<span class="eqno">(123)<a class="headerlink" href="#equation-0ea810cb-1a32-4f1a-aab0-452e6b2c724e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \mu \frac{\partial^2 u}{\partial t^2} = T \frac{\partial^2 u}{\partial x^2}.
 \end{equation}\]</div>
 <p>Defining</p>
-<div class="amsmath math notranslate nohighlight" id="equation-68a27141-7fa0-4bbc-ac86-70937dde01a1">
-<span class="eqno">(146)<a class="headerlink" href="#equation-68a27141-7fa0-4bbc-ac86-70937dde01a1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-25ad88ff-6603-4a50-9bb7-8dc0d9264803">
+<span class="eqno">(124)<a class="headerlink" href="#equation-25ad88ff-6603-4a50-9bb7-8dc0d9264803" title="Permalink to this equation">#</a></span>\[\begin{equation}
 c=\sqrt{\frac{T}{\mu}},
 \end{equation}\]</div>
 <p>we obtain</p>
-<div class="amsmath math notranslate nohighlight" id="equation-601501f7-6b3b-44fa-b671-d1b73ddcdcad">
-<span class="eqno">(147)<a class="headerlink" href="#equation-601501f7-6b3b-44fa-b671-d1b73ddcdcad" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e9e64868-6882-471b-b2b9-94e7f83da435">
+<span class="eqno">(125)<a class="headerlink" href="#equation-e9e64868-6882-471b-b2b9-94e7f83da435" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}.
 \end{equation}\]</div>
 <p>This is the one-dimensional wave equation.</p>
@@ -755,18 +754,18 @@ u(x, t) = f(x - ct) + g(x + ct)
 <section id="finite-difference-approximation">
 <h2>Finite Difference Approximation<a class="headerlink" href="#finite-difference-approximation" title="Link to this heading">#</a></h2>
 <p>Discretize space:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-56e8db5d-9249-4e87-b52f-7775e7ff5ce6">
-<span class="eqno">(148)<a class="headerlink" href="#equation-56e8db5d-9249-4e87-b52f-7775e7ff5ce6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-877b2ba0-df1a-413b-9411-a217bdebf4ee">
+<span class="eqno">(126)<a class="headerlink" href="#equation-877b2ba0-df1a-413b-9411-a217bdebf4ee" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_i=i\Delta x
 \end{equation}\]</div>
 <p>and time:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f73a6230-5d5e-4733-8785-0a863bf734bc">
-<span class="eqno">(149)<a class="headerlink" href="#equation-f73a6230-5d5e-4733-8785-0a863bf734bc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d60a21de-8752-4b6d-a442-a954ce82d333">
+<span class="eqno">(127)<a class="headerlink" href="#equation-d60a21de-8752-4b6d-a442-a954ce82d333" title="Permalink to this equation">#</a></span>\[\begin{equation}
 t_n=n\Delta t.
 \end{equation}\]</div>
 <p>Approximating derivatives,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-223bdd23-f7da-4458-a7a1-5fa9a5ad8fb7">
-<span class="eqno">(150)<a class="headerlink" href="#equation-223bdd23-f7da-4458-a7a1-5fa9a5ad8fb7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-eaf7be25-37da-4cab-bdd0-ae52964baf37">
+<span class="eqno">(128)<a class="headerlink" href="#equation-eaf7be25-37da-4cab-bdd0-ae52964baf37" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2}
 \approx
 \frac{
@@ -774,8 +773,8 @@ u_i^{n+1}-2u_i^n+u_i^{n-1}
 }
 {\Delta t^2},
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-5d8f4ca1-7ed7-42ab-854d-16fd11511df8">
-<span class="eqno">(151)<a class="headerlink" href="#equation-5d8f4ca1-7ed7-42ab-854d-16fd11511df8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3d46c581-3ca8-4568-b6a4-43806f81edf8">
+<span class="eqno">(129)<a class="headerlink" href="#equation-3d46c581-3ca8-4568-b6a4-43806f81edf8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial x^2}
 \approx
 \frac{
@@ -784,13 +783,13 @@ u_{i+1}^n-2u_i^n+u_{i-1}^n
 {\Delta x^2}.
 \end{equation}\]</div>
 <p>Substitution gives</p>
-<div class="amsmath math notranslate nohighlight" id="equation-68094cae-2581-4a1e-b86b-45c433768172">
-<span class="eqno">(152)<a class="headerlink" href="#equation-68094cae-2581-4a1e-b86b-45c433768172" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c7673bcb-06d0-4e41-8c62-609cf3c83d75">
+<span class="eqno">(130)<a class="headerlink" href="#equation-c7673bcb-06d0-4e41-8c62-609cf3c83d75" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u_i^{n+1} = 2u_i^n-u_i^{n-1} + r^2 \left( u_{i+1}^n - 2u_i^n + u_{i-1}^n\right),
 \end{equation}\]</div>
 <p>where</p>
-<div class="amsmath math notranslate nohighlight" id="equation-23885184-7869-4a43-99cc-60b059fa55a1">
-<span class="eqno">(153)<a class="headerlink" href="#equation-23885184-7869-4a43-99cc-60b059fa55a1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-144c4052-4747-4a3b-bd20-2bed5ac0329e">
+<span class="eqno">(131)<a class="headerlink" href="#equation-144c4052-4747-4a3b-bd20-2bed5ac0329e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 r=\frac{c\Delta t}{\Delta x}.
 \end{equation}\]</div>
 <figure class="align-center">
@@ -817,13 +816,13 @@ u_i^1 = u_i^0 + v_0(x_i)\,\Delta t + \frac{r^2}{2}\left(u_{i+1}^0 - 2u_i^0 + u_{
 <section id="von-neumann-analysis">
 <h3>Von Neumann Analysis<a class="headerlink" href="#von-neumann-analysis" title="Link to this heading">#</a></h3>
 <p>Substituting a Fourier mode <span class="math notranslate nohighlight">\(u_i^n = \xi^n e^{ik x_i}\)</span> into the leapfrog scheme and solving for the amplification factor <span class="math notranslate nohighlight">\(\xi = |u_{i+1}/u_{i}|\)</span> gives:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d6b45946-327d-4141-9ee7-d16e1dca1aef">
-<span class="eqno">(154)<a class="headerlink" href="#equation-d6b45946-327d-4141-9ee7-d16e1dca1aef" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9860a949-6908-49d2-8070-bfd88c5a73b0">
+<span class="eqno">(132)<a class="headerlink" href="#equation-9860a949-6908-49d2-8070-bfd88c5a73b0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \xi = 1 - 2r^2\sin^2\left(\frac{k\Delta x}{2}\right) \pm i\cdot 2r\sin\left(\frac{k\Delta x}{2}\right)\sqrt{1 - r^2\sin^2\left(\frac{k\Delta x}{2}\right)}.
 \end{equation}\]</div>
 <p>For stability we need <span class="math notranslate nohighlight">\(|\xi| \le 1\)</span> for all wavenumbers <span class="math notranslate nohighlight">\(k\)</span>. This is satisfied if and only if:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6733fb8b-059c-49a0-ab00-e81053fd57af">
-<span class="eqno">(155)<a class="headerlink" href="#equation-6733fb8b-059c-49a0-ab00-e81053fd57af" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0f0b7219-99ba-4820-856e-71040b7266cb">
+<span class="eqno">(133)<a class="headerlink" href="#equation-0f0b7219-99ba-4820-856e-71040b7266cb" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \boxed{r = \frac{c\,\Delta t}{\Delta x} \le 1} \tag{CFL condition}
 \end{equation}\]</div>
 <p>This is the <strong>Courant–Friedrichs–Lewy (CFL) condition</strong>.</p>
@@ -1037,46 +1036,46 @@ u_N^{n+1} = u_{N-1}^n
 <h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-0">
 
-<p class="admonition-title"><span class="caption-number">Exercise 14 </span> (Free ends bc)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 12 </span> (Free ends bc)</p>
 <section id="exercise-content">
 <p>Implement free ends boundary conditions.</p>
 </section>
 </div>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 15 </span> (Absorbing bc)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 13 </span> (Absorbing bc)</p>
 <section id="exercise-content">
 <p>Implement absorbing  boundary conditions.</p>
 </section>
 </div>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-2">
 
-<p class="admonition-title"><span class="caption-number">Exercise 16 </span> (Periodic bc)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 14 </span> (Periodic bc)</p>
 <section id="exercise-content">
 <p>Implement periodoc  boundary conditions.</p>
 </section>
 </div>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-3">
 
-<p class="admonition-title"><span class="caption-number">Exercise 17 </span> (Dispersion)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 15 </span> (Dispersion)</p>
 <section id="exercise-content">
 <p>Change the pulse width and study dispersion.</p>
 </section>
 </div>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-4">
 
-<p class="admonition-title"><span class="caption-number">Exercise 18 </span> (CFL)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 16 </span> (CFL)</p>
 <section id="exercise-content">
 <p>Verify numerically the CFL condition.</p>
 </section>
 </div>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-5">
 
-<p class="admonition-title"><span class="caption-number">Exercise 19 </span> (Sinusoidal excitation)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 17 </span> (Sinusoidal excitation)</p>
 <section id="exercise-content">
 <p>Excite the string with</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c69bee73-f86f-44b7-8351-bf58e9a3ac61">
-<span class="eqno">(156)<a class="headerlink" href="#equation-c69bee73-f86f-44b7-8351-bf58e9a3ac61" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ce80a246-ee3d-46c6-a204-54d507064e92">
+<span class="eqno">(134)<a class="headerlink" href="#equation-ce80a246-ee3d-46c6-a204-54d507064e92" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,0)=sin(πx)
 \end{equation}\]</div>
 <p>and compare with the analytical solution.</p>
@@ -1084,7 +1083,7 @@ u(x,0)=sin(πx)
 </div>
 <div class="exercise admonition" id="lectures/09-PDE-FiniteDifferences/PDE-WaveEquation-exercise-6">
 
-<p class="admonition-title"><span class="caption-number">Exercise 20 </span> (Sinusoidal excitation)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 18 </span> (Sinusoidal excitation)</p>
 <section id="exercise-content">
 <p>Superpose two pulses moving in opposite directions.</p>
 </section>
