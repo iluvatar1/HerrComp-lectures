@@ -278,6 +278,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Ordinary differential equations: Initial and boundary value problems</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../05-ODE-IVP/ODESystems-PhasePlane.html">IVP: Initial value problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-ODE-BVP/BVP.html">BVP: Boundary value problems</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../07-NonLinear-Chaos/NonLinear-Chaos.html">Non-linear dynamics and chaos</a></li>
 
 </ul>
@@ -629,8 +630,8 @@
 <div class="sd-card-body docutils">
 <div class="sd-card-title sd-font-weight-bold docutils">
 Definition</div>
-<div class="amsmath math notranslate nohighlight" id="equation-77c7ead5-f23c-4e1d-8bb5-ad6cc0801c4e">
-<span class="eqno">(3)<a class="headerlink" href="#equation-77c7ead5-f23c-4e1d-8bb5-ad6cc0801c4e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-89773d3a-c07b-4d5d-b653-c78bdf4c7eb2">
+<span class="eqno">(3)<a class="headerlink" href="#equation-89773d3a-c07b-4d5d-b653-c78bdf4c7eb2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f'(x) \simeq \frac{f(x+h) - f(x)}{h} + O(h)
 \end{equation}\]</div>
 </div>
@@ -653,18 +654,18 @@ Graphical interpretation</div>
 <section id="a-better-estimation-central-difference">
 <h2>A better estimation: Central difference<a class="headerlink" href="#a-better-estimation-central-difference" title="Link to this heading">#</a></h2>
 <p>If you compute a forward (<span class="math notranslate nohighlight">\(+h\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7bd82a8b-a127-42c8-a02a-be9390b64691">
-<span class="eqno">(4)<a class="headerlink" href="#equation-7bd82a8b-a127-42c8-a02a-be9390b64691" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d3c02f43-a50b-4f1c-8236-a9e00114f887">
+<span class="eqno">(4)<a class="headerlink" href="#equation-d3c02f43-a50b-4f1c-8236-a9e00114f887" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x+h) = f(x) + f'(x) h + f''(x) h^2/2 + f'''(x) h^3/6 + O(h^4) + O(h^5),
 \end{equation}\]</div>
 <p>and a backward (<span class="math notranslate nohighlight">\(-h\)</span>) Taylor expansion,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c76c5715-9851-4ab2-904a-5b3e54588f0e">
-<span class="eqno">(5)<a class="headerlink" href="#equation-c76c5715-9851-4ab2-904a-5b3e54588f0e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-72121c47-6db3-42b6-818e-a77e5e043616">
+<span class="eqno">(5)<a class="headerlink" href="#equation-72121c47-6db3-42b6-818e-a77e5e043616" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(x-h) = f(x) - f'(x) h + f''(x) h^2/2 - f'''(x) h^3/6 + O(h^4) - O(h^5),
 \end{equation}\]</div>
 <p>and then you subtract the second from the first (notice that adding then allows you to compute the second order derivative), you get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5b45af6e-3781-49f6-8933-9ba4dacb81aa">
-<span class="eqno">(6)<a class="headerlink" href="#equation-5b45af6e-3781-49f6-8933-9ba4dacb81aa" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2a9c4768-d568-434d-bce8-09dbcf9a77d5">
+<span class="eqno">(6)<a class="headerlink" href="#equation-2a9c4768-d568-434d-bce8-09dbcf9a77d5" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f'(x) \simeq \frac{f(x+h) - f(x-h)}{2h} + O(h^2)
 \end{equation}\]</div>
 <p>which is called the central difference. The order is improved and this version is better than the simple forward difference. See: <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">https://en.wikipedia.org/wiki/Finite_difference</a></p>
@@ -693,8 +694,8 @@ Dependence on <span class="math notranslate nohighlight">\(h\)</span></div>
 </div>
 </div>
 <p>By using <a class="reference external" href="https://en.wikipedia.org/wiki/Richardson_extrapolation">Richardson extrapolation</a>, you can improve even more the central difference estimation,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-29c48953-6aba-45ee-8369-7a4457a150b1">
-<span class="eqno">(7)<a class="headerlink" href="#equation-29c48953-6aba-45ee-8369-7a4457a150b1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ee37f766-d63e-44cf-8094-97b0ed89cf25">
+<span class="eqno">(7)<a class="headerlink" href="#equation-ee37f766-d63e-44cf-8094-97b0ed89cf25" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f'(x) = \phi\left(\frac{h}{2}\right) + \frac{1}{3}\left[\phi\left(\frac{h}{2} \right) - \phi(h) \right] + O(h^4),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\phi(h)\)</span> is the derivative estimation from the central difference with a given <span class="math notranslate nohighlight">\(h\)</span> value.</p>
