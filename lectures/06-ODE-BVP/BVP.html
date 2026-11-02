@@ -737,7 +737,7 @@ mind: it is the single most common source of errors with <code class="docutils l
 </div>
 </div>
 <div class="cell_output docutils container">
-<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "7be0a26b8d92473e81a65583cf847d10"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
+<script type="application/vnd.jupyter.widget-view+json">{"version_major": 2, "version_minor": 0, "model_id": "fb2731e9a97645308b2433709016da66"}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;function __main__.solve_and_plot(k, b, y0, v0)&gt;
 </pre></div>
 </div>
 </div>
@@ -758,8 +758,8 @@ mind: it is the single most common source of errors with <code class="docutils l
 </figcaption>
 </figure>
 <p>and if this functions is linear (given that the equation is linear) then we can interpolate as shown, with</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6311f1f0-e968-4737-bb5b-611989d12768">
-<span class="eqno">(47)<a class="headerlink" href="#equation-6311f1f0-e968-4737-bb5b-611989d12768" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-81905194-7bf3-4b3c-8445-cb3963bb3e43">
+<span class="eqno">(47)<a class="headerlink" href="#equation-81905194-7bf3-4b3c-8445-cb3963bb3e43" title="Permalink to this equation">#</a></span>\[\begin{equation}
 z = \dot x
 \end{equation}\]</div>
 <figure class="align-center" id="id2">
@@ -770,8 +770,8 @@ z = \dot x
 </figcaption>
 </figure>
 <p>By taking into account the linear nature of the problem, we can compute the straight-line equation in the <span class="math notranslate nohighlight">\(v_0 - y_f\)</span> space to get the right initial condition as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-27c86e5a-42d7-4cdf-b7eb-4b1504e5ae8d">
-<span class="eqno">(48)<a class="headerlink" href="#equation-27c86e5a-42d7-4cdf-b7eb-4b1504e5ae8d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4e4adec7-8166-47ec-9cff-8a85f48a1d8d">
+<span class="eqno">(48)<a class="headerlink" href="#equation-4e4adec7-8166-47ec-9cff-8a85f48a1d8d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 v_0 = v_{0a} + \frac{y_f - y_{fa}}{y_{fb} - y_{fa}}(v_{0b} - v_{0a}).
 \end{equation}\]</div>
 <p>Then, by using that initial condition, we compute the actual solution (third IVP solution).</p>
@@ -779,8 +779,8 @@ v_0 = v_{0a} + \frac{y_f - y_{fa}}{y_{fb} - y_{fa}}(v_{0b} - v_{0a}).
 <p class="admonition-title">Example: A ball under gravity</p>
 <p>You can fix anything you want, like time: A ball is thrown vertically from <span class="math notranslate nohighlight">\(y=0\)</span> and must be back at <span class="math notranslate nohighlight">\(y=0\)</span> exactly at time <span class="math notranslate nohighlight">\(T\)</span>. What initial
 velocity is needed?</p>
-<div class="amsmath math notranslate nohighlight" id="equation-76af9701-ae45-4951-8232-9c2645d2d97b">
-<span class="eqno">(49)<a class="headerlink" href="#equation-76af9701-ae45-4951-8232-9c2645d2d97b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f5fedabf-3686-497a-ac8b-e3e4a0cb31c8">
+<span class="eqno">(49)<a class="headerlink" href="#equation-f5fedabf-3686-497a-ac8b-e3e4a0cb31c8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y'' = -g, \qquad y(0) = 0, \qquad y(T) = 0 .
 \end{equation}\]</div>
 <p>Exact answer: <span class="math notranslate nohighlight">\(y(t) = v_0 t - g t^2/2\)</span>, and <span class="math notranslate nohighlight">\(y(T)=0\)</span> gives <span class="math notranslate nohighlight">\(v_0 = gT/2\)</span>. We can check it as</p>
@@ -839,8 +839,8 @@ interpolated v0 = 9.810000,  exact gT/2 = 9.810000
 <p class="admonition-title"><span class="caption-number">Exercise 1 </span></p>
 <section id="exercise-content">
 <p>As an example, let’s solve the following problem (Chapra 24.11): Compound <span class="math notranslate nohighlight">\(A\)</span> diffuses through a 4-cm-long tube and reacts as it diffuses. The process can be  modeled as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a2afae6e-e37a-4a04-a551-03aeb755217a">
-<span class="eqno">(50)<a class="headerlink" href="#equation-a2afae6e-e37a-4a04-a551-03aeb755217a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-42849b3d-0bcd-4ff6-9cac-cc5b39eca866">
+<span class="eqno">(50)<a class="headerlink" href="#equation-42849b3d-0bcd-4ff6-9cac-cc5b39eca866" title="Permalink to this equation">#</a></span>\[\begin{equation}
 D\frac{d^2A}{dx^2} - kA = 0.  
 \end{equation}\]</div>
 <p>At <span class="math notranslate nohighlight">\(x=0\)</span> there is a large source of <span class="math notranslate nohighlight">\(A\)</span> with fixed concentration of <span class="math notranslate nohighlight">\(0.1\)</span> M. At the other end there is a material that quickly absorbs <span class="math notranslate nohighlight">\(A\)</span>, so the concentration is 0 M. If <span class="math notranslate nohighlight">\(D = 1.5\times 10^{-6}\)</span> cm<span class="math notranslate nohighlight">\(^2\)</span>/s and <span class="math notranslate nohighlight">\(k = 5\times 10^{-6}\)</span> s<span class="math notranslate nohighlight">\(_1\)</span>, what is the concentration along the tube?</p>
@@ -921,7 +921,7 @@ D\frac{d^2A}{dx^2} - kA = 0.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.81 -1.7763568394002505e-15 False
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9.809999999999995 1.7763568394002505e-15 False
 </pre></div>
 </div>
 <img alt="../../_images/9fbc90a3f297970149c2a7425c1897ba83c55f5063a3257742c51da047d39894.png" src="../../_images/9fbc90a3f297970149c2a7425c1897ba83c55f5063a3257742c51da047d39894.png" />
@@ -1092,8 +1092,8 @@ D\frac{d^2A}{dx^2} - kA = 0.
 <h3>Step 0: write the problem as a first-order system<a class="headerlink" href="#step-0-write-the-problem-as-a-first-order-system" title="Link to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">solve_bvp</span></code> only understands <span class="math notranslate nohighlight">\(\mathbf{y}' = \mathbf{f}(x, \mathbf{y}, \mathbf{p})\)</span>. For a second-order
 equation <span class="math notranslate nohighlight">\(u'' = F(x, u, u')\)</span> use <span class="math notranslate nohighlight">\(y_0 = u\)</span>, <span class="math notranslate nohighlight">\(y_1 = u'\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-204abffb-0616-4eba-aa35-670d03a96242">
-<span class="eqno">(51)<a class="headerlink" href="#equation-204abffb-0616-4eba-aa35-670d03a96242" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-105e6a3d-257b-4f08-bf94-fda3a9443017">
+<span class="eqno">(51)<a class="headerlink" href="#equation-105e6a3d-257b-4f08-bf94-fda3a9443017" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{pmatrix} y_0 \\ y_1 \end{pmatrix}' =
 \begin{pmatrix} y_1 \\ F(x, y_0, y_1) \end{pmatrix}.
 \end{equation}\]</div>
@@ -1197,12 +1197,12 @@ condition.</p>
        success: True
         status: 0
              x: [ 0.000e+00  8.163e-02 ...  3.918e+00  4.000e+00]
-           sol: &lt;scipy.interpolate._interpolate.PPoly object at 0x7fde4de29190&gt;
+           sol: &lt;scipy.interpolate._interpolate.PPoly object at 0x7f0bb15da3f0&gt;
              p: None
-             y: [[ 1.000e-01  8.615e-02 ...  2.015e-05  0.000e+00]
+             y: [[ 1.000e-01  8.615e-02 ...  2.015e-05  5.654e-23]
                  [-1.826e-01 -1.573e-01 ... -2.487e-04 -2.459e-04]]
             yp: [[-1.826e-01 -1.573e-01 ... -2.487e-04 -2.459e-04]
-                 [ 3.333e-01  2.872e-01 ...  6.717e-05  0.000e+00]]
+                 [ 3.333e-01  2.872e-01 ...  6.717e-05  1.885e-22]]
  rms_residuals: [ 5.281e-06  4.687e-06 ...  8.834e-09  8.587e-09]
          niter: 1
 </pre></div>
@@ -1392,7 +1392,7 @@ v0 from solve_bvp: 9.809999999999999   exact: 9.81
        success: True
         status: 0
              x: [ 0.000e+00  5.000e-01  1.000e+00  1.500e+00  2.000e+00]
-           sol: &lt;scipy.interpolate._interpolate.PPoly object at 0x7fde48edad50&gt;
+           sol: &lt;scipy.interpolate._interpolate.PPoly object at 0x7f0bb15da990&gt;
              p: None
              y: [[ 0.000e+00  3.679e+00  4.905e+00  3.679e+00  0.000e+00]
                  [ 9.810e+00  4.905e+00  0.000e+00 -4.905e+00 -9.810e+00]]
@@ -1458,8 +1458,8 @@ None
 <section id="example-neumann-and-robin-conditions">
 <h3>Example: Neumann and Robin conditions<a class="headerlink" href="#example-neumann-and-robin-conditions" title="Link to this heading">#</a></h3>
 <p>A rod of length 1 with uniform internal heating (nondimensional):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3c79a722-edb4-499a-b05e-80faf19739b7">
-<span class="eqno">(52)<a class="headerlink" href="#equation-3c79a722-edb4-499a-b05e-80faf19739b7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b632c7dc-18d7-4d9e-a55a-0fa1aa5de474">
+<span class="eqno">(52)<a class="headerlink" href="#equation-b632c7dc-18d7-4d9e-a55a-0fa1aa5de474" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u'' = -1 .
 \end{equation}\]</div>
 <p><strong>Case (a)</strong> — insulated at <span class="math notranslate nohighlight">\(x=0\)</span>, fixed temperature at <span class="math notranslate nohighlight">\(x=1\)</span>: <span class="math notranslate nohighlight">\(u'(0) = 0\)</span>, <span class="math notranslate nohighlight">\(u(1) = 0\)</span>.
@@ -1531,14 +1531,14 @@ must equal <span class="math notranslate nohighlight">\(-1\)</span>, contradicti
 <section id="example-a-nonlinear-bvp-with-two-solutions-bratu">
 <h3>Example: a nonlinear BVP with two solutions (Bratu)<a class="headerlink" href="#example-a-nonlinear-bvp-with-two-solutions-bratu" title="Link to this heading">#</a></h3>
 <p>The Bratu problem appears in combustion (Frank-Kamenetskii theory of thermal explosion):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1db7b749-219c-4fc2-8c1a-07cec56769af">
-<span class="eqno">(53)<a class="headerlink" href="#equation-1db7b749-219c-4fc2-8c1a-07cec56769af" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c56b4e97-b9be-437c-bdc6-013983f8df4a">
+<span class="eqno">(53)<a class="headerlink" href="#equation-c56b4e97-b9be-437c-bdc6-013983f8df4a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u'' + \lambda e^{u} = 0, \qquad u(0) = u(1) = 0 .
 \end{equation}\]</div>
 <p>For <span class="math notranslate nohighlight">\(0 &lt; \lambda &lt; \lambda_c \approx 3.51\)</span> there are <strong>two</strong> solutions; above <span class="math notranslate nohighlight">\(\lambda_c\)</span> there are
 none (the “explosion”). The exact solution is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ad6e36b5-f55a-424a-a58e-efacfd0aa8d5">
-<span class="eqno">(54)<a class="headerlink" href="#equation-ad6e36b5-f55a-424a-a58e-efacfd0aa8d5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c3aa0358-6c17-4156-b9cb-f5be5c45dc2f">
+<span class="eqno">(54)<a class="headerlink" href="#equation-c3aa0358-6c17-4156-b9cb-f5be5c45dc2f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x) = -2 \ln\!\left[\frac{\cosh\big((x - \tfrac12)\tfrac{\theta}{2}\big)}{\cosh(\theta/4)}\right],
 \qquad \theta = \sqrt{2\lambda}\,\cosh(\theta/4).
 \end{equation}\]</div>
@@ -1606,8 +1606,8 @@ exact branch theta=10.9387: max u = 4.0913
 <section id="example-an-eigenvalue-problem-unknown-parameter">
 <h3>Example: an eigenvalue problem (unknown parameter)<a class="headerlink" href="#example-an-eigenvalue-problem-unknown-parameter" title="Link to this heading">#</a></h3>
 <p>A string (or a column under buckling) <strong>fixed at <span class="math notranslate nohighlight">\(x=0\)</span> and free at <span class="math notranslate nohighlight">\(x=1\)</span></strong>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-95b095e8-267e-4673-83fa-edd4aed1fe8f">
-<span class="eqno">(55)<a class="headerlink" href="#equation-95b095e8-267e-4673-83fa-edd4aed1fe8f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7b825422-d807-4d02-9bdf-d53e56c12b17">
+<span class="eqno">(55)<a class="headerlink" href="#equation-7b825422-d807-4d02-9bdf-d53e56c12b17" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u'' + \lambda u = 0, \qquad u(0) = 0, \qquad u'(1) = 0 .
 \end{equation}\]</div>
 <p>Exact eigenvalues: <span class="math notranslate nohighlight">\(\lambda_n = \left(\frac{(2n-1)\pi}{2}\right)^2 = 2.467,\ 22.207,\ 61.685,\dots\)</span>,
@@ -1679,14 +1679,14 @@ mode 3: lambda = 61.685028   exact = 61.685028   (The algorithm converged to the
 height a meniscus reaches, the length of a fin. The trick is to <strong>rescale to <span class="math notranslate nohighlight">\([0,1]\)</span></strong> and make the
 length an unknown parameter.</p>
 <p>A ball is thrown upward with known speed <span class="math notranslate nohighlight">\(v_0\)</span>. When does it land? (Exact: <span class="math notranslate nohighlight">\(T = 2v_0/g\)</span>.)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-efb8ba2a-d998-43b1-a575-bca6ce1aa3b7">
-<span class="eqno">(56)<a class="headerlink" href="#equation-efb8ba2a-d998-43b1-a575-bca6ce1aa3b7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e05038bd-8dbc-48b7-9be4-3ad7d7f7bc37">
+<span class="eqno">(56)<a class="headerlink" href="#equation-e05038bd-8dbc-48b7-9be4-3ad7d7f7bc37" title="Permalink to this equation">#</a></span>\[\begin{equation}
 y'' = -g,\quad y(0) = 0,\quad y'(0) = v_0,\quad y(T) = 0,\quad T\ \text{unknown}.
 \end{equation}\]</div>
 <p>With <span class="math notranslate nohighlight">\(s = t/T \in [0,1]\)</span>: <span class="math notranslate nohighlight">\(\dfrac{d}{dt} = \dfrac{1}{T}\dfrac{d}{ds}\)</span>. Writing <span class="math notranslate nohighlight">\(y_0 = y\)</span>,
 <span class="math notranslate nohighlight">\(y_1 = dy/dt\)</span> (keep the physical velocity as the second variable):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-53709e9e-605a-4b11-9c2a-f3dbc35bb3b9">
-<span class="eqno">(57)<a class="headerlink" href="#equation-53709e9e-605a-4b11-9c2a-f3dbc35bb3b9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ab866641-14fd-4b4d-a15a-c4ac22b661f1">
+<span class="eqno">(57)<a class="headerlink" href="#equation-ab866641-14fd-4b4d-a15a-c4ac22b661f1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{dy_0}{ds} = T\,y_1, \qquad \frac{dy_1}{ds} = -g\,T .
 \end{equation}\]</div>
 <p>Count: <span class="math notranslate nohighlight">\(n = 2\)</span>, <span class="math notranslate nohighlight">\(k = 1\)</span> → 3 residuals: <span class="math notranslate nohighlight">\(y_0(0)=0\)</span>, <span class="math notranslate nohighlight">\(y_1(0)=v_0\)</span>, <span class="math notranslate nohighlight">\(y_0(1)=0\)</span>.</p>
@@ -1734,8 +1734,8 @@ is known). Now <strong><span class="math notranslate nohighlight">\(u_0\)</span>
 <li><p>Right row: <span class="math notranslate nohighlight">\(u_N = 0\)</span> moves to the right-hand side (here it contributes 0).</p></li>
 </ul>
 <p>For <span class="math notranslate nohighlight">\(N = 4\)</span> (unknowns <span class="math notranslate nohighlight">\(u_0,\dots,u_3\)</span>):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-986d8b26-4ea7-4a19-80b8-4550695b61cb">
-<span class="eqno">(58)<a class="headerlink" href="#equation-986d8b26-4ea7-4a19-80b8-4550695b61cb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-4b1db82d-5859-4df9-becf-c4ea6a016bf1">
+<span class="eqno">(58)<a class="headerlink" href="#equation-4b1db82d-5859-4df9-becf-c4ea6a016bf1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \begin{pmatrix}
 -2 &amp; 2 &amp; 0 &amp; 0\\
 1 &amp; -2 &amp; 1 &amp; 0\\
@@ -1781,7 +1781,9 @@ is known). Now <strong><span class="math notranslate nohighlight">\(u_0\)</span>
   20  2.084e-04   4.00
   40  5.209e-05   4.00
   80  1.302e-05   4.00
- 160  3.255e-06   4.00
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 160  3.255e-06   4.00
 </pre></div>
 </div>
 </div>
@@ -1820,14 +1822,14 @@ u'' = \kappa^2 u,\qquad u(0) = 1,\quad u(1) = 0 .
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa=  5: shooting with the EXACT slope ends at u(1) = -6.12e-15;  solve_bvp: The algorithm converged to the desired accuracy.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa=  5: shooting with the EXACT slope ends at u(1) =  2.27e-14;  solve_bvp: The algorithm converged to the desired accuracy.
+kappa= 20: shooting with the EXACT slope ends at u(1) =  5.10e-09;  solve_bvp: The algorithm converged to the desired accuracy.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa= 20: shooting with the EXACT slope ends at u(1) = -7.52e-08;  solve_bvp: The algorithm converged to the desired accuracy.
-kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: The algorithm converged to the desired accuracy.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa= 40: shooting with the EXACT slope ends at u(1) = -1.73e+01;  solve_bvp: The algorithm converged to the desired accuracy.
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa= 80: shooting with the EXACT slope ends at u(1) =  6.34e+18;  solve_bvp: The algorithm converged to the desired accuracy.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>kappa= 80: shooting with the EXACT slope ends at u(1) = -5.26e+18;  solve_bvp: The algorithm converged to the desired accuracy.
 </pre></div>
 </div>
 </div>
@@ -1838,8 +1840,8 @@ kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: T
 <section id="ecuacion-de-schroedinger-workshop">
 <h3>Ecuación de Schroedinger (workshop)<a class="headerlink" href="#ecuacion-de-schroedinger-workshop" title="Link to this heading">#</a></h3>
 <p>Una partícula se encuentra confinada en un potencial infinito descrito por</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1ce69150-0f0d-4010-bcd5-a3f30c60adeb">
-<span class="eqno">(59)<a class="headerlink" href="#equation-1ce69150-0f0d-4010-bcd5-a3f30c60adeb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-03a9679c-536d-4c6a-8646-006790187453">
+<span class="eqno">(59)<a class="headerlink" href="#equation-03a9679c-536d-4c6a-8646-006790187453" title="Permalink to this equation">#</a></span>\[\begin{equation}
   V(x) = 
   \begin{cases}
   0, 0 \le x \le L,\\
@@ -1847,8 +1849,8 @@ kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: T
   \end{cases}
 \end{equation}\]</div>
 <p>La ecuación de onda <span class="math notranslate nohighlight">\(\phi\)</span> de la partícula (independiente del tiempo) es</p>
-<div class="amsmath math notranslate nohighlight" id="equation-83c03e17-2f28-4bc8-8ed1-211e6cf87be2">
-<span class="eqno">(60)<a class="headerlink" href="#equation-83c03e17-2f28-4bc8-8ed1-211e6cf87be2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e82b3ef0-f216-459d-bf42-cf9cb756b882">
+<span class="eqno">(60)<a class="headerlink" href="#equation-e82b3ef0-f216-459d-bf42-cf9cb756b882" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{-\hbar^2}{2m} \frac{d^2\phi(x)}{dx^2} + V(x) \phi(x) = E\phi(x).
 \end{equation}\]</div>
 <p>Debido al potencial, la función de onda debe cumplir que <span class="math notranslate nohighlight">\(\phi(0) = \phi(L) = 0\)</span>.</p>
@@ -1943,8 +1945,8 @@ kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: T
 <section id="matrix-formulation-for-linear-boundary-value-problems">
 <h2>Matrix formulation for linear boundary value problems<a class="headerlink" href="#matrix-formulation-for-linear-boundary-value-problems" title="Link to this heading">#</a></h2>
 <p>When the BVP is linear, you can solve it either using the interpolation already shown, or by formulating the problem as a matrix system. The later is based on a <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">finite difference</a> discretization for the derivatives. Let’s start with the following problem, representing the temperature <span class="math notranslate nohighlight">\(T\)</span> across a linear bar (Chapra, 27.1)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-dde10133-7195-49bf-84aa-4b2422c58c9a">
-<span class="eqno">(61)<a class="headerlink" href="#equation-dde10133-7195-49bf-84aa-4b2422c58c9a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-22906321-5d54-4143-8725-e90a4a6b0e10">
+<span class="eqno">(61)<a class="headerlink" href="#equation-22906321-5d54-4143-8725-e90a4a6b0e10" title="Permalink to this equation">#</a></span>\[\begin{equation}
   \frac{d^2T}{dx^2} + h'(T_a - T) = 0,  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(h'\)</span> is the transfer coefficient (m<span class="math notranslate nohighlight">\(^{-2}\)</span>), and <span class="math notranslate nohighlight">\(T_a\)</span> is the sourronding air temperature. The boundary conditions are <span class="math notranslate nohighlight">\(T(0) = T_1 = 40\)</span>, <span class="math notranslate nohighlight">\(T(L=10) = T_2 = 200\)</span>, and <span class="math notranslate nohighlight">\(T_a = 20\)</span>. Also, <span class="math notranslate nohighlight">\(h' = 0.01\)</span>.</p>
@@ -2006,18 +2008,18 @@ kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: T
 </div>
 </div>
 <p>Now let’s proceed with a different way: by discretizing the derivatives and setting the equation on the points. We have,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8a8853c6-c4c5-4686-b25c-63695851e7ec">
-<span class="eqno">(62)<a class="headerlink" href="#equation-8a8853c6-c4c5-4686-b25c-63695851e7ec" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0a6768b8-c1ce-4fa3-95c0-2b200113716c">
+<span class="eqno">(62)<a class="headerlink" href="#equation-0a6768b8-c1ce-4fa3-95c0-2b200113716c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dx^2} \simeq \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2},  
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\Delta x\)</span> is the partition size, so the original equation takes the form</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3ce4bb53-8feb-4241-9ded-b81221e59674">
-<span class="eqno">(63)<a class="headerlink" href="#equation-3ce4bb53-8feb-4241-9ded-b81221e59674" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1041fc78-eecb-4775-8ce1-bb6b6c3597e2">
+<span class="eqno">(63)<a class="headerlink" href="#equation-1041fc78-eecb-4775-8ce1-bb6b6c3597e2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{T_{i+1} - 2T_i + T_{i-1}}{\Delta x^2} - h'(T_i - T_a) = 0.  
 \end{equation}\]</div>
 <p>Finally, after collecting terms, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0b036572-5981-49b5-addd-1fde3d06253c">
-<span class="eqno">(64)<a class="headerlink" href="#equation-0b036572-5981-49b5-addd-1fde3d06253c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b13be98f-735c-4b68-8ce1-60e723f64020">
+<span class="eqno">(64)<a class="headerlink" href="#equation-b13be98f-735c-4b68-8ce1-60e723f64020" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -T_{i-1} + (2+h'\Delta x^2)T_i - T_{i+1} = h'\Delta x^2T_a \to -T_{i-1} + \alpha T_i - T_{i+1} = \beta.
 \end{equation}\]</div>
 <p>This is a tri-diagonal system for the internal points.</p>
@@ -2076,8 +2078,8 @@ kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: T
 <section id="generic-bvp">
 <h3>Generic BVP<a class="headerlink" href="#generic-bvp" title="Link to this heading">#</a></h3>
 <p>Solve the following equation using the shooting method and the matrix method,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b2bedfba-40de-4c96-b07e-78ed568654bd">
-<span class="eqno">(65)<a class="headerlink" href="#equation-b2bedfba-40de-4c96-b07e-78ed568654bd" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c40210a3-ab5c-43c7-b3bb-3fae128c0660">
+<span class="eqno">(65)<a class="headerlink" href="#equation-c40210a3-ab5c-43c7-b3bb-3fae128c0660" title="Permalink to this equation">#</a></span>\[\begin{equation}
 7\frac{d^2y}{dx^2} -  2\frac{dy}{dx} - y +x = 0,
 \end{equation}\]</div>
 <p>with <span class="math notranslate nohighlight">\(y(0) = 5, y(20) = 8\)</span></p>
@@ -2085,8 +2087,8 @@ kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: T
 <section id="bvp-with-newman-condition">
 <h3>BVP with Newman condition<a class="headerlink" href="#bvp-with-newman-condition" title="Link to this heading">#</a></h3>
 <p>Here we will add a boundary condition on the derivative, on the left, which means that the left node is also an unknown. In that case you can use <span class="math notranslate nohighlight">\(dT/dx \simeq = (T_{1} - T_{-1})/2\Delta x\)</span> so <span class="math notranslate nohighlight">\(T_{-1} = T_1 -2 \Delta x dT/\Delta x\)</span> and then you get the value for the imaginary node <span class="math notranslate nohighlight">\(T_{-1}\)</span> which is now needed. Solve following system:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-40303a75-c0df-4684-9701-84ba1f2f8558">
-<span class="eqno">(66)<a class="headerlink" href="#equation-40303a75-c0df-4684-9701-84ba1f2f8558" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-670307d0-b840-46be-8fba-02d154e8f121">
+<span class="eqno">(66)<a class="headerlink" href="#equation-670307d0-b840-46be-8fba-02d154e8f121" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2T}{dr^2} + \frac{1}{r}\frac{dT}{dr} + S = 0,
 \end{equation}\]</div>
 <p>over <span class="math notranslate nohighlight">\(0 \le r\le 1\)</span>, with <span class="math notranslate nohighlight">\(T(r=1) = 1\)</span> and <span class="math notranslate nohighlight">\(\frac{dT}{dr} = 0\)</span> in <span class="math notranslate nohighlight">\(r=0\)</span>, for S = 1, 10, and 20 K/m<span class="math notranslate nohighlight">\(^2\)</span>. This is a model of the temperature distribution on  a circular rod with internal heat source <span class="math notranslate nohighlight">\(S\)</span>.</p>
@@ -2094,8 +2096,8 @@ kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: T
 <section id="deflection-of-a-sailboat-mast-chapra-28-22">
 <h3>Deflection of a sailboat mast (Chapra 28.22)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-22" title="Link to this heading">#</a></h3>
 <p>The following equation can be used to model the deflection of a sailboat mast subject to wind force,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a582d363-4081-4414-85df-2ab017c48650">
-<span class="eqno">(67)<a class="headerlink" href="#equation-a582d363-4081-4414-85df-2ab017c48650" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e01b6ed3-a44e-4842-b2df-d3aa380bcd5b">
+<span class="eqno">(67)<a class="headerlink" href="#equation-e01b6ed3-a44e-4842-b2df-d3aa380bcd5b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{d^2y}{dz^2} = \frac{f}{2EI}(L-z)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(f\)</span> is the wind force, <span class="math notranslate nohighlight">\(E\)</span> is the modulus of elasticity, <span class="math notranslate nohighlight">\(L\)</span> the mast length, and <span class="math notranslate nohighlight">\(I\)</span> the inertia moment. Compute the deflection as a function of <span class="math notranslate nohighlight">\(z\)</span> if <span class="math notranslate nohighlight">\(y = 0\)</span> and <span class="math notranslate nohighlight">\(dy/dz = 0\)</span> at <span class="math notranslate nohighlight">\(z = 0\)</span>. Use <span class="math notranslate nohighlight">\(f = 60, L = 30, E = 1.25\times 10^8, I = 0.05\)</span></p>
@@ -2103,8 +2105,8 @@ kappa= 40: shooting with the EXACT slope ends at u(1) = -1.58e+00;  solve_bvp: T
 <section id="deflection-of-a-sailboat-mast-chapra-28-23">
 <h3>Deflection of a sailboat mast (Chapra 28.23)<a class="headerlink" href="#deflection-of-a-sailboat-mast-chapra-28-23" title="Link to this heading">#</a></h3>
 <p>Same previous problem but now the force varies with height as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-431d192f-9228-4374-988f-aeaf12a0ccc0">
-<span class="eqno">(68)<a class="headerlink" href="#equation-431d192f-9228-4374-988f-aeaf12a0ccc0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-b0e4eb10-672a-4314-b61e-d93c7e375259">
+<span class="eqno">(68)<a class="headerlink" href="#equation-b0e4eb10-672a-4314-b61e-d93c7e375259" title="Permalink to this equation">#</a></span>\[\begin{equation}
 f(z) = \frac{200z}{5+z}e^{-2z/30}.
 \end{equation}\]</div>
 </section>

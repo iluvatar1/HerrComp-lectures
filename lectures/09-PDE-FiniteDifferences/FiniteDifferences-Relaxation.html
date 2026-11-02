@@ -670,8 +670,8 @@
 <p>Such systems cannot be described by ordinary differential equations (ODEs), because ODEs involve derivatives with respect to a single independent variable.</p>
 <p>Instead, we need <strong>partial differential equations (PDEs)</strong>.</p>
 <p>A PDE relates a function</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9a2e239c-139d-4bc4-99b4-fb826532ca6f">
-<span class="eqno">(123)<a class="headerlink" href="#equation-9a2e239c-139d-4bc4-99b4-fb826532ca6f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e406c5a5-93ff-4e30-972d-99c669e62875">
+<span class="eqno">(125)<a class="headerlink" href="#equation-e406c5a5-93ff-4e30-972d-99c669e62875" title="Permalink to this equation">#</a></span>\[\begin{equation}
 u(x,y,z,t)
 \end{equation}\]</div>
 <p>to its partial derivatives with respect to several variables. For nice visualizations check <a class="reference external" href="https://visualpde.com/explore.html">VisualPDE</a>.</p>
@@ -769,8 +769,8 @@ u(x,y,z,t)
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Laplace Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5f8cc064-7a1b-43be-9307-71d51ead176c">
-<span class="eqno">(124)<a class="headerlink" href="#equation-5f8cc064-7a1b-43be-9307-71d51ead176c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-88182553-7074-4037-b8e0-1f16a7f1436f">
+<span class="eqno">(126)<a class="headerlink" href="#equation-88182553-7074-4037-b8e0-1f16a7f1436f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 \phi = 0
 \end{equation}\]</div>
 <p>Describes electrostatic potentials in charge-free regions.</p>
@@ -802,8 +802,8 @@ u(x,y,z,t)
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Heat Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-71919a2c-7725-4c06-b199-a845d8f722a2">
-<span class="eqno">(125)<a class="headerlink" href="#equation-71919a2c-7725-4c06-b199-a845d8f722a2" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-49fbc7af-1c4e-4352-9d16-fbca0c5afaf0">
+<span class="eqno">(127)<a class="headerlink" href="#equation-49fbc7af-1c4e-4352-9d16-fbca0c5afaf0" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial T}{\partial t} = D\nabla^2 T
 \end{equation}\]</div>
 <p>Describes diffusion of heat.</p>
@@ -859,8 +859,8 @@ u(x,y,z,t)
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Wave Equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d239c7a7-a008-4849-a0af-929bbf58e393">
-<span class="eqno">(126)<a class="headerlink" href="#equation-d239c7a7-a008-4849-a0af-929bbf58e393" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cd61dd1b-1de6-457d-a4e5-f2fd627b8be8">
+<span class="eqno">(128)<a class="headerlink" href="#equation-cd61dd1b-1de6-457d-a4e5-f2fd627b8be8" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial t^2} = c^2\nabla^2 u
 \end{equation}\]</div>
 <p>Describes vibrations, sound, and electromagnetic waves.</p>
@@ -942,8 +942,8 @@ u(x,y,z,t)
 <section id="classification-of-pdes">
 <h2>Classification of PDEs<a class="headerlink" href="#classification-of-pdes" title="Link to this heading">#</a></h2>
 <p>All linear second-order PDEs in two variables can be written as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-990d531f-116a-44bc-b299-0a31532fc271">
-<span class="eqno">(127)<a class="headerlink" href="#equation-990d531f-116a-44bc-b299-0a31532fc271" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-535f63e0-04ee-4935-ad85-7b478b2a7420">
+<span class="eqno">(129)<a class="headerlink" href="#equation-535f63e0-04ee-4935-ad85-7b478b2a7420" title="Permalink to this equation">#</a></span>\[\begin{equation}
 A \frac{\partial^2 u}{\partial x^2} + B \frac{\partial^2 u}{\partial x \partial y} + C \frac{\partial^2 u}{\partial y^2} + \text{lower order terms} = 0.
 \end{equation}\]</div>
 <p>The sign of the <em>discriminant</em> <span class="math notranslate nohighlight">\(\Delta = B^2 - 4AC\)</span> determines the character of the equation — and completely determines the type of numerical method needed:</p>
@@ -969,8 +969,8 @@ Initial conditions + boundary conditions.</p>
 <section id="why-do-we-need-numerical-methods">
 <h2>Why Do We Need Numerical Methods?<a class="headerlink" href="#why-do-we-need-numerical-methods" title="Link to this heading">#</a></h2>
 <p>Only a limited number of PDEs possess analytical solutions. Even simple geometries may prevent exact solutions. For simple geometries and boundary conditions, exact solutions exist and are taught in mathematical physics courses (separation of variables, Green’s functions, Fourier series…). For example:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-78deebe8-c7e4-4f05-8b37-fe593a3c70d8">
-<span class="eqno">(128)<a class="headerlink" href="#equation-78deebe8-c7e4-4f05-8b37-fe593a3c70d8" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3f071e2f-d9af-4953-9dde-85b96850a516">
+<span class="eqno">(130)<a class="headerlink" href="#equation-3f071e2f-d9af-4953-9dde-85b96850a516" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = 0, \quad V(x,0) = \sin(\pi x), \quad \text{zero on other walls}
 \end{equation}\]</div>
 <p>has the analytical solution <span class="math notranslate nohighlight">\(V(x, y) = \sin(\pi x)\, e^{-\pi y}\)</span>.</p>
@@ -998,12 +998,12 @@ Initial conditions + boundary conditions.</p>
 <h2>The Finite Difference Idea<a class="headerlink" href="#the-finite-difference-idea" title="Link to this heading">#</a></h2>
 <p>All the numerical methods in this chapter share one core idea: replace continuous derivatives by <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference_method">discrete differences</a> on a grid.</p>
 <p>For a function <span class="math notranslate nohighlight">\(u(x)\)</span> sampled at points <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta x\)</span>:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-91a2e57b-74d4-4e75-b47f-5b96090de157">
-<span class="eqno">(129)<a class="headerlink" href="#equation-91a2e57b-74d4-4e75-b47f-5b96090de157" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-1cca6880-0c2b-4464-96f1-7b9ffa31cf44">
+<span class="eqno">(131)<a class="headerlink" href="#equation-1cca6880-0c2b-4464-96f1-7b9ffa31cf44" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial u}{\partial x}\bigg|_i \approx \frac{u_{i+1} - u_{i-1}}{2\Delta x} \qquad (\text{central difference, } O(\Delta x^2))
 \end{equation}\]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-008ec54b-2bd1-4d27-a035-c54dcb7934b0">
-<span class="eqno">(130)<a class="headerlink" href="#equation-008ec54b-2bd1-4d27-a035-c54dcb7934b0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2d8a3812-3b4d-4d4d-8da3-a387ecb8c826">
+<span class="eqno">(132)<a class="headerlink" href="#equation-2d8a3812-3b4d-4d4d-8da3-a387ecb8c826" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial^2 u}{\partial x^2}\bigg|_i \approx \frac{u_{i+1} - 2u_i + u_{i-1}}{\Delta x^2} \qquad (\text{central second difference, } O(\Delta x^2))
 \end{equation}\]</div>
 <p>Substituting these into a PDE turns it into a system of <strong>algebraic equations</strong> — one per grid point — that a computer can solve.</p>
@@ -1018,30 +1018,30 @@ Initial conditions + boundary conditions.</p>
 <section id="the-first-example-the-poisson-equation">
 <h2>The first example: The Poisson equation<a class="headerlink" href="#the-first-example-the-poisson-equation" title="Link to this heading">#</a></h2>
 <p>The following is an example of an elliptical differential equation, determined by the boundary conditions :</p>
-<div class="amsmath math notranslate nohighlight" id="equation-33811c1b-5379-4622-9095-8a6253552907">
-<span class="eqno">(131)<a class="headerlink" href="#equation-33811c1b-5379-4622-9095-8a6253552907" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d81a6da2-5b37-47db-8fb3-d63811b4ccfa">
+<span class="eqno">(133)<a class="headerlink" href="#equation-d81a6da2-5b37-47db-8fb3-d63811b4ccfa" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \nabla^2 V = \left[ \frac{\partial^2 V}{\partial x^2} + \frac{\partial^2 V}{\partial y^2} + \frac{\partial^2 V}{\partial z^2}\right] = -\frac{\rho}{\epsilon_0}
 \end{equation}\]</div>
 <p>In 2D, there are several solutions and the actual one depends on the boundary conditions. For example, for the Laplace equation you have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8dbf9829-5f7b-4476-a720-fe203e5ee88c">
-<span class="eqno">(132)<a class="headerlink" href="#equation-8dbf9829-5f7b-4476-a720-fe203e5ee88c" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-d590e528-4d59-4862-bb2e-10352d86cdee">
+<span class="eqno">(134)<a class="headerlink" href="#equation-d590e528-4d59-4862-bb2e-10352d86cdee" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, y) &amp; = V_0,\\
 V(x, y) &amp; = \frac{1}{2} A (x^2 - y^2) + Bx + Cy + D
 \end{align}\]</div>
 <p>as solutions. We the density <span class="math notranslate nohighlight">\(\rho\)</span> is null, we have the Laplace equation. It appears also when the heat equation stabilizes</p>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Finite_difference">finite difference</a> method discretizes the derivatives on a grid. For instance, using the central difference it is possible to rewrite the 2D Poisson equation as (<a class="reference external" href="https://en.wikipedia.org/wiki/Laplace%27s_equation">Laplace equation</a> corresponds to <span class="math notranslate nohighlight">\(\rho = 0\)</span> )</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bccbb54c-51cb-4442-b452-7af20a4e545d">
-<span class="eqno">(133)<a class="headerlink" href="#equation-bccbb54c-51cb-4442-b452-7af20a4e545d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a64b1960-1d14-413a-83f9-4bed26f13ea7">
+<span class="eqno">(135)<a class="headerlink" href="#equation-a64b1960-1d14-413a-83f9-4bed26f13ea7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V(x_i + \Delta x, y_j) - 2V(x_i, y_j) + V(x_i - \Delta x, y_j)}{\Delta x^2} +\frac{V(x_i, y_j + \Delta y) - 2V(x_i, y_j) + V(x_i, y_j - \Delta y)}{\Delta y^2} = -\frac{\rho(x_i, y_j)}{\epsilon_0}.
 \end{equation}\]</div>
 <p>which can be rewritten as  (let’s assume <span class="math notranslate nohighlight">\(\Delta x = \Delta y = \Delta\)</span>)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0dde5688-87ae-4fd0-9459-32f984be20f4">
-<span class="eqno">(134)<a class="headerlink" href="#equation-0dde5688-87ae-4fd0-9459-32f984be20f4" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f0291006-770b-4e58-86ed-4ede2a1e32b9">
+<span class="eqno">(136)<a class="headerlink" href="#equation-f0291006-770b-4e58-86ed-4ede2a1e32b9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{V_{i+1, j} - 2V_{i, j} + V_{i-1, j}}{\Delta^2} + \frac{V_{i,j+1} - 2V_{i, j} + V_{i, j-1}}{\Delta^2} = -\frac{\rho_{i, j}}{\epsilon_0},
 \end{equation}\]</div>
 <p>and, therefore</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73e667f7-1a8e-4c09-904d-4adab8d0e6a6">
-<span class="eqno">(135)<a class="headerlink" href="#equation-73e667f7-1a8e-4c09-904d-4adab8d0e6a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3cfc8ff5-a0f2-4176-8d9a-2ceabb05cae4">
+<span class="eqno">(137)<a class="headerlink" href="#equation-3cfc8ff5-a0f2-4176-8d9a-2ceabb05cae4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j}\Delta^2}{\epsilon_0}.
 \end{equation}\]</div>
 <p>This can be seen in two ways: as a matrix equation or as an equation showing that the value at a given position, <span class="math notranslate nohighlight">\(V_{i, j}\)</span>, is kind of an average of the surrounding neighbors and the source term (<a class="reference external" href="https://en.wikipedia.org/wiki/Jacobi_method">Jacobi method</a>), as seen (ref: <a class="reference external" href="https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation">https://barbagroup.github.io/essential_skills_RRC/laplace/1/#laplaces-equation</a>)</p>
@@ -1056,16 +1056,16 @@ V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1} - 4V_{i, j} = -\frac{\rho_{i, j
 <section id="relaxation-solution">
 <h2>Relaxation solution<a class="headerlink" href="#relaxation-solution" title="Link to this heading">#</a></h2>
 <p>Let’s solve the Laplace problem (<span class="math notranslate nohighlight">\(\rho = 0\)</span>) using both methods with a simple example. Fix the boundaries as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f64e69c0-1800-492b-8567-3ff14f1fec77">
-<span class="eqno">(136)<a class="headerlink" href="#equation-f64e69c0-1800-492b-8567-3ff14f1fec77" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-757b1d43-3120-49cb-81ff-e12f081acc53">
+<span class="eqno">(138)<a class="headerlink" href="#equation-757b1d43-3120-49cb-81ff-e12f081acc53" title="Permalink to this equation">#</a></span>\[\begin{align}
 V(x, 0) &amp;= \sin(\pi x),\\
 V(x, a) &amp;= 0, \\
 V(0, y) &amp;= 0, \\
 V(a, y) &amp;= 0, \\
 \end{align}\]</div>
 <p>with <span class="math notranslate nohighlight">\(x, y \in [0, 1]\)</span>, and <span class="math notranslate nohighlight">\(a \)</span> any value on the border. These are called <a class="reference external" href="https://en.wikipedia.org/wiki/Dirichlet_boundary_condition">Dirichlet boundary conditions</a> (where you specify the function values at the boundary). Finally, use at least <span class="math notranslate nohighlight">\(N_x = N_y = 25\)</span>, so <span class="math notranslate nohighlight">\(\Delta = 1/25\)</span>, <span class="math notranslate nohighlight">\(x_i = x_0 + i\Delta, y_j = y_0 + j\Delta\)</span>. We need to solve the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f527b245-6eb7-4166-90e3-5e19beb7618d">
-<span class="eqno">(137)<a class="headerlink" href="#equation-f527b245-6eb7-4166-90e3-5e19beb7618d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-705cc05f-0a13-4972-a807-590bfe689e78">
+<span class="eqno">(139)<a class="headerlink" href="#equation-705cc05f-0a13-4972-a807-590bfe689e78" title="Permalink to this equation">#</a></span>\[\begin{equation}
 V_{i, j} = \frac{V_{i+1, j} + V_{i-1, j} + V_{i,j+1} + V_{i, j-1}}{4}.
 \end{equation}\]</div>
 <p>To do so, we apply this relationship to each point in the grid, without overwriting the boundary conditions, and we do that until the values are not changing much. Firs, let’s define the problem conditions (to be changed later)</p>
@@ -1269,16 +1269,16 @@ Be careful to not affect the boundaries when updating the matrix</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time iterating: 0.005970478057861328
-Total time iterating: 0.001638174057006836
-Total time iterating: 0.0006811618804931641
-Total time iterating: 0.0006809234619140625
-Total time iterating: 0.0006797313690185547
-Total time iterating: 0.0006585121154785156
-Total time iterating: 0.0006766319274902344
-Total time iterating: 0.0006797313690185547
-Total time iterating: 0.0006644725799560547
-Total time iterating: 0.0006759166717529297
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total time iterating: 0.005129098892211914
+Total time iterating: 0.0012712478637695312
+Total time iterating: 0.0004839897155761719
+Total time iterating: 0.0004811286926269531
+Total time iterating: 0.0004849433898925781
+Total time iterating: 0.0004818439483642578
+Total time iterating: 0.0004918575286865234
+Total time iterating: 0.0004718303680419922
+Total time iterating: 0.0004947185516357422
+Total time iterating: 0.0004801750183105469
 </pre></div>
 </div>
 </div>
@@ -1585,8 +1585,8 @@ Total time iterating: 0.0006759166717529297
 <section id="exercise-plot-the-electrical-field">
 <h2>Exercise: Plot the electrical field<a class="headerlink" href="#exercise-plot-the-electrical-field" title="Link to this heading">#</a></h2>
 <p>For any of the previous examples, use (for example) a quiver plot to plot the electric field, defined as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-05cc9e29-1d4c-480e-8dab-5d2007b2f0f3">
-<span class="eqno">(138)<a class="headerlink" href="#equation-05cc9e29-1d4c-480e-8dab-5d2007b2f0f3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9c6e43d4-76a6-46cd-b1ce-6f3428d5da78">
+<span class="eqno">(140)<a class="headerlink" href="#equation-9c6e43d4-76a6-46cd-b1ce-6f3428d5da78" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec E = -\vec\nabla V
 \end{equation}\]</div>
 <p>See <a class="reference external" href="https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb">https://nbviewer.org/urls/www.numfys.net/media/notebooks/relaxation_methods.ipynb</a></p>

@@ -579,6 +579,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-maps-the-logistic-map">Discrete maps: the logistic map</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cobweb-plots">Cobweb plots</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-their-stability">Fixed points and their stability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chaos">Chaos</a></li>
@@ -695,8 +696,8 @@
 <h2>Phase space and fixed points<a class="headerlink" href="#phase-space-and-fixed-points" title="Link to this heading">#</a></h2>
 <p>Any ODE system can be written as a first-order system <span class="math notranslate nohighlight">\(\dot{\mathbf{z}} = \mathbf{F}(\mathbf{z})\)</span>. For a 1D mechanical system the state is <span class="math notranslate nohighlight">\(\mathbf{z} = (x, v)\)</span>, and the <strong>phase space</strong> is the <span class="math notranslate nohighlight">\((x, v)\)</span> plane. Every point has exactly one trajectory through it, so the vector field <span class="math notranslate nohighlight">\(\mathbf{F}\)</span> alone tells us a lot about the dynamics, <em>without solving the equations</em>.</p>
 <p><strong>Fixed points</strong> satisfy <span class="math notranslate nohighlight">\(\mathbf{F}(\mathbf{z}^*) = 0\)</span>. To study their stability, write <span class="math notranslate nohighlight">\(\mathbf{z} = \mathbf{z}^* + \boldsymbol{\eta}\)</span> and linearize:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-74500bfe-fe3d-452c-8b6d-0cdeac89c2fb">
-<span class="eqno">(69)<a class="headerlink" href="#equation-74500bfe-fe3d-452c-8b6d-0cdeac89c2fb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-944851c3-b568-4324-a3cc-abdb2b6e33b3">
+<span class="eqno">(69)<a class="headerlink" href="#equation-944851c3-b568-4324-a3cc-abdb2b6e33b3" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \dot{\boldsymbol{\eta}} = J(\mathbf{z}^*)\, \boldsymbol{\eta}, \qquad J_{ij} = \frac{\partial F_i}{\partial z_j}.
 \end{equation}\]</div>
 <p>The solutions are <span class="math notranslate nohighlight">\(\boldsymbol{\eta}(t) = \sum_k c_k \mathbf{e}_k e^{\lambda_k t}\)</span>, where <span class="math notranslate nohighlight">\(\lambda_k, \mathbf{e}_k\)</span> are the eigenvalues and eigenvectors of the Jacobian <span class="math notranslate nohighlight">\(J\)</span>. Therefore:</p>
@@ -733,8 +734,8 @@
 <h3>Example: harmonic vs double-well Duffing oscillator<a class="headerlink" href="#example-harmonic-vs-double-well-duffing-oscillator" title="Link to this heading">#</a></h3>
 <p>Compare <span class="math notranslate nohighlight">\(\ddot x = -x\)</span> with the damped double-well Duffing oscillator <span class="math notranslate nohighlight">\(\ddot x = x - x^3 - \delta \dot x\)</span>, i.e. a particle in the potential <span class="math notranslate nohighlight">\(V(x) = -x^2/2 + x^4/4\)</span>.</p>
 <p>For Duffing, <span class="math notranslate nohighlight">\(\mathbf{F}(x, v) = (v,\; x - x^3 - \delta v)\)</span> and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4f51f203-cc09-4777-81d4-5168b222e7b5">
-<span class="eqno">(70)<a class="headerlink" href="#equation-4f51f203-cc09-4777-81d4-5168b222e7b5" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9ca5e7e9-eb50-4a4c-a156-d5f969b5184c">
+<span class="eqno">(70)<a class="headerlink" href="#equation-9ca5e7e9-eb50-4a4c-a156-d5f969b5184c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 J = \begin{pmatrix} 0 &amp; 1 \\ 1 - 3x^2 &amp; -\delta \end{pmatrix}.
 \end{equation}\]</div>
 <p>The fixed points are <span class="math notranslate nohighlight">\((0,0)\)</span> and <span class="math notranslate nohighlight">\((\pm 1, 0)\)</span>. We compute their eigenvalues numerically. The <strong>stable manifold</strong> of the saddle (obtained by integrating <em>backwards in time</em> from a point very close to the saddle along <span class="math notranslate nohighlight">\(\mathbf{e}_-\)</span>) is the <strong>separatrix</strong>: it splits the plane into the <strong>basins of attraction</strong> of the two wells.</p>
@@ -849,8 +850,8 @@ fixed point (-1.0, 0.0): eigenvalues = [-0.1+1.4107j -0.1-1.4107j]
 <section id="limit-cycles-the-van-der-pol-oscillator">
 <h3>Limit cycles: the van der Pol oscillator<a class="headerlink" href="#limit-cycles-the-van-der-pol-oscillator" title="Link to this heading">#</a></h3>
 <p>Nonlinear systems can have isolated closed orbits called <strong>limit cycles</strong>, which do not exist in linear systems: a linear center has a <em>continuous family</em> of orbits whose amplitude is fixed by the initial conditions. The van der Pol oscillator (an early model of vacuum-tube circuits and of heartbeats)</p>
-<div class="amsmath math notranslate nohighlight" id="equation-767ac27b-2eca-4f1e-9c2b-fc75d3c1cb75">
-<span class="eqno">(71)<a class="headerlink" href="#equation-767ac27b-2eca-4f1e-9c2b-fc75d3c1cb75" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6a692103-2d67-471a-b607-2010db8dfe09">
+<span class="eqno">(71)<a class="headerlink" href="#equation-6a692103-2d67-471a-b607-2010db8dfe09" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \ddot x - \mu (1 - x^2)\dot x + x = 0
 \end{equation}\]</div>
 <p>has <em>negative</em> damping for <span class="math notranslate nohighlight">\(|x| &lt; 1\)</span> (energy is pumped in) and positive damping for <span class="math notranslate nohighlight">\(|x| &gt; 1\)</span>. Every trajectory, starting inside or outside, converges to the same periodic orbit: its amplitude is a property of the system, not of the initial condition.</p>
@@ -951,66 +952,7 @@ fixed point (-1.0, 0.0): eigenvalues = [-0.1+1.4107j -0.1-1.4107j]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span> <span class="n">line</span> <span class="mi">22</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span>     <span class="c1"># Continuous trajectory (last 30 periods, after a transient)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span>     <span class="n">sol</span> <span class="o">=</span><span class="n">solve_ivp</span><span class="p">(</span><span class="n">duffing_driven</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">130</span> <span class="o">*</span> <span class="n">T</span><span class="p">),</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span>                     <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">100</span> <span class="o">*</span> <span class="n">T</span><span class="p">,</span> <span class="mi">130</span> <span class="o">*</span> <span class="n">T</span><span class="p">,</span> <span class="mi">5000</span><span class="p">),</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span>     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"lightgray"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"trajectory"</span><span class="p">)</span>
-<span class="ne">---&gt; </span><span class="mi">22</span>     <span class="n">P</span> <span class="o">=</span> <span class="n">poincare_section</span><span class="p">(</span><span class="n">duffing_driven</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">],</span> <span class="n">T</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">npts</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span>     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="o">*</span><span class="n">P</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"crimson"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mf">1.5</span> <span class="k">if</span> <span class="n">npts</span> <span class="o">&gt;</span> <span class="mi">100</span> <span class="k">else</span> <span class="mi">8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Poincaré section"</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">24</span>     <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">rf</span><span class="s2">"$\gamma = </span><span class="si">{</span><span class="n">gamma</span><span class="si">}</span><span class="s2">$"</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">"$x$"</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s2">"upper right"</span><span class="p">)</span>
-
-<span class="nn">Cell In[6], line 8,</span> in <span class="ni">poincare_section</span><span class="nt">(rhs, z0, T, n_transient, n_points, args, **kw)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">def</span><span class="w"> </span><span class="nf">poincare_section</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">z0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">n_transient</span><span class="p">,</span> <span class="n">n_points</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">(),</span> <span class="o">**</span><span class="n">kw</span><span class="p">):</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span><span class="w">     </span><span class="sd">"""Integrate and return the state sampled at t = n T after a transient."""</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">n_total</span> <span class="o">=</span> <span class="n">n_transient</span> <span class="o">+</span> <span class="n">n_points</span>
-<span class="ne">----&gt; </span><span class="mi">8</span>     <span class="n">sol</span> <span class="o">=</span> <span class="n">solve_ivp</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_total</span> <span class="o">*</span> <span class="n">T</span><span class="p">),</span> <span class="n">z0</span><span class="p">,</span> <span class="n">t_eval</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">n_total</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span>                     <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span> <span class="n">rtol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-9</span><span class="p">,</span> <span class="o">**</span><span class="n">kw</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">return</span> <span class="n">sol</span><span class="o">.</span><span class="n">y</span><span class="p">[:,</span> <span class="n">n_transient</span><span class="p">:]</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/ivp.py:657,</span> in <span class="ni">solve_ivp</span><span class="nt">(fun, t_span, y0, method, t_eval, dense_output, events, vectorized, args, **options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">655</span> <span class="n">status</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">656</span> <span class="k">while</span> <span class="n">status</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">657</span>     <span class="n">message</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">659</span>     <span class="k">if</span> <span class="n">solver</span><span class="o">.</span><span class="n">status</span> <span class="o">==</span> <span class="s1">'finished'</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span>         <span class="n">status</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/base.py:201,</span> in <span class="ni">OdeSolver.step</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">199</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">200</span>     <span class="n">t</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
-<span class="ne">--&gt; </span><span class="mi">201</span>     <span class="n">success</span><span class="p">,</span> <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_step_impl</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">203</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">success</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">204</span>         <span class="bp">self</span><span class="o">.</span><span class="n">status</span> <span class="o">=</span> <span class="s1">'failed'</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/rk.py:144,</span> in <span class="ni">RungeKutta._step_impl</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">141</span> <span class="n">h</span> <span class="o">=</span> <span class="n">t_new</span> <span class="o">-</span> <span class="n">t</span>
-<span class="g g-Whitespace">    </span><span class="mi">142</span> <span class="n">h_abs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">h</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">144</span> <span class="n">y_new</span><span class="p">,</span> <span class="n">f_new</span> <span class="o">=</span> <span class="n">rk_step</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fun</span><span class="p">,</span> <span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">A</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">145</span>                        <span class="bp">self</span><span class="o">.</span><span class="n">B</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">C</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">146</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">atol</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">y_new</span><span class="p">))</span> <span class="o">*</span> <span class="n">rtol</span>
-<span class="g g-Whitespace">    </span><span class="mi">147</span> <span class="n">error_norm</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_estimate_error_norm</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">K</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">scale</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/rk.py:64,</span> in <span class="ni">rk_step</span><span class="nt">(fun, t, y, f, h, A, B, C, K)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">for</span> <span class="n">s</span><span class="p">,</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span>     <span class="n">dy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">[:</span><span class="n">s</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">a</span><span class="p">[:</span><span class="n">s</span><span class="p">])</span> <span class="o">*</span> <span class="n">h</span>
-<span class="ne">---&gt; </span><span class="mi">64</span>     <span class="n">K</span><span class="p">[</span><span class="n">s</span><span class="p">]</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">c</span> <span class="o">*</span> <span class="n">h</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="n">dy</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span> <span class="n">y_new</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">K</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">B</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span> <span class="n">f_new</span> <span class="o">=</span> <span class="n">fun</span><span class="p">(</span><span class="n">t</span> <span class="o">+</span> <span class="n">h</span><span class="p">,</span> <span class="n">y_new</span><span class="p">)</span>
-
-<span class="nn">File /opt/hostedtoolcache/Python/3.11.17/x64/lib/python3.11/site-packages/scipy/integrate/_ivp/base.py:156,</span> in <span class="ni">OdeSolver.__init__.&lt;locals&gt;.fun</span><span class="nt">(t, y)</span>
-<span class="g g-Whitespace">    </span><span class="mi">153</span>             <span class="n">f</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">154</span>         <span class="k">return</span> <span class="n">f</span>
-<span class="ne">--&gt; </span><span class="mi">156</span> <span class="k">def</span><span class="w"> </span><span class="nf">fun</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">157</span>     <span class="bp">self</span><span class="o">.</span><span class="n">nfev</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="g g-Whitespace">    </span><span class="mi">158</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fun_single</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
-<img alt="../../_images/4eb3c6fa225bf85f34e5efa2b6020ffe83c47ee8527fd218d4034c96f913db88.png" src="../../_images/4eb3c6fa225bf85f34e5efa2b6020ffe83c47ee8527fd218d4034c96f913db88.png" />
+<img alt="../../_images/53f486dbc27fc58b871cbe1b2c18773e1bb4d682715ebc84a6200ebc4a07646f.png" src="../../_images/53f486dbc27fc58b871cbe1b2c18773e1bb4d682715ebc84a6200ebc4a07646f.png" />
 </div>
 </div>
 <p>For <span class="math notranslate nohighlight">\(\gamma = 0.2\)</span> the oscillator settles in one well with the same period as the drive (a single point). For <span class="math notranslate nohighlight">\(\gamma = 0.5\)</span> it jumps erratically between the wells, and the Poincaré section reveals a folded, layered structure: a <strong>strange attractor</strong>.</p>
@@ -1031,8 +973,8 @@ fixed point (-1.0, 0.0): eigenvalues = [-0.1+1.4107j -0.1-1.4107j]
 <h2>Discrete maps: the logistic map<a class="headerlink" href="#discrete-maps-the-logistic-map" title="Link to this heading">#</a></h2>
 <p>(<em>Based on Kaplan &amp; Glass, Understanding Nonlinear Dynamics; and Strogatz, Nonlinear Dynamics and Chaos</em>)</p>
 <p>The Poincaré section turned a flow into a map <span class="math notranslate nohighlight">\(\mathbf{z}_{n+1} = P(\mathbf{z}_n)\)</span>. Maps are much cheaper to iterate and already contain all the phenomenology of chaos. The simplest nonlinear 1D map is the <strong>logistic map</strong>, a model for a population with limited resources:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8eb053f4-37bd-4be6-a256-c589da86882d">
-<span class="eqno">(72)<a class="headerlink" href="#equation-8eb053f4-37bd-4be6-a256-c589da86882d" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-05222ff3-4cd4-45f5-bde6-86bec2471a05">
+<span class="eqno">(72)<a class="headerlink" href="#equation-05222ff3-4cd4-45f5-bde6-86bec2471a05" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 \end{equation}\]</div>
 <p>The factor <span class="math notranslate nohighlight">\(R x_n\)</span> describes growth when the population is small; the factor <span class="math notranslate nohighlight">\((1 - x_n)\)</span> represents competition for resources.</p>
@@ -1059,6 +1001,9 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/0e6bf2ddd433f006671c45fe2739ce79f4a7cacd4b6c1a7070ab85633093540d.png" src="../../_images/0e6bf2ddd433f006671c45fe2739ce79f4a7cacd4b6c1a7070ab85633093540d.png" />
+</div>
 </div>
 <section id="cobweb-plots">
 <h3>Cobweb plots<a class="headerlink" href="#cobweb-plots" title="Link to this heading">#</a></h3>
@@ -1084,6 +1029,9 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/ec94f7559b24448d4c9e59e8b2aa1ffc1ac91a5e8a77a05d2eabe85c9298fe46.png" src="../../_images/ec94f7559b24448d4c9e59e8b2aa1ffc1ac91a5e8a77a05d2eabe85c9298fe46.png" />
 </div>
 </div>
 <p>Interactive version (move the slider; it also works in the HTML book):</p>
@@ -1138,13 +1086,349 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 </div>
 </div>
 </details>
+<div class="cell_output docutils container">
+<script type="application/javascript">'use strict';
+(function(root) {
+  function now() {
+    return new Date();
+  }
+
+  const force = true;
+
+  if (typeof root._bokeh_onload_callbacks === "undefined" || force === true) {
+    root._bokeh_onload_callbacks = [];
+    root._bokeh_is_loading = undefined;
+  }
+
+const JS_MIME_TYPE = 'application/javascript';
+  const HTML_MIME_TYPE = 'text/html';
+  const EXEC_MIME_TYPE = 'application/vnd.bokehjs_exec.v0+json';
+  const CLASS_NAME = 'output_bokeh rendered_html';
+
+  /**
+   * Render data to the DOM node
+   */
+  function render(props, node) {
+    const script = document.createElement("script");
+    node.appendChild(script);
+  }
+
+  /**
+   * Handle when an output is cleared or removed
+   */
+  function handleClearOutput(event, handle) {
+    function drop(id) {
+      const view = Bokeh.index.get_by_id(id)
+      if (view != null) {
+        view.model.document.clear()
+        Bokeh.index.delete(view)
+      }
+    }
+
+    const cell = handle.cell;
+
+    const id = cell.output_area._bokeh_element_id;
+    const server_id = cell.output_area._bokeh_server_id;
+
+    // Clean up Bokeh references
+    if (id != null) {
+      drop(id)
+    }
+
+    if (server_id !== undefined) {
+      // Clean up Bokeh references
+      const cmd_clean = "from bokeh.io.state import curstate; print(curstate().uuid_to_server['" + server_id + "'].get_sessions()[0].document.roots[0]._id)";
+      cell.notebook.kernel.execute(cmd_clean, {
+        iopub: {
+          output: function(msg) {
+            const id = msg.content.text.trim()
+            drop(id)
+          }
+        }
+      });
+      // Destroy server and session
+      const cmd_destroy = "import bokeh.io.notebook as ion; ion.destroy_server('" + server_id + "')";
+      cell.notebook.kernel.execute(cmd_destroy);
+    }
+  }
+
+  /**
+   * Handle when a new output is added
+   */
+  function handleAddOutput(event, handle) {
+    const output_area = handle.output_area;
+    const output = handle.output;
+
+    // limit handleAddOutput to display_data with EXEC_MIME_TYPE content only
+    if ((output.output_type != "display_data") || (!Object.prototype.hasOwnProperty.call(output.data, EXEC_MIME_TYPE))) {
+      return
+    }
+
+    const toinsert = output_area.element.find("." + CLASS_NAME.split(' ')[0]);
+
+    if (output.metadata[EXEC_MIME_TYPE]["id"] !== undefined) {
+      toinsert[toinsert.length - 1].firstChild.textContent = output.data[JS_MIME_TYPE];
+      // store reference to embed id on output_area
+      output_area._bokeh_element_id = output.metadata[EXEC_MIME_TYPE]["id"];
+    }
+    if (output.metadata[EXEC_MIME_TYPE]["server_id"] !== undefined) {
+      const bk_div = document.createElement("div");
+      bk_div.innerHTML = output.data[HTML_MIME_TYPE];
+      const script_attrs = bk_div.children[0].attributes;
+      for (let i = 0; i < script_attrs.length; i++) {
+        toinsert[toinsert.length - 1].firstChild.setAttribute(script_attrs[i].name, script_attrs[i].value);
+        toinsert[toinsert.length - 1].firstChild.textContent = bk_div.children[0].textContent
+      }
+      // store reference to server id on output_area
+      output_area._bokeh_server_id = output.metadata[EXEC_MIME_TYPE]["server_id"];
+    }
+  }
+
+  function register_renderer(events, OutputArea) {
+
+    function append_mime(data, metadata, element) {
+      // create a DOM node to render to
+      const toinsert = this.create_output_subarea(
+        metadata,
+        CLASS_NAME,
+        EXEC_MIME_TYPE
+      );
+      this.keyboard_manager.register_events(toinsert);
+      // Render to node
+      const props = {data: data, metadata: metadata[EXEC_MIME_TYPE]};
+      render(props, toinsert[toinsert.length - 1]);
+      element.append(toinsert);
+      return toinsert
+    }
+
+    /* Handle when an output is cleared or removed */
+    events.on('clear_output.CodeCell', handleClearOutput);
+    events.on('delete.Cell', handleClearOutput);
+
+    /* Handle when a new output is added */
+    events.on('output_added.OutputArea', handleAddOutput);
+
+    /**
+     * Register the mime type and append_mime function with output_area
+     */
+    OutputArea.prototype.register_mime_type(EXEC_MIME_TYPE, append_mime, {
+      /* Is output safe? */
+      safe: true,
+      /* Index of renderer in `output_area.display_order` */
+      index: 0
+    });
+  }
+
+  // register the mime type if in Jupyter Notebook environment and previously unregistered
+  if (root.Jupyter !== undefined) {
+    const events = require('base/js/events');
+    const OutputArea = require('notebook/js/outputarea').OutputArea;
+
+    if (OutputArea.prototype.mime_types().indexOf(EXEC_MIME_TYPE) == -1) {
+      register_renderer(events, OutputArea);
+    }
+  }
+  if (typeof (root._bokeh_timeout) === "undefined" || force === true) {
+    root._bokeh_timeout = Date.now() + 5000;
+    root._bokeh_failed_load = false;
+  }
+
+  const NB_LOAD_WARNING = {'data': {'text/html':
+     "<div style='background-color: #fdd'>\n"+
+     "<p>\n"+
+     "BokehJS does not appear to have successfully loaded. If loading BokehJS from CDN, this \n"+
+     "may be due to a slow or bad network connection. Possible fixes:\n"+
+     "</p>\n"+
+     "<ul>\n"+
+     "<li>re-rerun `output_notebook()` to attempt to load from CDN again, or</li>\n"+
+     "<li>use INLINE resources instead, as so:</li>\n"+
+     "</ul>\n"+
+     "<code>\n"+
+     "from bokeh.resources import INLINE\n"+
+     "output_notebook(resources=INLINE)\n"+
+     "</code>\n"+
+     "</div>"}};
+
+  function display_loaded(error = null) {
+    const el = document.getElementById(null);
+    if (el != null) {
+      const html = (() => {
+        if (typeof root.Bokeh === "undefined") {
+          if (error == null) {
+            return "BokehJS is loading ...";
+          } else {
+            return "BokehJS failed to load.";
+          }
+        } else {
+          const prefix = `BokehJS ${root.Bokeh.version}`;
+          if (error == null) {
+            return `${prefix} successfully loaded.`;
+          } else {
+            return `${prefix} <b>encountered errors</b> while loading and may not function as expected.`;
+          }
+        }
+      })();
+      el.innerHTML = html;
+
+      if (error != null) {
+        const wrapper = document.createElement("div");
+        wrapper.style.overflow = "auto";
+        wrapper.style.height = "5em";
+        wrapper.style.resize = "vertical";
+        const content = document.createElement("div");
+        content.style.fontFamily = "monospace";
+        content.style.whiteSpace = "pre-wrap";
+        content.style.backgroundColor = "rgb(255, 221, 221)";
+        content.textContent = error.stack ?? error.toString();
+        wrapper.append(content);
+        el.append(wrapper);
+      }
+    } else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(() => display_loaded(error), 100);
+    }
+  }
+
+  function run_callbacks() {
+    try {
+      root._bokeh_onload_callbacks.forEach(function(callback) {
+        if (callback != null)
+          callback();
+      });
+    } finally {
+      delete root._bokeh_onload_callbacks
+    }
+    console.debug("Bokeh: all callbacks have finished");
+  }
+
+  function load_libs(css_urls, js_urls, callback) {
+    if (css_urls == null) css_urls = [];
+    if (js_urls == null) js_urls = [];
+
+    root._bokeh_onload_callbacks.push(callback);
+    if (root._bokeh_is_loading > 0) {
+      console.debug("Bokeh: BokehJS is being loaded, scheduling callback at", now());
+      return null;
+    }
+    if (js_urls == null || js_urls.length === 0) {
+      run_callbacks();
+      return null;
+    }
+    console.debug("Bokeh: BokehJS not loaded, scheduling load and callback at", now());
+    root._bokeh_is_loading = css_urls.length + js_urls.length;
+
+    function on_load() {
+      root._bokeh_is_loading--;
+      if (root._bokeh_is_loading === 0) {
+        console.debug("Bokeh: all BokehJS libraries/stylesheets loaded");
+        run_callbacks()
+      }
+    }
+
+    function on_error(url) {
+      console.error("failed to load " + url);
+    }
+
+    for (let i = 0; i < css_urls.length; i++) {
+      const url = css_urls[i];
+      const element = document.createElement("link");
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.rel = "stylesheet";
+      element.type = "text/css";
+      element.href = url;
+      console.debug("Bokeh: injecting link tag for BokehJS stylesheet: ", url);
+      document.body.appendChild(element);
+    }
+
+    for (let i = 0; i < js_urls.length; i++) {
+      const url = js_urls[i];
+      const element = document.createElement('script');
+      element.onload = on_load;
+      element.onerror = on_error.bind(null, url);
+      element.async = false;
+      element.src = url;
+      console.debug("Bokeh: injecting script tag for BokehJS library: ", url);
+      document.head.appendChild(element);
+    }
+  };
+
+  function inject_raw_css(css) {
+    const element = document.createElement("style");
+    element.appendChild(document.createTextNode(css));
+    document.body.appendChild(element);
+  }
+
+  const js_urls = ["https://cdn.bokeh.org/bokeh/release/bokeh-3.9.2.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-gl-3.9.2.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-widgets-3.9.2.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-tables-3.9.2.min.js", "https://cdn.bokeh.org/bokeh/release/bokeh-mathjax-3.9.2.min.js"];
+  const css_urls = [];
+
+  const inline_js = [    function(Bokeh) {
+      Bokeh.set_log_level("info");
+    },
+function(Bokeh) {
+    }
+  ];
+
+  function run_inline_js() {
+    if (root.Bokeh !== undefined || force === true) {
+      try {
+            for (let i = 0; i < inline_js.length; i++) {
+      inline_js[i].call(root, root.Bokeh);
+    }
+
+      } catch (error) {throw error;
+      }} else if (Date.now() < root._bokeh_timeout) {
+      setTimeout(run_inline_js, 100);
+    } else if (!root._bokeh_failed_load) {
+      console.log("Bokeh: BokehJS failed to load within specified timeout.");
+      root._bokeh_failed_load = true;
+    } else if (force !== true) {
+      const cell = $(document.getElementById(null)).parents('.cell').data().cell;
+      cell.output_area.append_execute_result(NB_LOAD_WARNING)
+    }
+  }
+
+  if (root._bokeh_is_loading === 0) {
+    console.debug("Bokeh: BokehJS loaded, going straight to plotting");
+    run_inline_js();
+  } else {
+    load_libs(css_urls, js_urls, function() {
+      console.debug("Bokeh: BokehJS plotting callback run at", now());
+      run_inline_js();
+    });
+  }
+}(window));</script><div class="output text_html">
+  <div id="a5c768b3-a5c8-4a3e-b072-8d2d9900cd9b" data-root-id="p1073" style="display: contents;"></div>
+</div><script type="application/javascript">(function(root) {
+  function embed_document(root) {
+  const docs_json = {"58a7f39e-f1a5-4156-9e45-db8e3ffe252f":{"version":"3.9.2","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1074","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1075"}}},"roots":[{"type":"object","name":"Column","id":"p1073","attributes":{"children":[{"type":"object","name":"Slider","id":"p1071","attributes":{"js_property_callbacks":{"type":"map","entries":[["change:value",[{"type":"object","name":"CustomJS","id":"p1072","attributes":{"args":{"type":"map","entries":[["curve",{"type":"object","name":"ColumnDataSource","id":"p1008","attributes":{"selected":{"type":"object","name":"Selection","id":"p1009","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1010"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/y2WB1zVVRzFAVNTy1IcVFKWaGmlpSkY1onU3GU5ctNCLbXEBpmphVbmKhQwMReYaI7AwVAhkL2Uvcfbe2BZKVl6732Hz/t8+PDe+997f+ec77l4eXl+Orsy9bqwFfD8XofNI68O+2D7Zv69DTmz37xy6pEovh+NCfdP+m7IzT38fB/yS8a8dLDyAL93GAnjd9/qURvP7x/Be4/2mF/48lE+l4jBtyPPb/7tOJ8/AWNzR6+QAae4zmnMWjw2dcOEJK6XjFHTPxVfSea6Z9AnONk3OPks1z+H60OdIXuXnec+Kaj2G7r6H/9U7peK813DDsypTuO+6Yj5+1Dp2a0XuP9FyNV7hVziOTIwRy2QwfNkYowS4HeeKwtymn5nsni+bKybaZo/cUc2z5kN+6S7wj9ZfpnnvYxFeGxLwvgcnjsHpVKuh3N5/lyMG74kxbsjl3Pk4eTgL8ueqcnjPPkY4B9nCE3K51wF2N4n7d+d2wo4XwGE2L0zlxZyzkKs6iQVKeK8RWiR8voXc+5izPhjxLxpN4o5fwkyrDM++qKqhDqU4mntim+Pny6lHmXYX/+9eJVRlzL0LE881zXsCvW5gg0FeSIBV6nTVUS0hV87c2859SrHiCav9VPXlVO3cphrf7hbZymnfhUQYkSvnVtBHSsg09Yrt4J6VuC+4nEnjj1bSV0robY7WEl9K7Exe8HlunuqqHMVgjwDUe8qtKd93tDFUkXdq3FMnF4EgvpX462k2PbROdX0oRp+HgPoRw3UuAdq6EsNhJky4PSnFtLN6LW19KkWN+Le/vVJcy39qoNafnYdfavD8l3qxPSvDgN39hSW1NPHeii599fTz3pEffOUQKiBvjZgytcX3WIk+tsAb6HuTFMDfW5Euhx3ViP9boQIo9ixkb43QtLRf0QT/W+CsvvnJuagCXuX9R39Svdm5qEZr797JKslopm5aEa3UEUk89ECJf+sFuakBWvnqieYlxaMfEPjCh7eyty0wibjtq+V+WlF/JT/O6/o1sYctWHBxB1RPhFtzFMbeov0xhnamCsNpHl+QzXMlwbq41ANc6aBwiVWw7xpcLO/NFTD3GlQE/OxQFTL/Gkh28Q3WMscaqF2D9cyj1q8rwKoZS618BxPy3xqoeqtn4451eG/LdJRHfOqg3Jjk4651UGU3wNHL+iYXx3Udtd0zLEeq7568ZcXntAzz3pMlfKE6plrPYbIeojRM996+HREi0bTM+d6tEYsurSyk4F5N+DCX4Mig543MPcGxMrxww3MvwFrJK2JBnJgwKvKHgN5MGCYrNe+RnJhRBdxmlHTjeTDCMFywO1IIzkxInPpT7bidCN5MULZ0W4kNyZ89s7j4mUiPyaoeCwxkSMTVB1Gm8iTCd2b1wvkTeTKBNm2UT5m8mWGTN/isWZyZoaKx2ozeTNDTnP9qJncmeGJp5n8maGuuz4WcmiBpHHeNAt5tEAMIxS0kEsLCiZLAC3k04KEfPmGhZxasVFdkFbyasVCdUArubUiUBWGlfxa4asEs5JjK9xCjRRvG3m2oURuH2Qj1zYkBsqCs5FvGzapQNnIuQ0ePG3k3QZ1Xfrayb0dgn1RyHbyb8efJ+PFBHb2gB1KjjQ7+8AOUb7CIjt7wQFx+QuiHOwHB1Q9LHKwJxxQ191uB/vCgYcOvSYQcrA3HFDt4+Vkfzih7Al0skeckHSs+dDJPnFi2x5JhJO94oSnnpzsFydUG/d2sWdcGCguj8NTXOwbF27tlCu42Dsu1Mu4pLrYPy6c2/rgoM4uF3vIjR/l7RTgZh+5sVLW40I3e8mNyfJ63+VmP7kRIOh6rsjNnnLD819VO+4AnM0I5mAJAAA="},"shape":[300],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/0WWeVSNeRzGU5i0jKQYJEXInBzJUpbpUeSqLEPCmEMMKiXkWsqSxBA1ja3JWFpuyNbNPmlu+yLSctVVKere7v4ejW5TpijjTN/fmfvPe849973v7/1+n+fzPHp6fZ9S863dSfIT8LaMCRlRlYBG8RF74YsU+Iys9DFJS4PJ5nSXifvScWx1XPDhxHsQHIpL8Dz4EBvtVtvoVv6BAm/1gHD7LBS2uy162ynCFqvNKtu8XEh+Smuzdc9HyQc9a0FKAQaV54Sd6S3EJVlzv/drihHhEvAk+24J7lcsT+oeUArna8kPrq95BmORT2f+jedwHBocsLizDNduKQcudCvHtqiSGuHJChy7aCQ+XlmJPeH1Pf4nqyAu9vu2YJIYvk7ftNaUitEvV98zyf8lJMFj5tgaVEPssr1obWI1Osf/Jfd2qcH8aYLLf1fVIHPDCW5loAS+wkTxtl4JRlmpl8499wqDbm3aVDihFjZrhgzWf1KL9RPalv/jWYciCwOH6/V18BnHu2IcWA+jFdnX7DvqoUne4tET+Rptg+cdPGncANukxV7l5xsQvjQmo9SqEV2jP90+kNqIVNMkKO3fYNfo3UGG6W8QsuSAg2zKW8Reefgz/95b1Jra7BVNbQIvMbtHdLcJoWkL42YPb4b4V97WXb7N4EVLBw8814yq0xZRHZXN2H6zOXeeiRTWLz2eqXhSKIwWJGqjpMjxaXD1zJbizh3j2wYfpBBaSmQjHGUoinNWxgTK0Dp82qMfkmVwuPd02dFaGQ6v7Xhk+HULFENFKs38Fmx4M0oxIbwFrY8thLnpLTiTfN39obQFiy6KBf0t5Rh6Nb7iLk8OXbauODNcDoVKHW11W453tmHDGxvkMNyWHPrBWAGXko0J2+cocMBRFO0WpED1rQyPnRcUwIy5Fd3FCuRWbhwr1Sngs9/GfdwYJT5ND5uc76VE5udAedYeJaJf6/zNkpUIKbZ8lP9MiYA8cUWFTgl+2YSHzqNUOK+02PLJXYVnQy5LrYJUGLpENOn30yqEXtjzXehjFVran1pda1AhwO/B0+l6aug1OLva2KmR4e8bGcBTI1TfJM4oSA2e8MeAQbFqOAYt+CJ1NabMLDk4skINd3NppkOrGoG95/Mummog6Jae2+ygQdvAUqdTXhqs/E8HGpQt86tWH9PAN9ZMYpuiQUfdWsFjkQY3ZrjOSavVYIcgK6m9TQOvMVWVl4y1mH0noizJTgt4lpz9PFeLVZ3Xx/+5UosjD2yOvQzWoiBymtAjSoth65tSLS5ocdjbbgvStfi4SF9XnK9F7KpwrxsSLRx3n9yuVGuhSXFaH/lRi8dNu0fsNeWQMPn75KfWHGJjinS7p3CI7xKbRYDD/X1h3bKlHOQDMjNS13GYdPW0Y14wh6Mr9A+5hHN4b2Yab3KcA7/pbtjcsxwMc95NLL3C4cGdQkHGDQ47bztpdPc5zM+a/fGM6Mv99Q11scUc7AyHRbWUc3DiaTrjJRxW/ebrfLXxy/M71s7/uoVD7eaukTVqDjPkjjkd7zjc5PebzNdx5G8OLwpCQo50cTgQNQjmnzhghWtjbw+HYU4mHrzPHAzG8sO5L1d9ug6n79nv2H1l9D993Pj/OTPpua/oHOxcvnROdu5x9B7svdzpPdl736c5sLnsojmxuUXRHO1prmzObO5sDzG0F7Yntje2R7bXU7RntvcI0oEl6YLpJIp0w3TkSrqaRTrzJt0xHaaRLplOV5FumY77+KbBe9J5Kume+cCNfOFIPplKvmE+2km+EpLP+pHvmA9l5EvmUwvy7XPycTz5mvk8kHy/gzhwiriQRZzoIW74EkfyiCvziDMS4s4h4tAs4pIRcaqVuKUijrUT1yyIc17EvXPEQcZFP+Ik42YEcZRx9R1xlnGXcZhxmXFaTtweQxwPIa4zzjPuv6QcYLnAcoLlxi+UI9soV/iUMyx3uimH9lMujaWcaqfc4ijHTCjX+vhWjxLKvQ2Ug7aUi8aUk9aUm2soR7MoVz0oZ7sod2soh2splw0op1dTbldTjodRrkdTzvMp99OpBzhTLzCnngDqDULqEfupVyRQz+hPvaOQeoiYeokf9ZQc6i3Z1GPWUa9JpJ4TSb3nK+pBy6gX1VFPWkS9qYh6FNUqvX8BTysIqWAJAAA="},"shape":[300],"dtype":"float64","order":"little"}]]}}}],["cob",{"type":"object","name":"ColumnDataSource","id":"p1011","attributes":{"selected":{"type":"object","name":"Selection","id":"p1012","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1013"},"data":{"type":"map","entries":[["x",[0.2,0.2,0.56,0.56,0.8623999999999999,0.8623999999999999,0.4153318400000001,0.4153318400000001,0.8499095593877504,0.8499095593877504,0.4464715508717464,0.4464715508717464,0.8649714679687339,0.8649714679687339,0.408785396490616,0.408785396490616,0.8458796363731905,0.8458796363731905,0.4562854699982232,0.4562854699982232,0.8683116395335331,0.8683116395335331,0.4002128766444228,0.4002128766444228,0.8401488550434658,0.8401488550434658,0.4700456474441675,0.4700456474441675,0.8718595786703632,0.8718595786703632,0.3910215881288498,0.3910215881288498,0.8334329701111468,0.8334329701111468,0.48587859055000676,0.48587859055000676,0.8743020502830099,0.8743020502830099,0.38464291303877296,0.38464291303877296,0.8284245987073696,0.8284245987073696,0.49748049037366127,0.49748049037366127,0.8749777822493497,0.8749777822493497,0.38287081986775734,0.38287081986775734,0.8269826430654204,0.8269826430654204,0.5007882289688317,0.5007882289688317,0.8749978254328244,0.8749978254328244,0.3828182082222852,0.3828182082222852,0.8269394968651751,0.8269394968651751,0.5008869788634116,0.5008869788634116,0.8749972464397355,0.8749972464397355,0.3828197280691569,0.3828197280691569,0.8269407435457478,0.8269407435457478,0.5008841257341375,0.5008841257341375,0.8749972641259018,0.8749972641259018,0.38281968164331015,0.38281968164331015,0.8269407054643868,0.8269407054643868,0.5008842128865718,0.5008842128865718,0.8749972635864993,0.8749972635864993,0.3828196830592315,0.3828196830592315,0.8269407066258138,0.8269407066258138,0.5008842102285476,0.5008842102285476,0.874997263602951,0.874997263602951,0.3828196830160459,0.3828196830160459,0.8269407065903901,0.8269407065903901,0.5008842103096176,0.5008842103096176,0.8749972636024492,0.8749972636024492,0.38281968301736324,0.38281968301736324,0.8269407065914708,0.8269407065914708,0.5008842103071444,0.5008842103071444,0.8749972636024647,0.8749972636024647,0.3828196830173227,0.3828196830173227,0.8269407065914375,0.8269407065914375,0.5008842103072205,0.5008842103072205,0.8749972636024641,0.8749972636024641,0.38281968301732416,0.38281968301732416,0.8269407065914387,0.8269407065914387,0.5008842103072179,0.5008842103072179,0.8749972636024641,0.8749972636024641,0.38281968301732416,0.38281968301732416,0.8269407065914387]],["y",[0.0,0.56,0.56,0.8623999999999999,0.8623999999999999,0.4153318400000001,0.4153318400000001,0.8499095593877504,0.8499095593877504,0.4464715508717464,0.4464715508717464,0.8649714679687339,0.8649714679687339,0.408785396490616,0.408785396490616,0.8458796363731905,0.8458796363731905,0.4562854699982232,0.4562854699982232,0.8683116395335331,0.8683116395335331,0.4002128766444228,0.4002128766444228,0.8401488550434658,0.8401488550434658,0.4700456474441675,0.4700456474441675,0.8718595786703632,0.8718595786703632,0.3910215881288498,0.3910215881288498,0.8334329701111468,0.8334329701111468,0.48587859055000676,0.48587859055000676,0.8743020502830099,0.8743020502830099,0.38464291303877296,0.38464291303877296,0.8284245987073696,0.8284245987073696,0.49748049037366127,0.49748049037366127,0.8749777822493497,0.8749777822493497,0.38287081986775734,0.38287081986775734,0.8269826430654204,0.8269826430654204,0.5007882289688317,0.5007882289688317,0.8749978254328244,0.8749978254328244,0.3828182082222852,0.3828182082222852,0.8269394968651751,0.8269394968651751,0.5008869788634116,0.5008869788634116,0.8749972464397355,0.8749972464397355,0.3828197280691569,0.3828197280691569,0.8269407435457478,0.8269407435457478,0.5008841257341375,0.5008841257341375,0.8749972641259018,0.8749972641259018,0.38281968164331015,0.38281968164331015,0.8269407054643868,0.8269407054643868,0.5008842128865718,0.5008842128865718,0.8749972635864993,0.8749972635864993,0.3828196830592315,0.3828196830592315,0.8269407066258138,0.8269407066258138,0.5008842102285476,0.5008842102285476,0.874997263602951,0.874997263602951,0.3828196830160459,0.3828196830160459,0.8269407065903901,0.8269407065903901,0.5008842103096176,0.5008842103096176,0.8749972636024492,0.8749972636024492,0.38281968301736324,0.38281968301736324,0.8269407065914708,0.8269407065914708,0.5008842103071444,0.5008842103071444,0.8749972636024647,0.8749972636024647,0.3828196830173227,0.3828196830173227,0.8269407065914375,0.8269407065914375,0.5008842103072205,0.5008842103072205,0.8749972636024641,0.8749972636024641,0.38281968301732416,0.38281968301732416,0.8269407065914387,0.8269407065914387,0.5008842103072179,0.5008842103072179,0.8749972636024641,0.8749972636024641,0.38281968301732416,0.38281968301732416,0.8269407065914387,0.8269407065914387]]]}}}]]},"code":"\n    const R = cb_obj.value;\n    const x = curve.data.x;\n    curve.data = {x: x, y: x.map(v => R*v*(1-v))};\n    let xn = 0.2; const cx = [xn], cy = [0];\n    for (let i = 0; i < 60; i++) {\n        const yn = R*xn*(1-xn);\n        cx.push(xn, yn); cy.push(yn, yn); xn = yn;\n    }\n    cob.data = {x: cx, y: cy};\n"}}]]]},"title":"R","start":0,"end":4,"value":3.5,"step":0.01}},{"type":"object","name":"Figure","id":"p1014","attributes":{"width":450,"height":450,"x_range":{"type":"object","name":"Range1d","id":"p1023"},"y_range":{"type":"object","name":"Range1d","id":"p1024"},"x_scale":{"type":"object","name":"LinearScale","id":"p1025"},"y_scale":{"type":"object","name":"LinearScale","id":"p1026"},"title":{"type":"object","name":"Title","id":"p1021"},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1056","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1050","attributes":{"selected":{"type":"object","name":"Selection","id":"p1051","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1052"},"data":{"type":"map","entries":[["x",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/y2WB1zVVRzFAVNTy1IcVFKWaGmlpSkY1onU3GU5ctNCLbXEBpmphVbmKhQwMReYaI7AwVAhkL2Uvcfbe2BZKVl6732Hz/t8+PDe+997f+ec77l4eXl+Orsy9bqwFfD8XofNI68O+2D7Zv69DTmz37xy6pEovh+NCfdP+m7IzT38fB/yS8a8dLDyAL93GAnjd9/qURvP7x/Be4/2mF/48lE+l4jBtyPPb/7tOJ8/AWNzR6+QAae4zmnMWjw2dcOEJK6XjFHTPxVfSea6Z9AnONk3OPks1z+H60OdIXuXnec+Kaj2G7r6H/9U7peK813DDsypTuO+6Yj5+1Dp2a0XuP9FyNV7hVziOTIwRy2QwfNkYowS4HeeKwtymn5nsni+bKybaZo/cUc2z5kN+6S7wj9ZfpnnvYxFeGxLwvgcnjsHpVKuh3N5/lyMG74kxbsjl3Pk4eTgL8ueqcnjPPkY4B9nCE3K51wF2N4n7d+d2wo4XwGE2L0zlxZyzkKs6iQVKeK8RWiR8voXc+5izPhjxLxpN4o5fwkyrDM++qKqhDqU4mntim+Pny6lHmXYX/+9eJVRlzL0LE881zXsCvW5gg0FeSIBV6nTVUS0hV87c2859SrHiCav9VPXlVO3cphrf7hbZymnfhUQYkSvnVtBHSsg09Yrt4J6VuC+4nEnjj1bSV0robY7WEl9K7Exe8HlunuqqHMVgjwDUe8qtKd93tDFUkXdq3FMnF4EgvpX462k2PbROdX0oRp+HgPoRw3UuAdq6EsNhJky4PSnFtLN6LW19KkWN+Le/vVJcy39qoNafnYdfavD8l3qxPSvDgN39hSW1NPHeii599fTz3pEffOUQKiBvjZgytcX3WIk+tsAb6HuTFMDfW5Euhx3ViP9boQIo9ixkb43QtLRf0QT/W+CsvvnJuagCXuX9R39Svdm5qEZr797JKslopm5aEa3UEUk89ECJf+sFuakBWvnqieYlxaMfEPjCh7eyty0wibjtq+V+WlF/JT/O6/o1sYctWHBxB1RPhFtzFMbeov0xhnamCsNpHl+QzXMlwbq41ANc6aBwiVWw7xpcLO/NFTD3GlQE/OxQFTL/Gkh28Q3WMscaqF2D9cyj1q8rwKoZS618BxPy3xqoeqtn4451eG/LdJRHfOqg3Jjk4651UGU3wNHL+iYXx3Udtd0zLEeq7568ZcXntAzz3pMlfKE6plrPYbIeojRM996+HREi0bTM+d6tEYsurSyk4F5N+DCX4Mig543MPcGxMrxww3MvwFrJK2JBnJgwKvKHgN5MGCYrNe+RnJhRBdxmlHTjeTDCMFywO1IIzkxInPpT7bidCN5MULZ0W4kNyZ89s7j4mUiPyaoeCwxkSMTVB1Gm8iTCd2b1wvkTeTKBNm2UT5m8mWGTN/isWZyZoaKx2ozeTNDTnP9qJncmeGJp5n8maGuuz4WcmiBpHHeNAt5tEAMIxS0kEsLCiZLAC3k04KEfPmGhZxasVFdkFbyasVCdUArubUiUBWGlfxa4asEs5JjK9xCjRRvG3m2oURuH2Qj1zYkBsqCs5FvGzapQNnIuQ0ePG3k3QZ1Xfrayb0dgn1RyHbyb8efJ+PFBHb2gB1KjjQ7+8AOUb7CIjt7wQFx+QuiHOwHB1Q9LHKwJxxQ191uB/vCgYcOvSYQcrA3HFDt4+Vkfzih7Al0skeckHSs+dDJPnFi2x5JhJO94oSnnpzsFydUG/d2sWdcGCguj8NTXOwbF27tlCu42Dsu1Mu4pLrYPy6c2/rgoM4uF3vIjR/l7RTgZh+5sVLW40I3e8mNyfJ63+VmP7kRIOh6rsjNnnLD819VO+4AnM0I5mAJAAA="},"shape":[300],"dtype":"float64","order":"little"}],["y",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/y2WB1zVVRzFAVNTy1IcVFKWaGmlpSkY1onU3GU5ctNCLbXEBpmphVbmKhQwMReYaI7AwVAhkL2Uvcfbe2BZKVl6732Hz/t8+PDe+997f+ec77l4eXl+Orsy9bqwFfD8XofNI68O+2D7Zv69DTmz37xy6pEovh+NCfdP+m7IzT38fB/yS8a8dLDyAL93GAnjd9/qURvP7x/Be4/2mF/48lE+l4jBtyPPb/7tOJ8/AWNzR6+QAae4zmnMWjw2dcOEJK6XjFHTPxVfSea6Z9AnONk3OPks1z+H60OdIXuXnec+Kaj2G7r6H/9U7peK813DDsypTuO+6Yj5+1Dp2a0XuP9FyNV7hVziOTIwRy2QwfNkYowS4HeeKwtymn5nsni+bKybaZo/cUc2z5kN+6S7wj9ZfpnnvYxFeGxLwvgcnjsHpVKuh3N5/lyMG74kxbsjl3Pk4eTgL8ueqcnjPPkY4B9nCE3K51wF2N4n7d+d2wo4XwGE2L0zlxZyzkKs6iQVKeK8RWiR8voXc+5izPhjxLxpN4o5fwkyrDM++qKqhDqU4mntim+Pny6lHmXYX/+9eJVRlzL0LE881zXsCvW5gg0FeSIBV6nTVUS0hV87c2859SrHiCav9VPXlVO3cphrf7hbZymnfhUQYkSvnVtBHSsg09Yrt4J6VuC+4nEnjj1bSV0robY7WEl9K7Exe8HlunuqqHMVgjwDUe8qtKd93tDFUkXdq3FMnF4EgvpX462k2PbROdX0oRp+HgPoRw3UuAdq6EsNhJky4PSnFtLN6LW19KkWN+Le/vVJcy39qoNafnYdfavD8l3qxPSvDgN39hSW1NPHeii599fTz3pEffOUQKiBvjZgytcX3WIk+tsAb6HuTFMDfW5Euhx3ViP9boQIo9ixkb43QtLRf0QT/W+CsvvnJuagCXuX9R39Svdm5qEZr797JKslopm5aEa3UEUk89ECJf+sFuakBWvnqieYlxaMfEPjCh7eyty0wibjtq+V+WlF/JT/O6/o1sYctWHBxB1RPhFtzFMbeov0xhnamCsNpHl+QzXMlwbq41ANc6aBwiVWw7xpcLO/NFTD3GlQE/OxQFTL/Gkh28Q3WMscaqF2D9cyj1q8rwKoZS618BxPy3xqoeqtn4451eG/LdJRHfOqg3Jjk4651UGU3wNHL+iYXx3Udtd0zLEeq7568ZcXntAzz3pMlfKE6plrPYbIeojRM996+HREi0bTM+d6tEYsurSyk4F5N+DCX4Mig543MPcGxMrxww3MvwFrJK2JBnJgwKvKHgN5MGCYrNe+RnJhRBdxmlHTjeTDCMFywO1IIzkxInPpT7bidCN5MULZ0W4kNyZ89s7j4mUiPyaoeCwxkSMTVB1Gm8iTCd2b1wvkTeTKBNm2UT5m8mWGTN/isWZyZoaKx2ozeTNDTnP9qJncmeGJp5n8maGuuz4WcmiBpHHeNAt5tEAMIxS0kEsLCiZLAC3k04KEfPmGhZxasVFdkFbyasVCdUArubUiUBWGlfxa4asEs5JjK9xCjRRvG3m2oURuH2Qj1zYkBsqCs5FvGzapQNnIuQ0ePG3k3QZ1Xfrayb0dgn1RyHbyb8efJ+PFBHb2gB1KjjQ7+8AOUb7CIjt7wQFx+QuiHOwHB1Q9LHKwJxxQ191uB/vCgYcOvSYQcrA3HFDt4+Vkfzih7Al0skeckHSs+dDJPnFi2x5JhJO94oSnnpzsFydUG/d2sWdcGCguj8NTXOwbF27tlCu42Dsu1Mu4pLrYPy6c2/rgoM4uF3vIjR/l7RTgZh+5sVLW40I3e8mNyfJ63+VmP7kRIOh6rsjNnnLD819VO+4AnM0I5mAJAAA="},"shape":[300],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1057","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1058"}}},"glyph":{"type":"object","name":"Line","id":"p1053","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_dash":[6]}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1054","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.1,"line_dash":[6]}},"muted_glyph":{"type":"object","name":"Line","id":"p1055","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_alpha":0.2,"line_dash":[6]}}}},{"type":"object","name":"GlyphRenderer","id":"p1062","attributes":{"data_source":{"id":"p1008"},"view":{"type":"object","name":"CDSView","id":"p1063","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1064"}}},"glyph":{"type":"object","name":"Line","id":"p1059","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_width":2}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1060","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.1,"line_width":2}},"muted_glyph":{"type":"object","name":"Line","id":"p1061","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"red","line_alpha":0.2,"line_width":2}}}},{"type":"object","name":"GlyphRenderer","id":"p1068","attributes":{"data_source":{"id":"p1011"},"view":{"type":"object","name":"CDSView","id":"p1069","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1070"}}},"glyph":{"type":"object","name":"Line","id":"p1065","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4"}},"nonselection_glyph":{"type":"object","name":"Line","id":"p1066","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.1}},"muted_glyph":{"type":"object","name":"Line","id":"p1067","attributes":{"x":{"type":"field","field":"x"},"y":{"type":"field","field":"y"},"line_color":"#1f77b4","line_alpha":0.2}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1022","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1037"},{"type":"object","name":"WheelZoomTool","id":"p1038","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1039","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1040","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1046","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1045","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1047"},{"type":"object","name":"ResetTool","id":"p1048"},{"type":"object","name":"HelpTool","id":"p1049"}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1032","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1033","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1034"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1035"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1027","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1028","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1029"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1030"}}}],"center":[{"type":"object","name":"Grid","id":"p1031","attributes":{"axis":{"id":"p1027"}}},{"type":"object","name":"Grid","id":"p1036","attributes":{"dimension":1,"axis":{"id":"p1032"}}}]}}]}}]}};
+  const render_items = [{"docid":"58a7f39e-f1a5-4156-9e45-db8e3ffe252f","roots":{"p1073":"a5c768b3-a5c8-4a3e-b072-8d2d9900cd9b"},"root_ids":["p1073"]}];
+  void root.Bokeh.embed.embed_items_notebook(docs_json, render_items);
+  }
+  if (root.Bokeh !== undefined) {
+    embed_document(root);
+  } else {
+    let attempts = 0;
+    const timer = setInterval(function(root) {
+      if (root.Bokeh !== undefined) {
+        clearInterval(timer);
+        embed_document(root);
+      } else {
+        attempts++;
+        if (attempts > 100) {
+          clearInterval(timer);
+          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+        }
+      }
+    }, 10, root)
+  }
+})(window);</script></div>
 </div>
 </section>
 <section id="fixed-points-and-their-stability">
 <h3>Fixed points and their stability<a class="headerlink" href="#fixed-points-and-their-stability" title="Link to this heading">#</a></h3>
 <p>A <strong>fixed point</strong> satisfies <span class="math notranslate nohighlight">\(x^* = f(x^*)\)</span>. Write <span class="math notranslate nohighlight">\(x_n = x^* + \eta_n\)</span> and Taylor expand:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ecbe8659-f0ca-48c0-97da-755805cd711c">
-<span class="eqno">(73)<a class="headerlink" href="#equation-ecbe8659-f0ca-48c0-97da-755805cd711c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-74a3669d-832f-4ec4-b51e-9a2cc74d16fe">
+<span class="eqno">(73)<a class="headerlink" href="#equation-74a3669d-832f-4ec4-b51e-9a2cc74d16fe" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \eta_{n+1} = f(x^* + \eta_n) - x^* \approx f'(x^*)\,\eta_n \quad\Rightarrow\quad \eta_n \approx [f'(x^*)]^n \eta_0 .
 \end{equation}\]</div>
 <p>Hence <span class="math notranslate nohighlight">\(x^*\)</span> is <strong>stable</strong> if <span class="math notranslate nohighlight">\(|f'(x^*)| &lt; 1\)</span> and <strong>unstable</strong> if <span class="math notranslate nohighlight">\(|f'(x^*)| &gt; 1\)</span>. (Compare with flows, where the condition is <span class="math notranslate nohighlight">\(\mathrm{Re}\,\lambda &lt; 0\)</span>: the map multiplier <span class="math notranslate nohighlight">\(f'\)</span> plays the role of <span class="math notranslate nohighlight">\(e^{\lambda \Delta t}\)</span>.) If <span class="math notranslate nohighlight">\(f'(x^*) &lt; 0\)</span> the perturbation alternates in sign; this is how period doubling starts. The iterations needed to approach a stable fixed point are called the <strong>transient</strong>, and the set of initial conditions that converge to it is its <strong>basin of attraction</strong>.</p>
@@ -1169,7 +1453,27 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 </table>
 </div>
 <p>At <span class="math notranslate nohighlight">\(R = 3\)</span>, <span class="math notranslate nohighlight">\(f'(x^*) = -1\)</span>: the fixed point loses stability and a <strong>period-2 cycle</strong> is born.</p>
-<p>YOUR ANSWER HERE</p>
+</section>
+<section id="cycles">
+<h3>Cycles<a class="headerlink" href="#cycles" title="Link to this heading">#</a></h3>
+<p>A <strong>cycle of period <span class="math notranslate nohighlight">\(k\)</span></strong> satisfies <span class="math notranslate nohighlight">\(x_{n+k} = x_n\)</span>, with <span class="math notranslate nohighlight">\(x_{n+j} \neq x_n\)</span> for <span class="math notranslate nohighlight">\(0 &lt; j &lt; k\)</span>. Each point of the cycle is a fixed point of the <span class="math notranslate nohighlight">\(k\)</span>-th iterate <span class="math notranslate nohighlight">\(f^{(k)} = f \circ f \circ \cdots \circ f\)</span>. By the chain rule, its stability is controlled by the product of the slopes along the cycle:</p>
+<div class="amsmath math notranslate nohighlight" id="equation-f16dca4c-e0d9-4726-a06b-d66f4385d8a6">
+<span class="eqno">(74)<a class="headerlink" href="#equation-f16dca4c-e0d9-4726-a06b-d66f4385d8a6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+\left|\left(f^{(k)}\right)'(x_0)\right| = \prod_{j=0}^{k-1} |f'(x_j)| &lt; 1 .
+\end{equation}\]</div>
+<div class="exercise admonition" id="ex-period2">
+
+<p class="admonition-title"><span class="caption-number">Exercise 6 </span> (Analytical period-2 cycle)</p>
+<section id="exercise-content">
+<p>For the logistic map, the period-2 cycle alternates between two points <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(q\)</span>.</p>
+<ol class="arabic simple">
+<li><p>Write the condition <span class="math notranslate nohighlight">\(p = f(f(p))\)</span>. It is a quartic in <span class="math notranslate nohighlight">\(p\)</span>; factor out the two roots you already know (<span class="math notranslate nohighlight">\(0\)</span> and <span class="math notranslate nohighlight">\(1 - 1/R\)</span>).</p></li>
+<li><p>Show that <span class="math notranslate nohighlight">\(p, q = \dfrac{R + 1 \pm \sqrt{(R+1)(R-3)}}{2R}\)</span>. For which <span class="math notranslate nohighlight">\(R\)</span> does the cycle exist?</p></li>
+<li><p>Using <span class="math notranslate nohighlight">\(f'(p) f'(q)\)</span>, show that the cycle is stable for <span class="math notranslate nohighlight">\(3 &lt; R &lt; 1 + \sqrt{6} \approx 3.449\)</span>.</p></li>
+<li><p>Check your results numerically by iterating the map for <span class="math notranslate nohighlight">\(R = 3.2\)</span>.</p></li>
+</ol>
+</section>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">R</span> <span class="o">=</span> <span class="mf">3.2</span>
@@ -1181,7 +1485,7 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 </div>
 <div class="exercise admonition" id="ex-other-maps">
 
-<p class="admonition-title"><span class="caption-number">Exercise 6 </span> (Fixed points of other maps)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 7 </span> (Fixed points of other maps)</p>
 <section id="exercise-content">
 <ol class="arabic simple">
 <li><p>Find (numerically, e.g. with <code class="docutils literal notranslate"><span class="pre">scipy.optimize.brentq</span></code>) the fixed point of <span class="math notranslate nohighlight">\(x_{n+1} = R\cos x_n\)</span> for <span class="math notranslate nohighlight">\(R = 1\)</span> and <span class="math notranslate nohighlight">\(R = 3\)</span>, and decide its stability. Confirm with a cobweb plot.</p></li>
@@ -1222,6 +1526,9 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<img alt="../../_images/3ce5997ae98fa8aea45304fc8f68e9ec6dd9e7d2197bd829667d8fe34545f6cf.png" src="../../_images/3ce5997ae98fa8aea45304fc8f68e9ec6dd9e7d2197bd829667d8fe34545f6cf.png" />
+</div>
 </div>
 <p>The separation grows as <span class="math notranslate nohighlight">\(|\Delta x_n| \approx |\Delta x_0|\, e^{\lambda n}\)</span> with <span class="math notranslate nohighlight">\(\lambda = \ln 2\)</span> until it reaches the size of the attractor. A practical consequence: if we know <span class="math notranslate nohighlight">\(x_0\)</span> with precision <span class="math notranslate nohighlight">\(\epsilon\)</span>, we can predict only up to <span class="math notranslate nohighlight">\(n \sim \lambda^{-1}\ln(1/\epsilon)\)</span>. Improving the precision by a factor of <span class="math notranslate nohighlight">\(10^{6}\)</span> only gives <span class="math notranslate nohighlight">\(\approx 20\)</span> more steps. Double-precision round-off (<span class="math notranslate nohighlight">\(\epsilon \sim 10^{-16}\)</span>) means that, after <span class="math notranslate nohighlight">\(\sim 50\)</span> iterations, <strong>every computed chaotic orbit is a different orbit from the true one</strong> (though still a “typical” orbit of the attractor: this is the <em>shadowing</em> property).</p>
 </section>
@@ -1236,8 +1543,8 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 </figcaption>
 </figure>
 <p><strong>1D maps.</strong> By the chain rule, <span class="math notranslate nohighlight">\(\delta_n = (f^{(n)})'(x_0)\,\delta_0 = \prod_{i=0}^{n-1} f'(x_i)\; \delta_0\)</span>, so</p>
-<div class="amsmath math notranslate nohighlight" id="equation-73917df5-f223-4fe5-89cc-8eda05cb7429">
-<span class="eqno">(74)<a class="headerlink" href="#equation-73917df5-f223-4fe5-89cc-8eda05cb7429" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-c91db3d9-3f99-4fca-b658-08497ca596e2">
+<span class="eqno">(75)<a class="headerlink" href="#equation-c91db3d9-3f99-4fca-b658-08497ca596e2" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \lambda = \lim_{n\to\infty} \frac{1}{n} \ln\left|\frac{\delta_n}{\delta_0}\right| = \lim_{n\to\infty} \frac{1}{n} \sum_{i=0}^{n-1} \ln |f'(x_i)| .
 \end{equation}\]</div>
 <p>It is a time average along the orbit: no need to follow two trajectories.</p>
@@ -1263,7 +1570,7 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 </div>
 <div class="exercise admonition" id="ex-lyap-bif">
 
-<p class="admonition-title"><span class="caption-number">Exercise 7 </span> (Lyapunov exponent and bifurcation diagram of the logistic map)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 8 </span> (Lyapunov exponent and bifurcation diagram of the logistic map)</p>
 <section id="exercise-content">
 <ol class="arabic simple">
 <li><p>Write <code class="docutils literal notranslate"><span class="pre">lyapunov_logistic(R,</span> <span class="pre">n,</span> <span class="pre">transient,</span> <span class="pre">x0)</span></code> that returns <span class="math notranslate nohighlight">\(\lambda(R)\)</span> using <span class="math notranslate nohighlight">\(f'(x) = R(1 - 2x)\)</span>.</p></li>
@@ -1302,6 +1609,23 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="c1"># YOUR CODE HERE</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="k">pass</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> 
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">R_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">Rb</span><span class="p">,</span> <span class="n">xb</span> <span class="o">=</span> <span class="n">bifurcation_diagram</span><span class="p">(</span><span class="n">R_values</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">lam</span> <span class="o">=</span> <span class="n">lyapunov_logistic</span><span class="p">(</span><span class="n">R_values</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"lambda(4) = </span><span class="si">{</span><span class="n">lyapunov_logistic</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">4.0</span><span class="p">]))[</span><span class="mi">0</span><span class="p">]</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">,  ln 2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> 
+
+<span class="ne">TypeError</span>: cannot unpack non-iterable NoneType object
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell tag_hide-input tag_hide-output docutils container">
 <details class="admonition hide above-input">
@@ -1321,18 +1645,18 @@ x_{n+1} = f(x_n) = R\, x_n (1 - x_n), \qquad x \in [0, 1], \quad R \in [0, 4].
 <section id="the-period-doubling-route-to-chaos-and-the-feigenbaum-constants">
 <h2>The period-doubling route to chaos and the Feigenbaum constants<a class="headerlink" href="#the-period-doubling-route-to-chaos-and-the-feigenbaum-constants" title="Link to this heading">#</a></h2>
 <p>As <span class="math notranslate nohighlight">\(R\)</span> increases, the stable fixed point gives way to a 2-cycle at <span class="math notranslate nohighlight">\(R_1 = 3\)</span>, then a 4-cycle at <span class="math notranslate nohighlight">\(R_2 = 1 + \sqrt 6 \approx 3.4495\)</span>, an 8-cycle at <span class="math notranslate nohighlight">\(R_3 \approx 3.5441\)</span>, and so on: a <strong>period-doubling cascade</strong> that accumulates at</p>
-<div class="amsmath math notranslate nohighlight" id="equation-012e8901-2173-4a25-8389-214ad43ad37e">
-<span class="eqno">(75)<a class="headerlink" href="#equation-012e8901-2173-4a25-8389-214ad43ad37e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-d75e8ed8-0d8b-4da9-9fef-f74ce313b09e">
+<span class="eqno">(76)<a class="headerlink" href="#equation-d75e8ed8-0d8b-4da9-9fef-f74ce313b09e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 R_\infty \approx 3.5699456\ldots,
 \end{equation}\]</div>
 <p>beyond which chaos appears (interrupted by periodic windows). Feigenbaum (1978) discovered that the bifurcations accumulate geometrically,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1dfb660c-20fd-4dfa-8b42-c157f0940637">
-<span class="eqno">(76)<a class="headerlink" href="#equation-1dfb660c-20fd-4dfa-8b42-c157f0940637" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-cbf24f4a-4687-4bde-8b6b-75cfc51b7db1">
+<span class="eqno">(77)<a class="headerlink" href="#equation-cbf24f4a-4687-4bde-8b6b-75cfc51b7db1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \delta = \lim_{n\to\infty} \frac{R_n - R_{n-1}}{R_{n+1} - R_n} = 4.669\,201\,609\ldots,
 \end{equation}\]</div>
 <p>and that the branches of the diagram shrink by a constant factor at each doubling,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-1fc28199-13fd-46b8-ab4a-b1a6f79a2169">
-<span class="eqno">(77)<a class="headerlink" href="#equation-1fc28199-13fd-46b8-ab4a-b1a6f79a2169" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-5d62ed0f-7a7c-4a2c-8eda-ade6968cc75d">
+<span class="eqno">(78)<a class="headerlink" href="#equation-5d62ed0f-7a7c-4a2c-8eda-ade6968cc75d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \alpha = \lim_{n\to\infty} \frac{d_n}{d_{n+1}} = -2.502\,907\,875\ldots,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(d_n\)</span> is the signed distance between <span class="math notranslate nohighlight">\(x = 1/2\)</span> and its nearest neighbor on the <span class="math notranslate nohighlight">\(2^n\)</span> cycle (the sign shows that the branches flip at each step).</p>
@@ -1340,8 +1664,8 @@ R_\infty \approx 3.5699456\ldots,
 <section id="computing-delta-and-alpha-numerically">
 <h3>Computing <span class="math notranslate nohighlight">\(\delta\)</span> and <span class="math notranslate nohighlight">\(\alpha\)</span> numerically<a class="headerlink" href="#computing-delta-and-alpha-numerically" title="Link to this heading">#</a></h3>
 <p>The bifurcation points <span class="math notranslate nohighlight">\(R_n\)</span> are hard to locate because convergence is very slow there. It is much easier to find the <strong>superstable</strong> parameters <span class="math notranslate nohighlight">\(\bar R_n\)</span>, for which the <span class="math notranslate nohighlight">\(2^n\)</span> cycle contains the critical point <span class="math notranslate nohighlight">\(x_c = 1/2\)</span> (so <span class="math notranslate nohighlight">\(f'(x_c) = 0\)</span> and the multiplier is exactly 0). They converge at the same rate <span class="math notranslate nohighlight">\(\delta\)</span>. We find them with Newton’s method on</p>
-<div class="amsmath math notranslate nohighlight" id="equation-958453a8-3e2a-4eab-9500-0df54d60e89b">
-<span class="eqno">(78)<a class="headerlink" href="#equation-958453a8-3e2a-4eab-9500-0df54d60e89b" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-34d892f0-4eeb-4d27-b945-5414c9760b6a">
+<span class="eqno">(79)<a class="headerlink" href="#equation-34d892f0-4eeb-4d27-b945-5414c9760b6a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 g(R) = f^{(2^n)}(x_c; R) - x_c = 0,
 \end{equation}\]</div>
 <p>where the derivative <span class="math notranslate nohighlight">\(dg/dR\)</span> is propagated along the orbit with the chain rule, <span class="math notranslate nohighlight">\(\frac{dx_{k+1}}{dR} = x_k(1 - x_k) + R(1 - 2x_k)\frac{dx_k}{dR}\)</span>. Each new guess is extrapolated with the current estimate of <span class="math notranslate nohighlight">\(\delta\)</span>.</p>
@@ -1385,7 +1709,7 @@ g(R) = f^{(2^n)}(x_c; R) - x_c = 0,
 </div>
 <div class="exercise admonition" id="ex-universality">
 
-<p class="admonition-title"><span class="caption-number">Exercise 8 </span> (Universality)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 9 </span> (Universality)</p>
 <section id="exercise-content">
 <ol class="arabic simple">
 <li><p>Repeat the bifurcation diagram for the <strong>sine map</strong> <span class="math notranslate nohighlight">\(x_{n+1} = r\sin(\pi x_n)\)</span>. Does it look like the logistic one?</p></li>
@@ -1399,8 +1723,8 @@ g(R) = f^{(2^n)}(x_c; R) - x_c = 0,
 <section id="chaos-in-a-physical-system-the-driven-damped-pendulum">
 <h2>Chaos in a physical system: the driven damped pendulum<a class="headerlink" href="#chaos-in-a-physical-system-the-driven-damped-pendulum" title="Link to this heading">#</a></h2>
 <p>A pendulum with damping <span class="math notranslate nohighlight">\(q\)</span> and a periodic torque (<em>Giordano &amp; Nakanishi, Computational Physics, ch. 3</em>):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d3e87ca8-c162-4f37-beea-59d33203ce1f">
-<span class="eqno">(79)<a class="headerlink" href="#equation-d3e87ca8-c162-4f37-beea-59d33203ce1f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-df0f5b48-28fd-4cc9-ae19-86df25aa2835">
+<span class="eqno">(80)<a class="headerlink" href="#equation-df0f5b48-28fd-4cc9-ae19-86df25aa2835" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \ddot\theta = -\frac{g}{l}\sin\theta - q\,\dot\theta + F_D \sin(\Omega_D t).
 \end{equation}\]</div>
 <p>We fix <span class="math notranslate nohighlight">\(g/l = 1\)</span>, <span class="math notranslate nohighlight">\(q = 1/2\)</span>, <span class="math notranslate nohighlight">\(\Omega_D = 2/3\)</span>, <span class="math notranslate nohighlight">\(\theta_0 = 0.2\)</span>, <span class="math notranslate nohighlight">\(\dot\theta_0 = 0\)</span>, and vary the driving amplitude <span class="math notranslate nohighlight">\(F_D\)</span>. It has three dimensions <span class="math notranslate nohighlight">\((\theta, \omega, \Omega_D t)\)</span>, so chaos is allowed.</p>
@@ -1477,7 +1801,7 @@ g(R) = f^{(2^n)}(x_c; R) - x_c = 0,
 <p>The phase portrait for <span class="math notranslate nohighlight">\(F_D = 1.2\)</span> fills a region densely and tells us little. The Poincaré section, with the <em>same</em> data sampled once per drive period, reveals the fine, folded structure of the strange attractor.</p>
 <div class="exercise admonition" id="ex-pendulum-bif">
 
-<p class="admonition-title"><span class="caption-number">Exercise 9 </span> (Bifurcation diagram of the driven pendulum)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 10 </span> (Bifurcation diagram of the driven pendulum)</p>
 <section id="exercise-content">
 <p>Reproduce the classic figure (Giordano &amp; Nakanishi, Fig. 3.11): for each <span class="math notranslate nohighlight">\(F_D \in [1.35, 1.50]\)</span>, integrate the pendulum, discard a transient of <span class="math notranslate nohighlight">\(\sim 300\)</span> drive periods and plot <span class="math notranslate nohighlight">\(\omega\)</span> at the times <span class="math notranslate nohighlight">\(t = nT_D\)</span> for the next <span class="math notranslate nohighlight">\(\sim 100\)</span> periods.</p>
 <ol class="arabic simple">
@@ -1525,8 +1849,8 @@ g(R) = f^{(2^n)}(x_c; R) - x_c = 0,
 <section id="the-lorenz-system">
 <h2>The Lorenz system<a class="headerlink" href="#the-lorenz-system" title="Link to this heading">#</a></h2>
 <p>In 1963 the meteorologist Edward Lorenz reduced a model of atmospheric convection to three ODEs:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c14c6b59-b918-462e-a3e9-4771cde5c09a">
-<span class="eqno">(80)<a class="headerlink" href="#equation-c14c6b59-b918-462e-a3e9-4771cde5c09a" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-22b3ee9a-85a2-4a38-8eb2-bd07ef62222f">
+<span class="eqno">(81)<a class="headerlink" href="#equation-22b3ee9a-85a2-4a38-8eb2-bd07ef62222f" title="Permalink to this equation">#</a></span>\[\begin{align}
 \dot x &amp;= \sigma (y - x), \\
 \dot y &amp;= x(\rho - z) - y, \\
 \dot z &amp;= xy - \beta z,
@@ -1575,7 +1899,7 @@ g(R) = f^{(2^n)}(x_c; R) - x_c = 0,
 </div>
 <div class="exercise admonition" id="ex-lorenz-map">
 
-<p class="admonition-title"><span class="caption-number">Exercise 10 </span> (The Lorenz map: from a flow back to a 1D map)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 11 </span> (The Lorenz map: from a flow back to a 1D map)</p>
 <section id="exercise-content">
 <p>Lorenz noticed that the trajectory spirals around one lobe and then jumps to the other one when the oscillations become too large. He extracted the successive <strong>local maxima</strong> <span class="math notranslate nohighlight">\(z_n\)</span> of <span class="math notranslate nohighlight">\(z(t)\)</span> and plotted <span class="math notranslate nohighlight">\(z_{n+1}\)</span> vs <span class="math notranslate nohighlight">\(z_n\)</span>.</p>
 <ol class="arabic simple">
@@ -1614,8 +1938,8 @@ g(R) = f^{(2^n)}(x_c; R) - x_c = 0,
 <h2>Strange attractors and fractal dimensions<a class="headerlink" href="#strange-attractors-and-fractal-dimensions" title="Link to this heading">#</a></h2>
 <p>A chaotic dissipative system does not settle on a point or a cycle; its trajectories wander forever in a bounded set of zero volume, the <strong>strange attractor</strong> (<a class="reference external" href="https://en.wikipedia.org/wiki/Attractor">https://en.wikipedia.org/wiki/Attractor</a>). The mechanism is <strong>stretching and folding</strong>: stretching produces sensitivity to initial conditions (<span class="math notranslate nohighlight">\(\lambda_1 &gt; 0\)</span>), and folding keeps the orbit bounded. Repeating this infinitely many times creates a layered, Cantor-like structure: a <strong>fractal</strong>, with self-similar structure at every scale and a <em>non-integer</em> dimension.</p>
 <p>If covering an object with boxes of size <span class="math notranslate nohighlight">\(\varepsilon\)</span> needs <span class="math notranslate nohighlight">\(N(\varepsilon)\)</span> boxes, then</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f278ccb5-2352-421c-806a-0bef0e98ecd0">
-<span class="eqno">(81)<a class="headerlink" href="#equation-f278ccb5-2352-421c-806a-0bef0e98ecd0" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-91204430-ab4c-48ba-9aee-efdaadc55c69">
+<span class="eqno">(82)<a class="headerlink" href="#equation-91204430-ab4c-48ba-9aee-efdaadc55c69" title="Permalink to this equation">#</a></span>\[\begin{equation}
 N(\varepsilon) \sim \varepsilon^{-D_0} \quad \Rightarrow \quad D_0 = -\lim_{\varepsilon\to 0}\frac{\ln N(\varepsilon)}{\ln \varepsilon}.
 \end{equation}\]</div>
 <p>A line gives <span class="math notranslate nohighlight">\(D_0 = 1\)</span>, a surface <span class="math notranslate nohighlight">\(D_0 = 2\)</span>, and a fractal curve something in between.</p>
@@ -1649,8 +1973,8 @@ N(\varepsilon) \sim \varepsilon^{-D_0} \quad \Rightarrow \quad D_0 = -\lim_{\var
 <section id="the-henon-map">
 <h3>The Hénon map<a class="headerlink" href="#the-henon-map" title="Link to this heading">#</a></h3>
 <p>The <strong>Hénon map</strong> (1976) is the simplest 2D map with a strange attractor, designed as a model of a Poincaré section of the Lorenz flow:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d348d154-a406-4b6d-b70b-f5e1077f14c1">
-<span class="eqno">(82)<a class="headerlink" href="#equation-d348d154-a406-4b6d-b70b-f5e1077f14c1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-49dc4325-9d5d-44bd-b0cf-0e73a6b3e843">
+<span class="eqno">(83)<a class="headerlink" href="#equation-49dc4325-9d5d-44bd-b0cf-0e73a6b3e843" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x_{n+1} = 1 - a x_n^2 + y_n, \qquad y_{n+1} = b\, x_n, \qquad a = 1.4,\ b = 0.3 .
 \end{equation}\]</div>
 <p>Its Jacobian determinant is <span class="math notranslate nohighlight">\(\det J = -b\)</span>, so every iteration shrinks areas by a factor <span class="math notranslate nohighlight">\(|b| = 0.3\)</span> (dissipation), while the quadratic term folds them. Zoom into the attractor: every “line” is made of finer lines.</p>
@@ -1691,7 +2015,7 @@ x_{n+1} = 1 - a x_n^2 + y_n, \qquad y_{n+1} = b\, x_n, \qquad a = 1.4,\ b = 0.3 
 <p>Cover the plane with a grid of boxes of side <span class="math notranslate nohighlight">\(\varepsilon\)</span>, count the boxes <span class="math notranslate nohighlight">\(N(\varepsilon)\)</span> that contain at least one point, and fit the slope of <span class="math notranslate nohighlight">\(\ln N\)</span> vs <span class="math notranslate nohighlight">\(\ln\varepsilon\)</span> over the range of scales where it is straight (too large <span class="math notranslate nohighlight">\(\varepsilon\)</span>: you only see the overall shape; too small: you see the individual points of a finite sample).</p>
 <div class="exercise admonition" id="ex-box-counting">
 
-<p class="admonition-title"><span class="caption-number">Exercise 11 </span> (Box-counting dimension)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 12 </span> (Box-counting dimension)</p>
 <section id="exercise-content">
 <ol class="arabic simple">
 <li><p>Implement <code class="docutils literal notranslate"><span class="pre">box_counting_dimension(points,</span> <span class="pre">eps_values)</span></code> and apply it to the Hénon attractor. You should get <span class="math notranslate nohighlight">\(D_0 \approx 1.26\)</span>. <strong>Hint:</strong> compute integer box indices with <code class="docutils literal notranslate"><span class="pre">np.floor(points</span> <span class="pre">/</span> <span class="pre">eps)</span></code> and count the distinct rows with <code class="docutils literal notranslate"><span class="pre">np.unique(...,</span> <span class="pre">axis=0)</span></code>.</p></li>
@@ -1756,8 +2080,8 @@ x_{n+1} = 1 - a x_n^2 + y_n, \qquad y_{n+1} = b\, x_n, \qquad a = 1.4,\ b = 0.3 
 <section id="correlation-dimension">
 <h3>Correlation dimension<a class="headerlink" href="#correlation-dimension" title="Link to this heading">#</a></h3>
 <p>Box counting needs many points for small <span class="math notranslate nohighlight">\(\varepsilon\)</span>. The <strong>correlation dimension</strong> <span class="math notranslate nohighlight">\(D_2\)</span> (Grassberger &amp; Procaccia, 1983) is more robust and is the standard choice for experimental time series. The correlation integral</p>
-<div class="amsmath math notranslate nohighlight" id="equation-033f1f0f-85c5-4575-81eb-eae0fe5230e1">
-<span class="eqno">(83)<a class="headerlink" href="#equation-033f1f0f-85c5-4575-81eb-eae0fe5230e1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-3fbc2ad2-539a-43f0-8a22-dc9d9833f39c">
+<span class="eqno">(84)<a class="headerlink" href="#equation-3fbc2ad2-539a-43f0-8a22-dc9d9833f39c" title="Permalink to this equation">#</a></span>\[\begin{equation}
 C(\varepsilon) = \frac{2}{N(N-1)} \sum_{i&lt;j} \Theta\left(\varepsilon - \|\mathbf{x}_i - \mathbf{x}_j\|\right)
 \end{equation}\]</div>
 <p>is the fraction of pairs of points closer than <span class="math notranslate nohighlight">\(\varepsilon\)</span>, and it scales as <span class="math notranslate nohighlight">\(C(\varepsilon) \sim \varepsilon^{D_2}\)</span>.</p>
@@ -1795,14 +2119,14 @@ C(\varepsilon) = \frac{2}{N(N-1)} \sum_{i&lt;j} \Theta\left(\varepsilon - \|\mat
 <h3>Dimensions and Lyapunov exponents: the Kaplan-Yorke formula<a class="headerlink" href="#dimensions-and-lyapunov-exponents-the-kaplan-yorke-formula" title="Link to this heading">#</a></h3>
 <p>Box counting (<span class="math notranslate nohighlight">\(D_0\)</span>) and correlation (<span class="math notranslate nohighlight">\(D_2\)</span>) are members of the family of <strong>Rényi dimensions</strong> <span class="math notranslate nohighlight">\(D_q\)</span>, which weigh boxes by how often the orbit visits them; <span class="math notranslate nohighlight">\(D_0 \ge D_1 \ge D_2\)</span>, with equality only when the attractor is visited uniformly. For the Hénon attractor <span class="math notranslate nohighlight">\(D_0 \approx 1.26\)</span>, <span class="math notranslate nohighlight">\(D_1 \approx 1.26\)</span>, <span class="math notranslate nohighlight">\(D_2 \approx 1.22\)</span>.</p>
 <p>Remarkably, the geometry is linked to the dynamics. With the Lyapunov exponents ordered as <span class="math notranslate nohighlight">\(\lambda_1 \ge \lambda_2 \ge \cdots\)</span>, the <strong>Kaplan-Yorke dimension</strong> is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-faeb36c1-0114-470e-b88f-232ba9879b58">
-<span class="eqno">(84)<a class="headerlink" href="#equation-faeb36c1-0114-470e-b88f-232ba9879b58" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-00deed5c-5ad7-4603-a9ee-c92554fc10dc">
+<span class="eqno">(85)<a class="headerlink" href="#equation-00deed5c-5ad7-4603-a9ee-c92554fc10dc" title="Permalink to this equation">#</a></span>\[\begin{equation}
 D_{KY} = j + \frac{\sum_{i=1}^{j}\lambda_i}{|\lambda_{j+1}|},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(j\)</span> is the largest integer for which <span class="math notranslate nohighlight">\(\sum_{i=1}^{j}\lambda_i \ge 0\)</span>. The Kaplan-Yorke conjecture states that <span class="math notranslate nohighlight">\(D_{KY} = D_1\)</span>: the dimension is fixed by how fast chaos stretches (<span class="math notranslate nohighlight">\(\lambda_1 &gt; 0\)</span>) compared to how fast dissipation contracts (<span class="math notranslate nohighlight">\(\lambda_2 &lt; 0\)</span>).</p>
 <div class="exercise admonition" id="ex-henon-lyap">
 
-<p class="admonition-title"><span class="caption-number">Exercise 12 </span> (Lyapunov spectrum of the Hénon map and Kaplan-Yorke dimension)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 13 </span> (Lyapunov spectrum of the Hénon map and Kaplan-Yorke dimension)</p>
 <section id="exercise-content">
 <ol class="arabic simple">
 <li><p>Compute both Lyapunov exponents of the Hénon map with the QR method: start with <span class="math notranslate nohighlight">\(Q = I\)</span>; at each step compute <span class="math notranslate nohighlight">\(Q, R \leftarrow \mathrm{qr}(J(\mathbf{x}_n)\,Q)\)</span> and accumulate <span class="math notranslate nohighlight">\(\ln|R_{ii}|\)</span>; divide by the number of steps.</p></li>
@@ -1869,35 +2193,35 @@ D_{KY} = j + \frac{\sum_{i=1}^{j}\lambda_i}{|\lambda_{j+1}|},
 <h2>Further exercises and mini-projects<a class="headerlink" href="#further-exercises-and-mini-projects" title="Link to this heading">#</a></h2>
 <div class="exercise admonition" id="ex-rossler">
 
-<p class="admonition-title"><span class="caption-number">Exercise 13 </span> (Rössler attractor)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 14 </span> (Rössler attractor)</p>
 <section id="exercise-content">
 <p>The Rössler system <span class="math notranslate nohighlight">\(\dot x = -y - z,\ \dot y = x + a y,\ \dot z = b + z(x - c)\)</span> with <span class="math notranslate nohighlight">\(a = b = 0.2\)</span> shows period doubling as <span class="math notranslate nohighlight">\(c\)</span> increases. Build the bifurcation diagram using the local maxima of <span class="math notranslate nohighlight">\(x(t)\)</span> for <span class="math notranslate nohighlight">\(c \in [2, 6]\)</span> and identify periods 1, 2, 4 and chaos.</p>
 </section>
 </div>
 <div class="exercise admonition" id="ex-double-pendulum">
 
-<p class="admonition-title"><span class="caption-number">Exercise 14 </span> (The double pendulum)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 15 </span> (The double pendulum)</p>
 <section id="exercise-content">
 <p>Simulate a double pendulum (no damping, no drive). Its energy is conserved, so use a tight tolerance and monitor <span class="math notranslate nohighlight">\(E(t)\)</span>. For a grid of initial angles <span class="math notranslate nohighlight">\((\theta_1, \theta_2)\)</span>, compute the time until the second bob flips over the top and display it as an image. Where is the motion regular and where is it chaotic?</p>
 </section>
 </div>
 <div class="exercise admonition" id="ex-standard-map">
 
-<p class="admonition-title"><span class="caption-number">Exercise 15 </span> (Conservative chaos: the Chirikov standard map)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 16 </span> (Conservative chaos: the Chirikov standard map)</p>
 <section id="exercise-content">
 <p>The kicked rotor gives the area-preserving map <span class="math notranslate nohighlight">\(p_{n+1} = p_n + K\sin\theta_n\)</span>, <span class="math notranslate nohighlight">\(\theta_{n+1} = \theta_n + p_{n+1}\)</span> (both <span class="math notranslate nohighlight">\(\bmod 2\pi\)</span>). Plot many orbits for <span class="math notranslate nohighlight">\(K = 0.5, 0.971, 1.5, 5\)</span>. Explain the coexistence of regular curves (KAM tori) and chaotic seas. Why is there no attractor here? (This is the kind of phase space Poincaré found in the three-body problem.)</p>
 </section>
 </div>
 <div class="exercise admonition" id="ex-intermittency">
 
-<p class="admonition-title"><span class="caption-number">Exercise 16 </span> (Intermittency and the period-3 window)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 17 </span> (Intermittency and the period-3 window)</p>
 <section id="exercise-content">
 <p>Iterate the logistic map at <span class="math notranslate nohighlight">\(R = 1 + \sqrt 8 - 10^{-4}\)</span>, just below the period-3 window. Plot <span class="math notranslate nohighlight">\(x_n\)</span> and describe the long nearly-periodic <em>laminar</em> phases interrupted by chaotic bursts. Use cobweb plots of <span class="math notranslate nohighlight">\(f^{(3)}\)</span> to explain the mechanism (a tangent bifurcation). Measure how the mean laminar length scales with <span class="math notranslate nohighlight">\(R_c - R\)</span> (theory: <span class="math notranslate nohighlight">\(\propto (R_c - R)^{-1/2}\)</span>).</p>
 </section>
 </div>
 <div class="exercise admonition" id="ex-data-chaos">
 
-<p class="admonition-title"><span class="caption-number">Exercise 17 </span> (Detecting chaos in data)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 18 </span> (Detecting chaos in data)</p>
 <section id="exercise-content">
 <p>Take only the time series <span class="math notranslate nohighlight">\(x(t)\)</span> of the Lorenz system, sampled every <span class="math notranslate nohighlight">\(\Delta t = 0.02\)</span>. Reconstruct the attractor with <strong>delay coordinates</strong> <span class="math notranslate nohighlight">\((x(t), x(t + \tau), x(t + 2\tau))\)</span> (Takens’ theorem) for several <span class="math notranslate nohighlight">\(\tau\)</span>, and compute the correlation dimension of the reconstruction. Do you recover <span class="math notranslate nohighlight">\(D_2 \approx 2.05\)</span>? This is how chaos is detected in experiments, where usually only one variable is measured.</p>
 </section>
@@ -1998,6 +2322,7 @@ D_{KY} = j + \frac{\sum_{i=1}^{j}\lambda_i}{|\lambda_{j+1}|},
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-maps-the-logistic-map">Discrete maps: the logistic map</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cobweb-plots">Cobweb plots</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fixed-points-and-their-stability">Fixed points and their stability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cycles">Cycles</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chaos">Chaos</a></li>
