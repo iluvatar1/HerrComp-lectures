@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
@@ -61,7 +61,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DX59QS1P22"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -288,10 +288,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-WaveEquation.html">The Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical libraries for PDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential Equations: Finite Differences and Relaxation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial Differential Equations: The (Parabolic) Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-WaveEquation.html">Partial Differential Equations: The (Hyperbolic) Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical Libraries for PDEs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
 <ul class="nav bd-sidenav">
@@ -764,7 +764,7 @@ u = v^2*cos(v)*e^v + 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>348 μs ± 1.44 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>329 μs ± 1.01 μs per loop (mean ± std. dev. of 7 runs, 1,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -777,7 +777,7 @@ u = v^2*cos(v)*e^v + 2
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1.87 μs ± 4.4 ns per loop (mean ± std. dev. of 7 runs, 1,000,000 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.01 μs ± 3.25 ns per loop (mean ± std. dev. of 7 runs, 100,000 loops each)
 </pre></div>
 </div>
 </div>
@@ -901,17 +901,17 @@ consecutive elements, because they sit back-to-back in one block.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>start address: 0x5627f26b88c0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>start address: 0x5ad908c59d30
 itemsize (bytes): 8
 address of element i, for i in 0..4:
-  a[0]: 0x5627f26b88c0
-  a[1]: 0x5627f26b88c8
-  a[2]: 0x5627f26b88d0
-  a[3]: 0x5627f26b88d8
-  a[4]: 0x5627f26b88e0
+  a[0]: 0x5ad908c59d30
+  a[1]: 0x5ad908c59d38
+  a[2]: 0x5ad908c59d40
+  a[3]: 0x5ad908c59d48
+  a[4]: 0x5ad908c59d50
 
 list element ids (no fixed spacing):
-[140214378145232, 140214378146352, 140214378147024, 140214378147248, 140214378145616]
+[132240907597520, 132240907595536, 132240907598064, 132240907596048, 132240907595920]
 </pre></div>
 </div>
 </div>
@@ -940,7 +940,7 @@ list element ids (no fixed spacing):
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.7163972  0.40746534 0.73301196 0.58387985]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.02989225 0.62696423 0.07476411 0.7459244 ]
 </pre></div>
 </div>
 </div>

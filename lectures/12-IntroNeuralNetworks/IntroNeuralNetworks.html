@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
@@ -61,7 +61,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DX59QS1P22"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -287,10 +287,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-WaveEquation.html">The Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical libraries for PDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential Equations: Finite Differences and Relaxation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial Differential Equations: The (Parabolic) Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-WaveEquation.html">Partial Differential Equations: The (Hyperbolic) Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical Libraries for PDEs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
 <ul class="nav bd-sidenav">
@@ -807,7 +807,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 <figure class="align-default" id="id1" style="width: 60%">
 <img alt="../../_images/SGD.png" src="../../_images/SGD.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text"><a class="reference external" href="https://introtodeeplearning.com/">https://introtodeeplearning.com/</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text"><a class="reference external" href="https://introtodeeplearning.com/">https://introtodeeplearning.com/</a></span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition tip">
@@ -827,7 +827,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 </ul>
 <div class="exercise admonition" id="lectures/12-IntroNeuralNetworks/IntroNeuralNetworks-exercise-0">
 
-<p class="admonition-title"><span class="caption-number">Exercise 44 </span> (Relu and linear activation)</p>
+<p class="admonition-title"><span class="caption-number">Exercise 64 </span> (Relu and linear activation)</p>
 <section id="exercise-content">
 <p>Why is the derivative of the activation function (<span class="math notranslate nohighlight">\(g'\)</span>) important in the backpropagation equation above? What would happen if we used a linear activation function (where <span class="math notranslate nohighlight">\(g'(z)\)</span> is just a constant) in all hidden layers?</p>
 </section>
@@ -839,7 +839,7 @@ Please check: <a class="reference external" href="https://developers.google.com/
 <figure class="align-default" id="id2" style="width: 70%">
 <img alt="../../_images/loss-01.png" src="../../_images/loss-01.png" />
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Visualizing the loss landscape of Neural nets, 2017, hao Li et. al. <a class="reference external" href="https://arxiv.org/abs/1712.09913">https://arxiv.org/abs/1712.09913</a> , <a class="github reference external" href="https://github.com/tomgoldstein/loss-landscape">tomgoldstein/loss-landscape</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Visualizing the loss landscape of Neural nets, 2017, hao Li et. al. <a class="reference external" href="https://arxiv.org/abs/1712.09913">https://arxiv.org/abs/1712.09913</a> , <a class="github reference external" href="https://github.com/tomgoldstein/loss-landscape">tomgoldstein/loss-landscape</a></span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="some-visualizations">
@@ -960,29 +960,29 @@ where \)</span>x = \sum x_i w_i$.</p>
 </ul>
 <p>But how to adjust the weights? There are several techniques based on the actual error <span class="math notranslate nohighlight">\(\Delta\)</span>.</p>
 <p>First, we will define a cost/loss function as the typical MSE</p>
-<div class="amsmath math notranslate nohighlight" id="equation-63186535-88f5-4e66-9ac4-e32716a5727f">
-<span class="eqno">(216)<a class="headerlink" href="#equation-63186535-88f5-4e66-9ac4-e32716a5727f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-97d7e88a-f27c-4324-bd0a-ae39c8675daf">
+<span class="eqno">(178)<a class="headerlink" href="#equation-97d7e88a-f27c-4324-bd0a-ae39c8675daf" title="Permalink to this equation">#</a></span>\[\begin{equation}
 COST = \frac{1}{2} (\hat y - y)^2,
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\hat y\)</span> is the predicted value and <span class="math notranslate nohighlight">\(y\)</span> is the expected one.  Notice that we are not adding up because we only have one output.</p>
 <p>Second, we will apply gradient descent approximation to our problem, in order to improve our coefficients for our data. This means that we will propagate back the errors into the coefficients!</p>
-<div class="amsmath math notranslate nohighlight" id="equation-224341b4-fc9d-4219-816e-269409f696b6">
-<span class="eqno">(217)<a class="headerlink" href="#equation-224341b4-fc9d-4219-816e-269409f696b6" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dac757b5-0310-4ea6-ae46-8adf6d8bd40f">
+<span class="eqno">(179)<a class="headerlink" href="#equation-dac757b5-0310-4ea6-ae46-8adf6d8bd40f" title="Permalink to this equation">#</a></span>\[\begin{equation}
 w_i' = w_i - \alpha \frac{\partial COST}{\partial w_i},
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> is the learning rate. Taking into account that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9c1b79d4-b8e4-4243-bae8-7ae0f29a6c0e">
-<span class="eqno">(218)<a class="headerlink" href="#equation-9c1b79d4-b8e4-4243-bae8-7ae0f29a6c0e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-155edb20-e6c5-4e42-8ef3-c0f74e14236e">
+<span class="eqno">(180)<a class="headerlink" href="#equation-155edb20-e6c5-4e42-8ef3-c0f74e14236e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \hat y = \phi(z) = \frac{1}{1 + \exp(-z)},
 \end{equation}\]</div>
 <p>and</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d233bce1-e215-4f4d-9181-2e64eec62f0c">
-<span class="eqno">(219)<a class="headerlink" href="#equation-d233bce1-e215-4f4d-9181-2e64eec62f0c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-db5d16d8-305d-4d62-a2b7-f6cfcfcd7839">
+<span class="eqno">(181)<a class="headerlink" href="#equation-db5d16d8-305d-4d62-a2b7-f6cfcfcd7839" title="Permalink to this equation">#</a></span>\[\begin{equation}
 z = \sum w_i x_i,
 \end{equation}\]</div>
 <p>then, by using the chain rule, we have</p>
-<div class="amsmath math notranslate nohighlight" id="equation-85ac7a8f-c468-4840-a785-1ccb53ec510e">
-<span class="eqno">(220)<a class="headerlink" href="#equation-85ac7a8f-c468-4840-a785-1ccb53ec510e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2cb50702-40cf-4a0d-9589-f364b362c4a7">
+<span class="eqno">(182)<a class="headerlink" href="#equation-2cb50702-40cf-4a0d-9589-f364b362c4a7" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial COST}{\partial w_i} = \frac{\partial COST}{\partial \hat y} \frac{\partial \hat y}{\partial z} \frac{\partial z}{\partial w_i} = (\hat y - y)\phi (1-\phi)x_i. 
 \end{equation}\]</div>
 <div class="cell docutils container">
@@ -1272,7 +1272,7 @@ z = \sum w_i x_i,
 </div>
 <div class="exercise admonition" id="lectures/12-IntroNeuralNetworks/IntroNeuralNetworks-exercise-1">
 
-<p class="admonition-title"><span class="caption-number">Exercise 45 </span></p>
+<p class="admonition-title"><span class="caption-number">Exercise 65 </span></p>
 <section id="exercise-content">
 <p>Play with hyperparameters</p>
 </section>

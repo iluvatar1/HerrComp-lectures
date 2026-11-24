@@ -40,7 +40,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/exercise.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/tabs.css?v=4c969af8" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-examples.css?v=e236af4b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=6a604523" />
     <link rel="stylesheet" type="text/css" href="../../_static/styles.css?v=7ce4dc2b" />
   
   <!-- So that users can add custom icons -->
@@ -61,7 +61,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=b8b12719"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script data-sd-tabs-storage-prefix="sphinx-design-tab-id-" src="../../_static/design-tabs.js?v=fcb327ea"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DX59QS1P22"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -288,10 +288,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Partial differential equations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential equations: Finite differences</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial differential equations: The (parabolic) heat equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-WaveEquation.html">The Wave Equation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical libraries for PDEs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/FiniteDifferences-Relaxation.html">Partial Differential Equations: Finite Differences and Relaxation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-Parabolic-Heat.html">Partial Differential Equations: The (Parabolic) Heat Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDE-WaveEquation.html">Partial Differential Equations: The (Hyperbolic) Wave Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../09-PDE-FiniteDifferences/PDELibs.html">Numerical Libraries for PDEs</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Random methods</span></p>
 <ul class="nav bd-sidenav">
@@ -654,8 +654,8 @@
 <section id="forces-the-why-particles-move">
 <h2>Forces: the “why” particles move<a class="headerlink" href="#forces-the-why-particles-move" title="Link to this heading">#</a></h2>
 <p>For conservative interactions, the force on particle <span class="math notranslate nohighlight">\(i\)</span> is minus the gradient of the total potential energy,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-88499159-0392-4235-9bcd-1fc61d6799a3">
-<span class="eqno">(86)<a class="headerlink" href="#equation-88499159-0392-4235-9bcd-1fc61d6799a3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-0e4fa57e-eac9-4e02-a28f-333f83cfff46">
+<span class="eqno">(86)<a class="headerlink" href="#equation-0e4fa57e-eac9-4e02-a28f-333f83cfff46" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_i = -\nabla_{\vec r_i} U(\vec r_1, \ldots, \vec r_N).
 \end{equation}\]</div>
 <p>Depending on the scale, the models differ drastically:</p>
@@ -664,14 +664,14 @@
 <li><p><strong>Granular:</strong> contact forces that act <strong>only while two grains overlap</strong>, plus dissipation (damping, friction). See <a class="reference external" href="https://docs.lammps.org/pair_granular.html">LAMMPS granular</a>.</p></li>
 </ul>
 <p><strong>Lennard-Jones (molecules).</strong> The classic non-bonded pair potential has a steep repulsion (Pauli exclusion) and a weak attraction (van der Waals):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b4352e97-ca1c-4d32-90eb-3e4ed31a0b82">
-<span class="eqno">(87)<a class="headerlink" href="#equation-b4352e97-ca1c-4d32-90eb-3e4ed31a0b82" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6beb2512-247e-4ae3-b24b-f077ee83a4d4">
+<span class="eqno">(87)<a class="headerlink" href="#equation-6beb2512-247e-4ae3-b24b-f077ee83a4d4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 U_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6} \right], \qquad
 F_{\mathrm{LJ}}(r) = -\frac{dU}{dr} = \frac{24\epsilon}{r}\left[ 2\left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6} \right].
 \end{equation}\]</div>
 <p><strong>Linear spring-dashpot (grains).</strong> Two spheres of radii <span class="math notranslate nohighlight">\(r_i, r_j\)</span> at distance <span class="math notranslate nohighlight">\(R_{ij} = |\vec R_i - \vec R_j|\)</span> overlap by <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>. While <span class="math notranslate nohighlight">\(\delta &gt; 0\)</span>,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7cdf3a47-6921-4d82-a158-9f2da1de0c85">
-<span class="eqno">(88)<a class="headerlink" href="#equation-7cdf3a47-6921-4d82-a158-9f2da1de0c85" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-e9a25ca1-ef8d-445d-949b-7ae9bc1fd076">
+<span class="eqno">(88)<a class="headerlink" href="#equation-e9a25ca1-ef8d-445d-949b-7ae9bc1fd076" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{ij} = \left(k\,\delta - \gamma\, m_{\text{eff}}\, v_n\right)\hat n_{ij}, \qquad \hat n_{ij} = \frac{\vec R_i - \vec R_j}{R_{ij}},\quad v_n = (\vec V_i - \vec V_j)\cdot \hat n_{ij},\quad m_{\text{eff}} = \frac{m_i m_j}{m_i + m_j},
 \end{equation}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\vec F_{ji} = -\vec F_{ij}\)</span> (Newton’s third law). The spring <span class="math notranslate nohighlight">\(k\)</span> pushes the grains apart and the dashpot <span class="math notranslate nohighlight">\(\gamma\)</span> dissipates energy (inelastic collisions). This is the model we implement below.</p>
@@ -731,8 +731,8 @@ F_{\mathrm{LJ}}(r) = -\frac{dU}{dr} = \frac{24\epsilon}{r}\left[ 2\left(\frac{\s
 </figcaption>
 </figure>
 <p>Use <strong>centered differences</strong>, with positions at integer times and velocities at half-integer times:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cb5d4643-287f-486c-91ff-f1743e8bec75">
-<span class="eqno">(89)<a class="headerlink" href="#equation-cb5d4643-287f-486c-91ff-f1743e8bec75" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5f5e7432-0f8d-45c8-9c01-e9952dea36d8">
+<span class="eqno">(89)<a class="headerlink" href="#equation-5f5e7432-0f8d-45c8-9c01-e9952dea36d8" title="Permalink to this equation">#</a></span>\[\begin{align}
 \vec V(t + \Delta t/2) &amp;= \vec V(t - \Delta t/2) + \Delta t\, \vec A(t) + O(\Delta t^3), \\
 \vec R(t + \Delta t) &amp;= \vec R(t) + \Delta t\, \vec V(t + \Delta t/2) + O(\Delta t^3),
 \end{align}\]</div>
@@ -748,8 +748,8 @@ Remember that the stored velocities live at half steps when you compute kinetic 
 <section id="verlet-and-velocity-verlet">
 <h3>Verlet and velocity Verlet<a class="headerlink" href="#verlet-and-velocity-verlet" title="Link to this heading">#</a></h3>
 <p>Adding the Taylor expansions of <span class="math notranslate nohighlight">\(\vec x(t \pm \Delta t)\)</span> cancels the odd terms and gives the <a class="reference external" href="https://en.wikipedia.org/wiki/Verlet_integration">Verlet</a> algorithm,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c6ff8c48-0367-47b7-8ead-70d4ffefebd1">
-<span class="eqno">(90)<a class="headerlink" href="#equation-c6ff8c48-0367-47b7-8ead-70d4ffefebd1" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-dceb0cc2-b70c-4422-bb25-0233b43fcf2e">
+<span class="eqno">(90)<a class="headerlink" href="#equation-dceb0cc2-b70c-4422-bb25-0233b43fcf2e" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec x(t+\Delta t) = 2\vec x(t) - \vec x(t-\Delta t) + \vec a(t)\Delta t^2 + O(\Delta t^4),
 \end{equation}\]</div>
 <p>which does not use velocities at all. Its most popular form is <strong>velocity Verlet</strong>, the standard in MD and DEM codes, which keeps positions and velocities at the same times:</p>
