@@ -55,3 +55,8 @@ sphinx-proof
 
 numba
 variable-inspector
+
+# PDE libraries (lectures/09-PDE-FiniteDifferences/PDELibs.ipynb)
+findiff==0.16.1
+py-pde==0.60.0
+scikit-fem==12.0.2
