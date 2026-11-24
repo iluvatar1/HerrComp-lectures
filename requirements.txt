@@ -1,3 +1,5 @@
+# Requires Python >= 3.12 (tested on 3.12, same as Google Colab).
+# Create the env with e.g.:  uv venv --python 3.12   or   conda env create -f environment.yml
 jupyter-book==1.0.4
 jupyter
 notebook
@@ -58,5 +60,5 @@ variable-inspector
 
 # PDE libraries (lectures/09-PDE-FiniteDifferences/PDELibs.ipynb)
 findiff==0.16.1
-py-pde==0.60.0
+py-pde==0.59.0
 scikit-fem==12.0.2
