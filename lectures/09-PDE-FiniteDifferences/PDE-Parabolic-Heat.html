@@ -565,25 +565,25 @@
             </div>
             <nav aria-label="Page">
                 <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">1. Diffusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-explicit-ftcs-method">2. The explicit FTCS method</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-a-thin-rod-chapra-example-30-1">2.1 Example: a thin rod (Chapra, example 30.1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-explicit-ftcs-method">The explicit FTCS method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-a-thin-rod-chapra-example-30-1">Example: a thin rod (Chapra, example 30.1)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-why-lambda-le-1-2">3. Stability: why <span class="math notranslate nohighlight">\(\lambda \le 1/2\)</span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-analysis">3.1 Von Neumann analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seeing-the-instability">3.2 Seeing the instability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-why-lambda-le-1-2">Stability: why <span class="math notranslate nohighlight">\(\lambda \le 1/2\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-analysis">Von Neumann analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seeing-the-instability">Seeing the instability</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-an-exact-solution-and-the-order-of-accuracy">4. Validation: an exact solution and the order of accuracy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insulated-boundaries-neumann-conditions">5. Insulated boundaries (Neumann conditions)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-methods">6. Implicit methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-method">6.1 The θ-method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#large-time-steps">6.2 Large time steps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-is-not-accurate">6.3 “Stable” is not “accurate”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-an-exact-solution-and-the-order-of-accuracy">Validation: an exact solution and the order of accuracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insulated-boundaries-neumann-conditions">Insulated boundaries (Neumann conditions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-methods">Implicit methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-method">The θ-method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#large-time-steps">Large time steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-is-not-accurate">“Stable” is not “accurate”</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensions">7. Two dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensions">Two dimensions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exercises">Further exercises</a></li>
 </ul>
@@ -685,7 +685,7 @@
 </details>
 </div>
 <section id="diffusion">
-<h2>1. Diffusion<a class="headerlink" href="#diffusion" title="Link to this heading">#</a></h2>
+<h2>Diffusion<a class="headerlink" href="#diffusion" title="Link to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heat_equation">heat equation</a></p>
 <div class="math notranslate nohighlight">
 \[
@@ -723,7 +723,7 @@
 </div>
 </section>
 <section id="the-explicit-ftcs-method">
-<h2>2. The explicit FTCS method<a class="headerlink" href="#the-explicit-ftcs-method" title="Link to this heading">#</a></h2>
+<h2>The explicit FTCS method<a class="headerlink" href="#the-explicit-ftcs-method" title="Link to this heading">#</a></h2>
 <p>Discretize space with <span class="math notranslate nohighlight">\(x_i = i h\)</span> and time with <span class="math notranslate nohighlight">\(t_n = n\,\Delta t\)</span>, and write <span class="math notranslate nohighlight">\(u_i^n \approx u(x_i, t_n)\)</span>. Use a <strong>forward</strong> difference in time (first order) and a <strong>centered</strong> second difference in space (second order):</p>
 <div class="math notranslate nohighlight">
 \[
@@ -752,7 +752,7 @@
 </div>
 </div>
 <section id="example-a-thin-rod-chapra-example-30-1">
-<h3>2.1 Example: a thin rod (Chapra, example 30.1)<a class="headerlink" href="#example-a-thin-rod-chapra-example-30-1" title="Link to this heading">#</a></h3>
+<h3>Example: a thin rod (Chapra, example 30.1)<a class="headerlink" href="#example-a-thin-rod-chapra-example-30-1" title="Link to this heading">#</a></h3>
 <p>A rod of length <span class="math notranslate nohighlight">\(L = 10\)</span> cm with <span class="math notranslate nohighlight">\(\alpha = 0.835\)</span> cm²/s starts at <span class="math notranslate nohighlight">\(T = 0\)</span> °C, and its ends are suddenly held at <span class="math notranslate nohighlight">\(T(0) = 100\)</span> °C and <span class="math notranslate nohighlight">\(T(10) = 50\)</span> °C. With <span class="math notranslate nohighlight">\(h = 2\)</span> cm and <span class="math notranslate nohighlight">\(\Delta t = 0.1\)</span> s we get <span class="math notranslate nohighlight">\(\lambda = 0.835\times0.1/2^2 = 0.020875\)</span>. The first two steps can be checked by hand, and they match the values in Chapra’s table (<span class="math notranslate nohighlight">\(2.0875\)</span> and <span class="math notranslate nohighlight">\(1.04375\)</span> at <span class="math notranslate nohighlight">\(t = 0.1\)</span> s).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -778,7 +778,7 @@ t [s]   x=0      x=2      x=4      x=6      x=8      x=10
 </div>
 </div>
 </div>
-<p>Running long enough, the profile approaches the linear steady state <span class="math notranslate nohighlight">\(T = 100 - 5x\)</span>, the solution of <span class="math notranslate nohighlight">\(T'' = 0\)</span>. The time scale is <span class="math notranslate nohighlight">\(L^2/\alpha \approx 120\)</span> s. A finer grid (<span class="math notranslate nohighlight">\(h = 0.5\)</span> cm) gives smoother curves; note that <span class="math notranslate nohighlight">\(\Delta t\)</span> must then shrink with <span class="math notranslate nohighlight">\(h^2\)</span> to keep the same <span class="math notranslate nohighlight">\(\lambda\)</span> (see section 3).</p>
+<p>Running long enough, the profile approaches the linear steady state <span class="math notranslate nohighlight">\(T = 100 - 5x\)</span>, the solution of <span class="math notranslate nohighlight">\(T'' = 0\)</span>. The time scale is <span class="math notranslate nohighlight">\(L^2/\alpha \approx 120\)</span> s. A finer grid (<span class="math notranslate nohighlight">\(h = 0.5\)</span> cm) gives smoother curves; note that <span class="math notranslate nohighlight">\(\Delta t\)</span> must then shrink with <span class="math notranslate nohighlight">\(h^2\)</span> to keep the same <span class="math notranslate nohighlight">\(\lambda\)</span> (see <a class="reference internal" href="#heat-stability"><span class="std std-ref">Stability: why \lambda \le 1/2</span></a>).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">,</span> <span class="n">alpha</span> <span class="o">=</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">0.835</span>
@@ -1009,42 +1009,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img398ada2d16a64aa0a8fa98e9bf9f3071">
+  <img id="_anim_img189071876d404c2c9b558f6985754d57">
   <div class="anim-controls">
-    <input id="_anim_slider398ada2d16a64aa0a8fa98e9bf9f3071" type="range" class="anim-slider"
+    <input id="_anim_slider189071876d404c2c9b558f6985754d57" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim398ada2d16a64aa0a8fa98e9bf9f3071.set_frame(parseInt(this.value));">
+           oninput="anim189071876d404c2c9b558f6985754d57.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim189071876d404c2c9b558f6985754d57.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim189071876d404c2c9b558f6985754d57.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim189071876d404c2c9b558f6985754d57.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim189071876d404c2c9b558f6985754d57.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim189071876d404c2c9b558f6985754d57.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim189071876d404c2c9b558f6985754d57.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim189071876d404c2c9b558f6985754d57.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim189071876d404c2c9b558f6985754d57.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim398ada2d16a64aa0a8fa98e9bf9f3071.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim189071876d404c2c9b558f6985754d57.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select398ada2d16a64aa0a8fa98e9bf9f3071"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select189071876d404c2c9b558f6985754d57"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_398ada2d16a64aa0a8fa98e9bf9f3071"
+      <input type="radio" name="state" value="once" id="_anim_radio1_189071876d404c2c9b558f6985754d57"
              >
-      <label for="_anim_radio1_398ada2d16a64aa0a8fa98e9bf9f3071">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_398ada2d16a64aa0a8fa98e9bf9f3071"
+      <label for="_anim_radio1_189071876d404c2c9b558f6985754d57">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_189071876d404c2c9b558f6985754d57"
              checked>
-      <label for="_anim_radio2_398ada2d16a64aa0a8fa98e9bf9f3071">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_398ada2d16a64aa0a8fa98e9bf9f3071"
+      <label for="_anim_radio2_189071876d404c2c9b558f6985754d57">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_189071876d404c2c9b558f6985754d57"
              >
-      <label for="_anim_radio3_398ada2d16a64aa0a8fa98e9bf9f3071">Reflect</label>
+      <label for="_anim_radio3_189071876d404c2c9b558f6985754d57">Reflect</label>
     </form>
   </div>
 </div>
@@ -1054,9 +1054,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img398ada2d16a64aa0a8fa98e9bf9f3071";
-    var slider_id = "_anim_slider398ada2d16a64aa0a8fa98e9bf9f3071";
-    var loop_select_id = "_anim_loop_select398ada2d16a64aa0a8fa98e9bf9f3071";
+    var img_id = "_anim_img189071876d404c2c9b558f6985754d57";
+    var slider_id = "_anim_slider189071876d404c2c9b558f6985754d57";
+    var loop_select_id = "_anim_loop_select189071876d404c2c9b558f6985754d57";
     var frames = new Array(41);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFeCAYAAABZ12FcAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -11638,7 +11638,7 @@ yRGwAES8K664Qtu3b9fu3bv1iU98ItzdAQBqsABEtt/97nfat2+fYmNjVVNTE+7uAIAkVrAARLC/\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim398ada2d16a64aa0a8fa98e9bf9f3071 = new Animation(frames, img_id, slider_id, 100.0,
+        anim189071876d404c2c9b558f6985754d57 = new Animation(frames, img_id, slider_id, 100.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -11648,9 +11648,9 @@ yRGwAES8K664Qtu3b9fu3bv1iU98ItzdAQBqsABEtt/97nfat2+fYmNjVVNTE+7uAIAkVrAARLC/\
 </section>
 </section>
 <section id="stability-why-lambda-le-1-2">
-<h2>3. Stability: why <span class="math notranslate nohighlight">\(\lambda \le 1/2\)</span><a class="headerlink" href="#stability-why-lambda-le-1-2" title="Link to this heading">#</a></h2>
+<span id="heat-stability"></span><h2>Stability: why <span class="math notranslate nohighlight">\(\lambda \le 1/2\)</span><a class="headerlink" href="#stability-why-lambda-le-1-2" title="Link to this heading">#</a></h2>
 <section id="von-neumann-analysis">
-<h3>3.1 Von Neumann analysis<a class="headerlink" href="#von-neumann-analysis" title="Link to this heading">#</a></h3>
+<h3>Von Neumann analysis<a class="headerlink" href="#von-neumann-analysis" title="Link to this heading">#</a></h3>
 <p>Errors (round-off, for example) are combinations of Fourier modes. Insert one mode, <span class="math notranslate nohighlight">\(u_i^n = G^n e^{\mathrm{i} k x_i}\)</span>, into the FTCS formula. Since <span class="math notranslate nohighlight">\(e^{\mathrm{i}kh} + e^{-\mathrm{i}kh} - 2 = -4\sin^2(kh/2)\)</span>, each step multiplies the mode by the <strong>amplification factor</strong></p>
 <div class="math notranslate nohighlight">
 \[
@@ -11664,7 +11664,7 @@ G(k) = 1 - 4\lambda \sin^2\!\left(\frac{kh}{2}\right).
 <p>In <span class="math notranslate nohighlight">\(d\)</span> dimensions with equal spacing the limit becomes <span class="math notranslate nohighlight">\(\lambda \le 1/(2d)\)</span>, so <span class="math notranslate nohighlight">\(\lambda \le 1/4\)</span> in 2D. The price is high: halving <span class="math notranslate nohighlight">\(h\)</span> forces <span class="math notranslate nohighlight">\(\Delta t\)</span> to drop by 4, so the total cost of a 1D simulation grows 8 times.</p>
 </section>
 <section id="seeing-the-instability">
-<h3>3.2 Seeing the instability<a class="headerlink" href="#seeing-the-instability" title="Link to this heading">#</a></h3>
+<h3>Seeing the instability<a class="headerlink" href="#seeing-the-instability" title="Link to this heading">#</a></h3>
 <p>Start from the smooth mode <span class="math notranslate nohighlight">\(u = \sin(\pi x)\)</span> and track the largest value. For <span class="math notranslate nohighlight">\(\lambda &gt; 1/2\)</span> the tiny saw-tooth part created by round-off errors (<span class="math notranslate nohighlight">\(\sim 10^{-16}\)</span>) is amplified by <span class="math notranslate nohighlight">\(|1 - 4\lambda|\)</span> every step until it dominates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -11712,7 +11712,7 @@ G(k) = 1 - 4\lambda \sin^2\!\left(\frac{kh}{2}\right).
 </section>
 </section>
 <section id="validation-an-exact-solution-and-the-order-of-accuracy">
-<h2>4. Validation: an exact solution and the order of accuracy<a class="headerlink" href="#validation-an-exact-solution-and-the-order-of-accuracy" title="Link to this heading">#</a></h2>
+<h2>Validation: an exact solution and the order of accuracy<a class="headerlink" href="#validation-an-exact-solution-and-the-order-of-accuracy" title="Link to this heading">#</a></h2>
 <p>On <span class="math notranslate nohighlight">\([0, 1]\)</span> with <span class="math notranslate nohighlight">\(u = 0\)</span> at both ends, the initial condition <span class="math notranslate nohighlight">\(u(x, 0) = \sin(\pi x)\)</span> keeps its shape and decays exponentially:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -11750,7 +11750,7 @@ u(x, t) = \sin(\pi x)\, e^{-\alpha\pi^2 t}.
 </div>
 </section>
 <section id="insulated-boundaries-neumann-conditions">
-<h2>5. Insulated boundaries (Neumann conditions)<a class="headerlink" href="#insulated-boundaries-neumann-conditions" title="Link to this heading">#</a></h2>
+<h2>Insulated boundaries (Neumann conditions)<a class="headerlink" href="#insulated-boundaries-neumann-conditions" title="Link to this heading">#</a></h2>
 <p>An insulated end lets no heat through: <span class="math notranslate nohighlight">\(\partial u/\partial x = 0\)</span>. Add a <em>ghost point</em> <span class="math notranslate nohighlight">\(u_{-1}\)</span> outside the rod. The centered condition <span class="math notranslate nohighlight">\((u_1 - u_{-1})/(2h) = 0\)</span> gives <span class="math notranslate nohighlight">\(u_{-1} = u_1\)</span> (second order, better than copying the neighbour), and the FTCS formula at <span class="math notranslate nohighlight">\(i = 0\)</span> becomes</p>
 <div class="math notranslate nohighlight">
 \[
@@ -11763,8 +11763,7 @@ u_0^{n+1} = u_0^n + \lambda\left(u_1^n - 2u_0^n + u_{-1}^n\right) = u_0^n + 2\la
 <section id="exercise-content">
 <ol class="arabic simple">
 <li><p>Complete <code class="docutils literal notranslate"><span class="pre">ftcs_insulated(u,</span> <span class="pre">lam)</span></code> so that both ends are insulated (two lines, using the formula above).</p></li>
-<li><p>Start with <span class="math notranslate nohighlight">\(u = 100\)</span> on the left half of a rod <span class="math notranslate nohighlight">\([0, 1]\)</span> and <span class="math notranslate nohighlight">\(u = 0\)</span> on the right half (<span class="math notranslate nohighlight">\(N = 51\)</span>, <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, <span class="math notranslate nohighlight">\(\lambda = 0.4\)</span>). Plot the profile at <span class="math notranslate nohighlight">\(t = 0, 0.01, 0.03, 0.1, 0.3\)</span>.</p></li>
-<li><p>With both ends insulated no heat is lost. Check that the total heat <span class="math notranslate nohighlight">\(Q = h\left(\frac{u_0}{2} + u_1 + \dots + u_{N-2} + \frac{u_{N-1}}{2}\right)\)</span> (trapezoidal rule) stays constant, and that <span class="math notranslate nohighlight">\(u\)</span> tends to the average value 50.</p></li>
+<li><p>Run the next cell. It starts with <span class="math notranslate nohighlight">\(u = 100\)</span> on the left half of a rod <span class="math notranslate nohighlight">\([0, 1]\)</span> and <span class="math notranslate nohighlight">\(u = 0\)</span> on the right half (<span class="math notranslate nohighlight">\(N = 51\)</span>, <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, <span class="math notranslate nohighlight">\(\lambda = 0.4\)</span>), plots the profile at several times, and follows the total heat <span class="math notranslate nohighlight">\(Q = h\left(\frac{u_0}{2} + u_1 + \dots + u_{N-2} + \frac{u_{N-1}}{2}\right)\)</span> (trapezoidal rule). Is <span class="math notranslate nohighlight">\(Q\)</span> conserved? Which value does <span class="math notranslate nohighlight">\(u\)</span> tend to, and why?</p></li>
 </ol>
 </section>
 </div>
@@ -11780,36 +11779,42 @@ u_0^{n+1} = u_0^n + \lambda\left(u_1^n - 2u_0^n + u_{-1}^n\right) = u_0^n + 2\la
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
-<span class="k">pass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given: run it after completing ftcs_insulated</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">lam</span> <span class="o">=</span> <span class="mi">51</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.4</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">lam</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">total_heat</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">h</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">-</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="n">Q0</span> <span class="o">=</span> <span class="n">total_heat</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"t = 0"</span><span class="p">)</span>
+<span class="n">t</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">ts</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="p">[],</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">t_show</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.03</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">]:</span>
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_show</span> <span class="o">-</span> <span class="mf">1e-12</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">ftcs_insulated</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+        <span class="n">Q</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">total_heat</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+        <span class="n">ts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"t = </span><span class="si">{</span><span class="n">t_show</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">"--"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$x$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$u$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Rod with insulated ends"</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span> <span class="o">-</span> <span class="n">Q0</span><span class="p">)</span><span class="o">/</span><span class="n">Q0</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$t$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$(Q - Q_0)/Q_0$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Relative change of the total heat"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
-</summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"fig/heat_insulated.png"</span><span class="p">):</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"fig/heat_insulated.png"</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</details>
-<details class="admonition hide below-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell output</p>
-<p class="expanded admonition-title">Hide code cell output</p>
-</summary>
 <div class="cell_output docutils container">
-<img alt="../../_images/89b0665e0ca1ecb1ef7d601178ba84efe1079941dbbef8b5c11cd3b6161a935a.png" src="../../_images/89b0665e0ca1ecb1ef7d601178ba84efe1079941dbbef8b5c11cd3b6161a935a.png" />
+<img alt="../../_images/993b54aa46c1466fa0a18ca750a691fed9b5e9da76d1a0a02b938915a430df9a.png" src="../../_images/993b54aa46c1466fa0a18ca750a691fed9b5e9da76d1a0a02b938915a430df9a.png" />
 </div>
-</details>
 </div>
 <div class="exercise admonition" id="ex-heat-fin">
 
@@ -11822,9 +11827,9 @@ u_0^{n+1} = u_0^n + \lambda\left(u_1^n - 2u_0^n + u_{-1}^n\right) = u_0^n + 2\la
 \]</div>
 <p>Take <span class="math notranslate nohighlight">\(x \in [0, 1]\)</span>, <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, <span class="math notranslate nohighlight">\(\beta = 10\)</span>, <span class="math notranslate nohighlight">\(u_\mathrm{env} = 20\)</span>, the base held at <span class="math notranslate nohighlight">\(u(0) = 100\)</span>, an <strong>insulated tip</strong> at <span class="math notranslate nohighlight">\(x = 1\)</span>, and <span class="math notranslate nohighlight">\(u = 20\)</span> initially.</p>
 <ol class="arabic simple">
-<li><p>Complete <code class="docutils literal notranslate"><span class="pre">fin_step(u,</span> <span class="pre">lam,</span> <span class="pre">dt,</span> <span class="pre">beta,</span> <span class="pre">u_env)</span></code>: start from <code class="docutils literal notranslate"><span class="pre">ftcs(u,</span> <span class="pre">lam)</span></code>, apply the insulated-tip formula at the last point, and subtract <code class="docutils literal notranslate"><span class="pre">dt*beta*(u</span> <span class="pre">-</span> <span class="pre">u_env)</span></code> from every point except the base (three lines).</p></li>
-<li><p>Run until <span class="math notranslate nohighlight">\(t = 1\)</span> (<span class="math notranslate nohighlight">\(N = 41\)</span>, <span class="math notranslate nohighlight">\(\lambda = 0.4\)</span>) and compare with the exact steady state
-<span class="math notranslate nohighlight">\(u(x) = u_\mathrm{env} + (100 - u_\mathrm{env})\,\dfrac{\cosh\big(m(1 - x)\big)}{\cosh m}\)</span>, with <span class="math notranslate nohighlight">\(m = \sqrt{\beta/\alpha}\)</span>.</p></li>
+<li><p>Complete <code class="docutils literal notranslate"><span class="pre">fin_step(u,</span> <span class="pre">lam,</span> <span class="pre">dt,</span> <span class="pre">beta,</span> <span class="pre">u_env)</span></code>: start from <code class="docutils literal notranslate"><span class="pre">ftcs(u,</span> <span class="pre">lam)</span></code>, apply the insulated-tip formula at the last point, and subtract <code class="docutils literal notranslate"><span class="pre">dt*beta*(u</span> <span class="pre">-</span> <span class="pre">u_env)</span></code> from every point except the base (two lines).</p></li>
+<li><p>Run the next cell. It evolves the fin until <span class="math notranslate nohighlight">\(t = 1\)</span> (<span class="math notranslate nohighlight">\(N = 41\)</span>, <span class="math notranslate nohighlight">\(\lambda = 0.4\)</span>) and compares with the exact steady state
+<span class="math notranslate nohighlight">\(u(x) = u_\mathrm{env} + (100 - u_\mathrm{env})\,\dfrac{\cosh\big(m(1 - x)\big)}{\cosh m}\)</span>, with <span class="math notranslate nohighlight">\(m = \sqrt{\beta/\alpha}\)</span>. How long does the fin take to reach the steady state?</p></li>
 </ol>
 </section>
 </div>
@@ -11840,85 +11845,115 @@ u_0^{n+1} = u_0^n + \lambda\left(u_1^n - 2u_0^n + u_{-1}^n\right) = u_0^n + 2\la
 </div>
 </div>
 </div>
-<div class="cell docutils container">
+<div class="cell tag_raises-exception docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
-<span class="k">pass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given: run it after completing fin_step</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">u_env</span><span class="p">,</span> <span class="n">lam</span> <span class="o">=</span> <span class="mi">41</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">,</span> <span class="mf">0.4</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">lam</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">u_env</span><span class="p">)</span>
+<span class="n">u</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">100.0</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">t</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="k">for</span> <span class="n">t_show</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]:</span>
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">t_show</span> <span class="o">-</span> <span class="mf">1e-12</span><span class="p">:</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">fin_step</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">beta</span><span class="p">,</span> <span class="n">u_env</span><span class="p">)</span>
+        <span class="n">t</span> <span class="o">+=</span> <span class="n">dt</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"t = </span><span class="si">{</span><span class="n">t_show</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">beta</span><span class="o">/</span><span class="n">alpha</span><span class="p">)</span>
+<span class="n">u_steady</span> <span class="o">=</span> <span class="n">u_env</span> <span class="o">+</span> <span class="p">(</span><span class="mi">100</span> <span class="o">-</span> <span class="n">u_env</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">))</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_steady</span><span class="p">,</span> <span class="s2">"k-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"exact steady state"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$x$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$u$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">r</span><span class="s2">"Cooling fin ($\beta=10$, insulated tip)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"max deviation from the exact steady state:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">u_steady</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
-</summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"fig/heat_fin.png"</span><span class="p">):</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"fig/heat_fin.png"</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</details>
-<details class="admonition hide below-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell output</p>
-<p class="expanded admonition-title">Hide code cell output</p>
-</summary>
 <div class="cell_output docutils container">
-<img alt="../../_images/f7a96c7f1c01d1fafb6056118bf47770a0996ff13b17a45a4b836a0095647242.png" src="../../_images/f7a96c7f1c01d1fafb6056118bf47770a0996ff13b17a45a4b836a0095647242.png" />
+<img alt="../../_images/76cb6fd2255f3aa0c0b71774f6e7f86791c1ac346541077030b82bf81a158849.png" src="../../_images/76cb6fd2255f3aa0c0b71774f6e7f86791c1ac346541077030b82bf81a158849.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>max deviation from the exact steady state: 25.16290136044818
+</pre></div>
 </div>
-</details>
+</div>
 </div>
 <div class="exercise admonition" id="ex-heat-diffusion-law">
 
 <p class="admonition-title"><span class="caption-number">Exercise 47 </span> (The diffusion law <span class="math notranslate nohighlight">\(\sigma^2 = \sigma_0^2 + 2\alpha t\)</span>)</p>
 <section id="exercise-content">
-<p>Put a narrow Gaussian <span class="math notranslate nohighlight">\(u(x, 0) = e^{-x^2/(2\sigma_0^2)}\)</span> with <span class="math notranslate nohighlight">\(\sigma_0 = 0.3\)</span> in the middle of a long rod <span class="math notranslate nohighlight">\(x \in [-5, 5]\)</span> (<span class="math notranslate nohighlight">\(u = 0\)</span> at the ends, <span class="math notranslate nohighlight">\(N = 201\)</span>, <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span>, <span class="math notranslate nohighlight">\(\lambda = 0.4\)</span>).</p>
+<p>A narrow Gaussian <span class="math notranslate nohighlight">\(u(x, 0) = e^{-x^2/(2\sigma_0^2)}\)</span> with <span class="math notranslate nohighlight">\(\sigma_0 = 0.3\)</span> spreads in the middle of a long rod <span class="math notranslate nohighlight">\(x \in [-5, 5]\)</span> (<span class="math notranslate nohighlight">\(u = 0\)</span> at the ends, <span class="math notranslate nohighlight">\(N = 201\)</span>, <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span>, <span class="math notranslate nohighlight">\(\lambda = 0.4\)</span>).</p>
 <ol class="arabic simple">
-<li><p>Evolve it up to <span class="math notranslate nohighlight">\(t = 2\)</span> and, every 50 steps, compute the variance <span class="math notranslate nohighlight">\(\sigma^2 = \sum_i x_i^2 u_i / \sum_i u_i\)</span> (the mean is zero by symmetry).</p></li>
-<li><p>Plot <span class="math notranslate nohighlight">\(\sigma^2\)</span> vs <span class="math notranslate nohighlight">\(t\)</span>, fit a straight line with <code class="docutils literal notranslate"><span class="pre">np.polyfit</span></code>, and compare the slope with <span class="math notranslate nohighlight">\(2\alpha\)</span>.</p></li>
+<li><p>Complete <code class="docutils literal notranslate"><span class="pre">variance(x,</span> <span class="pre">u)</span></code>, which returns <span class="math notranslate nohighlight">\(\sigma^2 = \sum_i x_i^2 u_i / \sum_i u_i\)</span> (one line; the mean is zero by symmetry).</p></li>
+<li><p>Run the next cell. It evolves the Gaussian up to <span class="math notranslate nohighlight">\(t = 2\)</span>, computes <span class="math notranslate nohighlight">\(\sigma^2\)</span> every 50 steps and fits a straight line. Compare the slope with <span class="math notranslate nohighlight">\(2\alpha\)</span>.</p></li>
 </ol>
 </section>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
-<span class="k">pass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">variance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Variance of the profile u(x), taking u as a distribution centred at x = 0."""</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
-</summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"fig/heat_diffusion_law.png"</span><span class="p">):</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"fig/heat_diffusion_law.png"</span><span class="p">))</span>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given: run it after completing variance</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">lam</span><span class="p">,</span> <span class="n">sigma0</span> <span class="o">=</span> <span class="mi">201</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.3</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="n">lam</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">sigma0</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">ts</span><span class="p">,</span> <span class="n">var</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">],</span> <span class="p">[</span><span class="n">variance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">)]</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">2.0</span><span class="o">/</span><span class="n">dt</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">ftcs</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span>
+        <span class="n">var</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">))</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"FTCS"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="s2">"k-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fit: slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (2$</span><span class="se">\\</span><span class="s2">alpha$ = </span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$t$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">"$\sigma^2$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Spreading of a Gaussian"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</details>
-<details class="admonition hide below-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell output</p>
-<p class="expanded admonition-title">Hide code cell output</p>
-</summary>
 <div class="cell_output docutils container">
-<img alt="../../_images/d9963479c301eb6f85d0dc211bd3f59a93764a38eed40fae069df4d255bc4280.png" src="../../_images/d9963479c301eb6f85d0dc211bd3f59a93764a38eed40fae069df4d255bc4280.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">13</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">u</span> <span class="o">=</span> <span class="n">ftcs</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">50</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>         <span class="n">ts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">var</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">variance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">))</span>
+<span class="ne">---&gt; </span><span class="mi">13</span> <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">var</span><span class="p">,</span> <span class="s2">"o"</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"FTCS"</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="s2">"k-"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fit: slope = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (2$</span><span class="se">\\</span><span class="s2">alpha$ = </span><span class="si">{</span><span class="mi">2</span><span class="o">*</span><span class="n">alpha</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+
+<span class="nn">File /opt/hostedtoolcache/Python/3.11.18/x64/lib/python3.11/site-packages/numpy/lib/_polynomial_impl.py:637,</span> in <span class="ni">polyfit</span><span class="nt">(x, y, deg, rcond, full, w, cov)</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="n">order</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">deg</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="g g-Whitespace">    </span><span class="mi">636</span> <span class="n">x</span> <span class="o">=</span> <span class="n">NX</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.0</span>
+<span class="ne">--&gt; </span><span class="mi">637</span> <span class="n">y</span> <span class="o">=</span> <span class="n">NX</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.0</span>
+<span class="g g-Whitespace">    </span><span class="mi">639</span> <span class="c1"># check arguments.</span>
+<span class="g g-Whitespace">    </span><span class="mi">640</span> <span class="k">if</span> <span class="n">deg</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+
+<span class="ne">TypeError</span>: unsupported operand type(s) for +: 'NoneType' and 'float'
+</pre></div>
 </div>
-</details>
+</div>
 </div>
 </section>
 <section id="implicit-methods">
-<h2>6. Implicit methods<a class="headerlink" href="#implicit-methods" title="Link to this heading">#</a></h2>
+<h2>Implicit methods<a class="headerlink" href="#implicit-methods" title="Link to this heading">#</a></h2>
 <section id="the-method">
-<h3>6.1 The θ-method<a class="headerlink" href="#the-method" title="Link to this heading">#</a></h3>
-<p>The stability limit comes from evaluating the space derivative at the <em>old</em> time. Evaluating it (partly) at the <em>new</em> time gives a family of schemes. With the tridiagonal matrix <span class="math notranslate nohighlight">\(T = \mathrm{tridiag}(1, -2, 1)\)</span> acting on the interior points (the same matrix as in the BVP and relaxation notebooks), the <strong>θ-method</strong> is</p>
+<h3>The θ-method<a class="headerlink" href="#the-method" title="Link to this heading">#</a></h3>
+<p>The stability limit comes from evaluating the space derivative at the <em>old</em> time. Evaluating it (partly) at the <em>new</em> time gives a family of schemes. With the tridiagonal matrix <span class="math notranslate nohighlight">\(T = \mathrm{tridiag}(1, -2, 1)\)</span> acting on the interior points (the same matrix as in the BVP notebook), the <strong>θ-method</strong> is</p>
 <div class="math notranslate nohighlight">
 \[
 \left(I - \theta\lambda T\right)\mathbf{u}^{n+1} = \left(I + (1 - \theta)\lambda T\right)\mathbf{u}^{n} + \lambda\,\mathbf{b},
@@ -11983,7 +12018,7 @@ u_0^{n+1} = u_0^n + \lambda\left(u_1^n - 2u_0^n + u_{-1}^n\right) = u_0^n + 2\la
 </div>
 </section>
 <section id="large-time-steps">
-<h3>6.2 Large time steps<a class="headerlink" href="#large-time-steps" title="Link to this heading">#</a></h3>
+<h3>Large time steps<a class="headerlink" href="#large-time-steps" title="Link to this heading">#</a></h3>
 <p>With <span class="math notranslate nohighlight">\(\lambda = 5\)</span> (ten times the explicit limit), FTCS explodes while backward Euler and Crank–Nicolson stay stable and close to the exact decay of the <span class="math notranslate nohighlight">\(\sin(\pi x)\)</span> mode.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -12023,7 +12058,7 @@ Crank-Nicolson : max error = 1.60e-04
 </div>
 </section>
 <section id="stable-is-not-accurate">
-<h3>6.3 “Stable” is not “accurate”<a class="headerlink" href="#stable-is-not-accurate" title="Link to this heading">#</a></h3>
+<h3>“Stable” is not “accurate”<a class="headerlink" href="#stable-is-not-accurate" title="Link to this heading">#</a></h3>
 <p>Stability only means that errors do not grow. With a large <span class="math notranslate nohighlight">\(\lambda\)</span> and a sharp initial condition (a step), Crank–Nicolson shows <strong>spurious oscillations</strong> that decay very slowly: its amplification factor for short waves is close to <span class="math notranslate nohighlight">\(-1\)</span>. Backward Euler damps them strongly (it is smooth but only first order). A practical recipe is to take a few backward-Euler steps first and then continue with Crank–Nicolson.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -12059,49 +12094,72 @@ Crank-Nicolson : max error = 1.60e-04
 
 <p class="admonition-title"><span class="caption-number">Exercise 48 </span> (Order of accuracy in time)</p>
 <section id="exercise-content">
-<p>Measure how the time-stepping error of backward Euler and Crank–Nicolson decreases with <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p>
-<ul class="simple">
-<li><p>Use <span class="math notranslate nohighlight">\(N = 101\)</span>, <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, <span class="math notranslate nohighlight">\(u(x, 0) = \sin(\pi x)\)</span> and integrate to <span class="math notranslate nohighlight">\(t = 0.1\)</span> with <span class="math notranslate nohighlight">\(\Delta t = 0.02, 0.01, 0.005, 0.0025, 0.00125\)</span> (compute <code class="docutils literal notranslate"><span class="pre">lam</span> <span class="pre">=</span> <span class="pre">dt/h**2</span></code> and <code class="docutils literal notranslate"><span class="pre">theta_stepper(N,</span> <span class="pre">lam,</span> <span class="pre">theta)</span></code>).</p></li>
-<li><p>To remove the spatial error, compare with the exact solution of the space-discretized equations, <span class="math notranslate nohighlight">\(\sin(\pi x)\,e^{-\mu t}\)</span> with <span class="math notranslate nohighlight">\(\mu = \frac{4}{h^2}\sin^2\!\left(\frac{\pi h}{2}\right)\)</span>.</p></li>
-<li><p>Plot the error vs <span class="math notranslate nohighlight">\(\Delta t\)</span> in log-log scale and read the slopes. Which method would you choose for an accurate long simulation?</p></li>
-</ul>
+<p>Measure how the time-stepping error of backward Euler and Crank–Nicolson decreases with <span class="math notranslate nohighlight">\(\Delta t\)</span>, for <span class="math notranslate nohighlight">\(u(x, 0) = \sin(\pi x)\)</span> (<span class="math notranslate nohighlight">\(N = 101\)</span>, <span class="math notranslate nohighlight">\(\alpha = 1\)</span>) integrated to <span class="math notranslate nohighlight">\(t = 0.1\)</span>. To remove the spatial error we compare with the exact solution of the space-discretized equations, <span class="math notranslate nohighlight">\(\sin(\pi x)\,e^{-\alpha\mu t}\)</span> with <span class="math notranslate nohighlight">\(\mu = \frac{4}{h^2}\sin^2\!\left(\frac{\pi h}{2}\right)\)</span> (already in the function).</p>
+<ol class="arabic simple">
+<li><p>Complete <code class="docutils literal notranslate"><span class="pre">time_error(theta,</span> <span class="pre">dt)</span></code>: build <code class="docutils literal notranslate"><span class="pre">step</span> <span class="pre">=</span> <span class="pre">theta_stepper(N,</span> <span class="pre">alpha*dt/h**2,</span> <span class="pre">theta)</span></code>, apply it <code class="docutils literal notranslate"><span class="pre">round(t_end/dt)</span></code> times to the initial condition, and return the maximum error.</p></li>
+<li><p>Run the next cell, which plots the error vs <span class="math notranslate nohighlight">\(\Delta t\)</span> in log-log scale. Read the slopes. Which method would you choose for an accurate long simulation?</p></li>
+</ol>
 </section>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
-<span class="k">pass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">time_error</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">101</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">t_end</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Max error at t_end of the θ-method for u(x, 0) = sin(πx), without spatial error."""</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="mi">4</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
+    <span class="n">exact</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">alpha</span><span class="o">*</span><span class="n">mu</span><span class="o">*</span><span class="n">t_end</span><span class="p">)</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
-</summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"fig/heat_time_order.png"</span><span class="p">):</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"fig/heat_time_order.png"</span><span class="p">))</span>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given: run it after completing time_error</span>
+<span class="n">dts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">,</span> <span class="mf">0.00125</span><span class="p">])</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">theta</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[(</span><span class="mf">1.0</span><span class="p">,</span> <span class="s2">"Backward Euler"</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">"Crank-Nicolson"</span><span class="p">)]:</span>
+    <span class="n">errs</span> <span class="o">=</span> <span class="p">[</span><span class="n">time_error</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> <span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span> <span class="n">dts</span><span class="p">]</span>
+    <span class="n">slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dts</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">errs</span><span class="p">),</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">dts</span><span class="p">,</span> <span class="n">errs</span><span class="p">,</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (slope </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">dts</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dts</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">minorticks_off</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s2">"$\Delta t$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"max error at $t=0.1$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Time-stepping error"</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</details>
-<details class="admonition hide below-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell output</p>
-<p class="expanded admonition-title">Hide code cell output</p>
-</summary>
 <div class="cell_output docutils container">
-<img alt="../../_images/a0d0162480f1a8d39c6100f2080378fa476767d62781e4ce345c1ed1e5ff8815.png" src="../../_images/a0d0162480f1a8d39c6100f2080378fa476767d62781e4ce345c1ed1e5ff8815.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="ne">AttributeError</span>: 'NoneType' object has no attribute 'log'
+
+<span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
+
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">6</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">dts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">,</span> <span class="mf">0.00125</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">for</span> <span class="n">theta</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[(</span><span class="mf">1.0</span><span class="p">,</span> <span class="s2">"Backward Euler"</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="s2">"Crank-Nicolson"</span><span class="p">)]:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">errs</span> <span class="o">=</span> <span class="p">[</span><span class="n">time_error</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span> <span class="k">for</span> <span class="n">dt</span> <span class="ow">in</span> <span class="n">dts</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">6</span>     <span class="n">slope</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">dts</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">errs</span><span class="p">),</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="n">ax</span><span class="o">.</span><span class="n">loglog</span><span class="p">(</span><span class="n">dts</span><span class="p">,</span> <span class="n">errs</span><span class="p">,</span> <span class="s2">"o-"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (slope </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">dts</span><span class="p">,</span> <span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">d</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dts</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">ax</span><span class="o">.</span><span class="n">minorticks_off</span><span class="p">()</span>
+
+<span class="ne">TypeError</span>: loop of ufunc does not support argument 0 of type NoneType which has no callable log method
+</pre></div>
 </div>
-</details>
+<img alt="../../_images/08cef3b052188bd5614f3a847c36ecaf69b44f91bb3928b0d9f7496c708cff4c.png" src="../../_images/08cef3b052188bd5614f3a847c36ecaf69b44f91bb3928b0d9f7496c708cff4c.png" />
+</div>
 </div>
 </section>
 </section>
 <section id="two-dimensions">
-<h2>7. Two dimensions<a class="headerlink" href="#two-dimensions" title="Link to this heading">#</a></h2>
+<h2>Two dimensions<a class="headerlink" href="#two-dimensions" title="Link to this heading">#</a></h2>
 <p>In 2D, <span class="math notranslate nohighlight">\(\partial_t u = \alpha(\partial_x^2 u + \partial_y^2 u)\)</span>, and FTCS with <span class="math notranslate nohighlight">\(h_x = h_y = h\)</span> uses the five-point stencil of the relaxation notebook:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -12322,42 +12380,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img6e9b8eee7ba94c28966441862f850f95">
+  <img id="_anim_imgd47c216a387943ed8c5fa70caf7414dd">
   <div class="anim-controls">
-    <input id="_anim_slider6e9b8eee7ba94c28966441862f850f95" type="range" class="anim-slider"
+    <input id="_anim_sliderd47c216a387943ed8c5fa70caf7414dd" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim6e9b8eee7ba94c28966441862f850f95.set_frame(parseInt(this.value));">
+           oninput="animd47c216a387943ed8c5fa70caf7414dd.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim6e9b8eee7ba94c28966441862f850f95.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="animd47c216a387943ed8c5fa70caf7414dd.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim6e9b8eee7ba94c28966441862f850f95.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="animd47c216a387943ed8c5fa70caf7414dd.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim6e9b8eee7ba94c28966441862f850f95.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="animd47c216a387943ed8c5fa70caf7414dd.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim6e9b8eee7ba94c28966441862f850f95.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="animd47c216a387943ed8c5fa70caf7414dd.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim6e9b8eee7ba94c28966441862f850f95.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="animd47c216a387943ed8c5fa70caf7414dd.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim6e9b8eee7ba94c28966441862f850f95.play_animation()">
+      <button title="Play" aria-label="Play" onclick="animd47c216a387943ed8c5fa70caf7414dd.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim6e9b8eee7ba94c28966441862f850f95.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="animd47c216a387943ed8c5fa70caf7414dd.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim6e9b8eee7ba94c28966441862f850f95.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="animd47c216a387943ed8c5fa70caf7414dd.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim6e9b8eee7ba94c28966441862f850f95.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="animd47c216a387943ed8c5fa70caf7414dd.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select6e9b8eee7ba94c28966441862f850f95"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectd47c216a387943ed8c5fa70caf7414dd"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_6e9b8eee7ba94c28966441862f850f95"
+      <input type="radio" name="state" value="once" id="_anim_radio1_d47c216a387943ed8c5fa70caf7414dd"
              >
-      <label for="_anim_radio1_6e9b8eee7ba94c28966441862f850f95">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_6e9b8eee7ba94c28966441862f850f95"
+      <label for="_anim_radio1_d47c216a387943ed8c5fa70caf7414dd">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_d47c216a387943ed8c5fa70caf7414dd"
              checked>
-      <label for="_anim_radio2_6e9b8eee7ba94c28966441862f850f95">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_6e9b8eee7ba94c28966441862f850f95"
+      <label for="_anim_radio2_d47c216a387943ed8c5fa70caf7414dd">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_d47c216a387943ed8c5fa70caf7414dd"
              >
-      <label for="_anim_radio3_6e9b8eee7ba94c28966441862f850f95">Reflect</label>
+      <label for="_anim_radio3_d47c216a387943ed8c5fa70caf7414dd">Reflect</label>
     </form>
   </div>
 </div>
@@ -12367,9 +12425,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img6e9b8eee7ba94c28966441862f850f95";
-    var slider_id = "_anim_slider6e9b8eee7ba94c28966441862f850f95";
-    var loop_select_id = "_anim_loop_select6e9b8eee7ba94c28966441862f850f95";
+    var img_id = "_anim_imgd47c216a387943ed8c5fa70caf7414dd";
+    var slider_id = "_anim_sliderd47c216a387943ed8c5fa70caf7414dd";
+    var loop_select_id = "_anim_loop_selectd47c216a387943ed8c5fa70caf7414dd";
     var frames = new Array(41);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -25568,56 +25626,138 @@ REREBmAAJiIiMgADMBERkQH+Hz3NaCYf3AX/AAAAAElFTkSuQmCC\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim6e9b8eee7ba94c28966441862f850f95 = new Animation(frames, img_id, slider_id, 100.0,
+        animd47c216a387943ed8c5fa70caf7414dd = new Animation(frames, img_id, slider_id, 100.0,
                                  loop_select_id);
     }, 0);
   })()
 </script>
 </div></div>
 </div>
-<p>Implicit methods in 2D need the 2D Laplacian matrix. It is the same one we built for the direct Poisson solver, <span class="math notranslate nohighlight">\(A = T\otimes I + I\otimes T\)</span> with <code class="docutils literal notranslate"><span class="pre">sp.kron</span></code>. The matrix is no longer tridiagonal but it is still sparse, so <code class="docutils literal notranslate"><span class="pre">spla.factorized</span></code> works well for moderate grids. For large 3D problems, <em>ADI</em> methods (<a class="reference external" href="https://en.wikipedia.org/wiki/Alternating-direction_implicit_method">alternating-direction implicit</a>) split each step into 1D tridiagonal solves.</p>
+<p>Implicit methods in 2D need the matrix of the 2D Laplacian. Three ideas are enough to build it:</p>
+<ul class="simple">
+<li><p><strong>Flatten the unknowns.</strong> The <span class="math notranslate nohighlight">\(n\times n\)</span> interior values <code class="docutils literal notranslate"><span class="pre">u[1:-1,</span> <span class="pre">1:-1]</span></code> become one vector with <code class="docutils literal notranslate"><span class="pre">.ravel()</span></code>, row after row: point <span class="math notranslate nohighlight">\((i, j)\)</span> goes to position <span class="math notranslate nohighlight">\(k = i\,n + j\)</span>. The <span class="math notranslate nohighlight">\(y\)</span>-neighbours <span class="math notranslate nohighlight">\((i, j\pm1)\)</span> sit at <span class="math notranslate nohighlight">\(k\pm1\)</span> and the <span class="math notranslate nohighlight">\(x\)</span>-neighbours <span class="math notranslate nohighlight">\((i\pm1, j)\)</span> at <span class="math notranslate nohighlight">\(k\pm n\)</span>.</p></li>
+<li><p><strong>Kronecker products.</strong> <code class="docutils literal notranslate"><span class="pre">sp.kron(P,</span> <span class="pre">Q)</span></code> replaces each entry <span class="math notranslate nohighlight">\(p_{ab}\)</span> of <span class="math notranslate nohighlight">\(P\)</span> by the block <span class="math notranslate nohighlight">\(p_{ab}Q\)</span>. With the 1D matrix <span class="math notranslate nohighlight">\(T\)</span> and the identity <span class="math notranslate nohighlight">\(I\)</span>, <code class="docutils literal notranslate"><span class="pre">sp.kron(T,</span> <span class="pre">I)</span></code> couples <span class="math notranslate nohighlight">\(k\)</span> with <span class="math notranslate nohighlight">\(k\pm n\)</span> (second difference in <span class="math notranslate nohighlight">\(x\)</span>) and <code class="docutils literal notranslate"><span class="pre">sp.kron(I,</span> <span class="pre">T)</span></code> couples <span class="math notranslate nohighlight">\(k\)</span> with <span class="math notranslate nohighlight">\(k\pm1\)</span> inside each row (second difference in <span class="math notranslate nohighlight">\(y\)</span>). Their sum <span class="math notranslate nohighlight">\(A = T\otimes I + I\otimes T\)</span> is the five-point stencil: <span class="math notranslate nohighlight">\(-4\)</span> on the diagonal and <span class="math notranslate nohighlight">\(1\)</span> for each neighbour (see the small example below).</p></li>
+<li><p><strong>Sparse format.</strong> <code class="docutils literal notranslate"><span class="pre">factorized</span></code> (and <code class="docutils literal notranslate"><span class="pre">spsolve</span></code>) need the <em>compressed column</em> format, so we convert once with <code class="docutils literal notranslate"><span class="pre">.tocsc()</span></code>.</p></li>
+</ul>
+<p>The matrix is no longer tridiagonal but it is still sparse, so <code class="docutils literal notranslate"><span class="pre">spla.factorized</span></code> works well for moderate grids. For large 3D problems, <em>ADI</em> methods (<a class="reference external" href="https://en.wikipedia.org/wiki/Alternating-direction_implicit_method">alternating-direction implicit</a>) split each step into 1D tridiagonal solves.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>                                                  <span class="c1"># 3 x 3 interior points -&gt; 9 unknowns</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diags</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"T =</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">T</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">A = kron(T, I) + kron(I, T) =</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">toarray</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>T =
+ [[-2  1  0]
+ [ 1 -2  1]
+ [ 0  1 -2]]
+
+A = kron(T, I) + kron(I, T) =
+ [[-4  1  0  1  0  0  0  0  0]
+ [ 1 -4  1  0  1  0  0  0  0]
+ [ 0  1 -4  0  0  1  0  0  0]
+ [ 1  0  0 -4  1  0  1  0  0]
+ [ 0  1  0  1 -4  1  0  1  0]
+ [ 0  0  1  0  1 -4  0  0  1]
+ [ 0  0  0  1  0  0 -4  1  0]
+ [ 0  0  0  0  1  0  1 -4  1]
+ [ 0  0  0  0  0  1  0  1 -4]]
+</pre></div>
+</div>
+</div>
+</div>
 <div class="exercise admonition" id="ex-heat-cn2d">
 
 <p class="admonition-title"><span class="caption-number">Exercise 49 </span> (Crank–Nicolson in 2D)</p>
 <section id="exercise-content">
 <p>Solve the same hot-spot problem (<span class="math notranslate nohighlight">\(N = 61\)</span>, <span class="math notranslate nohighlight">\(\alpha = 1\)</span>, edges at 0) up to <span class="math notranslate nohighlight">\(t = 0.02\)</span> with Crank–Nicolson and <span class="math notranslate nohighlight">\(\lambda = 2\)</span> (ten times the explicit step).</p>
 <ol class="arabic simple">
-<li><p>Build <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">=</span> <span class="pre">sp.kron(T,</span> <span class="pre">I)</span> <span class="pre">+</span> <span class="pre">sp.kron(I,</span> <span class="pre">T)</span></code> for the <span class="math notranslate nohighlight">\(n = N - 2\)</span> interior points, then <code class="docutils literal notranslate"><span class="pre">solve_M</span> <span class="pre">=</span> <span class="pre">spla.factorized((Id</span> <span class="pre">-</span> <span class="pre">0.5*lam*A).tocsc())</span></code> and <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">=</span> <span class="pre">Id</span> <span class="pre">+</span> <span class="pre">0.5*lam*A</span></code>, where <code class="docutils literal notranslate"><span class="pre">Id</span></code> is the identity of size <span class="math notranslate nohighlight">\(n^2\)</span>.</p></li>
-<li><p>Each step: <code class="docutils literal notranslate"><span class="pre">u[1:-1,</span> <span class="pre">1:-1]</span> <span class="pre">=</span> <span class="pre">solve_M(B</span> <span class="pre">&#64;</span> <span class="pre">u[1:-1,</span> <span class="pre">1:-1].ravel()).reshape(n,</span> <span class="pre">n)</span></code> (the edges are zero, so there is no boundary term).</p></li>
-<li><p>Compare with FTCS (<span class="math notranslate nohighlight">\(\lambda = 0.2\)</span>) at the same final time: plot both fields and their difference. How many steps did each method take?</p></li>
+<li><p>Complete <code class="docutils literal notranslate"><span class="pre">cn2d_stepper(N,</span> <span class="pre">lam)</span></code>, the 2D version of <code class="docutils literal notranslate"><span class="pre">theta_stepper</span></code> with <span class="math notranslate nohighlight">\(\theta = 1/2\)</span>: the matrix <code class="docutils literal notranslate"><span class="pre">A</span></code> is already built; write the two lines that create <code class="docutils literal notranslate"><span class="pre">solve_M</span></code> (factorize <code class="docutils literal notranslate"><span class="pre">Id</span> <span class="pre">-</span> <span class="pre">0.5*lam*A</span></code>) and <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">=</span> <span class="pre">Id</span> <span class="pre">+</span> <span class="pre">0.5*lam*A</span></code>.</p></li>
+<li><p>Run the next cell, which compares the result with FTCS (<span class="math notranslate nohighlight">\(\lambda = 0.2\)</span>) at the same final time. How many steps did each method take? Is the difference significant?</p></li>
 </ol>
 </section>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
-<span class="k">pass</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">cn2d_stepper</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">lam</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Return step(u) that advances the 2D field u by one Crank-Nicolson step (edges at 0)."""</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="mi">2</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">diags</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+    <span class="n">I</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span> <span class="o">+</span> <span class="n">sp</span><span class="o">.</span><span class="n">kron</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>            <span class="c1"># 2D Laplacian (times h^2) on the n*n interior points</span>
+    <span class="n">Id</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">identity</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">n</span><span class="p">)</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    <span class="k">pass</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+        <span class="n">u_new</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">u_new</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve_M</span><span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">u_new</span>
+    <span class="k">return</span> <span class="n">step</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="cell tag_hide-input tag_hide-output docutils container">
-<details class="admonition hide above-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell source</p>
-<p class="expanded admonition-title">Hide code cell source</p>
-</summary>
-<div class="cell_input above-output-prompt docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="s2">"fig/heat_cn2d.png"</span><span class="p">):</span>
-    <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s2">"fig/heat_cn2d.png"</span><span class="p">))</span>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given: run it after completing cn2d_stepper</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">alpha</span><span class="p">,</span> <span class="n">t_end</span> <span class="o">=</span> <span class="mi">61</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.02</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">XX</span><span class="p">,</span> <span class="n">YY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">"ij"</span><span class="p">)</span>
+<span class="n">u0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">XX</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="p">(</span><span class="n">YY</span> <span class="o">-</span> <span class="mf">0.5</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="mf">0.08</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">u0</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">u0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">u0</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">u0</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">lam</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"Crank-Nicolson"</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">),</span> <span class="p">(</span><span class="s2">"FTCS"</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">)]:</span>
+    <span class="n">nsteps</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="n">t_end</span><span class="o">/</span><span class="p">(</span><span class="n">lam</span><span class="o">*</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="n">alpha</span><span class="p">)))</span>
+    <span class="n">lam</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">t_end</span><span class="o">/</span><span class="n">nsteps</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span>                  <span class="c1"># land exactly on t_end</span>
+    <span class="n">step</span> <span class="o">=</span> <span class="n">cn2d_stepper</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"Crank-Nicolson"</span> <span class="k">else</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">u</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">:</span> <span class="n">ftcs2d</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">lam</span><span class="p">))</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">u0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
+        <span class="n">u</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">nsteps</span><span class="si">}</span><span class="s2"> steps)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+
+<span class="p">(</span><span class="n">name1</span><span class="p">,</span> <span class="n">u_cn</span><span class="p">),</span> <span class="p">(</span><span class="n">name2</span><span class="p">,</span> <span class="n">u_ex</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">ax</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">cmap</span> <span class="ow">in</span> <span class="p">[(</span><span class="n">axes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">u_cn</span><span class="p">,</span> <span class="n">name1</span><span class="p">,</span> <span class="s2">"inferno"</span><span class="p">),</span> <span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">u_ex</span><span class="p">,</span> <span class="n">name2</span><span class="p">,</span> <span class="s2">"inferno"</span><span class="p">),</span>
+                               <span class="p">(</span><span class="n">axes</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">u_cn</span> <span class="o">-</span> <span class="n">u_ex</span><span class="p">,</span> <span class="s2">"difference CN - FTCS"</span><span class="p">,</span> <span class="s2">"RdBu_r"</span><span class="p">)]:</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">field</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s2">"lower"</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$x$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$y$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
-</details>
-<details class="admonition hide below-input">
-<summary aria-label="Toggle hidden content">
-<p class="collapsed admonition-title">Show code cell output</p>
-<p class="expanded admonition-title">Hide code cell output</p>
-</summary>
 <div class="cell_output docutils container">
-<img alt="../../_images/54638c22082c5336c9e024adef9d3f7db3df63ec9631ae19f4222b5e5254140e.png" src="../../_images/54638c22082c5336c9e024adef9d3f7db3df63ec9631ae19f4222b5e5254140e.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">23</span><span class="p">],</span> <span class="n">line</span> <span class="mi">16</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">lam</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="p">(</span><span class="n">t_end</span><span class="o">/</span><span class="n">nsteps</span><span class="p">)</span><span class="o">/</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span>                  <span class="c1"># land exactly on t_end</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">step</span> <span class="o">=</span> <span class="n">cn2d_stepper</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">lam</span><span class="p">)</span> <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"Crank-Nicolson"</span> <span class="k">else</span> <span class="p">(</span><span class="k">lambda</span> <span class="n">u</span><span class="p">,</span> <span class="n">lam</span><span class="o">=</span><span class="n">lam</span><span class="p">:</span> <span class="n">ftcs2d</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">lam</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>     <span class="n">u</span> <span class="o">=</span> <span class="n">u0</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span>     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">nsteps</span><span class="p">):</span>
+<span class="ne">---&gt; </span><span class="mi">16</span>         <span class="n">u</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span>     <span class="n">results</span><span class="p">[</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">nsteps</span><span class="si">}</span><span class="s2"> steps)"</span><span class="p">]</span> <span class="o">=</span> <span class="n">u</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> 
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="p">(</span><span class="n">name1</span><span class="p">,</span> <span class="n">u_cn</span><span class="p">),</span> <span class="p">(</span><span class="n">name2</span><span class="p">,</span> <span class="n">u_ex</span><span class="p">)</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+
+<span class="nn">Cell In[22], line 13,</span> in <span class="ni">cn2d_stepper.&lt;locals&gt;.step</span><span class="nt">(u)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>     <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>         <span class="n">u_new</span> <span class="o">=</span> <span class="n">u</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="ne">---&gt; </span><span class="mi">13</span>         <span class="n">u_new</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">solve_M</span><span class="p">(</span><span class="n">B</span> <span class="o">@</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">ravel</span><span class="p">())</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span>         <span class="k">return</span> <span class="n">u_new</span>
+
+<span class="ne">NameError</span>: name 'solve_M' is not defined
+</pre></div>
 </div>
-</details>
+</div>
 </div>
 </section>
 <section id="summary">
@@ -25740,25 +25880,25 @@ REREBmAAJiIiMgADMBERkQH+Hz3NaCYf3AX/AAAAAElFTkSuQmCC\
   </div>
   <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
     <ul class="pst-show_toc_level nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">1. Diffusion</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-explicit-ftcs-method">2. The explicit FTCS method</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-a-thin-rod-chapra-example-30-1">2.1 Example: a thin rod (Chapra, example 30.1)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diffusion">Diffusion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-explicit-ftcs-method">The explicit FTCS method</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-a-thin-rod-chapra-example-30-1">Example: a thin rod (Chapra, example 30.1)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-why-lambda-le-1-2">3. Stability: why <span class="math notranslate nohighlight">\(\lambda \le 1/2\)</span></a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-analysis">3.1 Von Neumann analysis</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seeing-the-instability">3.2 Seeing the instability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stability-why-lambda-le-1-2">Stability: why <span class="math notranslate nohighlight">\(\lambda \le 1/2\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-analysis">Von Neumann analysis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#seeing-the-instability">Seeing the instability</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-an-exact-solution-and-the-order-of-accuracy">4. Validation: an exact solution and the order of accuracy</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insulated-boundaries-neumann-conditions">5. Insulated boundaries (Neumann conditions)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-methods">6. Implicit methods</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-method">6.1 The θ-method</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#large-time-steps">6.2 Large time steps</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-is-not-accurate">6.3 “Stable” is not “accurate”</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#validation-an-exact-solution-and-the-order-of-accuracy">Validation: an exact solution and the order of accuracy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insulated-boundaries-neumann-conditions">Insulated boundaries (Neumann conditions)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-methods">Implicit methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-method">The θ-method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#large-time-steps">Large time steps</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stable-is-not-accurate">“Stable” is not “accurate”</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensions">7. Two dimensions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-dimensions">Two dimensions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#further-exercises">Further exercises</a></li>
 </ul>
