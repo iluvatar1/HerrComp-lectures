@@ -654,8 +654,8 @@
 <section id="forces-the-why-particles-move">
 <h2>Forces: the “why” particles move<a class="headerlink" href="#forces-the-why-particles-move" title="Link to this heading">#</a></h2>
 <p>For conservative interactions, the force on particle <span class="math notranslate nohighlight">\(i\)</span> is minus the gradient of the total potential energy,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5a24e39a-2ef0-4a31-bdd1-fdf64a903705">
-<span class="eqno">(86)<a class="headerlink" href="#equation-5a24e39a-2ef0-4a31-bdd1-fdf64a903705" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-f32c785e-2947-4f14-b08c-ab15f637f128">
+<span class="eqno">(86)<a class="headerlink" href="#equation-f32c785e-2947-4f14-b08c-ab15f637f128" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_i = -\nabla_{\vec r_i} U(\vec r_1, \ldots, \vec r_N).
 \end{equation}\]</div>
 <p>Depending on the scale, the models differ drastically:</p>
@@ -664,14 +664,14 @@
 <li><p><strong>Granular:</strong> contact forces that act <strong>only while two grains overlap</strong>, plus dissipation (damping, friction). See <a class="reference external" href="https://docs.lammps.org/pair_granular.html">LAMMPS granular</a>.</p></li>
 </ul>
 <p><strong>Lennard-Jones (molecules).</strong> The classic non-bonded pair potential has a steep repulsion (Pauli exclusion) and a weak attraction (van der Waals):</p>
-<div class="amsmath math notranslate nohighlight" id="equation-6da99a7e-91dd-451f-85fa-3dcdede7a5fc">
-<span class="eqno">(87)<a class="headerlink" href="#equation-6da99a7e-91dd-451f-85fa-3dcdede7a5fc" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7fddbba2-163a-4dfa-9b1e-b4bcc771d970">
+<span class="eqno">(87)<a class="headerlink" href="#equation-7fddbba2-163a-4dfa-9b1e-b4bcc771d970" title="Permalink to this equation">#</a></span>\[\begin{equation}
 U_{\mathrm{LJ}}(r) = 4\epsilon \left[ \left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6} \right], \qquad
 F_{\mathrm{LJ}}(r) = -\frac{dU}{dr} = \frac{24\epsilon}{r}\left[ 2\left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6} \right].
 \end{equation}\]</div>
 <p><strong>Linear spring-dashpot (grains).</strong> Two spheres of radii <span class="math notranslate nohighlight">\(r_i, r_j\)</span> at distance <span class="math notranslate nohighlight">\(R_{ij} = |\vec R_i - \vec R_j|\)</span> overlap by <span class="math notranslate nohighlight">\(\delta = r_i + r_j - R_{ij}\)</span>. While <span class="math notranslate nohighlight">\(\delta &gt; 0\)</span>,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-93aa2cfb-bc6b-49b8-8bc4-770603fcc4cb">
-<span class="eqno">(88)<a class="headerlink" href="#equation-93aa2cfb-bc6b-49b8-8bc4-770603fcc4cb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2477a9c3-fa55-4442-a622-14e7156a35e9">
+<span class="eqno">(88)<a class="headerlink" href="#equation-2477a9c3-fa55-4442-a622-14e7156a35e9" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec F_{ij} = \left(k\,\delta - \gamma\, m_{\text{eff}}\, v_n\right)\hat n_{ij}, \qquad \hat n_{ij} = \frac{\vec R_i - \vec R_j}{R_{ij}},\quad v_n = (\vec V_i - \vec V_j)\cdot \hat n_{ij},\quad m_{\text{eff}} = \frac{m_i m_j}{m_i + m_j},
 \end{equation}\]</div>
 <p>and <span class="math notranslate nohighlight">\(\vec F_{ji} = -\vec F_{ij}\)</span> (Newton’s third law). The spring <span class="math notranslate nohighlight">\(k\)</span> pushes the grains apart and the dashpot <span class="math notranslate nohighlight">\(\gamma\)</span> dissipates energy (inelastic collisions). This is the model we implement below.</p>
@@ -731,8 +731,8 @@ F_{\mathrm{LJ}}(r) = -\frac{dU}{dr} = \frac{24\epsilon}{r}\left[ 2\left(\frac{\s
 </figcaption>
 </figure>
 <p>Use <strong>centered differences</strong>, with positions at integer times and velocities at half-integer times:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0d173c67-f1f6-44f3-9d47-8fc537f22e26">
-<span class="eqno">(89)<a class="headerlink" href="#equation-0d173c67-f1f6-44f3-9d47-8fc537f22e26" title="Permalink to this equation">#</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-83587f12-4cba-4b26-b85f-0bfdcb8b3954">
+<span class="eqno">(89)<a class="headerlink" href="#equation-83587f12-4cba-4b26-b85f-0bfdcb8b3954" title="Permalink to this equation">#</a></span>\[\begin{align}
 \vec V(t + \Delta t/2) &amp;= \vec V(t - \Delta t/2) + \Delta t\, \vec A(t) + O(\Delta t^3), \\
 \vec R(t + \Delta t) &amp;= \vec R(t) + \Delta t\, \vec V(t + \Delta t/2) + O(\Delta t^3),
 \end{align}\]</div>
@@ -748,8 +748,8 @@ Remember that the stored velocities live at half steps when you compute kinetic 
 <section id="verlet-and-velocity-verlet">
 <h3>Verlet and velocity Verlet<a class="headerlink" href="#verlet-and-velocity-verlet" title="Link to this heading">#</a></h3>
 <p>Adding the Taylor expansions of <span class="math notranslate nohighlight">\(\vec x(t \pm \Delta t)\)</span> cancels the odd terms and gives the <a class="reference external" href="https://en.wikipedia.org/wiki/Verlet_integration">Verlet</a> algorithm,</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d5558a14-c5b9-4938-927e-849dde27ecd7">
-<span class="eqno">(90)<a class="headerlink" href="#equation-d5558a14-c5b9-4938-927e-849dde27ecd7" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-38f924ff-1a82-4a44-ae42-6ac5ef3e9f8a">
+<span class="eqno">(90)<a class="headerlink" href="#equation-38f924ff-1a82-4a44-ae42-6ac5ef3e9f8a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \vec x(t+\Delta t) = 2\vec x(t) - \vec x(t-\Delta t) + \vec a(t)\Delta t^2 + O(\Delta t^4),
 \end{equation}\]</div>
 <p>which does not use velocities at all. Its most popular form is <strong>velocity Verlet</strong>, the standard in MD and DEM codes, which keeps positions and velocities at the same times:</p>

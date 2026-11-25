@@ -646,6 +646,15 @@
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">".."</span><span class="p">,</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"utils"</span><span class="p">)))</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">embed</span>          <span class="c1"># shared helper to embed videos and web pages</span>
 
+
+<span class="k">def</span><span class="w"> </span><span class="nf">save_example</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Save the current figure as fig/&lt;name&gt;.png, the reference result shown after an exercise.</span>
+
+<span class="sd">    Only the instructor copy (next to nbgrader_config.py) saves, so the reference</span>
+<span class="sd">    figures are never overwritten by an unfinished exercise."""</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">".."</span><span class="p">,</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"nbgrader_config.py"</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
+
 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="s2">"fig"</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 
@@ -1075,42 +1084,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_imgc79dda2c902e405e98b5e6c1bb1c71ba">
+  <img id="_anim_imgf03ef569e5ad4a738703534a6371254b">
   <div class="anim-controls">
-    <input id="_anim_sliderc79dda2c902e405e98b5e6c1bb1c71ba" type="range" class="anim-slider"
+    <input id="_anim_sliderf03ef569e5ad4a738703534a6371254b" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="animc79dda2c902e405e98b5e6c1bb1c71ba.set_frame(parseInt(this.value));">
+           oninput="animf03ef569e5ad4a738703534a6371254b.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="animf03ef569e5ad4a738703534a6371254b.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="animf03ef569e5ad4a738703534a6371254b.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="animf03ef569e5ad4a738703534a6371254b.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="animf03ef569e5ad4a738703534a6371254b.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="animf03ef569e5ad4a738703534a6371254b.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.play_animation()">
+      <button title="Play" aria-label="Play" onclick="animf03ef569e5ad4a738703534a6371254b.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="animf03ef569e5ad4a738703534a6371254b.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="animf03ef569e5ad4a738703534a6371254b.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="animc79dda2c902e405e98b5e6c1bb1c71ba.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="animf03ef569e5ad4a738703534a6371254b.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectc79dda2c902e405e98b5e6c1bb1c71ba"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_selectf03ef569e5ad4a738703534a6371254b"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_c79dda2c902e405e98b5e6c1bb1c71ba"
+      <input type="radio" name="state" value="once" id="_anim_radio1_f03ef569e5ad4a738703534a6371254b"
              >
-      <label for="_anim_radio1_c79dda2c902e405e98b5e6c1bb1c71ba">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_c79dda2c902e405e98b5e6c1bb1c71ba"
+      <label for="_anim_radio1_f03ef569e5ad4a738703534a6371254b">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_f03ef569e5ad4a738703534a6371254b"
              checked>
-      <label for="_anim_radio2_c79dda2c902e405e98b5e6c1bb1c71ba">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_c79dda2c902e405e98b5e6c1bb1c71ba"
+      <label for="_anim_radio2_f03ef569e5ad4a738703534a6371254b">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_f03ef569e5ad4a738703534a6371254b"
              >
-      <label for="_anim_radio3_c79dda2c902e405e98b5e6c1bb1c71ba">Reflect</label>
+      <label for="_anim_radio3_f03ef569e5ad4a738703534a6371254b">Reflect</label>
     </form>
   </div>
 </div>
@@ -1120,9 +1129,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_imgc79dda2c902e405e98b5e6c1bb1c71ba";
-    var slider_id = "_anim_sliderc79dda2c902e405e98b5e6c1bb1c71ba";
-    var loop_select_id = "_anim_loop_selectc79dda2c902e405e98b5e6c1bb1c71ba";
+    var img_id = "_anim_imgf03ef569e5ad4a738703534a6371254b";
+    var slider_id = "_anim_sliderf03ef569e5ad4a738703534a6371254b";
+    var loop_select_id = "_anim_loop_selectf03ef569e5ad4a738703534a6371254b";
     var frames = new Array(38);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAlgAAAFeCAYAAABZ12FcAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -12938,7 +12947,7 @@ zp2LdevWYdy4cXjjjTdw/vx5bNy40dylERHh/wE2x84vlWvucQAAAABJRU5ErkJggg==\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        animc79dda2c902e405e98b5e6c1bb1c71ba = new Animation(frames, img_id, slider_id, 59.0,
+        animf03ef569e5ad4a738703534a6371254b = new Animation(frames, img_id, slider_id, 59.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -13046,7 +13055,7 @@ G^2 - 2\left(1 - 2r^2s^2\right)G + 1 = 0 .
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/3791668e84d5194ceb7ea7052c9c99dcc2c11258df91c14b3371b999a1f08a28.png" src="../../_images/3791668e84d5194ceb7ea7052c9c99dcc2c11258df91c14b3371b999a1f08a28.png" />
+<img alt="../../_images/5a5fa58fd1b24d88ec848170807d4d9220449f16e3589d74ce6a0bfd5ebf143d.png" src="../../_images/5a5fa58fd1b24d88ec848170807d4d9220449f16e3589d74ce6a0bfd5ebf143d.png" />
 </div>
 </div>
 <p>The error drops to round-off level at <span class="math notranslate nohighlight">\(r = 1\)</span>. In 1D and only at <span class="math notranslate nohighlight">\(r = 1\)</span>, leap-frog reproduces d’Alembert’s solution <em>exactly</em>: each value is copied one cell per step, which is precisely the exact motion. For <span class="math notranslate nohighlight">\(r &lt; 1\)</span> the scheme is second order.</p>
@@ -13150,7 +13159,7 @@ G^2 - 2\left(1 - 2r^2s^2\right)G + 1 = 0 .
 <span class="n">v0_right</span> <span class="o">=</span> <span class="n">c</span><span class="o">*</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">)</span><span class="o">/</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="o">*</span><span class="n">u0_right</span>              <span class="c1"># -c f'(x)</span>
 
 
-<span class="k">def</span><span class="w"> </span><span class="nf">plot_reflection</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="n">title</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_reflection</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Snapshots of a right-moving pulse before and after it reaches the right end."""</span>
     <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
     <span class="k">for</span> <span class="n">t_show</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]:</span>
@@ -13159,6 +13168,8 @@ G^2 - 2\left(1 - 2r^2s^2\right)G + 1 = 0 .
     <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$x$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$u$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">2.1</span><span class="p">,</span> <span class="mf">2.1</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"lower left"</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+        <span class="n">save_example</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 
@@ -13202,9 +13213,9 @@ G^2 - 2\left(1 - 2r^2s^2\right)G + 1 = 0 .
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Given: run it after completing bc_free and bc_periodic</span>
 <span class="n">frames</span> <span class="o">=</span> <span class="n">solve_wave_1d</span><span class="p">(</span><span class="n">u0_right</span><span class="p">,</span> <span class="n">v0_right</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">dt</span><span class="p">)),</span> <span class="n">bc</span><span class="o">=</span><span class="n">bc_free</span><span class="p">)</span>
-<span class="n">plot_reflection</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="s2">"Free end: upright reflection"</span><span class="p">)</span>
+<span class="n">plot_reflection</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="s2">"Free end: upright reflection"</span><span class="p">,</span> <span class="s2">"wave_free"</span><span class="p">)</span>
 <span class="n">frames</span> <span class="o">=</span> <span class="n">solve_wave_1d</span><span class="p">(</span><span class="n">u0_right</span><span class="p">,</span> <span class="n">v0_right</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="nb">round</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">dt</span><span class="p">)),</span> <span class="n">bc</span><span class="o">=</span><span class="n">bc_periodic</span><span class="p">)</span>
-<span class="n">plot_reflection</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="s2">"Periodic: the pulse re-enters on the left"</span><span class="p">)</span>
+<span class="n">plot_reflection</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="s2">"Periodic: the pulse re-enters on the left"</span><span class="p">,</span> <span class="s2">"wave_periodic"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13212,6 +13223,31 @@ G^2 - 2\left(1 - 2r^2s^2\right)G + 1 = 0 .
 <img alt="../../_images/136d5259605d11272450e44c6c55e77003f498cd12f70a7038a32b5d1351e3a8.png" src="../../_images/136d5259605d11272450e44c6c55e77003f498cd12f70a7038a32b5d1351e3a8.png" />
 <img alt="../../_images/f7bb33e20df8f279c8200f72dcccb242c8fd5794378137a2cf2627c80ab21d89.png" src="../../_images/f7bb33e20df8f279c8200f72dcccb242c8fd5794378137a2cf2627c80ab21d89.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'wave_free'</span><span class="p">,</span> <span class="s1">'wave_periodic'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/cd0661bd8e42aacb8064c0eb5a48f6ad7e58723982ef47a9feac95eca734dd22.png" src="../../_images/cd0661bd8e42aacb8064c0eb5a48f6ad7e58723982ef47a9feac95eca734dd22.png" />
+<img alt="../../_images/6b12465b373b2789df6d1c294dd2235ff37ed592df232327a8b8a117703a183f.png" src="../../_images/6b12465b373b2789df6d1c294dd2235ff37ed592df232327a8b8a117703a183f.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-wave-absorbing">
 
@@ -13250,7 +13286,7 @@ u_{N-1}^{n+1} = u_{N-2}^{n} + \frac{r - 1}{r + 1}\left(u_{N-2}^{n+1} - u_{N-1}^{
 <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">bc_f</span> <span class="ow">in</span> <span class="p">[(</span><span class="s2">"fixed"</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span> <span class="p">(</span><span class="s2">"naive copy"</span><span class="p">,</span> <span class="n">bc_naive</span><span class="p">),</span> <span class="p">(</span><span class="s2">"Mur"</span><span class="p">,</span> <span class="n">bc_absorbing</span><span class="p">)]:</span>
     <span class="n">frames</span> <span class="o">=</span> <span class="n">solve_wave_1d</span><span class="p">(</span><span class="n">u0_right</span><span class="p">,</span> <span class="n">v0_right</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">bc</span><span class="o">=</span><span class="n">bc_f</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">10s</span><span class="si">}</span><span class="s2">: max |u| left at t = 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">frames</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span><span class="si">:</span><span class="s2">.2e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
-<span class="n">plot_reflection</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="s2">"Mur absorbing boundary (r = 0.9)"</span><span class="p">)</span>
+<span class="n">plot_reflection</span><span class="p">(</span><span class="n">frames</span><span class="p">,</span> <span class="s2">"Mur absorbing boundary (r = 0.9)"</span><span class="p">,</span> <span class="s2">"wave_absorbing"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13262,6 +13298,30 @@ Mur       : max |u| left at t = 1: 9.99e-01
 </div>
 <img alt="../../_images/35a20c2c283745c02d4f8f91ceb38d0e7df6bc6f4381c7a9fd448f5929716eea.png" src="../../_images/35a20c2c283745c02d4f8f91ceb38d0e7df6bc6f4381c7a9fd448f5929716eea.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'wave_absorbing'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/349c949f632e1cbd6309abdc115241547d2f2333a5be30818a7a98ba38fe29d3.png" src="../../_images/349c949f632e1cbd6309abdc115241547d2f2333a5be30818a7a98ba38fe29d3.png" />
+</div>
+</details>
 </div>
 </section>
 <section id="two-dimensions">
@@ -13497,42 +13557,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img5815830385a345f7b260645b380928e6">
+  <img id="_anim_img3f3ce538b3c54ea6860937f8528f00a8">
   <div class="anim-controls">
-    <input id="_anim_slider5815830385a345f7b260645b380928e6" type="range" class="anim-slider"
+    <input id="_anim_slider3f3ce538b3c54ea6860937f8528f00a8" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim5815830385a345f7b260645b380928e6.set_frame(parseInt(this.value));">
+           oninput="anim3f3ce538b3c54ea6860937f8528f00a8.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim5815830385a345f7b260645b380928e6.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim5815830385a345f7b260645b380928e6.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim5815830385a345f7b260645b380928e6.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim5815830385a345f7b260645b380928e6.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim5815830385a345f7b260645b380928e6.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim5815830385a345f7b260645b380928e6.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim5815830385a345f7b260645b380928e6.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim5815830385a345f7b260645b380928e6.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim5815830385a345f7b260645b380928e6.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim3f3ce538b3c54ea6860937f8528f00a8.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select5815830385a345f7b260645b380928e6"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select3f3ce538b3c54ea6860937f8528f00a8"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_5815830385a345f7b260645b380928e6"
+      <input type="radio" name="state" value="once" id="_anim_radio1_3f3ce538b3c54ea6860937f8528f00a8"
              >
-      <label for="_anim_radio1_5815830385a345f7b260645b380928e6">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_5815830385a345f7b260645b380928e6"
+      <label for="_anim_radio1_3f3ce538b3c54ea6860937f8528f00a8">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_3f3ce538b3c54ea6860937f8528f00a8"
              checked>
-      <label for="_anim_radio2_5815830385a345f7b260645b380928e6">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_5815830385a345f7b260645b380928e6"
+      <label for="_anim_radio2_3f3ce538b3c54ea6860937f8528f00a8">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_3f3ce538b3c54ea6860937f8528f00a8"
              >
-      <label for="_anim_radio3_5815830385a345f7b260645b380928e6">Reflect</label>
+      <label for="_anim_radio3_3f3ce538b3c54ea6860937f8528f00a8">Reflect</label>
     </form>
   </div>
 </div>
@@ -13542,9 +13602,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img5815830385a345f7b260645b380928e6";
-    var slider_id = "_anim_slider5815830385a345f7b260645b380928e6";
-    var loop_select_id = "_anim_loop_select5815830385a345f7b260645b380928e6";
+    var img_id = "_anim_img3f3ce538b3c54ea6860937f8528f00a8";
+    var slider_id = "_anim_slider3f3ce538b3c54ea6860937f8528f00a8";
+    var loop_select_id = "_anim_loop_select3f3ce538b3c54ea6860937f8528f00a8";
     var frames = new Array(41);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeAAAAGQCAYAAAB29rNUAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -59692,7 +59752,7 @@ RK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim5815830385a345f7b260645b380928e6 = new Animation(frames, img_id, slider_id, 80.0,
+        anim3f3ce538b3c54ea6860937f8528f00a8 = new Animation(frames, img_id, slider_id, 80.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -59757,6 +59817,7 @@ u_{mn}(x, y, t) = \sin\frac{m\pi x}{L}\,\sin\frac{n\pi y}{L}\,\cos(\omega_{mn}t)
 <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$x$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$u$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Two half-height pulses"</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"wave_speed"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -59764,7 +59825,7 @@ u_{mn}(x, y, t) = \sin\frac{m\pi x}{L}\,\sin\frac{n\pi y}{L}\,\cos(\omega_{mn}t)
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">16</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">11</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">frames</span> <span class="o">=</span> <span class="n">solve_wave_1d</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">),</span> <span class="n">r</span><span class="p">,</span> <span class="n">dt</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="mf">3.0</span><span class="o">/</span><span class="n">dt</span><span class="p">),</span> <span class="n">nsave</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">times</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">dt</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">frames</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">peak_position</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">frames</span><span class="p">])</span>
@@ -59785,6 +59846,30 @@ u_{mn}(x, y, t) = \sin\frac{m\pi x}{L}\,\sin\frac{n\pi y}{L}\,\cos(\omega_{mn}t)
 </pre></div>
 </div>
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'wave_speed'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/995ed950a7ad280946c84d9193ab61eeaab5dc2144c5e22b43af6e45cc69db3a.png" src="../../_images/995ed950a7ad280946c84d9193ab61eeaab5dc2144c5e22b43af6e45cc69db3a.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-wave-modes">
 
@@ -59826,6 +59911,7 @@ u_{mn}(x, y, t) = \sin\frac{m\pi x}{L}\,\sin\frac{n\pi y}{L}\,\cos(\omega_{mn}t)
     <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">c</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"gray"</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">":"</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">),</span> <span class="n">xlabel</span><span class="o">=</span><span class="s2">"frequency $f$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"normalized spectrum"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Spectrum of u(1/4, t); dotted: $f_n = n/2$"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"wave_modes"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -59833,7 +59919,7 @@ u_{mn}(x, y, t) = \sin\frac{m\pi x}{L}\,\sin\frac{n\pi y}{L}\,\cos(\omega_{mn}t)
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">18</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">21</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="n">cases</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">"n = 1"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)),</span> <span class="p">(</span><span class="s2">"n = 2"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)),</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>          <span class="p">(</span><span class="s2">"n = 3"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)),</span> <span class="p">(</span><span class="s2">"n = 1 + 2"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">x</span><span class="p">))]</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">u0</span> <span class="ow">in</span> <span class="n">cases</span><span class="p">:</span>
@@ -59848,6 +59934,30 @@ u_{mn}(x, y, t) = \sin\frac{m\pi x}{L}\,\sin\frac{n\pi y}{L}\,\cos(\omega_{mn}t)
 </div>
 <img alt="../../_images/3b0ef9f24b7e0b10663fc80e2d7f32f72d8f80cea3cacf5421d2093e7e6cf61d.png" src="../../_images/3b0ef9f24b7e0b10663fc80e2d7f32f72d8f80cea3cacf5421d2093e7e6cf61d.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'wave_modes'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/4ca0ead5125501dada79e68224eb3055dfa314161e6f0151179efb80720cd5ff.png" src="../../_images/4ca0ead5125501dada79e68224eb3055dfa314161e6f0151179efb80720cd5ff.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-wave-energy">
 
@@ -59892,6 +60002,7 @@ E^n = h\sum_i \left[\frac12\left(\frac{u_i^{n+1} - u_i^{n-1}}{2\Delta t}\right)^
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">E</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">E</span> <span class="o">-</span> <span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="n">E</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lw</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"r = </span><span class="si">{</span><span class="n">r</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"step"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$(E^n - E^1)/E^1$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Relative change of the discrete energy"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"wave_energy"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -59899,7 +60010,7 @@ E^n = h\sum_i \left[\frac12\left(\frac{u_i^{n+1} - u_i^{n-1}}{2\Delta t}\right)^
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">20</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">10</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">u0</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">u0</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]:</span>
@@ -59909,7 +60020,7 @@ E^n = h\sum_i \left[\frac12\left(\frac{u_i^{n+1} - u_i^{n-1}}{2\Delta t}\right)^
 <span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"step"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$(E^n - E^1)/E^1$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Relative change of the discrete energy"</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
-<span class="nn">Cell In[19], line 7,</span> in <span class="ni">wave_energy</span><span class="nt">(U, h, dt, c)</span>
+<span class="nn">Cell In[23], line 7,</span> in <span class="ni">wave_energy</span><span class="nt">(U, h, dt, c)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">ut</span> <span class="o">=</span> <span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span> <span class="o">-</span> <span class="n">U</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">dt</span><span class="p">)</span>              <span class="c1"># velocity at steps 1 .. n-1</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">ux</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">h</span>           <span class="c1"># slope at the same steps</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="c1"># YOUR CODE HERE</span>
@@ -59921,6 +60032,30 @@ E^n = h\sum_i \left[\frac12\left(\frac{u_i^{n+1} - u_i^{n-1}}{2\Delta t}\right)^
 </div>
 <img alt="../../_images/3b0ef9f24b7e0b10663fc80e2d7f32f72d8f80cea3cacf5421d2093e7e6cf61d.png" src="../../_images/3b0ef9f24b7e0b10663fc80e2d7f32f72d8f80cea3cacf5421d2093e7e6cf61d.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'wave_energy'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/65c08c24caf6ee075ecaf169adf10127bc8a8dcd675e86c6b16c922be41f60c2.png" src="../../_images/65c08c24caf6ee075ecaf169adf10127bc8a8dcd675e86c6b16c922be41f60c2.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-wave-drum">
 
@@ -59962,6 +60097,7 @@ E^n = h\sum_i \left[\frac12\left(\frac{u_i^{n+1} - u_i^{n-1}}{2\Delta t}\right)^
     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">): T = </span><span class="si">{</span><span class="n">period</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">signal</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (exact </span><span class="si">{</span><span class="n">T_exact</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$t$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$u(1/4, 1/4, t)$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Square drum modes"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"lower left"</span><span class="p">)</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"wave_drum"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -59969,7 +60105,7 @@ E^n = h\sum_i \left[\frac12\left(\frac{u_i^{n+1} - u_i^{n-1}}{2\Delta t}\right)^
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">22</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">27</span><span class="p">],</span> <span class="n">line</span> <span class="mi">15</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="k">for</span> <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]:</span>
 <span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">u0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">m</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">XX</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">n</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">YY</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">signal</span> <span class="o">=</span> <span class="n">solve_wave_2d</span><span class="p">(</span><span class="n">u0</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">)[:,</span> <span class="n">iq</span><span class="p">,</span> <span class="n">iq</span><span class="p">]</span>
@@ -59977,13 +60113,37 @@ E^n = h\sum_i \left[\frac12\left(\frac{u_i^{n+1} - u_i^{n-1}}{2\Delta t}\right)^
 <span class="ne">---&gt; </span><span class="mi">15</span>     <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">"(</span><span class="si">{</span><span class="n">m</span><span class="si">}</span><span class="s2">,</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">): T = </span><span class="si">{</span><span class="n">period</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="w"> </span><span class="n">signal</span><span class="p">)</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> (exact </span><span class="si">{</span><span class="n">T_exact</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)"</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$t$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"$u(1/4, 1/4, t)$"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Square drum modes"</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s2">"lower left"</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">18</span> <span class="n">save_example</span><span class="p">(</span><span class="s2">"wave_drum"</span><span class="p">)</span>
 
 <span class="ne">TypeError</span>: unsupported format string passed to NoneType.__format__
 </pre></div>
 </div>
 <img alt="../../_images/d6457ffb039b8ff9472d4266c4732839f873f28970d42d97fac1f2a81e07a625.png" src="../../_images/d6457ffb039b8ff9472d4266c4732839f873f28970d42d97fac1f2a81e07a625.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'wave_drum'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/c90f985fe66bb68378eed74d944c8aaa8b8969a16b15b2351ff875294cb08374.png" src="../../_images/c90f985fe66bb68378eed74d944c8aaa8b8969a16b15b2351ff875294cb08374.png" />
+</div>
+</details>
 </div>
 </section>
 <section id="summary">

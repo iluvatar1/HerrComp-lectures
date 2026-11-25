@@ -658,6 +658,15 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">".."</span><span class="p">,</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"utils"</span><span class="p">)))</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">embed</span><span class="w"> </span><span class="kn">import</span> <span class="n">embed</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">save_example</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Save the current figure as fig/&lt;name&gt;.png, the reference result shown after an exercise.</span>
+
+<span class="sd">    Only the instructor copy (next to nbgrader_config.py) saves, so the reference</span>
+<span class="sd">    figures are never overwritten by an unfinished exercise."""</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">".."</span><span class="p">,</span> <span class="s2">".."</span><span class="p">,</span> <span class="s2">"nbgrader_config.py"</span><span class="p">)):</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">120</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -843,7 +852,7 @@ u_{i\pm1} = u_i \pm h\,u'_i + \frac{h^2}{2}u''_i \pm \frac{h^3}{6}u'''_i + \frac
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/616005a8172a77654b0fc172bd0e6304f239acb2581fc1c04a114b30337e7c33.png" src="../../_images/616005a8172a77654b0fc172bd0e6304f239acb2581fc1c04a114b30337e7c33.png" />
+<img alt="../../_images/d7fce131cf24b4bedd70a625fd513db2b57c1c485ebfbe30d945e689a1a9f20d.png" src="../../_images/d7fce131cf24b4bedd70a625fd513db2b57c1c485ebfbe30d945e689a1a9f20d.png" />
 </div>
 </div>
 </section>
@@ -1326,6 +1335,7 @@ V_{i,j} \leftarrow (1 - \omega)\,V_{i,j} + \omega\, V^{GS}_{i,j}, \qquad 1 &lt; 
 <span class="n">ax2</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$N$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"sweeps to tol=1e-6"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">"Cost of the relaxation methods"</span><span class="p">)</span>
 <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"fdr_sor"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1333,6 +1343,30 @@ V_{i,j} \leftarrow (1 - \omega)\,V_{i,j} + \omega\, V^{GS}_{i,j}, \qquad 1 &lt; 
 <div class="cell_output docutils container">
 <img alt="../../_images/6d530c7976fdfebdfa172f581d1642b46db5607829cdb152316e04fc2e144b13.png" src="../../_images/6d530c7976fdfebdfa172f581d1642b46db5607829cdb152316e04fc2e144b13.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'fdr_sor'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/4072faa359cc9cd506378411b8d70b0043939573875487bc37c234e59b906e47.png" src="../../_images/4072faa359cc9cd506378411b8d70b0043939573875487bc37c234e59b906e47.png" />
+</div>
+</details>
 </div>
 </section>
 <section id="performance-measure-vectorize-compile-parallelize">
@@ -1358,7 +1392,7 @@ V_{i,j} \leftarrow (1 - \omega)\,V_{i,j} + \omega\, V^{GS}_{i,j}, \qquad 1 &lt; 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>32.3 μs ± 245 ns per loop (mean ± std. dev. of 5 runs, 200 loops each)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>25 μs ± 111 ns per loop (mean ± std. dev. of 5 runs, 200 loops each)
 </pre></div>
 </div>
 </div>
@@ -1379,23 +1413,23 @@ V_{i,j} \leftarrow (1 - \omega)\,V_{i,j} + \omega\, V^{GS}_{i,j}, \qquad 1 &lt; 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         463945 function calls in 0.785 seconds
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         463945 function calls in 0.485 seconds
 
    Ordered by: internal time
    List reduced from 68 to 8 due to restriction &lt;8&gt;
 
    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-     7136    0.199    0.000    0.199    0.000 1976047220.py:1(jacobi)
-    14274    0.086    0.000    0.116    0.000 _stride_tricks_impl.py:373(_broadcast_to)
-     7137    0.074    0.000    0.101    0.000 function_base.py:27(linspace)
-        1    0.068    0.068    0.785    0.785 420020289.py:1(solve)
-     7137    0.051    0.000    0.443    0.000 884549959.py:9(bc)
-    21410    0.047    0.000    0.047    0.000 {method 'copy' of 'numpy.ndarray' objects}
-     7137    0.034    0.000    0.265    0.000 _function_base_impl.py:5050(meshgrid)
-     7136    0.028    0.000    0.028    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+     7136    0.147    0.000    0.147    0.000 1976047220.py:1(jacobi)
+    14274    0.049    0.000    0.068    0.000 _stride_tricks_impl.py:373(_broadcast_to)
+     7137    0.040    0.000    0.055    0.000 function_base.py:27(linspace)
+        1    0.039    0.039    0.484    0.484 420020289.py:1(solve)
+    21410    0.033    0.000    0.033    0.000 {method 'copy' of 'numpy.ndarray' objects}
+     7137    0.028    0.000    0.256    0.000 884549959.py:9(bc)
+     7137    0.019    0.000    0.158    0.000 _function_base_impl.py:5050(meshgrid)
+     7136    0.014    0.000    0.014    0.000 {method 'reduce' of 'numpy.ufunc' objects}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pstats.Stats at 0x7d3329df3e50&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pstats.Stats at 0x7b1759b61d50&gt;
 </pre></div>
 </div>
 </div>
@@ -1426,7 +1460,7 @@ V_{i,j} \leftarrow (1 - \omega)\,V_{i,j} + \omega\, V^{GS}_{i,j}, \qquad 1 &lt; 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Gauss-Seidel, Python loops  :    0.001 ms per sweep (N=100)
-Jacobi, NumPy slicing       :    0.035 ms per sweep (N=100)
+Jacobi, NumPy slicing       :    0.026 ms per sweep (N=100)
 Gauss-Seidel, numba         :    0.000 ms per sweep (N=100)
 </pre></div>
 </div>
@@ -1490,9 +1524,9 @@ Gauss-Seidel, numba         :    0.000 ms per sweep (N=100)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numba 1st call (compiles) :  142.396 ms
-numba 2nd call            :    0.173 ms
-numpy                     :    1.812 ms   (same value: True)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numba 1st call (compiles) :  108.412 ms
+numba 2nd call            :    0.147 ms
+numpy                     :    1.639 ms   (same value: True)
 </pre></div>
 </div>
 </div>
@@ -1560,6 +1594,7 @@ numpy                     :    1.812 ms   (same value: True)
 <span class="n">ax</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">xlabel</span><span class="o">=</span><span class="s2">"$N$"</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s2">"ms per sweep"</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Time per sweep (</span><span class="si">{</span><span class="n">numba</span><span class="o">.</span><span class="n">get_num_threads</span><span class="p">()</span><span class="si">}</span><span class="s2"> threads)"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"fdr_speed"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1568,8 +1603,32 @@ numpy                     :    1.812 ms   (same value: True)
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>same result as jacobi: False | threads: 4
 </pre></div>
 </div>
-<img alt="../../_images/09fe68fdf2f9cde4db411e2a5fe9a5f48545b475ed5e1b1dd60f74725db91623.png" src="../../_images/09fe68fdf2f9cde4db411e2a5fe9a5f48545b475ed5e1b1dd60f74725db91623.png" />
+<img alt="../../_images/538d8325430e8c8f641337c2d8c7025c0c2da93f2cd2957a945faa918d49797d.png" src="../../_images/538d8325430e8c8f641337c2d8c7025c0c2da93f2cd2957a945faa918d49797d.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'fdr_speed'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/64596d56beb7bab5b4b32c49e175f8d48d8154d65f82911ab7f0258e14a6b6f9.png" src="../../_images/64596d56beb7bab5b4b32c49e175f8d48d8154d65f82911ab7f0258e14a6b6f9.png" />
+</div>
+</details>
 </div>
 </section>
 <section id="gpus">
@@ -1868,42 +1927,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img76f6d95998e044e8b1d0bf2843269d66">
+  <img id="_anim_img192a9ab064224576bf0cb3f0fe852b0a">
   <div class="anim-controls">
-    <input id="_anim_slider76f6d95998e044e8b1d0bf2843269d66" type="range" class="anim-slider"
+    <input id="_anim_slider192a9ab064224576bf0cb3f0fe852b0a" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim76f6d95998e044e8b1d0bf2843269d66.set_frame(parseInt(this.value));">
+           oninput="anim192a9ab064224576bf0cb3f0fe852b0a.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim76f6d95998e044e8b1d0bf2843269d66.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim76f6d95998e044e8b1d0bf2843269d66.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim76f6d95998e044e8b1d0bf2843269d66.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim76f6d95998e044e8b1d0bf2843269d66.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim76f6d95998e044e8b1d0bf2843269d66.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim76f6d95998e044e8b1d0bf2843269d66.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim76f6d95998e044e8b1d0bf2843269d66.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim76f6d95998e044e8b1d0bf2843269d66.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim76f6d95998e044e8b1d0bf2843269d66.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim192a9ab064224576bf0cb3f0fe852b0a.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select76f6d95998e044e8b1d0bf2843269d66"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select192a9ab064224576bf0cb3f0fe852b0a"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_76f6d95998e044e8b1d0bf2843269d66"
+      <input type="radio" name="state" value="once" id="_anim_radio1_192a9ab064224576bf0cb3f0fe852b0a"
              >
-      <label for="_anim_radio1_76f6d95998e044e8b1d0bf2843269d66">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_76f6d95998e044e8b1d0bf2843269d66"
+      <label for="_anim_radio1_192a9ab064224576bf0cb3f0fe852b0a">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_192a9ab064224576bf0cb3f0fe852b0a"
              checked>
-      <label for="_anim_radio2_76f6d95998e044e8b1d0bf2843269d66">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_76f6d95998e044e8b1d0bf2843269d66"
+      <label for="_anim_radio2_192a9ab064224576bf0cb3f0fe852b0a">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_192a9ab064224576bf0cb3f0fe852b0a"
              >
-      <label for="_anim_radio3_76f6d95998e044e8b1d0bf2843269d66">Reflect</label>
+      <label for="_anim_radio3_192a9ab064224576bf0cb3f0fe852b0a">Reflect</label>
     </form>
   </div>
 </div>
@@ -1913,9 +1972,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img76f6d95998e044e8b1d0bf2843269d66";
-    var slider_id = "_anim_slider76f6d95998e044e8b1d0bf2843269d66";
-    var loop_select_id = "_anim_loop_select76f6d95998e044e8b1d0bf2843269d66";
+    var img_id = "_anim_img192a9ab064224576bf0cb3f0fe852b0a";
+    var slider_id = "_anim_slider192a9ab064224576bf0cb3f0fe852b0a";
+    var loop_select_id = "_anim_loop_select192a9ab064224576bf0cb3f0fe852b0a";
     var frames = new Array(16);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAGQCAYAAABYs5LGAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -5723,7 +5782,7 @@ RK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim76f6d95998e044e8b1d0bf2843269d66 = new Animation(frames, img_id, slider_id, 149.0,
+        anim192a9ab064224576bf0cb3f0fe852b0a = new Animation(frames, img_id, slider_id, 149.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -5922,42 +5981,42 @@ input[type=range].anim-slider {
 </style>
 
 <div class="animation">
-  <img id="_anim_img6f3a7db46a2047b4827adf17c1e7aea0">
+  <img id="_anim_img9057533f1d9a469d8a873497352e4f15">
   <div class="anim-controls">
-    <input id="_anim_slider6f3a7db46a2047b4827adf17c1e7aea0" type="range" class="anim-slider"
+    <input id="_anim_slider9057533f1d9a469d8a873497352e4f15" type="range" class="anim-slider"
            name="points" min="0" max="1" step="1" value="0"
-           oninput="anim6f3a7db46a2047b4827adf17c1e7aea0.set_frame(parseInt(this.value));">
+           oninput="anim9057533f1d9a469d8a873497352e4f15.set_frame(parseInt(this.value));">
     <div class="anim-buttons">
-      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.slower()">
+      <button title="Decrease speed" aria-label="Decrease speed" onclick="anim9057533f1d9a469d8a873497352e4f15.slower()">
           <i class="fa fa-minus"></i></button>
-      <button title="First frame" aria-label="First frame" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.first_frame()">
+      <button title="First frame" aria-label="First frame" onclick="anim9057533f1d9a469d8a873497352e4f15.first_frame()">
         <i class="fa fa-fast-backward"></i></button>
-      <button title="Previous frame" aria-label="Previous frame" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.previous_frame()">
+      <button title="Previous frame" aria-label="Previous frame" onclick="anim9057533f1d9a469d8a873497352e4f15.previous_frame()">
           <i class="fa fa-step-backward"></i></button>
-      <button title="Play backwards" aria-label="Play backwards" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.reverse_animation()">
+      <button title="Play backwards" aria-label="Play backwards" onclick="anim9057533f1d9a469d8a873497352e4f15.reverse_animation()">
           <i class="fa fa-play fa-flip-horizontal"></i></button>
-      <button title="Pause" aria-label="Pause" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.pause_animation()">
+      <button title="Pause" aria-label="Pause" onclick="anim9057533f1d9a469d8a873497352e4f15.pause_animation()">
           <i class="fa fa-pause"></i></button>
-      <button title="Play" aria-label="Play" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.play_animation()">
+      <button title="Play" aria-label="Play" onclick="anim9057533f1d9a469d8a873497352e4f15.play_animation()">
           <i class="fa fa-play"></i></button>
-      <button title="Next frame" aria-label="Next frame" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.next_frame()">
+      <button title="Next frame" aria-label="Next frame" onclick="anim9057533f1d9a469d8a873497352e4f15.next_frame()">
           <i class="fa fa-step-forward"></i></button>
-      <button title="Last frame" aria-label="Last frame" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.last_frame()">
+      <button title="Last frame" aria-label="Last frame" onclick="anim9057533f1d9a469d8a873497352e4f15.last_frame()">
           <i class="fa fa-fast-forward"></i></button>
-      <button title="Increase speed" aria-label="Increase speed" onclick="anim6f3a7db46a2047b4827adf17c1e7aea0.faster()">
+      <button title="Increase speed" aria-label="Increase speed" onclick="anim9057533f1d9a469d8a873497352e4f15.faster()">
           <i class="fa fa-plus"></i></button>
     </div>
-    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select6f3a7db46a2047b4827adf17c1e7aea0"
+    <form title="Repetition mode" aria-label="Repetition mode" action="#n" name="_anim_loop_select9057533f1d9a469d8a873497352e4f15"
           class="anim-state">
-      <input type="radio" name="state" value="once" id="_anim_radio1_6f3a7db46a2047b4827adf17c1e7aea0"
+      <input type="radio" name="state" value="once" id="_anim_radio1_9057533f1d9a469d8a873497352e4f15"
              >
-      <label for="_anim_radio1_6f3a7db46a2047b4827adf17c1e7aea0">Once</label>
-      <input type="radio" name="state" value="loop" id="_anim_radio2_6f3a7db46a2047b4827adf17c1e7aea0"
+      <label for="_anim_radio1_9057533f1d9a469d8a873497352e4f15">Once</label>
+      <input type="radio" name="state" value="loop" id="_anim_radio2_9057533f1d9a469d8a873497352e4f15"
              checked>
-      <label for="_anim_radio2_6f3a7db46a2047b4827adf17c1e7aea0">Loop</label>
-      <input type="radio" name="state" value="reflect" id="_anim_radio3_6f3a7db46a2047b4827adf17c1e7aea0"
+      <label for="_anim_radio2_9057533f1d9a469d8a873497352e4f15">Loop</label>
+      <input type="radio" name="state" value="reflect" id="_anim_radio3_9057533f1d9a469d8a873497352e4f15"
              >
-      <label for="_anim_radio3_6f3a7db46a2047b4827adf17c1e7aea0">Reflect</label>
+      <label for="_anim_radio3_9057533f1d9a469d8a873497352e4f15">Reflect</label>
     </form>
   </div>
 </div>
@@ -5967,9 +6026,9 @@ input[type=range].anim-slider {
   /* Instantiate the Animation class. */
   /* The IDs given should match those used in the template above. */
   (function() {
-    var img_id = "_anim_img6f3a7db46a2047b4827adf17c1e7aea0";
-    var slider_id = "_anim_slider6f3a7db46a2047b4827adf17c1e7aea0";
-    var loop_select_id = "_anim_loop_select6f3a7db46a2047b4827adf17c1e7aea0";
+    var img_id = "_anim_img9057533f1d9a469d8a873497352e4f15";
+    var slider_id = "_anim_slider9057533f1d9a469d8a873497352e4f15";
+    var loop_select_id = "_anim_loop_select9057533f1d9a469d8a873497352e4f15";
     var frames = new Array(16);
     
   frames[0] = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAGQCAYAAABYs5LGAAAAOnRFWHRTb2Z0d2FyZQBNYXRwbG90\
@@ -26371,7 +26430,7 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
     /* set a timeout to make sure all the above elements are created before
        the object is initialized. */
     setTimeout(function() {
-        anim6f3a7db46a2047b4827adf17c1e7aea0 = new Animation(frames, img_id, slider_id, 149.0,
+        anim9057533f1d9a469d8a873497352e4f15 = new Animation(frames, img_id, slider_id, 149.0,
                                  loop_select_id);
     }, 0);
   })()
@@ -26426,6 +26485,7 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <span class="n">show</span><span class="p">(</span><span class="n">V_cap</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="sa">f</span><span class="s2">"Capacitor (</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> sweeps)"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">)</span>
 <span class="n">show3d</span><span class="p">(</span><span class="n">V_cap</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">"3d"</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"fdr_capacitor"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -26433,6 +26493,30 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <div class="cell_output docutils container">
 <img alt="../../_images/b57fd81211f91687c7814256fec59ae60f966eb9241f57bc2ee31318132cdda5.png" src="../../_images/b57fd81211f91687c7814256fec59ae60f966eb9241f57bc2ee31318132cdda5.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'fdr_capacitor'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/4e96eebc16b5907179d28a6bf315df5748aceae12552d47d0b192cf3ac9a74ba.png" src="../../_images/4e96eebc16b5907179d28a6bf315df5748aceae12552d47d0b192cf3ac9a74ba.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-fdr-efield">
 
@@ -26449,6 +26533,7 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <span class="n">show</span><span class="p">(</span><span class="n">V_cap</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="s2">"Capacitor: potential and field lines"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Ex</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">Ey</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"fdr_efield"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -26456,6 +26541,30 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <div class="cell_output docutils container">
 <img alt="../../_images/3cd70f55ec28e128977ee76c483341b4062ec255efee347456317495892dd613.png" src="../../_images/3cd70f55ec28e128977ee76c483341b4062ec255efee347456317495892dd613.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'fdr_efield'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/623b14069803b717740ff103ff104ad35cca33e50d1912c7dc39f75eab27a164.png" src="../../_images/623b14069803b717740ff103ff104ad35cca33e50d1912c7dc39f75eab27a164.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-fdr-ring">
 
@@ -26490,6 +26599,7 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <span class="n">show</span><span class="p">(</span><span class="n">V_ring</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">),</span> <span class="sa">f</span><span class="s2">"Ring at V=3 (</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> sweeps)"</span><span class="p">)</span>
 <span class="n">show3d</span><span class="p">(</span><span class="n">V_ring</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s2">"3d"</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"fdr_ring"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -26497,6 +26607,30 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <div class="cell_output docutils container">
 <img alt="../../_images/929e52ff8d08295856bf7ffe697028697ff94223e19097aa32a5855cec9b876a.png" src="../../_images/929e52ff8d08295856bf7ffe697028697ff94223e19097aa32a5855cec9b876a.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'fdr_ring'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/5b73631d5d489787e95110f4daced0090f9edf46dee5467cca5e89e3aef3e3c6.png" src="../../_images/5b73631d5d489787e95110f4daced0090f9edf46dee5467cca5e89e3aef3e3c6.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-fdr-charges">
 
@@ -26534,6 +26668,7 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <span class="n">show</span><span class="p">(</span><span class="n">V_rho</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="sa">f</span><span class="s2">"Two square charges (</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2"> sweeps)"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"RdBu_r"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">streamplot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">Ex</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">Ey</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"k"</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"fdr_charges"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -26541,6 +26676,30 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <div class="cell_output docutils container">
 <img alt="../../_images/5ac097e39c91700bd2d410aa0d7cdc84d26bd9184487dec424a6af8d2faa4865.png" src="../../_images/5ac097e39c91700bd2d410aa0d7cdc84d26bd9184487dec424a6af8d2faa4865.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'fdr_charges'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/a8e6f3fef3b8c33dedd41005e5fdd72d55a93f84dd3bd83ee58e1c837059e83e.png" src="../../_images/a8e6f3fef3b8c33dedd41005e5fdd72d55a93f84dd3bd83ee58e1c837059e83e.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-fdr-neumann">
 
@@ -26587,6 +26746,7 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <span class="n">show</span><span class="p">(</span><span class="n">T1</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">),</span> <span class="s2">"Hot left wall"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"inferno"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"$T$"</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">T2</span><span class="p">,</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">),</span> <span class="s2">"Lower half of the left wall hot"</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">"inferno"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"$T$"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">save_example</span><span class="p">(</span><span class="s2">"fdr_neumann"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -26594,6 +26754,30 @@ IYQQOUCBTgghhMgBCnRCCCFEDlCgE0IIIXKAAp0QQgiRA/8PvMQtvaSJ1yUAAAAASUVORK5CYII=\
 <div class="cell_output docutils container">
 <img alt="../../_images/142f253d611f0b0a3ee8b14b55cbc66fad196ba5a2d4a75b2b6403b0710af574.png" src="../../_images/142f253d611f0b0a3ee8b14b55cbc66fad196ba5a2d4a75b2b6403b0710af574.png" />
 </div>
+</div>
+<div class="cell tag_hide-input tag_hide-output docutils container">
+<details class="admonition hide above-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell source</p>
+<p class="expanded admonition-title">Hide code cell source</p>
+</summary>
+<div class="cell_input above-output-prompt docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">'fdr_neumann'</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">):</span>
+        <span class="n">display</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="sa">f</span><span class="s2">"fig/</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">.png"</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</details>
+<details class="admonition hide below-input">
+<summary aria-label="Toggle hidden content">
+<p class="collapsed admonition-title">Show code cell output</p>
+<p class="expanded admonition-title">Hide code cell output</p>
+</summary>
+<div class="cell_output docutils container">
+<img alt="../../_images/06da6865c1abb42825ce6b727b0f19bb4ddc637d6b14ff29b0a479e2c9200356.png" src="../../_images/06da6865c1abb42825ce6b727b0f19bb4ddc637d6b14ff29b0a479e2c9200356.png" />
+</div>
+</details>
 </div>
 <div class="exercise admonition" id="ex-fdr-pyvista">
 
